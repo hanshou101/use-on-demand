@@ -1,0 +1,24 @@
+{
+  "name"           : "use-on-demand",
+  "version"        : "1.0.0",
+  "description"    : "按需使用的代码工具仓库。",
+  "main"           : "index.js",
+  "scripts"        : {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies"   : {
+  },
+  "devDependencies": {
+  },
+  "repository"     : {
+    "type": "git",
+    "url" : "git+https://github.com/hanshou101/use-on-demand.git"
+  },
+  "keywords"       : ["use-on-demand", "js"],
+  "author"         : "anonymous",
+  "license"        : "MIT",
+  "bugs"           : {
+    "url": "https://github.com/hanshou101/use-on-demand/issues"
+  },
+  "homepage"       : "https://github.com/hanshou101/use-on-demand#readme"
+}
