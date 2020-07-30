@@ -1,10 +1,10 @@
-import axios, {AxiosRequestConfig} from 'axios';
+import axios, {AxiosRequestConfig} from 'ts/ts-types/modeul____axios/axios';
 
 // declare module 'axios' {
 //   export interface AxiosResponse<T = any> extends Promise<T> {}
 // }
 
-declare module 'axios' {
+declare module 'ts/ts-types/modeul____axios/axios' {
   /**
    * WARN 此处，为了修复【官方axios库】，错误的Axios返回类型
    *

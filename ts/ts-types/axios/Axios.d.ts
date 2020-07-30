@@ -1,4 +1,4 @@
-import {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
+import {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'ts/ts-types/axios/Axios';
 import {ac}                                               from '~/assets/js/axiosConfig';
 import AxiosClassOriginCoin                               from '~/assets/js/axiosClassOriginCoin';
 import {AWatKeys}                                         from '~/assets/js/axiosWatcher_KeysEnum';

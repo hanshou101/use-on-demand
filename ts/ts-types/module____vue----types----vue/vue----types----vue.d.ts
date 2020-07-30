@@ -34,7 +34,7 @@ declare global {
   type Combined_TypedVuex_ActionType = (typeof accessorType) & Fix_TypedVuex_ActionType;
 }
 
-declare module 'vue/types/vue' {
+declare module '../vue/types/vue' {
 
 
   interface VueConstructor {
