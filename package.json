@@ -1,6 +1,6 @@
 {
   "name": "use-on-demand",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "按需使用的代码工具仓库。",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
     "nps-utils": "1.7.0",
     "uglify-js": "3.10.0"
   },
-  "files"     : [
+  "files": [
     "**/*.*"
   ],
   "repository": {
