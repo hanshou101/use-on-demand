@@ -34,7 +34,7 @@ declare global {
   type Combined_TypedVuex_ActionType = (typeof accessorType) & Fix_TypedVuex_ActionType;
 }
 
-declare module '../vue/types/vue' {
+declare module 'vue/types/vue' {
 
 
   interface VueConstructor {
@@ -67,6 +67,7 @@ declare module '../vue/types/vue' {
      *        1.用【this.$accessor】访问，一般无延迟
      *        2.使用【window.$nuxt.$accessor】访问，则————————WARN 需要特别注意，这个值，在【首页.vue - mounted】之后，有一定的延迟时间才会有值！！！
      */
+    // $accessor: Combined_TypedVuex_ActionType;        // WARN 在使用$accessor时，和【~/store/index.ts】相关的字段中，仅提示正确字段、而不警告错误字段，这是Typed-Vuex自身的限制。和【Fix_TypedVuex_ActionType】无关。
     $accessor: Combined_TypedVuex_ActionType;        // WARN 在使用$accessor时，和【~/store/index.ts】相关的字段中，仅提示正确字段、而不警告错误字段，这是Typed-Vuex自身的限制。和【Fix_TypedVuex_ActionType】无关。
 
 
