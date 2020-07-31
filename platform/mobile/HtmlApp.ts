@@ -28,7 +28,7 @@ interface IOnLoadInit {
   onWindowLoaded(): void;
 }
 
-export abstract class PageLife implements IBasicInit, IOnLoadInit {
+export abstract class HtmlApp implements IBasicInit, IOnLoadInit {
   // public readonly designWidth: number       = 750;
   // public readonly designAdjustRatio: number = 1;
   // public readonly checkHtmlVersion  !: () => void;                                  //

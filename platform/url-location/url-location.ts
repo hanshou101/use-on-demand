@@ -39,6 +39,9 @@ export function fixbug_locationReplace(url: string) {
   }
 }
 
+/**
+ * 通过【Url+时间戳】，来实现【防止缓存】。
+ */
 export function checkHtmlVersion() {
   // 获取query参数
   const Request        = getFullQueryObj();
