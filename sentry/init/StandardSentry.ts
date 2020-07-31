@@ -1,6 +1,6 @@
-import {ChatRoomList_Util} from '~/assets/js/ChatRoomList_Util';
-import Vue                 from 'vue';
-import {DebugU, LogE}      from '~/assets/js/debug-util';
+import Vue                  from 'vue';
+import {loadJsScript_Async} from '~/dom/dom-script';
+import {DebugU, LogE}       from '~/debug-util/debug-util';
 
 abstract class BaseSentryUtil {
   constructor(public cfg: Sentry_Cfg_Type) {
@@ -18,7 +18,7 @@ class PureJs_SentryUtil extends BaseSentryUtil {
   private readonly pureJsUrl = this.cfg.pureJsUrl;
 
   init(): Promise<Event> {
-    return ChatRoomList_Util.loadJsScript_Async(
+    return loadJsScript_Async(
       this.pureJsUrl, {
         crossOrigin: this.crossOrigin,
       }
@@ -36,7 +36,7 @@ class Vue_SentryUtil extends BaseSentryUtil {
   private readonly vueIntegrationUrl = this.cfg.vueIntegrationUrl;
 
   init(): Promise<Event> {
-    return ChatRoomList_Util.loadJsScript_Async(
+    return loadJsScript_Async(
       this.vueIntegrationUrl, {
         crossOrigin: this.crossOrigin,
       }
