@@ -46,6 +46,7 @@ interface DateConstructor {
 
 interface Navigator {
   userLanguage?: string;
+  browserLanguage?: string;
 }
 
 interface String {
