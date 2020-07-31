@@ -10,6 +10,7 @@ export enum AWatKeys {
   cancelPlanOrders   = 'cancelPlanOrders',      // 取消计划订单
   commonReg          = 'commonReg',             // 通用注册
   preGee             = 'preGee',                // 极验的前置请求
+  sendSms            = 'sendSms',               // 短信验证码
 }
 
 declare global {
