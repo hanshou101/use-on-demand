@@ -1,5 +1,6 @@
 import {GeeStableE, GeeStableUtil} from '~/geetest/util/GeeStableUtil';
 
+const {gtInit} = require('./_util/geetest/geetest.gt.js');    // 在使用工具时，引用该【lib文件】。
 
 enum LangMapE {
   'zh-CN' = 'zh',
