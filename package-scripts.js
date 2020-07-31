@@ -7,7 +7,7 @@ const tsNode_cmdHead = `    ts-node  --files  --compiler-options=\"{ \\\"module\
 
 const LostErrorSentry_Cfg = {
   srcPath         : `./sentry/init`,
-  staticTargetPath: `./sentry/dist-static`,
+  staticTargetPath: `./sentry/dist/static`,
   TsName          : 'LostErrorSentry.ts',
   JsName          : 'LostErrorSentry.js',
   MinJsName       : 'LostErrorSentry.min.js',

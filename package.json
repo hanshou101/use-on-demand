@@ -13,7 +13,8 @@
     "tslib"                 : "2.0.0",
     "@nuxt/types"           : "2.13.2",
     "@nuxt/typescript-build": "1.0.3",
-    "nps-utils"             : "1.7.0"
+    "nps-utils"             : "1.7.0",
+    "uglify-js"             : "3.10.0"
   },
   "repository"     : {
     "type": "git",
