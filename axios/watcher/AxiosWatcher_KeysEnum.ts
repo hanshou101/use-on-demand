@@ -8,6 +8,7 @@ export enum AWatKeys {
   userPositions      = 'userPositions',         // 仓位列表，查询
   setGlobalLeverage  = 'setGlobalLeverage',     // 设置全局杠杆
   cancelPlanOrders   = 'cancelPlanOrders',      // 取消计划订单
+  commonReg          = 'commonReg',             // 通用注册
 }
 
 declare global {
