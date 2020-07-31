@@ -23,6 +23,9 @@
     "nps-utils": "1.7.0",
     "uglify-js": "3.10.0"
   },
+  "files"     : [
+    "**/*.*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hanshou101/use-on-demand.git"
