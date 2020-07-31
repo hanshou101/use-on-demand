@@ -1,30 +1,32 @@
 {
-  "name": "use-on-demand",
-  "version": "1.0.4",
-  "description": "按需使用的代码工具仓库。",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name"           : "use-on-demand",
+  "version"        : "1.0.4",
+  "description"    : "按需使用的代码工具仓库。",
+  "main"           : "index.js",
+  "scripts"        : {
+    "combine-tsc-uglifyjs": "nps sentry.combine-tsc-uglifyjs",
+    "complete-reinstall"  : "npm link nps-utils && nps tool.complete-reinstall"
   },
-  "dependencies": {},
+  "dependencies"   : {},
   "devDependencies": {
-    "@types/node": "14.0.27",
-    "tslib": "2.0.0",
-    "@nuxt/types": "2.13.2",
-    "@nuxt/typescript-build": "1.0.3"
+    "@types/node"           : "14.0.27",
+    "tslib"                 : "2.0.0",
+    "@nuxt/types"           : "2.13.2",
+    "@nuxt/typescript-build": "1.0.3",
+    "nps-utils"             : "1.7.0"
   },
-  "repository": {
+  "repository"     : {
     "type": "git",
-    "url": "git+https://github.com/hanshou101/use-on-demand.git"
+    "url" : "git+https://github.com/hanshou101/use-on-demand.git"
   },
-  "keywords": [
+  "keywords"       : [
     "use-on-demand",
     "js"
   ],
-  "author": "anonymous",
-  "license": "MIT",
-  "bugs": {
+  "author"         : "anonymous",
+  "license"        : "MIT",
+  "bugs"           : {
     "url": "https://github.com/hanshou101/use-on-demand/issues"
   },
-  "homepage": "https://github.com/hanshou101/use-on-demand#readme"
+  "homepage"       : "https://github.com/hanshou101/use-on-demand#readme"
 }

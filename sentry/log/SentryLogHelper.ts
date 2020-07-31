@@ -11,7 +11,7 @@ export enum SentryBreadCateE {
 /**
  * Sentry辅助类
  */
-export class SentryHelper {
+export class SentryLogHelper {
   /**
    * 记录 面包屑/事件痕迹
    *        1.一般要和【主动发送事件】一起使用。
