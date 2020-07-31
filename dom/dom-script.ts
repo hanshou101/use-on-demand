@@ -1,4 +1,4 @@
-import {DebugU, LogE} from '~/debug-util/debug-util';
+import {DebugU, LogE} from '../debug-util/debug-util';
 
 type sOptionKeys = 'crossOrigin';
 type sOptionType = {

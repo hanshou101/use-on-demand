@@ -1,7 +1,7 @@
 /**
  * 模拟工具
  */
-import {GeeStableE} from '~/geetest/util/GeeStableUtil';
+import {GeeStableE} from './GeeStableUtil';
 
 export class GeeMockUtil {
 

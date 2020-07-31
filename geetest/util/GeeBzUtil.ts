@@ -1,4 +1,4 @@
-import {GeeStableE, GeeStableUtil} from '~/geetest/util/GeeStableUtil';
+import {GeeStableE, GeeStableUtil} from './GeeStableUtil';
 
 const {gtInit} = require('./_util/geetest/geetest.gt.js');    // 在使用工具时，引用该【lib文件】。
 

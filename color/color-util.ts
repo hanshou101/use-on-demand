@@ -1,4 +1,4 @@
-import {VarsColor} from '~/less/diy/less-vars.diy';
+import {VarsColor} from '../less/diy/less-vars.diy';
 
 export class ColorUtil {
 

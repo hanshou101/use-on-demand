@@ -1,6 +1,7 @@
-import {DebugU, LogE} from '~/debug-util/debug-util';
-import {CookieHelper} from '~/cookie/CookieHelper';
-import {CkKeys}       from '~/cookie/store/CEnum';
+import {DebugU, LogE} from '../../debug-util/debug-util';
+import {CkKeys}       from './CEnum';
+import {CookieHelper} from '../CookieHelper';
+
 
 const isClient = process.client;
 

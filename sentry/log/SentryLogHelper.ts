@@ -1,7 +1,8 @@
 /**
  * Sentry枚举
  */
-import {DebugU, isClient, LogE} from '~/debug-util/debug-util';
+
+import {DebugU, isClient, LogE} from '../../debug-util/debug-util';
 
 export enum SentryBreadCateE {
   'auth'  = 'auth',

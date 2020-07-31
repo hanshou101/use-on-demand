@@ -1,6 +1,7 @@
 import Vue                  from 'vue';
-import {loadJsScript_Async} from '~/dom/dom-script';
-import {DebugU, LogE}       from '~/debug-util/debug-util';
+import {loadJsScript_Async} from '../../dom/dom-script';
+import {DebugU, LogE}       from '../../debug-util/debug-util';
+
 
 abstract class BaseSentryUtil {
   constructor(public cfg: Sentry_Cfg_Type) {

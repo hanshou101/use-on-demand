@@ -1,6 +1,7 @@
 // 对cookie的用法进行封装
 
-import {DebugU, LogE} from '~/debug-util/debug-util';
+
+import {DebugU, LogE} from '../debug-util/debug-util';
 
 export class CookieHelper {
 

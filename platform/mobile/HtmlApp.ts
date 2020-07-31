@@ -1,5 +1,5 @@
 import {checkHtmlVersion}      from '../url-location/url-location';
-import {My_RemCompatible_Util} from '~/viewport/rem-responsive/RemCompatible_Util';
+import {My_RemCompatible_Util} from '../../viewport/rem-responsive/RemCompatible_Util';
 
 window.Promise = Promise; // FIXME 可有效修复，Webpack/Parcel中，有些Promise语法  没有经过polyfill 的问题！！！
 
