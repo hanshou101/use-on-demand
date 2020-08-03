@@ -93,20 +93,25 @@ export class DownloadAppUtil {
   ) {
     // TIP iOS配置
     if (iosUrl) {
-      const ios_conf      = {
-        schema: 'itms-services',
-        action: 'download-manifest',
-        // url: 'https://017.im/data/User/wq/home/desktop/install/ipa.plist',
-        url   : iosUrl,
-      };
-      let iosAppStorePath = iosUrl;
-      // 如果，需要自动拼接协议头。
-      if (autoJoinProtocol) {
-        if (!(/^(itms-services)/.test(iosUrl))) {
-          iosAppStorePath = `${ios_conf.schema}://?action=${ios_conf.action}&url=${ios_conf.url}`;
+      let jumpPath: string;
+      if (iosUrl.includes('testflight')) {  // testflight模式
+        jumpPath = iosUrl;  // 直接跳转
+      } else {                              // itms协议模式
+        const ios_conf = {
+          schema: 'itms-services',
+          action: 'download-manifest',
+          // url: 'https://017.im/data/User/wq/home/desktop/install/ipa.plist',
+          url   : iosUrl,
+        };
+        jumpPath       = iosUrl;
+        // 如果，需要自动拼接协议头。
+        if (autoJoinProtocol) {
+          if (!(/^(itms-services)/.test(iosUrl))) {
+            jumpPath = `${ios_conf.schema}://?action=${ios_conf.action}&url=${ios_conf.url}`;
+          }
         }
       }
-      window.location.href = iosAppStorePath;
+      window.location.href = jumpPath;
       if (typeof callback === 'function') {
         callback();
       }
