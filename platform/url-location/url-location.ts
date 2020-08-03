@@ -86,3 +86,16 @@ export function checkHtmlVersion() {
     }
   }
 };
+
+export function smoothJump(id: string) {
+  console.log('开始jump');
+  const dom = document.querySelector(`#${id}`);
+  if (dom) {
+    console.log('存在');
+    dom.scrollIntoView({
+      behavior: 'smooth', // 默认 auto
+      block: 'start', // 默认 center
+      inline: 'start', // 默认 nearest
+    });
+  }
+}
