@@ -24,3 +24,23 @@ export function getDomStyle(ele: HTMLElement, cssAttribute: string) {
     return val;
   }
 }
+
+// 获取浏览器宽高
+export function getDocumentWidthHeight() {
+  if (window.innerHeight != null) {
+    return {
+      width: window.innerWidth,
+      height: window.innerHeight,
+    };
+  } else if (document.compatMode === 'CSS1Compat') {
+    // 怪异模式浏览器
+    return {
+      width: document.documentElement.scrollWidth,
+      height: document.documentElement.scrollHeight,
+    };
+  }
+  return {
+    width: document.body.scrollWidth,
+    height: document.body.scrollHeight,
+  };
+}
