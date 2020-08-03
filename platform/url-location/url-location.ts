@@ -1,8 +1,11 @@
 /**
  * 参考资料：https://www.runoob.com/w3cnote/js-get-url-param.html
  */
-export function getQueryField(key: string) {
-  const query = window.location.search.substring(1);
+export function getQueryField(
+  key: string,
+  likeQuery?: string, // 如果外部没有传入，则取默认值
+) {
+  const query = likeQuery ?? window.location.search.substring(1);
   const vars  = query.split('&');
   for (let i = 0; i < vars.length; i++) {
     const pair = vars[i].split('=');
@@ -94,8 +97,8 @@ export function smoothJump(id: string) {
     console.log('存在');
     dom.scrollIntoView({
       behavior: 'smooth', // 默认 auto
-      block: 'start', // 默认 center
-      inline: 'start', // 默认 nearest
+      block   : 'start', // 默认 center
+      inline  : 'start', // 默认 nearest
     });
   }
 }
