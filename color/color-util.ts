@@ -2,15 +2,16 @@ import {VarsColor} from '../less/diy/less-vars.diy';
 
 export class ColorUtil {
 
-  private static componentToHex(c: number) {
-    const hex = c.toString(16);
-    return hex.length == 1 ? '0' + hex : hex;
-  }
-
+  /**
+   * 【RGB】转【HEX】
+   */
   static rgbToHex(r: number, g: number, b: number) {
-    return '#' + this.componentToHex(r) + this.componentToHex(g) + this.componentToHex(b);
+    return '#' + this.__componentToHex(r) + this.__componentToHex(g) + this.__componentToHex(b);
   }
 
+  /**
+   * 【HEX】转【RGB】
+   */
   static hexToRgb(sharpHex: string) {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(sharpHex);
     return result ? {
@@ -20,6 +21,9 @@ export class ColorUtil {
     } : null;
   }
 
+  /**
+   * 指定某个颜色
+   */
   static ElLoading_color = (function () {
     const TextPrimary_or_Bg_Color = VarsColor.TextPrimary_or_Bg_Color;
     const rgbObj                  = ColorUtil.hexToRgb(TextPrimary_or_Bg_Color);
@@ -28,5 +32,14 @@ export class ColorUtil {
     }
     return `rgba(${rgbObj.r}, ${rgbObj.g}, ${rgbObj.b}, 0.65)`;
   })();
+
+  //
+  //
+  //
+
+  private static __componentToHex(c: number) {
+    const hex = c.toString(16);
+    return hex.length == 1 ? '0' + hex : hex;
+  }
 
 }

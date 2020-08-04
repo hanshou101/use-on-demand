@@ -10,7 +10,8 @@
   "dependencies": {
     "clipboard": "2.0.6",
     "jquery": "3.5.1",
-    "vue": "2.6.11"
+    "vue": "2.6.11",
+    "xlsx": "0.16.5"
   },
   "devDependencies": {
     "@types/node": "14.0.27",
