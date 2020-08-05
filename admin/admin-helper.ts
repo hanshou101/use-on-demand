@@ -66,4 +66,40 @@ export class AdminHelper {
       }
     }
   }
+
+  /**
+   *  介绍：将一个已有的Object，经过特定筛子（class形式；目前还不能用interface形式），筛选保留出特定数据
+   *
+   *  功能：
+   *          1.目前，经常用于【提交数据】的筛选。
+   */
+  filterTargetFields<T>(originObj: IndexedObj<any>, filterObj: object, needTrimEmpty: boolean = false): IndexedObj<any> {
+
+    const distObj: IndexedObj<any> = {
+      // '筛选后保留的key' : '筛选后保留的value' ,
+    };
+    for (const key in filterObj) {
+      if (filterObj.hasOwnProperty(key)) {      // TODO 排除掉，系统自带的原生字段（或原型链字段）。————>仅保留用户自定义字段
+        const target = originObj[key];
+
+        if (needTrimEmpty) {
+          // TODO 如果需要判空：过滤一遍，不符合要求的空数据。
+
+          if (typeof target !== 'undefined' && target !== null && target !== '') {
+            // TODO 不为空，开始赋值
+            distObj[key] = target;
+          } else {
+            // TODO 为空，跳过
+          }
+        } else {
+          // TODO 如果不需要判空：直接赋值
+          distObj[key] = target;
+        }
+      }
+    }
+    return distObj;
+  }
+
+  //
+  //
 }

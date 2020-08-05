@@ -13,6 +13,11 @@ declare function isNaN(
   number: number | string,    // TIP 经过试验，如果传入【字符串的NaN】，也可以正常识别为true
 ): boolean;
 
+interface Window {
+  attachEvent?(eventName: string, cb: Function): void;  // 兼容性处理：IE，独有方法。
+  detachEvent?(eventName: string, cb: Function): void;  // 兼容性处理：IE，独有方法。
+}
+
 interface WindowOrWorkerGlobalScope {
   clearInterval(handle?: number | null | undefined): void;    // TIP 此处，增加了【null类型、undefined类型】的传入参数；这个【null、undefined】，并不会导致报错
   clearTimeout(handle?: number | null | undefined): void;     // TIP 此处，增加了【null类型、undefined类型】的传入参数；这个【null、undefined】，并不会导致报错
@@ -25,6 +30,7 @@ interface HTMLElement {
 
   //
   attachEvent?(eventName: string, cb: Function): void;  // 兼容性处理：IE，独有方法。
+  detachEvent?(eventName: string, cb: Function): void;  // 兼容性处理：IE，独有方法。
 }
 
 interface Document {

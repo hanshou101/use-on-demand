@@ -128,4 +128,42 @@ export class CVS_Excel_Helper {
 
   }
 
+  /**
+   * 将文本，导出为【ZIP文件】
+   */
+  export_txt_to_zip(th: any, jsonData: any, txtName: string, zipName: string) {
+    return new Promise((resolve, reject) => {
+      require('script-loader!file-saver');
+      import('jszip').then(exports => {                                         // 导入库
+        const JSZip    = exports.default;
+        const zip      = new JSZip();
+        const txt_name = txtName || 'file';
+        const zip_name = zipName || 'file';
+        const data     = jsonData;
+        let txtData    = `${th}\r\n`;
+        data.forEach((row: any) => {
+          let tempStr = '';
+          tempStr     = row.toString();
+          txtData += `${tempStr}\r\n`;
+        });
+        zip.file(`${txt_name}.txt`, txtData);
+        zip.generateAsync({type: 'blob'}).then((blob) => {
+          import('file-saver').then(FileSaver => {                              // 导入库
+            FileSaver.saveAs(blob, `${zip_name}.zip`);    // FIXME ？？？？？？
+            resolve();
+          }).catch(e => [
+            reject(e)
+          ]);
+        }, (err) => {
+          // alert(i18n.t('message.Export_Failure'));
+          alert(`导出失败！${err}`);
+          reject(err);
+        });
+      }).catch(e => {
+        reject(e);
+      });
+    });
+  }
+
+
 }

@@ -1,7 +1,178 @@
+//
+
+import {SArray_Helper} from '../symbol-array/SArray_Helper';
+
+/**
+ * TODO 这里  GlobalEventHandlers ，似乎不如直接声明具体类型好用…………
+ */
+type MyEventTarget = (/*GlobalEventHandlers |*/ HTMLElement | Window) & {
+  _events?: {
+    [key: string]: any,
+  },
+};
+
+
+export class DomEvt_Helper {
+
+  /**
+   * 绑定事件
+   * @param ele dom元素
+   * @param eventName 事件名称
+   * @param fn 事件回调函数
+   */
+  bindEvt(ele: MyEventTarget, eventName: string, fn: (e: Event) => any) {
+    if (!ele) {
+      console.error('on(ele, eventName, fn)函数第一个参数必须是一个dom元素!');
+      return;
+    }
+    if (!eventName || typeof eventName !== 'string') {
+      console.error('on(ele, eventName, fn)函数第二个参数必须是一个字符串!');
+      return;
+    }
+    if (!fn || typeof fn !== 'function') {
+      console.error('on(ele, eventName, fn)函数第三个参数必须是一个函数!');
+      return;
+    }
+    if (!ele._events) {
+      ele._events = {};
+    }
+    if (!(eventName in ele._events)) {
+      ele._events[eventName] = [fn];
+      // 非IE浏览器，采用这个方式绑定
+      // @ts-ignore
+      if (document.addEventListener) {
+        ele.addEventListener(eventName, function (e) {
+          if (ele._events) {
+            const events = ele._events[eventName];
+            if (events && events.length > 0) {
+              let i     = 0;
+              const len = events.length;
+              for (; i < len; i++) {
+                if (events[i]) {
+                  events[i].call(ele, e);
+                }
+              }
+            }
+          }
+
+        }, false);
+
+        // IE浏览器，采用这个方式绑定
+      } else if (window.attachEvent && ele.attachEvent) {
+        ele.attachEvent('on' + eventName, function () {
+          if (ele._events) {
+            const events = ele._events[eventName];
+            const e      = window.event;
+            if (e) {
+              e.preventDefault  = function () {
+                e.returnValue = false;
+              };
+              e.stopPropagation = function () {
+                e.cancelBubble = true;
+              };
+            }
+            let i     = 0;
+            const len = events.length;
+            for (; i < len; i++) {
+              events[i].call(ele, e);
+            }
+          }
+
+        });
+      }
+    } else {
+      const index = SArray_Helper.getIndex_fromRule(ele._events[eventName], function (item) {
+        return item === fn;
+      });
+      if (index < 0 || typeof index === 'undefined') {
+        ele._events[eventName].push(fn);
+      }
+    }
+    return;
+  }
+
+
+  /**
+   * 解绑事件
+   * @param ele dom元素
+   * @param eventName 事件名称
+   * @param fn 事件回调函数
+   */
+  unbindEvt(ele: MyEventTarget, eventName: string, fn: (e: Event) => any) {
+    let index;
+    if (!ele) {
+      console.error('off(ele, eventName, fn)函数第一个参数必须是一个dom元素!');
+      return;
+    }
+    if (!eventName || typeof eventName !== 'string') {
+      console.error('off(ele, eventName, fn)函数第二个参数必须是一个字符串!');
+      return;
+    }
+    if (!ele._events) {
+      return;
+    }
+    if (!eventName) {
+      return;
+    }
+    let events = ele._events[eventName];
+    // 如果只传递了事件名称而未传递具体的事件，则将指定事件名称的所有回调函数全部清除
+    if (eventName && !fn) {
+      // @ts-ignore
+      if (document.removeEventListener) {
+        for (let i = 0, len = events.length; i < len; i++) {
+          ele.removeEventListener(eventName, events[i], false);
+        }
+      } else if (window.detachEvent && ele.detachEvent) {
+        for (let i = 0, len = events.length; i < len; i++) {
+          ele.detachEvent('on' + eventName, events[i]);
+        }
+      }
+      delete ele._events[eventName];
+    } else if (eventName && fn) {
+      if (!events) {
+        return;
+      }
+      // @ts-ignore
+      if (document.removeEventListener) {
+        if (events.length === 1) {
+          ele.removeEventListener(eventName, fn, false);
+          delete ele._events[eventName];
+        } else {
+          index = SArray_Helper.getIndex_fromRule(events, function (item) {
+            return item === fn;
+          });
+          if (index > -1) {
+            events.splice(index, 1);
+          }
+        }
+      } else if (window.detachEvent && ele.detachEvent) {
+        if (!events) {
+          return;
+        }
+        if (events.length === 1) {
+          ele.detachEvent('on' + eventName, fn);
+          delete ele._events[eventName];
+        } else {
+          index = SArray_Helper.getIndex_fromRule(events, function (item) {
+            return item === fn;
+          });
+          if (index > -1) {
+            events.splice(index, 1);
+          }
+        }
+      }
+    }
+    events = null;
+    return;
+  }
+
+}
+
+
 export class BrowserEventMap {
   public static MOUSE = {
     // 单次左键【完整点击】
-    click: 'click',
+    click   : 'click',
     // 连续两次左键【完整点击】：双击
     dblclick: 'dblclick',
 
@@ -12,15 +183,15 @@ export class BrowserEventMap {
     // 一次完整点击的各大组成部分：按下、移动、弹起。
     mousedown: 'mousedown',
     mousemove: 'mousemove',
-    mouseup: 'mouseup',
+    mouseup  : 'mouseup',
 
     // 鼠标悬浮
     mouseenter: 'mouseenter',       // 悬浮的刚刚移上去
-    mouseover: 'mouseover',         // 悬浮的持续在上面
-    mouseout: 'mouseout',           // 悬浮的DOM上移出去
+    mouseover : 'mouseover',         // 悬浮的持续在上面
+    mouseout  : 'mouseout',           // 悬浮的DOM上移出去
 
     BUTTON_TYPE: {
-      LeftButton: 0,        // 左键枚举值为0
+      LeftButton : 0,        // 左键枚举值为0
       RightButton: 2,       // 右键枚举值为2
     },
   };
@@ -32,7 +203,7 @@ export class BrowserEventMap {
     keypress: 'keypress',
 
     keydown: 'keydown',     // 键盘按键被按下的瞬间
-    keyup: 'keyup',         // 键盘按键被弹起的瞬间
+    keyup  : 'keyup',         // 键盘按键被弹起的瞬间
 
 
     /**
@@ -54,30 +225,30 @@ export class BrowserEventMap {
       // 参考资料：JavaScript listener, "keypress" doesn't detect backspace? - Stack Overflow - https://stackoverflow.com/a/4843502/6264260
 
       // 上方，功能键
-      F1: 112, F2: 113, F3: 114, F4: 115, F5: 116, F6: 117,
-      F7: 118, F8: 119, F9: 120, F10: 121, F11: 122, F12: 123,
+      F1        : 112, F2: 113, F3: 114, F4: 115, F5: 116, F6: 117,
+      F7        : 118, F8: 119, F9: 120, F10: 121, F11: 122, F12: 123,
       // 特殊控制键
-      BackSpace: 8, Tab: 9,
-      Enter: 13, Caps_Lock: 20,
-      Control: 17, Shift: 16, Alt: 18,
+      BackSpace : 8, Tab: 9,
+      Enter     : 13, Caps_Lock: 20,
+      Control   : 17, Shift: 16, Alt: 18,
       Left_Arrow: 37, Up_Arrow: 38, Right_Arrow: 39, Down_Arrow: 40,
-      Insert: 45,
-      Delete: 46,
-      Num_Lock: 144,
+      Insert    : 45,
+      Delete    : 46,
+      Num_Lock  : 144,
     },
 
     /**
      * 参考资料：
      *          浅谈JavaScript中按键事件的e.keyCode || e.which || e.charCode - 筱葭的博客 - CSDN博客 - https://blog.csdn.net/zhouziyu2011/article/details/53978293
      */
-    getKeyCode (__e: Event) {
+    getKeyCode(__e: Event) {
       const e = __e as KeyboardEvent;
       return e.keyCode || e.which || e.charCode;
     },
   };
 
   public static ClipBoard = {
-    copy: 'copy',       // Ctrl+C，复制
+    copy : 'copy',       // Ctrl+C，复制
     paste: 'paste',     // Ctrl+V，粘贴
 
     cut: 'cut',         // Ctrl+X，剪切
@@ -93,7 +264,7 @@ export class BrowserEventMap {
 
       // 开始拖动、持续拖动、结束拖动
       dragstart: 'dragstart',     // DOM刚刚开始被拖动
-      dragend: 'dragend',         // DOM已被拖动完成
+      dragend  : 'dragend',         // DOM已被拖动完成
     },
 
     fromOthers: {
@@ -103,7 +274,7 @@ export class BrowserEventMap {
       // 拖动中经过某一片区域
       dragenter: 'dragenter',     // 当进行拖动DOM时，进入有效的放置目标时
       dragleave: 'dragleave',     // 当进行拖动DOM时，离开有效的放置目标时
-      dragover: 'dragover',       // 当进行拖动DOM时，（进入有效的放置目标之后）持续处于有效的放置目标上时
+      dragover : 'dragover',       // 当进行拖动DOM时，（进入有效的放置目标之后）持续处于有效的放置目标上时
 
       /**
        * 一些关于【drop】的坑
@@ -123,14 +294,14 @@ export class BrowserEventMap {
     },
 
     __dataTransfer__effectAllowed_Enum: {
-      none: 'none',
-      copy: 'copy',
-      copyLink: 'copyLink',
-      copyMove: 'copyMove',
-      link: 'link',
-      linkMove: 'linkMove',
-      move: 'move',
-      all: 'all',
+      none         : 'none',
+      copy         : 'copy',
+      copyLink     : 'copyLink',
+      copyMove     : 'copyMove',
+      link         : 'link',
+      linkMove     : 'linkMove',
+      move         : 'move',
+      all          : 'all',
       uninitialized: 'uninitialized',
     },
 
@@ -138,110 +309,110 @@ export class BrowserEventMap {
 
   public static Touch = {
     touchstart: 'touchstart',       // 手指点击开始
-    touchmove: 'touchmove',         // 手指点击，并正在移动中
-    touchend: 'touchend',           // 手指点击结束（手指离开屏幕）
+    touchmove : 'touchmove',         // 手指点击，并正在移动中
+    touchend  : 'touchend',           // 手指点击结束（手指离开屏幕）
 
     // TouchCancel，比较少用。（一般是一些触摸事件之外的事件，打断。如触点超出区域；弹出一个模态框；）
     touchcancel: 'touchcancel',
   };
 
   public static Window = {
-    abort: 'abort',
-    afterprint: 'afterprint',
-    beforeprint: 'beforeprint',
-    beforeunload: 'beforeunload',
-    blur: 'blur',
-    canplay: 'canplay',
-    canplaythrough: 'canplaythrough',
-    change: 'change',
-    click: 'click',
-    compassneedscalibration: 'compassneedscalibration',
-    contextmenu: 'contextmenu',
-    dblclick: 'dblclick',
-    devicelight: 'devicelight',
-    devicemotion: 'devicemotion',
-    deviceorientation: 'deviceorientation',
-    drag: 'drag',
-    dragend: 'dragend',
-    dragenter: 'dragenter',
-    dragleave: 'dragleave',
-    dragover: 'dragover',
-    dragstart: 'dragstart',
-    drop: 'drop',
-    durationchange: 'durationchange',
-    emptied: 'emptied',
-    ended: 'ended',
-    error: 'error',
-    focus: 'focus',
-    hashchange: 'hashchange',
-    input: 'input',
-    invalid: 'invalid',
-    keydown: 'keydown',
-    keypress: 'keypress',
-    keyup: 'keyup',
-    load: 'load',
-    loadeddata: 'loadeddata',
-    loadedmetadata: 'loadedmetadata',
-    loadstart: 'loadstart',
-    message: 'message',
-    mousedown: 'mousedown',
-    mouseenter: 'mouseenter',
-    mouseleave: 'mouseleave',
-    mousemove: 'mousemove',
-    mouseout: 'mouseout',
-    mouseover: 'mouseover',
-    mouseup: 'mouseup',
-    mousewheel: 'mousewheel',
-    MSGestureChange: 'MSGestureChange',
-    MSGestureDoubleTap: 'MSGestureDoubleTap',
-    MSGestureEnd: 'MSGestureEnd',
-    MSGestureHold: 'MSGestureHold',
-    MSGestureStart: 'MSGestureStart',
-    MSGestureTap: 'MSGestureTap',
-    MSInertiaStart: 'MSInertiaStart',
-    MSPointerCancel: 'MSPointerCancel',
-    MSPointerDown: 'MSPointerDown',
-    MSPointerEnter: 'MSPointerEnter',
-    MSPointerLeave:      'MSPointerLeave',
-    MSPointerMove:       'MSPointerMove',
-    MSPointerOut:        'MSPointerOut',
-    MSPointerOver:       'MSPointerOver',
-    MSPointerUp:       'MSPointerUp',
-    offline:           'offline',
-    online:            'online',
-    orientationchange: 'orientationchange',
-    pagehide:          'pagehide',
-    pageshow:          'pageshow',
-    pause:             'pause',
-    play:              'play',
-    playing:           'playing',
-    popstate:          'popstate',
-    progress:          'progress',
-    ratechange:        'ratechange',
-    readystatechange:  'readystatechange',
-    reset:             'reset',
-    resize:            'resize',
-    scroll:            'scroll',
-    seeked:            'seeked',
-    seeking:           'seeking',
-    select:            'select',
-    stalled:           'stalled',
-    storage:           'storage',
-    submit:            'submit',
-    suspend:           'suspend',
-    timeupdate:        'timeupdate',
-    unload:            'unload',
-    volumechange:      'volumechange',
-    vrdisplayactivate: 'vrdisplayactivate',
-    vrdisplayblur:     'vrdisplayblur',
-    vrdisplayconnect:    'vrdisplayconnect',
-    vrdisplaydeactivate: 'vrdisplaydeactivate',
-    vrdisplaydisconnect: 'vrdisplaydisconnect',
-    vrdisplayfocus: 'vrdisplayfocus',
-    vrdisplaypointerrestricted: 'vrdisplaypointerrestricted',
+    abort                       : 'abort',
+    afterprint                  : 'afterprint',
+    beforeprint                 : 'beforeprint',
+    beforeunload                : 'beforeunload',
+    blur                        : 'blur',
+    canplay                     : 'canplay',
+    canplaythrough              : 'canplaythrough',
+    change                      : 'change',
+    click                       : 'click',
+    compassneedscalibration     : 'compassneedscalibration',
+    contextmenu                 : 'contextmenu',
+    dblclick                    : 'dblclick',
+    devicelight                 : 'devicelight',
+    devicemotion                : 'devicemotion',
+    deviceorientation           : 'deviceorientation',
+    drag                        : 'drag',
+    dragend                     : 'dragend',
+    dragenter                   : 'dragenter',
+    dragleave                   : 'dragleave',
+    dragover                    : 'dragover',
+    dragstart                   : 'dragstart',
+    drop                        : 'drop',
+    durationchange              : 'durationchange',
+    emptied                     : 'emptied',
+    ended                       : 'ended',
+    error                       : 'error',
+    focus                       : 'focus',
+    hashchange                  : 'hashchange',
+    input                       : 'input',
+    invalid                     : 'invalid',
+    keydown                     : 'keydown',
+    keypress                    : 'keypress',
+    keyup                       : 'keyup',
+    load                        : 'load',
+    loadeddata                  : 'loadeddata',
+    loadedmetadata              : 'loadedmetadata',
+    loadstart                   : 'loadstart',
+    message                     : 'message',
+    mousedown                   : 'mousedown',
+    mouseenter                  : 'mouseenter',
+    mouseleave                  : 'mouseleave',
+    mousemove                   : 'mousemove',
+    mouseout                    : 'mouseout',
+    mouseover                   : 'mouseover',
+    mouseup                     : 'mouseup',
+    mousewheel                  : 'mousewheel',
+    MSGestureChange             : 'MSGestureChange',
+    MSGestureDoubleTap          : 'MSGestureDoubleTap',
+    MSGestureEnd                : 'MSGestureEnd',
+    MSGestureHold               : 'MSGestureHold',
+    MSGestureStart              : 'MSGestureStart',
+    MSGestureTap                : 'MSGestureTap',
+    MSInertiaStart              : 'MSInertiaStart',
+    MSPointerCancel             : 'MSPointerCancel',
+    MSPointerDown               : 'MSPointerDown',
+    MSPointerEnter              : 'MSPointerEnter',
+    MSPointerLeave              : 'MSPointerLeave',
+    MSPointerMove               : 'MSPointerMove',
+    MSPointerOut                : 'MSPointerOut',
+    MSPointerOver               : 'MSPointerOver',
+    MSPointerUp                 : 'MSPointerUp',
+    offline                     : 'offline',
+    online                      : 'online',
+    orientationchange           : 'orientationchange',
+    pagehide                    : 'pagehide',
+    pageshow                    : 'pageshow',
+    pause                       : 'pause',
+    play                        : 'play',
+    playing                     : 'playing',
+    popstate                    : 'popstate',
+    progress                    : 'progress',
+    ratechange                  : 'ratechange',
+    readystatechange            : 'readystatechange',
+    reset                       : 'reset',
+    resize                      : 'resize',
+    scroll                      : 'scroll',
+    seeked                      : 'seeked',
+    seeking                     : 'seeking',
+    select                      : 'select',
+    stalled                     : 'stalled',
+    storage                     : 'storage',
+    submit                      : 'submit',
+    suspend                     : 'suspend',
+    timeupdate                  : 'timeupdate',
+    unload                      : 'unload',
+    volumechange                : 'volumechange',
+    vrdisplayactivate           : 'vrdisplayactivate',
+    vrdisplayblur               : 'vrdisplayblur',
+    vrdisplayconnect            : 'vrdisplayconnect',
+    vrdisplaydeactivate         : 'vrdisplaydeactivate',
+    vrdisplaydisconnect         : 'vrdisplaydisconnect',
+    vrdisplayfocus              : 'vrdisplayfocus',
+    vrdisplaypointerrestricted  : 'vrdisplaypointerrestricted',
     vrdisplaypointerunrestricted: 'vrdisplaypointerunrestricted',
-    vrdisplaypresentchange: 'vrdisplaypresentchange',
-    waiting: 'waiting',
+    vrdisplaypresentchange      : 'vrdisplaypresentchange',
+    waiting                     : 'waiting',
   };
 
 }
