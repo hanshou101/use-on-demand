@@ -14,6 +14,15 @@ export class SMath_Helper {
     }
     return (num).toFixed(18).replace(/\.?0+$/, '');    // 最后的分支，返回替换的结果。
   }
+
+  /**
+   * 数字添加千分位符
+   */
+  static parseToThousandth = (num: number, point = 0) => {
+    let [sInt, sFloat] = (Number.isInteger(num) ? `${num}` : num.toFixed(point)).split('.');
+    sInt               = sInt.replace(/\d(?=(\d{3})+$)/g, '$&,');
+    return sFloat ? `${sInt}.${sFloat}` : `${sInt}`;
+  };
 }
 
 

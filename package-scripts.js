@@ -42,6 +42,12 @@ module.exports = {
       'load-tsconfig-by-js'     : `${tsNode_cmdHead}  ./gen/gen-tsconfig.ts`,                                         // 动态js生成 tsconfig.js
       'copy-local-config'       : 'shx cp -f ./config/api.config.local.ts ./config/api.config.ts',              // 复制【环境配置】
       'inject-cdn-2-tradingView': `${tsNode_cmdHead}  ./gen/gen-tradingView.ts`,
+
+      vue: {
+        'serve': 'vue-cli-service serve',
+        'build': 'vue-cli-service build',
+        'lint' : 'vue-cli-service lint',
+      }
     },
 
     /**

@@ -7,46 +7,46 @@
  */
 {
   // TIP 继承于哪套现有基础TSLint规则
-  "extends":         [
+  "extends"        : [
     "tslint:recommended"
   ],
   // TIP 违反Rules之处，默认的警告级别
   "defaultSeverity": "warning",
   // TIP Linter检查器选项（包含【exclude】和【format】两个属性）
-  "linterOptions":   {
+  "linterOptions"  : {
     "exclude": [
       "node_modules/**"
     ]
   },
   // TIP 自定义规则
-  "rules":           {
+  "rules"          : {
     // TIP 是否【禁用any作为变量类型】（适用于，超严格模式下）
-    "no-any":                           false,
+    "no-any"                          : false,
     // TIP 是否【强制在任何表达式后面添加分号】。（包括  Interface、Class等）
-    "semicolon":                        [true],
+    "semicolon"                       : [true],
     // TIP 是否【强制Interface以"I"开头】（建议开启，代码更加清晰）
-    "interface-name":                   [true, "always-prefix"],
+    "interface-name"                  : [true, "always-prefix"],
     // TIP 强制要求，填写变量类型
-    "typedef":                          [
+    "typedef"                         : [
       // TIP 默认【任何地方】，都需填写【变量类型】
       true
       // "call-signature", "arrow-call-signature", "parameter", "arrow-parameter", "property-declaration", "variable-declaration", "member-variable-declaration", "object-destructuring", "array-destructuring"
     ],
     // TIP 是否【Switch中，禁止用[逗号表达方式]连接多个case】。（TIP 但仍然允许，多个【case :】上下叠加，对应同一个代码块。）
-    "ban-comma-operator":               true,
+    "ban-comma-operator"              : true,
     // TIP 禁止空的块状代码。（但，允许函数定义为空）。（TIP 同时，可强制检查  catch{}代码块中非空）
-    "no-empty":                         [true, "allow-empty-functions"],
+    "no-empty"                        : [true, "allow-empty-functions"],
     // TIP 是否【禁止使用debugger关键字】。（TIP 因为调试需要，允许使用debugger）
-    "no-debugger":                      false,
+    "no-debugger"                     : false,
     // TIP 变量必须遵守，先定义后使用。
-    "no-use-before-declare":            true,
+    //    "no-use-before-declare":            true,   // WARN 似乎已过时？
     // TIP 是否【禁止使用var关键字】。（建议禁用var关键字。因为【var关键字】无法处理块级作用域，容易造成Bug）
-    "no-var-keyword":                   true,
+    "no-var-keyword"                  : true,
     // TIP 缩小this的赋值范围，来引导从【function】到【箭头表达式】的转变。（但非完全禁用function，保留【self、that】给function使用。因function有一些必要应用场景）
-    "no-this-assignment":               [
+    "no-this-assignment"              : [
       true, // 广义上，禁止this被赋值给其它变量
       {
-        "allowed-names":       [
+        "allowed-names"      : [
           "^self$", // 允许this赋值给  let self
           "^that$"    // 允许that赋值给  let that
         ],
@@ -55,96 +55,95 @@
       }
     ],
     // TIP 不强制要求使用【箭头表达式】，来替代function。（TIP 因为function有一些必要场景。）
-    "only-arrow-functions":             [false],
+    "only-arrow-functions"            : [false],
     // TIP 强制禁止，对【Array类型】使用【for-in操作符】。（TIP 原因：for-in本就不应该，用于【Array类型】，会造成Bug）
-    "no-for-in-array":                  true,
+    "no-for-in-array"                 : true,
     // TIP 强制要求【同名重载函数】，必须放在相邻连续的位置。（TIP 便于管理和阅读）
-    "adjacent-overload-signatures":     false,
+    "adjacent-overload-signatures"    : false,
     // TIP 强制禁止，对【函数形式参数】，进行重新赋值。（TIP 可以理解为：函数的形式参数，是const形式的。很有用，有效避免Bug）
-    "no-parameter-reassignment":        true,
+    "no-parameter-reassignment"       : true,
     // TIP 强制要求【if/for/do/while关键字】之后语法，有【{}大括号】进行包裹。（TIP 并且，此处为了尽量减少歧义，我干脆禁用了  无大括号的【单行if表达式】。单行if表达式也必须有{}大括号。）
-    "curly":                            [true],
+    "curly"                           : [true],
     // TIP 强制要求，【for...in】语法内，必须有【hasOwnProperty】函数来检查属性合理性。
-    "forin":                            true,
+    "forin"                           : true,
     // TIP 强制禁止，【if/for/do/while表达式】中出现【=号赋值】。（TIP 原因：一，有可能是==号误写成了=号；二，如果是有意使用，则令代码可读性变差。）
-    "no-conditional-assignment":        true,
+    "no-conditional-assignment"       : true,
     // TIP 强制禁止，【String、Number、Boolean】的new构造函数使用（因为会导致很多Bug）。（TIP：普通函数仍可使用，返回基本类型。而禁止构造函数new返回的引用类型，因为会造成非常多的Bug。）
-    "no-construct":                     true,
+    "no-construct"                    : true,
     // TIP 强制禁止，【super()函数在构造函数中出现两次或两次以上】。（TIP 此处特指构造函数中的super()调用；不包括super.xxx()调用 ）
-    "no-duplicate-super":               true,
+    "no-duplicate-super"              : true,
     // 是否对【字符串引号】做【强制格式限制】
     // TIP 强制禁止，【switch中出现同名的重复case】。
-    "no-duplicate-switch-case":         true,
+    "no-duplicate-switch-case"        : true,
     // TIP 强制禁止，【switch的case中，没有break或return结尾】
-    "no-switch-case-fall-through":      true,
+    "no-switch-case-fall-through"     : true,
     // TIP 这个方法，我看不懂；但看上去是很重要的？       https://palantir.github.io/tslint/rules/no-unbound-method/
-    "no-unbound-method":                true,
+    "no-unbound-method"               : true,
     // TIP 强制要求，使用【对象展开符】创建对象，而不是【Object.assign】来创建对象。（TIP 【对象展开符】的类型检查更加完善；Object.assign的类型检查不完善。举例：{ ...foo, bar: 1 }来替代Object.assign({}, foo, { bar: 1 })。）
-    "prefer-object-spread":             true,
+    "prefer-object-spread"            : true,
     // TIP 强制要求，使用【isNaN】而不是【==NaN】来检查非数字。（因为NaN!==NaN，这种方式会导致严重Bug。）（TIP 因为NaN！==NaN，会导致意料不到的结果）
-    "use-isnan":                        true,
+    "use-isnan"                       : true,
     // TIP 强制要求，单个函数的【循环函数复杂度】，在指定值之内。（TIP 比如说，20。  资料：https://en.wikipedia.org/wiki/Cyclomatic_complexity）
-    "cyclomatic-complexity":            [
+    "cyclomatic-complexity"           : [
       true,
       20
     ],
     // TIP 强制禁止，【使用过时的JSApi】。
-    "deprecation":                      true,
+    "deprecation"                     : true,
     // TIP 强制禁止，【对同名模块，在一个文件中多次import导入】。（TIP 临时，将这个开关关闭。）
-    "no-duplicate-imports":             false,
+    "no-duplicate-imports"            : false,
     // TIP 强制禁止，【一个文件中，出现多个相同的namespace】。（TIP 也就是推荐将多个相同的namespace，进行合并）
-    "no-mergeable-namespace":           true,
+    "no-mergeable-namespace"          : true,
     // TIP 强制要求，【文件使用UTF-8编码】。
-    "encoding":                         true,
+    "encoding"                        : true,
     // TIP 强制要求，【必须使用 as Type来做类型断言，禁止使用<Type>来做类型断言】。（TIP 原因：<Type>方式，会被jsx错误的读取）
-    "no-angle-bracket-type-assertion":  true,
+    "no-angle-bracket-type-assertion" : true,
     // TIP 强制禁止，【使用过期的JSDoc，以TypeScript的Doc作为代替】。（TIP 因为TypeScript已经包含了大部分功能。）
-    "no-redundant-jsdoc":               true,
+    "no-redundant-jsdoc"              : true,
     // TIP 强制禁止，【var/let/对象解构符，将变量值初始化为undefined】。（TIP 原因：因为JS中，不初始化时的默认值就是undefined，所以是多余的）
     //                                  TIP 如果，有【禁止Vue的Class初始值为undefined】，就好了。
-    "no-unnecessary-initializer":       true,
+    "no-unnecessary-initializer"      : true,
     // TIP 强制禁止，【Finally语法块中，出现  return/continue/break/throws等会打断代码执行的不安全语句】。（TIP 当这些语句出现在Finally语法块中，总是会产生让人迷惑的结果。会极大增大程序的复杂度。）
-    "no-unsafe-finally":                true,
+    "no-unsafe-finally"               : true,
     // TIP 手动指定，【不允许使用某些Type作为类型的声明】。
-    "ban-types":                        [
+    "ban-types"                       : [
       true,
       ["Object", "使用{}代替"],
       ["object", "使用{}代替"],
       ["String", "使用小写string代替"],
       ["Number", "使用小写number代替"]
     ],
-
     // TIP——————————————————————————分隔线——————————————————————————
 
     // 设置【字符串引号规则】。（TIP 普通ts文件，单引号；tsx文件，双引号）
-    "quotemark":                        [true, "single", "jsx-double"],
+    "quotemark"                       : [true, "single", "jsx-double"],
     // 代码缩进设置
-    "indent":                           [true, "spaces", 2],
+    "indent"                          : [true, "spaces", 2],
     // 是否【imports按照字母表排序】
-    "ordered-imports":                  false,
+    "ordered-imports"                 : false,
     // 是否【对象字面量属性按照字母表排序】
-    "object-literal-sort-keys":         false,
+    "object-literal-sort-keys"        : false,
     // 对【连续空白行】的数目，作出限制
-    "no-consecutive-blank-lines":       [true, 3],
+    "no-consecutive-blank-lines"      : [true, 3],
     // 是否【禁止调用console的log、warning、error函数】
-    "no-console":                       [false],
+    "no-console"                      : [false],
     // 设置单行最大长度。（且，忽略内嵌注释部分【//】长度的检查）
-    "max-line-length":                  [
+    "max-line-length"                 : [
       true,
       {
         "ignore-pattern": "//"
       }
     ],
     // 推荐优先使用  for-of，而不推荐使用  for-in
-    "prefer-for-of":                    true,
+    "prefer-for-of"                   : true,
     // 是否【限制变量名命名规范】
-    "variable-name":                    false,
+    "variable-name"                   : false,
     // 限制，一个文件内，最大可导出的class的数量
-    "max-classes-per-file":             [true, 99],
+    "max-classes-per-file"            : [true, 99],
     // 一个ts类的类名，是否强制要求符合命名规范
-    "class-name":                       false,
+    "class-name"                      : false,
     // 开启/关闭，自定义或者默认的，各种关键字修饰符的成员变量、方法的先后排列顺序
-    "member-ordering":                  [
+    "member-ordering"                 : [
       false   // 关闭【自动重排成员顺序】
       //      true,
       //      {
@@ -152,17 +151,17 @@
       //      }
     ],
     // 是否【禁止，未被使用的表达式】。（此处，关闭该开关；避免开发中不必要的麻烦）
-    "no-unused-expression":             [false],
+    "no-unused-expression"            : [false],
     // 是否【禁止给Class的构造函数参数，添加修饰符（如public）】。（TIP 不建议禁用，因为  构造函数参数添加public，更加节省代码）
-    "no-parameter-properties":          false,
+    "no-parameter-properties"         : false,
     // 是否【禁止一行行尾，出现新的空格】
-    "no-trailing-whitespace":           false,
+    "no-trailing-whitespace"          : false,
     // 是否【强制使用三等等于号】。（TIP 不建议强制使用【三等等于号】。因为后台返回数据，类型具有不确定性）
-    "triple-equals":                    false,
+    "triple-equals"                   : false,
     // 是否【同一作用域中，禁止对同一变量名进行两次var重复声明】。（TIP 【check-parameters】选项，将会禁止：【对函数中形式参数中的同名变量，进行var二次定义】。）
-    "no-duplicate-variable":            [true, "check-parameters"],
+    "no-duplicate-variable"           : [true, "check-parameters"],
     // 是否【禁止使用eval()函数】。（TIP eval()函数，本身可能存在安全隐患。）
-    "no-eval":                          true,
+    "no-eval"                         : true,
     // 是否【禁止直接使用【as XXX】，来作为新变量的类型声明。（仍可使用 any、unknown这种通用类型）】。（TIP 【allow-arguments】，允许在给函数传参这一特例时，使用  as XXX语句。）
     "no-object-literal-type-assertion": [
       true,
@@ -171,23 +170,23 @@
       }
     ],
     // 是否【禁止在数组字面量中，出现连续的[,]逗号】
-    "no-sparse-arrays":                 true,
+    "no-sparse-arrays"                : true,
     // 是否【禁止throw一个字符串，必须throw一个Error类型】
-    "no-string-throw":                  true,
+    "no-string-throw"                 : true,
     // 是否【在import中关键字之间，保留一个空格间距】
-    "import-spacing":                   true,
+    "import-spacing"                  : true,
     // 是否【使用new 构造函数时，必须要有一对小括号】。（TIP 此处，暂时把开关打开）（TIP 难道，还有不用小括号的用法吗？TIP 经过试验真的有，世界上还真的有人用这种用法？？？）
-    "new-parens":                       false,
+    "new-parens"                      : false,
     // 是否【禁止使用特殊空白符（比如全角空格）】。（TIP 可以避免一些未知的错误）
-    "no-irregular-whitespace":          true,
+    "no-irregular-whitespace"         : true,
     // 是否【禁止小数以[.]开头，禁止小数以[0]结尾】。（TIP 这样小数的写法更加规范）
-    "number-literal-format":            true,
+    "number-literal-format"           : true,
     // 是否【强制使用对象字面量  键值名缩写】。（TIP 不开启：在很多状态下，键值名需要【非缩写】的形式）
-    "object-literal-shorthand":         false,
+    "object-literal-shorthand"        : false,
     // 是否【每一行表达式内，只有一个变量定义。（for循环表达式中除外）】。（TIP 会改善代码的可读性）
-    "one-variable-per-declaration":     [true, "ignore-for-loop"],
+    "one-variable-per-declaration"    : [true, "ignore-for-loop"],
     // 规定【哪些关键字，必须和另外一些搭配，在同一行】。（TIP 有点绕）
-    "one-line":                         [
+    "one-line"                        : [
       true,
       // 以下值，允许换到下一行。（有些时候，会增加可读性）
       //      "check-catch", "check-finally", "check-else", "check-open-brace",
@@ -195,18 +194,17 @@
       "check-whitespace"
     ],
     // 是否【函数的小括号之前，需要空格】。
-    "space-before-function-paren":      true,
+    "space-before-function-paren"     : true,
     // 是否【函数的小括号之内，需要空格】。
-    "space-within-parens":              true,
+    "space-within-parens"             : true,
     // 禁用【TS以前的内部module、内部namespace】这样过时的方式（已被ES6的模块语法所替代）。（TIP 【allow-declarations】仍然允许【declare namespace{}】，以向外界声明namespace。）
-    "no-namespace":                     [true, "allow-declarations"],
+    "no-namespace"                    : [true, "allow-declarations"],
     // 规定【代码格式，指定地方有必要的空格】。（TIP 但此处，不必在书写过程中检查空格，等写完之后一键重排即可）
-    "whitespace":                       false,
+    "whitespace"                      : false,
     // 规定【类型定义时，有必要的空格】。（TIP 但此处，不必在书写过程中检查空格，等写完之后一键重排即可）
-    "typedef-whitespace":               false,
+    "typedef-whitespace"              : false,
     // 是否【禁用  除了[和import搭配一起使用]之外的任何情况的  require关键字】。（TIP 有很多种特殊情况下，都需要使用【require】导入语句，其它的替代方案都没有生效的，所以保留。）
-    "no-var-requires":                  false,
-
+    "no-var-requires"                 : false,
     // WARN 以下配置，是【不太清楚真实含义】，或【完全没有必要，只会破坏代码】的。
     // 禁止无用的类型断言
     //    "no-unnecessary-type-assertion": true,  // TIP （真实含义尚不明确）
@@ -217,12 +215,11 @@
     // 禁止【return await】写法
     //    "no-return-await": true                 // TIP （这样做，有什么用呢？看不明白）
     // 要求parseInt必须传入第二个参数
-    "radix":                            false
+    "radix"                           : false
     // TIP （我感觉这种做法，没有必要）
     // 强制要求，【使用interface，不使用type】。（接口可以  implement extend 和 merge）
     //    "interface-over-type-literal": true     // TIP （我个人觉得，type非常灵活，很多时候是必须的）
     // 如果已经引入过库，则禁止使用三斜杠引入类型定义文件  链接：http://www.sosout.com/2018/11/30/typescript-tutorial.html
     //    "no-reference-import": true             // TIP （真实含义尚不明确）
-
   }
 }
