@@ -1,9 +1,11 @@
-import {PositionType_QuanOrZhu, SimplePosit_DuoKongSide} from '~/assets/js/_enum/ApiEnum';
+// import {PositionType_QuanOrZhu, SimplePosit_DuoKongSide} from '~/assets/js/_enum/ApiEnum';
+
+import Vue from 'vue';
 
 declare global {
 
   namespace HttpApiNS {
-     interface Bean<T> {
+    interface Bean<T> {
       /**
        * 1.  Swap合约的api，采用  errno + message
        * 2.  币币的api，采用 errcode + errmsg
@@ -143,7 +145,7 @@ declare global {
     ;
     // status: number;
     errno: number;
-    'position_type'?: PositionType_QuanOrZhu;        // WARN 1-逐仓  ； 2-全仓
+    // 'position_type'?: PositionType_QuanOrZhu;        // WARN 1-逐仓  ； 2-全仓
     'time_in_force': number;
     imr: string;
     mmr: string;
@@ -163,7 +165,7 @@ declare global {
 
     contract: IndexedObj;
 
-    liquidation_warn_ratio:unknown;     // ？？？
+    liquidation_warn_ratio: unknown;     // ？？？
 
     // 也许存在，也许不存在
     price_coin?: string;
@@ -189,8 +191,8 @@ declare global {
     'realised_pnl': string;
     earnings: string;
     tax: string;            // 持仓产生的资金费用
-    'position_type': PositionType_QuanOrZhu;        // WARN 1-逐仓  ； 2-全仓
-    side: SimplePosit_DuoKongSide;
+    // 'position_type': PositionType_QuanOrZhu;        // WARN 1-逐仓  ； 2-全仓
+    // side: SimplePosit_DuoKongSide;
     status: number;
     errno: number;
     'created_at': string;

@@ -1,13 +1,17 @@
-import {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'ts/ts-types/axios/Axios';
-import {ac}                                               from '~/assets/js/axiosConfig';
-import AxiosClassOriginCoin                               from '~/assets/js/axiosClassOriginCoin';
-import {AWatKeys}                                         from '~/assets/js/axiosWatcher_KeysEnum';
+// import {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'ts/ts-types/axios/Axios';
+// import {ac}                                               from '~/assets/js/axiosConfig';
+// import AxiosClassOriginCoin                               from '~/assets/js/axiosClassOriginCoin';
+// import {AWatKeys}                                         from '~/assets/js/axiosWatcher_KeysEnum';
+
+import Vue                                                from'vue';
+import {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
+import {AWatKeys}                                         from '../../../axios/watcher/AxiosWatcher_KeysEnum';
 
 declare global {
   type AxiosInstanceType = AxiosInstance;
-  type AcInstanceType = (InstanceType<typeof ac> & AxiosInstanceType)       // 推断一下类型
+  // type AcInstanceType = (InstanceType<typeof ac> & AxiosInstanceType)       // 推断一下类型
 
-  type OriginCoin_Bg_InstanceType = (InstanceType<typeof AxiosClassOriginCoin> & AxiosInstanceType)
+  // type OriginCoin_Bg_InstanceType = (InstanceType<typeof AxiosClassOriginCoin> & AxiosInstanceType)
 
 
   // type ResInterceptor_ErrorType = {

@@ -1,4 +1,4 @@
-import {NuxtApp} from '~/node_modules/@nuxt/types/app';
+import {NuxtApp} from '@nuxt/types/app';
 
 /**
  * 在Vue实例上，增强【nuxt.js】独有属性。

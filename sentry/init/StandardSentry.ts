@@ -1,6 +1,6 @@
-import Vue                  from 'vue';
-import {loadJsScript_Async} from '../../dom/dom-script';
-import {DebugU, LogE}       from '../../debug-util/debug-util';
+import Vue               from 'vue';
+import {DomScript_Heler} from '../../dom/dom-script';
+import {DebugU, LogE}    from '../../debug-util/debug-util';
 
 
 abstract class BaseSentryUtil {
@@ -19,7 +19,7 @@ class PureJs_SentryUtil extends BaseSentryUtil {
   private readonly pureJsUrl = this.cfg.pureJsUrl;
 
   init(): Promise<Event> {
-    return loadJsScript_Async(
+    return DomScript_Heler.loadJsScript_Async(
       this.pureJsUrl, {
         crossOrigin: this.crossOrigin,
       }
@@ -37,7 +37,7 @@ class Vue_SentryUtil extends BaseSentryUtil {
   private readonly vueIntegrationUrl = this.cfg.vueIntegrationUrl;
 
   init(): Promise<Event> {
-    return loadJsScript_Async(
+    return DomScript_Heler.loadJsScript_Async(
       this.vueIntegrationUrl, {
         crossOrigin: this.crossOrigin,
       }

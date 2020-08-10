@@ -1,5 +1,5 @@
-import {WebSocketContainer} from '~/assets/js/websocket/webSocket';
-
+// import {WebSocketContainer} from '~/assets/js/websocket/webSocket';
+import Vue from 'vue';
 
 declare global {
   /**
@@ -7,7 +7,7 @@ declare global {
    *    0.参考资料：[Typescript之获取函数返回值类型 - 知乎](https://zhuanlan.zhihu.com/p/59434318)
    */
   // type WebSocketType = ReturnType<typeof WebSocketContainer>;
-  type WebSocketType = WebSocketContainer;
+  // type WebSocketType = WebSocketContainer;
 
   namespace WS_SucFn {
     // ws订阅，OrderBook

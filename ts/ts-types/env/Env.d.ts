@@ -1,4 +1,5 @@
-import {EnvName_EnvEnum} from '~/config/EnvEnum';
+import Vue               from 'vue';
+import {EnvName_EnvEnum} from '../../../gen/envir/EnvEnum';
 
 declare global {
 

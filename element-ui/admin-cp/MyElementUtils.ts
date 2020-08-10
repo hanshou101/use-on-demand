@@ -1,14 +1,14 @@
 /**
  * 下拉选项的配置类
  */
-export class MyFormItem_SelectOptionConf {
-  public enumOptions: MySelectOption_Single;      // FIXME 可能要绑在，某个实体类上面，以此获得泛型？？？
+export class MyFormItem_SelectOptionConf<SOption> {
+  public enumOptions: SOption;      // FIXME 可能要绑在，某个实体类上面，以此获得泛型？？？
   public mustParseInt_toFitBackend: boolean = false;   // TODO 是否必须转化为Int（原因是，后台有时用Int做枚举，有时用String做枚举；  回显时需要注意；）
 
-  constructor(enumOptions: MySelectOption_Single) {      // FIXME 可能要绑在，某个实体类上面，以此获得泛型？？？
+  constructor(enumOptions: SOption) {      // FIXME 可能要绑在，某个实体类上面，以此获得泛型？？？
     this.enumOptions = enumOptions;
   }//
-  public setParseInt(____mustParseInt_toFitBackend: boolean): MyFormItem_SelectOptionConf {
+  public setParseInt(____mustParseInt_toFitBackend: boolean): MyFormItem_SelectOptionConf<SOption> {
     this.mustParseInt_toFitBackend = ____mustParseInt_toFitBackend;
     return this;
   }
@@ -26,7 +26,7 @@ export const data_elTagColorFilter: IndexedObj = {
 /**
  * 表单Item类
  */
-export class MyEl_FormItem {
+export abstract class MyEl_FormItem<SOption> {
   public myCategory: MyFormItem_Category;
   // prop: string;               // 表单校验时，检索指向的字段
   public prop_AND_bindValue: string;          // 绑定到哪个值
@@ -34,7 +34,7 @@ export class MyEl_FormItem {
   public placeholder: string;       // 极少数情况下，出现的替换字段？
   // [key: string]: string;
 
-  public selectOptionConf: MyFormItem_SelectOptionConf;
+  public selectOptionConf: MyFormItem_SelectOptionConf<SOption>;
 
   constructor(prop_AND_bindValue: string,
               label: string,
@@ -42,7 +42,7 @@ export class MyEl_FormItem {
               placeholder: string             = '',                   // 不填则默认''
 
               // TODO // 不填则：默认无选项，且回显时，不转化为Int（保留字符串的样子）
-              selectOptionConf                = new MyFormItem_SelectOptionConf({test: '测试专用'}).setParseInt(false),
+              selectOptionConf                = new MyFormItem_SelectOptionConf<SOption>({test: '测试专用'} as any).setParseInt(false),
   ) {
     // 必填
     this.prop_AND_bindValue = prop_AND_bindValue;
@@ -63,7 +63,7 @@ export interface MyDialogFormItem_Conf extends Object {
   notRenderItem?: boolean; //
   [key: string]: any;
 } //
-export class MyEl_FormItem__inDialog extends MyEl_FormItem {
+export abstract class MyEl_FormItem__inDialog<SOption> extends MyEl_FormItem<SOption> {
   public config: MyDialogFormItem_Conf = {};   //
   public setDialogConfig(__config: MyDialogFormItem_Conf): this {
     // TODO 此处，逐条地进行判断；防止出现，属性被【无意中undefined】覆盖的情况。
@@ -130,13 +130,13 @@ export class MyEl_RuleItem {
 /**
  * 表格的Column配置
  */
-export class MyElement_TableCol {
+export class MyElement_TableCol<SOption> {
   public myCategory: MyTableCol_Category;
   public label: string;    // 显示的表头
   public prop: string;     // 从listData中取变量的变量名
   public 'min-width': string;
 
-  public selectOptionEnum?: MySelectOption_Single;       // FIXME 可能要绑在，某个实体类上面，以此获得泛型？？？
+  public selectOptionEnum?: SOption;       // FIXME 可能要绑在，某个实体类上面，以此获得泛型？？？
 
   // TODO 此处，尝试一种新的转值方式
   // public text_transformerFunc: (text: string) => string;
@@ -147,7 +147,7 @@ export class MyElement_TableCol {
               min_width: string,
               myCategory: MyTableCol_Category            = 'text',   // 不填则默认text
               // FIXME 可能要绑在，某个实体类上面，以此获得泛型？？？
-              selectOptionEnum?: MySelectOption_Single,                 // 不填则默认{}
+              selectOptionEnum?: SOption,                 // 不填则默认{}
 
               // TODO 此处，尝试一种新的转值方式
               // text_transformerFunc: (text: string) => string    // 默认原样返回。

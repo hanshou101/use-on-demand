@@ -34,7 +34,9 @@ export class LoopCheckUtil {
       DebugU.l(LogE.cookieUtil, '老cookie', LoopCheckUtil.preCookie, '新cookie', newCookie);
       if (LoopCheckUtil.preCookie !== newCookie) {                          // 开始更新
         DebugU.l(LogE.cookieUtil, 'Cookie已发生变化');
-        if (window.$nuxt && window.$nuxt.$accessor) {
+
+        const accessor = (window.$nuxt as any).$accessor;
+        if (window.$nuxt && accessor) {
           DebugU.l(LogE.cookieUtil, 'cookieUnit循环', '2', '发生变化', '开始调用mutations', '循环间隔时间', duration);
 
           /**
@@ -47,17 +49,18 @@ export class LoopCheckUtil {
            */
           DebugU.l(LogE.cookieUtil, 'preCookie', LoopCheckUtil.preCookie);
           DebugU.l(LogE.cookieUtil, 'newCookie', newCookie);
-          window.$nuxt.$accessor.cookieUnit.mutation_bgCoin_Authorization(CookieHelper.getCookie(CkKeys.Authorization));
-          window.$nuxt.$accessor.cookieUnit.mutation_swap_token(CookieHelper.getCookie(CkKeys.token));
-          window.$nuxt.$accessor.cookieUnit.mutation_swap_expired_ts(CookieHelper.getCookie(CkKeys.expired_ts));
-          window.$nuxt.$accessor.cookieUnit.mutation_swap_access_key(CookieHelper.getCookie(CkKeys.access_key));
-          window.$nuxt.$accessor.cookieUnit.mutation_swap_lang(CookieHelper.getCookie(CkKeys.lang));
+          accessor.cookieUnit.mutation_bgCoin_Authorization(CookieHelper.getCookie(CkKeys.Authorization));
+          accessor.cookieUnit.mutation_swap_token(CookieHelper.getCookie(CkKeys.token));
+          accessor.cookieUnit.mutation_swap_expired_ts(CookieHelper.getCookie(CkKeys.expired_ts));
+          accessor.cookieUnit.mutation_swap_access_key(CookieHelper.getCookie(CkKeys.access_key));
+          accessor.cookieUnit.mutation_swap_lang(CookieHelper.getCookie(CkKeys.lang));
 
           LoopCheckUtil.preCookie = newCookie;
 
           LoopCheckUtil.updatedFirstT = true;    // 标记，已经经过了【第1次初始化】
         } else {
-          DebugU.l(LogE.cookieUtil, 'window.$nuxt.$accessor未初始化', window.$nuxt, window.$nuxt?.$accessor);
+          // DebugU.l(LogE.cookieUtil, 'window.$nuxt.$accessor未初始化', window.$nuxt, window.$nuxt?.$accessor);
+          DebugU.l(LogE.cookieUtil, 'window.$nuxt.$accessor未初始化', window.$nuxt, accessor);
         }
       }
     }

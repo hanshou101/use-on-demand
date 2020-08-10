@@ -18,13 +18,14 @@ export class AxiosWatcher {
 
   static saveReqInfo_onClient(config: AxiosRequestConfig_Type) {
     if (isClient) {
-      const bzId = config.bzInfo?.bzId;
-      const map  = window.$nuxt.$accessor.dic.axiosWatcherMap;
+      const bzId     = config.bzInfo?.bzId;
+      const accessor = (window.$nuxt as any).$accessor;
+      const map      = accessor.dic.axiosWatcherMap;
       if (bzId) {             // 当传了bzId时
         if (!map[bzId]) {
           map[bzId] = {};    // 初始化
         }
-        window.$nuxt.$accessor.dic.SET_AXIOS_WATCHER_MAP({
+        accessor.dic.SET_AXIOS_WATCHER_MAP({
           [bzId]: {requesting: true},                       // 加载中
         } as AxiosWatcherMap_Type);   // TIP 正确解法
         // map[bzId].requesting = true;    // WARN 有可能，watch/deep无法监听到。
@@ -37,10 +38,11 @@ export class AxiosWatcher {
 
   static saveRespInfo_onClient(res: AxiosResponse_Type<any>) {
     if (isClient) {
-      const bzId = res.config.bzInfo?.bzId;
-      const map  = window.$nuxt.$accessor.dic.axiosWatcherMap;
+      const bzId     = res.config.bzInfo?.bzId;
+      const accessor = (window.$nuxt as any).$accessor;
+      const map      = accessor.dic.axiosWatcherMap;
       if (bzId) {           // 当传了bzId时
-        window.$nuxt.$accessor.dic.SET_AXIOS_WATCHER_MAP({
+        accessor.dic.SET_AXIOS_WATCHER_MAP({
           [bzId]: {requesting: false},                      // 加载完毕
         } as AxiosWatcherMap_Type);   // TIP 正确解法
         // map[bzId].requesting = false;   // WARN 有可能，watch/deep无法监听到。

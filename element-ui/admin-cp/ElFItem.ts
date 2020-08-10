@@ -266,15 +266,15 @@ export namespace ElFItem {
     }
   }
 
-  export class Options extends Base {
+  export class Options<T> extends Base {
     public readonly myCategory = 'options';
-    public selectOptionConf!: MyFormItem_SelectOptionConf;
+    public selectOptionConf!: MyFormItem_SelectOptionConf<T>;
 
     constructor(require: Require & {
                   // 下拉框的候选项，一般写在common.ts里面
                   selectOptionConf: {
                     // 候选项
-                    option: MySelectOption_Single;
+                    option: T;
                     // 是否进行parseInt转换
                     needParseInt: boolean;
                   },
@@ -283,7 +283,7 @@ export namespace ElFItem {
       super(require, optional);
       if (require) {
         const {selectOptionConf} = require;
-        this.selectOptionConf    = new MyFormItem_SelectOptionConf(selectOptionConf.option).setParseInt(selectOptionConf.needParseInt);
+        this.selectOptionConf    = new MyFormItem_SelectOptionConf<T>(selectOptionConf.option).setParseInt(selectOptionConf.needParseInt);
       }
     }
   }

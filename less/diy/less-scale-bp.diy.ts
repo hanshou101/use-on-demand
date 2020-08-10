@@ -1,4 +1,4 @@
-import {getDocumentWidthHeight} from '../../dom/dom-style';
+import {DomStyle_Helper} from '../../dom/dom-style';
 
 /**
  *  TIP 总结的参考资料，欢迎随时补充：
@@ -17,6 +17,6 @@ export enum LessScaleBpE {
 
 export class LessScaleBpDiy_Helper {
   static isSmallerThan(targetBpE: LessScaleBpE) {
-    return getDocumentWidthHeight().width <= targetBpE;
+    return DomStyle_Helper.getDocumentWidthHeight().width <= targetBpE;
   }
 }

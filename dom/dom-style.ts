@@ -3,14 +3,14 @@ interface MyAbsolutePosition {
   left: number;
 }
 
-export class DomStyle_Heler {
+export class DomStyle_Helper {
 
   /**
    * 获取元素的css属性值
    * @param ele dom元素
    * @param cssAttribute css属性名称
    */
-  getDomStyle(ele: HTMLElement, cssAttribute: string) {
+ static getDomStyle(ele: HTMLElement, cssAttribute: string) {
     if (!ele || !ele.nodeName) {
       console.error('ele 必须是一个dom元素');
       return;
@@ -33,7 +33,7 @@ export class DomStyle_Heler {
   }
 
   // 获取浏览器宽高
-  getDocumentWidthHeight() {
+ static getDocumentWidthHeight() {
     if (window.innerHeight != null) {
       return {
         width : window.innerWidth,
@@ -56,7 +56,7 @@ export class DomStyle_Heler {
    * 获取元素距浏览器最顶部及最左边的距离
    * @param ele dom元素
    */
-  get_AbsoluteOffset_Position(ele: HTMLElement): MyAbsolutePosition {
+ static get_AbsoluteOffset_Position(ele: HTMLElement): MyAbsolutePosition {
     const position   = {
       top : 0,
       left: 0,
@@ -75,7 +75,7 @@ export class DomStyle_Heler {
   /**
    * 兼容性：获取浏览器滚动条距离顶部的位置
    */
-  getScrollTop(): number {
+ static getScrollTop(): number {
     return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || -1;
   }
 
@@ -84,7 +84,7 @@ export class DomStyle_Heler {
    * @param ele
    * @returns {Array}
    */
-  getSiblingsDoms(ele: HTMLElement): HTMLElement[] {
+ static getSiblingsDoms(ele: HTMLElement): HTMLElement[] {
     if (ele.parentNode) {
       const a = [];
       const p = ele.parentNode.children;
@@ -107,7 +107,7 @@ export class DomStyle_Heler {
    * @param childEle 子元素
    * @returns {Boolean}
    */
-  isContains_otherEle(ele: HTMLElement, childEle: Node): boolean {
+ static isContains_otherEle(ele: HTMLElement, childEle: Node): boolean {
     if (ele == childEle) {
       return false;
     }

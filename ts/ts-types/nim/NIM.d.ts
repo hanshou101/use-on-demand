@@ -1,6 +1,6 @@
-import {privateConf}    from '~/components/nim/3rd/nim_server_conf';
-import {RoomLogicClass} from '~/components/nim/im/chatroom/bz-util/room';
-
+// import {privateConf}    from '~/components/nim/3rd/nim_server_conf';
+// import {RoomLogicClass} from '~/components/nim/im/chatroom/bz-util/room';
+import Vue from 'vue';
 
 declare global {
   interface Window {
@@ -14,7 +14,7 @@ declare global {
         getInstance(options: NimNS.SDK.ChatRoom_InitOptions): NimNS.SDK.ChatRoom_Instance;
       }
     };
-    RoomLogicClass_OnWindow: RoomLogicClass,
+    // RoomLogicClass_OnWindow: RoomLogicClass,
   }
 
   namespace NimNS {
@@ -28,7 +28,7 @@ declare global {
     type Combined_BaseConfig_Type = BaseConfig_Type & {
       openSubscription: boolean;
       usePrivateEnv: undefined | 1 | 2;
-      privateConf: typeof privateConf;
+      // privateConf: typeof privateConf;
     }
 
     type Emoji_Type = {
@@ -212,7 +212,7 @@ declare global {
         appKey: string;
         account: string;
         token: string;
-        privateConf?: typeof privateConf;             // 私有化配置文件 （WARN 此处，仅官方Demo的情况下，需要）
+        // privateConf?: typeof privateConf;             // 私有化配置文件 （WARN 此处，仅官方Demo的情况下，需要）
         chatroomId: number;
         chatroomAddresses: string[];                        //
         onconnect(msg: NimNS.ConnectedMsg_Type): void;    //

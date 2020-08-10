@@ -1,4 +1,6 @@
-import {PlanOrder_ErrNo, PlanOrder_TypeField, PositionType_QuanOrZhu} from '~/assets/js/_enum/ApiEnum';
+// import {PlanOrder_ErrNo, PlanOrder_TypeField, PositionType_QuanOrZhu} from '~/assets/js/_enum/ApiEnum';
+
+import Vue from 'vue';
 
 declare global {
 
@@ -20,14 +22,14 @@ declare global {
       trend: number;
       category: number;
       cycle: number;
-      'position_type': PositionType_QuanOrZhu;        // WARN 1-逐仓  ； 2-全仓
+      // 'position_type': PositionType_QuanOrZhu;        // WARN 1-逐仓  ； 2-全仓
       leverage: string;
       origin: string;
       'created_at': string;
       'finished_at': void; /* 未知类型 */
       status: number;
-      errno: PlanOrder_ErrNo;
-      type: PlanOrder_TypeField;
+      // errno: PlanOrder_ErrNo;
+      // type: PlanOrder_TypeField;
     }
   }
 

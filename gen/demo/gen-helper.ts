@@ -1,5 +1,6 @@
-import {EnvFlags} from '../env-flags';
-import ApiConfig  from '../config/api.config';
+import {EnvFlags} from '../envir/env-flags';
+import ApiConfig  from '../envir/api.config';
+
 
 const isProcessDev = process.env.NODE_ENV !== 'production';
 console.log('当前运行环境', 'isProcessDev', isProcessDev);

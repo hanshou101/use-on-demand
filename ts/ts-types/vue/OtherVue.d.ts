@@ -8,7 +8,7 @@
 // }
 
 import {PropOptions} from 'vue';
-import {Vue}         from '../vue/types/vue';
+import {Vue}         from 'vue/types/vue';
 
 declare global {
   type PropOptionsType<T> = PropOptions<T>;

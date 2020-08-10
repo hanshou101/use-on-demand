@@ -1,6 +1,7 @@
-import {IPositionLineAdapter}   from '~/static/js/charting_library/charting_library.min';
-import {PositionType_QuanOrZhu} from '~/assets/js/_enum/ApiEnum';
-import {__CAreaTypeE}           from '~/assets/js/_enum/CEnum';
+import {IPositionLineAdapter} from '../../../tradingview/charting_library/charting_library.min';
+import {__CAreaTypeE}         from '../../../cookie/store/CEnum';
+// import {PositionType_QuanOrZhu} from '~/assets/js/_enum/ApiEnum';
+// import {__CAreaTypeE}           from '~/assets/js/_enum/CEnum';
 
 declare global {
   interface BgHeaderMixins_NaveData {
@@ -148,7 +149,7 @@ declare global {
     // 【setLeverageInfo_fromOpenLever】方法，所用到的【数据结构】
     interface LeverageInfo_FromCurrentOpenLever {
       leverage: string;
-      position_type?: PositionType_QuanOrZhu; // WARN 1-逐仓  ； 2-全仓
+      // position_type?: PositionType_QuanOrZhu; // WARN 1-逐仓  ； 2-全仓
     }
 
     // 【当前委托  列表】的大小

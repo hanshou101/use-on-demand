@@ -1,10 +1,12 @@
-import {WsActE} from '~/assets/js/websocket/WsEnum';
+// import {WsActE} from '~/assets/js/websocket/WsEnum';
+
+import Vue from 'vue';
 
 declare global {
   namespace WsComm {
     namespace CloudAccess {
       interface Send {
-        action: WsActE.Access_Or_CloudAccess;
+        // action: WsActE.Access_Or_CloudAccess;
         args: [
           string,// 用户的Accesskey,必须是字符串
           string,// Dev(FC-Dev) 必须是字符串

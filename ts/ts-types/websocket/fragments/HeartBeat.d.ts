@@ -1,11 +1,13 @@
-import {WsActE} from '~/assets/js/websocket/WsEnum';
+// import {WsActE} from '~/assets/js/websocket/WsEnum';
+
+import Vue from 'vue';
 
 declare global {
   namespace WsComm {
     // 心跳相关
     namespace HeartBeat {
       interface Send {
-        action: WsActE.Ping;
+        // action: WsActE.Ping;
       }
 
       interface Recv {

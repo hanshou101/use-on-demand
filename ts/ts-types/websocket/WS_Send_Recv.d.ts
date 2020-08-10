@@ -1,4 +1,5 @@
-import {WsActE} from '~/assets/js/websocket/WsEnum';
+// import {WsActE} from '~/assets/js/websocket/WsEnum';
+import Vue from 'vue';
 
 declare global {
   /**
@@ -8,8 +9,8 @@ declare global {
     // 客户端发送命令，相关
     namespace SimpleCmd {
       interface Send {
-        action: WsActE;
-        args: Array<SendArgType>;
+        // action: WsActE;
+        // args: Array<SendArgType>;
       }
 
       interface Recv {

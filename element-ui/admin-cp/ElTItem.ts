@@ -109,16 +109,16 @@ export namespace ElTItem {
   }
 
   // 枚举展示
-  export class EnumTag extends Base {
+  export class EnumTag<SOption> extends Base {
     public readonly type = 'enumTag';
-    public selectOption!: MySelectOption_Single;      // FIXME 可能要绑在，某个实体类上面，以此获得泛型？？？
+    public selectOption!: SOption;      // FIXME 可能要绑在，某个实体类上面，以此获得泛型？？？
 
     public colorTrans?: (typeNum: string) => string;
 
     constructor(
       require: Require & {
         // 下拉框的候选项，一般写在common.ts里面
-        selectOption: MySelectOption_Single,      // FIXME 可能要绑在，某个实体类上面，以此获得泛型？？？
+        selectOption: SOption,      // FIXME 可能要绑在，某个实体类上面，以此获得泛型？？？
       },
       optional?: Optional & {
         // 颜色转化

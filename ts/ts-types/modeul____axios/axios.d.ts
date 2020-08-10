@@ -1,4 +1,4 @@
-import axios, {AxiosRequestConfig} from 'ts/ts-types/modeul____axios/axios';
+import axios from 'ts/ts-types/modeul____axios/axios';
 
 // declare module 'axios' {
 //   export interface AxiosResponse<T = any> extends Promise<T> {}

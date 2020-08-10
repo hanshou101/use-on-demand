@@ -1,4 +1,5 @@
-import {PositionErrNo, PositionType_QuanOrZhu, SimplePosit_DuoKongSide} from '~/assets/js/_enum/ApiEnum';
+// import {PositionErrNo, PositionType_QuanOrZhu, SimplePosit_DuoKongSide} from '~/assets/js/_enum/ApiEnum';
+import Vue  from 'vue'
 
 declare global {
   namespace UserPositionsApiNS {
@@ -25,10 +26,10 @@ declare global {
       'realised_pnl': string;
       earnings: string;
       tax: string;            // 持仓产生的资金费用
-      'position_type': PositionType_QuanOrZhu;
-      side: SimplePosit_DuoKongSide;
+      // 'position_type': PositionType_QuanOrZhu;
+      // side: SimplePosit_DuoKongSide;
       status: number;
-      errno: PositionErrNo;
+      // errno: PositionErrNo;
       'created_at': string;
       'updated_at': string;
     }

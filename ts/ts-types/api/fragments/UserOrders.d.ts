@@ -1,5 +1,6 @@
-import {OrderRecord_ErrNo, PositionType_QuanOrZhu} from '~/assets/js/_enum/ApiEnum';
+// import {OrderRecord_ErrNo, PositionType_QuanOrZhu} from '~/assets/js/_enum/ApiEnum';
 
+import Vue from 'vue';
 
 declare global {
 
@@ -28,8 +29,8 @@ declare global {
       'updated_at': string;
       'finished_at': void;/* 未知类型 */
       status: number;
-      errno: OrderRecord_ErrNo;
-      'position_type': PositionType_QuanOrZhu;        // WARN 1-逐仓  ； 2-全仓
+      // errno: OrderRecord_ErrNo;
+      // 'position_type': PositionType_QuanOrZhu;        // WARN 1-逐仓  ； 2-全仓
       'time_in_force': number;
       imr: string;
       mmr: string;

@@ -6,7 +6,7 @@ type sOptionType = {
 };
 
 export class DomScript_Heler {
-  loadJsScript_Async(
+  static loadJsScript_Async(
     jsUrl: string,
     sProperties: sOptionType = {},
   ): Promise<Event> {

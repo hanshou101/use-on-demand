@@ -1,7 +1,7 @@
 import fs from 'fs';
 
 import {CDN_Helper} from './gen-helper';
-import {EnvFlags}   from '../env-flags';
+import {EnvFlags}   from '../envir/env-flags';
 
 /**
  * 一些类型设定。

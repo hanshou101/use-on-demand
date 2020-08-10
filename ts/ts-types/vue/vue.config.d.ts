@@ -71,10 +71,15 @@ type WC_Config_Type = typeof config;
 
 
   // TIP ————————————————————————————————————————总结方案————————————————————————————————————
+  // 仍然报错？
+// declare var module: {
+//     exports: VueCliNS.IVueConfig;
+//   };
 
-declare var module: {
-    exports: VueCliNS.IVueConfig;
-  };
+//   // 修复【仍然报错？】
+// declare var module: NodeModule& {
+//     exports: VueCliNS.IVueConfig;
+//   };
 
 
 declare namespace __InnerUse_VueConfigType {

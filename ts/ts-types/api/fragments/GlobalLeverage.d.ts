@@ -1,4 +1,6 @@
-import {PositionType_QuanOrZhu, SubmitOrderSide} from '~/assets/js/_enum/ApiEnum';
+// import {PositionType_QuanOrZhu, SubmitOrderSide} from '~/assets/js/_enum/ApiEnum';
+
+import Vue from 'vue';
 
 declare global {
   namespace GlobalLeverageApiNS {
@@ -13,8 +15,8 @@ declare global {
       created_at: string;
       updated_at: string;
       //
-      side?: SubmitOrderSide;
-      position_type?: PositionType_QuanOrZhu;
+      // side?: SubmitOrderSide;
+      // position_type?: PositionType_QuanOrZhu;
     }
 
     interface SetLever_Req {
@@ -22,8 +24,8 @@ declare global {
       leverage: number,
       nonce: number,
       //
-      side?: SubmitOrderSide;
-      position_type?: PositionType_QuanOrZhu,
+      // side?: SubmitOrderSide;
+      // position_type?: PositionType_QuanOrZhu,
     }
 
     interface GetLever_Req {

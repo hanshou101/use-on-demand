@@ -336,7 +336,7 @@ export default class MyFormEasy
     extends BaseVue {    // 混入在此处，进行添加。
 
   // 数据可以和父级通用
-  @MyProp({type: Array, required: true}) readonly formItems!: MyEl_FormItem[];
+  @MyProp({type: Array, required: true}) readonly formItems!: ElFItem.Base[];
   // 数据可以和父级通用
   @MyProp({type: Object, required: true}) readonly ruleForm!: IndexedObj<any>;
   @MyProp({type: Number, default: 1}) private type!: number;                                          // 有可能是，对话框的类型  新增/编辑/审核 什么的。
@@ -383,7 +383,7 @@ export default class MyFormEasy
     this.selectIndex = null;
   }
 
-  public uploadSingleImageSuccess_Wrapper(item: MyEl_FormItem) {              // 在外面包裹一层，兼容【$emit】、【选项传参】两种形式。
+  public uploadSingleImageSuccess_Wrapper(item: ElFItem.Base) {              // 在外面包裹一层，兼容【$emit】、【选项传参】两种形式。
     console.log('执行了吗1', item);
     return (res: any, fileDetail: ElUploadInternalFileDetail) => {
       console.log('执行了吗2', res, fileDetail);

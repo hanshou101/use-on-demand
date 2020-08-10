@@ -1,4 +1,5 @@
-import {Ws_UserProperty_E} from '~/assets/js/websocket/WsEnum';
+// import {Ws_UserProperty_E} from '~/assets/js/websocket/WsEnum';
+import Vue from 'vue';
 
 declare global {
   namespace WsComm {
@@ -9,7 +10,7 @@ declare global {
       interface Recv {
         group: 'UserProperty';
         data: Array<{
-          action: Ws_UserProperty_E;
+          // action: Ws_UserProperty_E;
           order?: IOrder;
           position?: IPosition;
           c_assets?: I_C_Assets;

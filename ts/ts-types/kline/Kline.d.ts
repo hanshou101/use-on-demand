@@ -1,10 +1,10 @@
 import TradingView, {
   ChartActionId, ChartingLibraryWidgetOptions, CreateTradingPrimitiveOptions, IChartingLibraryWidget,
   IChartWidgetApi, IPositionLineAdapter, ResolutionString
-} from '~/static/js/charting_library/charting_library.min';
+} from '../../../tradingview/charting_library/charting_library.min';
 
-import swapsApi                                        from '~/assets/js/api/swapsApi';
-import {Bar, DatafeedConfiguration, LibrarySymbolInfo} from '~/static/js/charting_library/datafeed-api';
+// import swapsApi                                        from '~/assets/js/api/swapsApi';
+import {Bar, DatafeedConfiguration, LibrarySymbolInfo} from '../../../tradingview/charting_library/datafeed-api';
 
 
 
@@ -92,7 +92,7 @@ declare global {
       cache: Array<Bar>,
     }
 
-    type GetBar_FnType = typeof swapsApi.getBar;
+    // type GetBar_FnType = typeof swapsApi.getBar;
 
     /**
      * 拉取K线的方式：

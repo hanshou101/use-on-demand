@@ -1,11 +1,21 @@
+/**
+ * TIP 一些笔记：
+ *        1.其实，【Element-UI】库，采用的【export type】方法，是一种【非常落后】的方法。
+ *                1.对于类型而言，找不到任何【export】的必要性？
+ *                2.除非，是在【库里面】？
+ *        2.
+ */
+
 import {ElementUIComponent} from 'element-ui/types/component';
-import {ElTItem} from '@/_framework/sdk/elment-ui/new/ElTItem';
+import {ElTItem}            from '../../../element-ui/admin-cp/ElTItem';
+import {ElUpload}           from 'element-ui/types/upload';
+// import {ElTItem} from '@/_framework/sdk/elment-ui/new/ElTItem';
 
 declare global {
   interface MyElForm extends ElementUIComponent {
-    validate (cb: (valid: boolean) => void): void;
+    validate(cb: (valid: boolean) => void): void;
 
-    validateField (lang: string, cb: (res: string) => void): void;
+    validateField(lang: string, cb: (res: string) => void): void;
   }
 
   // 用于提交表单
@@ -51,4 +61,10 @@ declare global {
     disableRender?: Detail_DisableRender_CheckFn;
   }
 
+}
+
+declare global {
+  interface ElUpload_Type extends ElUpload {
+    uploadFiles: File[];
+  }
 }
