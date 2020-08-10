@@ -63,8 +63,8 @@ declare global {
 
 }
 
-declare global {
-  interface ElUpload_Type extends ElUpload {
-    uploadFiles: File[];
-  }
-}
+// declare global {
+//   interface ElUpload_Type extends ElUpload {
+//     uploadFiles: File[];
+//   }
+// }

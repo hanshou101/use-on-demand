@@ -39,6 +39,8 @@
 
 import {ElUploadInternalFileDetail}                           from 'element-ui/types/upload';
 import BaseVue, {MixinLevelTag, MyComponent, MyProp, MyWatch} from '../../../admin/mixins/BaseVue';
+// @ts-ignore
+import {ElUpload}                                             from 'element-ui/types/element-ui';
 
 @MyComponent({
   name      : 'UploadSingleImg',
@@ -112,7 +114,7 @@ export default class UploadSingleImg extends BaseVue {    // 混入在此处，�
         // 向上传递事件
         this.$emit('error', 'MAX_SIZE_LIMIT', this.maxSize);
 
-        (this.$refs.upload_single_img as ElUpload_Type).uploadFiles.splice(0, 1);
+        (this.$refs.upload_single_img as ElUpload).uploadFiles.splice(0, 1);
         return;
       }
 
@@ -164,10 +166,10 @@ export default class UploadSingleImg extends BaseVue {    // 混入在此处，�
       // 上传重试，hack，element ui默认不支持重新上传
       if (retry) {
         this.currentFile.status = 'ready';
-        (this.$refs.upload_single_img as ElUpload_Type).uploadFiles.push(this.currentFile);
+        (this.$refs.upload_single_img as ElUpload).uploadFiles.push(this.currentFile);
       }
       this.uploading = true;
-      (this.$refs.upload_single_img as ElUpload_Type).submit();
+      (this.$refs.upload_single_img as ElUpload).submit();
     });
   };
 
