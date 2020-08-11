@@ -316,7 +316,6 @@
 import {ElUploadInternalFileDetail}                  from 'element-ui/types/upload';
 import BaseVue, {MixinLevelTag, MyComponent, MyProp} from '../../../admin/mixins/BaseVue';
 import {ElFItem}                                     from '../ElFItem';
-import {MyEl_FormItem}                               from '../MyElementUtils';
 import UploadSingleImg                               from '../upload/UploadSingleImg.vue';
 import MultiLangSimple                               from '../multi-lang/MultiLangSimple.vue';
 import Count_Input                                   from '../input/Count_Input.vue';
