@@ -6,6 +6,7 @@
   "scripts": {
     "combine-tsc-uglifyjs": "nps sentry.combine-tsc-uglifyjs",
     "complete-reinstall": "npm link nps-utils && nps tool.complete-reinstall",
+    "CalcReturnTest": "nps demo.CalcReturnTest",
     "vue.serve": "nps demo.vue.serve",
     "vue.build": "nps demo.vue.build",
     "vue.lint": "nps demo.vue.lint"
