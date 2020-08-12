@@ -62,6 +62,14 @@ class Plan_B_Info extends KInfo {
   }
 }
 
+class Plan_C_Info extends KInfo {
+
+
+  constructor(public KLines: number[]) {
+    super(KLines);
+  }
+}
+
 const cfg: Cfg = {
   onceInvestM  : 5000,
   // zhangPerCoin: 10000,
@@ -73,12 +81,17 @@ const cfg: Cfg = {
 
 function go() {
   // const data: Array<number> = bgex.getBgData();
-  const data = bitmex.getBitmexData();
-  // const data: Array<number> = mock.pingjunData();
+  // const data: Array<number> = bgex.getBgData().reverse();
+  // const data = bitmex.getBitmexData();
+  // const data = bitmex.getBitmexData().reverse();
+  const data: Array<number> = mock.pingjunData();
+  // const data: Array<number> = mock.pingjunData().reverse();
 
   planA(new Plan_A_Info(data), false);
   console.log('————————————————————————');
   planB(new Plan_B_Info(data));
+  console.log('————————————————————————');
+  planC(new Plan_C_Info(data));
 }
 
 function planA(kInfo: Plan_A_Info, useLastPrice = true) {
@@ -113,7 +126,7 @@ function planA(kInfo: Plan_A_Info, useLastPrice = true) {
       '最终价'         : kInfo.last,
       '最高价'         : kInfo.max,
       '最低价'         : kInfo.min,
-      '每日购买，合计张（币）数': kInfo.sumHoldVol,
+      '合计持币数': kInfo.sumHoldVol,
       '购买平均成本'      : kInfo.perCoinCnyCost,
       '卖出价格'        : sellPx,
       '投入成本'        : kInfo.investCNY,
@@ -168,7 +181,7 @@ function planB(kInfo: Plan_B_Info) {
       '最终价'         : kInfo.last,
       '最高价'         : kInfo.max,
       '最低价'         : kInfo.min,
-      '每日购买，合计:（币）数': kInfo.sumHoldVol,
+      '合计持币数': kInfo.sumHoldVol,
       '购买平均成本'      : kInfo.perCoinCnyCost,
       '最后处理价格'      : {
         多: duoRes.finalPrice,
@@ -187,60 +200,64 @@ function planB(kInfo: Plan_B_Info) {
 /**
  * 准备，用【零仓开买】和【满仓开卖】，来执行。
  */
-function planC() {
-  // const duoResult = {
-  //   totalBuy : investDuoMoney,
-  //   totalSell: intervalOpenDuo_sumVolume /*/ cfg.zhangPerCoin */ * last,
-  // };
-  //
-  // const kongResult = {
-  //   totalBuy : intervalOpenKong_sumVolume * last,
-  //   totalSell: investKongMoney,
-  // };
-  //
-  // /**
-  //  * 先买，后卖
-  //  */
-  // const intervalOpenDuo_sumVolume = data.reduce((preObj, close) => {
-  //   return preObj + cfg.onceInvestM / close /**  cfg.zhangPerCoin */;
-  // }, 0);
-  //
-  // /**
-  //  * 先卖，后买
-  //  */
-  // const intervalOpenKong_sumVolume = data.reduce((preObj, close) => {
-  //   return preObj + cfg.onceInvestM / close /**  cfg.zhangPerCoin */;
-  // }, 0);
-  //
-  // const investDuoMoney = cfg.onceInvestM * length;
-  //
-  // const investKongMoney = cfg.onceInvestM * length;
-  //
-  // const avgCost = investDuoMoney / intervalOpenDuo_sumVolume;
-  //
-  // // const returnMoney = {
-  // //   // 多仓，采用最后价格，估值
-  // //   duo : intervalOpenDuo_sumVolume /*/ cfg.zhangPerCoin */ * last,
-  // //   // 空仓，采用？？？？？？？？？？？？？？？（此处，应该是【分开卖】，统一买，才对。？？？？？？？？？？？需要修正一下。）
-  // //   kong: intervalOpenDuo_sumVolume /*/ cfg.zhangPerCoin */ * first,
-  // // };
-  //
-  // console.log(
-  //   // [
-  //   '长度', length,
-  //   '平均价', avgPrice,
-  //   '起始价', first,
-  //   '最终价', last,
-  //   '最高价', max,
-  //   '最低价', min,
-  //   '每日购买，合计张（币）数', intervalOpenDuo_sumVolume,
-  //   '购买平均成本', avgCost,
-  //   '卖出价格', cfg.sellPx,
-  //   '投入成本（多+空）', investDuoMoney * 2,
-  //   '回归结果', {多: duoResult, 空: kongResult},
-  //   '收益比（多+空）', (duoResult.totalSell + kongResult.totalSell) / (duoResult.totalBuy + kongResult.totalBuy),
-  //   // ]
-  // );
+function planC(kInfo: Plan_C_Info) {
+  const duoRes: DuoKong = (function () {
+    const finalPrice_duo = kInfo.last;    // 多的最后卖价
+    return {
+      totalBuyCny : kInfo.investCNY,                    // 先买
+      totalSellCny: kInfo.sumHoldVol * finalPrice_duo,  // 后卖
+      finalPrice  : finalPrice_duo,
+    };
+  })();
+
+  /**
+   * 先满空仓（卖出），然后再逐步减仓（买入）
+   */
+  const kongRes: DuoKong = (function () {
+    const beginPrice_Kong = kInfo.first;   // 空的一开始买价
+    return {
+      totalSellCny: kInfo.sumHoldVol * beginPrice_Kong,                    // 先卖
+      totalBuyCny : kInfo.investCNY, // 后买
+      finalPrice  : beginPrice_Kong,
+    };
+  })();
+
+  const cost      = {
+    多: duoRes.totalBuyCny,
+    空: kongRes.totalSellCny,
+  };
+  const bonus     = {
+    多: duoRes.totalSellCny - duoRes.totalBuyCny,
+    空: kongRes.totalSellCny - kongRes.totalBuyCny,
+  };
+  const earnRatio = {
+    多: bonus.多 / cost.多,
+    空: bonus.空 / cost.空,
+    总: (bonus.多 + bonus.空) / (cost.多 + cost.空),
+  };
+  console.log(
+    // [
+    // JSON.stringify(
+    {
+      '长度'          : kInfo.length,
+      '平均价'         : kInfo.avgPrice,
+      '起始价'         : kInfo.first,
+      '最终价'         : kInfo.last,
+      '最高价'         : kInfo.max,
+      '最低价'         : kInfo.min,
+      '合计持币数': kInfo.sumHoldVol,
+      '购买平均成本'      : kInfo.perCoinCnyCost,
+      '最后处理价格'      : {
+        多: duoRes.finalPrice,
+        空: kongRes.finalPrice,
+      },
+      '投入成本'        : cost,
+      '回归结果'        : bonus,
+      '收益比'         : earnRatio,
+    },
+    // null, 2)
+    // ]
+  );
 }
 
 go();
