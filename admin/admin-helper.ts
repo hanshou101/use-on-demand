@@ -2,7 +2,7 @@ export class AdminHelper {
   /**
    * 将MultiLang，迅速转化为  已有ruleForm的一部分。
    */
-  static combine_MultiLangPlus(type: 'upload' | 'fetch', formObj: any, netField: string, localField = 'translate') {
+  public static combine_MultiLangPlus(type: 'upload' | 'fetch', formObj: any, netField: string, localField = 'translate') {
     switch (type) {
       // 上传到接口
       case 'upload':
@@ -23,7 +23,7 @@ export class AdminHelper {
   /**
    * 处理时间段选择
    */
-  static formDateRange(params: { [key: string]: any }, form: { [key: string]: any }) {
+  public static formDateRange(params: { [key: string]: any }, form: { [key: string]: any }) {
 
     // TIP 此处，遍历一个对象中，每个属性变量名的名字
     for (const key in form) {
@@ -73,7 +73,7 @@ export class AdminHelper {
    *  功能：
    *          1.目前，经常用于【提交数据】的筛选。
    */
-  filterTargetFields<T>(originObj: IndexedObj<any>, filterObj: object, needTrimEmpty: boolean = false): IndexedObj<any> {
+  public filterTargetFields<T>(originObj: IndexedObj<any>, filterObj: object, needTrimEmpty: boolean = false): IndexedObj<any> {
 
     const distObj: IndexedObj<any> = {
       // '筛选后保留的key' : '筛选后保留的value' ,

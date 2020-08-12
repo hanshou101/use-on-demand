@@ -5,7 +5,7 @@ export class SString_Helper {
   /**
    * 创建一个【独一无二】的【随机字符串】
    */
-  static create_RandUnique_Str() {
+  public static create_RandUnique_Str() {
     const timestamp = '' + new Date().valueOf();
     const randomNum = '' + parseInt(((1 + Math.random()) * 65536));
     return randomNum.concat(timestamp).toString(32);
@@ -18,18 +18,23 @@ export class SString_Helper {
    * formatPhone("12345678910", "start") => ****5678910
    * formatPhone("12345678910", "center") => 123****8910
    * formatPhone("12345678910", "end") => 1234567****
-   * @param phone 手机号
+   * @param _phone 手机号
    * @param format 格式，可选值有：start、center、end
-   * @param count 格式化多少个字符，默认4个
+   * @param _count 格式化多少个字符，默认4个
    * @returns {string}
    */
-  starMask_Phone(phone: string, format: PhoneMaskOption = 'center', count: number = 4): string {
-    phone           = phone + '';
-    let len         = phone.length,
-        arr         = phone.split(''),
-        start       = 0,
-        end         = 0,
-        replacement = '***********************';
+  public starMask_Phone(
+    _phone: string,
+    format: PhoneMaskOption = 'center',
+    _count: number          = 4,
+  ): string {
+    const phone       = _phone + '';
+    let count         = _count;
+    const len         = phone.length;
+    const arr         = phone.split('');
+    let start         = 0;
+    let end           = 0;
+    const replacement = '***********************';
     if (format === 'start') {
       if (typeof count == 'undefined') {
         count = 4;
@@ -60,15 +65,16 @@ export class SString_Helper {
   /**
    * 格式化邮箱
    * 如：
-   formatEmail("123456789@qq.com") => 12*****89@qq.com
-   formatEmail("abc@qq.com") => a*c@qq.com
-   formatEmail("abc123@qq.com") => a*****@qq.com
-   formatEmail("abc12@qq.com") => a***2@qq.com
-   formatEmail("a@qq.com") => *@qq.com
+   * formatEmail("123456789@qq.com") => 12*****89@qq.com
+   * formatEmail("abc@qq.com") => a*c@qq.com
+   * formatEmail("abc123@qq.com") => a*****@qq.com
+   * formatEmail("abc12@qq.com") => a***2@qq.com
+   * formatEmail("a@qq.com") => *@qq.com
    * @param email 邮箱
-   * @param maxCount 最大截取长度，默认5
+   * @param _maxCount 最大截取长度，默认5
    */
-  starMask_Email(email: string, maxCount = 5): string {
+  public starMask_Email(email: string, _maxCount: string | number = 5): string {
+    let maxCount   = _maxCount;
     const emailReg = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     if (!email || !emailReg.test(email)) {
       return email;
@@ -76,10 +82,10 @@ export class SString_Helper {
     if (typeof maxCount == 'string' || maxCount <= 0) {
       maxCount = 5;
     }
-    const emailLeft                   = email.split('@')[0];
-    const emailRight                  = email.split('@')[1];
-    let leftResult: string | string[] = '';
-    const emailLeftLen                = emailLeft.length;
+    const emailLeft                        = email.split('@')[0];
+    const emailRight                       = email.split('@')[1];
+    let leftResult: string | Array<string> = '';
+    const emailLeftLen                     = emailLeft.length;
     if (emailLeftLen == 1) {
       leftResult = '*';
     } else {
@@ -96,8 +102,8 @@ export class SString_Helper {
         leftResult[emailLeftLen - 1] = emailLeft.charAt(emailLeftLen - 1);
       } else {
         /* 如果邮箱名长度大于最大截取长度，则将邮箱名中间的替换成"*" */
-        let startIndex = Math.ceil((emailLeftLen - maxCount) / 2),
-            endIndex   = startIndex + maxCount;
+        let startIndex = Math.ceil((emailLeftLen - maxCount) / 2);
+        let endIndex   = startIndex + maxCount;
         leftResult     = emailLeft.split('');
 
         if (endIndex > emailLeftLen) {

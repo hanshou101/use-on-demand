@@ -15,8 +15,8 @@ export class GeeStableUtil {
    *        2.需降级。
    *        3.不可用。
    */
-  static calcCurrent_GeeStable(
-    enable: EnableType,             // WARN 这个值，有可能是undefined
+  public static calcCurrent_GeeStable(
+    enable: EnableType | unknown,             // WARN 这个值，有可能是undefined
     success: SuccessType,            // WARN 这个值，必定是 1 或 0 。
   ) {
     const errorStr = `calcGeetestStatusEnum，传参错误，enable ${enable},success ${success}`;
@@ -44,9 +44,9 @@ export class GeeStableUtil {
 
 
   /**
-   *获取【网络请求】的【极验Header】。
+   * 获取【网络请求】的【极验Header】。
    */
-  static getRequest_GeeHeader(
+  public static getRequest_GeeHeader(
     {geetest_challenge, geetest_validate, geetest_seccode}: SdkVerifyFingerResNS._RawData_SucType,
     sign: string,
     geeStatus: GeeStableE,

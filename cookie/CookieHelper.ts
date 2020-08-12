@@ -6,17 +6,17 @@ import {DebugU, LogE} from '../debug-util/debug-util';
 export class CookieHelper {
 
   // 设置cookie
-  static setCookie(
+  public static setCookie(
     name: string,
     value: string,
     exdays: number,
     path: string,
     domain: string,
   ) {
-    var stExdays = '';
-    var stDomain = '';
+    let stExdays = '';
+    let stDomain = '';
     if (exdays) {
-      var date = new Date();
+      const date = new Date();
       date.setTime(date.getTime() + (parseInt(exdays) * 24 * 60 * 60 * 1000) + (8 * 60 * 60 * 1000));
       stExdays = ';expires=' + date.toUTCString();
     }
@@ -35,12 +35,14 @@ export class CookieHelper {
   }
 
   // 获取cookie
-  static getCookie(name: string) {
-    var cookieName = name + '=';
-    var arr        = document.cookie.split(';');
-    for (var i = 0; i < arr.length; i++) {
-      var item = arr[i];
-      while (item.charAt(0) === ' ') item = item.substring(1);
+  public static getCookie(name: string) {
+    const cookieName = name + '=';
+    const arr        = document.cookie.split(';');
+    for (let i = 0; i < arr.length; i++) {
+      let item = arr[i];
+      while (item.charAt(0) === ' ') {
+        item = item.substring(1);
+      }
       if (!item.indexOf(cookieName)) {
         return item.substring(cookieName.length, item.length);
       }
@@ -49,14 +51,14 @@ export class CookieHelper {
   }
 
   // 清除cookie
-  static clearCookie(
+  public static clearCookie(
     name: string,
     domain: string,
   ) {
-    var date = new Date();
+    const date = new Date();
     date.setTime(date.getTime() - 10000);
-    var cookieValue = this.getCookie(name);
-    var stDomain    = '';
+    const cookieValue = this.getCookie(name);
+    let stDomain      = '';
     if (domain) {
       stDomain = ';domain=' + domain;
     }

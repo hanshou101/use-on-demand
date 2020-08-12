@@ -4,7 +4,7 @@ export class CVS_Excel_Helper {
 
 
 // 先将二维数组转成纯文本，重点是要处理可能在内容中出现的分隔符和双引号：
-  static arrayToCsv(data: any, args: { columnDelimiter?: string, lineDelimiter?: string } = {}) {
+  public static arrayToCsv(data: any, args: { columnDelimiter?: string, lineDelimiter?: string } = {}) {
     const columnDelimiter = args.columnDelimiter || ',';
     const lineDelimiter   = args.lineDelimiter || '\n';
 
@@ -24,7 +24,7 @@ export class CVS_Excel_Helper {
   }
 
 // TIP 导出cvs文件                                                    // 有空，要好好看看这段代码。可拓展面应该很广。
-  static exportCsv(inputData: any, filename = 'export.csv') {
+  public static exportCsv(inputData: any, filename = 'export.csv') {
     // const csv = arrayToCsv(inputData);
     const csv = inputData;
 
@@ -44,7 +44,7 @@ export class CVS_Excel_Helper {
     }
   }
 
-  static downloadExcel(url: string, filename = 'export.xls') {
+  public static downloadExcel(url: string, filename = 'export.xls') {
     // 创建隐藏的可下载链接
     const eleLink         = document.createElement('a');
     eleLink.download      = filename;
@@ -70,16 +70,16 @@ export class CVS_Excel_Helper {
    * @param inputDom            <input>节点，用于清除value
    * @returns {Promise<any>}    直接交给 await/async 使用
    */
-  static readArr_fromExcel(excel_file: any, sheet_field: any, inputDom: any) {
+  public static readArr_fromExcel(excel_file: any, sheet_field: any, inputDom: any) {
 
     return new Promise((resolve, reject) => {
-      import('xlsx').then(XLSX => {                         // 动态导入
+      import('xlsx').then((XLSX) => {                         // 动态导入
         // 声明回调
         const fileOnLoadCb = function (event: any) {
           console.log('event', event);
-          let data           = null;
-          let workbook       = null;
-          let persons: any[] = [];
+          let data                = null;
+          let workbook            = null;
+          let persons: Array<any> = [];
 
           // 读取数据
           try {
@@ -120,7 +120,7 @@ export class CVS_Excel_Helper {
         const fileReader  = new FileReader();
         fileReader.onload = fileOnLoadCb;
         fileReader.readAsBinaryString(excel_file);
-      }).catch(e => {
+      }).catch((e) => {
         reject(e);
       });
 
@@ -131,10 +131,10 @@ export class CVS_Excel_Helper {
   /**
    * 将文本，导出为【ZIP文件】
    */
-  export_txt_to_zip(th: any, jsonData: any, txtName: string, zipName: string) {
+  public export_txt_to_zip(th: any, jsonData: any, txtName: string, zipName: string) {
     return new Promise((resolve, reject) => {
       require('script-loader!file-saver');
-      import('jszip').then(exports => {                                         // 导入库
+      import('jszip').then((exports) => {                                         // 导入库
         const JSZip    = exports.default;
         const zip      = new JSZip();
         const txt_name = txtName || 'file';
@@ -148,18 +148,18 @@ export class CVS_Excel_Helper {
         });
         zip.file(`${txt_name}.txt`, txtData);
         zip.generateAsync({type: 'blob'}).then((blob) => {
-          import('file-saver').then(FileSaver => {                              // 导入库
+          import('file-saver').then((FileSaver) => {                              // 导入库
             FileSaver.saveAs(blob, `${zip_name}.zip`);    // FIXME ？？？？？？
             resolve();
-          }).catch(e => [
-            reject(e)
+          }).catch((e) => [
+            reject(e),
           ]);
         }, (err) => {
           // alert(i18n.t('message.Export_Failure'));
           alert(`导出失败！${err}`);
           reject(err);
         });
-      }).catch(e => {
+      }).catch((e) => {
         reject(e);
       });
     });

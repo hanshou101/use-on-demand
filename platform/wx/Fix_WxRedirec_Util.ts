@@ -1,5 +1,5 @@
 export class Fix_WxRedirec_Util {
-  static check_isRedirctByWx() {
+  public static check_isRedirctByWx() {
     const hash    = location.hash;
     const wxQuery = location.search;
 

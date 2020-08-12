@@ -32,7 +32,7 @@ export enum LogE {
  * console日志工具
  */
 export class DebugU {
-  static separator = '//';
+  public static separator = '//';
 
   private static readonly allowKeys: Array<LogE> = [
     // LogE.positLine,
@@ -45,13 +45,13 @@ export class DebugU {
     // LogE.KlineCycleLife,
   ];
 
-  public static l(logEnum: LogE, ...args: any[]) {
+  public static l(logEnum: LogE, ...args: Array<any>) {
     if (this.allowKeys.includes(logEnum)) {
       // console.log(`%c${logEnum} // ${args}%c 123`, 'background: #f33; font-size: 18px; font-family: monospace; color: #eee; text-shadow:0 0 1px #fff', 'background: #3f3; font-size: 18px; font-family: monospace; color: #eee; text-shadow:0 0 1px #fff');
       console.log(logEnum, this.separator, ...args);
     }
   } //
-  public static e(logEnum: LogE, ...args: any[]) {
+  public static e(logEnum: LogE, ...args: Array<any>) {
     if (this.allowKeys.includes(logEnum)) {
       console.error(logEnum, this.separator, ...args);
     }

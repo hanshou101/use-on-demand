@@ -14,11 +14,11 @@
     "target"                          : "es2018",
     "module"                          : "esnext",
     "lib"                             : [
-      "esnext",
-      "esnext.asynciterable",
-      "dom",
-      "dom.iterable",
-      "scripthost"
+      "ESNext",
+      "ESNext.AsyncIterable",
+      "DOM",
+      "DOM.Iterable",
+      "ScriptHost"
     ],
     "noEmit"                          : true,
     "strict"                          : true,

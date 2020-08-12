@@ -5,26 +5,26 @@ export class ColorUtil {
   /**
    * 【RGB】转【HEX】
    */
-  static rgbToHex(r: number, g: number, b: number) {
+  public static rgbToHex(r: number, g: number, b: number) {
     return '#' + this.__componentToHex(r) + this.__componentToHex(g) + this.__componentToHex(b);
   }
 
   /**
    * 【HEX】转【RGB】
    */
-  static hexToRgb(sharpHex: string) {
+  public static hexToRgb(sharpHex: string) {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(sharpHex);
     return result ? {
       r: parseInt(result[1], 16),
       g: parseInt(result[2], 16),
-      b: parseInt(result[3], 16)
+      b: parseInt(result[3], 16),
     } : null;
   }
 
   /**
    * 指定某个颜色
    */
-  static ElLoading_color = (function () {
+  public static ElLoading_color = (function () {
     const TextPrimary_or_Bg_Color = VarsColor.TextPrimary_or_Bg_Color;
     const rgbObj                  = ColorUtil.hexToRgb(TextPrimary_or_Bg_Color);
     if (!rgbObj) {

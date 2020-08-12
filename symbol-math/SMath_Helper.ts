@@ -2,7 +2,7 @@ export class SMath_Helper {
   /**
    * 科学计数法转化的工具。
    */
-  static scienceNumber_transToPlainText(num: any) {
+  public static scienceNumber_transToPlainText(num: any) {
     // 如果【非数字格式】，则返回
     if (isNaN(num)) {
       return num;
@@ -18,11 +18,11 @@ export class SMath_Helper {
   /**
    * 数字添加千分位符
    */
-  static parseToThousandth = (num: number, point = 0) => {
+  public static parseToThousandth = (num: number, point = 0) => {
     let [sInt, sFloat] = (Number.isInteger(num) ? `${num}` : num.toFixed(point)).split('.');
     sInt               = sInt.replace(/\d(?=(\d{3})+$)/g, '$&,');
     return sFloat ? `${sInt}.${sFloat}` : `${sInt}`;
-  };
+  }
 }
 
 

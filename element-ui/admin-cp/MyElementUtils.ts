@@ -89,7 +89,7 @@ export abstract class MyEl_FormItem__inDialog<SOption> extends MyEl_FormItem<SOp
  * 表单校验的总配置
  */
 export interface MyEl_FormItem_Rule_Config {
-  [key: string]: MyEl_RuleItem[];
+  [key: string]: Array<MyEl_RuleItem>;
 }//
 type MyElForm_TriggerType = 'blur' | 'change';   //
 
@@ -177,19 +177,19 @@ export class MyElement_TableCol<SOption> {
  * TODO 具体使用方式：查看  PlayerDetail_Page.vue 文件。
  */
 export class MyEl_Cards {
-  constructor(public array: MyEl_OneCard[]) {
+  constructor(public array: Array<MyEl_OneCard>) {
     this.array = array;
   }
 }//
 
 export class MyEl_OneCard {
-  constructor(public cardTitle: string, public  rows: MyEl_OneRow[]) {
+  constructor(public cardTitle: string, public  rows: Array<MyEl_OneRow>) {
     this.cardTitle = cardTitle;
     this.rows      = rows;
   }
 }//
 
-type  MyEl_OneRow = MyEl_OneCol[];//
+type  MyEl_OneRow = Array<MyEl_OneCol>;//
 
 export class MyEl_OneCol {
   constructor(public leftLabel: string, public rightProp: string) {

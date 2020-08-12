@@ -16,7 +16,7 @@ const isClient = process.client;
 
 export class AxiosWatcher {
 
-  static saveReqInfo_onClient(config: AxiosRequestConfig_Type) {
+  public static saveReqInfo_onClient(config: AxiosRequestConfig_Type) {
     if (isClient) {
       const bzId     = config.bzInfo?.bzId;
       const accessor = (window.$nuxt as any).$accessor;
@@ -36,7 +36,7 @@ export class AxiosWatcher {
     }
   }
 
-  static saveRespInfo_onClient(res: AxiosResponse_Type<any>) {
+  public static saveRespInfo_onClient(res: AxiosResponse_Type<any>) {
     if (isClient) {
       const bzId     = res.config.bzInfo?.bzId;
       const accessor = (window.$nuxt as any).$accessor;

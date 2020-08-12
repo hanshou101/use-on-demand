@@ -49,7 +49,7 @@ export function checkHtmlVersion() {
   // 获取query参数
   const Request        = getFullQueryObj();
   const key            = Request.random;
-  const originQuerySeq = Object.entries(Request).map(entry => {
+  const originQuerySeq = Object.entries(Request).map((entry) => {
     return `&${entry[0]}=${entry[1]}`;        // 拼接，有两种方式。这里用第二种。（第一种，join('&')）
   });
   const otherQuery     = `${originQuerySeq.join('')}`;
@@ -88,7 +88,7 @@ export function checkHtmlVersion() {
       // alert('未超时：' + window.location.href);
     }
   }
-};
+}
 
 export function smoothJump(id: string) {
   console.log('开始jump');

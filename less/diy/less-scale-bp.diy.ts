@@ -16,7 +16,7 @@ export enum LessScaleBpE {
 
 
 export class LessScaleBpDiy_Helper {
-  static isSmallerThan(targetBpE: LessScaleBpE) {
+  public static isSmallerThan(targetBpE: LessScaleBpE) {
     return DomStyle_Helper.getDocumentWidthHeight().width <= targetBpE;
   }
 }

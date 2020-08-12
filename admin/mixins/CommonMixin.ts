@@ -110,7 +110,7 @@ export default class CommonMixin<SelectOptionType> extends BaseVue.Mixins(Export
   // public selectOption: MySelectOption_AllConfig                      = selectOption;
   get selectOption(): object {
     throw new Error('selectOption 属性需要重写！！！');
-  };
+  }
 
   //
   public dialogControlVisible: boolean                               = false;
@@ -120,8 +120,8 @@ export default class CommonMixin<SelectOptionType> extends BaseVue.Mixins(Export
     total  : 0,
     current: 1,
   };
-  public listData: any[]                                             = [];
-  public deleteItems: any[]                                          = [];
+  public listData: Array<any>                                             = [];
+  public deleteItems: Array<any>                                          = [];
   // oss预上传数据
   public uploadHost: string                                          = '';
   // 上传携带参数
@@ -175,7 +175,7 @@ export default class CommonMixin<SelectOptionType> extends BaseVue.Mixins(Export
         } else {
           const str = '表单校验，未通过。请检查表单字段！';
           this.$notify({
-            type   : 'error',                                                          //不同状态：primary,success,info,warning,error
+            type   : 'error',                                                          // 不同状态：primary,success,info,warning,error
             title  : '提示',
             message: str,
           });

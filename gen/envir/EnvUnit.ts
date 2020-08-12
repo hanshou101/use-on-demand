@@ -70,7 +70,7 @@ export class EnvUnit {
     public readonly Env_Name: EnvName_EnvEnum,                      // 【环境名】标识符
     public readonly Env_Domain: Domain_EnvEnum,                     // 域名
     public readonly Env_SsrApi: SsrApi_EnvEnum,                     // 服务端接口
-    public readonly Env_ClientApi_AndWs: ClientApi_AndWs_EnvEnum    // 客户端接口
+    public readonly Env_ClientApi_AndWs: ClientApi_AndWs_EnvEnum,    // 客户端接口
   ) {
   }
 
@@ -85,7 +85,7 @@ export class EnvUnit {
      *        2.客户端自动适配
      *        3.注意，后面是带冒号的。
      */
-    let domainProto = isClient ? location.protocol : 'https:';
+    const domainProto = isClient ? location.protocol : 'https:';
 
     switch (this.Env_Domain) {
       case Domain_EnvEnum.localhost:

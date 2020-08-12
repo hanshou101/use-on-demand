@@ -10,7 +10,7 @@ export class DomStyle_Helper {
    * @param ele dom元素
    * @param cssAttribute css属性名称
    */
- static getDomStyle(ele: HTMLElement, cssAttribute: string) {
+  public static getDomStyle(ele: HTMLElement, cssAttribute: string) {
     if (!ele || !ele.nodeName) {
       console.error('ele 必须是一个dom元素');
       return;
@@ -33,7 +33,7 @@ export class DomStyle_Helper {
   }
 
   // 获取浏览器宽高
- static getDocumentWidthHeight() {
+  public static getDocumentWidthHeight() {
     if (window.innerHeight != null) {
       return {
         width : window.innerWidth,
@@ -56,7 +56,7 @@ export class DomStyle_Helper {
    * 获取元素距浏览器最顶部及最左边的距离
    * @param ele dom元素
    */
- static get_AbsoluteOffset_Position(ele: HTMLElement): MyAbsolutePosition {
+  public static get_AbsoluteOffset_Position(ele: HTMLElement): MyAbsolutePosition {
     const position   = {
       top : 0,
       left: 0,
@@ -75,7 +75,7 @@ export class DomStyle_Helper {
   /**
    * 兼容性：获取浏览器滚动条距离顶部的位置
    */
- static getScrollTop(): number {
+  public static getScrollTop(): number {
     return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || -1;
   }
 
@@ -84,7 +84,7 @@ export class DomStyle_Helper {
    * @param ele
    * @returns {Array}
    */
- static getSiblingsDoms(ele: HTMLElement): HTMLElement[] {
+  public static getSiblingsDoms(ele: HTMLElement): Array<HTMLElement> {
     if (ele.parentNode) {
       const a = [];
       const p = ele.parentNode.children;
@@ -93,7 +93,7 @@ export class DomStyle_Helper {
           a.push(p[i]);
         }
       }
-      return a as HTMLElement[];
+      return a as Array<HTMLElement>;
     } else {
       return [];
     }
@@ -107,10 +107,12 @@ export class DomStyle_Helper {
    * @param childEle 子元素
    * @returns {Boolean}
    */
- static isContains_otherEle(ele: HTMLElement, childEle: Node): boolean {
+  public static isContains_otherEle(ele: HTMLElement, _childEle: Node): boolean {
+    let childEle = _childEle;
     if (ele == childEle) {
       return false;
     }
+
     if (typeof ele.contains == 'function') {
       return ele.contains(childEle);
     } else {

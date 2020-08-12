@@ -20,7 +20,7 @@ export class DomEvt_Helper {
    * @param eventName 事件名称
    * @param fn 事件回调函数
    */
-  bindEvt(ele: MyEventTarget, eventName: string, fn: (e: Event) => any) {
+  public bindEvt(ele: MyEventTarget, eventName: string | unknown, fn: (e: Event) => any) {
     if (!ele) {
       console.error('on(ele, eventName, fn)函数第一个参数必须是一个dom元素!');
       return;
@@ -98,7 +98,7 @@ export class DomEvt_Helper {
    * @param eventName 事件名称
    * @param fn 事件回调函数
    */
-  unbindEvt(ele: MyEventTarget, eventName: string, fn: (e: Event) => any) {
+  public unbindEvt(ele: MyEventTarget, eventName: string|unknown, fn: (e: Event) => any) {
     let index;
     if (!ele) {
       console.error('off(ele, eventName, fn)函数第一个参数必须是一个dom元素!');

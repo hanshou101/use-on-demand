@@ -12,18 +12,18 @@ abstract class BaseSentryUtil {
   // 仅子类可见
   protected readonly dns         = this.cfg.dns;
 
-  abstract init(): Promise<Event>;
+  public abstract init(): Promise<Event>;
 }
 
 class PureJs_SentryUtil extends BaseSentryUtil {
   private readonly pureJsUrl = this.cfg.pureJsUrl;
 
-  init(): Promise<Event> {
+  public init(): Promise<Event> {
     return DomScript_Heler.loadJsScript_Async(
       this.pureJsUrl, {
         crossOrigin: this.crossOrigin,
-      }
-    ).then(e => {
+      },
+    ).then((e) => {
       window.Sentry.init({
         dsn        : this.dns,
         environment: this.cfg.envName,
@@ -36,12 +36,12 @@ class PureJs_SentryUtil extends BaseSentryUtil {
 class Vue_SentryUtil extends BaseSentryUtil {
   private readonly vueIntegrationUrl = this.cfg.vueIntegrationUrl;
 
-  init(): Promise<Event> {
+  public init(): Promise<Event> {
     return DomScript_Heler.loadJsScript_Async(
       this.vueIntegrationUrl, {
         crossOrigin: this.crossOrigin,
-      }
-    ).then(e => {
+      },
+    ).then((e) => {
       window.Sentry.init({
         dsn         : this.dns,
         environment : this.cfg.envName,
@@ -50,7 +50,7 @@ class Vue_SentryUtil extends BaseSentryUtil {
             Vue,
             attachProps: true,
             logErrors  : true,
-          })
+          }),
         ],
       });
       return e;
@@ -61,9 +61,9 @@ class Vue_SentryUtil extends BaseSentryUtil {
 export function standardInit(cfg: Sentry_Cfg_Type) {
   const PureJsSentry = new PureJs_SentryUtil(cfg);
   const VueSentry    = new Vue_SentryUtil(cfg);
-  PureJsSentry.init().then(pureJsSResult => {
+  PureJsSentry.init().then((pureJsSResult) => {
     DebugU.l(LogE.loadScript, 'PureJsSentry', '初始化成功');
-    VueSentry.init().then(vueSResult => {
+    VueSentry.init().then((vueSResult) => {
       DebugU.l(LogE.loadScript, 'VueSentry', '初始化成功');
     });
   });

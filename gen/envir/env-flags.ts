@@ -7,7 +7,7 @@ export class EnvFlags {
    * 本地 Mock Cookie值。
    *        1.便于登录
    */
-  static localMockCookie = EnvFlags._allowEnvs([
+  public static localMockCookie = EnvFlags._allowEnvs([
     EnvName_EnvEnum.local,          // 本地环境
   ]);
 
@@ -24,7 +24,7 @@ export class EnvFlags {
   /**
    * K线的 debug模式 。
    */
-  static tradingViewDebug = true && EnvFlags._allowEnvs([
+  public static tradingViewDebug = true && EnvFlags._allowEnvs([
     EnvName_EnvEnum.local,          // 本地环境
   ]);
 

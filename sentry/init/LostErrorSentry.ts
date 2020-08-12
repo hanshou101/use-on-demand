@@ -50,7 +50,7 @@ class LostError_Util {
 
   public uploadError() {
     console.log('上传错误');
-    this._errArr.forEach(err => {
+    this._errArr.forEach((err) => {
       console.log('错误情况', JSON.stringify(err));
       window.Sentry.captureException(new Error(
         JSON.stringify(err),
@@ -118,12 +118,12 @@ class LostError_Util {
       source,
       lineno,
       colno,
-      error
+      error,
     ) {
       // 异步方式，避免阻塞
       setTimeout(() => {
 
-        //不一定所有浏览器都支持col参数，如果不支持就用window.event来兼容
+        // 不一定所有浏览器都支持col参数，如果不支持就用window.event来兼容
         const __col: number = colno || (window.event && (window.event as any).errorCharacter) || 0;
 
         const entry: LostError_Entry = {
@@ -137,17 +137,17 @@ class LostError_Util {
 
         // 添加【报错堆栈信息】
         if (error && error.stack) {
-          //如果浏览器有堆栈信息，直接使用
+          // 如果浏览器有堆栈信息，直接使用
           entry.stackMsg = error.stack.toString();
         } else if (arguments.callee) {
-          //尝试通过callee拿堆栈信息
-          let ext   = [];
+          // 尝试通过callee拿堆栈信息
+          const ext   = [];
           let fn    = arguments.callee.caller;
-          let floor = 3;  //这里只拿三层堆栈信息
+          let floor = 3;  // 这里只拿三层堆栈信息
           while (fn && (--floor > 0)) {
             ext.push(fn.toString());
             if (fn === fn.caller) {
-              break;//如果有环
+              break;// 如果有环
             }
             fn = fn.caller;
           }
@@ -194,7 +194,7 @@ class LostError_Util {
   private log_windowAddEvent_error() {
     const that = this;
     window.addEventListener('error', function (
-      evt
+      evt,
     ) {
       // 异步方式，避免阻塞
       setTimeout(() => {
@@ -208,7 +208,7 @@ class LostError_Util {
   private log_windowAddEvent_unhandledrejection() {
     const that = this;
     window.addEventListener('unhandledrejection', function (
-      evt
+      evt,
     ) {
       // 异步方式，避免阻塞
       setTimeout(() => {
@@ -220,7 +220,7 @@ class LostError_Util {
           line     : -0.0141632,
           col      : -0.0141632,
           stackMsg : `栈信息: ${evt.reason}`,
-          evtRawStr: JSON.stringify(evt)
+          evtRawStr: JSON.stringify(evt),
         };
         that._errArr.push(entry);
       }, 0);
@@ -236,7 +236,7 @@ class LostError_Util {
       return function (errorlog: Array<any>) {
         function handler() {
         }   //
-        handler();//基于业务的日志记录及数据报错
+        handler();// 基于业务的日志记录及数据报错
         origin.call(console, errorlog);
       };
     })(console.error);

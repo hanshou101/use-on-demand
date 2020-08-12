@@ -37,9 +37,9 @@ interface Optional<T = Default_valueFunction_RtnType> {
 
 interface ElementTableColumnAttrs {
   // 固定在一行的位置。（right、left）
-  fixed: 'right' | 'left',
+  fixed: 'right' | 'left';
   // 内部内容排布方向。（left、right、center）
-  align: 'center' | 'right' | 'left',
+  align: 'center' | 'right' | 'left';
 }
 
 // tslint:disable-next-line:no-namespace
@@ -159,7 +159,7 @@ export namespace ElTItem {
   }
 
   // 图片列表（一组）
-  export class ImageList<T = string[]> extends Base<T> {
+  export class ImageList<T = Array<string>> extends Base<T> {
     public readonly type = 'imageList';
 
     constructor(require: Require, optional?: Optional<T>) {
@@ -190,13 +190,13 @@ export namespace ElTItem {
   // 详情多行字段展示
   export class DetailInfo extends Base {
     public readonly type = 'detailInfo';
-    public pairs !: DetailInfoPair[];
+    public pairs !: Array<DetailInfoPair>;
     public leftEm?: number;
 
     // public rightEm?: number;     // 后来发现，似乎用不到
 
     constructor(require: Require /*| { label: string; name?: string }*/ & {
-      pairs: DetailInfoPair[],
+      pairs: Array<DetailInfoPair>,
     }, optional?: Optional & {
       // 左侧Label宽度
       leftEm?: number;
@@ -211,7 +211,7 @@ export namespace ElTItem {
       }
 
       if (optional) {
-        const {leftEm, /*rightEm*/} = optional;
+        const {leftEm /*rightEm*/} = optional;
         if (leftEm != undefined) {
           this.leftEm = leftEm;
         }

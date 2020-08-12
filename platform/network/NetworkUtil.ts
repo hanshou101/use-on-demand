@@ -2,7 +2,7 @@
  * 该方法，仅可检测【Android】型号上的部分手机网络类型。
  */
 export function getNetworkType_1 () {
-  let connectInfo = (navigator as any).connection || navigator;
+  const connectInfo = (navigator as any).connection || navigator;
   console.log('方法1网络状态', connectInfo);
   const {downlink, effectiveType, onchange, rtt, saveData} = connectInfo;
 

@@ -15,17 +15,37 @@
   // TIP Linter检查器选项（包含【exclude】和【format】两个属性）
   "linterOptions"  : {
     "exclude": [
-      "node_modules/**"
+      "node_modules/**",
+      "**/**.vue"       // WARN 临时，忽略掉【Vue文件】内的tslint报错。因为，IDE暂时无法自动修复。
     ]
   },
   // TIP 自定义规则
   "rules"          : {
+    "object-literal-key-quotes"       : [true, "consistent"], // TIP 关键字，是否用引号包裹
+    "prefer-const"                    : [true, {"destructuring": "all"}], // TIP 更偏向于const关键字
+    "no-empty-interface"              : false, // TIP 禁止空interface
+    "array-type"                      : [true, "generic"],
+    "no-arg"                          : false,
+    "align"                           : [true, "elements", "members", "statements"/*, "arguments"*/],
+    //
+    //
+    //
+    //  TIP——————————————————————————————分隔线，以上是临时规则————————————————————————
+    //
+    //
+    //
+    //
+    //
+    //
+
+
     // TIP 是否【禁用any作为变量类型】（适用于，超严格模式下）
     "no-any"                          : false,
     // TIP 是否【强制在任何表达式后面添加分号】。（包括  Interface、Class等）
     "semicolon"                       : [true],
     // TIP 是否【强制Interface以"I"开头】（建议开启，代码更加清晰）
-    "interface-name"                  : [true, "always-prefix"],
+    //    "interface-name"                  : [true, "always-prefix"],
+    "interface-name"                  : false,
     // TIP 强制要求，填写变量类型
     "typedef"                         : [
       // TIP 默认【任何地方】，都需填写【变量类型】
@@ -78,7 +98,9 @@
     // TIP 强制禁止，【switch的case中，没有break或return结尾】
     "no-switch-case-fall-through"     : true,
     // TIP 这个方法，我看不懂；但看上去是很重要的？       https://palantir.github.io/tslint/rules/no-unbound-method/
-    "no-unbound-method"               : true,
+    //    "no-unbound-method"               : true,
+    //    "no-unbound-method"               : [true, {"ignore-static": true, "allow-typeof": true, "whitelist": ["console.error"]}],
+    "no-unbound-method"               : false,
     // TIP 强制要求，使用【对象展开符】创建对象，而不是【Object.assign】来创建对象。（TIP 【对象展开符】的类型检查更加完善；Object.assign的类型检查不完善。举例：{ ...foo, bar: 1 }来替代Object.assign({}, foo, { bar: 1 })。）
     "prefer-object-spread"            : true,
     // TIP 强制要求，使用【isNaN】而不是【==NaN】来检查非数字。（因为NaN!==NaN，这种方式会导致严重Bug。）（TIP 因为NaN！==NaN，会导致意料不到的结果）
@@ -86,10 +108,12 @@
     // TIP 强制要求，单个函数的【循环函数复杂度】，在指定值之内。（TIP 比如说，20。  资料：https://en.wikipedia.org/wiki/Cyclomatic_complexity）
     "cyclomatic-complexity"           : [
       true,
-      20
+      //      20
+      30
     ],
     // TIP 强制禁止，【使用过时的JSApi】。
-    "deprecation"                     : true,
+    //    "deprecation"                     : true,
+    "deprecation"                     : false,
     // TIP 强制禁止，【对同名模块，在一个文件中多次import导入】。（TIP 临时，将这个开关关闭。）
     "no-duplicate-imports"            : false,
     // TIP 强制禁止，【一个文件中，出现多个相同的namespace】。（TIP 也就是推荐将多个相同的namespace，进行合并）
@@ -99,7 +123,8 @@
     // TIP 强制要求，【必须使用 as Type来做类型断言，禁止使用<Type>来做类型断言】。（TIP 原因：<Type>方式，会被jsx错误的读取）
     "no-angle-bracket-type-assertion" : true,
     // TIP 强制禁止，【使用过期的JSDoc，以TypeScript的Doc作为代替】。（TIP 因为TypeScript已经包含了大部分功能。）
-    "no-redundant-jsdoc"              : true,
+    //    "no-redundant-jsdoc"              : true,
+    "no-redundant-jsdoc"              : false,
     // TIP 强制禁止，【var/let/对象解构符，将变量值初始化为undefined】。（TIP 原因：因为JS中，不初始化时的默认值就是undefined，所以是多余的）
     //                                  TIP 如果，有【禁止Vue的Class初始值为undefined】，就好了。
     "no-unnecessary-initializer"      : true,
@@ -135,7 +160,8 @@
       }
     ],
     // 推荐优先使用  for-of，而不推荐使用  for-in
-    "prefer-for-of"                   : true,
+    //    "prefer-for-of"                   : true,
+    "prefer-for-of"                   : false,
     // 是否【限制变量名命名规范】
     "variable-name"                   : false,
     // 限制，一个文件内，最大可导出的class的数量
@@ -174,7 +200,8 @@
     // 是否【禁止throw一个字符串，必须throw一个Error类型】
     "no-string-throw"                 : true,
     // 是否【在import中关键字之间，保留一个空格间距】
-    "import-spacing"                  : true,
+    //    "import-spacing"                  : true,
+    "import-spacing"                  : false,
     // 是否【使用new 构造函数时，必须要有一对小括号】。（TIP 此处，暂时把开关打开）（TIP 难道，还有不用小括号的用法吗？TIP 经过试验真的有，世界上还真的有人用这种用法？？？）
     "new-parens"                      : false,
     // 是否【禁止使用特殊空白符（比如全角空格）】。（TIP 可以避免一些未知的错误）
@@ -194,7 +221,8 @@
       "check-whitespace"
     ],
     // 是否【函数的小括号之前，需要空格】。
-    "space-before-function-paren"     : true,
+    //    "space-before-function-paren"     : true,
+    "space-before-function-paren"     : false,
     // 是否【函数的小括号之内，需要空格】。
     "space-within-parens"             : true,
     // 禁用【TS以前的内部module、内部namespace】这样过时的方式（已被ES6的模块语法所替代）。（TIP 【allow-declarations】仍然允许【declare namespace{}】，以向外界声明namespace。）

@@ -8,13 +8,14 @@ export class GeeMockUtil {
   /**
    * 模拟不同【环境Env】
    */
-  static mockEnv(
+  public static mockEnv(
     env: GeeStableE,
-    data: GeePreInfo,
+    _data: GeePreInfo,
   ) {
-    console.error('当前mock环境',);
-    console.error('当前mock环境',);
-    console.error('当前mock环境',);
+    let data = _data;
+    console.error('当前mock环境');
+    console.error('当前mock环境');
+    console.error('当前mock环境', 1);
 
     const defaultSign      = 'a123456789999999999999999999999999999999999999999999999999999999999999999999999999999999999999';
     const defaultChallenge = '不知道存不存在这个challenge？？？';

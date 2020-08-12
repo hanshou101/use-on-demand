@@ -72,7 +72,7 @@ export namespace ElFItem {
     };
     public placeholder?: string;    // 输入提示
     // Label宽度
-    labelWidth?: string;
+    public labelWidth?: string;
 
     protected constructor(require: Require, optional?: Optional) {                      // 处理通用逻辑
       if (require) {

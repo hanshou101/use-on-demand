@@ -13,7 +13,7 @@ const Filter = {
 
 type KeysType = keyof typeof Filter;
 const filterKeys = Object.keys(Filter) as Array<KeysType>;
-filterKeys.forEach(key => {
+filterKeys.forEach((key) => {
   Vue.filter(key, Filter[key]);
 });
 export default Filter;

@@ -5,7 +5,7 @@ export class SArray_Helper {
    * @param fn 一个函数，如果函数返回true，则返回该项的下标，如果没有找到则返回-1
    */
 
-  static getIndex_fromRule(arr: any[], fn: (item: any, index: number, originArr: any[]) => boolean) {
+  public static getIndex_fromRule(arr: Array<any>, fn: (item: any, index: number, originArr: Array<any>) => boolean) {
     if (!arr || arr.length == 0 || !fn || (typeof fn != 'function')) {
       return -1;
     }
@@ -13,9 +13,9 @@ export class SArray_Helper {
     if (arr.findIndex) {
       return arr.findIndex(fn);
     }
-    let len   = arr.length,
-        i     = 0,
-        index = -1;
+    const len = arr.length;
+    let i     = 0;
+    let index = -1;
     for (; i < len; i++) {
       const item = arr[i];
       if (fn(item, index, arr) === true) {
@@ -30,15 +30,16 @@ export class SArray_Helper {
   /**
    * 数组去重
    * @param arr 需要去重的数组
-   * @param isObjectValue 数组的值是否是引用类型
+   * @param _isObjectValue 数组的值是否是引用类型
    */
-  getNewArray_NoRepeat(arr: any[], isObjectValue?: boolean) {
+  public getNewArray_NoRepeat(arr: Array<any>, _isObjectValue?: boolean) {
     if (!arr || arr.length === 0) {
       return arr;
     }
-    isObjectValue = typeof isObjectValue === 'undefined' ? false : !!isObjectValue;
-    const arrLen  = arr.length,
-          newArr  = [];
+    // noinspection PointlessBooleanExpressionJS
+    const isObjectValue = typeof _isObjectValue === 'undefined' ? false : !!_isObjectValue;
+    const arrLen        = arr.length;
+    const newArr        = [];
     // 值类型的数组，使用对象属性唯一的特性来去重
     if (!isObjectValue) {
       const obj: IndexedObj<any> = {};
@@ -46,7 +47,9 @@ export class SArray_Helper {
         obj[arr[i]] = 1;
       }
       for (const attr in obj) {
-        newArr.push(attr);
+        if (obj.hasOwnProperty(attr)) {
+          newArr.push(attr);
+        }
       }
       return newArr;
     }
@@ -82,7 +85,7 @@ export class SArray_Helper {
    * @param delOriginAttrValue {Boolean} 是否删除原来的属性
    * @return arr {Array} 返回转换后的数组
    */
-  convertObjectKey_InOriginArr(arr: any[], keyConvertPair: IndexedObj<any>, delOriginAttrValue?: boolean): void {
+  public convertObjectKey_InOriginArr(arr: Array<any>, keyConvertPair: IndexedObj<any>, delOriginAttrValue?: boolean): void {
     if (!arr || arr.length == 0) {
       return;
       // return arr;
@@ -90,13 +93,18 @@ export class SArray_Helper {
     arr.forEach((item) => {
       // eslint-disable-next-line
       for (const attr in item) {
-        for (const origin in keyConvertPair) {
-          if (origin in item) {
-            item[keyConvertPair[origin]] = item[origin];
-            // eslint-disable-next-line
-            if (!!delOriginAttrValue) {
-              delete item[origin];
+        if (item.hasOwnProperty(attr)) {
+          for (const origin in keyConvertPair) {
+            if (keyConvertPair.hasOwnProperty(origin)) {
+              if (origin in item) {
+                item[keyConvertPair[origin]] = item[origin];
+                // eslint-disable-next-line
+                if (!!delOriginAttrValue) {
+                  delete item[origin];
+                }
+              }
             }
+
           }
         }
       }
@@ -127,7 +135,7 @@ export class SArray_Helper {
    *      return [arr[0], arr[0]+arr[0], arr[0]+arr[1]+arr[2], ...];
    * @param seriesArr
    */
-  get_NewArray_Accumulate_SigmaSummary(seriesArr: number[]): number[] {
+  public get_NewArray_Accumulate_SigmaSummary(seriesArr: Array<number>): Array<number> {
     if (({}).toString.call(seriesArr) != '[object Array]') {
       return JSON.parse(JSON.stringify(seriesArr));   // 拷贝一下，防止干扰到原数组。
     }
@@ -135,8 +143,8 @@ export class SArray_Helper {
       return JSON.parse(JSON.stringify(seriesArr));   // 拷贝一下，防止干扰到原数组。
     }
     // 用于存储每一步计算的结果
-    let cache: number[] | null = [];
-    const resultArr: number[]  = [];
+    let cache: Array<number> | null = [];
+    const resultArr: Array<number>  = [];
     seriesArr.forEach((item, index) => {
       if (cache) {
         if (index == 0) {

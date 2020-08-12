@@ -1,5 +1,5 @@
 export class JqQrcode_Helper {
-  static drawQrcode(
+  public static drawQrcode(
     $: JQueryStatic,
     qrTxt: string,
     wH: number,

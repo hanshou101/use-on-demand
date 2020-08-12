@@ -18,7 +18,7 @@ export class SentryLogHelper {
    *        1.一般要和【主动发送事件】一起使用。
    *                1.不然，只有等到下一次【汇报异常】，才会上传。
    */
-  static logBreadcrumb(
+  public static logBreadcrumb(
     category: SentryBreadCateE,
     desc: string,
     message: string,
@@ -40,7 +40,7 @@ export class SentryLogHelper {
   /**
    * 主动发送事件
    */
-  static sendError(
+  public static sendError(
     category: SentryBreadCateE,
     desc: string,
     errMsg: string,
@@ -48,7 +48,7 @@ export class SentryLogHelper {
     if (isClient) {
       DebugU.l(LogE.sentry, '记录主动发送事件', ...arguments);
       window.Sentry.captureException(new Error(
-        [category, desc, errMsg].join(` ${DebugU.separator} `)
+        [category, desc, errMsg].join(` ${DebugU.separator} `),
       ));
     }
   }

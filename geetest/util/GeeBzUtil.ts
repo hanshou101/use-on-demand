@@ -83,18 +83,18 @@ export class GeeBzUtil {
           console.log('后台开启且第三方政策，所以，初始化极验');
           //
           const geeCtrl = await GeeBzUtil.__innerSdkInit(data, {         // 初始化极验验证的实例
-            onReadySuc    : (geeCtrl) => {
-              console.log('极验SDK内部初始化', '已准备好', geeCtrl);
+            onReadySuc    : (_geeCtrl) => {
+              console.log('极验SDK内部初始化', '已准备好', _geeCtrl);
               //
               if (immediateVerify) {
                 console.log('立即执行Verify');
-                geeCtrl.verify();
+                _geeCtrl.verify();
               } else {
                 console.log('等待手动调用Verify');
               }
             },
-            onFingerSuc   : (geeCtrl) => {
-              const {geetest_challenge, geetest_validate, geetest_seccode,} = geeCtrl.getValidate() as SdkVerifyFingerResNS._RawData_SucType;
+            onFingerSuc   : (_geeCtrl) => {
+              const {geetest_challenge, geetest_validate, geetest_seccode} = _geeCtrl.getValidate() as SdkVerifyFingerResNS._RawData_SucType;
               onFingerSuc({
                   geetest_challenge,
                   geetest_validate,
@@ -106,7 +106,7 @@ export class GeeBzUtil {
                 },
               );
             },
-            onReadyFailure: (geeCtrl) => {
+            onReadyFailure: (_geeCtrl) => {
               console.error('极验SDK内部初始化，出错了');
             },
           });

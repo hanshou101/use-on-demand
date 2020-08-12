@@ -18,7 +18,7 @@ interface TplConfig_Static {
   basePath: {
     tpl: string;
     target: string;
-  }                                     //
+  };                                     //
 }
 
 function staticImplements<T>() {
@@ -39,16 +39,16 @@ function staticImplements<T>() {
  */
 @staticImplements<TplConfig_Static>()
 class RuntimeJs_Config implements TplConfig {
-  static readonly basePath = {
+  public static readonly basePath = {
     tpl   : `./gen/tpl/`,
     target: `./static/js/charting_library/static/bundles/`,
   };                                      //
   constructor(public fileName: string) {
   }                                       //
-  tplPath() {
+  public tplPath() {
     return RuntimeJs_Config.basePath.tpl + this.fileName;
   }                                                                     //
-  targetPath() {
+  public targetPath() {
     return RuntimeJs_Config.basePath.target + this.fileName;
   }
 }
@@ -58,16 +58,16 @@ class RuntimeJs_Config implements TplConfig {
  */
 @staticImplements<TplConfig_Static>()
 class Html_Config implements TplConfig {
-  static readonly basePath = {
+  public static readonly basePath = {
     tpl   : `./gen/tpl/`,
     target: `./static/js/charting_library/static/`,
   };                                      //
   constructor(public fileName: string) {
   }                                       //
-  tplPath() {
+  public tplPath() {
     return Html_Config.basePath.tpl + this.fileName;
   }                                                                     //
-  targetPath() {
+  public targetPath() {
     return Html_Config.basePath.target + this.fileName;
   }
 }
@@ -88,9 +88,9 @@ function read_replace_write(
     }
     console.log('读取成功');
 
-    fs.writeFile(targetPath, replcaeFn(data), 'utf8', function (err) {  // 写入修改后的文件
-      if (err) {
-        return console.log(err);
+    fs.writeFile(targetPath, replcaeFn(data), 'utf8', function (_err) {  // 写入修改后的文件
+      if (_err) {
+        return console.log(_err);
       } else {
         console.log('写入成功');
       }
@@ -102,7 +102,7 @@ function gen_RuntimeJs() {
   const config = [
     new RuntimeJs_Config('runtime.d22af752ee0c2111becd.js'),
   ];
-  config.forEach(item => {
+  config.forEach((item) => {
 
     read_replace_write(
       item.tplPath(),
@@ -124,7 +124,7 @@ function gen_RuntimeJs() {
 
         const result = data.replace(reg, `$1${cdnPath}$3`);   // 替换中间段
         return result;
-      }
+      },
     );
 
   });
@@ -136,7 +136,7 @@ function gen_Html() {
     new Html_Config('zh-tv-chart.08b1d9ed36065f36316f.html'),
     new Html_Config('en-tv-chart.08b1d9ed36065f36316f.html'),
   ];
-  config.forEach(item => {
+  config.forEach((item) => {
 
     read_replace_write(
       item.tplPath(),
@@ -158,7 +158,7 @@ function gen_Html() {
 
         const result = data.replace(reg, `$1${cdnPath}$4`);   // 替换中间段
         return result;
-      }
+      },
     );
   });
 }

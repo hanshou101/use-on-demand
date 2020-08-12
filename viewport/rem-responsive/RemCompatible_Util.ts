@@ -4,18 +4,18 @@
  */
 
 export class My_RemCompatible_Util {
-  static dpr: number = 0;
-  static rem: number = 0;
+  public static dpr: number = 0;
+  public static rem: number = 0;
 
-  static rem2px(v: number) {
+  public static rem2px(v: number) {
     const _v = parseFloat(v);
     return _v * this.rem;
-  };
+  }
 
-  static px2rem(v: number) {
+  public static px2rem(v: number) {
     const _v = parseFloat(v);
     return _v / this.rem;
-  };
+  }
 
   /**
    *

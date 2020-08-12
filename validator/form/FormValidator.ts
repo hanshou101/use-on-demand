@@ -1,28 +1,28 @@
 export class FormValidator {
-  static chinaCode = '+86';
+  public static chinaCode = '+86';
 
-  static isPureNumber(str: string) {
+  public static isPureNumber(str: string) {
     return /^\d+$/.test(str);
   }
 
   /**
    * 是否中国手机
    */
-  static isChinaPhone(phone: string) {
+  public static isChinaPhone(phone: string) {
     return /^1([3456789])\d{9}$/.test(phone);
   }
 
   /**
    * 是否外国手机
    */
-  static isForeignPhone(phone: string) {
+  public static isForeignPhone(phone: string) {
     return this.isPureNumber(phone);
   }
 
   /**
    * 是否邮箱
    */
-  static isEmail(email: string) {
+  public static isEmail(email: string) {
     const reg = /^([a-zA-Z0-9]+[_|\-.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-.]?)*[a-zA-Z0-9]+(\.[a-zA-Z]{2,3})+$/;
     return reg.test(email);
   }
@@ -30,21 +30,21 @@ export class FormValidator {
   /**
    * 是否登录密码
    */
-  static isLoginPassword(pwd: string) {
+  public static isLoginPassword(pwd: string) {
     return /^.{6,20}$/.test(pwd);
   }
 
   /**
    * 是否【手机邮箱验证码】
    */
-  static isPhoneEmailValidateCode(code: string) {
+  public static isPhoneEmailValidateCode(code: string) {
     return /^.{6}$/.test(code);
   }
 
   /**
    * 是否【邀请码】
    */
-  static isInviteCode(code: string) {
+  public static isInviteCode(code: string) {
     return /^[0-9A-Za-z]+$/.test(code);
   }
 

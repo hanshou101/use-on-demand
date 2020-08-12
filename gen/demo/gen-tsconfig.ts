@@ -8,7 +8,7 @@ import {TypeScript_SpeedUp_Helper} from './gen-helper';
  * 【nuxt.js】库，相关的【特殊化处理】。
  */
 class NuxtJs_TsConfig_Helper {
-  static readonly _include = [
+  public static readonly _include = [
     // WARN 适配【nuxt.js】，这段include去除 （TIP 后来又发现，不用去除）
 
     //
@@ -23,7 +23,7 @@ class NuxtJs_TsConfig_Helper {
     //
     '**/*.ts',
     '**/*.tsx',
-    '**/*.vue'
+    '**/*.vue',
     //
     //    "config/**/*.ts",
     //    "config/**/*.tsx",
@@ -34,7 +34,7 @@ class NuxtJs_TsConfig_Helper {
     //
   ];
 
-  static readonly _compilerOptions = {
+  public static readonly _compilerOptions = {
     _target           : 'es2018', // WARN 适配【nuxt.js】
     _lib              : [
       'esnext.asynciterable',     // WARN 适配【nuxt.js】
@@ -43,17 +43,17 @@ class NuxtJs_TsConfig_Helper {
     _types            : [
       // "webpack-env",           // WARN 适配【nuxt.js】 ———— 此处，进行隐藏！！！
       '@types/node',              // WARN 适配【nuxt.js】
-      '@nuxt/types'               // WARN 适配【nuxt.js】
+      '@nuxt/types',               // WARN 适配【nuxt.js】
     ],
     _paths            : {
       // WARN 适配【nuxt.js】
       '~/*': [
-        './*'
+        './*',
       ],
       // WARN 适配【nuxt.js】
       '@/*': [
-        './*'
-      ]
+        './*',
+      ],
     },
     _typeRoots        : [         // WARN 适配【nuxt.js】
       './types',      // FIXME 其实，这个多此一举；因为【includes】选项里面，已经添加该项了。
@@ -67,7 +67,7 @@ class NuxtJs_TsConfig_Helper {
  *
  */
 class TsNode_Helper {
-  static readonly _compilerOptions = {
+  public static readonly _compilerOptions = {
     /**
      * 1.并没有生效
      *        1.建议，改用【手动用 三斜杠】来进行定义。
@@ -85,7 +85,7 @@ class TsNode_Helper {
  * 控制是否检查【.d.ts】中的类型错误。
  */
 class FullTypeCheck_Helper {
-  static readonly checkType_d_ts = false;
+  public static readonly checkType_d_ts = false;
 }
 
 class GenTsconfigUtil {
@@ -97,7 +97,7 @@ class GenTsconfigUtil {
     ],
     // TIP 将以下目录，排除在TypeScript解析之外
     'exclude'        : [
-      'node_modules'
+      'node_modules',
     ],
     'compilerOptions': {
       /**
@@ -116,7 +116,7 @@ class GenTsconfigUtil {
         ...NuxtJs_TsConfig_Helper._compilerOptions._lib,
         'dom',
         'dom.iterable',
-        'scripthost'
+        'scripthost',
       ],
       'noEmit'                          : NuxtJs_TsConfig_Helper._compilerOptions._noEmit,
       /*这可以对 `this` 上的数据属性进行更严格的推断-1*/
@@ -189,10 +189,10 @@ class GenTsconfigUtil {
       ],
       'resolveJsonModule'               : NuxtJs_TsConfig_Helper._compilerOptions._resolveJsonModule,
       'importsNotUsedAsValues'          : TypeScript_SpeedUp_Helper.tsConfig_JSON._importsNotUsedAsValues,
-    }
+    },
   };
 
-  gen() {
+  public gen() {
     console.log('开始生成', 'tsconfig.json文件');
     console.log('开始生成', 'tsconfig.json文件');
     console.log('开始生成', 'tsconfig.json文件');

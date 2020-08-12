@@ -12,7 +12,7 @@ import {AdminHelper}                         from '../admin-helper';
   filters   : {},
 })
 // export default class HelloWorld extends BaseVueClass {
-export default class ExportExcel_Mixin extends BaseVue  {    // 混入在此处，进行添加。
+export default class ExportExcel_Mixin extends BaseVue {    // 混入在此处，进行添加。
 
   constructor() {
     super();
@@ -96,6 +96,6 @@ export default class ExportExcel_Mixin extends BaseVue  {    // 混入在此处�
 
 export interface ExportExcelMixinImpl {
   exportExcelApi: (
-    baseOption: ExportExcelOption_Type, form: ExportExcelParam_Type, current?: number, size?: number
+    baseOption: ExportExcelOption_Type, form: ExportExcelParam_Type, current?: number, size?: number,
   ) => Promise<any>;
 }

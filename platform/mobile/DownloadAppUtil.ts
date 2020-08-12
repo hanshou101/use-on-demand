@@ -4,11 +4,11 @@ export class CheckAddressNew_Util {
   private readonly aliveDuration = 1 * 1000;    // 一分钟
 
   constructor(
-    private updateTime = new Date().valueOf()
+    private updateTime = new Date().valueOf(),
   ) {
   }
 
-  async checkOrRefresh(refreshFn: Promise<any>) {
+  public async checkOrRefresh(refreshFn: Promise<any>) {
     console.log('进行检验');
     const goTime = new Date().valueOf() - this.updateTime;  // 已流逝的时间
     if (goTime > this.aliveDuration) {                      // 如果已过去1分钟
@@ -89,7 +89,7 @@ export class DownloadAppUtil {
   public static downloadIOS(
     iosUrl: string,
     autoJoinProtocol = true,    // 是否自动拼接，【itms-services】协议头。默认为是。
-    callback?: Function
+    callback?: Function,
   ) {
     // TIP iOS配置
     if (iosUrl) {

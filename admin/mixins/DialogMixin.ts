@@ -4,11 +4,15 @@
 
 import {ElForm} from 'element-ui/types/form';
 
-import ExportExcel_Mixin                                                from './ExportExcel_Mixin';
-import BaseVue, {MixinLevelTag, MyComponent, MyGetter, MyProp, MyWatch} from './BaseVue';
-import {OssUploadBean, PreUploadBean}                                   from './CommonMixin';
-
-
+import ExportExcel_Mixin              from './ExportExcel_Mixin';
+import BaseVue, {
+  MixinLevelTag,
+  MyComponent,
+  MyGetter,
+  MyProp,
+  MyWatch,
+}                                     from './BaseVue';
+import {OssUploadBean, PreUploadBean} from './CommonMixin';
 
 /**
  * 可能最后，还是要用【Mixins】去解决！！！。
@@ -50,7 +54,6 @@ import {OssUploadBean, PreUploadBean}                                   from './
  * 可能最后，还是要用【Mixins】去解决！！！。
  * 可能最后，还是要用【Mixins】去解决！！！。
  */
-
 
 /**
  * 抽象类
@@ -59,7 +62,6 @@ interface AbsInterface {
   selectOption: {};
   preuploadApi: () => Promise<any>;
 }
-
 
 @MyComponent({
   name      : 'DialogMixin',
@@ -75,57 +77,62 @@ interface AbsInterface {
         3: 'primary',
         4: 'warning',
       };
-      return (statusMap as any) [status];
+      return (statusMap as any)[status];
     },
   },
 })
 // export default class HelloWorld extends BaseVueClass {
-export default class DialogMixin extends BaseVue.Mixins(ExportExcel_Mixin) implements AbsInterface {    // 混入在此处，进行添加。
+export default class DialogMixin extends BaseVue.Mixins(ExportExcel_Mixin)
+  implements AbsInterface {
+  // 混入在此处，进行添加。
   // TIP:  Prop，在类中的实现
   // 控制弹窗显示与隐藏
   @MyProp({
     type    : Boolean,
     default : false,
     required: false,
-  }) private show!: boolean;
+  })
+  private show!: boolean;
   // 初始化的数据
   @MyProp({
     default() {
       return {};
     },
     required: false,
-  }) initData!: any;
+  })
+  public initData!: any;
   // 弹窗类型 1-新增；2-编辑；3-查看；4-其他
   @MyProp({
     default : 1,
     required: false,
-  }) public dialogType!: number;
+  })
+  public dialogType!: number;
   @MyGetter('language') public language!: string; // 语言
 
   // TIP: data 在类中的实现
   // public selectOption: MySelectOption_AllConfig = selectOption;
   get selectOption(): object {
     throw new Error('selectOption 属性需要重写！！！');
-  };
+  }
 
-  preuploadApi(): Promise<any> {
+  public preuploadApi(): Promise<any> {
     throw new Error('preuploadApi 方法需要重写！！！');
   }
 
-  //public dialogType: number = 1;
+  // public dialogType: number = 1;
   public dialogVisible: boolean = this.show;
   // public uploadImgUrl = userServiceApi.aliyunUrl;
-  //public statusFlag: string = '';
+  // public statusFlag: string = '';
   // oss预上传数据
   public uploadHost: string        = '';
   // 上传携带参数
   public uploadData: OssUploadBean = {};
   // 翻译结果
-  //public tranlateRes = {};
+  // public tranlateRes = {};
   // 表单是否正在提交中
   public dataCommitting: boolean = false;
   // 内部数据
-  //public _innerData: any = {};
+  // public _innerData: any = {};
 
   // TIP: watch 在类中的实现
   @MyWatch('show', {immediate: true})
@@ -140,8 +147,12 @@ export default class DialogMixin extends BaseVue.Mixins(ExportExcel_Mixin) imple
       console.log('展开显示');
       // console.log('填充完毕1', JSON.stringify(this.MixinsData_2.ruleForm));
       this.$nextTick(() => {
-        console.log('修复之前对于DialogMixin改造的Bug', this.initData, this.MixinsData_2.ruleForm);
-        this.showDialog(this.dialogType, this.initData);    // 此处，再次模拟一下先前的操作。
+        console.log(
+          '修复之前对于DialogMixin改造的Bug',
+          this.initData,
+          this.MixinsData_2.ruleForm,
+        );
+        this.showDialog(this.dialogType, this.initData); // 此处，再次模拟一下先前的操作。
       });
     }
   }
@@ -153,7 +164,8 @@ export default class DialogMixin extends BaseVue.Mixins(ExportExcel_Mixin) imple
     // console.log('填充完毕2', JSON.stringify(this.MixinsData_2.ruleForm));
     if (row) {
       console.log('showDialog，添加数据', row);
-      this.MixinsData_2.ruleForm = {                      // 此处，合并数据，而不是覆盖数据
+      this.MixinsData_2.ruleForm = {
+        // 此处，合并数据，而不是覆盖数据
         ...this.MixinsData_2.ruleForm,
         ...row,
       };
@@ -218,9 +230,8 @@ export default class DialogMixin extends BaseVue.Mixins(ExportExcel_Mixin) imple
             // 表单校验通过回调
             // @ts-ignore
             this.onFormValidated();
-            //this.dataCommitting = true;
+            // this.dataCommitting = true;
           }
-
         }
         // return true;
       } else {
@@ -231,14 +242,15 @@ export default class DialogMixin extends BaseVue.Mixins(ExportExcel_Mixin) imple
   }
 
   // 数据处理
-  public _handleInitData(data: any) {
-    let dataStr = JSON.stringify(data);
-    data        = JSON.parse(dataStr);
-    //console.log('弹窗显示了，数据处理', data);
+  public _handleInitData(_data: any) {
+    const dataStr   = JSON.stringify(_data);
+    const data: any = JSON.parse(dataStr);
+    // console.log('弹窗显示了，数据处理', data);
     if (data) {
       // console.log('填充完毕0.5', JSON.stringify(this.MixinsData_2.ruleForm));
-      //console.log('showDialog，添加数据', data, this.MixinsData_2);
-      this.MixinsData_2.ruleForm = {                      // 此处，合并数据，而不是覆盖数据
+      // console.log('showDialog，添加数据', data, this.MixinsData_2);
+      this.MixinsData_2.ruleForm = {
+        // 此处，合并数据，而不是覆盖数据
         // 把组件内部数据合进来
         ...this.MixinsData_2.ruleForm,
         ...data,
@@ -325,15 +337,22 @@ export default class DialogMixin extends BaseVue.Mixins(ExportExcel_Mixin) imple
   public async beforeUpload(): Promise<any> {
     const preUploadData: PreUploadBean = (await this.preuploadApi()) as PreUploadBean;
     if (preUploadData) {
-      const {dir, policy, signature, callback, accessid, host} = preUploadData;
-      this.uploadHost                                          = host || '未获取到域名';
-      this.uploadData.name                                     = signature;
-      this.uploadData.key                                      = `${dir}${new Date().getTime()}.jpg`;
-      this.uploadData.policy                                   = policy;
-      this.uploadData.OSSAccessKeyId                           = accessid;
-      this.uploadData.success_action_status                    = 200;
-      this.uploadData.callback                                 = callback;
-      this.uploadData.signature                                = signature;
+      const {
+              dir,
+              policy,
+              signature,
+              callback,
+              accessid,
+              host,
+            }                               = preUploadData;
+      this.uploadHost                       = host || '未获取到域名';
+      this.uploadData.name                  = signature;
+      this.uploadData.key                   = `${dir}${new Date().getTime()}.jpg`;
+      this.uploadData.policy                = policy;
+      this.uploadData.OSSAccessKeyId        = accessid;
+      this.uploadData.success_action_status = 200;
+      this.uploadData.callback              = callback;
+      this.uploadData.signature             = signature;
     } else {
       return Promise.reject();
     }
@@ -355,14 +374,12 @@ export default class DialogMixin extends BaseVue.Mixins(ExportExcel_Mixin) imple
          // public Companion!: MixinsInheritCompanion<MixinFather> & DialogMixinImpl;
 
   public MixinsData_2: MixinLevelTag & DialogMixinImpl = {} as any;
-
-
 }
-
 
 // TODO 此处，如果继承别的接口，想法固然精妙；但是，这种方案有其受限制的地方；父类无法调用子类非抽象变量。
 // export interface DialogMixinImpl extends ExportExcelMixinImpl { // 如果还有爷类，父类的接口需要继承爷类的接口。这样会使类型更加简洁。
-export interface DialogMixinImpl { // 如果还有爷类，父类的接口需要继承爷类的接口。这样会使类型更加简洁。
+export interface DialogMixinImpl {
+  // 如果还有爷类，父类的接口需要继承爷类的接口。这样会使类型更加简洁。
   ruleForm: { value?: string; [key: string]: any };
   addCallback: Function;
   editCallback: Function;

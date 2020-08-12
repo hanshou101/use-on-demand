@@ -6,12 +6,12 @@ type sOptionType = {
 };
 
 export class DomScript_Heler {
-  static loadJsScript_Async(
+  public static loadJsScript_Async(
     jsUrl: string,
     sProperties: sOptionType = {},
   ): Promise<Event> {
     DebugU.l(LogE.loadScript, '远程脚本', '开始加载', jsUrl);
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       const scriptNode = document.createElement('script');
 
       /**

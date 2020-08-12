@@ -1,12 +1,16 @@
 export class SDateTime_Helper {
   /**
    * 根据指定时间的倒计时功能
-   // * @param startTime 开始时间
+   * // startTime 开始时间
    * @param __endTime 结束时间
    * @param step_callBack 倒计时每走一次的回调函数
    * @param finish_Callback 倒计时结束回调函数
    */
-  countDownForTime(__endTime: string, step_callBack: Function, finish_Callback: Function): void {
+  public countDownForTime(
+    __endTime: string,
+    step_callBack: Function,
+    finish_Callback: Function,
+  ): void {
     const timeReg = /\d{13,}/;
     if (!timeReg.test(__endTime)) {
       console.error('endTime 必须是一个时间戳！');

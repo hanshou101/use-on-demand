@@ -15,13 +15,13 @@ export class SpeedUpFlags {
    *        1.WHY 存疑，nuxt.js的【TS套件】，自身有没有内置【ForkTsCheckerNotifierWebpackPlugin】？？？
    *        2.
    */
-  static readonly asyncTypeCheck  = false;
+  public static readonly asyncTypeCheck  = false;
   /**
    * 是否【禁止TS脚本中，出现JS脚本】
    *        1.在【长时间编译】中，可以减少【7秒】左右的编译时间。
    *                1.在有【3个js脚本】的前提下，进行的测试。
    */
-  static readonly notAllow_JsInTs = true;
+  public static readonly notAllow_JsInTs = true;
 }
 
 export class TypeScript_SpeedUp_Helper {
@@ -32,7 +32,7 @@ export class TypeScript_SpeedUp_Helper {
    *        TypeScript加速。
    *                1.其实，这一块的主要工作 是在【ts-loader】 里面做的。
    */
-  static readonly tsConfig_JSON = {
+  public static readonly tsConfig_JSON = {
     /**
      * 为【fork-ts-checker-webpack-plugin】插件，修复一个issue
      *        0.参考资料：
@@ -57,7 +57,7 @@ export class TypeScript_SpeedUp_Helper {
    *        优化TypeScript的编译速度。
    *
    */
-  static readonly nuxtConfig_JS = {
+  public static readonly nuxtConfig_JS = {
     /**
      * 【typeCheck】
      *        1.FIXME 这个值，似乎并不在【loaders选项】里面，而是和【loaders选项】同级？？？
@@ -120,7 +120,7 @@ export class TypeScript_SpeedUp_Helper {
                   vue: {
                     enabled: true,
                     // compiler: 'vue-template-compiler',         // 默认值'vue-template-compiler'。
-                  }
+                  },
                 },
                 profile    : true,
               },
@@ -130,7 +130,7 @@ export class TypeScript_SpeedUp_Helper {
       } else {
         return [];
       }
-    }
+    },
   };
 
 }
@@ -180,7 +180,7 @@ export class CDN_Helper {
    * 条件：
    *    1.客户端 + 需要CDN环境
    */
-  static readonly _build_publicPath = (function () {
+  public static readonly _build_publicPath = (function () {
     const url = CDN_Helper.linkTowSplashPart(CDN_Helper.c_baseUrl, CDN_Helper.d_publicPath);
     console.log('CDN配置', 'assets目录', /* 'isClient', isClient, */ 'EnvFlags.useCDN', EnvFlags.finalCheck_useCDN, 'url', url);
     return url;
@@ -190,7 +190,7 @@ export class CDN_Helper {
    * 【static目录】
    *        1.传入path，必须以【"/"】开头。
    */
-  static getStaticDir_CDN_Path(
+  public static getStaticDir_CDN_Path(
     localPath: string,              // 必须以【"/"】开头
     canUseCDN: boolean = true,      // TIP 部分资源，因技术限制，无法使用CDN。（比如iframe）
   ): string {
@@ -205,7 +205,7 @@ export class CDN_Helper {
   }
 
 
-  test____getStaticDir_CDN_Path() {
+  public test____getStaticDir_CDN_Path() {
     console.log('【测试CDN】assets', CDN_Helper._build_publicPath);
     // console.log('【测试CDN】static', CDN_Helper.getStaticDir_CDN_Path('/js/charting_library'));
     console.log('【测试CDN】static', CDN_Helper.getStaticDir_CDN_Path('/js/charting_library/'));
