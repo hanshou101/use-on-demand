@@ -70,6 +70,14 @@ class Plan_C_Info extends KInfo {
   }
 }
 
+class Plan_D_Info extends KInfo {
+
+
+  constructor(public KLines: number[]) {
+    super(KLines);
+  }
+}
+
 const cfg: Cfg = {
   onceInvestM  : 5000,
   // zhangPerCoin: 10000,
@@ -87,14 +95,18 @@ function go() {
   const data: Array<number> = mock.pingjunData();
   // const data: Array<number> = mock.pingjunData().reverse();
 
+  console.log('————————————————————————');
   planA(new Plan_A_Info(data), false);
   console.log('————————————————————————');
   planB(new Plan_B_Info(data));
   console.log('————————————————————————');
   planC(new Plan_C_Info(data));
+  console.log('————————————————————————');
+  planD(new Plan_D_Info(data));
 }
 
 function planA(kInfo: Plan_A_Info, useLastPrice = true) {
+  console.log('计划A');
   // cfg.sellPx = max;        // 最高价
   // cfg.sellPx = min;        // 最低价
   //
@@ -120,18 +132,18 @@ function planA(kInfo: Plan_A_Info, useLastPrice = true) {
   console.log(
     // [
     {
-      '长度'          : kInfo.length,
-      '平均价'         : kInfo.avgPrice,
-      '起始价'         : kInfo.first,
-      '最终价'         : kInfo.last,
-      '最高价'         : kInfo.max,
-      '最低价'         : kInfo.min,
-      '合计持币数': kInfo.sumHoldVol,
-      '购买平均成本'      : kInfo.perCoinCnyCost,
-      '卖出价格'        : sellPx,
-      '投入成本'        : kInfo.investCNY,
-      '回归结果'        : CNY_Result,
-      '收益比'         : CNY_Result / kInfo.investCNY,
+      '长度'    : kInfo.length,
+      '平均价'   : kInfo.avgPrice,
+      '起始价'   : kInfo.first,
+      '最终价'   : kInfo.last,
+      '最高价'   : kInfo.max,
+      '最低价'   : kInfo.min,
+      '合计持币数' : kInfo.sumHoldVol,
+      '购买平均成本': kInfo.perCoinCnyCost,
+      '卖出价格'  : sellPx,
+      '投入成本'  : kInfo.investCNY,
+      '回归结果'  : CNY_Result,
+      '收益比'   : CNY_Result / kInfo.investCNY,
     },
     // ]
   );
@@ -140,6 +152,7 @@ function planA(kInfo: Plan_A_Info, useLastPrice = true) {
 
 
 function planB(kInfo: Plan_B_Info) {
+  console.log('计划B');
   const duoRes: DuoKong = (function () {
     const finalPrice_duo = kInfo.last;    // 多的最后卖价
     return {
@@ -175,21 +188,21 @@ function planB(kInfo: Plan_B_Info) {
     // [
     // JSON.stringify(
     {
-      '长度'          : kInfo.length,
-      '平均价'         : kInfo.avgPrice,
-      '起始价'         : kInfo.first,
-      '最终价'         : kInfo.last,
-      '最高价'         : kInfo.max,
-      '最低价'         : kInfo.min,
-      '合计持币数': kInfo.sumHoldVol,
-      '购买平均成本'      : kInfo.perCoinCnyCost,
-      '最后处理价格'      : {
+      '长度'    : kInfo.length,
+      '平均价'   : kInfo.avgPrice,
+      '起始价'   : kInfo.first,
+      '最终价'   : kInfo.last,
+      '最高价'   : kInfo.max,
+      '最低价'   : kInfo.min,
+      '合计持币数' : kInfo.sumHoldVol,
+      '购买平均成本': kInfo.perCoinCnyCost,
+      '最后处理价格': {
         多: duoRes.finalPrice,
         空: kongRes.finalPrice,
       },
-      '投入成本'        : cost,
-      '回归结果'        : bonus,
-      '收益比'         : earnRatio,
+      '投入成本'  : cost,
+      '回归结果'  : bonus,
+      '收益比'   : earnRatio,
     },
     // null, 2)
     // ]
@@ -201,6 +214,7 @@ function planB(kInfo: Plan_B_Info) {
  * 准备，用【零仓开买】和【满仓开卖】，来执行。
  */
 function planC(kInfo: Plan_C_Info) {
+  console.log('计划C');
   const duoRes: DuoKong = (function () {
     const finalPrice_duo = kInfo.last;    // 多的最后卖价
     return {
@@ -239,21 +253,140 @@ function planC(kInfo: Plan_C_Info) {
     // [
     // JSON.stringify(
     {
-      '长度'          : kInfo.length,
-      '平均价'         : kInfo.avgPrice,
-      '起始价'         : kInfo.first,
-      '最终价'         : kInfo.last,
-      '最高价'         : kInfo.max,
-      '最低价'         : kInfo.min,
-      '合计持币数': kInfo.sumHoldVol,
-      '购买平均成本'      : kInfo.perCoinCnyCost,
-      '最后处理价格'      : {
+      '长度'    : kInfo.length,
+      '平均价'   : kInfo.avgPrice,
+      '起始价'   : kInfo.first,
+      '最终价'   : kInfo.last,
+      '最高价'   : kInfo.max,
+      '最低价'   : kInfo.min,
+      '合计持币数' : kInfo.sumHoldVol,
+      '购买平均成本': kInfo.perCoinCnyCost,
+      '最后处理价格': {
         多: duoRes.finalPrice,
         空: kongRes.finalPrice,
       },
-      '投入成本'        : cost,
-      '回归结果'        : bonus,
-      '收益比'         : earnRatio,
+      '投入成本'  : cost,
+      '回归结果'  : bonus,
+      '收益比'   : earnRatio,
+    },
+    // null, 2)
+    // ]
+  );
+}
+
+/**
+ * 修正了【planC】的一些错误。
+ *        1.【planC】考虑的过于理想化。是【从后往前】倒推的形式.
+ */
+function planD(kInfo: Plan_D_Info) {
+  console.log('计划D');
+  const duoRes: DuoKong = (function () {
+    const finalPrice_duo = kInfo.last;    // 多的最后卖价
+    return {
+      totalBuyCny : kInfo.investCNY,                    // 先买
+      totalSellCny: kInfo.sumHoldVol * finalPrice_duo,  // 后卖
+      finalPrice  : finalPrice_duo,
+    };
+  })();
+
+  /**
+   * 先满空仓（卖出），然后再逐步减仓（买入）
+   *        1.第一次卖出后，拿到的【合约张数】是一定的。
+   *        2.之后每天，用【同样的CNY】消化掉【部分合约张数】。
+   *                1.价格越低，则消化掉的【张数】越多。
+   *        3.一直持续。
+   *                1.一直到【消化】完后，计算一下  【总卖价值】和【总买价值】  的多少。
+   *                2.所以，也就是说。【时间】这个项，是没有办法预计的。
+   *                        1.【时间】，是一个不确定项。
+   *        4.
+   */
+  const kongRes: DuoKong = (function () {
+    const beginPrice_Kong = kInfo.first;   // 空的一开始买价
+    const real_sumHoldVol = kInfo.length * cfg.onceInvestM / kInfo.first;  // 总计【真实】购买数量。
+
+    const predicate_sumHoldVol = kInfo.sumHoldVol;                              // 预计中【计划】购买数量。
+
+    // 购买进程
+    const buyProgress = kInfo.KLines.reduce((preObj, curItem) => {
+      let buyTimes = preObj.buyTimes;
+
+      if (preObj.remainVol === 0) {      // 已经【提前】买完。
+
+      } else {                           // 仍然可买。
+        buyTimes++;
+      }
+
+      let onceVol = cfg.onceInvestM / curItem;   // 单次买入量
+      let onceCNY = cfg.onceInvestM;             // 单次买入的CNY价值
+
+      if (preObj.remainVol < onceVol) {            // 如果不够买【一整次】。
+        if (preObj.remainVol > 0) {                                                                   // 减少日志次数
+          console.log('数量已不足以，买一整次', '剩余数量', preObj.remainVol, '想要采购数量', onceVol);
+        }
+        onceVol = preObj.remainVol;
+        onceCNY = onceVol * curItem;
+      }
+
+      return {
+        remainVol : preObj.remainVol - onceVol,  // 合约张数变少
+        buyCNY_sum: preObj.buyCNY_sum + onceCNY,                       // 买入上已花的CNY
+        // buyTimes  : preObj.buyTimes,    // 这里用【自加】好像不太好？所以拆开用【+1】。
+        buyTimes,
+      };
+    }, {
+      remainVol : real_sumHoldVol,
+      buyCNY_sum: 0,
+      buyTimes  : 0,
+    });
+
+    console.log(`空仓，分${buyProgress.buyTimes}次，全买完`);
+
+    if (buyProgress.remainVol > 0) {
+      console.error(`经历过${kInfo.length}天后，仍未买完，剩余`, `合约数：${buyProgress.remainVol}。`, `以最终价计，钱数：${-1 * buyProgress.remainVol * kInfo.last}`);
+    }
+
+    return {
+      totalSellCny: kInfo.investCNY,                    // 先卖。卖出的份额，是一定的。
+      totalBuyCny : buyProgress.buyCNY_sum,  // 后买
+      finalPrice  : beginPrice_Kong,
+    };
+  })();
+
+  // 投入成本
+  const cost      = {
+    多: duoRes.totalBuyCny,
+    空: kongRes.totalSellCny,
+  };
+  // 所得收益
+  const bonus     = {
+    多: duoRes.totalSellCny - duoRes.totalBuyCny,
+    空: kongRes.totalSellCny - kongRes.totalBuyCny,
+  };
+  //
+  const earnRatio = {
+    多: bonus.多 / cost.多,
+    空: bonus.空 / cost.空,
+    总: (bonus.多 + bonus.空) / (cost.多 + cost.空),
+  };
+  console.log(
+    // [
+    // JSON.stringify(
+    {
+      '长度'      : kInfo.length,
+      '平均价'     : kInfo.avgPrice,
+      '起始价'     : kInfo.first,
+      '最终价'     : kInfo.last,
+      '最高价'     : kInfo.max,
+      '最低价'     : kInfo.min,
+      '合计持币数'   : kInfo.sumHoldVol,
+      '购买平均成本'  : kInfo.perCoinCnyCost,
+      '最后处理价格'  : {
+        多: duoRes.finalPrice,
+        空: kongRes.finalPrice,
+      },
+      '投入成本'    : cost,
+      '回归结果（盈利）': bonus,
+      '收益比'     : earnRatio,
     },
     // null, 2)
     // ]
