@@ -98,6 +98,8 @@ export class DomStyle_Helper {
     const res = {
       eB2wB: wAttr.visibleH - domAttr.posit.top - domAttr.oHeight,  // 元素底部，到 Window可见区域 底部
       eR2wR: wAttr.visibleW - domAttr.posit.left - domAttr.oWidth,  // 元素右侧，到 Window可见区域 右侧
+      domAttr,
+      wAttr,
     };
     console.log('距离下方、右方距离', res);
     return res;
