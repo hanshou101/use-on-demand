@@ -7,11 +7,18 @@
 //   }
 // }
 
-import {PropOptions} from 'vue';
-import {Vue}         from 'vue/types/vue';
+import {PropOptions}                         from 'vue';
+import {Vue}                                 from 'vue/types/vue';
+import {VueConstructor}                      from 'vue';
+import {DirectiveFunction, DirectiveOptions} from 'vue/types/options';
+
 
 declare global {
   type PropOptionsType<T> = PropOptions<T>;
 
   type Vue_Type = Vue;
+
+  type VueConstructor_Type = VueConstructor;
+
+  type VueDirective_Type = DirectiveFunction | DirectiveOptions;
 }
