@@ -1,4 +1,3 @@
-
 @import "less-vars.diy";
 
 // TIP——————————————————————————————————————————————
@@ -245,7 +244,6 @@
 }
 
 
-
 /**
  * TIP 为【弹窗-不再显示】的勾选框，统一更换图片
  *      0.参考资料：[less新手入门（二） Mixin 混合、带参数的Mixin - 沉着前进 - 博客园](https://www.cnblogs.com/fighxp/p/8075200.html)
@@ -326,7 +324,7 @@
 }
 
 /**
- * 思路，写一个自定义函数，将rem转为vh。
+ * TIP 思路，写一个自定义函数，将rem转为vh。
  */
 @trans2VhHeight_Fn : ~`trans2VhHeight_Fn = function( originRemH ) {
     // return originRemH / @{ImgHeight} * 100 + '%';  // 支持百分比
@@ -334,6 +332,9 @@
 } `;
 
 
+/**
+ * TIP 完全居中
+ */
 .absoluteCenter(
   @Hori:true,
   @Vert:true
@@ -359,3 +360,47 @@
 }
 
 
+/**
+ * TIP 完全的【暗黑模式】。
+ */
+.darkMode(
+  @NeedTransition :true // 是否需要【切换过渡效果】
+) {
+  @media (prefers-color-scheme : dark) {
+    html {
+      /**
+       * TIP 自身属性。
+       */
+      & {
+        filter : //
+          /**
+           * 反转输入图像。
+           *        1.值定义转换的比例。100%（或1）将完全转换：黑色变为白色，白色变为黑色，其它颜色类似。
+           */ invert(1) //
+          /**
+           * 可以帮助我们处理非黑白的其它颜色，色调旋转180度。
+           *        1.确保网页的颜色主题不改变，而只是削弱它的颜色。
+           */ hue-rotate(180deg);
+        
+        & when ( @NeedTransition = true) { // 当开关开启时
+          // 过渡效果
+          transition : color 300ms, background-color 300ms;
+        }
+      }
+      
+      /**
+       * TIP 需要将页面中所有的图像添加相同的规则，以修复这个问题。
+       */
+      img {
+        filter : invert(1) hue-rotate(180deg);
+      }
+    }
+    
+    /**
+     * TIP 与上同理，我们可以给a标签也加上反转。
+     */
+    a {
+      filter : invert(1) hue-rotate(180deg);
+    }
+  }
+}
