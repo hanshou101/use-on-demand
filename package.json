@@ -30,6 +30,8 @@
     "jszip": "3.5.0",
     "koa": "2.13.0",
     "nuxt": "2.14.1",
+    "reflect-metadata": "0.1.13",
+    "typed-vuex": "0.1.20",
     "vue": "2.6.11",
     "vue-property-decorator": "9.0.0",
     "vue-class-component": "7.2.5",
@@ -37,7 +39,6 @@
     "vue-i18n": "8.20.0",
     "vuex": "3.5.1",
     "vue-router": "3.4.2",
-    "typed-vuex": "0.1.20",
     "xlsx": "0.16.5"
   },
   "devDependencies": {
