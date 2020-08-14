@@ -1,3 +1,9 @@
+/**
+ *  TODO 一些可以优化的点：
+ *          1.【常用函数】，在合适的时机，可以考虑换成【lodash】所采用的方法。
+ *          2.
+ */
+
 export class CDecoratorU {
   /**
    * 应用于成员方法之上
@@ -110,7 +116,34 @@ export class CDecoratorU {
     // TODO 暂时还没想好。
   }
 
+
+  /**
+   * Loading加载提示
+   */
+  public static loading() {
+
+  }
+
+  /**
+   * 确认框
+   */
+  public static ConfirmDialog() {
+
+  }
+
 }
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 class CDecoratorU_Helper {
   // TIP——————————————————————————————————内部方法————————————————————————————————————
