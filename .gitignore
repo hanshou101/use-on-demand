@@ -1,3 +1,4 @@
-.idea/
+# .idea/ # TIP 这一条，最好还是加上！
+
 node_modules/
 package-lock.json

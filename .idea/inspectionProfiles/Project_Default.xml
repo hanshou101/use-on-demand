@@ -1,0 +1,43 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="CssBrowserCompatibilityForProperties" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myChromeVersion" value="65" />
+      <option name="myEdgeVersion" value="15" />
+      <option name="myOperaVersion" value="50" />
+      <option name="mySafariVersion" value="11" />
+    </inspection_tool>
+    <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="12">
+            <item index="0" class="java.lang.String" itemvalue="nobr" />
+            <item index="1" class="java.lang.String" itemvalue="noembed" />
+            <item index="2" class="java.lang.String" itemvalue="comment" />
+            <item index="3" class="java.lang.String" itemvalue="noscript" />
+            <item index="4" class="java.lang.String" itemvalue="embed" />
+            <item index="5" class="java.lang.String" itemvalue="script" />
+            <item index="6" class="java.lang.String" itemvalue="userlevel_1_relationlist" />
+            <item index="7" class="java.lang.String" itemvalue="userlevel_2_relationlist" />
+            <item index="8" class="java.lang.String" itemvalue="userlevel_3_relationlist" />
+            <item index="9" class="java.lang.String" itemvalue="userlevel_all_relationlist" />
+            <item index="10" class="java.lang.String" itemvalue="myformeasy" />
+            <item index="11" class="java.lang.String" itemvalue="markdown-editor" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="JSCheckFunctionSignatures" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="JSDeprecatedSymbols" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="JSUnresolvedFunction" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="JSValidateJSDoc" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="JSValidateTypes" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="PointlessArithmeticExpressionJS" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
+    <inspection_tool class="TsLint" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="UnnecessaryLocalVariableJS" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="m_ignoreImmediatelyReturnedVariables" value="false" />
+      <option name="m_ignoreAnnotatedVariables" value="false" />
+    </inspection_tool>
+  </profile>
+</component>
