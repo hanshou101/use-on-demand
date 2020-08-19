@@ -23,7 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef50c5e1-1d89-40f8-8a8b-16f1575a0565" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swap/CalcReturnTest/swap.bgex.com.ts" beforeDir="false" afterPath="$PROJECT_DIR$/swap/CalcReturnTest/swap.bgex.com.ts" afterDir="false" />
     </list>
     <list id="9975eedd-c2e3-4d6d-ab6a-d1e50a3dbd98" name="Revert &quot;1.0.2&quot;" comment="Revert &quot;1.0.2&quot;&#10;&#10;This reverts commit 903c43b4" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +98,7 @@
       <recent name="D:\Program_Files\JetBrains_ToolBox\projects\WebStorm\use-on-demand\gen\demo\tpl" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.德州扑克.js">
+  <component name="RunManager" selected="npm.CalcReturnTest">
     <configuration name="TS测试" type="NodeJSConfigurationType" node-parameters="--require ts-node/register" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/CalcReturnTest/swap.bgex.com.ts" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
@@ -154,9 +155,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.CalcReturnTest" />
         <item itemvalue="Node.js.德州扑克.js" />
         <item itemvalue="npm.vue.serve" />
-        <item itemvalue="npm.CalcReturnTest" />
         <item itemvalue="npm.vue.lint" />
         <item itemvalue="npm.combine-tsc-uglifyjs" />
       </list>
@@ -214,14 +215,7 @@
       <workItem from="1597374841521" duration="4480000" />
       <workItem from="1597393884970" duration="9422000" />
       <workItem from="1597631768950" duration="7242000" />
-      <workItem from="1597666185839" duration="2407000" />
-    </task>
-    <task id="LOCAL-00005" summary="① 尝试进行新的提交。">
-      <created>1596077997831</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1596077997831</updated>
+      <workItem from="1597666185839" duration="7884000" />
     </task>
     <task id="LOCAL-00006" summary="① 规范化，规划了一些工程项目的结构。">
       <created>1596078516949</created>
@@ -559,7 +553,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597635511661</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="① 将【项目偏好】，添加进Git记录之中。（便于优化、同步）">
+      <created>1597732238904</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1597732238904</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -586,7 +587,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="① 增加了部分代码。" />
     <MESSAGE value="① 增加注释，修改了部分命名。" />
     <MESSAGE value="① 新增了一些模块。" />
     <MESSAGE value="① 增加了一些，判断【bp视口断点】的工具。" />
@@ -611,7 +611,8 @@
     <MESSAGE value="① 添加了【Vue指令】的一些工具类。 ② 重新排列了【Vue Filter】相关的结构。" />
     <MESSAGE value="① 添加了【暗黑模式】的CSS支持。" />
     <MESSAGE value="① 添加了【时间日期】的一部分工具。" />
-    <option name="LAST_COMMIT_MESSAGE" value="① 添加了【时间日期】的一部分工具。" />
+    <MESSAGE value="① 将【项目偏好】，添加进Git记录之中。（便于优化、同步）" />
+    <option name="LAST_COMMIT_MESSAGE" value="① 将【项目偏好】，添加进Git记录之中。（便于优化、同步）" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2575" y="-502" key="#Inspections" timestamp="1597225627068">
@@ -636,11 +637,11 @@
       <screen x="1920" y="-1163" width="2160" height="3800" />
     </state>
     <state x="2758" y="-563" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.-1163.2160.3800@1920.-1163.2160.3800" timestamp="1596623769534" />
-    <state x="2254" y="-1020" width="1722" height="3407" key="CommitChangelistDialog2" timestamp="1597635510427">
+    <state x="2254" y="-1020" width="1722" height="3407" key="CommitChangelistDialog2" timestamp="1597732237468">
       <screen x="1920" y="-1163" width="2160" height="3800" />
     </state>
     <state x="297" y="39" key="CommitChangelistDialog2/0.0.1920.1040/1920.-1163.2160.3800@0.0.1920.1040" timestamp="1597393785626" />
-    <state x="2254" y="-1020" width="1722" height="3407" key="CommitChangelistDialog2/0.0.1920.1040/1920.-1163.2160.3800@1920.-1163.2160.3800" timestamp="1597635510427" />
+    <state x="2254" y="-1020" width="1722" height="3407" key="CommitChangelistDialog2/0.0.1920.1040/1920.-1163.2160.3800@1920.-1163.2160.3800" timestamp="1597732237468" />
     <state x="2024" y="-827" width="1953" height="3128" key="DiffContextDialog" timestamp="1597045400395">
       <screen x="1920" y="-1163" width="2160" height="3800" />
     </state>
@@ -651,26 +652,26 @@
     </state>
     <state x="687" y="199" key="FileChooserDialogImpl/0.0.1920.1040/1920.-1163.2160.3800@0.0.1920.1040" timestamp="1595921568354" />
     <state x="2693" y="-436" key="FileChooserDialogImpl/0.0.1920.1040/1920.-1163.2160.3800@1920.-1163.2160.3800" timestamp="1597378690367" />
-    <state width="1894" height="810" key="GridCell.Tab.0.bottom" timestamp="1597629921494">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2134" height="1105" key="GridCell.Tab.0.bottom" timestamp="1597739058049">
+      <screen x="1920" y="-1163" width="2160" height="3800" />
     </state>
     <state width="1894" height="810" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-1163.2160.3800@0.0.1920.1040" timestamp="1597629921494" />
-    <state width="2134" height="869" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-1163.2160.3800@1920.-1163.2160.3800" timestamp="1597454982321" />
-    <state width="1894" height="810" key="GridCell.Tab.0.center" timestamp="1597629921494">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2134" height="1105" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-1163.2160.3800@1920.-1163.2160.3800" timestamp="1597739058049" />
+    <state width="2134" height="1105" key="GridCell.Tab.0.center" timestamp="1597739058049">
+      <screen x="1920" y="-1163" width="2160" height="3800" />
     </state>
     <state width="1894" height="810" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-1163.2160.3800@0.0.1920.1040" timestamp="1597629921494" />
-    <state width="2134" height="869" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-1163.2160.3800@1920.-1163.2160.3800" timestamp="1597454982320" />
-    <state width="1894" height="810" key="GridCell.Tab.0.left" timestamp="1597629921494">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2134" height="1105" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-1163.2160.3800@1920.-1163.2160.3800" timestamp="1597739058049" />
+    <state width="2134" height="1105" key="GridCell.Tab.0.left" timestamp="1597739058049">
+      <screen x="1920" y="-1163" width="2160" height="3800" />
     </state>
     <state width="1894" height="810" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-1163.2160.3800@0.0.1920.1040" timestamp="1597629921494" />
-    <state width="2134" height="869" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-1163.2160.3800@1920.-1163.2160.3800" timestamp="1597454982320" />
-    <state width="1894" height="810" key="GridCell.Tab.0.right" timestamp="1597629921494">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2134" height="1105" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-1163.2160.3800@1920.-1163.2160.3800" timestamp="1597739058049" />
+    <state width="2134" height="1105" key="GridCell.Tab.0.right" timestamp="1597739058049">
+      <screen x="1920" y="-1163" width="2160" height="3800" />
     </state>
     <state width="1894" height="810" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-1163.2160.3800@0.0.1920.1040" timestamp="1597629921494" />
-    <state width="2134" height="869" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-1163.2160.3800@1920.-1163.2160.3800" timestamp="1597454982321" />
+    <state width="2134" height="1105" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-1163.2160.3800@1920.-1163.2160.3800" timestamp="1597739058049" />
     <state x="2167" y="-493" key="MergeDialog" timestamp="1596452630567">
       <screen x="1920" y="-1163" width="2160" height="3800" />
     </state>
@@ -712,11 +713,11 @@
     </state>
     <state x="357" y="41" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/1920.-1163.2160.3800@0.0.1920.1040" timestamp="1595923234029" />
     <state x="2322" y="-1013" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/1920.-1163.2160.3800@1920.-1163.2160.3800" timestamp="1597395103173" />
-    <state x="2854" y="-449" width="1126" height="2441" key="find.popup" timestamp="1597732162881">
+    <state x="2854" y="-449" width="1126" height="2441" key="find.popup" timestamp="1597732265779">
       <screen x="1920" y="-1163" width="2160" height="3800" />
     </state>
     <state x="586" y="186" width="748" height="668" key="find.popup/0.0.1920.1040/1920.-1163.2160.3800@0.0.1920.1040" timestamp="1597631848522" />
-    <state x="2854" y="-449" width="1126" height="2441" key="find.popup/0.0.1920.1040/1920.-1163.2160.3800@1920.-1163.2160.3800" timestamp="1597732162881" />
+    <state x="2854" y="-449" width="1126" height="2441" key="find.popup/0.0.1920.1040/1920.-1163.2160.3800@1920.-1163.2160.3800" timestamp="1597732265779" />
     <state x="2571" y="284" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1596183878531">
       <screen x="1920" y="-1163" width="2160" height="3800" />
     </state>
@@ -730,10 +731,10 @@
       <screen x="1920" y="-1163" width="2160" height="3800" />
     </state>
     <state x="3132" y="529" width="570" height="497" key="scopes/0.0.1920.1040/1920.-1163.2160.3800@1920.-1163.2160.3800" timestamp="1597732136785" />
-    <state x="2579" y="-724" width="840" height="1034" key="search.everywhere.popup" timestamp="1597399826738">
-      <screen x="1920" y="-1163" width="2160" height="3800" />
+    <state x="586" y="120" width="840" height="283" key="search.everywhere.popup" timestamp="1597735475102">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="586" y="120" width="840" height="283" key="search.everywhere.popup/0.0.1920.1040/1920.-1163.2160.3800@0.0.1920.1040" timestamp="1597145552980" />
+    <state x="586" y="120" width="840" height="283" key="search.everywhere.popup/0.0.1920.1040/1920.-1163.2160.3800@0.0.1920.1040" timestamp="1597735475102" />
     <state x="2579" y="-724" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1040/1920.-1163.2160.3800@1920.-1163.2160.3800" timestamp="1597399826738" />
   </component>
 </project>
