@@ -404,9 +404,9 @@ function planD(kInfo: Plan_D_Info) {
   };
   //
   const earnRatio = {
-    多        : bonus.多 / cost.多,
-    空        : bonus.空 / cost.空,
-    空仓额外亏损   : extraLoose / cost.空,
+    '多'      : bonus.多 / cost.多,
+    '空'      : bonus.空 / cost.空,
+    '空仓额外亏损' : extraLoose / cost.空,
     '总(不计额外)': (bonus.多 + bonus.空) / (cost.多 + cost.空),
   };
 

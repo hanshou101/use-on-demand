@@ -16,7 +16,7 @@
 <script lang="ts">
 
 import BaseVue, {MixinLevelTag, MyComponent, MyProp} from '../../../admin/mixins/BaseVue';
-import {ElTItem}                                     from '../ElTItem';
+import {Abs_ElTItem}                                 from '../ElTItem';
 
   @MyComponent({
     name: 'ElTableItem_DetailInfo',
@@ -26,7 +26,7 @@ import {ElTItem}                                     from '../ElTItem';
   export default class ElTableItem_DetailInfo extends BaseVue {
     // TIP————————————————————————————————————Prop，从外界传入的只读属性—————————————————————————————————
     @MyProp({type: Object, required: true}) row!: IndexedObj;
-    @MyProp({type: Object, required: true}) item!: ElTItem.DetailInfo;
+    @MyProp({type: Object, required: true}) item!: Abs_ElTItem.DetailInfo;
     @MyProp({type: Array, required: true}) pairs!: Array<DetailInfoPair>;
 
 

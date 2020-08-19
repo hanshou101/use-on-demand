@@ -30,7 +30,7 @@ export type MyBase_Static_MethodDecorator = (
 // TODO 【实例方法】：
 // 注意，【getter、setter访问器】方法，也是和【实例方法】一模一样。
 export type MyBase_Instance_MethodDecorator = (
-  classPrototype: Object,   // 对于实例方法来说，是类的原型对象。（即，包括了所有的实例方法、以及 构造函数 ）
+  classPrototype: {},   // 对于实例方法来说，是类的原型对象。（即，包括了所有的实例方法、以及 构造函数 ）
   memberKeyName: string,   // 实例方法的函数名字
   memberValueDescriptor: PropertyDescriptor,  // 对于一个对象内部属性值，内部的属性描绘符。（参见JS高程）
 ) => void;
@@ -47,7 +47,7 @@ export type MyBase_Static_PropertyVariableDecorator = (
 
 // TODO 【实例属性变量】：
 export type MyBase_Instance_PropertyVariableDecorator = (
-  classPrototype: Object,     // 同【实例方法】
+  classPrototype: {},     // 同【实例方法】
   memberKeyName: string,      // 同【实例方法】
 ) => void;
 
@@ -64,7 +64,7 @@ export interface MyBase_Static_FormalParam_Decorator {
 
 // TODO 【实例方法-形式参数】：
 export interface MyBase_Instance_FormalParam_Decorator {
-  classPrototype: Object;     // 同【实例方法】
+  classPrototype: {};     // 同【实例方法】
   paramName: string;      // 同【实例方法】
   paramIndex_inList: number;        // 当前形式参数，在【参数列表】中所处的索引位置。（0到length-1）
 }
@@ -84,18 +84,18 @@ export interface MyBase_Instance_FormalParam_Decorator {
 import 'reflect-metadata';
 
 const meta: MyBase_Instance_MethodDecorator = function (
-  classPrototype: Object,
+  classPrototype: {},
   memberKeyName: string,
   memberValueDescriptor: PropertyDescriptor,
 ) {
   // 获取成员类型（指定成员）
-  const type = Reflect.getMetadata('design:type', classPrototype, memberKeyName);
+  const type       = Reflect.getMetadata('design:type', classPrototype, memberKeyName);
   // 获取成员参数类型（指定成员）
   const paramtypes = Reflect.getMetadata('design:paramtypes', classPrototype, memberKeyName);
   // 获取成员返回类型（指定成员）
   const returntype = Reflect.getMetadata('design:returntype', classPrototype, memberKeyName);
   // 获取所有元数据key（由TypeScript 注入）
-  const keys = Reflect.getMetadataKeys(classPrototype, memberKeyName);
+  const keys       = Reflect.getMetadataKeys(classPrototype, memberKeyName);
 
   console.log(keys);  // [ 'design:returntype', 'design:paramtypes', 'design:type' ]
 
@@ -109,7 +109,7 @@ const meta: MyBase_Instance_MethodDecorator = function (
 
 class ReflectTest {
   @meta   // 使用该注解，打印出：该函数【所处的Class类型】，以及函数的【参数列表类型】、【返回类型】、【元数据】
-  public test (num: number) {
+  public test(num: number) {
     return num + '';
   }
 }

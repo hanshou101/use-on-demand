@@ -36,7 +36,7 @@ export class CDecoratorU {
         return result;
       };
     };
-  };
+  }
 
 
   /**
