@@ -181,4 +181,44 @@ export class DomStyle_Helper {
   }
 
 
+  /**
+   * 浏览器，是否支持【某个CSS属性】
+   */
+
+  public isSupport_CssProperty(key: string): string | undefined {
+    const jsKey = toCamelCase(key); // 有些css属性是连字符号形成
+    if (jsKey in document.documentElement.style) {
+      return key;
+    }
+    let validKey;
+    // 属性名为前缀在js中的形式，属性值是前缀在css中的形式
+    // 经尝试，Webkit 也可是首字母小写 webkit
+    const prefixMap = {
+      Webkit: '-webkit-',
+      Moz   : '-moz-',
+      ms    : '-ms-',
+      O     : '-o-',
+    };
+    type prefixMap_KeyType = keyof typeof prefixMap;
+    for (const jsPrefix in prefixMap) {
+      if (prefixMap.hasOwnProperty(jsPrefix)) {
+        const styleKey = toCamelCase(`${jsPrefix}-${jsKey}`);
+        if (styleKey in document.documentElement.style) {
+          validKey = prefixMap[(jsPrefix as prefixMap_KeyType)] + key;
+          break;
+        }
+      }
+    }
+    return validKey;
+  }
+
+}
+
+/**
+ * 把有连字符号的字符串转化为驼峰命名法的字符串
+ */
+function toCamelCase(str: string) {
+  return str.replace(/-(\w)/g, (matched, letter) => {
+    return letter.toUpperCase();
+  });
 }
