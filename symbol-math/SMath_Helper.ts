@@ -1,4 +1,3 @@
-type NumOrStr = number | string;
 
 export class SMath_Helper {
 

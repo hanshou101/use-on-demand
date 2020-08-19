@@ -144,5 +144,26 @@ export class SString_Helper {
     };
   }
 
+  /**
+   * 文本超出内容，用【省略号】代替
+   */
+  public static ellipsisText(text: string, num = text.length) {
+    const subStr = text.substring(0, num);
+    return subStr + (text.length > num ? ' ... ' : '');
+  }
+
+  /**
+   * 数字超过指定大小，如【99】后；用【99+】代替
+   */
+  public static outOfNum_99plus(_num: NumOrStr, _maxNum: NumOrStr) {
+    const num    = _num ? parseFloat(_num) : 0;
+    const maxNum = parseFloat(_maxNum);
+    if (num > maxNum) {
+      return `${maxNum}+`;
+    } else {
+      return num;
+    }
+  }
+
 
 }
