@@ -1,4 +1,80 @@
+type NumOrStr = number | string;
+
 export class SMath_Helper {
+
+  /**
+   * 精确计算
+   */
+  public precision = {
+    // 乘法
+    times(_num1: NumOrStr, _num2: NumOrStr, ...others: Array<NumOrStr>): number {
+      if (others.length > 0) {
+        // @ts-ignore
+        return this.times(this.times(num1, num2), ...others);
+      }
+      const num1        = parseFloat(_num1) || 0;
+      const num2        = parseFloat(_num2) || 0;
+      const num1Changed = this.float2Fixed(num1);
+      const num2Changed = this.float2Fixed(num2);
+      // 把两个数的小数位数相加
+      const baseNum     = this.digitLength(num1) + this.digitLength(num2);
+      const leftValue   = num1Changed * num2Changed;
+      // this.checkBoundary(leftValue)
+      return leftValue / Math.pow(10, baseNum);
+    },
+    // 精确加法
+    plus(num1: NumOrStr, num2: NumOrStr, ...others: Array<NumOrStr>): number {
+      if (others.length > 0) {
+        // @ts-ignore
+        return this.plus(this.plus(num1, num2), ...others);
+      }
+      const baseNum = Math.pow(
+        10,
+        Math.max(this.digitLength(num1), this.digitLength(num2)),
+      );
+      return (this.times(num1, baseNum) + this.times(num2, baseNum)) / baseNum;
+    },
+    // 精确减法
+    minus(num1: NumOrStr, num2: NumOrStr, ...others: Array<NumOrStr>): number {
+      if (others.length > 0) {
+        // @ts-ignore
+        return this.minus(this.minus(num1, num2), ...others);
+      }
+      const baseNum = Math.pow(
+        10,
+        Math.max(this.digitLength(num1), this.digitLength(num2)),
+      );
+      return (this.times(num1, baseNum) - this.times(num2, baseNum)) / baseNum;
+    },
+    // 精确除法
+    divide(num1: NumOrStr, num2: NumOrStr, ...others: Array<NumOrStr>): number {
+      if (others.length > 0) {
+        // @ts-ignore
+        return this.divide(this.divide(num1, num2), ...others);
+      }
+      const num1Change = this.float2Fixed(parseFloat(num1));
+      const num2Change = this.float2Fixed(parseFloat(num2));
+      return this.times(
+        num1Change / num2Change,
+        Math.pow(10, this.digitLength(num2) - this.digitLength(num1)),
+      );
+    },
+    // 把小数转成整数，支持科学计数法。如果是小数则放大成整数
+    float2Fixed(num: number) {
+      if (!num.toString().includes('e')) {        // 如果【没找到】，才执行
+        return Number(num.toString().replace('.', ''));
+      }
+      const dlen = this.digitLength(num);
+      return dlen > 0 ? num * Math.pow(10, dlen) : num;
+    },
+    // 获取当前数小数位的长度(处理科学计数法，本质上处理e-n的情况)
+    digitLength(num: NumOrStr) {
+      const eSplit = num.toString().split(/[eE]/);
+      const len    = (eSplit[0].split('.')[1] || '').length - (+eSplit[1] || 0);
+      return len > 0 ? len : 0;
+    },
+  };
+
   /**
    * 科学计数法转化的工具。
    */
