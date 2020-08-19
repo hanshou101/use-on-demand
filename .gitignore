@@ -1,4 +1,5 @@
 # .idea/ # TIP 这一条，最好还是加上！
+.idea/workspace.xml
 
 node_modules/
 package-lock.json

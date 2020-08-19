@@ -23,6 +23,22 @@ export class SMath_Helper {
     sInt               = sInt.replace(/\d(?=(\d{3})+$)/g, '$&,');
     return sFloat ? `${sInt}.${sFloat}` : `${sInt}`;
   }
+
+  /**
+   * 随机整数。
+   */
+  public static randomInt(min: number, max: number) {
+    const zero_to_0999 = Math.random();    // 0 到 0.9999。
+    const range        = max - min;
+    const change       = zero_to_0999 * (range + 1);        // WHY 这句话看上去有问题。但实际好像是正确的？
+
+    return parseInt(change + min, 10);
+  }
+
+  /**
+   * TODO 随机小数[ 0.0 , 4.0 ]，这种方式？？？  似乎很难实现？？？
+   */
+
 }
 
 
