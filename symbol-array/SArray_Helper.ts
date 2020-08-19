@@ -171,4 +171,32 @@ export class SArray_Helper {
     return resultArr;
   }
 
+
+  /**
+   * 随机打乱数组。（洗牌）
+   *        1.参考资料：[javascript - How can I shuffle an array? - Stack Overflow](https://stackoverflow.com/a/6274381/6264260)
+   */
+  public shuffle_rtnNew(rawArr: Array<any>) {
+    let j;
+    let x;
+    let i;
+    const newArr = [...rawArr];
+
+    for (i = newArr.length - 1; i > 0; i--) {
+      j         = Math.floor(Math.random() * (i + 1));
+      x         = newArr[i];
+      newArr[i] = newArr[j];
+      newArr[j] = x;
+    }
+    return newArr;
+  }
+
+
+  /**
+   * 数组去重。
+   */
+  public noRepeat_rtnNew(rawArr: Array<any>) {
+    return [...new Set(rawArr)];    // 快速去重
+  }
+
 }
