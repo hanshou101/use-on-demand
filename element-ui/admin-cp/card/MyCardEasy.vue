@@ -32,8 +32,8 @@
 </template>
 <script lang="ts">
 
-import BaseVue, {MixinLevelTag, MyComponent, MyProp} from '../../../admin/mixins/BaseVue';
-import {MyEl_Cards}                                  from '../MyElementUtils';
+import Father_BaseVue, {MixinLevelTag, MyComponent, MyProp} from '../../../admin/mixins/Father_BaseVue';
+import {MyEl_Cards}                                         from '../MyElementUtils';
 
   @MyComponent({
     name:       "MyCardEasy",
@@ -44,7 +44,7 @@ import {MyEl_Cards}                                  from '../MyElementUtils';
   })
   // export default class HelloWorld extends BaseVueClass {
   export default class MyCardEasy
-    extends BaseVue {    // 混入在此处，进行添加。
+    extends Father_BaseVue {    // 混入在此处，进行添加。
     @MyProp({type: [Object], required: true,}) readonly baseInfo!: MyEl_Cards;
 
     // Data，在类中的实现 （双向绑定除外）

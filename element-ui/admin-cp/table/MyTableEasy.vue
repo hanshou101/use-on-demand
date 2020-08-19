@@ -1,8 +1,8 @@
 <script lang="ts">
 
 
-import BaseVue, {MixinLevelTag, MyComponent, MyProp} from '../../../admin/mixins/BaseVue';
-import ElTableItem_DetailInfo                        from './ElTableItem_DetailInfo.vue';
+import Father_BaseVue, {MixinLevelTag, MyComponent, MyProp} from '../../../admin/mixins/Father_BaseVue';
+import ElTableItem_DetailInfo                               from './ElTableItem_DetailInfo.vue';
 import {data_elTagColorFilter}                       from '../MyElementUtils';
 
 @MyComponent({
@@ -14,7 +14,7 @@ import {data_elTagColorFilter}                       from '../MyElementUtils';
   filters   : {},
 })
 // export default class HelloWorld extends BaseVueClass {
-export default class MyTableEasy extends BaseVue {    // 混入在此处，进行添加。
+export default class MyTableEasy extends Father_BaseVue {    // 混入在此处，进行添加。
   @MyProp({type: Array, required: true}) readonly tableCols!: [];
 
   // Data，在类中的实现 （双向绑定除外）

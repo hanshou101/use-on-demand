@@ -23,14 +23,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef50c5e1-1d89-40f8-8a8b-16f1575a0565" name="Default Changelist" comment="① 将【ElementUI - 数据驱动】，的命名空间，重命名，以规避  和现有命名 的冲突。">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decorator/common-decorator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/decorator/common-decorator.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decorator/experiment/decorator-experiment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/decorator/experiment/decorator-experiment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/components/WrapDropdown.vue" beforeDir="false" afterPath="$PROJECT_DIR$/admin/components/WrapDropdown.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/mixins/BaseVue.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/mixins/Father_BaseVue.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/mixins/CommonMixin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/mixins/Father_CommonMixin.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/mixins/DialogMixin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/mixins/Father_DialogMixin.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/mixins/ExportExcel_Mixin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin/mixins/Father_ExportExcel_Mixin.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/element-ui/admin-cp/ElFItem.ts" beforeDir="false" afterPath="$PROJECT_DIR$/element-ui/admin-cp/ElFItem.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/element-ui/admin-cp/ElTItem.ts" beforeDir="false" afterPath="$PROJECT_DIR$/element-ui/admin-cp/ElTItem.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/element-ui/admin-cp/card/MyCardEasy.vue" beforeDir="false" afterPath="$PROJECT_DIR$/element-ui/admin-cp/card/MyCardEasy.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/element-ui/admin-cp/card/StatisticalCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/element-ui/admin-cp/card/StatisticalCard.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/element-ui/admin-cp/form/MyFormEasy.vue" beforeDir="false" afterPath="$PROJECT_DIR$/element-ui/admin-cp/form/MyFormEasy.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/element-ui/admin-cp/multi-lang/MultiLangSimple.vue" beforeDir="false" afterPath="$PROJECT_DIR$/element-ui/admin-cp/multi-lang/MultiLangSimple.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/element-ui/admin-cp/table/ElTableItem_DetailInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/element-ui/admin-cp/table/ElTableItem_DetailInfo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/swap/CalcReturnTest/swap.bgex.com.ts" beforeDir="false" afterPath="$PROJECT_DIR$/swap/CalcReturnTest/swap.bgex.com.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/element-ui/admin-cp/table/MyTableEasy.vue" beforeDir="false" afterPath="$PROJECT_DIR$/element-ui/admin-cp/table/MyTableEasy.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/element-ui/admin-cp/upload/UploadSingleImg.vue" beforeDir="false" afterPath="$PROJECT_DIR$/element-ui/admin-cp/upload/UploadSingleImg.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ts/ts-types/element-ui/ElementUI.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts/ts-types/element-ui/ElementUI.d.ts" afterDir="false" />
     </list>
     <list id="9975eedd-c2e3-4d6d-ab6a-d1e50a3dbd98" name="Revert &quot;1.0.2&quot;" comment="Revert &quot;1.0.2&quot;&#10;&#10;This reverts commit 903c43b4" />
@@ -222,14 +228,7 @@
       <workItem from="1597374841521" duration="4480000" />
       <workItem from="1597393884970" duration="9422000" />
       <workItem from="1597631768950" duration="7242000" />
-      <workItem from="1597666185839" duration="11384000" />
-    </task>
-    <task id="LOCAL-00007" summary="① 增加了一项，BootStrap的row、col结构。">
-      <created>1596091346282</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1596091346282</updated>
+      <workItem from="1597666185839" duration="11795000" />
     </task>
     <task id="LOCAL-00008" summary="① 增加了部分方法、CSS。">
       <created>1596099720431</created>
@@ -567,7 +566,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597802673121</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="① 将【ElementUI - 数据驱动】，的命名空间，重命名，以规避  和现有命名 的冲突。">
+      <created>1597829104733</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1597829104733</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -644,11 +650,11 @@
       <screen x="1920" y="-1163" width="2160" height="3800" />
     </state>
     <state x="2758" y="-563" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.-1163.2160.3800@1920.-1163.2160.3800" timestamp="1596623769534" />
-    <state x="2254" y="-1020" width="1722" height="3407" key="CommitChangelistDialog2" timestamp="1597829092071">
+    <state x="2254" y="-1020" width="1722" height="3407" key="CommitChangelistDialog2" timestamp="1597829412735">
       <screen x="1920" y="-1163" width="2160" height="3800" />
     </state>
     <state x="297" y="39" key="CommitChangelistDialog2/0.0.1920.1040/1920.-1163.2160.3800@0.0.1920.1040" timestamp="1597393785626" />
-    <state x="2254" y="-1020" width="1722" height="3407" key="CommitChangelistDialog2/0.0.1920.1040/1920.-1163.2160.3800@1920.-1163.2160.3800" timestamp="1597829092071" />
+    <state x="2254" y="-1020" width="1722" height="3407" key="CommitChangelistDialog2/0.0.1920.1040/1920.-1163.2160.3800@1920.-1163.2160.3800" timestamp="1597829412735" />
     <state x="2024" y="-827" width="1953" height="3128" key="DiffContextDialog" timestamp="1597045400395">
       <screen x="1920" y="-1163" width="2160" height="3800" />
     </state>

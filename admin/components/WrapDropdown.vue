@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import BaseVue, {MixinLevelTag, MyComponent} from '../mixins/BaseVue';
+import Father_BaseVue, {MixinLevelTag, MyComponent} from '../mixins/Father_BaseVue';
 
 @MyComponent({
   name      : 'WrapDropdown',
@@ -23,7 +23,7 @@ import BaseVue, {MixinLevelTag, MyComponent} from '../mixins/BaseVue';
   filters   : {},
 })
 // export default class HelloWorld extends BaseVueClass {
-export default class Dropdown extends BaseVue {  // 混入在此处，进行添加。
+export default class Dropdown extends Father_BaseVue {  // 混入在此处，进行添加。
 
   activated(): void {
   }

@@ -32,16 +32,16 @@
 </template>
 
 <script lang="ts">
-import BaseVue, {
+import Father_BaseVue, {
   MixinLevelTag,
   MyComponent,
   MyProp
-} from '../../../admin/mixins/BaseVue';
+} from '../../../admin/mixins/Father_BaseVue';
 
 @MyComponent({
   name: 'MultiLangSimple'
 })
-export default class MultiLangSimple extends BaseVue {
+export default class MultiLangSimple extends Father_BaseVue {
   MixinsData_1: MixinLevelTag = {};
   /* props */
   @MyProp({type: Boolean, default: true}) readonly zh_CN!: boolean; // 是否开启简体中文

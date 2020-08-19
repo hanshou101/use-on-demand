@@ -43,7 +43,7 @@ interface ElementTableColumnAttrs {
 }
 
 // tslint:disable-next-line:no-namespace
-export namespace Abs_ElTItem {
+export namespace Father_ElTItem {
 
   // 基类
   export abstract class Base<T = Default_valueFunction_RtnType> {

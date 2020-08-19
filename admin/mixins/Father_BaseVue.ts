@@ -31,11 +31,11 @@ export {
   Vue as OriginVue,
 };
 
-export default abstract class BaseVue extends Vue {
+export default abstract class Father_BaseVue extends Vue {
   public static NoticeCount = 0;  // 最多提醒3次。
   constructor () {
     super();
-    const count = ++BaseVue.NoticeCount;
+    const count = ++Father_BaseVue.NoticeCount;
     if (count <= 3) {
       // console.log('不建议在Vue-Component的构造函数里面，使用this获取数据！！！因为此时的this，和最终形成的你希望的组件的this，指向的并不是一处。（因为技术因素）');
       // console.log('created:如果你需要初始化Mixins中间的数据，那么在这个方法里做最好 😄😄😄');

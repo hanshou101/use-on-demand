@@ -1,5 +1,5 @@
-import BaseVue, {MixinLevelTag, MyComponent} from './BaseVue';
-import {ElForm}                              from 'element-ui/types/form';
+import Father_BaseVue, {MixinLevelTag, MyComponent} from './Father_BaseVue';
+import {ElForm}                                     from 'element-ui/types/form';
 import {CVS_Excel_Helper}                    from '../../cvs-excel/CVS_Excel_Helper';
 import {AdminHelper}                         from '../admin-helper';
 
@@ -12,7 +12,7 @@ import {AdminHelper}                         from '../admin-helper';
   filters   : {},
 })
 // export default class HelloWorld extends BaseVueClass {
-export default class ExportExcel_Mixin extends BaseVue {    // 混入在此处，进行添加。
+export default class Father_ExportExcel_Mixin extends Father_BaseVue {    // 混入在此处，进行添加。
 
   constructor() {
     super();

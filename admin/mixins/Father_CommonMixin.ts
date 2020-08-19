@@ -1,8 +1,8 @@
-import Dropdown                                        from '@/_components/general/dropdown/index.vue';
-import BaseVue, {MixinLevelTag, MyComponent, MyGetter} from './BaseVue';
-import {ElForm}                                        from 'element-ui/types/form';
-import ExportExcel_Mixin                               from './ExportExcel_Mixin';
-import DialogMixin                                     from './DialogMixin';
+import Dropdown                                               from '@/_components/general/dropdown/index.vue';
+import Father_BaseVue, {MixinLevelTag, MyComponent, MyGetter} from './Father_BaseVue';
+import {ElForm}                 from 'element-ui/types/form';
+import Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
+import Father_DialogMixin       from './Father_DialogMixin';
 
 export interface PreUploadBean {
   dir?: string;
@@ -97,7 +97,7 @@ export interface OssUploadBean {
   },
 })
 // export default class HelloWorld extends BaseVueClass {
-export default class CommonMixin<SelectOptionType> extends BaseVue.Mixins(ExportExcel_Mixin) {    // 混入在此处，进行添加。
+export default class Father_CommonMixin<SelectOptionType> extends Father_BaseVue.Mixins(Father_ExportExcel_Mixin) {    // 混入在此处，进行添加。
 
   constructor() {
     super();
@@ -196,21 +196,21 @@ export default class CommonMixin<SelectOptionType> extends BaseVue.Mixins(Export
   public handleCreate(): void {
     this.dialogControlVisible = true;
     this.$nextTick(() => {
-      (this.$refs.dialogRef as DialogMixin).showDialog(1);
+      (this.$refs.dialogRef as Father_DialogMixin).showDialog(1);
     });
   }
 
   public handleEdit(index: number, row: {}): void {
     this.dialogControlVisible = true;
     this.$nextTick(() => {
-      (this.$refs.dialogRef as DialogMixin).showDialog(2, JSON.parse(JSON.stringify(row)));
+      (this.$refs.dialogRef as Father_DialogMixin).showDialog(2, JSON.parse(JSON.stringify(row)));
     });
   }
 
   public handleDetail(index: number, row: {}): void {
     this.dialogControlVisible = true;
     this.$nextTick(() => {
-      (this.$refs.dialogRef as DialogMixin).showDialog(3, JSON.parse(JSON.stringify(row)));
+      (this.$refs.dialogRef as Father_DialogMixin).showDialog(3, JSON.parse(JSON.stringify(row)));
     });
   }
 

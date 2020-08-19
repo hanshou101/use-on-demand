@@ -12,8 +12,8 @@
 <script lang="ts">
 
 
-import BaseVue, {MixinLevelTag, MyComponent, MyProp} from '../../../admin/mixins/BaseVue';
-import {SMath_Helper}                                from '../../../symbol-math/SMath_Helper';
+import Father_BaseVue, {MixinLevelTag, MyComponent, MyProp} from '../../../admin/mixins/Father_BaseVue';
+import {SMath_Helper}                                       from '../../../symbol-math/SMath_Helper';
 
 @MyComponent({
   name      : 'StatisticalCard',
@@ -22,7 +22,7 @@ import {SMath_Helper}                                from '../../../symbol-math/
   filters   : {},
 })
 export default class StatisticalCard
-    extends BaseVue {    // 混入在此处，进行添加。
+    extends Father_BaseVue {    // 混入在此处，进行添加。
 
   // 数据可以和父级通用
   @MyProp({type: Array, required: true}) readonly statisticalData!: Array<any>;

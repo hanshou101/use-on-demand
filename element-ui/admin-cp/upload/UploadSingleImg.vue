@@ -37,8 +37,8 @@
 // API，建议采用相对路径。
 
 
-import {ElUploadInternalFileDetail}                           from 'element-ui/types/upload';
-import BaseVue, {MixinLevelTag, MyComponent, MyProp, MyWatch} from '../../../admin/mixins/BaseVue';
+import {ElUploadInternalFileDetail}                                  from 'element-ui/types/upload';
+import Father_BaseVue, {MixinLevelTag, MyComponent, MyProp, MyWatch} from '../../../admin/mixins/Father_BaseVue';
 // @ts-ignore
 import {ElUpload}                                             from 'element-ui/types/element-ui';
 
@@ -46,7 +46,7 @@ import {ElUpload}                                             from 'element-ui/t
   name      : 'UploadSingleImg',
   components: {},
 })
-export default class UploadSingleImg extends BaseVue {    // 混入在此处，进行添加。
+export default class UploadSingleImg extends Father_BaseVue {    // 混入在此处，进行添加。
 
   // TIP： Prop，在类中的实现
   @MyProp({type: String, default: ''}) private value!: string;

@@ -4,15 +4,15 @@
 
 import {ElForm} from 'element-ui/types/form';
 
-import ExportExcel_Mixin              from './ExportExcel_Mixin';
-import BaseVue, {
+import Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
+import Father_BaseVue, {
   MixinLevelTag,
   MyComponent,
   MyGetter,
   MyProp,
   MyWatch,
-}                                     from './BaseVue';
-import {OssUploadBean, PreUploadBean} from './CommonMixin';
+}                                     from './Father_BaseVue';
+import {OssUploadBean, PreUploadBean} from './Father_CommonMixin';
 
 /**
  * 可能最后，还是要用【Mixins】去解决！！！。
@@ -82,7 +82,7 @@ interface AbsInterface {
   },
 })
 // export default class HelloWorld extends BaseVueClass {
-export default class DialogMixin extends BaseVue.Mixins(ExportExcel_Mixin)
+export default class Father_DialogMixin extends Father_BaseVue.Mixins(Father_ExportExcel_Mixin)
   implements AbsInterface {
   // 混入在此处，进行添加。
   // TIP:  Prop，在类中的实现

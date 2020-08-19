@@ -59,7 +59,7 @@ interface HasPrependAppend {
 type Date_or_Time_Range_Types = 'dateRange' | 'paymentDateRange' | 'auditDateRange' | 'updateDateRange';
 
 // tslint:disable-next-line:no-namespace
-export namespace Abs_ElFItem {
+export namespace Father_ElFItem {
   export abstract class Base {
     public readonly myCategory!: MyFormItem_Category;
 
