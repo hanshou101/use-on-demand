@@ -119,4 +119,30 @@ export class SString_Helper {
   }
 
 
+  /**
+   * 【文件】的体积大小，格式化显示。
+   */
+  public static formatFileSize(bytes_num: number, fixed_num = 0) {
+
+    function quickCalc(exponent: number, isTotal: boolean) {
+      const num = isTotal ?
+        bytes_num                                                               // 总数
+        : (bytes_num % Math.pow(1024, exponent + 1));                       // 取余数
+      return num / Math.pow(1024, exponent);
+    }
+
+    return {
+      GB      : parseInt(quickCalc(3, false)),
+      MB      : parseInt(quickCalc(2, false)),
+      KB      : parseInt(quickCalc(1, false)),
+      B       : parseInt(quickCalc(0, false)),
+      //
+      total_GB: quickCalc(3, true).toFixed(fixed_num),
+      total_MB: quickCalc(2, true).toFixed(fixed_num),
+      total_KB: quickCalc(1, true).toFixed(fixed_num),
+      total_B : quickCalc(0, true).toFixed(fixed_num),
+    };
+  }
+
+
 }

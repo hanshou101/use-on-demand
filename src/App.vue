@@ -6,15 +6,16 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue              from 'vue';
+import {SString_Helper} from '../symbol-string/SString_Helper';
 
 
 export default Vue.extend({
   name      : 'App',
-  components: {
-
-
-  },
+  components: {},
+  mounted() {
+    console.log(SString_Helper.formatFileSize(1234567890));
+  }
 });
 </script>
 
