@@ -34,9 +34,11 @@ interface HTMLElement {
 }
 
 interface Document {
-  webkitExitFullscreen?(): void;        // Chrome，            独有 退出全屏方法
+  webkitExitFullscreen?(): void;          // Chrome，            独有 退出全屏方法
+  webkitCancelFullScreen?(): void;        // Chrome，            独有 退出全屏方法
   mozCancelFullScreen?(): void;         // Mozilla(Firefox)，  独有 退出全屏方法
   msExitFullscreen?(): void;            // IE，                独有 退出全屏方法
+  cancelFullScreen?(): void;            // 其它未知版本，        独有 退出全屏方法
 }
 
 interface Storage {
