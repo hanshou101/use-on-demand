@@ -1,6 +1,6 @@
 {
   "name": "use-on-demand",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "description": "按需使用的代码工具仓库。",
   "main": "index.js",
   "scripts": {
