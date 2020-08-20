@@ -30,9 +30,11 @@
     </inspection_tool>
     <inspection_tool class="JSCheckFunctionSignatures" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="JSDeprecatedSymbols" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="JSNonASCIINames" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="JSUnresolvedFunction" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="JSValidateJSDoc" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="JSValidateTypes" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="NonAsciiCharacters" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="PointlessArithmeticExpressionJS" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="TsLint" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="UnnecessaryLocalVariableJS" enabled="true" level="WEAK WARNING" enabled_by_default="true">
