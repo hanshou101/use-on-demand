@@ -23,127 +23,141 @@
 //
 
 // 将来更为复杂的，可能要换用【python】了。  【数据处理】和【可视化绘制】
-declare enum SolidSide {
-  Buy  = '买单',
-  Sell = '卖单',
-}
 
-declare enum FutureSide {
-  Long  = '多仓',
-  Short = '空仓',
-}
+/*
+    declare enum SolidSide {
+      Buy  = '买单',
+      Sell = '卖单',
+    }
 
-type KLineItem = number;
-
-interface KLine_Indexes {
-  raw: Array<KLineItem>;
-
-  index: {
-    firstK: number;
-    lastK: number;
-    highestK: number;
-    lowestK: number;
-
-    kLen: number;
-    avgPerK: number;
-  };
-
-  // K线切分
-  split(part: number): Array<KLine_Indexes>;
-
-  // K线切分，转为【平方数法则】
-  splitSquare(): Array<KLine_Indexes>;
+    declare enum FutureSide {
+      Long  = '多仓',
+      Short = '空仓',
+    }
+*/
 
 
-  print(): void;
+import {FutureSide, SolidSide} from './DesignHelper';
 
-}
+declare global {
 
-interface CnyManager {
-  perTimeCny: number;
-}
 
-declare namespace Trade {
-  interface Action {
-    actionCny: number;
-    fVol: number;
-    price: number;
-    solidSide: SolidSide;
-  }
+  type KLineItem = number;
 
-  interface ActionSummary {
-    actionQueue: Array<Trade.Action>;
+  interface KLine_Indexes {
+    raw: Array<KLineItem>;
 
-    getSummary(): {
-      queueVol: number;
-      queueCny: number;
+    index: {
+      firstK: number;
+      lastK: number;
+      highestK: number;
+      lowestK: number;
+
+      kLen: number;
+      avgPerK: number;
     };
-  }
 
-  interface Settle {
-    cny_inBuy?: number;
-    cny_inSell?: number;
+    // K线切分
+    split(part: number): Array<KLine_Indexes>;
 
-    // 处理张数
-    settlePieces: number;
-    // 遗留张数
-    leftPieces: number;
-  }
+    // K线切分，转为【平方数法则】
+    splitSquare(): Array<KLine_Indexes>;
 
-  interface ActionQueue<S extends FutureSide> {
-    kIndexes: KLine_Indexes;
-    pureFullQueue: Array<Action>;
-
-    getBuyQueue(): Trade.ActionSummary;
-
-    getSellQueue(): Trade.ActionSummary;
-
-    settleBuy(): Settle;
-
-    settleSell(): Settle;
-
-    settleBoth(): Settle;
 
     print(): void;
 
   }
-}
 
-declare namespace Bonus {
-  interface SolidPart {
-    actionTimes: number;
-    fVol: number;
-    cny_inSolid: number;
-    fAvgPrice: number;
+  interface CnyManager {
+    perTimeCny: number;
   }
 
-  interface Bonus<S extends FutureSide> {
-    buy: SolidPart;
-    sell: SolidPart;
+  namespace Trade {
+    interface Action {
+      actionCny: number;
+      fVol: number;
+      price: number;
+      solidSide: SolidSide;
+    }
 
-    getBonus(): {
-      cnyBefore: number;
-      cnyChange: number;
-      cnyAfter: number;
-      ratio: number;
-    };
+    interface SummaryInAction_Type {
+      queueVol: number;
+      queueCny: number;
+      leftVol: number;
+    }
 
-    print(): string;
+    interface ActionSummary {
+      actionQueue: Array<Trade.Action>;
+
+      getSummary(): SummaryInAction_Type;
+    }
+
+    interface Settle {
+      cny_inBuy?: number;
+      cny_inSell?: number;
+
+      // 处理张数
+      settlePieces: number;
+      // 遗留张数
+      leftPieces: number;
+    }
+
+    interface ActionQueue<S extends FutureSide> {
+      kIndexes: KLine_Indexes;
+      pureFullQueue: Array<Action>;
+
+      getBuyQueue(): Trade.ActionSummary;
+
+      getSellQueue(): Trade.ActionSummary;
+
+      settleBuy(): Settle;
+
+      settleSell(): Settle;
+
+      settleBoth(): Settle;
+
+      print(): void;
+
+    }
   }
-}
 
-declare namespace Excel {
-  interface Data<S extends FutureSide> {
-    actionQueue: Trade.ActionQueue<S>;
-    bonus: Bonus.Bonus<S>;
+  namespace Bonus {
+    interface SolidPart {
+      actionTimes: number;
+      fVol: number;
+      cny_inSolid: number;
+      fAvgPrice: number;
+    }
+
+    interface Bonus<S extends FutureSide> {
+      buy: SolidPart;
+      sell: SolidPart;
+
+      getBonus(): {
+        cnyBefore: number;
+        cnyChange: number;
+        cnyAfter: number;
+        ratio: number;
+      };
+
+      print(): string;
+    }
   }
 
-  interface Exporter {
-    kLines: KLine_Indexes;
-    long: Data<FutureSide.Long>;
-    short: Data<FutureSide.Short>;
+  namespace Excel {
+    interface Data<S extends FutureSide> {
+      actionQueue: Trade.ActionQueue<S>;
+      bonus: Bonus.Bonus<S>;
+    }
 
-    //
-    export(): void;
+    interface Exporter {
+      kLines: KLine_Indexes;
+      long: Data<FutureSide.Long>;
+      short: Data<FutureSide.Short>;
+
+      //
+      export(): void;
+    }
   }
+
 }

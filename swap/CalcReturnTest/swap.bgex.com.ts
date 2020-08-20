@@ -1,6 +1,7 @@
-import * as bitmex from './data/bitmex';
-import * as bgex   from './data/bgex';
-import * as mock   from './data/mock';
+import * as bitmex                                                                              from './data/bitmex';
+import * as bgex                                                                                from './data/bgex';
+import * as mock                                                                                from './data/mock';
+import {CnyManager_Class, KLine_Indexes_Class, Long_ActionQueue_Class, Short_ActionQueue_Class} from './DesignHelper';
 
 interface Cfg {
   onceInvestM: number; // 单次投资量
@@ -445,18 +446,31 @@ function planD(kInfo: Plan_D_Info) {
   );
 }
 
-function planE(kInfo: Plan_E_Info) {
+function planE(arr: Array<KLineItem>) {
   console.log(`
   【计划E】
   特点：
           1.打包成【平方式拆分】的一揽子方案。
   `);
+  const kLineIndexes = new KLine_Indexes_Class(arr);
+  const cnyManager   = CnyManager_Class.instance;
+
+  const long  = new Long_ActionQueue_Class(kLineIndexes, cnyManager);
+  const short = new Short_ActionQueue_Class(kLineIndexes, cnyManager);
+
+  console.log('——————走势信息——————');
+  kLineIndexes.print();
+  console.log('——————多仓——————');
+  long.print();
+  console.log('——————空仓——————');
+  short.print();
+
 }
 
 function go() {
-  // const data: Array<number> = bgex.getBgData();
+  const data: Array<number> = bgex.getBgData();
   // const data: Array<number> = bgex.getBgData().reverse();
-  const data = bitmex.getBitmexData();
+  // const data = bitmex.getBitmexData();
   // const data = bitmex.getBitmexData().reverse();
   // const data: Array<number> = mock.pingjunData(2000, 100, 300);
   // const data: Array<number> = mock.pingjunData(2000, 100, 300).reverse();
@@ -470,7 +484,7 @@ function go() {
   console.log('————————————————————————');
   planD(new Plan_D_Info(data));
   console.log('————————————————————————');
-  planE(new Plan_E_Info(data));
+  planE(data);
 }
 
 
