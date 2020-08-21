@@ -65,7 +65,7 @@ export class CVS_Excel_Helper {
    */
   public static downloadExcel(
     url: string,
-    filename = 'export.xls'
+    filename = 'export.xls',
   ) {
     // 创建隐藏的可下载链接
     const eleLink         = document.createElement('a');
@@ -203,18 +203,19 @@ export class CVS_Excel_Helper {
     const data    = oo[0];
     const ws_name = 'SheetJS';
 
-    // @ts-ignore
-    const wb = new Workbook(), ws = sheet_from_array_of_arrays(data);
-
-    /* add ranges to worksheet */
-    // ws['!cols'] = ['apple', 'banan'];
-    ws['!merges'] = ranges;
-
-    /* add worksheet to workbook */
-    wb.SheetNames.push(ws_name);
-    wb.Sheets[ws_name] = ws;
-
     getXLSX().then((XLSX) => {
+
+      const wb = new WorkbookSimple();
+      const ws = sheet_from_array_of_arrays(XLSX, data);
+
+      /* add ranges to worksheet */
+      // ws['!cols'] = ['apple', 'banan'];
+      ws['!merges'] = ranges;
+
+      /* add worksheet to workbook */
+      wb.SheetNames.push(ws_name);
+      wb.Sheets[ws_name] = ws;
+
       const wbout = XLSX.write(wb, {bookType: 'xlsx', bookSST: false, type: 'binary'});
       getFileSaver().then((FileSaver) => {
         FileSaver.saveAs(new Blob([s2ab(wbout)], {type: 'application/octet-stream'}), 'test.xlsx');
@@ -226,46 +227,47 @@ export class CVS_Excel_Helper {
     });
   }
 
-  public export_json_to_excel({header, data, filename = 'excel-list', autoWidth = true}: any = {}) {
+  public export_json_to_excel({header, _data, filename = 'excel-list', autoWidth = true}: any = {}) {
     console.log('initial export');
     /* original data */
-    data = [...data];
+    const data = [..._data];
     data.unshift(header);
     const ws_name = 'SheetJS';
     console.log('startingsheet_from_array_of_arrays');
 
-    // @ts-ignore
-    const wb = new Workbook(), ws = sheet_from_array_of_arrays(data);
+    getXLSX().then((XLSX) => {
 
-    if (autoWidth) {
-      /*设置worksheet每列的最大宽度*/
-      const colWidth = data.map((row: any) => row.map((val: any) => {
-        /*先判断是否为null/undefined*/
-        if (val == null) {
-          return {wch: 10};
-        } else if (val.toString().charCodeAt(0) > 255) {
-          return {wch: val.toString().length * 2};
-        } else {
-          return {wch: val.toString().length};
-        }
-      }));
-      /*以第一行为初始值*/
-      const result = colWidth[0];
-      for (let i = 1; i < colWidth.length; i++) {
-        for (let j = 0; j < colWidth[i].length; j++) {
-          if (result[j].wch < colWidth[i][j].wch) {
-            result[j].wch = colWidth[i][j].wch;
+      const wb = new WorkbookSimple();
+      const ws = sheet_from_array_of_arrays(XLSX, data);
+
+      if (autoWidth) {
+        /*设置worksheet每列的最大宽度*/
+        const colWidth = data.map((row: any) => row.map((val: any) => {
+          /*先判断是否为null/undefined*/
+          if (val == null) {
+            return {wch: 10};
+          } else if (val.toString().charCodeAt(0) > 255) {
+            return {wch: val.toString().length * 2};
+          } else {
+            return {wch: val.toString().length};
+          }
+        }));
+        /*以第一行为初始值*/
+        const result = colWidth[0];
+        for (let i = 1; i < colWidth.length; i++) {
+          for (let j = 0; j < colWidth[i].length; j++) {
+            if (result[j].wch < colWidth[i][j].wch) {
+              result[j].wch = colWidth[i][j].wch;
+            }
           }
         }
+        ws['!cols'] = result;
       }
-      ws['!cols'] = result;
-    }
-    console.log(' wb.SheetNames.push(ws_name);');
-    /* add worksheet to workbook */
-    wb.SheetNames.push(ws_name);
-    wb.Sheets[ws_name] = ws;
-    console.log('wbout');
-    getXLSX().then((XLSX) => {
+      console.log(' wb.SheetNames.push(ws_name);');
+      /* add worksheet to workbook */
+      wb.SheetNames.push(ws_name);
+      wb.Sheets[ws_name] = ws;
+      console.log('wbout');
       const wbout = XLSX.write(wb, {bookType: 'xlsx', bookSST: false, type: 'binary'});
       getFileSaver().then((FileSaver) => {
         FileSaver.saveAs(new Blob([s2ab(wbout)], {type: 'application/octet-stream'}), filename + '.xlsx');
@@ -349,7 +351,101 @@ function s2ab(s: any) {
   const buf  = new ArrayBuffer(s.length);
   const view = new Uint8Array(buf);
   for (let i = 0; i != s.length; ++i) {
+    // @ts-ignore
+    // tslint:disable-next-line
+    // tslint:disable-next-line:no-bitwise
     view[i] = s.charCodeAt(i) & 0xFF;
   }
   return buf;
+}
+
+//
+// function Workbook(this: any) {
+//   if (!(this instanceof Workbook)) {
+//     return new Workbook();
+//   }
+//   this.SheetNames = [];
+//   this.Sheets     = {};
+// }
+//
+
+class WorkbookSimple {
+  public SheetNames: Array<string>         = [];
+  public Sheets: { [key in string]: any; } = {};
+}
+
+function sheet_from_array_of_arrays(
+  _XLSX: XLSX_Type,
+  data: any,
+  opts?: any,
+) {
+
+  const ws: any = {};
+  const range   = {
+    s: {
+      c: 10000000,
+      r: 10000000,
+    },
+    e: {
+      c: 0,
+      r: 0,
+    },
+  };
+  for (let R = 0; R != data.length; ++R) {
+    for (let C = 0; C != data[R].length; ++C) {
+      if (range.s.r > R) {
+        range.s.r = R;
+      }
+      if (range.s.c > C) {
+        range.s.c = C;
+      }
+      if (range.e.r < R) {
+        range.e.r = R;
+      }
+      if (range.e.c < C) {
+        range.e.c = C;
+      }
+      const cell: any = {
+        v: data[R][C],
+      };
+      if (cell.v == null) {
+        continue;
+      }
+      const cell_ref = _XLSX.utils.encode_cell({
+        c: C,
+        r: R,
+      });
+
+      if (typeof cell.v === 'number') {
+        cell.t = 'n';
+      } else if (typeof cell.v === 'boolean') {
+        cell.t = 'b';
+      } else if (cell.v instanceof Date) {
+        cell.t = 'n';
+        // @ts-ignore
+        cell.z = _XLSX.SSF._table[14];
+        cell.v = datenum(cell.v);
+      } else {
+        cell.t = 's';
+      }
+
+      ws[cell_ref] = cell;
+    }
+  }
+  if (range.s.c < 10000000) {
+    ws['!ref'] = _XLSX.utils.encode_range(range);
+  }
+  return ws;
+}
+
+function datenum(
+  _v: string,
+  date1904?: unknown,
+) {
+  let v = _v;
+  if (date1904) {
+    v += 1462;
+  }
+  const epoch = Date.parse(v);
+  return (epoch - new Date(Date.UTC(1899, 11, 30)).valueOf()) / (24 * 60 * 60 * 1000);
 }
