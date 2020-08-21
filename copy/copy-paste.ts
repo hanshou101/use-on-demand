@@ -12,12 +12,12 @@ export class CopyPaste_Util {
 
   // 带回调的赋值
   public copyWithCb (selector: Clipboard_SelectorType,
-                     succesCb: (e: Event) => void,
-                     errorCb: (e: Event) => void,
+                     sucCb: (e: Event) => void,
+                     errCb: (e: Event) => void,
   ) {
     const clipboard = this.simpleCopy(selector);
-    clipboard.on('success', succesCb);
-    clipboard.on('error', errorCb);
+    clipboard.on('success', sucCb);
+    clipboard.on('error', errCb);
 
     return clipboard;
   }

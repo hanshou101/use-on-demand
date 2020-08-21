@@ -29,6 +29,19 @@ export class CDirective_Helper {
     vue.directive(directiveId, _directive);
   }
 
+  /**
+   * 【Clipboard】复制粘贴
+   */
+  public static initClipboardCopyPaste(
+    vue: VueConstructor_Type,
+    directiveId = 'clipboard',
+  ) {
+    // 动态导入，按需加载。
+    return import('./clipboard-d').then(({ClipboardD}) => {
+      vue.directive(directiveId, ClipboardD);
+    });
+  }
+
 }
 
 

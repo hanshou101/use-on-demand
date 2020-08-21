@@ -9,8 +9,8 @@
 
 import {PropOptions}                         from 'vue';
 import {Vue}                                 from 'vue/types/vue';
-import {VueConstructor}                      from 'vue';
-import {DirectiveFunction, DirectiveOptions} from 'vue/types/options';
+import {VueConstructor}                                        from 'vue';
+import {DirectiveBinding, DirectiveFunction, DirectiveOptions} from 'vue/types/options';
 
 
 declare global {
@@ -21,4 +21,7 @@ declare global {
   type VueConstructor_Type = VueConstructor;
 
   type VueDirective_Type = DirectiveFunction | DirectiveOptions;
+  type DirectiveFunction_Type = DirectiveFunction;
+
+  type DirectiveBinding_Type = DirectiveBinding;
 }
