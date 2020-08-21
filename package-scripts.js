@@ -39,7 +39,7 @@ module.exports = {
       /**
        * 辅助命令
        */
-      'load-tsconfig-by-js'     : `${tsNode_cmdHead}  ./gen/gen-tsconfig.ts`,                                         // 动态js生成 tsconfig.js
+      'load-tsconfig-by-js'     : `${tsNode_cmdHead}  ./gen/demo/gen-tsconfig.ts`,                                         // 动态js生成 tsconfig.js
       'copy-local-config'       : 'shx cp -f ./config/api.config.local.ts ./config/api.config.ts',              // 复制【环境配置】
       'inject-cdn-2-tradingView': `${tsNode_cmdHead}  ./gen/gen-tradingView.ts`,
 

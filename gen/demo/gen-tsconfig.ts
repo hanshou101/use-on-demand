@@ -46,14 +46,16 @@ class NuxtJs_TsConfig_Helper {
       '@nuxt/types',               // WARN 适配【nuxt.js】
     ],
     _paths            : {
-      // WARN 适配【nuxt.js】
-      '~/*': [
-        './*',
-      ],
-      // WARN 适配【nuxt.js】
-      '@/*': [
-        './*',
-      ],
+      /*
+                        // WARN 适配【nuxt.js】
+                        '~/!*': [
+                          './!*',
+                        ],
+                        // WARN 适配【nuxt.js】
+                        '@/!*': [
+                          './!*',
+                        ],
+      */
     },
     _typeRoots        : [         // WARN 适配【nuxt.js】
       './types',      // FIXME 其实，这个多此一举；因为【includes】选项里面，已经添加该项了。

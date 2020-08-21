@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "combine-tsc-uglifyjs": "nps sentry.combine-tsc-uglifyjs",
+    "load-tsconfig-by-js": "nps demo.load-tsconfig-by-js",
     "complete-reinstall": "npm link nps-utils && nps tool.complete-reinstall",
     "CalcReturnTest": "nps demo.CalcReturnTest",
     "vue.serve": "nps demo.vue.serve",
@@ -31,7 +32,9 @@
     "koa": "2.13.0",
     "nuxt": "2.14.1",
     "reflect-metadata": "0.1.13",
+    "soundjs": "1.0.1",
     "typed-vuex": "0.1.20",
+    "video.js": "7.8.4",
     "vue": "2.6.11",
     "vue-property-decorator": "9.0.0",
     "vue-class-component": "7.2.5",
