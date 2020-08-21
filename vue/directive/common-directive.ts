@@ -54,5 +54,18 @@ export class CDirective_Helper {
       vue.directive(directiveId, getAdminPermissionD(roles));
     });
   }
+
+  /**
+   * 【水波纹】点击效果
+   */
+  public static initClickWave(
+    vue: VueConstructor_Type,
+    directiveId = 'click-wave',
+  ) {
+    return import('./click-wave/click-wave').then(({getClickWaveD}) => {
+      vue.directive(directiveId, getClickWaveD());
+    });
+  }
+
 }
 
