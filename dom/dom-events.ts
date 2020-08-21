@@ -2,6 +2,13 @@
 
 import {SArray_Helper} from '../symbol-array/SArray_Helper';
 
+interface My_DragItems_CB {
+  plainString_CB?: (str: string) => void;           // 普通文本
+  htmlMultiString_CB?: (str: string) => void;       // Html富标签富文本
+  uriOrLink_pathString_CB?: (str: string) => void;  // uri资源指向路径，或者path路径，所代表的文本
+  file_CB?: (file: File | null) => void;                   // 一个文件类型
+}
+
 /**
  * TODO 这里  GlobalEventHandlers ，似乎不如直接声明具体类型好用…………
  */
@@ -98,7 +105,7 @@ export class DomEvt_Helper {
    * @param eventName 事件名称
    * @param fn 事件回调函数
    */
-  public unbindEvt(ele: MyEventTarget, eventName: string|unknown, fn: (e: Event) => any) {
+  public unbindEvt(ele: MyEventTarget, eventName: string | unknown, fn: (e: Event) => any) {
     let index;
     if (!ele) {
       console.error('off(ele, eventName, fn)函数第一个参数必须是一个dom元素!');
@@ -166,8 +173,68 @@ export class DomEvt_Helper {
     return;
   }
 
+//
+//
+//
+
+  /**
+   * 当【Dom拖动操作】时，处理被拖动条目————【TransferItems】。
+   */
+  public onDragDom_handleDataTransferItems(
+    items: DataTransferItemList,
+    callbackBundle: My_DragItems_CB,
+  ) {
+    for (let i = 0; i < items.length; i += 1) {
+      const kind = items[i].kind;
+      const type = items[i].type;
+      // 逻辑开始
+      if (kind == 'string') {
+        if (type.indexOf('text/plain') != -1) {
+          items[i].getAsString(function (str: string) {
+            // str是纯文本，该怎么处理，就在这里处理
+            if (callbackBundle.plainString_CB) {
+              callbackBundle.plainString_CB(str);
+            }
+          });
+        } else if (type.indexOf('text/html') != -1) {
+          items[i].getAsString(function (str: string) {
+            // str是富文本，就在这里处理
+            if (callbackBundle.htmlMultiString_CB) {
+              callbackBundle.htmlMultiString_CB(str);
+            }
+          });
+        } else if (type.indexOf('text/uri-list') != -1) {
+          items[i].getAsString(function (str: string) {
+            // str是uri地址，在这里进行处理
+            if (callbackBundle.uriOrLink_pathString_CB) {
+              callbackBundle.uriOrLink_pathString_CB(str);
+            }
+          });
+        }
+      } else if (kind == 'file') {
+        // 如果是图片
+        if (type.indexOf('image/') != -1) {
+          const file = items[i].getAsFile();
+          // file就是图片文件对象，可以上传，或者其他处理
+          if (callbackBundle.file_CB) {
+            callbackBundle.file_CB(file);
+          }
+        }
+      }
+    }
+  }
+
+
 }
 
+//
+//
+//
+//
+//
+//
+//
+//
 
 export class BrowserEventMap {
   public static MOUSE = {

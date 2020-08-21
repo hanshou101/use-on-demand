@@ -66,4 +66,23 @@ export class DebugU {
         background-image:url(${imgUrl})
     `);
   }
+
+  public realLog(
+    message?: any,
+    ...optionalParams: Array<any>   // WHY 此处，【optionalParams】始终为一个长度为1的数组？  这里面唯一的子数组，才是真正盛放参数的数组？
+  ) {
+    console.log(`【特别注意】JSON格式不会包括函数、正则、Date对象。`);
+    const trueRestParams = optionalParams[0];
+    if (trueRestParams.length === 0) {
+      console.log(
+        JSON.parse(JSON.stringify(message)),
+      );
+    } else {
+      console.log(
+        JSON.parse(JSON.stringify(message)),
+        JSON.parse<any>(JSON.stringify(optionalParams))[0][0],
+      );
+    }
+  }
+
 }
