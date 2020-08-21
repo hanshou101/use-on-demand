@@ -16,6 +16,22 @@ declare function isNaN(
 interface Window {
   attachEvent?(eventName: string, cb: Function): void;  // 兼容性处理：IE，独有方法。
   detachEvent?(eventName: string, cb: Function): void;  // 兼容性处理：IE，独有方法。
+  webkitURL?: {                                         // 有可能存在，也有可能不存在。（仅用于Chrome）
+    prototype: URL;
+    new(url: string, base?: string | URL): URL;
+    createObjectURL(object: any): string;
+    revokeObjectURL(url: string): void;
+  };
+  /*
+      Notification?: {
+          // 自己手写了一个，构造方法
+          new(title: string, options?: any): any
+      }
+      1.后来发现，官方已有定义，只是未挂载到Window上面
+      2.以下，是一个成员变量，名为Notification，然后类型是  lib.dom.d.ts里面的Notification。
+  */
+  Notification?: Notification;          // 目前，PC端浏览器，仅IE11不支持，其它都支持；移动端浏览器基本都没有支持。
+  FileReader: FileReader;               // 为全局对象，声明一个FileReader的类型。（很多时候，window对象和Global对象，是重合的）
 }
 
 interface WindowOrWorkerGlobalScope {
@@ -31,6 +47,7 @@ interface HTMLElement {
   //
   attachEvent?(eventName: string, cb: Function): void;  // 兼容性处理：IE，独有方法。
   detachEvent?(eventName: string, cb: Function): void;  // 兼容性处理：IE，独有方法。
+  currentStyle?: { [key: string]: string };             // 新增一个，仅属于旧版本IE浏览器的：老旧CSS属性。
 }
 
 interface Document {
@@ -39,6 +56,12 @@ interface Document {
   mozCancelFullScreen?(): void;         // Mozilla(Firefox)，  独有 退出全屏方法
   msExitFullscreen?(): void;            // IE，                独有 退出全屏方法
   cancelFullScreen?(): void;            // 其它未知版本，        独有 退出全屏方法
+  currentStyle?: { [key: string]: string };             // 新增一个，仅属于旧版本IE浏览器的：老旧CSS属性。
+}
+
+interface Screen {
+  left?: number;                                        // 兼容性方案
+  top?: number;                                         // 兼容性方案
 }
 
 interface Storage {
@@ -53,7 +76,7 @@ interface DateConstructor {
 }
 
 interface Navigator {
-  userLanguage?: string;
+  userLanguage?: string;            // 兼容性方案
   browserLanguage?: string;
 }
 
