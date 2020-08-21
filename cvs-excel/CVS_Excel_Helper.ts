@@ -1,9 +1,22 @@
 const BOM = '\uFEFF';
 
+function getXLSX() {
+  return import('xlsx');
+}
+
+function getFileSaver() {
+  return import('file-saver');
+}
+
+function getJsZip() {
+  return import('jszip');
+}
+
 export class CVS_Excel_Helper {
 
-
-// 先将二维数组转成纯文本，重点是要处理可能在内容中出现的分隔符和双引号：
+  /**
+   * 先将二维数组转成纯文本，重点是要处理可能在内容中出现的分隔符和双引号：
+   */
   public static arrayToCsv(data: any, args: { columnDelimiter?: string, lineDelimiter?: string } = {}) {
     const columnDelimiter = args.columnDelimiter || ',';
     const lineDelimiter   = args.lineDelimiter || '\n';
@@ -23,7 +36,10 @@ export class CVS_Excel_Helper {
     }, '');
   }
 
-// TIP 导出cvs文件                                                    // 有空，要好好看看这段代码。可拓展面应该很广。
+  /**
+   * 导出cvs文件
+   *        1.有空，要好好看看这段代码。可拓展面应该很广。
+   */
   public static exportCsv(inputData: any, filename = 'export.csv') {
     // const csv = arrayToCsv(inputData);
     const csv = inputData;
@@ -44,7 +60,13 @@ export class CVS_Excel_Helper {
     }
   }
 
-  public static downloadExcel(url: string, filename = 'export.xls') {
+  /**
+   * 从【】，触发【下载Excel】操作
+   */
+  public static downloadExcel(
+    url: string,
+    filename = 'export.xls'
+  ) {
     // 创建隐藏的可下载链接
     const eleLink         = document.createElement('a');
     eleLink.download      = filename;
@@ -62,18 +84,17 @@ export class CVS_Excel_Helper {
   }
 
 
-// 从Excel文件中，获取某些行列。
   /**
-   *
-   * @param excel_file          传入的Excel文件
-   * @param sheet_field         筛选特定字段
-   * @param inputDom            <input>节点，用于清除value
-   * @returns {Promise<any>}    直接交给 await/async 使用
+   * 从Excel文件中，获取某些行列。
    */
-  public static readArr_fromExcel(excel_file: any, sheet_field: any, inputDom: any) {
+  public static readArr_fromExcel(
+    excel_file: File,        // 传入的Excel文件
+    sheet_field: any,       // 筛选特定字段
+    inputDom: any,          // <input>节点，用于清除value
+  ) {
 
     return new Promise((resolve, reject) => {
-      import('xlsx').then((XLSX) => {                         // 动态导入
+      getXLSX().then((XLSX) => {                         // 动态导入
         // 声明回调
         const fileOnLoadCb = function (event: any) {
           console.log('event', event);
@@ -131,10 +152,15 @@ export class CVS_Excel_Helper {
   /**
    * 将文本，导出为【ZIP文件】
    */
-  public export_txt_to_zip(th: any, jsonData: any, txtName: string, zipName: string) {
+  public export_txt_to_zip(
+    th: any,
+    jsonData: any,
+    txtName: string,
+    zipName: string,
+  ) {
     return new Promise((resolve, reject) => {
       require('script-loader!file-saver');
-      import('jszip').then((exports) => {                                         // 导入库
+      getJsZip().then((exports) => {                                         // 导入库
         const JSZip    = exports.default;
         const zip      = new JSZip();
         const txt_name = txtName || 'file';
@@ -148,7 +174,7 @@ export class CVS_Excel_Helper {
         });
         zip.file(`${txt_name}.txt`, txtData);
         zip.generateAsync({type: 'blob'}).then((blob) => {
-          import('file-saver').then((FileSaver) => {                              // 导入库
+          getFileSaver().then((FileSaver) => {                              // 导入库
             FileSaver.saveAs(blob, `${zip_name}.zip`);    // FIXME ？？？？？？
             resolve();
           }).catch((e) => [
@@ -165,5 +191,165 @@ export class CVS_Excel_Helper {
     });
   }
 
+  /**
+   *
+   */
+  public static export_table_to_excel(id: string) {
+    const theTable = document.getElementById(id) as HTMLFormElement;
+    const oo       = generateArray(theTable);
+    const ranges   = oo[1];
 
+    /* original data */
+    const data    = oo[0];
+    const ws_name = 'SheetJS';
+
+    // @ts-ignore
+    const wb = new Workbook(), ws = sheet_from_array_of_arrays(data);
+
+    /* add ranges to worksheet */
+    // ws['!cols'] = ['apple', 'banan'];
+    ws['!merges'] = ranges;
+
+    /* add worksheet to workbook */
+    wb.SheetNames.push(ws_name);
+    wb.Sheets[ws_name] = ws;
+
+    getXLSX().then((XLSX) => {
+      const wbout = XLSX.write(wb, {bookType: 'xlsx', bookSST: false, type: 'binary'});
+      getFileSaver().then((FileSaver) => {
+        FileSaver.saveAs(new Blob([s2ab(wbout)], {type: 'application/octet-stream'}), 'test.xlsx');
+      }).catch((e) => {
+        console.error(e);
+      });
+    }).catch((e) => {
+      console.error(e);
+    });
+  }
+
+  public export_json_to_excel({header, data, filename = 'excel-list', autoWidth = true}: any = {}) {
+    console.log('initial export');
+    /* original data */
+    data = [...data];
+    data.unshift(header);
+    const ws_name = 'SheetJS';
+    console.log('startingsheet_from_array_of_arrays');
+
+    // @ts-ignore
+    const wb = new Workbook(), ws = sheet_from_array_of_arrays(data);
+
+    if (autoWidth) {
+      /*设置worksheet每列的最大宽度*/
+      const colWidth = data.map((row: any) => row.map((val: any) => {
+        /*先判断是否为null/undefined*/
+        if (val == null) {
+          return {wch: 10};
+        } else if (val.toString().charCodeAt(0) > 255) {
+          return {wch: val.toString().length * 2};
+        } else {
+          return {wch: val.toString().length};
+        }
+      }));
+      /*以第一行为初始值*/
+      const result = colWidth[0];
+      for (let i = 1; i < colWidth.length; i++) {
+        for (let j = 0; j < colWidth[i].length; j++) {
+          if (result[j].wch < colWidth[i][j].wch) {
+            result[j].wch = colWidth[i][j].wch;
+          }
+        }
+      }
+      ws['!cols'] = result;
+    }
+    console.log(' wb.SheetNames.push(ws_name);');
+    /* add worksheet to workbook */
+    wb.SheetNames.push(ws_name);
+    wb.Sheets[ws_name] = ws;
+    console.log('wbout');
+    getXLSX().then((XLSX) => {
+      const wbout = XLSX.write(wb, {bookType: 'xlsx', bookSST: false, type: 'binary'});
+      getFileSaver().then((FileSaver) => {
+        FileSaver.saveAs(new Blob([s2ab(wbout)], {type: 'application/octet-stream'}), filename + '.xlsx');
+      }).catch((e) => {
+        console.error(e);
+      });
+    }).catch((e) => {
+      console.error(e);
+    });
+  }
+
+
+}
+
+
+//
+//
+//
+//
+//
+//
+
+
+function generateArray(
+  table: HTMLFormElement,
+) {
+  const out    = [];
+  const rows   = table.querySelectorAll('tr');
+  const ranges = [];
+  for (let R = 0; R < rows.length; ++R) {
+    const outRow  = [];
+    const row     = rows[R];
+    const columns = row.querySelectorAll('td');
+    for (let C = 0; C < columns.length; ++C) {
+      const cell                     = columns[C];
+      let colspan                    = cell.getAttribute('colspan');
+      let rowspan                    = cell.getAttribute('rowspan');
+      let cellValue: string | number = cell.innerText;
+      // @ts-ignore
+      if (cellValue !== '' && (cellValue == +cellValue)) {
+        cellValue = +cellValue;
+      }
+
+      // Skip ranges
+      ranges.forEach(function (range) {
+        if (R >= range.s.r && R <= range.e.r && outRow.length >= range.s.c && outRow.length <= range.e.c) {
+          for (let i = 0; i <= range.e.c - range.s.c; ++i) {
+            outRow.push(null);
+          }
+        }
+      });
+
+      // Handle Row Span
+      if (rowspan || colspan) {
+        // @ts-ignore
+        rowspan = rowspan || 1;
+        // @ts-ignore
+        colspan = colspan || 1;
+        // @ts-ignore
+        ranges.push({s: {r: R, c: outRow.length}, e: {r: R + rowspan - 1, c: outRow.length + colspan - 1}});
+      }
+
+
+      // Handle Value
+      outRow.push(cellValue !== '' ? cellValue : null);
+
+      // Handle Colspan
+      if (colspan) {
+        // @ts-ignore
+        for (let k = 0; k < colspan - 1; ++k) {
+          outRow.push(null);
+        }
+      }
+    }
+    out.push(outRow);
+  }
+  return [out, ranges];
+}
+
+function s2ab(s: any) {
+  const buf  = new ArrayBuffer(s.length);
+  const view = new Uint8Array(buf);
+  for (let i = 0; i != s.length; ++i) {
+    view[i] = s.charCodeAt(i) & 0xFF;
+  }
+  return buf;
 }
