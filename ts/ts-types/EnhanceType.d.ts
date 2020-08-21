@@ -10,3 +10,5 @@ declare interface IndexedObj<T = any> {
 declare type NullableType<T> = T | null;
 
 declare type NumOrStr = number | string;
+
+declare type NoUndefinedField<T> = { [P in keyof T]-?: NoUndefinedField<NonNullable<T[P]>> };
