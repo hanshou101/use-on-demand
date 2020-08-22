@@ -14,6 +14,59 @@ enum L2Dwidget_LoadWayE {
   Require,
 }
 
+export enum Live2DModelE {
+  'default_demo' = '不需要传值，留一个undefined即可',      // 默认
+  'chitose'      = 'chitose',                         // 西装高个的男生
+  /**
+   * 原数据为；["epsilon2.1", "epsilon2_1"]。
+   *        1.目录名和文件名，不一样。
+   */
+    'epsilon2_1' = 'epsilon2_1',                      // 黄色吊带裙，水红发色，小女孩
+  /**
+   * 原数据为：["gantzert_felixander", "gf"]。
+   *        1.目录名和文件名，不一样。
+   */
+    'gf'         = 'gf',                              // 绿色披风，带老鹰，剑士
+  //
+  //
+  //
+  'haru01'       = 'haru01',                          // 女仆装小女孩
+  'haru02'       = 'haru02',                          // 学生装小女孩
+  'haruto'       = 'haruto',                          // Q萌水手套装，小女孩（短发）
+  'hibiki'       = 'hibiki',                          // 舰C任务，hibiki响，栗色头发，学生服
+  'hijiki'       = 'hijiki',                          // 可爱，黑色猫咪
+  'izumi'        = 'izumi',                           // 家居服，类似真实女友
+  'koharu'       = 'koharu',                          // Q萌水手套装，小女孩（长发）
+  'miku'         = 'miku',                            // 初音未来
+  'nico'         = 'nico',                            // 绿色猫耳，狐尾，Q萌女孩
+  'ni-j'         = 'ni-j',                            // 战术目镜，蓝色，Q萌女孩
+  'nipsilon'     = 'nipsilon',                        // 粉红色，双马尾，Q萌女孩
+  'nito'         = 'nito',                            // 大丸子头，粉红色短发，魔偶，Q萌女孩
+  'shizuku'      = 'shizuku',                         // 【默认】形象，上课的可爱女生
+  'tororo'       = 'tororo',                          // 可爱，白色猫咪
+  'tsumiki'      = 'tsumiki',                         // 绿色头发，短裙，酒红长袜，学生装女孩
+  'Unitychan'    = 'Unitychan',                       // 黄色大马尾，Q萌女孩
+  'wanko'        = 'wanko',                           // 坐在木碗里的，小白狗
+  'z16'          = 'z16',                             // 类似白色护士军装，披肩发，女孩
+}
+
+function getModelUrl(modelE: Live2DModelE) {
+  const dirName = modelE.valueOf().toLowerCase();
+
+  function getFileName() {
+    switch (modelE) {
+      case Live2DModelE.epsilon2_1:
+        return 'epsilon2.1';
+      case Live2DModelE.gf:
+        return 'gantzert_felixander';
+      default:
+        return modelE.valueOf();
+    }
+  }
+
+  return `live2d/model/live2d-widget-model-${dirName}/assets/${getFileName()}.model.json`;
+}
+
 function getL2Dwidget() {
   switch (Live2D_WidgetJs_Helper.libLoadWay) {
     case L2Dwidget_LoadWayE.DynamicLoad:                                                // TIP 动态脚本加载
@@ -69,7 +122,7 @@ export class Live2D_WidgetJs_Helper {
     }
   }
 
-  public static initDemo() {
+  public static initDemo(modelE: Live2DModelE = Live2DModelE.default_demo) {
     getL2Dwidget().then(({L2Dwidget}) => {
 
       console.log(L2Dwidget);
@@ -96,6 +149,9 @@ export class Live2D_WidgetJs_Helper {
               // 当触摸到角色头部
               'tap face'      : '人家已经不是小孩子了！',
             },
+          },
+          model : {
+            jsonPath: modelE === Live2DModelE.default_demo ? undefined : getModelUrl(modelE),
           },
         });
       // });

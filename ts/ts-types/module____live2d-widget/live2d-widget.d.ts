@@ -5,12 +5,10 @@ declare namespace L2Dwidget_SimpleNS {
   type BaseOnCb = (name: string) => void
 
   interface InitCfg {
-    dialog: {
-      enable: true;   // 开启对话框
-      script: {       // 相关交互脚本
-        [key in string]: string;
-      };
-    };
+    dialog?: IDialog;
+    display?: IDisplay;
+    model?: IModel;
+    mobile?: IMobile;
   }
 
   interface BaseObject {
@@ -54,32 +52,32 @@ declare namespace L2Dwidget_SimpleNS {
 
 
   interface IMobile {
-    show: boolean;
-    scale: number;
-    motion: boolean;
+    show?: boolean;
+    scale?: number;
+    motion?: boolean;
   }
 
 
   interface IDisplay {
-    superSample: number;
-    width: number;
-    height: number;
-    position: string;
-    hOffset: number;
-    vOffset: number;
+    superSample?: number;
+    width?: number;
+    height?: number;
+    position?: string;
+    hOffset?: number;
+    vOffset?: number;
   }
 
 
   interface IModel {
-    jsonPath: string;
-    scale: number;
+    jsonPath?: string;
+    scale?: number;
   }
 
 
   interface IDialog {
-    enable: boolean;
+    enable: boolean;            // 开启对话框
     script: IScript;
-    hitokoto: boolean;
+    hitokoto?: boolean;
   }
 
 
@@ -88,7 +86,7 @@ declare namespace L2Dwidget_SimpleNS {
     // 'hover .star': string;
     // 'tap body': string;
     // 'tap face': string;
-    [key: string]: string;
+    [key: string]: string;      // 相关交互脚本
   }
 
 
