@@ -5,7 +5,7 @@ type sOptionType = {
   [key in sOptionKeys]?: HTMLScriptElement[ key ];
 };
 
-export class DomScript_Heler {
+export class DomScript_Helper {
   public static loadJsScript_Async(
     jsUrl: string,
     sProperties: sOptionType = {},
