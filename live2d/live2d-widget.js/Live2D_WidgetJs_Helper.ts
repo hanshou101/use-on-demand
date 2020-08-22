@@ -7,6 +7,11 @@ enum CssE {
   demo = 'demo',
 }
 
+enum CdnModeE {
+  SelfPublic = 'SelfPublic',
+  UnPkg      = 'UnPkg',
+}
+
 enum L2Dwidget_LoadWayE {
   DynamicLoad,
   Import,
@@ -44,27 +49,82 @@ export enum Live2DModelE {
   'nito'         = 'nito',                            // 大丸子头，粉红色短发，魔偶，Q萌女孩
   'shizuku'      = 'shizuku',                         // 【默认】形象，上课的可爱女生
   'tororo'       = 'tororo',                          // 可爱，白色猫咪
+  // FIXME 【tsumiki】的远程资源包 【/assets/exp】 ，因为大小写的缘故，全都挂了。
+  // FIXME 【tsumiki】的远程资源包 【/assets/exp】 ，因为大小写的缘故，全都挂了。
+  // FIXME 【tsumiki】的远程资源包 【/assets/exp】 ，因为大小写的缘故，全都挂了。
   'tsumiki'      = 'tsumiki',                         // 绿色头发，短裙，酒红长袜，学生装女孩
   'Unitychan'    = 'Unitychan',                       // 黄色大马尾，Q萌女孩
   'wanko'        = 'wanko',                           // 坐在木碗里的，小白狗
   'z16'          = 'z16',                             // 类似白色护士军装，披肩发，女孩
 }
 
-function getModelUrl(modelE: Live2DModelE) {
-  const dirName = modelE.valueOf().toLowerCase();
+function getModelUrl(
+  modelE: Live2DModelE,
+  pathCfg: typeof Live2D_WidgetJs_Helper['pathCfg'],
+) {
 
-  function getFileName() {
-    switch (modelE) {
-      case Live2DModelE.epsilon2_1:
-        return 'epsilon2.1';
-      case Live2DModelE.gf:
-        return 'gantzert_felixander';
-      default:
-        return modelE.valueOf();
+  switch (Live2D_WidgetJs_Helper.cdnMode) {
+    //
+    //
+    //
+    case CdnModeE.SelfPublic: {                     // 从自身public目录获取
+      const dirName = modelE.valueOf().toLowerCase();
+
+      const fileName = (function () {
+        switch (modelE) {
+          case Live2DModelE.epsilon2_1:
+            return 'epsilon2.1';
+          case Live2DModelE.gf:
+            return 'gantzert_felixander';
+          default:
+            return modelE.valueOf().toLowerCase();               // WARN 转化为小写字母。
+        }
+      })();
+
+      // TIP 加上远程路径。
+      return pathCfg.modelBase + `live2d/model/live2d-widget-model-${dirName}/assets/${fileName}.model.json`;
+    }
+    //
+    //
+    //
+    case CdnModeE.UnPkg: {                          // 从远程 Unpkg.com 网站，进行获取
+      const dirName = (function () {
+        switch (modelE) {
+          case Live2DModelE.haru01:
+            return 'haru';              // 需要拼接中间目录。
+          case Live2DModelE.haru02:
+            return 'haru';              // 需要拼接中间目录。
+          default:
+            return modelE.valueOf().toLowerCase();               // WARN 转化为小写字母。
+        }
+      })();
+
+      const middleDir = (function () {
+        switch (modelE) {
+          case Live2DModelE.haru01:
+            return '01/';              // 需要拼接中间目录。
+          case Live2DModelE.haru02:
+            return '02/';              // 需要拼接中间目录。
+          default:
+            return '';                        // 默认没有中间目录
+        }
+      })();
+
+      const fileName = (function () {
+        switch (modelE) {
+          case Live2DModelE.epsilon2_1:
+            return 'Epsilon2.1';                  // 首字母大写！
+          case Live2DModelE.gf:
+            return 'Gantzert_Felixander';
+          default:
+            return modelE.valueOf().toLowerCase();               // WARN 转化为小写字母。
+        }
+      })();
+
+      return `https://unpkg.com/live2d-widget-model-${dirName}@latest/${middleDir}assets/${fileName}.model.json`;
     }
   }
 
-  return `live2d/model/live2d-widget-model-${dirName}/assets/${getFileName()}.model.json`;
 }
 
 function getL2Dwidget() {
@@ -101,6 +161,64 @@ export class Live2D_WidgetJs_Helper {
    * 根据【live2d-widget.js】库的不同版本，选择不同的加载方式。
    */
   public static readonly libLoadWay: L2Dwidget_LoadWayE = L2Dwidget_LoadWayE.SrcModuleImport;
+  public static readonly cdnMode: CdnModeE              = CdnModeE.UnPkg;
+
+  /**
+   * Model存储空间 的【远程路径】。
+   */
+  public static readonly pathCfg = {
+    modelBase: 'http://test-admin.bgex.link/',
+  };
+
+
+  public static initDemo(
+    modelE: Live2DModelE = Live2DModelE.default_demo,
+    pathCfg              = this.pathCfg,
+  ) {
+    getL2Dwidget().then(({L2Dwidget}) => {
+
+      console.log(L2Dwidget);
+      this.loadDemoCss(CssE.demo);      // 尝试加载CSS
+
+      L2Dwidget
+        .on('*', (name) => {
+          console.log(
+            '%c EVENT ' + '%c -> ' + name,      // 事件
+            'background: #222; color: yellow', 'background: #fff; color: #000',   // 修饰的CSS
+          );
+        })
+        .init({
+          dialog : {
+            // 开启对话框
+            enable: true,
+            script: {
+              // 每空闲 10 秒钟，显示一条一言
+              'every idle 10s': '$hitokoto$',
+              // 当触摸到星星图案
+              'hover .star'   : '星星在天上而你在我心里 (*/ω＼*)',
+              // 当触摸到角色身体
+              'tap body'      : '哎呀！别碰我！',
+              // 当触摸到角色头部
+              'tap face'      : '人家已经不是小孩子了！',
+            },
+          },
+          model  : {
+            jsonPath: modelE === Live2DModelE.default_demo ? undefined : getModelUrl(modelE, pathCfg),
+          },
+          display: {
+            position: 'left',
+          },
+        });
+      // });
+    });
+
+  }
+
+  //
+  //
+  //
+  //
+  //
 
   /**
    * CSS，加载状态表
@@ -122,40 +240,4 @@ export class Live2D_WidgetJs_Helper {
     }
   }
 
-  public static initDemo(modelE: Live2DModelE = Live2DModelE.default_demo) {
-    getL2Dwidget().then(({L2Dwidget}) => {
-
-      console.log(L2Dwidget);
-      this.loadDemoCss(CssE.demo);      // 尝试加载CSS
-
-      L2Dwidget
-        .on('*', (name) => {
-          console.log(
-            '%c EVENT ' + '%c -> ' + name,      // 事件
-            'background: #222; color: yellow', 'background: #fff; color: #000',   // 修饰的CSS
-          );
-        })
-        .init({
-          dialog: {
-            // 开启对话框
-            enable: true,
-            script: {
-              // 每空闲 10 秒钟，显示一条一言
-              'every idle 10s': '$hitokoto$',
-              // 当触摸到星星图案
-              'hover .star'   : '星星在天上而你在我心里 (*/ω＼*)',
-              // 当触摸到角色身体
-              'tap body'      : '哎呀！别碰我！',
-              // 当触摸到角色头部
-              'tap face'      : '人家已经不是小孩子了！',
-            },
-          },
-          model : {
-            jsonPath: modelE === Live2DModelE.default_demo ? undefined : getModelUrl(modelE),
-          },
-        });
-      // });
-    });
-
-  }
 }

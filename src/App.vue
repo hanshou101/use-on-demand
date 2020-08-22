@@ -34,7 +34,7 @@ export default Vue.extend({
   },
   mounted() {
     console.log(SString_Helper.formatFileSize(1234567890));
-    Live2D_WidgetJs_Helper.initDemo();
+    Live2D_WidgetJs_Helper.initDemo(Live2DModelE.tororo);
     setTimeout(() => {
       // this.showKanBan = true;
     }, 1000);

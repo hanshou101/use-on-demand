@@ -62,9 +62,9 @@ declare namespace L2Dwidget_SimpleNS {
     superSample?: number;
     width?: number;
     height?: number;
-    position?: string;
-    hOffset?: number;
-    vOffset?: number;
+    position?: 'left' | 'right' | 'top';    // 此处，其实是【CSS】属性的key。value对应【hOffset】值。
+    hOffset?: number;                       // Fixed定位下，横向偏移的位置。和【position】一起使用，但【'top'】是个奇葩例外。
+    vOffset?: number;                       // 【Bottom CSS属性】的px值。
   }
 
 

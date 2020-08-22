@@ -1,3 +1,26 @@
+.fixTotalScale() {
+  // 【位置】调整
+  transform        : scale(0.7);
+  transform-origin : 50% 100%;
+  // 【整体透明度】调整
+  opacity          : 0.8 !important;
+}
+
+.fixDialogTransparent() {
+  // 【外部透明度】
+  opacity : 0.6;
+}
+
+//
+//
+//
+//
+//
+
+#live2d-widget {
+  .fixTotalScale;
+}
+
 .live2d-widget-dialog-container {
   width                  : 300px;
   height                 : 120px;
@@ -8,6 +31,7 @@
   padding                : 12px;
   box-sizing             : border-box;
   -webkit-font-smoothing : antialiased;
+  .fixDialogTransparent;
 }
 .live2d-widget-dialog {
   width         : 100%;
