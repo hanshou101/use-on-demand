@@ -10,8 +10,6 @@
     "node_modules"
   ],
   "compilerOptions": {
-    "declaration": true,
-    "declarationDir": "./ts/ts-types",
     "target": "es2018",
     "module": "esnext",
     "lib": [

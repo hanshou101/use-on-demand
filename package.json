@@ -3,6 +3,7 @@
   "version": "1.0.36",
   "description": "按需使用的代码工具仓库。",
   "main": "index.js",
+  "typings": "ts/PackageJson-Index.d.ts",
   "scripts": {
     "combine-tsc-uglifyjs": "nps sentry.combine-tsc-uglifyjs",
     "load-tsconfig-by-js": "nps demo.load-tsconfig-by-js",
