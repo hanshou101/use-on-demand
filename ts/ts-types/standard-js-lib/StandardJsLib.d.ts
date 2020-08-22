@@ -1,15 +1,15 @@
 // 让parseInt的类型提示，更好用
-declare function parseInt(
+export function parseInt(
   value: string | number,     // TIP 经过试验，如果传入number，则会调用number的toString，转化为一个字符串，再运算。
   radix?: number,
 ): number;
 
 // 让parseFloat的类型提示，更好用
-declare function parseFloat(
+export function parseFloat(
   value: string | number,     // ??? TIP 经过试验，如果传入number，则会调用number的toString，转化为一个字符串，再运算。
 ): number;
 
-declare function isNaN(
+export function isNaN(
   number: number | string,    // TIP 经过试验，如果传入【字符串的NaN】，也可以正常识别为true
 ): boolean;
 

@@ -1,7 +1,7 @@
 /**
  * 自行推断的【L2Dwidget】类型。
  */
-declare namespace L2Dwidget_SimpleNS {
+export namespace L2Dwidget_SimpleNS {
   type BaseOnCb = (name: string) => void
 
   interface InitCfg {
@@ -96,13 +96,13 @@ declare namespace L2Dwidget_SimpleNS {
 
 }
 
-declare module 'live2d-widget' {
+export module 'live2d-widget' {
   export let L2Dwidget: L2Dwidget_SimpleNS.L2Dwidget_Type;
   // noinspection JSDuplicatedDeclaration
   // export default {L2Dwidget};
 }
 
-declare module 'live2d-widget/lib/L2Dwidget.min.js' {
+export module 'live2d-widget/lib/L2Dwidget.min.js' {
   export let L2Dwidget: L2Dwidget_SimpleNS.L2Dwidget_Type;
   // noinspection JSDuplicatedDeclaration
   // export default {L2Dwidget};
