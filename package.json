@@ -83,9 +83,9 @@
   "——————————————————": "高级进阶属性",
   "files": [
     "dist",
-    "dist/*.js",
-    "dist/*.js.map",
-    "dist/*.d.ts",
-    "dist/*.d.ts.map"
+    "dist/**/*.js",
+    "dist/**/*.js.map",
+    "dist/**/*.d.ts",
+    "dist/**/*.d.ts.map"
   ]
 }
