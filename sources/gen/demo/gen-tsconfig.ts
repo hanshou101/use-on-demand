@@ -18,12 +18,20 @@ class NuxtJs_TsConfig_Helper {
     //      "tests/**/*.ts",
     //      "tests/**/*.tsx"
     //
-    'types/**/*.d.ts', // TIP 这一句，读取自定义.d.ts的类型声明
-    'types/**/*.ts', // TIP 这一句，读取自定义.d.ts的类型声明
+    'sources/ts/ts-types/**/*.d.ts', // TIP 这一句，读取自定义.d.ts的类型声明
+    'sources/ts/ts-types/**/*.ts', // TIP 这一句，读取自定义.d.ts的类型声明
     //
-    '**/*.ts',
-    '**/*.tsx',
-    '**/*.vue',
+    'sources/**/*.d.ts',
+    'sources/**/*.ts',
+    'sources/**/*.tsx',
+    'sources/**/*.vue',
+    //
+    /*
+            '**!/!*.ts',
+            '**!/!*.d.ts',
+            '**!/!*.tsx',
+            '**!/!*.vue',
+    */
     //
     //    "config/**/*.ts",
     //    "config/**/*.tsx",
@@ -34,12 +42,27 @@ class NuxtJs_TsConfig_Helper {
     //
   ];
 
+  public static readonly _exclude = [
+    'node_modules',
+    // 'src/**.ts',          // 尝试打包工具类，ts代码
+    // 'src/**.d.ts',        // 尝试打包工具类，ts代码
+    // 'src/**.tsx',         // 尝试打包工具类，ts代码
+    // 'src/**.vue',         // 尝试打包工具类，ts代码
+  ];
+
   public static readonly _compilerOptions = {
     _target           : 'es2018', // WARN 适配【nuxt.js】
     _lib              : [
       'esnext.asynciterable',     // WARN 适配【nuxt.js】
     ],
-    _noEmit           : true,     // WARN 适配【nuxt.js】
+    /**
+     * FIXME 此处，后来发现，NPM项目比较特殊：
+     *        1.【noEmit = true】，将会使 TypeScript 不生成任何文件。
+     *                1.【Nuxt.js】或许不需要生成文件。
+     *                2.但是【NPM项目】必须要生成文件。
+     */
+    // _noEmit           : true,     // WARN 适配【nuxt.js】
+    _noEmit           : false,     // WARN 适配【nuxt.js】
     _types            : [
       // "webpack-env",           // WARN 适配【nuxt.js】 ———— 此处，进行隐藏！！！
       '@types/node',              // WARN 适配【nuxt.js】
@@ -90,6 +113,38 @@ class FullTypeCheck_Helper {
   public static readonly checkType_d_ts = false;
 }
 
+/**
+ * 专门用于，NPM打包、部署，的工具类
+ */
+class NpmBuild_Helper {
+  public static readonly _outDir     = './dist';  // 编译输出文件目录，默认等于rootDir
+  public static readonly _declareCfg = {
+    /**
+     * 生成相应的 .d.ts文件。
+     */
+    _declaration        : true,
+    /**
+     * 生成声明文件的输出路径。
+     *        1.字符串或undefined。
+     *        2.【undefined】时，【.d.ts文件】将保持和【js文件】，处于同一目录。
+     *        3.
+     */
+    // _declarationDir: './my-types',
+    _declarationDir     : undefined,
+    /**
+     * 为【.d.ts】文件，生成指向于【.ts源】文件，的SourceMap。
+     *        1.【使用项目引用】的情况下，强烈建议使用。
+     */
+    _declarationMap     : true,
+    /**
+     * 只生成【.d.ts】文件。（不生成【js】文件）
+     */
+    _emitDeclarationOnly: false,
+  };
+
+
+}
+
 class GenTsconfigUtil {
   // noinspection PointlessBooleanExpressionJS
   private readonly tsConfig = {
@@ -98,10 +153,19 @@ class GenTsconfigUtil {
       ...NuxtJs_TsConfig_Helper._include,
     ],
     // TIP 将以下目录，排除在TypeScript解析之外
-    'exclude'        : [
-      'node_modules',
-    ],
+    'exclude'        : NuxtJs_TsConfig_Helper._exclude,
     'compilerOptions': {
+      'outDir'                          : NpmBuild_Helper._outDir,                           // 编译输出文件目录，默认等于rootDir
+      'declaration'                     : NpmBuild_Helper._declareCfg._declaration,          // 生成相应的 .d.ts文件。
+      'declarationDir'                  : NpmBuild_Helper._declareCfg._declarationDir,       // 生成声明文件的输出路径。
+      'declarationMap'                  : NpmBuild_Helper._declareCfg._declarationMap,       // 生成指向于【.ts源】文件，的SourceMap。
+      'emitDeclarationOnly'             : NpmBuild_Helper._declareCfg._emitDeclarationOnly,  // 只生成【.d.ts】文件。（不生成【js】文件）
+      //
+      //
+      //
+      //
+      //
+      //
       /**
        * TIP 以下的配置，在稳定版的Vue+TypeScript+MyFrameWork之上，于【2019年3月16日20:59:34】又更新了一版。
        * TIP 参考资料：

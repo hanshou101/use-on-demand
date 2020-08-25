@@ -1,15 +1,20 @@
 {
   "include": [
-    "types/**/*.d.ts",
-    "types/**/*.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.vue"
+    "sources/ts/ts-types/**/*.d.ts",
+    "sources/ts/ts-types/**/*.ts",
+    "sources/**/*.d.ts",
+    "sources/**/*.ts",
+    "sources/**/*.tsx",
+    "sources/**/*.vue"
   ],
   "exclude": [
     "node_modules"
   ],
   "compilerOptions": {
+    "outDir": "./dist",
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": false,
     "target": "es2018",
     "module": "esnext",
     "lib": [
@@ -19,7 +24,7 @@
       "dom.iterable",
       "scripthost"
     ],
-    "noEmit": true,
+    "noEmit": false,
     "strict": true,
     "noImplicitThis": true,
     "jsx": "preserve",

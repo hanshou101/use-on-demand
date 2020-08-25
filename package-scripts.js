@@ -6,8 +6,8 @@ const tQuo = new Array(3 + 1).join(quo);    // 三个双引号
 const tsNode_cmdHead = `    ts-node  --files  --compiler-options=\"{ \\\"module\\\":\\\"commonjs\\\" }\"    `;
 
 const LostErrorSentry_Cfg = {
-  srcPath         : `./sentry/init`,
-  staticTargetPath: `./sentry/dist/static`,
+  srcPath         : `./sources/sentry/init`,
+  staticTargetPath: `./sources/sentry/dist/static`,
   TsName          : 'LostErrorSentry.ts',
   JsName          : 'LostErrorSentry.js',
   MinJsName       : 'LostErrorSentry.min.js',
@@ -39,11 +39,11 @@ module.exports = {
       /**
        * 辅助命令
        */
-      'load-tsconfig-by-js'     : `${tsNode_cmdHead}  ./gen/demo/gen-tsconfig.ts`,                                         // 动态js生成 tsconfig.js
+      'load-tsconfig-by-js'     : `${tsNode_cmdHead}  ./sources/gen/demo/gen-tsconfig.ts`,                                         // 动态js生成 tsconfig.js
       'copy-local-config'       : 'shx cp -f ./config/api.config.local.ts ./config/api.config.ts',              // 复制【环境配置】
-      'inject-cdn-2-tradingView': `${tsNode_cmdHead}  ./gen/gen-tradingView.ts`,
+      'inject-cdn-2-tradingView': `${tsNode_cmdHead}  ./sources/gen/gen-tradingView.ts`,
 
-      'CalcReturnTest': `${tsNode_cmdHead} ./swap/CalcReturnTest/swap.bgex.com.ts`,
+      'CalcReturnTest': `${tsNode_cmdHead} ./sources/swap/CalcReturnTest/swap.bgex.com.ts`,
 
       vue: {
         'serve': 'vue-cli-service serve',
