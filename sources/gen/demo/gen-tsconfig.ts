@@ -117,14 +117,21 @@ class FullTypeCheck_Helper {
  * 专门用于，NPM打包、部署，的工具类
  */
 class NpmBuild_Helper {
-  public static readonly _outDir     = './dist';  // 编译输出文件目录，默认等于rootDir
+  /**
+   * 编译输出文件【总绝对目录】
+   *        1.默认，undefined，等于【单文件自己的rootDir】
+   *        2.设定为【某个目标目录】，则所有的生成  【js】、【.js.map】、【.d.ts】、【.d.ts.map】 都会在【保持原有树状结构】的前提下，生成到【某个目标目录】。
+   */
+  public static readonly _outDir     = undefined;       // 直接原地生成
+  // public static readonly _outDir     = './dist';     // 迁移到【./dist】再生成
+  //
   public static readonly _declareCfg = {
     /**
      * 生成相应的 .d.ts文件。
      */
     _declaration        : true,
     /**
-     * 生成声明文件的输出路径。
+     * 生成声明文件的【总绝对输出路径】。
      *        1.字符串或undefined。
      *        2.【undefined】时，【.d.ts文件】将保持和【js文件】，处于同一目录。
      *        3.
