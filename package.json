@@ -82,10 +82,10 @@
   "homepage": "https://github.com/hanshou101/use-on-demand#readme",
   "——————————————————": "高级进阶属性",
   "files": [
-    "dist",
-    "dist/**/*.js",
-    "dist/**/*.js.map",
-    "dist/**/*.d.ts",
-    "dist/**/*.d.ts.map"
+    "lib",
+    "lib/**/*.js",
+    "lib/**/*.js.map",
+    "lib/**/*.d.ts",
+    "lib/**/*.d.ts.map"
   ]
 }
