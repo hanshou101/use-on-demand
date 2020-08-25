@@ -13,4 +13,4 @@ package-lock.json
 .idea/
 public/
 src/
-# sources/
+sources/

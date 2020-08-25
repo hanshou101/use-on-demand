@@ -1,1 +1,0 @@
-{"version":3,"file":"native-notification.d.ts","sourceRoot":"","sources":["native-notification.ts"],"names":[],"mappings":"AAAA;;;GAGG;AAUH,qBAAa,gCAAgC;IAE3C;;OAEG;IAEH,WAAkB,aAAa,IAAI,mBAAmB,CAcrD;WAEa,YAAY,CAAC,KAAK,EAAE,MAAM,EAAE,OAAO,EAAE,mBAAmB;IAqCtE,OAAO,CAAC,MAAM,CAAC,QAAQ;CAyBxB"}
