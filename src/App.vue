@@ -20,8 +20,8 @@
 
 <script lang="ts">
 import Vue                                    from 'vue';
-import {SString_Helper}                       from '../symbol-string/SString_Helper';
-import {Live2D_WidgetJs_Helper, Live2DModelE} from '../live2d/live2d-widget.js/Live2D_WidgetJs_Helper';
+import {SString_Helper}                       from '../sources/symbol-string/SString_Helper';
+import {Live2D_WidgetJs_Helper, Live2DModelE} from '../sources/live2d/live2d-widget.js/Live2D_WidgetJs_Helper';
 
 
 export default Vue.extend({
