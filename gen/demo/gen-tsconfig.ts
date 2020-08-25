@@ -94,8 +94,8 @@ class FullTypeCheck_Helper {
  * 辅助【Npm模块项目】，的类型选项。
  */
 class NpmModule_Helper {
-  // public static readonly _declaration    = true;
-  // public static readonly _declarationDir = './ts/ts-types';
+  public static readonly _declaration    = true;
+  public static readonly _declarationDir = './ts/ts-types';
 }
 
 class GenTsconfigUtil {
@@ -110,8 +110,8 @@ class GenTsconfigUtil {
       'node_modules',
     ],
     'compilerOptions': {
-      // declaration                       : NpmModule_Helper._declaration,
-      // declarationDir                    : NpmModule_Helper._declarationDir,
+      declaration                       : NpmModule_Helper._declaration,
+      declarationDir                    : NpmModule_Helper._declarationDir,
       //
       //
       //

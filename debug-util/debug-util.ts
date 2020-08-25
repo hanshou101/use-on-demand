@@ -1,4 +1,4 @@
-export const isClient = !process?.server;   // WARN 此处，兼容【nuxt.js】和【非nuxt.js】环境。
+export const isClient = !process.server;   // WARN 此处，兼容【nuxt.js】和【非nuxt.js】环境。
 
 export enum LogE {
   bgTokenAbout          = 'bgTokenAbout',
