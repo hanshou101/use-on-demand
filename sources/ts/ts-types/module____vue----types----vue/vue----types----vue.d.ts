@@ -1,4 +1,4 @@
-import Vue, {VueConstructor} from 'sources/vue';
+import Vue, {VueConstructor} from 'vue';
 // import OriginCoinApi         from '~/assets/js/api/originCoinApi';
 // import SwapsApi              from '~/assets/js/api/swapsApi';
 // import Alert                 from '~/components/bx-ui/alert/index';

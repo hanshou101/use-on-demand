@@ -1,4 +1,4 @@
-import Vue, { VNode } from 'sources/vue';
+import Vue, { VNode } from 'vue';
 
 declare global {
   namespace JSX {

@@ -7,9 +7,9 @@
 //   }
 // }
 
-import {PropOptions}                                           from 'sources/vue';
+import {PropOptions}                                           from 'vue';
 import {Vue}                                                   from 'vue/types/vue';
-import {VueConstructor}                                        from 'sources/vue';
+import {VueConstructor}                                        from 'vue';
 import {DirectiveBinding, DirectiveFunction, DirectiveOptions} from 'vue/types/options';
 
 

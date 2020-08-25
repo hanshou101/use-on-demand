@@ -1,4 +1,4 @@
-import {VueConstructor} from 'sources/vue';
+import {VueConstructor} from 'vue';
 
 interface SentryVue {
   new(option: {

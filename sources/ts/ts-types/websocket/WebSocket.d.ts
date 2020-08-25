@@ -1,5 +1,5 @@
 // import {WebSocketContainer} from '~/assets/js/websocket/webSocket';
-import Vue from 'sources/vue';
+import Vue from 'vue';
 
 declare global {
   /**

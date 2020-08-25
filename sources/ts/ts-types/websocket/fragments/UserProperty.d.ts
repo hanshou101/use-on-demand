@@ -1,5 +1,5 @@
 // import {Ws_UserProperty_E} from '~/assets/js/websocket/WsEnum';
-import Vue from 'sources/vue';
+import Vue from 'vue';
 
 declare global {
   namespace WsComm {

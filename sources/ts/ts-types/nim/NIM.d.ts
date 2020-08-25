@@ -1,6 +1,6 @@
 // import {privateConf}    from '~/components/nim/3rd/nim_server_conf';
 // import {RoomLogicClass} from '~/components/nim/im/chatroom/bz-util/room';
-import Vue from 'sources/vue';
+import Vue from 'vue';
 
 declare global {
   interface Window {

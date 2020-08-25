@@ -1,6 +1,6 @@
 // import {PlanOrder_ErrNo, PlanOrder_TypeField, PositionType_QuanOrZhu} from '~/assets/js/_enum/ApiEnum';
 
-import Vue from 'sources/vue';
+import Vue from 'vue';
 
 declare global {
 

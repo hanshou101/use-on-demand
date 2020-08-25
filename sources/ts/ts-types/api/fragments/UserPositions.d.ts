@@ -1,5 +1,5 @@
 // import {PositionErrNo, PositionType_QuanOrZhu, SimplePosit_DuoKongSide} from '~/assets/js/_enum/ApiEnum';
-import Vue from 'sources/vue'
+import Vue from 'vue'
 
 declare global {
   namespace UserPositionsApiNS {

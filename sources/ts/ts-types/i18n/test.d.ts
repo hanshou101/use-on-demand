@@ -1,4 +1,4 @@
-import Vue from 'sources/vue';
+import Vue from 'vue';
 
 // declare module 'vue/types/vue' {
 //

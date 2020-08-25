@@ -1,6 +1,6 @@
 // import {PlanOrder_TriggerCycle, PlanOrder_TriggerPrice_Type, PositionType_QuanOrZhu, SubmitOrderSide} from '~/assets/js/_enum/ApiEnum';
 
-import Vue from 'sources/vue';
+import Vue from 'vue';
 
 declare global {
 
