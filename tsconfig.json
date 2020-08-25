@@ -11,7 +11,7 @@
     "node_modules"
   ],
   "compilerOptions": {
-    "outDir": "./dist",
+    "outDir": "./lib",
     "declaration": true,
     "declarationMap": true,
     "emitDeclarationOnly": false,

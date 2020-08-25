@@ -3,6 +3,7 @@
 node_modules/
 package-lock.json
 !dist/       # 保留dist文件夹
+!lib/        # 保留lib文件夹
 
 #
 #
