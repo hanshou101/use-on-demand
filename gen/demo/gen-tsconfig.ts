@@ -90,14 +90,6 @@ class FullTypeCheck_Helper {
   public static readonly checkType_d_ts = false;
 }
 
-/**
- * 辅助【Npm模块项目】，的类型选项。
- */
-class NpmModule_Helper {
-  public static readonly _declaration    = true;
-  public static readonly _declarationDir = './ts/ts-types';
-}
-
 class GenTsconfigUtil {
   // noinspection PointlessBooleanExpressionJS
   private readonly tsConfig = {
@@ -110,11 +102,6 @@ class GenTsconfigUtil {
       'node_modules',
     ],
     'compilerOptions': {
-      declaration                       : NpmModule_Helper._declaration,
-      declarationDir                    : NpmModule_Helper._declarationDir,
-      //
-      //
-      //
       /**
        * TIP 以下的配置，在稳定版的Vue+TypeScript+MyFrameWork之上，于【2019年3月16日20:59:34】又更新了一版。
        * TIP 参考资料：
