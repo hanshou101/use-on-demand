@@ -1,0 +1,52 @@
+/*
+
+
+        .chart-page {
+          background-color: #12161C !important;
+        }
+
+        .chart-page .chart-container {
+          border-color: transparent !important;
+          background-color: transparent !important;
+        }
+
+        .layout__area--left [class^='icon-'] svg {
+          width: 22px !important;
+          height: 22px !important;
+        }
+
+        .layout__area--left [class^='buttonIcon-'] {
+          font-size: 16px !important;
+        }
+
+        .layout__area--left [class^='toggleButton-'] path[class^='background-'] {
+          fill: #394752;
+        }
+
+        .layout__area--left [class^='scrollTop-'],
+        .layout__area--left [class^='scrollBot-'] {
+          background-color: rgba(128, 128, 128, 0.2)!important;
+          color: #7A8F9F!important;
+        }
+
+
+        !*TIP ————————————————————————————————————————————>以下，是带Hash值的版本。每个TradingView版本都不一样。*!
+        !*WARN 其实，这种方式，并不是很推荐。*!
+        .content-3_f7yH29- {
+          opacity: 0;
+        }
+
+        .button-263WXsg-- .icon-1Y-3MM9F-.hovered--MYZioUu-,
+        .feature-no-touch .button-263WXsg-- .icon-1Y-3MM9F-:active,
+        .feature-no-touch .button-263WXsg-- .icon-1Y-3MM9F-:hover,
+        .feature-touch .button-263WXsg-- .icon-1Y-3MM9F-:active {
+          color: #C2DDF0!important;
+        }
+
+        .button-263WXsg-- .icon-1Y-3MM9F- {
+          color: #7A8F9F!important;
+        }
+        !*TIP 以上，是带Hash值的版本。每个TradingView版本都不一样。<————————————————————————————————————————————*!
+
+
+*/

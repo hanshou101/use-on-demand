@@ -4,13 +4,14 @@
   "description": "按需使用的代码工具仓库。",
   "main": "index.js",
   "scripts": {
-    "combine-tsc-uglifyjs": "nps sentry.combine-tsc-uglifyjs",
-    "load-tsconfig-by-js": "nps demo.load-tsconfig-by-js",
-    "complete-reinstall": "npm link nps-utils && nps tool.complete-reinstall",
-    "CalcReturnTest": "nps demo.CalcReturnTest",
-    "vue.serve": "nps demo.vue.serve",
-    "vue.build": "nps demo.vue.build",
-    "vue.lint": "nps demo.vue.lint"
+    "sentry____combine-tsc-uglifyjs": "nps sentry.combine-tsc-uglifyjs",
+    "ts____load-tsconfig-by-js": "nps demo.load-tsconfig-by-js",
+    "ts____compile-ts-util": "nps build.tool-compile",
+    "npm____complete-reinstall": "npm link nps-utils && nps tool.complete-reinstall",
+    "swap____CalcReturnTest": "nps demo.CalcReturnTest",
+    "vue____serve": "nps demo.vue.serve",
+    "vue____build": "nps demo.vue.build",
+    "vue____lint": "nps demo.vue.lint"
   },
   "lint-staged": {
     "*.ts": [
@@ -48,6 +49,7 @@
   "devDependencies": {
     "@types/koa": "2.11.3",
     "@types/node": "14.0.27",
+    "@types/ncp": "2.0.4",
     "@types/jquery": "3.5.1",
     "@types/clipboard": "2.0.1",
     "@types/file-saver": "1.3.1",
@@ -63,6 +65,7 @@
     "typescript": "3.9.7",
     "ts-node": "8.10.2",
     "nps-utils": "1.7.0",
+    "ncp": "2.0.0",
     "uglify-js": "3.10.0",
     "vue-template-compiler": "2.6.11"
   },

@@ -84,5 +84,14 @@ module.exports = {
         'npm install',                                                        // 重装依赖
       ),
     },
+    /**
+     * 相关打包命令
+     */
+    build : {
+      'tool-compile': npsUtils.series(
+        'tsc',          // 1.先进行编译
+        `${tsNode_cmdHead} ./sources/gen/demo/copy-after-tsc.ts`,                   // 2.再进行【复制】
+      ),
+    },
   }
 };
