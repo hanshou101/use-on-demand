@@ -11,7 +11,8 @@
     "swap____CalcReturnTest": "nps demo.CalcReturnTest",
     "vue____serve": "nps demo.vue.serve",
     "vue____build": "nps demo.vue.build",
-    "vue____lint": "nps demo.vue.lint"
+    "vue____lint": "nps demo.vue.lint",
+    "npm____auto-publish": "nps npm.auto-publish"
   },
   "lint-staged": {
     "*.ts": [

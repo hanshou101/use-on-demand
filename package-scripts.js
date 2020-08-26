@@ -93,5 +93,16 @@ module.exports = {
         `${tsNode_cmdHead} ./sources/gen/demo/copy-after-tsc.ts`,                   // 2.再进行【复制】
       ),
     },
+
+    /**
+     * NPM发布、部署相关。
+     */
+    npm: {
+      'auto-publish': npsUtils.series(
+        npsUtils.series.nps('build.tool-compile'),
+        'npm version patch',
+        'npm publish'
+      )
+    },
   }
 };
