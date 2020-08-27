@@ -73,7 +73,7 @@ export class AdminHelper {
    *  功能：
    *          1.目前，经常用于【提交数据】的筛选。
    */
-  public filterTargetFields<T>(originObj: IndexedObj<any>, filterObj: object, needTrimEmpty: boolean = false): IndexedObj<any> {
+  public static filterTargetFields<T>(originObj: IndexedObj<any>, filterObj: object, needTrimEmpty: boolean = false): IndexedObj<any> {
 
     const distObj: IndexedObj<any> = {
       // '筛选后保留的key' : '筛选后保留的value' ,
