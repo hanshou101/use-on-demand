@@ -46,8 +46,19 @@ module.exports = {
       'CalcReturnTest': `${tsNode_cmdHead} ./sources/swap/CalcReturnTest/swap.bgex.com.ts`,
 
       vue: {
-        'serve': 'vue-cli-service serve',
-        'build': 'vue-cli-service build',
+        /**
+         * 开发
+         *        1.本地调试模块
+         */
+        // 'serve': 'vue-cli-service serve',
+        'serve': 'cross-env NODE_ENV=development webpack-dev-server --open --hot',
+        /**
+         * 打包
+         *        1.打包成NPM包，供其它项目使用
+         */
+        // 'build': 'vue-cli-service build',
+        'build': 'cross-env NODE_ENV=production webpack --progress --hide-modules',
+        // 检查
         'lint' : 'vue-cli-service lint',
       }
     },
