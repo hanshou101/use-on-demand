@@ -17,6 +17,6 @@ export declare class AdminHelper {
      *  功能：
      *          1.目前，经常用于【提交数据】的筛选。
      */
-    filterTargetFields<T>(originObj: IndexedObj<any>, filterObj: object, needTrimEmpty?: boolean): IndexedObj<any>;
+    static filterTargetFields<T>(originObj: IndexedObj<any>, filterObj: object, needTrimEmpty?: boolean): IndexedObj<any>;
 }
 //# sourceMappingURL=admin-helper.d.ts.map
