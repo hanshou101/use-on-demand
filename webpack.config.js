@@ -1,5 +1,7 @@
-const path    = require('path');
-const webpack = require('webpack');
+const path              = require('path');
+const webpack           = require('webpack');
+const htmlWebpackPlugin = require('html-webpack-plugin');
+
 
 /**
  * 【ExtractTextPlugin】：
@@ -10,7 +12,7 @@ const ExtractTextPlugin   = require('extract-text-webpack-plugin');
 const VueStyleLoader_name = 'vue-style-loader';
 const NodeEnv             = process.env.NODE_ENV;
 const outputFilename      = 'test-cp-vue';
-const outputPath          = './lib-cp/vue';
+const outputPath          = 'lib-cp/vue';
 console.log('打包入口文件', NodeEnv);
 console.log('不能写入 .env 的变量', outputFilename);
 
@@ -23,7 +25,7 @@ const WebpackCfg = {
     ? './src/main.ts'
     : './cp/vue/to-build.js',
   output     : {
-    path          : path.resolve(__dirname, outputPath),
+    path          : path.resolve(__dirname, './' + outputPath),
     publicPath    : outputPath,
     filename      : outputFilename + '.js',
     library       : outputFilename, // 指定的就是你使用require时的模块名
@@ -72,15 +74,6 @@ const WebpackCfg = {
          */
         use : 'url-loader',
       },
-      // 对TS的编译。
-      {
-        test   : /\.tsx?$/,
-        loader : 'ts-loader',
-        exclude: /node_modules/,
-        options: {
-          appendTsSuffixTo: [/\.vue$/]
-        }
-      },
       //
       {
         test   : /\.vue$/,
@@ -108,6 +101,18 @@ const WebpackCfg = {
           },
           // other vue-loader options go here
         },
+      },
+      /**
+       * 对TS的编译。
+       *        1.顺序，似乎要放在【vue-loader】后面？
+       */
+      {
+        test   : /\.tsx?$/,
+        loader : 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/]
+        }
       },
       {
         test   : /\.js$/,
@@ -152,11 +157,22 @@ const WebpackCfg = {
   devtool    : '#eval-source-map',
   // 新增
   plugins    : [
-    // new HtmlWebpackPlugin({  // Also generate a test.html
-    //   outputFilename,
-    // })
-    //
-
+    new htmlWebpackPlugin({
+      template: './src/tpl/index-HtmlWebpackPlugin-template.html',
+      filename: 'index.html',//生成的文件名
+      /*
+              minify  : {
+                minimize            : true,//是否打包为最小值
+                removeAttrbuteQuotes: true,//去除引号
+                removeComments      : true,//去掉注释
+                collapseWhitespace  : true,//去掉空格
+                minifyCss           : true,//压缩css
+                removeEmptyElements : false,//清理内容为空的元素
+              },
+              chunks  : ['base', 'index'], //引入对应的js(对应(entry)中的入口文件)
+              hash    : true//引入产出的资源时加上哈希避免缓存
+      */
+    }),
     new VueLoaderPlugin(),
     new ExtractTextPlugin({
       disable  : false,

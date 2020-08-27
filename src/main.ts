@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import App from './App.vue';
 
+console.log('加载中');
+
 import ElementUI from 'element-ui';       // TIP 通过导入这句，开启【Element-UI】相关的类型检查。
 
 Vue.config.productionTip = false;
