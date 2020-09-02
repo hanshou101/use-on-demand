@@ -95,7 +95,7 @@
   },
   "                         文字属性————————————————————————————————————": "————————————————",
   "name": "use-on-demand",
-  "version": "1.0.55",
+  "version": "1.0.56",
   "description": "按需使用的代码工具仓库。",
   "private": false,
   "keywords": [
