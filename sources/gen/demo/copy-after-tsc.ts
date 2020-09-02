@@ -14,7 +14,7 @@ import ncp from 'ncp';
 const CopyCfg = {
   source     : 'sources',
   // destination: 'lib',
-  destination: 'lib',                         // FIXME 此处，不得已采用了【多一层目录】的形式
+  destination: 'lib/sources',                         // FIXME 此处，不得已采用了【多一层目录】的形式
   //
   options    : {
     //
