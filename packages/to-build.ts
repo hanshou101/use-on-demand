@@ -41,6 +41,9 @@ export default {
 /**
  * WARN 此处，必须要注意：
  *        1.每个组件，必须单独导出一次。
+ *                1.如果是【export { }】的形式，则必须【原样导入、原样导出】，不能修改名字。
+ *                2.如果要改名字，则必须【export const】
+ *        2.为了区分【组件.vue】、【工具.ts】、【统一导出.vue】、【.d.ts中类型】，最好起不同的名字。
  */
 export const VideoJS    = VideoJSCfg.VideoJSCp;
 export const HelloWorld = HelloWorldCfg.HelloWorldCp;
