@@ -44,8 +44,13 @@ module.exports = {
       'inject-cdn-2-tradingView': `${tsNode_cmdHead}  ./sources/gen/gen-tradingView.ts`,
 
       'CalcReturnTest': `${tsNode_cmdHead} ./sources/swap/CalcReturnTest/swap.bgex.com.ts`,
+    },
 
-      vue: {
+    vue: {
+
+      'webpack-3': {
+
+
         /**
          * 开发
          *        1.本地调试模块
@@ -60,7 +65,16 @@ module.exports = {
         'build': 'cross-env NODE_ENV=production webpack --progress --hide-modules',
         // 检查
         'lint' : 'vue-cli-service lint',
+      },
+
+      'cli-4': {
+        'serve'    : 'vue-cli-service serve',
+        'build'    : 'vue-cli-service build',
+        'test:unit': 'vue-cli-service test:unit',
+        'lint'     : 'vue-cli-service lint',
+        'lib'      : 'vue-cli-service build --target lib --name use-on-demand --dest lib-cp packages/to-build.ts'
       }
+
     },
 
     /**

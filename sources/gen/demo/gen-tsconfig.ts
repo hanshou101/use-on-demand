@@ -40,6 +40,20 @@ class NuxtJs_TsConfig_Helper {
     //    "components/**/*.tsx",
     //    "components/**/*.vue"
     //
+
+    // TIP————————————————————————————组件库打包————
+
+    //
+    'examples/**/*.ts',
+    'examples/**/*.tsx',
+    'examples/**/*.vue',
+    //
+    'packages/**/*.ts',
+    'packages/**/*.tsx',
+    'packages/**/*.vue',
+    //
+    'tests/**/*.ts',
+    'tests/**/*.tsx'
   ];
 
   public static readonly _exclude = [
@@ -67,6 +81,18 @@ class NuxtJs_TsConfig_Helper {
       // "webpack-env",           // WARN 适配【nuxt.js】 ———— 此处，进行隐藏！！！
       '@types/node',              // WARN 适配【nuxt.js】
       '@nuxt/types',               // WARN 适配【nuxt.js】
+      //
+
+      // TIP————————————————————————————组件库打包————
+      //
+      'webpack-env',
+      'jest',
+      //
+      //
+      'esnext',
+      'dom',
+      'dom.iterable',
+      'scripthost'
     ],
     _paths            : {
       /*
@@ -122,9 +148,9 @@ class NpmBuild_Helper {
    *        1.默认，undefined，等于【单文件自己的rootDir】
    *        2.设定为【某个目标目录】，则所有的生成  【js】、【.js.map】、【.d.ts】、【.d.ts.map】 都会在【保持原有树状结构】的前提下，生成到【某个目标目录】。
    */
-    // public static readonly _outDir     = undefined;       // 直接原地生成
-  // public static readonly _outDir     = './dist';     // 迁移到【./dist】再生成
-  public static readonly _outDir     = './lib';     // 迁移到【./dist】再生成
+                         // public static readonly _outDir     = undefined;       // 直接原地生成
+                         // public static readonly _outDir     = './dist';     // 迁移到【./dist】再生成
+  public static readonly _outDir = './lib';     // 迁移到【./dist】再生成
   //
   public static readonly _declareCfg = {
     /**
