@@ -1,4 +1,4 @@
-import HelloWorldCp from "./HelloWorld.vue";
+import HelloWorldCp from "./HelloWorld.vue.js";
 
 const cpName         = "HelloWorld";
 HelloWorldCp.install = Vue => Vue.component(cpName, HelloWorldCp);

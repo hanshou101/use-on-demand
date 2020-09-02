@@ -1,5 +1,5 @@
-import * as HelloWorld from "./components/HelloWorld";
-import * as VideoJS    from "./components/VideoJS";
+import * as HelloWorld from "./components/hello-world/HelloWorld";
+import * as VideoJS    from "./components/video-js/VideoJS";
 
 const components: Array<{
   cp: VueConstructor_Type,

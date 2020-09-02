@@ -3,3 +3,4 @@ declare const _default: import("vue/types/vue").ExtendedVue<Vue, unknown, unknow
     msg: string;
 }>;
 export default _default;
+//# sourceMappingURL=HelloWorld.vue.d.ts.map

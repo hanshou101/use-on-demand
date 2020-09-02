@@ -54,7 +54,7 @@ module.exports = {
      */
     ts: {
       "gen-tsconfig": `${tsNode_cmdHead}  ./sources/gen/demo/gen-tsconfig.ts`,                                         // 动态js生成 tsconfig.js
-      "compile-lib"       : npsUtils.series(
+      "compile-lib" : npsUtils.series(
         "tsc",          // 1.先进行编译
         `${tsNode_cmdHead} ./sources/gen/demo/copy-after-tsc.ts`                   // 2.再进行【复制】
       )
@@ -88,6 +88,11 @@ module.exports = {
         "test:unit": "vue-cli-service test:unit",
         "lint"     : "vue-cli-service lint",
         "lib"      : "vue-cli-service build --target lib --name use-on-demand --dest lib-cp packages/to-build.ts"
+      },
+
+
+      "cp": {
+        "gen-type": "vuedts packages"
       }
 
     },

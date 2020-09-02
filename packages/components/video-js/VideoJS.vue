@@ -18,8 +18,8 @@
 
 <script lang="ts">
 import VideoJS_TypeNS, { VideoJsPlayer } from "video.js";
-import Vue                               from "vue";
-import { MVideo_Helper }                 from "../MVideo_Helper";
+import Vue               from "vue";
+import { MVideo_Helper } from "../../../sources/media-video/MVideo_Helper";
 
 // 初始化【CSS样式】
 MVideo_Helper.loadCss();
