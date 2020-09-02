@@ -1,17 +1,17 @@
-import * as HelloWorld from "./components/hello-world/HelloWorld";
-import * as VideoJS    from "./components/video-js/VideoJS";
+import * as HelloWorldCfg from "./components/hello-world/HelloWorld";
+import * as VideoJSCfg    from "./components/video-js/VideoJS";
 
 const components: Array<{
   cp: VueConstructor_Type,
   name: string,
 }> = [
   {
-    cp  : VideoJS.VideoJSCp,
-    name: VideoJS.cpName
+    cp  : VideoJSCfg.VideoJSCp,
+    name: VideoJSCfg.cpName
   },
   {
-    cp  : HelloWorld.HelloWorldCp,
-    name: VideoJS.cpName
+    cp  : HelloWorldCfg.HelloWorldCp,
+    name: HelloWorldCfg.cpName
   }
 ];
 
@@ -34,7 +34,15 @@ if (typeof window !== "undefined" && window.Vue) {
  *                2.这种情况下，仅仅导入【单个组件】。
  */
 export default {
-  install,
-  VideoJS   : VideoJS.VideoJSCp,
-  HelloWorld: HelloWorld.HelloWorldCp
+  install
 };
+
+
+/**
+ * WARN 此处，必须要注意：
+ *        1.每个组件，必须单独导出一次。
+ */
+export const VideoJS    = VideoJSCfg.VideoJSCp;
+export const HelloWorld = HelloWorldCfg.HelloWorldCp;
+
+
