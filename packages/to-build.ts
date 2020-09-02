@@ -16,7 +16,8 @@ const components: Array<{
 ];
 
 const install = function(Vue: VueConstructor_Type, opts = {}) {
-  components.map(cp => {
+  components.forEach(cp => {
+    console.log("cp", cp);
     Vue.component(cp.name, cp.cp);
   });
 };
