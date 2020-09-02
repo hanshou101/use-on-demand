@@ -16,6 +16,6 @@ export default _default;
  *        3.
  */
 
-export * as HelloWorldCp from "packages/components/hello-world/HelloWorld.cp";
-export * as VideoJSCp    from "packages/components/video-js/VideoJS.cp";
+export * as HelloWorld from "packages/components/hello-world/HelloWorld.cp";
+export * as VideoJS    from "packages/components/video-js/VideoJS.cp";
 

@@ -44,8 +44,11 @@ export default {
  *                1.如果是【export { }】的形式，则必须【原样导入、原样导出】，不能修改名字。
  *                2.如果要改名字，则必须【export const】
  *        2.为了区分【组件.vue】、【工具.ts】、【统一导出.vue】、【.d.ts中类型】，最好起不同的名字。
+ *                1.但是此处【export const】的名字，要和【export * as 】的名字，保持一致！！！
+ *                2.此时，又涉及了【Vue.component】所用的名字。变得更复杂了。
+ *                3.所以，最后结论是，更倾向于【用户业务项目】使用的简单。
  */
-export const VideoJS    = VideoJSCfg.VideoJSCp;
 export const HelloWorld = HelloWorldCfg.HelloWorldCp;
+export const VideoJS    = VideoJSCfg.VideoJSCp;
 
 
