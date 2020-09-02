@@ -127,7 +127,8 @@ module.exports = {
      */
     npm: {
       "auto-publish"      : npsUtils.series(
-        npsUtils.series.nps("build.tool-compile"),
+        "npm run ts____compile-lib",
+        "npm run vue____lib",
         "npm version patch",
         "npm publish"
       ),
