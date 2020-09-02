@@ -3,8 +3,10 @@ import { VueConstructor } from "vue";
 /**
  * 自带的【Install函数】。
  */
-export default function install(Vue: VueConstructor, opts = {}): void;
-
+const _default: {
+  install(Vue: VueConstructor, opts = {}): void;
+};
+export default _default;
 
 /**
  * WARN 此处，必须要注意：
@@ -13,6 +15,7 @@ export default function install(Vue: VueConstructor, opts = {}): void;
  *                1. export * as 你的组件 from "aaa/bbb.cp"
  *        3.
  */
-export * as HelloWorldCp  from "packages/components/hello-world/HelloWorld.cp";
-export * as VideoJSCp     from "packages/components/video-js/VideoJS.cp";
+
+export * as HelloWorldCp from "packages/components/hello-world/HelloWorld.cp";
+export * as VideoJSCp    from "packages/components/video-js/VideoJS.cp";
 
