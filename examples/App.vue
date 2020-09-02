@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png"/>
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
 
     <h1>测试运行</h1>
     <p>试试摸摸头和这颗星星会有不同的对话哦</p>
@@ -21,12 +21,22 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue                                      from "vue";
+import { Live2D_WidgetJs_Helper, Live2DModelE } from "../sources/live2d/live2d-widget.js/Live2D_WidgetJs_Helper";
 
 export default Vue.extend({
-  name      : 'App',
+  name      : "App",
   components: {},
+  mounted() {
+    Live2D_WidgetJs_Helper.initDemo(Live2DModelE.tororo);
+  }
 });
+
+
+
+
+
+
 </script>
 
 <style lang="less">

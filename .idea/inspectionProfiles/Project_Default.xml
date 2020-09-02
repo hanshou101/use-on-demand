@@ -7,6 +7,7 @@
       <option name="myOperaVersion" value="50" />
       <option name="mySafariVersion" value="11" />
     </inspection_tool>
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
@@ -36,7 +37,6 @@
     <inspection_tool class="JSValidateTypes" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="NonAsciiCharacters" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="PointlessArithmeticExpressionJS" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
-    <inspection_tool class="TsLint" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="UnnecessaryLocalVariableJS" enabled="true" level="WEAK WARNING" enabled_by_default="true">
       <option name="m_ignoreImmediatelyReturnedVariables" value="false" />
       <option name="m_ignoreAnnotatedVariables" value="false" />

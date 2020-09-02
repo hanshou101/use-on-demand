@@ -1,0 +1,72 @@
+@import "../../../../../assets/css/custom/test-color";
+
+/**
+ * TIP 注意以下内容：
+ *                1.需要开启【File-Watch】；并且，指定这个文件夹。
+ *                2.所有的【属性选择器】，最好只用【class*=包含】，而不是【class^=开始】。因为class类名的前后顺序，可能会变化。
+ *                3.
+ */
+
+.chart-page { // TIP <body>元素的class
+  background : @NavBg_inWhiteBgPage_Color; // 屏蔽掉默认的白色背景
+
+  .loading-indicator { // TIP 偶尔闪过的灰色loading界面（较难捕捉）
+    background-color : @NavBg_inWhiteBgPage_Color;
+  }
+
+  .chart-container-border {
+    background-color : @NavBg_inWhiteBgPage_Color; // 屏蔽掉默认的白色背景
+  }
+
+  .layout__area--left {
+    & > div[class*="container-"] {
+      & > div[class*="inner-"] { // TIP 左侧【drawingToolbar】面板，有时候会出现的白边
+        background : @NavBg_inWhiteBgPage_Color;
+      }
+    }
+    & > div[class*="drawingToolbar-"] {
+      & div[class*="inner-"] {
+        background-color : fade(@TextAuxiliary_Color, 70%); // TIP 同时，不同图标组间的【分隔线】也是用背景色实现的
+
+        & div/*[class*="dropdown-"]*/.apply-common-tooltip, // 注意，这两个选择器是并排的。
+        & div[class*="buttonWrap-"] div[class*="button-"] { // TIP 左侧【drawingToolbar】面板，图标的颜色
+          color : @CommonAuxiliaryColor;
+          &:hover { // TIP 悬浮时，图标的颜色
+            color : @BrandPrimary_Color;
+            & div[class*="bg-"] {
+              background-color : unset;
+              cursor           : pointer;
+            }
+          }
+          &[class*="isActive"] { // TIP 被选中时，图标的颜色
+            & div[class*="bg-"] span[class*="icon-"] {
+              color : @BrandPrimary_Color;
+            }
+          }
+        }
+      }
+      & div[class*="toggleButton"] { // TIP 左侧【drawingToolbar】面板，显示/隐藏的切换按钮。
+        margin-top    : auto;
+        margin-bottom : auto;
+        top           : 30%;
+        bottom        : 0;
+        //
+        height        : 26px;
+      }
+    }
+  }
+}
+
+.tv-spinner { // TIP 旋转Spinner
+  color : @BrandPrimary_Color;
+}
+
+._tv-dialog-content { // TIP 【K线设置窗口】高度，调整
+  //max-height : 400px;
+  max-height : 371px;
+  overflow   : auto;
+  .main-properties {
+    //height : 250px !important;
+    overflow : unset !important; // 修改部分原有的样式
+  }
+}

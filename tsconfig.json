@@ -5,7 +5,13 @@
     "sources/**/*.d.ts",
     "sources/**/*.ts",
     "sources/**/*.tsx",
-    "sources/**/*.vue"
+    "sources/**/*.vue",
+    "examples/**/*.ts",
+    "examples/**/*.tsx",
+    "examples/**/*.vue",
+    "packages/**/*.ts",
+    "packages/**/*.tsx",
+    "packages/**/*.vue"
   ],
   "exclude": [
     "node_modules"
@@ -49,7 +55,9 @@
     "skipLibCheck": true,
     "types": [
       "@types/node",
-      "@nuxt/types"
+      "@nuxt/types",
+      "webpack-env",
+      "jest"
     ],
     "paths": {},
     "typeRoots": [],

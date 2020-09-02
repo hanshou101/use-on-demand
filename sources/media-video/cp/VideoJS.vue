@@ -1,9 +1,9 @@
 <template>
   <div class="video-js-com">
     <video
-        :id="id"
-        ref="myVideo"
-        class="video-js vjs-big-play-centered vjs-fluid">
+      :id="id"
+      ref="myVideo"
+      class="video-js vjs-big-play-centered vjs-fluid">
       <p class="vjs-no-js">
         To view this video please enable JavaScript, and consider upgrading to a
         web browser that
@@ -17,10 +17,9 @@
 </template>
 
 <script lang="ts">
-import {VideoPlayer}                   from '@/main';
-import VideoJS_TypeNS, {VideoJsPlayer} from 'video.js';
-import Vue                             from 'vue';
-import {MVideo_Helper}                 from '../MVideo_Helper';
+import VideoJS_TypeNS, { VideoJsPlayer } from "video.js";
+import Vue                               from "vue";
+import { MVideo_Helper }                 from "../MVideo_Helper";
 
 // 初始化【CSS样式】
 MVideo_Helper.loadCss();
@@ -30,7 +29,7 @@ type SrcObj = VideoJS_TypeNS.Tech.SourceObject;
 
 type VideoBean = {
   src: string;                          // 链接地址
-  type?: 'video/mp4' | string;          // 媒体类型
+  type?: "video/mp4" | string;          // 媒体类型
   poster: string;                       // 封面图片
   title: string;                        // 标题文字
 }
@@ -38,7 +37,7 @@ type VideoBean = {
 // type FixDeprecate_TypeSdk = {}
 
 export default Vue.extend({
-  name   : 'VideoJS',
+  name   : "VideoJS",
   props  : {
     video   : {
       type: Object, required: true,
@@ -58,12 +57,12 @@ export default Vue.extend({
       type: Boolean, default: false
     },
     language: {
-      type: String, default: 'zh-CN'
-    },
+      type: String, default: "zh-CN"
+    }
   },
   data() {
     return {
-      id          : 'video_' + Math.random().toString(32).substr(2),
+      id          : "video_" + Math.random().toString(32).substr(2),
       player      : null as any as VideoJsPlayer,
       playerInited: false,
       currentVideo: this.video
@@ -73,11 +72,11 @@ export default Vue.extend({
     // 初始化播放器
     initPlayer() {
       this.$nextTick(() => {
-        let that               = this;
-        let video              = this.video;
-        let sources: SrcObj [] = [];
+        const that               = this;
+        const video              = this.video;
+        const sources: SrcObj [] = [];
         if (video.src) {
-          let obj: SrcObj = {
+          const obj: SrcObj = {
             src: video.src
           };
           if (video.type) {
@@ -85,10 +84,11 @@ export default Vue.extend({
           }
           sources.push(obj);
         }
+        const VideoPlayer = MVideo_Helper.initLang({ "zh-CN": {}, en: {} });
         this.player       = VideoPlayer(this.$refs.myVideo, {
           controls         : true,
           poster           : this.video.poster,
-          preload          : 'auto',
+          preload          : "auto",
           autoplay         : this.autoPlay,
           fluid            : true, // 自适应宽高
           language         : this.language, // 设置语言
@@ -96,25 +96,25 @@ export default Vue.extend({
           inactivityTimeout: false,
           controlBar       : {
             children: [
-              {name: 'playToggle'}, // 播放按钮
-              {name: 'currentTimeDisplay'}, // 当前已播放时间
-              {name: 'progressControl'}, // 播放进度条
-              {name: 'durationDisplay'}, // 总时间
+              { name: "playToggle" }, // 播放按钮
+              { name: "currentTimeDisplay" }, // 当前已播放时间
+              { name: "progressControl" }, // 播放进度条
+              { name: "durationDisplay" }, // 总时间
               { // 倍数播放
-                name         : 'playbackRateMenuButton',
+                name         : "playbackRateMenuButton",
                 playbackRates: [0.5, 1, 1.5, 2, 2.5]
               },
               {
-                name  : 'volumePanel', // 音量控制
-                inline: false, // 不使用水平方式
+                name  : "volumePanel", // 音量控制
+                inline: false // 不使用水平方式
               },
-              {name: 'FullscreenToggle'} // 全屏
+              { name: "FullscreenToggle" } // 全屏
             ]
           },
           sources
-        }, function (this: VideoJsPlayer) {
-          console.log('视频可以播放了', this);
-          that.$emit('onReady', this);
+        } as any, function(this: VideoJsPlayer) {
+          console.log("视频可以播放了", this);
+          that.$emit("onReady", this);
         });
         this.playerInited = true;
       });
@@ -122,27 +122,29 @@ export default Vue.extend({
     // 切换视频
     switchVideo(video: VideoBean, autoPlay: boolean) {
       if (!video.src || !video.poster) {
-        console.error('video需为一个包含src、poster、type(可选)的对象');
+        console.error("video需为一个包含src、poster、type(可选)的对象");
       }
       if (!video.src) {
         return;
       }
-      let data: SrcObj = {
+      const data: SrcObj = {
         src: video.src
       };
-      let player       = this.player;
+      const player       = this.player;
       if (video.type) {
         data.type = video.type;
       }
-      if (typeof autoPlay === 'undefined') {
+      if (typeof autoPlay === "undefined") {
         autoPlay = true;
       }
 
       player.pause();
       player.src(data);
+      // @ts-ignore
       player.load(data);                                                 // TIP 此处，官方类型提示文件，有问题
       if (video.poster) {
         // 动态切换poster
+        // @ts-ignore
         player.posterImage.setSrc(video.poster);
       }
       if (autoPlay) {
@@ -165,7 +167,7 @@ export default Vue.extend({
     },
     // 判断对象是否是空对象
     isEmptyObject(obj: {}) {
-      for (let attr in obj) {
+      for (const attr in obj) {
         return false;
       }
       return true;

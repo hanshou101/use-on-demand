@@ -27,11 +27,8 @@
 
 <script lang="ts">
 
-  import BaseVue, {
-    MixinLevelTag
-  } from "../../../_framework/BaseVue";
-  import {MyComponent} from "../../../_framework/BaseVue";
-  import {MyGetter, MyProp} from "../../../_framework/BaseVue";
+
+import Father_BaseVue, { MixinLevelTag, MyComponent, MyGetter, MyProp } from "../../../admin/mixins/Father_BaseVue";
 
   @MyComponent({
     name:       "MultiLangTag",
@@ -41,7 +38,7 @@
     filters:    {},
   })
   // export default class HelloWorld extends BaseVueClass {
-  export default class MultiLangTag extends BaseVue {    // 混入在此处，进行添加。
+  export default class MultiLangTag extends Father_BaseVue {    // 混入在此处，进行添加。
 
     // Prop，在类中的实现
     @MyProp({
@@ -131,13 +128,13 @@
 
     // 获取排序后的语言列表
     get sortedLangList() {
-      let lang = this.language;
-      let langList = [...this.tagTypeArray];
-      let index = langList.findIndex((item: any) => {
+      const lang = this.language;
+      const langList = [...this.tagTypeArray];
+      const index = langList.findIndex((item: any) => {
         return item.lang === lang;
       });
       if (index > 0) {
-        let item: any = langList[index];
+        const item: any = langList[index];
         langList.splice(index, 1);
         langList.unshift(item);
       }
