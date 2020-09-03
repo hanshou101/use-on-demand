@@ -1,0 +1,4 @@
+{
+  "HelloWorld": "./packages/components/hello-world/HelloWorld.ts",
+  "VideoJS"   : "./packages/components/video-js/VideoJS.ts"
+}

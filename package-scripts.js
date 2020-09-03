@@ -87,7 +87,23 @@ module.exports = {
         "build"    : "vue-cli-service build",
         "test:unit": "vue-cli-service test:unit",
         "lint"     : "vue-cli-service lint",
-        "lib"      : "vue-cli-service build --target lib --name use-on-demand --dest lib-cp packages/to-build.ts"
+        "lib"      : [
+          "vue-cli-service build'",
+          "--target lib",
+          "--name use-on-demand",
+          /**
+           * 1.这里重要的一点是[chunkhash]组件名称中的。
+           *        1.我们希望将库组件永久虚拟地缓存，因此如果组件的新版本发布，我们需要为组件提供唯一的URL。
+           */
+          // "--name \"MyComponent.[chunkhash]\"",
+          "--dest lib-cp",
+          //
+          // '--formats umd-min',
+          // "--formats \"commonjs,umd,umd-min\"",       // 默认值
+          // "--no-clean",
+          //
+          "packages/to-build.ts"
+        ].join(" ")
       },
 
 

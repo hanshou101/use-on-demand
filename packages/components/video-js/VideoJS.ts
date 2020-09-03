@@ -1,9 +1,9 @@
-import VideoJSCp from "./VideoJS.vue";
+import cp from "./VideoJS.vue";
 
-const cpName      = "VideoJS";
-VideoJSCp.install = Vue => Vue.component(cpName, VideoJSCp);
+const cpName = "VideoJS";
+cp.install   = Vue => Vue.component(cpName, cp);
 
 export {
-  VideoJSCp,
+  cp,
   cpName
 };

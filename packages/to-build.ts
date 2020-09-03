@@ -1,23 +1,13 @@
 import * as HelloWorldCfg from "./components/hello-world/HelloWorld";
 import * as VideoJSCfg    from "./components/video-js/VideoJS";
 
-const components: Array<{
-  cp: VueConstructor_Type,
-  name: string,
-}> = [
-  {
-    cp  : VideoJSCfg.VideoJSCp,
-    name: VideoJSCfg.cpName
-  },
-  {
-    cp  : HelloWorldCfg.HelloWorldCp,
-    name: HelloWorldCfg.cpName
-  }
+const components: Array<{ cp: VueConstructor_Type, cpName: string, }> = [
+  HelloWorldCfg, VideoJSCfg
 ];
 
 const install = function(Vue: VueConstructor_Type, opts = {}) {
   components.map(cp => {
-    Vue.component(cp.name, cp.cp);
+    Vue.component(cp.cpName, cp.cp);
   });
 };
 
@@ -48,7 +38,7 @@ export default {
  *                2.此时，又涉及了【Vue.component】所用的名字。变得更复杂了。
  *                3.所以，最后结论是，更倾向于【用户业务项目】使用的简单。
  */
-export const HelloWorld = HelloWorldCfg.HelloWorldCp;
-export const VideoJS    = VideoJSCfg.VideoJSCp;
+export const HelloWorld = HelloWorldCfg.cp;
+export const VideoJS    = VideoJSCfg.cp;
 
 

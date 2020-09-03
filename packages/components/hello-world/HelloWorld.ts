@@ -1,9 +1,9 @@
-import HelloWorldCp from "./HelloWorld.vue";
+import cp from "./HelloWorld.vue";
 
 const cpName         = "HelloWorld";
-HelloWorldCp.install = Vue => Vue.component(cpName, HelloWorldCp);
+cp.install = Vue => Vue.component(cpName, cp);
 
 export {
-  HelloWorldCp,
+  cp,
   cpName,
 };
