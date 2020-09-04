@@ -39,7 +39,6 @@
 
 import {ElUploadInternalFileDetail}                                  from 'element-ui/types/upload';
 import Father_BaseVue, {MixinLevelTag, MyComponent, MyProp, MyWatch} from '../../../admin/mixins/Father_BaseVue';
-// @ts-ignore
 import {ElUpload}                                             from 'element-ui/types/element-ui';
 
 @MyComponent({
@@ -137,8 +136,8 @@ export default class UploadSingleImg extends Father_BaseVue {    // 混入在此
     this.preUploadFaild = false;
     this.uploading      = true;
 
-    let arr    = file.name.split('.');
-    let suffix = arr[arr.length - 1];
+    const arr    = file.name.split('.');
+    const suffix = arr[arr.length - 1];
     this.preuploadApi()
         .then((res: any) => {
           console.log(res);
@@ -191,10 +190,10 @@ export default class UploadSingleImg extends Father_BaseVue {    // 混入在此
       console.error('createPreviewImg函数第二个参数必须是一个函数!');
       return;
     }
-    let img = document.createElement('img');
+    const img = document.createElement('img');
 
     if (window.URL) {
-      let imgSrc = window.URL.createObjectURL(file);
+      const imgSrc = window.URL.createObjectURL(file);
       img.src    = imgSrc;
       fn(img.src);
       img.onload = () => {
@@ -202,7 +201,7 @@ export default class UploadSingleImg extends Father_BaseVue {    // 混入在此
       };
 
     } else if (window.FileReader) {
-      let reader    = new FileReader();
+      const reader    = new FileReader();
       img.onload    = () => {
         fn(img.src);
       };

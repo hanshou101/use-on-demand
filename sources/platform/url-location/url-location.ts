@@ -3,7 +3,7 @@
  */
 export function getQueryField(
   key: string,
-  likeQuery?: string, // 如果外部没有传入，则取默认值
+  likeQuery?: string // 如果外部没有传入，则取默认值
 ) {
   const query = likeQuery ?? window.location.search.substring(1);
   const vars  = query.split('&');
@@ -90,6 +90,10 @@ export function checkHtmlVersion() {
   }
 }
 
+/**
+ * 平滑滚到某元素
+ *        1.方案A。
+ */
 export function smoothJump(id: string) {
   console.log('开始jump');
   const dom = document.querySelector(`#${id}`);
@@ -98,9 +102,29 @@ export function smoothJump(id: string) {
     dom.scrollIntoView({
       behavior: 'smooth', // 默认 auto
       block   : 'start', // 默认 center
-      inline  : 'start', // 默认 nearest
+      inline  : 'start' // 默认 nearest
     });
   }
+}
+
+/**
+ * 平滑滚到某元素
+ *        1.方案B。
+ */
+export function scrollToSmooth_methodB(element: HTMLElement, to: number, duration: number) {
+  if (duration <= 0) {
+    return;
+  }
+  const difference = to - element.scrollTop;
+  const perTick    = difference / duration * 10;
+  setTimeout(() => {
+    console.log(new Date());
+    element.scrollTop = element.scrollTop + perTick;
+    if (element.scrollTop === to) {
+      return;
+    }
+    scrollToSmooth_methodB(element, to, duration - 10);
+  }, 10);
 }
 
 /**
@@ -112,7 +136,7 @@ export function openWindow(
   url: string,                  // 新窗口网页地址
   title: string,                // 标题
   w: number,
-  h: number,
+  h: number
 ) {
   // Fixes dual-screen position                                 Most browsers       Firefox
   const dualScreenLeft: any = window.screenLeft !== undefined ? window.screenLeft : screen.left;
