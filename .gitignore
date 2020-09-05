@@ -27,9 +27,9 @@ package-lock.json
 !/.idea/
 /.idea/workspace.xml
 
-#               ——————————————不保留打包后文件
-/lib/
-/lib-cp/
+#               ——————————————（不）保留打包后文件          WARN 后来发现，开发阶段的话，是需要【npm 安装 GithUB形式的依赖】。所以仍然保留！！！
+!/lib/
+!/lib-cp/
 
 #               ——————————————去掉依赖库
 /node_modules

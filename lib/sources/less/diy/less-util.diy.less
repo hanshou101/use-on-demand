@@ -1,0 +1,406 @@
+@import "less-vars.diy";
+
+// TIP——————————————————————————————————————————————
+
+/**
+ * WARN 需要，以下不同状态的【输入框】
+ *            1.placeholder状态
+ *            2.焦点状态
+ *            3.已输入状态
+ *            4.输入错误提示
+
+ */
+.LyDesign_commonInput_cpStyleMixin() {
+  
+  /**
+   * 不变属性
+   */
+  & {
+    background-color : fade(@CommonAuxiliaryColor, 10%); // 背景色，带透明
+    border-radius    : 4px;
+    border           : 1px solid; // 此处，不设置边框颜色。由各种状态，自己去设置
+    ::placeholder {
+      color : @Input_Default_Border_or_Text_Color;
+    }
+  }
+  
+  /**
+   * 普通情况
+   */
+  & {
+    border-color : @Input_Default_Border_or_Text_Color; // 边框色，不太透明
+    //color        : @TextPrimary_or_Bg_Color;
+    color        : @BrandPrimary_Color; // WARN 此处，略做修改？ 和PC的标准不太一样。
+  }
+  
+  /**
+   * 鼠标悬浮情况
+   */
+  &:hover {
+    border-color : @BrandPrimary_Color;
+    color        : @BrandPrimary_Color;
+  }
+  
+  /**
+   * 获得焦点情况
+   */
+  &:focus {
+    border-color : @BrandPrimary_Color;
+    color        : @BrandPrimary_Color;
+  }
+  
+  /**
+   * 禁用状态（可能，也要单独抽取一个Mixin？？？？？？？？？？？？？？？？）
+   */
+  &.disabled {
+    border-color     : @Input_Default_Border_or_Text_Color; // 边框色，不太透明
+    // WARN 背景色变了
+    background-color : fade(@CommonAuxiliaryColor, 40%); // 背景色，带透明
+  }
+  
+  /**
+   * 输入错误状态（可能，也要单独抽取一个Mixin？？？？？？？？？？？？？？？？）
+   */
+  &.input-error {
+    border-color : @ContractNegative_Main_Color; // 边框色，不太透明
+    color        : @ContractNegative_Main_Color;
+  }
+  
+}
+
+// TIP——————————————————————————————————————————————
+.LyDesign_commonElButton_brandColor_cpStyleMixin() {
+  ///deep/ .el-button {
+  background-color : @BrandPrimary_Color;
+  border           : 1px solid @BrandPrimary_Color;
+  color            : @TextPrimary_or_Bg_Color;
+  border-radius    : 4px;
+  //}
+}
+
+// 背景色反转了的，【ElButton】按钮。
+.LyDesign_commonElButton__reversedBg_brandColor_cpStyleMixin() {
+  ///deep/ .el-button {
+  background-color : transparent;
+  border           : 1px solid @BrandPrimary_Color;
+  color            : @BrandPrimary_Color;
+  border-radius    : 4px;
+  
+  cursor           : pointer;
+  //}
+}
+
+// CheckBox复选框（/deep/深入修改）
+.LyDesign_deepModify_ElCheckBox_brandColor_cpStyleMixin() {
+  /deep/ .el-checkbox__input {
+    & {
+      .el-checkbox__inner {
+        &:hover {
+          border-color : @BrandPrimary_Color;
+        }
+      }
+    }
+    &.is-checked {
+      .el-checkbox__inner {
+        background-color : @BrandPrimary_Color;
+        border-color     : @BrandPrimary_Color;
+      }
+    }
+  }
+}
+
+// 文字，水平居中+垂直居中
+.StandardCss_TextHoriVertCenter_Mixin() {
+  display         : flex;
+  justify-content : center;
+  align-items     : center;
+}
+
+// ElButton，去除所有样式
+.StandardCss_ElButton_RestEmptyStyle_Mixin() {
+  /**
+   * TIP 此处，其实也有另外一种【更好的解决方案】
+   *        1.参考资料：
+   *                1.南哥说的。
+   *                2.以及  [all - CSS（层叠样式表） | MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/all)
+   */
+  /*
+          all: unset;
+  */
+  display            : inherit;
+  line-height        : inherit;
+  white-space        : inherit;
+  cursor             : inherit;
+  background         : inherit;
+  border             : inherit;
+  color              : inherit;
+  -webkit-appearance : inherit;
+  text-align         : inherit;
+  box-sizing         : inherit;
+  outline            : inherit;
+  margin             : inherit;
+  transition         : inherit;
+  font-weight        : inherit;
+  padding            : inherit;
+  font-size          : inherit;
+  border-radius      : inherit;
+  
+  &.is-loading { // 当正在加载中时。
+    // cursor : not-allowed;    // WARN 不用添加这个，因为loading时，已屏蔽了一切鼠标事件。
+  }
+}
+
+/**
+ * TIP 使得某元素，具有【sticky粘性定位】的效果
+ *        1.想要sticky生效的话，必须有 top、right、bottom、left 四个属性值中的一者。
+ *        2.特别注意，对于<table>元素，想要达到此效果：
+ *                1.我们一般将该css属性，放置在【thead th】上。
+ *                2.同时，考虑【background-color】的背景色，以防看到后面的元素。
+ *                3.z-index并不是必须的。看你具体的设置。
+ */
+.StandardCss_StickyPosition_Mixin( @direction , @px ) {
+  position      : sticky;
+    @{direction}: @px;
+}
+
+// TIP 修复，display的显示错误
+.FixDisplayErr_for_StandardCss_ElButton_RestEmptyStyle_Mixin() {
+  .flex-box {
+    display : inline-flex;
+  }
+}
+
+// TIP 减小特效的显示
+.ReduceStyleEffect_for_StandardCss_ElButton_RestEmptyStyle_Mixin() {
+  /*
+  //&.el-button.is-loading {
+  & {
+    //background : red;
+    //:before {
+    //  display : none; // 不显示 淡白色 遮罩
+    //}
+    &.el-button.is-loading {
+      :before {
+        background : #123456;
+        display    : none; // 不显示 淡白色 遮罩
+      }
+    }
+  }
+  //}
+  */
+  //& {
+  //}
+  // TIP 方案一
+  &:before {
+    display : none;
+  }
+  // TIP 方案二
+  & {
+    :before {
+      display : none;
+    }
+  }
+}
+
+// 用<ul>和<li>标签，所绘制的【RadioGroup】样式。
+.LyDesign_UlLiRadioGroup_cpStyleMixin (
+  @block_gap
+) {
+  width         : 100%;
+  display       : flex;
+  border-radius : 2px;
+  margin-bottom : @block_gap;
+  li {
+    .StandardCss_TextHoriVertCenter_Mixin; // 内部文字居中
+    
+    border      : 1px solid @BrandPrimary_Color;
+    background  : @NavBg_inWhiteBgPage_Color;
+    
+    flex        : 1;
+    height      : 40px;
+    line-height : 40px;
+    text-align  : center;
+    cursor      : pointer;
+    color       : @BrandPrimary_Color;
+    
+    transition  : all 0.15s;
+    
+    &:first-child {
+      border-top-left-radius    : 2px;
+      border-bottom-left-radius : 2px;
+    }
+    &:nth-child(2) {
+      border : 1px solid @BrandPrimary_Color;
+    }
+    &:last-child {
+      border-top-right-radius    : 2px;
+      border-bottom-right-radius : 2px;
+    }
+    &.active { // 激活项
+      color      : @TextPrimary_or_Bg_Color;
+      background : @BrandPrimary_Color;
+    }
+  }
+}
+
+
+/**
+ * TIP 为【弹窗-不再显示】的勾选框，统一更换图片
+ *      0.参考资料：[less新手入门（二） Mixin 混合、带参数的Mixin - 沉着前进 - 博客园](https://www.cnblogs.com/fighxp/p/8075200.html)
+ *      1.用 名字(){} 声明，可以让该mixin不在生成的css中输出。（但是，使用的地方，会被成功替换）
+ */
+.noAccording_changePicMixin() {
+  & { // TIP 修改为，新的配色、配图体系
+    i {
+      //background-image : url("~assets/img/icon-chose-login_nor-bg.png"); // 此处虽然飘红，但是可用地址。
+    }
+    &.active i {
+      //background-image : url("~assets/img/icon-chose-login_sel-bg.png"); // 此处虽然飘红，但是可用地址。
+    }
+  }
+}
+
+.closeDialog_changeIconMixin() {
+  //& { // TIP 修改为，新的蓝色属性
+  //  @width        : 36px;
+  //  margin-right  : calc(@width / -2);
+  //  margin-top    : calc(@width / -2);
+  //  width         : @width;
+  //  height        : @width;
+  //  border-radius : 50%;
+  //  background    : white url("~assets/../../../components/bx-ui/popup/icon-close-bg.png") no-repeat; // FIXME 此处，暂留一个bug（alias的问题）
+  //}
+}
+
+.transferWindow_changeSwitchIconMixin() {
+  //& { // TIP 修改为，新的配色、配图体系
+  //  @width     : 41px;
+  //
+  //  position   : relative;
+  //  left       : -15%;
+  //
+  //  width      : @width;
+  //  height     : @width;
+  //  background : url("~assets/img/icon-exchange_nor-bg.png") no-repeat;
+  //  /*background-position : 0% 0%;*/
+  //  &:hover {
+  //    background : url("~assets/img/icon-exchange_sel-bg.png") no-repeat;
+  //    /*background-position : -100% -100%;*/
+  //  }
+  //}
+}
+
+.stRow_inputNumberMixin() {
+  padding-left  : 6px;
+  padding-right : 30px;
+  width         : 210px;
+  height        : 34px;
+  background    : fade(@BrandPrimary_Color, 5%);
+  border        : 1px solid fade(@BrandPrimary_Color, 30%);
+  color         : @TextAuxiliary_Color;
+  outline       : none;
+  // background: red;
+  &:focus {
+    box-shadow : 0 0 3px @BrandPrimary_Color;
+  }
+}
+
+.elInput_changeColorMixin() {
+  /deep/ .el-input__inner {
+    .LyDesign_commonInput_cpStyleMixin; // 直接引用，现有样式。
+    &:focus {
+      outline : 0;
+    }
+  }
+}
+
+/**
+ * WARN 不太好用
+ */
+@ImgHeight         : 7.24; // rem为单位
+.trans2VhHeight(@rem) {
+  // @height        : @rem / @ImgHeight * 100%;
+  @height : @rem / @ImgHeight * 100vh;
+}
+
+/**
+ * TIP 思路，写一个自定义函数，将rem转为vh。
+ */
+@trans2VhHeight_Fn : ~`trans2VhHeight_Fn = function( originRemH ) {
+    // return originRemH / @{ImgHeight} * 100 + '%';  // 支持百分比
+     return originRemH / @{ImgHeight} * 100 + 'vh';   // 同时，支持vh
+} `;
+
+
+/**
+ * TIP 完全居中
+ */
+.absoluteCenter(
+  @Hori:true,
+  @Vert:true
+) {
+  /**
+   * 切记，【when】要跟在【一个选择器】后面使用。
+   */
+  
+  & when (@Hori = true) {
+    // 水平居中
+    left         : if((@Hori), 0, inherit);
+    right        : if((@Hori), 0, inherit);
+    margin-left  : if((@Hori), auto, inherit);
+    margin-right : if((@Hori), auto, inherit);
+  }
+  & when (@Vert = true) {
+    // 垂直居中
+    top           : if((@Vert), 0, inherit);
+    bottom        : if((@Vert), 0, inherit);
+    margin-top    : if((@Vert), auto, inherit);
+    margin-bottom : if((@Vert), auto, inherit);
+  }
+}
+
+
+/**
+ * TIP 完全的【暗黑模式】。
+ */
+.darkMode(
+  @NeedTransition :true // 是否需要【切换过渡效果】
+) {
+  @media (prefers-color-scheme : dark) {
+    html {
+      /**
+       * TIP 自身属性。
+       */
+      & {
+        filter : //
+          /**
+           * 反转输入图像。
+           *        1.值定义转换的比例。100%（或1）将完全转换：黑色变为白色，白色变为黑色，其它颜色类似。
+           */ invert(1) //
+          /**
+           * 可以帮助我们处理非黑白的其它颜色，色调旋转180度。
+           *        1.确保网页的颜色主题不改变，而只是削弱它的颜色。
+           */ hue-rotate(180deg);
+        
+        & when ( @NeedTransition = true) { // 当开关开启时
+          // 过渡效果
+          transition : color 300ms, background-color 300ms;
+        }
+      }
+      
+      /**
+       * TIP 需要将页面中所有的图像添加相同的规则，以修复这个问题。
+       */
+      img {
+        filter : invert(1) hue-rotate(180deg);
+      }
+    }
+    
+    /**
+     * TIP 与上同理，我们可以给a标签也加上反转。
+     */
+    a {
+      filter : invert(1) hue-rotate(180deg);
+    }
+  }
+}
