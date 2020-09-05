@@ -44,7 +44,7 @@
     "reflect-metadata": "0.1.13",
     "soundjs": "1.0.1",
     "stats-js": "1.0.1",
-    "three": "0.95.0",
+    "three": "0.56.0",
     "typed-vuex": "0.1.20",
     "video.js": "7.8.4",
     "vue": "2.6.12",
