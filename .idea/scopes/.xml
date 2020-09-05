@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="便于搜索方法" pattern="file[use-on-demand]:*/&amp;&amp;!file[use-on-demand]:sources/tradingview/charting_library/static//*&amp;&amp;!file:package-lock.json" />
+</component>

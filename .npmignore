@@ -1,20 +1,13 @@
 .DS_Store
-node_modules
-# /dist
-
-
 # local env files
 .env.local
 .env.*.local
-
 # Log files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-
 # Editor directories and files
-.idea
 .vscode
 *.suo
 *.ntvs*
@@ -24,21 +17,24 @@ pnpm-debug.log*
 
 
 
+
 # TIP——————————————————【两者通用】——————————————————
 
-# node_modules/
 package-lock.json
 
-
-#
-#
 # TIP——————————————————【当前文件所特有】——————————————————
-#
-#
 
-.idea/
-public/
-src/
-sources/
-!dist/       # 保留dist文件夹
-!lib/        # 保留lib文件夹
+#               ——————————————去掉配置文件
+/.idea/
+
+#               ——————————————去掉调试工具
+/public/
+/examples/
+
+#               ——————————————去掉源码文件
+/src/
+/sources/
+
+#               ——————————————保留打包文件
+!/dist/
+!/lib/
