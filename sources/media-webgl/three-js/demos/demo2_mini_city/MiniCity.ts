@@ -8,7 +8,7 @@ import Car               from './js/Car';
 import treesPosition     from './config/treesPosition';
 import {MyOrbitControls} from './js/MyOrbitControls';
 
-export class MiniCity {
+export class MiniCity_three95 {
   // 屏幕参数
   public width?: number;
   public height?: number;

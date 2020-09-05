@@ -17,7 +17,7 @@ const THREE = require('three');   // 85版本、95版本
 import Car               from '../demo2_mini_city/js/Car';
 import {MyOrbitControls} from '../demo2_mini_city/js/MyOrbitControls';
 
-export class DepuTable {
+export class DepuTable_three95 {
   // 屏幕参数
   public width?: number;
   public height?: number;

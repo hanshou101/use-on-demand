@@ -15,7 +15,7 @@
 
 
 	import Father_BaseVue, { MixinLevelTag, MyComponent } from '../../../sources/admin/mixins/Father_BaseVue';
-	import { DepuTable }                                  from '../../../sources/media-webgl/three-js/demos/DepuTable/DepuTable';
+	import { DepuTable_three95 }                          from '../../../sources/media-webgl/three-js/demos/DepuTable/DepuTable';
 
 	@MyComponent({
 		name      : 'DepuTableCp',
@@ -37,7 +37,7 @@
 		};
 
 		mounted(): void {
-			new DepuTable().startDepu();
+			new DepuTable_three95().startDepu();
 		};
 
 		activated(): void {

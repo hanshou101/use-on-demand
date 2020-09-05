@@ -4,7 +4,7 @@ import { BaseThreeClass, BaseThreeClass_Helper, My_YuanZhu_Option, MyPoint3D } f
 import TWEEN           from '@tweenjs/tween.js';
 import { CDecoratorU } from '../../../../decorator/common-decorator';		// FIXME 此处版本较老，最新版本自带 .d.ts 。
 
-export default class chapter5 extends BaseThreeClass {
+export  class chapter5_three75 extends BaseThreeClass {
 	public $scene!: THREE.Scene;
 	public $camera!: THREE.PerspectiveCamera;
 	public $renderer!: THREE.WebGLRenderer;

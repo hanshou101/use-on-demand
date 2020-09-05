@@ -1,6 +1,6 @@
 const THREE = require('three');   // 85版本、95版本
 
-export default class chapter2 {
+export  class chapter2_three75 {
   private scene!: THREE.Scene;
   private camera!: THREE.PerspectiveCamera;
   private renderer!: THREE.WebGLRenderer;

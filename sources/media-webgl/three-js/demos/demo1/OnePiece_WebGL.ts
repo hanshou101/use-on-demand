@@ -41,7 +41,7 @@ class Label {
 	}
 }
 
-export class Demo_1 {
+export class OnePiece_three95 {
 	private get labelData(): Label[] {
 		return [  // 一个包含人物物体数据的数组
 			new Label('艾斯', '/image/ThreeJS/ace.jpg',

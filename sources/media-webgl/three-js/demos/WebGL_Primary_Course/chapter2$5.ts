@@ -2,7 +2,7 @@ import {BaseThreeClass, BaseThreeClass_Helper} from '../Utils/BaseThreeClass';
 
 const THREE = require('three');   // 85版本、95版本
 
-export default class chapter2$5 extends BaseThreeClass {
+export  class chapter2$5_three75 extends BaseThreeClass {
   public $renderer!: THREE.WebGLRenderer;
   public $camera!: THREE.PerspectiveCamera;
   public $scene!: THREE.Scene;

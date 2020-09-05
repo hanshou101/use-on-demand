@@ -56,7 +56,7 @@ export interface MyTrackballControlsInterface {
 const __MyTrackballControls = function (this: MyTrackballControlsInterface,
                                         object: THREE.PerspectiveCamera, domElement?: HTMLElement) {
 
-  const _this = this;
+  const that = this;
   const STATE = {NONE: -1, ROTATE: 0, ZOOM: 1, PAN: 2, TOUCH_ROTATE: 3, TOUCH_ZOOM_PAN: 4};
 
   this.object = object;
@@ -165,8 +165,8 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
     return function getMouseOnScreen (pageX: number, pageY: number) {
 
       vector.set(
-        (pageX - _this.screen.left) / _this.screen.width,
-        (pageY - _this.screen.top) / _this.screen.height,
+        (pageX - that.screen.left) / that.screen.width,
+        (pageY - that.screen.top) / that.screen.height,
       );
 
       return vector;
@@ -182,8 +182,8 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
     return function getMouseOnCircle (pageX: number, pageY: number) {
 
       vector.set(
-        ((pageX - _this.screen.width * 0.5 - _this.screen.left) / (_this.screen.width * 0.5)),
-        ((_this.screen.height + 2 * (_this.screen.top - pageY)) / _this.screen.width), // screen.width intentional
+        ((pageX - that.screen.width * 0.5 - that.screen.left) / (that.screen.width * 0.5)),
+        ((that.screen.height + 2 * (that.screen.top - pageY)) / that.screen.width), // screen.width intentional
       );
 
       return vector;
@@ -209,10 +209,10 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
 
       if (angle) {
 
-        _eye.copy(_this.object.position).sub(_this.target);
+        _eye.copy(that.object.position).sub(that.target);
 
         eyeDirection.copy(_eye).normalize();
-        objectUpDirection.copy(_this.object.up).normalize();
+        objectUpDirection.copy(that.object.up).normalize();
         objectSidewaysDirection.crossVectors(objectUpDirection, eyeDirection).normalize();
 
         objectUpDirection.setLength(_moveCurr.y - _movePrev.y);
@@ -222,22 +222,22 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
 
         axis.crossVectors(moveDirection, _eye).normalize();
 
-        angle *= _this.rotateSpeed;
+        angle *= that.rotateSpeed;
         quaternion.setFromAxisAngle(axis, angle);
 
         _eye.applyQuaternion(quaternion);
-        _this.object.up.applyQuaternion(quaternion);
+        that.object.up.applyQuaternion(quaternion);
 
         _lastAxis.copy(axis);
         _lastAngle = angle;
 
-      } else if (!_this.staticMoving && _lastAngle) {
+      } else if (!that.staticMoving && _lastAngle) {
 
-        _lastAngle *= Math.sqrt(1.0 - _this.dynamicDampingFactor);
-        _eye.copy(_this.object.position).sub(_this.target);
+        _lastAngle *= Math.sqrt(1.0 - that.dynamicDampingFactor);
+        _eye.copy(that.object.position).sub(that.target);
         quaternion.setFromAxisAngle(_lastAxis, _lastAngle);
         _eye.applyQuaternion(quaternion);
-        _this.object.up.applyQuaternion(quaternion);
+        that.object.up.applyQuaternion(quaternion);
 
       }
 
@@ -260,7 +260,7 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
 
     } else {
 
-      factor = 1.0 + (_zoomEnd.y - _zoomStart.y) * _this.zoomSpeed;
+      factor = 1.0 + (_zoomEnd.y - _zoomStart.y) * that.zoomSpeed;
 
       if (factor !== 1.0 && factor > 0.0) {
 
@@ -268,7 +268,7 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
 
       }
 
-      if (_this.staticMoving) {
+      if (that.staticMoving) {
 
         _zoomStart.copy(_zoomEnd);
 
@@ -294,21 +294,21 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
 
       if (mouseChange.lengthSq()) {
 
-        mouseChange.multiplyScalar(_eye.length() * _this.panSpeed);
+        mouseChange.multiplyScalar(_eye.length() * that.panSpeed);
 
-        pan.copy(_eye).cross(_this.object.up).setLength(mouseChange.x);
-        pan.add(objectUp.copy(_this.object.up).setLength(mouseChange.y));
+        pan.copy(_eye).cross(that.object.up).setLength(mouseChange.x);
+        pan.add(objectUp.copy(that.object.up).setLength(mouseChange.y));
 
-        _this.object.position.add(pan);
-        _this.target.add(pan);
+        that.object.position.add(pan);
+        that.target.add(pan);
 
-        if (_this.staticMoving) {
+        if (that.staticMoving) {
 
           _panStart.copy(_panEnd);
 
         } else {
 
-          _panStart.add(mouseChange.subVectors(_panEnd, _panStart).multiplyScalar(_this.dynamicDampingFactor));
+          _panStart.add(mouseChange.subVectors(_panEnd, _panStart).multiplyScalar(that.dynamicDampingFactor));
 
         }
 
@@ -320,18 +320,18 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
 
   this.checkDistances = function () {
 
-    if (!_this.noZoom || !_this.noPan) {
+    if (!that.noZoom || !that.noPan) {
 
-      if (_eye.lengthSq() > _this.maxDistance * _this.maxDistance) {
+      if (_eye.lengthSq() > that.maxDistance * that.maxDistance) {
 
-        _this.object.position.addVectors(_this.target, _eye.setLength(_this.maxDistance));
+        that.object.position.addVectors(that.target, _eye.setLength(that.maxDistance));
         _zoomStart.copy(_zoomEnd);
 
       }
 
-      if (_eye.lengthSq() < _this.minDistance * _this.minDistance) {
+      if (_eye.lengthSq() < that.minDistance * that.minDistance) {
 
-        _this.object.position.addVectors(_this.target, _eye.setLength(_this.minDistance));
+        that.object.position.addVectors(that.target, _eye.setLength(that.minDistance));
         _zoomStart.copy(_zoomEnd);
 
       }
@@ -342,37 +342,37 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
 
   this.update = function () {
 
-    _eye.subVectors(_this.object.position, _this.target);
+    _eye.subVectors(that.object.position, that.target);
 
-    if (!_this.noRotate) {
+    if (!that.noRotate) {
 
-      _this.rotateCamera();
-
-    }
-
-    if (!_this.noZoom) {
-
-      _this.zoomCamera();
+      that.rotateCamera();
 
     }
 
-    if (!_this.noPan) {
+    if (!that.noZoom) {
 
-      _this.panCamera();
+      that.zoomCamera();
 
     }
 
-    _this.object.position.addVectors(_this.target, _eye);
+    if (!that.noPan) {
 
-    _this.checkDistances();
+      that.panCamera();
 
-    _this.object.lookAt(_this.target);
+    }
 
-    if (lastPosition.distanceToSquared(_this.object.position) > EPS) {
+    that.object.position.addVectors(that.target, _eye);
 
-      _this.dispatchEvent(changeEvent);
+    that.checkDistances();
 
-      lastPosition.copy(_this.object.position);
+    that.object.lookAt(that.target);
+
+    if (lastPosition.distanceToSquared(that.object.position) > EPS) {
+
+      that.dispatchEvent(changeEvent);
+
+      lastPosition.copy(that.object.position);
 
     }
 
@@ -383,17 +383,17 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
     _state = STATE.NONE;
     _prevState = STATE.NONE;
 
-    _this.target.copy(_this.target0);
-    _this.object.position.copy(_this.position0);
-    _this.object.up.copy(_this.up0);
+    that.target.copy(that.target0);
+    that.object.position.copy(that.position0);
+    that.object.up.copy(that.up0);
 
-    _eye.subVectors(_this.object.position, _this.target);
+    _eye.subVectors(that.object.position, that.target);
 
-    _this.object.lookAt(_this.target);
+    that.object.lookAt(that.target);
 
-    _this.dispatchEvent(changeEvent);
+    that.dispatchEvent(changeEvent);
 
-    lastPosition.copy(_this.object.position);
+    lastPosition.copy(that.object.position);
 
   };
 
@@ -401,7 +401,7 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
 
   function keydown (event: any) {
 
-    if (_this.enabled === false) { return; }
+    if (that.enabled === false) { return; }
 
     window.removeEventListener('keydown', keydown);
 
@@ -411,15 +411,15 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
 
       return;
 
-    } else if (event.keyCode === _this.keys[STATE.ROTATE] && !_this.noRotate) {
+    } else if (event.keyCode === that.keys[STATE.ROTATE] && !that.noRotate) {
 
       _state = STATE.ROTATE;
 
-    } else if (event.keyCode === _this.keys[STATE.ZOOM] && !_this.noZoom) {
+    } else if (event.keyCode === that.keys[STATE.ZOOM] && !that.noZoom) {
 
       _state = STATE.ZOOM;
 
-    } else if (event.keyCode === _this.keys[STATE.PAN] && !_this.noPan) {
+    } else if (event.keyCode === that.keys[STATE.PAN] && !that.noPan) {
 
       _state = STATE.PAN;
 
@@ -429,7 +429,7 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
 
   function keyup (event: any) {
 
-    if (_this.enabled === false) { return; }
+    if (that.enabled === false) { return; }
 
     _state = _prevState;
 
@@ -439,7 +439,7 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
 
   function mousedown (event: any) {
 
-    if (_this.enabled === false) { return; }
+    if (that.enabled === false) { return; }
 
     event.preventDefault();
     event.stopPropagation();
@@ -450,17 +450,17 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
 
     }
 
-    if (_state === STATE.ROTATE && !_this.noRotate) {
+    if (_state === STATE.ROTATE && !that.noRotate) {
 
       _moveCurr.copy(getMouseOnCircle(event.pageX, event.pageY));
       _movePrev.copy(_moveCurr);
 
-    } else if (_state === STATE.ZOOM && !_this.noZoom) {
+    } else if (_state === STATE.ZOOM && !that.noZoom) {
 
       _zoomStart.copy(getMouseOnScreen(event.pageX, event.pageY));
       _zoomEnd.copy(_zoomStart);
 
-    } else if (_state === STATE.PAN && !_this.noPan) {
+    } else if (_state === STATE.PAN && !that.noPan) {
 
       _panStart.copy(getMouseOnScreen(event.pageX, event.pageY));
       _panEnd.copy(_panStart);
@@ -470,27 +470,27 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
     document.addEventListener('mousemove', mousemove, false);
     document.addEventListener('mouseup', mouseup, false);
 
-    _this.dispatchEvent(startEvent);
+    that.dispatchEvent(startEvent);
 
   }
 
   function mousemove (event: any) {
 
-    if (_this.enabled === false) { return; }
+    if (that.enabled === false) { return; }
 
     event.preventDefault();
     event.stopPropagation();
 
-    if (_state === STATE.ROTATE && !_this.noRotate) {
+    if (_state === STATE.ROTATE && !that.noRotate) {
 
       _movePrev.copy(_moveCurr);
       _moveCurr.copy(getMouseOnCircle(event.pageX, event.pageY));
 
-    } else if (_state === STATE.ZOOM && !_this.noZoom) {
+    } else if (_state === STATE.ZOOM && !that.noZoom) {
 
       _zoomEnd.copy(getMouseOnScreen(event.pageX, event.pageY));
 
-    } else if (_state === STATE.PAN && !_this.noPan) {
+    } else if (_state === STATE.PAN && !that.noPan) {
 
       _panEnd.copy(getMouseOnScreen(event.pageX, event.pageY));
 
@@ -500,7 +500,7 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
 
   function mouseup (event: any) {
 
-    if (_this.enabled === false) { return; }
+    if (that.enabled === false) { return; }
 
     event.preventDefault();
     event.stopPropagation();
@@ -509,13 +509,13 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
 
     document.removeEventListener('mousemove', mousemove);
     document.removeEventListener('mouseup', mouseup);
-    _this.dispatchEvent(endEvent);
+    that.dispatchEvent(endEvent);
 
   }
 
   function mousewheel (event: any) {
 
-    if (_this.enabled === false) { return; }
+    if (that.enabled === false) { return; }
 
     event.preventDefault();
     event.stopPropagation();
@@ -539,24 +539,24 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
 
     }
 
-    _this.dispatchEvent(startEvent);
-    _this.dispatchEvent(endEvent);
+    that.dispatchEvent(startEvent);
+    that.dispatchEvent(endEvent);
 
   }
 
   function touchstart (event: any) {
 
-    if (_this.enabled === false) { return; }
+    if (that.enabled === false) { return; }
 
     switch (event.touches.length) {
 
-      case 1:
+      case 1:{
         _state = STATE.TOUCH_ROTATE;
         _moveCurr.copy(getMouseOnCircle(event.touches[0].pageX, event.touches[0].pageY));
         _movePrev.copy(_moveCurr);
         break;
-
-      default: // 2 or more
+      }
+      default:{ // 2 or more
         _state = STATE.TOUCH_ZOOM_PAN;
         const dx = event.touches[0].pageX - event.touches[1].pageX;
         const dy = event.touches[0].pageY - event.touches[1].pageY;
@@ -567,28 +567,28 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
         _panStart.copy(getMouseOnScreen(x, y));
         _panEnd.copy(_panStart);
         break;
-
+      }
     }
 
-    _this.dispatchEvent(startEvent);
+    that.dispatchEvent(startEvent);
 
   }
 
   function touchmove (event: any) {
 
-    if (_this.enabled === false) { return; }
+    if (that.enabled === false) { return; }
 
     event.preventDefault();
     event.stopPropagation();
 
     switch (event.touches.length) {
 
-      case 1:
+      case 1:{
         _movePrev.copy(_moveCurr);
         _moveCurr.copy(getMouseOnCircle(event.touches[0].pageX, event.touches[0].pageY));
         break;
-
-      default: // 2 or more
+      }
+      default:{ // 2 or more
         const dx = event.touches[0].pageX - event.touches[1].pageX;
         const dy = event.touches[0].pageY - event.touches[1].pageY;
         _touchZoomDistanceEnd = Math.sqrt(dx * dx + dy * dy);
@@ -597,14 +597,14 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
         const y = (event.touches[0].pageY + event.touches[1].pageY) / 2;
         _panEnd.copy(getMouseOnScreen(x, y));
         break;
-
+      }
     }
 
   }
 
   function touchend (event: any) {
 
-    if (_this.enabled === false) { return; }
+    if (that.enabled === false) { return; }
 
     switch (event.touches.length) {
 
@@ -620,7 +620,7 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
 
     }
 
-    _this.dispatchEvent(endEvent);
+    that.dispatchEvent(endEvent);
 
   }
 

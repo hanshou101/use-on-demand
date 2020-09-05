@@ -5,11 +5,11 @@
 
 
 	import Father_BaseVue, { MixinLevelTag, MyComponent } from '../../../sources/admin/mixins/Father_BaseVue';
-	import chapter2$5                                     from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter2$5';
-	import { chapter4 }                                   from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter4';
-	import { chapter3 }                                   from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter3';
-	import chapter2                                       from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter2';
-	import chapter5                                       from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter5';
+	import { chapter2_three75 }                           from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter2';
+	import { chapter2$5_three75 }                         from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter2$5';
+	import { chapter4_three75 }                           from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter4';
+	import { chapter3_three75 }                           from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter3';
+	import { chapter5_three75 }                           from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter5';
 
 
 	/**
@@ -36,7 +36,7 @@
 		 * 绿色方块
 		 */
 		chapter2_start() {
-			const c2 = new chapter2();
+			const c2 = new chapter2_three75();
 			c2.baseInit();
 			c2.init_2();
 			c2.init_3();
@@ -51,7 +51,7 @@
 			const dom = document.getElementById(this.canvasId);
 			if (dom) {
 				console.log('开始');
-				const c2$5 = new chapter2$5(dom);
+				const c2$5 = new chapter2$5_three75(dom);
 				c2$5.$1000_threeStart();
 			}
 		}
@@ -64,7 +64,7 @@
 			const dom = document.getElementById(this.canvasId);
 			if (dom) {
 				console.log('开始');
-				const c3 = new chapter3(dom);
+				const c3 = new chapter3_three75(dom);
 				c3.$1000_threeStart();
 			}
 		}
@@ -77,7 +77,7 @@
 			const dom = document.getElementById(this.canvasId);
 			if (dom) {
 				console.log('开始');
-				const c4 = new chapter4(dom);
+				const c4 = new chapter4_three75(dom);
 				c4.$1000_threeStart();
 			}
 		}
@@ -90,7 +90,7 @@
 			const dom = document.getElementById(this.canvasId);
 			if (dom) {
 				console.log('开始');
-				const c5 = new chapter5(dom);
+				const c5 = new chapter5_three75(dom);
 				c5.$1000_threeStart();
 			}
 		}

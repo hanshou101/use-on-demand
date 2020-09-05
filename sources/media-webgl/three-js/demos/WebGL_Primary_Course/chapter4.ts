@@ -2,7 +2,7 @@ import {BaseThreeClass, BaseThreeClass_Helper, My_YuanZhu_Option, MyPoint3D} fro
 
 const THREE = require('three');   // 75版本、85版本、95版本
 
-export class chapter4 extends BaseThreeClass {
+export class chapter4_three75 extends BaseThreeClass {
   public $scene!: THREE.Scene;
   public $camera!: THREE.PerspectiveCamera;
   public $renderer!: THREE.WebGLRenderer;

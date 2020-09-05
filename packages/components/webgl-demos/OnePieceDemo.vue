@@ -8,21 +8,21 @@
 <script lang="ts">
 
 	import Father_BaseVue, { MixinLevelTag, MyComponent } from '../../../sources/admin/mixins/Father_BaseVue';
-	import { Demo_1 }                                     from '../../../sources/media-webgl/three-js/demos/demo1/demo1';
+	import { OnePiece_three95 }                           from '../../../sources/media-webgl/three-js/demos/demo1/OnePiece_WebGL';
 
 
 	/**
 	 * 海贼王火拳艾斯Demo
 	 */
 	@MyComponent({
-		name      : 'WebGL_Demo_1',
+		name      : 'OnePieceDemo',
 		components: {
 			/*组件*/
 		},
 		filters   : {},
 	})
 // export default class HelloWorld extends BaseVueClass {
-	export default class WebGL_Demo_1
+	export default class OnePieceDemo
 		extends Father_BaseVue {    // 混入在此处，进行添加。
 
 		// Data，在类中的实现 （双向绑定除外）
@@ -34,7 +34,7 @@
 		};
 
 		mounted(): void {
-			new Demo_1().init();
+			new OnePiece_three95().init();
 		};
 
 		activated(): void {

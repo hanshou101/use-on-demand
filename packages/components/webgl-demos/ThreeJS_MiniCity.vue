@@ -15,7 +15,7 @@
 
 
 	import Father_BaseVue, { MixinLevelTag, MyComponent } from '../../../sources/admin/mixins/Father_BaseVue';
-	import { MiniCity }                                   from '../../../sources/media-webgl/three-js/demos/demo2_mini_city/MiniCity';
+	import { MiniCity_three95 }                           from '../../../sources/media-webgl/three-js/demos/demo2_mini_city/MiniCity';
 
 	@MyComponent({
 		name      : 'ThreeJS_MiniCity',
@@ -37,7 +37,7 @@
 		};
 
 		mounted(): void {
-			new MiniCity().startCity();
+			new MiniCity_three95().startCity();
 		};
 
 		activated(): void {

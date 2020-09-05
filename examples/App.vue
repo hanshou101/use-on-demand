@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<template v-if="showBase">
+		<template v-if="show.base">
 			<img alt="Vue logo" src="./assets/logo.png" />
 			<HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
 
@@ -21,23 +21,28 @@
 		</template>
 
 		<div class="webgl-course"
-				 v-if="showWegGLCourse">
+				 v-if="show.webgl.course">
 			<Course></Course>
 		</div>
 
 		<div class="mini-city"
-				 v-if="showMiniCity">
+				 v-if="show.webgl.miniCity">
 			<ThreeJS_MiniCity></ThreeJS_MiniCity>
 		</div>
 
 		<div class="depu-table"
-				 v-if="showDepuTable">
+				 v-if="show.webgl.depuTable">
 			<DepuTableCp></DepuTableCp>
 		</div>
 
 		<div class="webgl-demo-1"
-				 v-if="showWebglDemo_1">
-			<WebGL_Demo_1></WebGL_Demo_1>
+				 v-if="show.webgl.onePiece">
+			<OnePieceDemo></OnePieceDemo>
+		</div>
+
+		<div class="wave-ball"
+				 v-if="show.webgl.waveBall">
+			<WaveBall></WaveBall>
 		</div>
 
 	</div>
@@ -48,8 +53,9 @@
 	import { Live2D_WidgetJs_Helper, Live2DModelE } from '../sources/live2d/live2d-widget.js/Live2D_WidgetJs_Helper';
 	import Course                                   from '../packages/components/webgl-demos/Course.vue';
 	import ThreeJS_MiniCity                         from '../packages/components/webgl-demos/ThreeJS_MiniCity.vue';
-	import WebGL_Demo_1                             from '../packages/components/webgl-demos/WebGL_Demo_1.vue';
 	import DepuTableCp                              from '../packages/components/webgl-demos/DepuTable.vue';
+	import WaveBall                                 from '../packages/components/webgl-demos/WaveBall.vue';
+	import OnePieceDemo                             from '../packages/components/webgl-demos/OnePieceDemo.vue';
 
 	export default Vue.extend({
 		name      : 'App',
@@ -57,20 +63,27 @@
 			Course,
 			ThreeJS_MiniCity,
 			DepuTableCp,
-			WebGL_Demo_1,
+			OnePieceDemo,
+			WaveBall,
 		},
 		data() {
 			return {
-				showBase       : false,
-				showLive2D     : true,
-				showWegGLCourse: false,
-				showMiniCity   : true,
-				showDepuTable  : false,
-				showWebglDemo_1: false,
+				show: {
+					base  : false,
+					live2D: false,
+					webgl : {
+						course   : false,
+						miniCity : false,
+						depuTable: false,
+						onePiece : false,
+						waveBall : false,
+					},
+				},
+				//
 			};
 		},
 		mounted() {
-			if (this.showLive2D) {
+			if (this.show.live2D) {
 				Live2D_WidgetJs_Helper.initDemo(Live2DModelE.tororo);
 			}
 		},
@@ -89,7 +102,7 @@
 		margin-top              : 60px;
 	}
 
-	.webgl-course, .mini-city, .webgl-demo-1 {
+	.webgl-course, .mini-city, .webgl-demo-1, .wave-ball {
 		background : #000;
 		border     : 3px solid red;
 	}
