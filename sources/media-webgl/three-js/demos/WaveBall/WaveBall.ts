@@ -74,7 +74,7 @@ export class WebGL_WaveBall_Demo_three56 {
 		this.animate();
 	}
 
-	onWindowResize(): void {
+	onWindowResize = () => {
 		this.windowHalfX = window.innerWidth / 2;
 		this.windowHalfY = window.innerHeight / 2;
 
@@ -82,7 +82,7 @@ export class WebGL_WaveBall_Demo_three56 {
 		this.camera.updateProjectionMatrix();
 
 		this.renderer.setSize(window.innerWidth, window.innerHeight);
-	}
+	};
 
 
 //
