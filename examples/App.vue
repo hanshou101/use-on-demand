@@ -45,6 +45,10 @@
 			<WaveBall></WaveBall>
 		</div>
 
+		<div class="video-js">
+			<VideoJS :video="{ src:'https://www.w3schools.com/html/mov_bbb.mp4' , type:'video/mp4' , title : '哥伦布认证视频' }"></VideoJS>
+		</div>
+
 	</div>
 </template>
 
@@ -56,6 +60,7 @@
 	import DepuTableCp                              from '../packages/components/webgl-demos/DepuTable.vue';
 	import WaveBall                                 from '../packages/components/webgl-demos/WaveBall.vue';
 	import OnePieceDemo                             from '../packages/components/webgl-demos/OnePieceDemo.vue';
+	import VideoJS                                  from '../packages/components/video-js/VideoJS.vue';
 
 	export default Vue.extend({
 		name      : 'App',
@@ -65,6 +70,7 @@
 			DepuTableCp,
 			OnePieceDemo,
 			WaveBall,
+			VideoJS,
 		},
 		data() {
 			return {
@@ -77,6 +83,9 @@
 						depuTable: false,
 						onePiece : false,
 						waveBall : false,
+					},
+					video : {
+						videoJS: true,
 					},
 				},
 				//
@@ -102,7 +111,9 @@
 		margin-top              : 60px;
 	}
 
-	.webgl-course, .mini-city, .webgl-demo-1, .wave-ball {
+	.webgl-course, .mini-city,
+	.webgl-demo-1, .wave-ball,
+	.video-js {
 		background : #000;
 		border     : 3px solid red;
 	}

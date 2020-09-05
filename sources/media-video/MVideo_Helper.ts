@@ -1,5 +1,5 @@
 function getVideoJS() {
-	return require('video.js');
+	return require('video.js').default;
 }
 
 export class MVideo_Helper {
@@ -14,7 +14,7 @@ export class MVideo_Helper {
 		const default_video_en   = require('video.js/dist/lang/en.json');
 
 		const VideoJs = getVideoJS();
-
+		// console.log('VideoJs', VideoJs);
 		VideoJs.addLanguage('zh-CN', {
 			...default_video_zhCN,    // 默认
 			...lang['zh-CN'],

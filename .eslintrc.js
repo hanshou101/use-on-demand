@@ -56,7 +56,8 @@ module.exports = {
 		'@typescript-eslint/no-use-before-define': 'off',
 		'@typescript-eslint/no-namespace'        : 'off',
 		'prefer-rest-params'                     : 'off',
-		'no-async-promise-executor'             : 'off',
+		'no-async-promise-executor'              : 'off',
+		'no-empty'                               : 'off',
 	},
 };
 
