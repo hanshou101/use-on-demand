@@ -1,6 +1,6 @@
 .DS_Store
 node_modules
-/dist
+# /dist
 
 
 # local env files
@@ -26,10 +26,9 @@ pnpm-debug.log*
 
 # TIP——————————————————【两者通用】——————————————————
 
-node_modules/
+# node_modules/
 package-lock.json
-!dist/       # 保留dist文件夹
-!lib/        # 保留lib文件夹
+
 
 #
 #
@@ -41,3 +40,5 @@ package-lock.json
 public/
 src/
 sources/
+!dist/       # 保留dist文件夹
+!lib/        # 保留lib文件夹

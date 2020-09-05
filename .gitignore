@@ -1,6 +1,6 @@
 .DS_Store
 node_modules
-/dist
+# /dist
 
 
 # local env files
@@ -28,8 +28,6 @@ pnpm-debug.log*
 
 node_modules/
 package-lock.json
-!dist/       # 保留dist文件夹
-!lib/        # 保留lib文件夹
 
 #
 #
@@ -40,3 +38,5 @@ package-lock.json
 # .idea/
 # TIP 这一条，最好还是加上！
 .idea/workspace.xml
+lib/                                                    # Git代码，不保留
+lib-cp/                                                 # Git代码，不保留
