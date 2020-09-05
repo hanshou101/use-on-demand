@@ -28,6 +28,7 @@ export enum LogE {
 	sentry                = 'sentry',
 
 	decorator             = 'decorator',
+	versionCheck          = 'versionCheck',
 }
 
 /**
@@ -47,6 +48,7 @@ export class DebugU {
 		// LogE.KlineCycleLife,
 		//
 		// LogE.decorator,
+		// LogE.versionCheck,
 	];
 
 	public static l(logEnum: LogE, ...args: Array<any>) {
