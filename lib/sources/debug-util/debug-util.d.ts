@@ -24,7 +24,9 @@ export declare enum LogE {
     contractArea = "contractArea",
     transferWindow = "transferWindow",
     loadScript = "loadScript",
-    sentry = "sentry"
+    sentry = "sentry",
+    decorator = "decorator",
+    versionCheck = "versionCheck"
 }
 /**
  * console日志工具

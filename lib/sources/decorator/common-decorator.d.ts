@@ -1,15 +1,10 @@
-/**
- *  TODO 一些可以优化的点：
- *          1.【常用函数】，在合适的时机，可以考虑换成【lodash】所采用的方法。
- *          2.
- */
 export declare class CDecoratorU {
     /**
      * 应用于成员方法之上
      *        1.类的原型——成员方法名字——对象内部属性描述符
      *        2.FIXME 用箭头函数，避免this被指向别处
      */
-    static log: (type: string | undefined, that: any) => (target: {}, name: string, descriptor: PropertyDescriptor) => void;
+    static log: (that: any, type?: string) => (target: {}, name: string, descriptor: PropertyDescriptor) => void;
     /**
      *  防抖
      *        1.【若干秒之后】，才执行，必定执行一次。
