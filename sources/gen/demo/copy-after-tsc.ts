@@ -13,7 +13,7 @@ import ncp from 'ncp';
 
 const CopyCfg = {
   source     : 'sources',
-  destination: 'lib',
+  destination: 'lib/sources',
   //
   options    : {
     //
