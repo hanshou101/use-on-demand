@@ -1,3 +1,32 @@
+/**
+ * 原程序的一些BUG：
+ * 				1.【董事长】，释放技能的判断，【双非】会导致，任何角色都会被施加【极速】。
+ * 				2.一些继承关系，文字描述不大清楚。
+ *
+ * 				3.有一个Buff，代码是会反复触发的；而描述中是单次。
+ * 							1.每当贱民死亡，所有贱民物理攻击+50%。
+ * 										1.此处，应该只有0级生物，才会触发。（根据ID判断）
+ *
+ * 				4.有一次【onHurt】写错了。
+ *							1.应该是【_onHurt】。
+ *							2.也有可能，【onHurt】不是写错了，而是手动绑的方法？？？
+ *
+ * 				5.
+ */
+
+
+/**
+ * 相关框架信息：
+ * 				1.godot引擎
+ * 								1.【3.2.1】
+ * 								2.存档地址：
+ * 												【C:\Users\Administrator\AppData\Roaming\Godot\app_userdata\Legend Creatures\data1】
+ * 				2.需要创意工坊的【BaseTools】工具。
+ */
+
+//——————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 interface Cell {
 
@@ -5,6 +34,50 @@ interface Cell {
 
 interface ReTimer {
 
+}
+
+type Path_Type = NullableType<string>;
+
+type ImgRelPath_Type = string | 'cex___toolman/cha.png'
+
+type CurFileName_Type = 'g_test'
+
+interface BaseTool {
+	connect: Chara['connect'];
+
+	g_sys: {
+		has(key: CurFileName_Type): unknown;							// 可以读取【base.g_sys】到自己的【全局变量】
+	};
+
+	loadImg(path: Path_Type, imgRelPath: ImgRelPath_Type): ITexture;
+}
+
+interface ITexture {
+
+}
+
+interface IFile {
+
+}
+
+interface INode {
+	add_child(node: INode): void;						// 添加一个子节点。
+
+	set_texture(texture: ITexture): void;		// 设置【纹理内容】。
+}
+
+type call_deferred_MethodE = 'testInit';
+
+type globalData_ToolE = 'g_base';			//
+type globalData_infoDs_Type = {
+	[key in globalData_ToolE]: NullableType<BaseTool>;	// 获取基础工具对象
+}
+
+type chaData_CharR = 'cex___toolman';
+type chaData_infoDs_Type = {
+	[key in chaData_CharR]: {
+		dir: NullableType<string>;				// 获取本MOD地址，本测试工具用工具人实现，实际应用请选择你MOD实际存在的角色ID
+	};
 }
 
 enum AtkType {
@@ -33,6 +106,11 @@ type CharaSequence = Array<Chara> & {
 };
 
 
+enum TeamTypeE {
+	Enemy = 1,											// 敌方阵营
+	Our   = 2,											// 己方阵营
+}
+
 namespace Ability {
 	export interface Base {
 		lv: number;			// 等级
@@ -53,7 +131,7 @@ namespace Ability {
 
 	export interface MyBuff {
 		addBuff(buff: Buff): void;																			//
-		hasBuff(buffName: Buff['name']): Buff | null;										// 根据名字，查找Buff。有则返回实例，无则返回null
+		hasBuff(buffName: Buff['name']): NullableType<Buff>;										// 根据名字，查找Buff。有则返回实例，无则返回null
 		delBuff(buff: Buff): void;																			//
 	}
 
@@ -67,24 +145,44 @@ namespace Ability {
  * 一般内置属性、方法，用 _ 开头命名。
  */
 namespace LifeCycle {
-	interface Timer {
+	interface _IAllBase {
 		_upS(): void;													// 每过了一秒 的回调。
-
+		_connect(): void;											//
 	}
 
-	export interface Chara extends Timer {
+	interface UIHook{
+		pressed():
+	}
+
+	interface GameHook {
+		onNewGame(): void;										// 【钩子】新开游戏时，初始化的操作
+		onLoadGame(): void;										// 【钩子】当读取游戏时，初始化的操作
+		onBattleStart(): void;								// 【钩子】当单场战斗开始时，初始化的操作
+	}
+
+	export interface Chara extends _IAllBase {
 		_info(): void;							//
-		_connect(): void;						//
 		_extInit(): void;											// 额外的初始化
 		_castCdSkill(id: string): void;				// 处理【CD技能】的施放
 		_onBattleStart(): void;								// 当战斗开始时
 
-		_onKillChara(atkInfo: IAtkInfo): void;			// 当击杀了，其它一个角色 时
+		_onKillChara(atkInfo: IAtkInfo): void;			// 当己角色，击杀了，其它一个角色 时
 		_onCharaDel(char: Chara): void;							// 当场上任一角色死亡时。（似乎，是个全局通知广播？）
-		_onHurt(atkInfo: IAtkInfo): void;						// 当自身受到伤害时
+		_onHurt(atkInfo: IAtkInfo): void;						// 当己角色，受到伤害时
+
+		/**
+		 * 绑定一个新的钩子回调。
+		 * 				1.连接基础工具信号。
+		 */
+		connect(
+			hook: 'onHurt' | '_onHurt',					// 钩子名称    WARN 此处【onHurt】是不是写错了？？？
+			context: any,												// 上下文，如self
+			fnName: 'onHurt',										// 要绑上去的函数名称
+		): void;
 	}
 
-	export interface Buff extends Timer {
+	export interface Buff extends _IAllBase {
+		_init(): void;																			// Buff的初始化
 	}
 }
 
@@ -105,14 +203,17 @@ namespace Global {
 		// 自带的一些Buff效果。
 		b_jieShuang: Buff;					// 结霜Buff
 		b_shaoZhuo: Buff;						// 烧灼Buff
+		b_jiSu: Buff;								// 极速Buff
 	}
 
 	export interface Base {
 		reTimer(duration: number): ReTimer;						// ？？？
-		yield(t: ReTimer, name: 'timeout'): void;			// ？？？
+		yield(t: ReTimer, name: 'timeout'): void;			// 应该是，线程阻塞【若干秒】的意思。
 		range(num: number): unknown;									//
 
-		getAllChas(num: number): CharaSequence;		// ？？？？？？和角色有关
+		getAllChas(
+			team: TeamTypeE,														// 角色所属阵营
+		): CharaSequence;															// 场上所有的角色队列。（可分 己方阵营、地方阵营）
 	}
 
 	export interface Skill {
@@ -133,24 +234,60 @@ namespace Global {
 				// 自身领主角色
 				player: {
 					plusGold(goldNum: number): void;				// 增加【自身】黄金。
+					addItem(item: PackItem): void;							// 增加【自身】的【背包物品】。
 				}
 			};
 			rndPer(possibleRatio: number): boolean;			// 可能性概率。 最大值 100
-		}
+
+			get_node(path: Path_Type): INode;							// 查找到一个【虚拟场景节点】
+			newItem(itemName: string): PackItem;				// 创建一个新的【背包物品】。
+		};
+
+		// TIP 具体加载流程
+
+		id: string;								// 此MOD创意工坊ID，可选，暂不使用
+		name: CurFileName_Type;							// 此文件名称
+		test: boolean;						// 是否开启测试，推荐格式，非必要
+		data: Array<any> | Map<string, any>;		// 想要支持硬盘保存的数据，也可以改成字典或其他类型
+		base: NullableType<any>;	// 基础工具变量名
+		path: Path_Type;							// 本MOD的地址
+
+		call_deferred(customFn: call_deferred_MethodE): void;	// （经常在全局_init后调用）读取完毕后初始化，可解决【创意工坊后于本地mod调用】的问题
+
+		globalData: {
+			infoDs: globalData_infoDs_Type & {
+				has(toolName: globalData_ToolE): NullableType<BaseTool>;		// 检测是否有【依赖的工具】
+			};
+		};
+
+		chaData: {
+			infoDs: chaData_infoDs_Type;
+		};
+
+		print(str: string): void;	//
+
 	}
 
 }
 
-interface Chara extends LifeCycle.Chara,
-	Global.ICell, Global.IBuff, Global.Base, Global.Skill, Global.Att, Global.System,
-	Ability.Base, Ability.MyBuff, Ability.RelatedChara {
+interface IGlobal extends Global.ICell, Global.IBuff, Global.Base, Global.Skill, Global.Att, Global.System {
+}
+
+interface Chara extends 															//
+	LifeCycle.Chara,																		//
+	//
+	Ability.Base, Ability.MyBuff, Ability.RelatedChara	//
+{
+	global: IGlobal;											// 全局的一些变量、方法。
 	img: ImageBitmap;
 	attCoe: Ability.Att;									// 攻击属性
 	evos: Array<Chara['name']>;						// 进化树，下一步的进化分支  的角色名。
-	team: 1 | 2;													// 【所属团队】。 1-自己团队  2-敌方团队
+	team: TeamTypeE;													// 【所属团队】。 1-自己团队  2-敌方团队
 
 
 	isDeath: boolean;											// 自身是否死亡
+
+	isSumm: unknown;											// ？？？？？？？？？
 }
 
 
@@ -161,12 +298,12 @@ interface Buff extends LifeCycle.Buff {
 	/**
 	 * 得到一个实例
 	 * 				1.原文为【new】，但new是关键字。
-	 * 				2.【life】是持续时间。不传的话，默认是【永远存在】。
 	 */
-	create(life?: number): Buff;												//
+	create(
+		life?: number,			// 【life】是持续时间。不传的话，默认是【永远存在】。
+	): Buff;												//
 	//
 	//
-	_init(): void;																			// Buff的初始化
 
 	// 【Buff加成】攻击相关
 	att: {
@@ -176,5 +313,20 @@ interface Buff extends LifeCycle.Buff {
 		cri: number;																			// 暴击几率
 	};
 	masCha: Chara;																			// TIP MasterChar - Buff原本相关，可挂靠的【角色】
+
+}
+
+interface Label extends INode {
+	/**
+	 * 得到一个实例
+	 * 				1.原文为【new】，但new是关键字。
+	 */
+	create(): Buff;												//
+
+	text: string;
+}
+
+
+interface PackItem {
 
 }
