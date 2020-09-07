@@ -43,7 +43,7 @@ type ImgRelPath_Type = string | 'cex___toolman/cha.png'
 type CurFileName_Type = 'g_test'
 
 interface BaseTool {
-	connect: Chara['connect'];
+	connect: INode['connect'];
 
 	g_sys: {
 		has(key: CurFileName_Type): unknown;							// 可以读取【base.g_sys】到自己的【全局变量】
@@ -57,13 +57,87 @@ interface ITexture {
 }
 
 interface IFile {
+	/**
+	 * 得到一个实例
+	 * 				1.原文为【new】，但new是关键字。
+	 */
+	create(): this;												//
+}
 
+/**
+ * 文件夹相关
+ */
+interface IDirectory {
+	/**
+	 * 得到一个实例
+	 * 				1.原文为【new】，但new是关键字。
+	 */
+	create(): this;												//
+
+	open(path: string): IResultE;					// 打开一处目录
+
+
+	list_dir_begin(
+		bol: boolean,			// ？？？？？？
+	): void;																		// 遍历该目录
+
+	get_next(): string;													// 获取组中，下一个条目。（游标）
+
+	current_is_dir(): boolean;									// （游标控制）当前游标，是否一个文件夹
+}
+
+interface IImage {
+	/**
+	 * 得到一个实例
+	 * 				1.原文为【new】，但new是关键字。
+	 */
+	create(): this;												//
+
+	load(path: string): void;							// 读取一处路径，作为文本
+}
+
+interface IImageTexture {
+	/**
+	 * 得到一个实例
+	 * 				1.原文为【new】，但new是关键字。
+	 */
+	create(): this;															//
+
+	create_from_image(im: IImage): void;				// 有一处图片，创建【图片纹理】。
+}
+
+
+enum IFileModeE {
+	READ,
+	WRITE,
+}
+
+enum IResultE {
+	OK,
+	Error,
 }
 
 interface INode {
 	add_child(node: INode): void;						// 添加一个子节点。
 
 	set_texture(texture: ITexture): void;		// 设置【纹理内容】。
+
+	get_children(): Array<INode>;						// 获得所有子节点。
+
+	get_node(path: Path_Type): INode;														// 查找到一个【虚拟场景节点】
+
+	has_node(path: Path_Type): NullableType<INode>;							// 查找一个【虚拟场景节点】是否存在。 是-返回Node  否-null
+
+	/**
+	 * 绑定一个新的钩子回调。
+	 * 				1.连接基础工具信号。
+	 */
+	connect(
+		hook: 'onHurt' | '_onHurt',					// 钩子名称    WARN 此处【onHurt】是不是写错了？？？
+		context: any,												// 上下文，如self
+		fnName: 'onHurt',										// 要绑上去的函数名称
+		args?: any[],												// 可选：触发时，传递的参数列表。
+	): void;
 }
 
 type call_deferred_MethodE = 'testInit';
@@ -78,6 +152,14 @@ type chaData_infoDs_Type = {
 	[key in chaData_CharR]: {
 		dir: NullableType<string>;				// 获取本MOD地址，本测试工具用工具人实现，实际应用请选择你MOD实际存在的角色ID
 	};
+}
+
+enum SignalE {
+	onPickCha,    	// 选角色界面时发射信号
+	onPickItem,    	// 选道具界面时发射信号
+	onNewGame,   		// 初次进入游戏界面时发射信号
+	onLoadGame,    	// 读取进入游戏界面时发射信号
+	onSaveGame,    	// 退回标题页面时发射信号
 }
 
 enum AtkType {
@@ -150,8 +232,10 @@ namespace LifeCycle {
 		_connect(): void;											//
 	}
 
-	interface UIHook{
-		pressed():
+	interface UIHook {
+		pressed(): void;											// 当某个UI（如 按钮），按下时。
+		button_down(): void;									// 特指【按钮按下】。
+		tree_exited(): void;									//
 	}
 
 	interface GameHook {
@@ -169,16 +253,6 @@ namespace LifeCycle {
 		_onKillChara(atkInfo: IAtkInfo): void;			// 当己角色，击杀了，其它一个角色 时
 		_onCharaDel(char: Chara): void;							// 当场上任一角色死亡时。（似乎，是个全局通知广播？）
 		_onHurt(atkInfo: IAtkInfo): void;						// 当己角色，受到伤害时
-
-		/**
-		 * 绑定一个新的钩子回调。
-		 * 				1.连接基础工具信号。
-		 */
-		connect(
-			hook: 'onHurt' | '_onHurt',					// 钩子名称    WARN 此处【onHurt】是不是写错了？？？
-			context: any,												// 上下文，如self
-			fnName: 'onHurt',										// 要绑上去的函数名称
-		): void;
 	}
 
 	export interface Buff extends _IAllBase {
@@ -228,7 +302,7 @@ namespace Global {
 
 	export interface System {
 		// 系统层面的对象
-		sys: {
+		sys: INode & {
 			// 主要面板
 			main: {
 				// 自身领主角色
@@ -239,9 +313,20 @@ namespace Global {
 			};
 			rndPer(possibleRatio: number): boolean;			// 可能性概率。 最大值 100
 
-			get_node(path: Path_Type): INode;							// 查找到一个【虚拟场景节点】
+
 			newItem(itemName: string): PackItem;				// 创建一个新的【背包物品】。
 		};
+
+		file: {
+			file_exists(path: string): NullableType<IFile>;								// 检查，文件是否存在。 是-File  否-null
+			open(path: string, mode: IFileModeE): void;										// 尝试打开文件，建立文件流
+			get_len(): number;																						// 查看当前文件流，所剩长度
+			get_line(): string;																						// 获取当前文件流，下一行文本
+			close(): void;																								// 关闭文件流
+			store_line(str: string): void;																// 在文件流中，存储一行文本
+		}
+
+		parse_json(str: string): any;																		// 从文本，解析出JSON对象·。
 
 		// TIP 具体加载流程
 
@@ -253,6 +338,8 @@ namespace Global {
 		path: Path_Type;							// 本MOD的地址
 
 		call_deferred(customFn: call_deferred_MethodE): void;	// （经常在全局_init后调用）读取完毕后初始化，可解决【创意工坊后于本地mod调用】的问题
+
+		emit_signal(signal: SignalE): void;										// 发射广播信号。
 
 		globalData: {
 			infoDs: globalData_infoDs_Type & {
@@ -275,6 +362,7 @@ interface IGlobal extends Global.ICell, Global.IBuff, Global.Base, Global.Skill,
 
 interface Chara extends 															//
 	LifeCycle.Chara,																		//
+	INode,
 	//
 	Ability.Base, Ability.MyBuff, Ability.RelatedChara	//
 {
@@ -321,7 +409,7 @@ interface Label extends INode {
 	 * 得到一个实例
 	 * 				1.原文为【new】，但new是关键字。
 	 */
-	create(): Buff;												//
+	create(): this;												//
 
 	text: string;
 }
