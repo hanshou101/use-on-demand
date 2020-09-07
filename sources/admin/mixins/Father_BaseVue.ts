@@ -68,14 +68,14 @@ type Father_BaseVue_Static = {
 	}
 	& _Father_BaseVue
 	// & typeof Vue
-	// & VueConstructor_Type<Vue_Type>;
-	& VueConstructor<Vue>;
+	& VueConstructor_Type<Vue_Type>;
+	// & VueConstructor<Vue>;
 
 
 /**
  * TIP 此处，是经过多次妥协的结果。
  */
-// export const Father_BaseVue: Father_BaseVue_Static = _Father_BaseVue as any;		// FIXME 为什么这种方法不可用？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+export const Father_BaseVue: Father_BaseVue_Static = _Father_BaseVue as any;		// FIXME 为什么这种方法不可用？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
 // export const Father_BaseVue = _Father_BaseVue;
 
 // export {

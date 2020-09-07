@@ -1,5 +1,5 @@
-import { _Father_BaseVue, MixinLevelTag } from './Father_BaseVue';
-export default class Father_ExportExcel_Mixin extends _Father_BaseVue {
+import { Father_BaseVue, MixinLevelTag } from './Father_BaseVue';
+export default class Father_ExportExcel_Mixin extends Father_BaseVue {
     constructor();
     exportExcel(formName_orParamsObj: string | {}, baseOption: ExportExcelOption_Type, fileName: string): void;
     activated(): void;
