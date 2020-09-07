@@ -1,10 +1,11 @@
-import Father_BaseVue, {MixinLevelTag, MyComponent} from './Father_BaseVue';
-import {ElForm}                                     from 'element-ui/types/form';
-import {CVS_Excel_Helper}                    from '../../cvs-excel/CVS_Excel_Helper';
-import {AdminHelper}                         from '../admin-helper';
+import {ElForm}           from 'element-ui/types/form';
+import {CVS_Excel_Helper} from '../../cvs-excel/CVS_Excel_Helper';
+import {AdminHelper}      from '../admin-helper';
+import { Component }                     from 'vue-property-decorator';
+import { _Father_BaseVue, MixinLevelTag } from './Father_BaseVue';
 
 
-@MyComponent({
+@Component({
   name      : 'ExportExcelMixin',
   components: {
     /*组件*/
@@ -12,7 +13,7 @@ import {AdminHelper}                         from '../admin-helper';
   filters   : {},
 })
 // export default class HelloWorld extends BaseVueClass {
-export default class Father_ExportExcel_Mixin extends Father_BaseVue {    // 混入在此处，进行添加。
+export default class Father_ExportExcel_Mixin extends _Father_BaseVue {    // 混入在此处，进行添加。
 
   constructor() {
     super();

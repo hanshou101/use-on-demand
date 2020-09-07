@@ -1,6 +1,6 @@
 import * as HelloWorldCfg from "./components/hello-world/HelloWorld";
 declare const _default: {
-    install: (Vue: VueConstructor_Type, opts?: {}) => void;
+    install: (Vue: VueConstructor_Type<HelloWorldCfg.cp>, opts?: {}) => void;
 };
 /**
  * 导出之后，【其它项目】的使用方法：

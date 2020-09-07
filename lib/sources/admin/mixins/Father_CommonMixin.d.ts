@@ -1,5 +1,5 @@
-import { MixinLevelTag } from './Father_BaseVue';
 import Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
+import { MixinLevelTag } from './Father_BaseVue';
 export interface PreUploadBean {
     dir?: string;
     policy?: string;

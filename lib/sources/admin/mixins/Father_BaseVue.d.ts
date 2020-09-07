@@ -1,12 +1,9 @@
-import { Vue, Component, Mixins, Emit, Model, Inject, Provide, Prop, Watch } from 'vue-property-decorator';
-import { Action, Getter, Mutation } from 'vuex-class';
+import Vue from 'vue';
 export interface MixinLevelTag {
 }
-export { Component as MyComponent, Mixins as MyMixins, Provide as MyProvide, Inject as MyInject, Model as MyModel, Prop as MyProp, Watch as MyWatch, Emit as MyEmit, Action as MyAction, Getter as MyGetter, Mutation as MyMutation, Vue as OriginVue, };
-export default abstract class Father_BaseVue extends Vue {
+export declare abstract class _Father_BaseVue extends Vue {
     static NoticeCount: number;
-    constructor();
-    static readonly Mixins: typeof Mixins;
+    protected constructor();
     abstract created(): void;
     abstract mounted(): void;
     abstract activated(): void;
@@ -14,4 +11,7 @@ export default abstract class Father_BaseVue extends Vue {
     abstract destroyed(): void;
     abstract MixinsData_1: MixinLevelTag;
 }
+/**
+ * TIP 此处，是经过多次妥协的结果。
+ */
 //# sourceMappingURL=Father_BaseVue.d.ts.map
