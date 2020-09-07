@@ -1,7 +1,11 @@
 import Vue from 'vue';
 export interface MixinLevelTag {
 }
-export declare abstract class _Father_BaseVue extends Vue {
+/**
+ * TIP 此处，是正确的结果。
+ * 				1.自从修复了【peerDependencies】之后。
+ */
+export declare abstract class Father_BaseVue extends Vue {
     static NoticeCount: number;
     protected constructor();
     abstract created(): void;
@@ -13,10 +17,10 @@ export declare abstract class _Father_BaseVue extends Vue {
 }
 declare type Father_BaseVue_Static = {
     NoticeCount: number;
-} & _Father_BaseVue & VueConstructor_Type<Vue_Type>;
+} & Father_BaseVue & VueConstructor_Type<Vue_Type>;
 /**
- * TIP 此处，是经过多次妥协的结果。
+ * TIP 此处，是经过多次妥协的结果。（WARN 该结果是错的）
  */
-export declare const Father_BaseVue: Father_BaseVue_Static;
+export declare const Wrong_Father_BaseVue: Father_BaseVue_Static;
 export {};
 //# sourceMappingURL=Father_BaseVue.d.ts.map
