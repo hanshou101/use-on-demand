@@ -348,7 +348,8 @@ export default class MyFormEasy
   public selectIndex: any      = null;
   public dateRange: any        = null;
   public btnArr: Array<any>    = ['今日', '本周', '本月', '近三日', '近半月', '近一月'];
-  public ueditorConfig: object = (this as any).$getUEditorConfig();
+
+  ueditorConfig!: object;
 
   // Method，在类中的实现
 
@@ -407,6 +408,7 @@ export default class MyFormEasy
 
   // Lifecycle生命周期，在类中的实现
   created(): void {
+    this.ueditorConfig = this.$getUEditorConfig();
   };
 
   mounted(): void {
