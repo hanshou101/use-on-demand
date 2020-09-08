@@ -71,7 +71,12 @@ class NuxtJs_TsConfig_Helper {
   ];
 
   public static readonly _compilerOptions = {
-    _target           : "es2018", // WARN 适配【nuxt.js】
+    /**
+     * target的版本，其实有时候很重要：
+     *        1.【es2018】  WARN 适配【nuxt.js】
+     *        2.【es5】     WARN 适配Vue
+     */
+    _target           : "es5", //
     _lib              : [
       "esnext.asynciterable"     // WARN 适配【nuxt.js】
     ],

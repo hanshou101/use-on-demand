@@ -21,7 +21,7 @@
     "declaration": true,
     "declarationMap": true,
     "emitDeclarationOnly": false,
-    "target": "es2018",
+    "target": "es5",
     "module": "esnext",
     "lib": [
       "esnext",
