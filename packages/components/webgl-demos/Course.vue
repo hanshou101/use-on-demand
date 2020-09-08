@@ -4,18 +4,19 @@
 <script lang="ts">
 
 
-	import Father_BaseVue, { MixinLevelTag, MyComponent } from '../../../sources/admin/mixins/Father_BaseVue';
-	import { chapter2_three75 }                           from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter2';
-	import { chapter2$5_three75 }                         from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter2$5';
-	import { chapter4_three75 }                           from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter4';
-	import { chapter3_three75 }                           from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter3';
-	import { chapter5_three75 }                           from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter5';
+	import { chapter2_three75 }              from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter2';
+	import { chapter2$5_three75 }            from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter2$5';
+	import { chapter4_three75 }              from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter4';
+	import { chapter3_three75 }              from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter3';
+	import { chapter5_three75 }              from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter5';
+	import { Father_BaseVue, MixinLevelTag } from '../../../sources/admin/mixins/Father_BaseVue';
+	import { Component }                     from 'vue-property-decorator';
 
 
 	/**
 	 * WebGL绘制的基本教程
 	 */
-	@MyComponent({
+	@Component({
 		name      : 'Course',
 		components: {
 			/*组件*/

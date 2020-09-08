@@ -10,7 +10,7 @@
     "ts____compile-lib": "nps ts.compile-lib",
     "                        vue注释": "",
     "vue____serve": "nps vue.cli-4.serve",
-    "vue____lib": "nps vue.cli-4.lib",
+    "vue____compile-lib": "nps vue.cli-4.lib",
     "vue____lint": "nps vue.cli-4.lint",
     "vue____test": "nps vue.cli-4.test:unit",
     "vue____gen-cp-type": "nps vue.cp.gen-type",

@@ -37,26 +37,27 @@
 // API，建议采用相对路径。
 
 
-import {ElUploadInternalFileDetail}                                  from 'element-ui/types/upload';
-import Father_BaseVue, {MixinLevelTag, MyComponent, MyProp, MyWatch} from '../../../admin/mixins/Father_BaseVue';
-import {ElUpload}                                             from 'element-ui/types/element-ui';
+import {ElUploadInternalFileDetail}      from 'element-ui/types/upload';
+import {ElUpload}                        from 'element-ui/types/element-ui';
+import { Father_BaseVue, MixinLevelTag } from '../../../admin/mixins/Father_BaseVue';
+import { Component, Prop, Watch }        from 'vue-property-decorator';
 
-@MyComponent({
+@Component({
   name      : 'UploadSingleImg',
   components: {},
 })
 export default class UploadSingleImg extends Father_BaseVue {    // 混入在此处，进行添加。
 
   // TIP： Prop，在类中的实现
-  @MyProp({type: String, default: ''}) private value!: string;
+  @Prop({type: String, default: ''}) private value!: string;
   // 单个文件最大体积，默认5M
-  @MyProp({type: Number, default: 5242880}) private maxSize!: number;
-  @MyProp({type: Boolean, default: false}) private disabled!: boolean;
-  @MyProp({type: Boolean, default: true}) private showPreview!: boolean;
-  @MyProp({type: String, default: 'image/jpg,image/jpeg,image/png,image/bmp,image/gif,image/webp'}) private accept!: string;
-  @MyProp({type: Number, default: 180}) private width!: number;
-  @MyProp({type: Number, default: 120}) private height!: number;
-  @MyProp({type: Function, required: true}) private preuploadApi!: Function;
+  @Prop({type: Number, default: 5242880}) private maxSize!: number;
+  @Prop({type: Boolean, default: false}) private disabled!: boolean;
+  @Prop({type: Boolean, default: true}) private showPreview!: boolean;
+  @Prop({type: String, default: 'image/jpg,image/jpeg,image/png,image/bmp,image/gif,image/webp'}) private accept!: string;
+  @Prop({type: Number, default: 180}) private width!: number;
+  @Prop({type: Number, default: 120}) private height!: number;
+  @Prop({type: Function, required: true}) private preuploadApi!: Function;
 
 
   // TIP： Data，在类中的实现 （双向绑定除外）
@@ -84,12 +85,12 @@ export default class UploadSingleImg extends Father_BaseVue {    // 混入在此
   // }
 
   // TIP： Watch，在类中的实现
-  @MyWatch('disabled', {immediate: true})
+  @Watch('disabled', {immediate: true})
   public watch_disabled(newVal: boolean) {
     this.disabled_inner = newVal;
   }
 
-  @MyWatch('value', {immediate: true})
+  @Watch('value', {immediate: true})
   public watch_value(newVal: string) {
     // 为了能够回显
     if (newVal && newVal != this.imgUri) {

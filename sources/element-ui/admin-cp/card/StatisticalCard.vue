@@ -12,10 +12,11 @@
 <script lang="ts">
 
 
-import Father_BaseVue, {MixinLevelTag, MyComponent, MyProp} from '../../../admin/mixins/Father_BaseVue';
-import {SMath_Helper}                                       from '../../../symbol-math/SMath_Helper';
+import {SMath_Helper}                    from '../../../symbol-math/SMath_Helper';
+import { Father_BaseVue, MixinLevelTag } from '../../../admin/mixins/Father_BaseVue';
+import { Component, Prop }               from 'vue-property-decorator';
 
-@MyComponent({
+@Component({
   name      : 'StatisticalCard',
   components: {
   },
@@ -25,7 +26,7 @@ export default class StatisticalCard
     extends Father_BaseVue {    // 混入在此处，进行添加。
 
   // 数据可以和父级通用
-  @MyProp({type: Array, required: true}) readonly statisticalData!: Array<any>;
+  @Prop({type: Array, required: true}) readonly statisticalData!: Array<any>;
   // Data，在类中的实现 （双向绑定除外）
 
   // Method，在类中的实现

@@ -13,9 +13,11 @@
 </template>
 
 <script lang="ts">
-import Father_BaseVue, {MixinLevelTag, MyComponent} from '../mixins/Father_BaseVue';
 
-@MyComponent({
+	import { Father_BaseVue, MixinLevelTag } from '../mixins/Father_BaseVue';
+	import { Component }                     from 'vue-property-decorator';
+
+@Component({
   name      : 'WrapDropdown',
   components: {
     /*组件*/

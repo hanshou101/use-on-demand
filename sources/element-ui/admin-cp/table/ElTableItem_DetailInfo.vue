@@ -15,19 +15,20 @@
 
 <script lang="ts">
 
-import Father_BaseVue, {MixinLevelTag, MyComponent, MyProp} from '../../../admin/mixins/Father_BaseVue';
-import {Father_ElTItem}                                     from '../ElTItem';
+import {Father_ElTItem}                  from '../ElTItem';
+import { Component, Prop }               from 'vue-property-decorator';
+import { Father_BaseVue, MixinLevelTag } from '../../../admin/mixins/Father_BaseVue';
 
-  @MyComponent({
+  @Component({
     name: 'ElTableItem_DetailInfo',
     components: { /*组件*/},
     filters: {},
   })
   export default class ElTableItem_DetailInfo extends Father_BaseVue {
     // TIP————————————————————————————————————Prop，从外界传入的只读属性—————————————————————————————————
-    @MyProp({type: Object, required: true}) row!: IndexedObj;
-    @MyProp({type: Object, required: true}) item!: Father_ElTItem.DetailInfo;
-    @MyProp({type: Array, required: true}) pairs!: Array<DetailInfoPair>;
+    @Prop({type: Object, required: true}) row!: IndexedObj;
+    @Prop({type: Object, required: true}) item!: Father_ElTItem.DetailInfo;
+    @Prop({type: Array, required: true}) pairs!: Array<DetailInfoPair>;
 
 
     // TIP————————————————————————————————————Data，在类中的实现（@Model相关的除外）——————————————————————

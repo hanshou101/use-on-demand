@@ -313,15 +313,16 @@
 </template>
 
 <script lang="ts">
-import {ElUploadInternalFileDetail}                         from 'element-ui/types/upload';
-import Father_BaseVue, {MixinLevelTag, MyComponent, MyProp} from '../../../admin/mixins/Father_BaseVue';
-import {Father_ElFItem}                                     from '../ElFItem';
-import UploadSingleImg                                   from '../upload/UploadSingleImg.vue';
-import MultiLangSimple                               from '../multi-lang/MultiLangSimple.vue';
-import Count_Input                                   from '../input/Count_Input.vue';
+import {ElUploadInternalFileDetail}      from 'element-ui/types/upload';
+import {Father_ElFItem}                  from '../ElFItem';
+import UploadSingleImg                   from '../upload/UploadSingleImg.vue';
+import MultiLangSimple                   from '../multi-lang/MultiLangSimple.vue';
+import Count_Input                       from '../input/Count_Input.vue';
+import { Father_BaseVue, MixinLevelTag } from '../../../admin/mixins/Father_BaseVue';
+import { Component, Prop }               from 'vue-property-decorator';
 
 const {getCurrentday, getCurrentWeek, getCurrentMonth, getDay, getBeforeOneMonth} = require('@/project-tools/util');
-@MyComponent({
+@Component({
   name      : 'MyFormEasy',
   components: {
     /*组件*/
@@ -335,14 +336,14 @@ export default class MyFormEasy
     extends Father_BaseVue {    // 混入在此处，进行添加。
 
   // 数据可以和父级通用
-  @MyProp({type: Array, required: true}) readonly formItems!: Father_ElFItem.Base[];
+  @Prop({type: Array, required: true}) readonly formItems!: Father_ElFItem.Base[];
   // 数据可以和父级通用
-  @MyProp({type: Object, required: true}) readonly ruleForm!: IndexedObj<any>;
-  @MyProp({type: Number, default: 1}) private type!: number;                                          // 有可能是，对话框的类型  新增/编辑/审核 什么的。
+  @Prop({type: Object, required: true}) readonly ruleForm!: IndexedObj<any>;
+  @Prop({type: Number, default: 1}) private type!: number;                                          // 有可能是，对话框的类型  新增/编辑/审核 什么的。
 
-  @MyProp({type: Boolean, default: true}) private hasKR!: boolean;        // 是否开启韩文
-  @MyProp({type: Boolean, default: true}) private hasJP!: boolean;        // 是否开启日文
-  @MyProp({type: Boolean, default: true}) private hasRU!: boolean;        // 是否开启俄文
+  @Prop({type: Boolean, default: true}) private hasKR!: boolean;        // 是否开启韩文
+  @Prop({type: Boolean, default: true}) private hasJP!: boolean;        // 是否开启日文
+  @Prop({type: Boolean, default: true}) private hasRU!: boolean;        // 是否开启俄文
 
   // Data，在类中的实现 （双向绑定除外）
   public selectIndex: any      = null;
@@ -408,7 +409,7 @@ export default class MyFormEasy
 
   // Lifecycle生命周期，在类中的实现
   created(): void {
-    this.ueditorConfig = this.$getUEditorConfig();
+    this.ueditorConfig = (this as any).$getUEditorConfig();
   };
 
   mounted(): void {

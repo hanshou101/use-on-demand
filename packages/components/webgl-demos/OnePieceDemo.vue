@@ -7,14 +7,15 @@
 
 <script lang="ts">
 
-	import Father_BaseVue, { MixinLevelTag, MyComponent } from '../../../sources/admin/mixins/Father_BaseVue';
-	import { OnePiece_three95 }                           from '../../../sources/media-webgl/three-js/demos/demo1/OnePiece_WebGL';
+	import { OnePiece_three95 }              from '../../../sources/media-webgl/three-js/demos/demo1/OnePiece_WebGL';
+	import { Father_BaseVue, MixinLevelTag } from '../../../sources/admin/mixins/Father_BaseVue';
+	import { Component }                     from 'vue-property-decorator';
 
 
 	/**
 	 * 海贼王火拳艾斯Demo
 	 */
-	@MyComponent({
+	@Component({
 		name      : 'OnePieceDemo',
 		components: {
 			/*组件*/

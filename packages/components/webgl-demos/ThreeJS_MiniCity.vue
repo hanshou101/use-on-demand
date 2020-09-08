@@ -14,10 +14,11 @@
 <script lang="ts">
 
 
-	import Father_BaseVue, { MixinLevelTag, MyComponent } from '../../../sources/admin/mixins/Father_BaseVue';
-	import { MiniCity_three95 }                           from '../../../sources/media-webgl/three-js/demos/demo2_mini_city/MiniCity';
+	import { MiniCity_three95 }              from '../../../sources/media-webgl/three-js/demos/demo2_mini_city/MiniCity';
+	import { Father_BaseVue, MixinLevelTag } from '../../../sources/admin/mixins/Father_BaseVue';
+	import { Component }                     from 'vue-property-decorator';
 
-	@MyComponent({
+	@Component({
 		name      : 'ThreeJS_MiniCity',
 		components: {
 			/*组件*/

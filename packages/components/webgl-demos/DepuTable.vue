@@ -14,10 +14,11 @@
 <script lang="ts">
 
 
-	import Father_BaseVue, { MixinLevelTag, MyComponent } from '../../../sources/admin/mixins/Father_BaseVue';
-	import { DepuTable_three95 }                          from '../../../sources/media-webgl/three-js/demos/DepuTable/DepuTable';
+	import { DepuTable_three95 }             from '../../../sources/media-webgl/three-js/demos/DepuTable/DepuTable';
+	import { Father_BaseVue, MixinLevelTag } from '../../../sources/admin/mixins/Father_BaseVue';
+	import { Component }                     from 'vue-property-decorator';
 
-	@MyComponent({
+	@Component({
 		name      : 'DepuTableCp',
 		components: {
 			/*组件*/

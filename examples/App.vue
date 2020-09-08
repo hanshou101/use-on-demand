@@ -62,6 +62,7 @@
 	import OnePieceDemo                             from '../packages/components/webgl-demos/OnePieceDemo.vue';
 	import VideoJS                                  from '../packages/components/video-js/VideoJS.vue';
 
+
 	export default Vue.extend({
 		name      : 'App',
 		components: {
@@ -76,7 +77,7 @@
 			return {
 				show: {
 					base  : false,
-					live2D: false,
+					live2D: true,
 					webgl : {
 						course   : false,
 						miniCity : false,
@@ -85,7 +86,7 @@
 						waveBall : false,
 					},
 					video : {
-						videoJS: true,
+						videoJS: false,
 					},
 				},
 				//
@@ -96,7 +97,6 @@
 				Live2D_WidgetJs_Helper.initDemo(Live2DModelE.tororo);
 			}
 		},
-
 	});
 
 </script>

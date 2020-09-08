@@ -32,24 +32,23 @@
 </template>
 
 <script lang="ts">
-import Father_BaseVue, {
-  MixinLevelTag,
-  MyComponent,
-  MyProp
-} from '../../../admin/mixins/Father_BaseVue';
 
-@MyComponent({
+
+	import { Father_BaseVue, MixinLevelTag } from '../../../admin/mixins/Father_BaseVue';
+	import { Component, Prop }               from 'vue-property-decorator';
+
+@Component({
   name: 'MultiLangSimple'
 })
 export default class MultiLangSimple extends Father_BaseVue {
   MixinsData_1: MixinLevelTag = {};
   /* props */
-  @MyProp({type: Boolean, default: true}) readonly zh_CN!: boolean; // 是否开启简体中文
-  @MyProp({type: Boolean, default: true}) readonly en_US!: boolean; // 是否开启英文
-  @MyProp({type: Boolean, default: true}) readonly zh_TW!: boolean; // 是否开启繁体中文
-  @MyProp({type: Boolean, default: true}) readonly ko_KR!: boolean; // 是否开启韩文
-  @MyProp({type: Boolean, default: true}) readonly ja_JP!: boolean; // 是否开启日文
-  @MyProp({type: Boolean, default: true}) readonly ru_RU!: boolean; // 是否开启俄文
+  @Prop({type: Boolean, default: true}) readonly zh_CN!: boolean; // 是否开启简体中文
+  @Prop({type: Boolean, default: true}) readonly en_US!: boolean; // 是否开启英文
+  @Prop({type: Boolean, default: true}) readonly zh_TW!: boolean; // 是否开启繁体中文
+  @Prop({type: Boolean, default: true}) readonly ko_KR!: boolean; // 是否开启韩文
+  @Prop({type: Boolean, default: true}) readonly ja_JP!: boolean; // 是否开启日文
+  @Prop({type: Boolean, default: true}) readonly ru_RU!: boolean; // 是否开启俄文
 
   /* datas */
   // 选项卡选中项
