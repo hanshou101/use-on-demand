@@ -4,61 +4,52 @@
 import Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
 import { OssUploadBean } from './Father_CommonMixin';
 import { MixinLevelTag } from './Father_BaseVue';
-/**
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- * 可能最后，还是要用【Mixins】去解决！！！。
- */
-/**
- * 抽象类
- */
-interface AbsInterface {
-    selectOption: {};
-    preuploadApi: () => Promise<any>;
-}
 declare const Father_DialogMixin_base: import("vue-class-component/lib/declarations").VueClass<Father_ExportExcel_Mixin>;
-export default class Father_DialogMixin extends Father_DialogMixin_base implements AbsInterface {
+/**
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ * 可能最后，还是要用【Mixins】去解决！！！。
+ */
+export default class Father_DialogMixin<SelectOptionType> extends Father_DialogMixin_base {
     private show;
     initData: any;
     dialogType: number;
     language: string;
-    get selectOption(): object;
-    preuploadApi(): Promise<any>;
     dialogVisible: boolean;
     uploadHost: string;
     uploadData: OssUploadBean;
@@ -75,7 +66,7 @@ export default class Father_DialogMixin extends Father_DialogMixin_base implemen
     /**
      * 以下方法，都是需要在子类中实现的interface方法。父类中只有空的。
      */
-    MixinsData_2: MixinLevelTag & DialogMixinImpl;
+    MixinsData_2: MixinLevelTag & DialogMixinImpl & ExtendImpl<SelectOptionType>;
 }
 export interface DialogMixinImpl {
     ruleForm: {
@@ -89,6 +80,10 @@ export interface DialogMixinImpl {
     createCallback: Function;
     processCreatedCallback: Function;
     updateCallback: Function;
+}
+interface ExtendImpl<SelectOptionType> {
+    selectOption: SelectOptionType;
+    preuploadApi(): Promise<any>;
 }
 export {};
 //# sourceMappingURL=Father_DialogMixin.d.ts.map

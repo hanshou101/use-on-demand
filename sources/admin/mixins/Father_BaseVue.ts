@@ -44,7 +44,8 @@ export interface MixinLevelTag {    // 表示Mixin层次相关
  */
 export abstract class Father_BaseVue extends Vue {					// FIXME 最后这是唯一开箱即用的方法？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
 	public static NoticeCount = 0;  // 最多提醒3次。
-	protected constructor() {
+	// noinspection TypeScriptAbstractClassConstructorCanBeMadeProtected		WARN 此处，必须暴露给外界为【public】，因为可能是【VueConstructor】的限制？
+	public constructor() {
 		super();
 		const count = ++Father_BaseVue.NoticeCount;
 		if (count <= 3) {
@@ -72,7 +73,7 @@ type Father_BaseVue_Static = {
 	& Father_BaseVue
 	// & typeof Vue
 	& VueConstructor_Type<Vue_Type>;
-	// & VueConstructor<Vue>;
+// & VueConstructor<Vue>;
 
 
 /**

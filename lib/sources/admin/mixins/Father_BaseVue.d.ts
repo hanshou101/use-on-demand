@@ -7,7 +7,7 @@ export interface MixinLevelTag {
  */
 export declare abstract class Father_BaseVue extends Vue {
     static NoticeCount: number;
-    protected constructor();
+    constructor();
     abstract created(): void;
     abstract mounted(): void;
     abstract activated(): void;

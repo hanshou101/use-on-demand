@@ -198,21 +198,21 @@ export default class Father_CommonMixin<SelectOptionType> extends Mixins(Father_
 	public handleCreate(): void {
 		this.dialogControlVisible = true;
 		this.$nextTick(() => {
-			(this.$refs.dialogRef as Father_DialogMixin).showDialog(1);
+			(this.$refs.dialogRef as Father_DialogMixin<SelectOptionType>).showDialog(1);
 		});
 	}
 
 	public handleEdit(index: number, row: {}): void {
 		this.dialogControlVisible = true;
 		this.$nextTick(() => {
-			(this.$refs.dialogRef as Father_DialogMixin).showDialog(2, JSON.parse(JSON.stringify(row)));
+			(this.$refs.dialogRef as Father_DialogMixin<SelectOptionType>).showDialog(2, JSON.parse(JSON.stringify(row)));
 		});
 	}
 
 	public handleDetail(index: number, row: {}): void {
 		this.dialogControlVisible = true;
 		this.$nextTick(() => {
-			(this.$refs.dialogRef as Father_DialogMixin).showDialog(3, JSON.parse(JSON.stringify(row)));
+			(this.$refs.dialogRef as Father_DialogMixin<SelectOptionType>).showDialog(3, JSON.parse(JSON.stringify(row)));
 		});
 	}
 
@@ -399,11 +399,11 @@ export default class Father_CommonMixin<SelectOptionType> extends Mixins(Father_
 				 // public coinForm!: CommonMixinImpl['coinForm'];
 				 // public lang!: CommonMixinImpl['lang'];
 
-	public MixinsData_2: MixinLevelTag & CommonMixinImpl<SelectOptionType> = {} as any;
+	public MixinsData_2: MixinLevelTag & CommonMixinImpl & ExtendImpl<SelectOptionType> = {} as any;
 
 }
 
-interface CommonMixinImpl<SelectOptionType> {
+interface CommonMixinImpl {
 	// checkImg: string;
 	// centerDialogVisible: boolean;
 	coinForm?: { img?: string, [key: string]: string | undefined | number };
@@ -414,6 +414,9 @@ interface CommonMixinImpl<SelectOptionType> {
 	deleteCallback: Function;
 	deleteSingleCallback?: (index: number, data_or_row_or_id: any) => Promise<any>;
 
+}
+
+interface ExtendImpl<SelectOptionType> {
 	// TIP 用于指定【下拉选项】
 	selectOption: SelectOptionType;
 

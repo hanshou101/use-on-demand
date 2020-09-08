@@ -105,9 +105,9 @@ export default class Father_CommonMixin<SelectOptionType> extends Father_CommonM
     /**
      * 以下方法，都是需要在子类中实现的interface方法。父类中只有空的。
      */
-    MixinsData_2: MixinLevelTag & CommonMixinImpl<SelectOptionType>;
+    MixinsData_2: MixinLevelTag & CommonMixinImpl & ExtendImpl<SelectOptionType>;
 }
-interface CommonMixinImpl<SelectOptionType> {
+interface CommonMixinImpl {
     coinForm?: {
         img?: string;
         [key: string]: string | undefined | number;
@@ -118,6 +118,8 @@ interface CommonMixinImpl<SelectOptionType> {
     changeStatusCallback: Function;
     deleteCallback: Function;
     deleteSingleCallback?: (index: number, data_or_row_or_id: any) => Promise<any>;
+}
+interface ExtendImpl<SelectOptionType> {
     selectOption: SelectOptionType;
     preuploadApi(): Promise<any>;
 }

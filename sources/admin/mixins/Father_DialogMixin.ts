@@ -52,13 +52,6 @@ import { MixinLevelTag }                  from './Father_BaseVue';
  * 可能最后，还是要用【Mixins】去解决！！！。
  */
 
-/**
- * 抽象类
- */
-interface AbsInterface {
-	selectOption: {};
-	preuploadApi: () => Promise<any>;
-}
 
 @Component({
 	name      : 'DialogMixin',
@@ -79,8 +72,7 @@ interface AbsInterface {
 	},
 })
 // export default class HelloWorld extends BaseVueClass {
-export default class Father_DialogMixin extends Mixins(Father_ExportExcel_Mixin)
-	implements AbsInterface {
+export default class Father_DialogMixin<SelectOptionType> extends Mixins(Father_ExportExcel_Mixin) {
 	// 混入在此处，进行添加。
 	// TIP:  Prop，在类中的实现
 	// 控制弹窗显示与隐藏
@@ -105,16 +97,6 @@ export default class Father_DialogMixin extends Mixins(Father_ExportExcel_Mixin)
 	})
 	public dialogType!: number;
 	@Getter('language') public language!: string; // 语言
-
-	// TIP: data 在类中的实现
-	// public selectOption: MySelectOption_AllConfig = selectOption;
-	get selectOption(): object {
-		throw new Error('selectOption 属性需要重写！！！');
-	}
-
-	public preuploadApi(): Promise<any> {
-		throw new Error('preuploadApi 方法需要重写！！！');
-	}
 
 	// public dialogType: number = 1;
 	public dialogVisible: boolean = this.show;
@@ -332,7 +314,7 @@ export default class Father_DialogMixin extends Mixins(Father_ExportExcel_Mixin)
 	}
 
 	public async beforeUpload(): Promise<any> {
-		const preUploadData: PreUploadBean = (await this.preuploadApi()) as PreUploadBean;
+		const preUploadData: PreUploadBean = (await this.MixinsData_2.preuploadApi()) as PreUploadBean;
 		if (preUploadData) {
 			const {
 							dir,
@@ -370,7 +352,7 @@ export default class Father_DialogMixin extends Mixins(Father_ExportExcel_Mixin)
 
 				 // public Companion!: MixinsInheritCompanion<MixinFather> & DialogMixinImpl;
 
-	public MixinsData_2: MixinLevelTag & DialogMixinImpl = {} as any;
+	public MixinsData_2: MixinLevelTag & DialogMixinImpl & ExtendImpl<SelectOptionType> = {} as any;
 }
 
 // TODO 此处，如果继承别的接口，想法固然精妙；但是，这种方案有其受限制的地方；父类无法调用子类非抽象变量。
@@ -386,4 +368,12 @@ export interface DialogMixinImpl {
 	createCallback: Function;
 	processCreatedCallback: Function;
 	updateCallback: Function;
+}
+
+interface ExtendImpl<SelectOptionType> {
+	// TIP 用于指定【下拉选项】
+	selectOption: SelectOptionType;
+
+	// TIP 上传预热接口
+	preuploadApi(): Promise<any>;
 }
