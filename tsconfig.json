@@ -26,6 +26,7 @@
     "lib": [
       "esnext",
       "esnext.asynciterable",
+      "es5",
       "dom",
       "dom.iterable",
       "scripthost"

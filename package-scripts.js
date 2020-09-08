@@ -55,6 +55,7 @@ module.exports = {
 		ts: {
 			'gen-tsconfig': `${tsNode_cmdHead}  ./sources/gen/demo/gen-tsconfig.ts`,                                         // 动态js生成 tsconfig.js
 			'compile-lib' : npsUtils.series(
+				npsUtils.series.nps('ts.gen-tsconfig'),
 				'tsc',          // 1.先进行编译
 				`${tsNode_cmdHead} ./sources/gen/demo/copy-after-tsc.ts`,                   // 2.再进行【复制】
 			),
