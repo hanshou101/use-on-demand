@@ -64,7 +64,6 @@ declare const Father_CommonMixin_base: import("vue-class-component/lib/declarati
 export default class Father_CommonMixin<SelectOptionType> extends Father_CommonMixin_base {
     constructor();
     language: string;
-    get selectOption(): object;
     dialogControlVisible: boolean;
     listLoading: boolean;
     listQuery: {

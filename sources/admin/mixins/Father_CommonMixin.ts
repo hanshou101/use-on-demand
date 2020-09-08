@@ -110,9 +110,9 @@ export default class Father_CommonMixin<SelectOptionType> extends Mixins(Father_
 	@Getter('language') public language!: string; // 语言
 
 	// public selectOption: MySelectOption_AllConfig                      = selectOption;
-	get selectOption(): object {
-		throw new Error('selectOption 属性需要重写！！！');
-	}
+	// get selectOption(): object {
+	// 	throw new Error('selectOption 属性需要重写！！！');
+	// }
 
 	//
 	public dialogControlVisible: boolean                               = false;
