@@ -1,4 +1,4 @@
-import Dropdown                 from '@/_components/general/dropdown/index.vue';
+// import Dropdown                 from '@/_components/general/dropdown/index.vue';
 import { ElForm }               from 'element-ui/types/form';
 import Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
 import Father_DialogMixin       from './Father_DialogMixin';
@@ -75,7 +75,7 @@ export interface OssUploadBean {
 	name      : 'CommonMixin',
 	components: {
 		/*组件*/
-		Dropdown,
+		// Dropdown,
 	},
 	filters   : {  // 第一种<el-tag>的样式Filter
 		elTagFilter(status: string | number) {
