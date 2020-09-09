@@ -78,9 +78,9 @@ export class Live2D_WidgetJs_Helper {
 		modelE: Live2DModelE = Live2DModelE.default_demo,
 		pathCfg              = this.pathCfg,
 	) {
-		getL2Dwidget().then(({ L2Dwidget }) => {
-
-			console.log(L2Dwidget);
+		getL2Dwidget().then((_exports) => {
+			console.log('最新调用', _exports);
+			const { L2Dwidget } = _exports;
 			this.loadDemoCss(CssE.demo);      // 尝试加载CSS
 
 			L2Dwidget
@@ -218,7 +218,7 @@ function getModelUrl(
 
 function getL2Dwidget() {
 	switch (Live2D_WidgetJs_Helper.libLoadWay) {
-		case L2Dwidget_LoadWayE.DynamicLoad:                                                // TIP 动态脚本加载
+		case L2Dwidget_LoadWayE.DynamicLoad: {                                                // TIP 动态脚本加载
 			console.log('此处注意，【public】目录，最终是落在了哪一个项目上');
 			return DomScript_Helper.loadJsScript_Async(
 				'/L2Dwidget/3.1.5/L2Dwidget.min.js',
@@ -227,21 +227,32 @@ function getL2Dwidget() {
 					L2Dwidget: (window as any).L2Dwidget as L2Dwidget_SimpleNS.L2Dwidget_Type,
 				};
 			});
-		case L2Dwidget_LoadWayE.Import:                                                     // TIP Import方式
+		}
+		case L2Dwidget_LoadWayE.Import: {                                                     // TIP Import方式
 			return import('live2d-widget');
+		}
 		/**
 		 * TIP 此处，官方的【发行版本】并没有给出最新的【common.js】。
 		 *        1.我们可以【下载代码】，然后【手动打包】出来。
 		 *        2.
 		 */
-		case L2Dwidget_LoadWayE.SrcModuleImport:
+		case L2Dwidget_LoadWayE.SrcModuleImport: {
+			// 								上面方法，好像个别环境，会有【exports is not defined】的问题。
 			return Promise.resolve(require('./3.1.5/L2Dwidget.common.js') as {
 				L2Dwidget: L2Dwidget_SimpleNS.L2Dwidget_Type,
 			});
-		case L2Dwidget_LoadWayE.Require:
+			// @ts-ignore
+			// return import('./3.1.5/L2Dwidget.common.js').then(exports => {
+			// 	return {
+			// 		L2Dwidget: exports as L2Dwidget_SimpleNS.L2Dwidget_Type,
+			// 	};
+			// });
+		}
+		case L2Dwidget_LoadWayE.Require: {
 			return Promise.resolve({
 				L2Dwidget: require('live2d-widget/lib/L2Dwidget.min.js') as L2Dwidget_SimpleNS.L2Dwidget_Type,
 			});
+		}
 	}
 }
 
