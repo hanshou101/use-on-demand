@@ -5,6 +5,7 @@
 	import { data_elTagColorFilter }         from '../MyElementUtils';
 	import { Component, Prop }               from 'vue-property-decorator';
 	import { Father_BaseVue, MixinLevelTag } from '../../../admin/mixins/Father_BaseVue';
+	import { SString_Helper }                from '../../../symbol-string/SString_Helper';
 
 	@Component({
 		name      : 'MyTableEasy',
@@ -48,14 +49,7 @@
 		 * 创建v-for独一无二的id。用法：将强制重建  列表循环内的【子组件】项。
 		 */
 		uid() {
-			function s4() {
-				return Math.floor((1 + Math.random()) * 0x10000)
-									 .toString(16)
-									 .substring(1);
-			}
-
-			return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-				s4() + '-' + s4() + s4() + s4();
+			return SString_Helper.uid();
 		}
 
 		public elTagFilter(status: string | number) {

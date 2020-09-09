@@ -49,6 +49,10 @@ export declare class SString_Helper {
      * 数字超过指定大小，如【99】后；用【99+】代替
      */
     static outOfNum_99plus(_num: NumOrStr, _maxNum: NumOrStr): string | number;
+    /**
+     * 创建v-for独一无二的id。用法：将强制重建  列表循环内的【子组件】项。
+     */
+    static uid(): string;
 }
 export {};
 //# sourceMappingURL=SString_Helper.d.ts.map
