@@ -177,7 +177,7 @@ export default class Father_CommonMixin<SelectOptionType> extends Mixins(Father_
 				} else {
 					const str = '表单校验，未通过。请检查表单字段！';
 					this.$notify({
-						type   : 'error',                                                          // 不同状态：primary,success,info,warning,error
+						type   : 'warning',                                                          // 不同状态：primary,success,info,warning,error
 						title  : '提示',
 						message: str,
 					});
