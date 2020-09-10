@@ -4,7 +4,7 @@ export class SMath_Helper {
   /**
    * 精确计算
    */
-  public precision = {
+  public static precision = {
     // 乘法
     times(_num1: NumOrStr, _num2: NumOrStr, ...others: Array<NumOrStr>): number {
       if (others.length > 0) {

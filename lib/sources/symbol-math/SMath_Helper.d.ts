@@ -2,7 +2,7 @@ export declare class SMath_Helper {
     /**
      * 精确计算
      */
-    precision: {
+    static precision: {
         times(_num1: NumOrStr, _num2: NumOrStr, ...others: Array<NumOrStr>): number;
         plus(num1: NumOrStr, num2: NumOrStr, ...others: Array<NumOrStr>): number;
         minus(num1: NumOrStr, num2: NumOrStr, ...others: Array<NumOrStr>): number;
