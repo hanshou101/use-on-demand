@@ -43,6 +43,7 @@ export function getClickWaveD() {
       //
       el.removeEventListener('click', ctxEvts.removeHandle, false);
       el[context] = null;
+      // @ts-ignore
       delete el[context];
     } as any as DirectiveFunction_Type,
   };

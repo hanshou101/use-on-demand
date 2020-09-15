@@ -66,11 +66,14 @@ export const ClipboardD: VueDirective_Type = {
   //
   unbind: function (el: ClipboardD_El, binding: ClipboardD_Binding) {
     if (binding.arg === 'success') {
+      // @ts-ignore
       delete el._v_clipboard_success;
     } else if (binding.arg === 'error') {
+      // @ts-ignore
       delete el._v_clipboard_error;
     } else {
       el._v_clipboard.destroy();
+      // @ts-ignore
       delete el._v_clipboard;
     }
   } as any as DirectiveFunction_Type,

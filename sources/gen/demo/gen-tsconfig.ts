@@ -54,12 +54,11 @@ class NuxtJs_TsConfig_Helper {
 		'packages/**/*.vue',
 
 		// WARN 我想要一种【Lint检查】但不【实际编译】的方法？？？？？？
+		//						似乎要在测试文件，加上【import '@types/jest';】，才能生效。
 		// 没找到之前，只能注释这里了。
 		// 也许需要【EsLint】的检查。
-		/*
-						'tests/!**!/!*.ts',
-						'tests/!**!/!*.tsx'
-		*/
+		'tests/**/*.ts',
+		'tests/**/*.tsx',
 	];
 
 	public static readonly _exclude = [
