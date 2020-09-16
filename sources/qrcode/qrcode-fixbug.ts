@@ -1,4 +1,4 @@
-export function fixQrcodeBug(fatherDom: HTMLElement) {
+export function xX_fixQrcodeBug(fatherDom: HTMLElement) {
   const canvas = fatherDom.querySelector('canvas');
   const img = fatherDom.querySelector('img');
   if (canvas && img) {

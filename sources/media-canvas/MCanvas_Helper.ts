@@ -1,3 +1,3 @@
-export class MCanvas_Helper{
+export class xX_MCanvas_Helper{
 
 }

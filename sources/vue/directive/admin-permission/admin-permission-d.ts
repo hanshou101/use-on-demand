@@ -30,7 +30,7 @@ function checkPermission(
   }
 }
 
-export function getAdminPermissionD(
+export function xX_getAdminPermissionD(
   roles: Array<string>,
 ) {
   const adminPermissionD: VueDirective_Type = {

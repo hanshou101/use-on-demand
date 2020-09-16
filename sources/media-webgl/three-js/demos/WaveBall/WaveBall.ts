@@ -3,7 +3,7 @@ import * as THREE from 'three';    // 56版本
 // const THREE = require('three');   // 85版本、95版本
 
 
-export class WebGL_WaveBall_Demo_three56 {
+export class xX_WebGL_WaveBall_Demo_three56 {
 
 
 	SEPARATION = 100;

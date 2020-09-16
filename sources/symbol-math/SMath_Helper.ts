@@ -1,5 +1,5 @@
 
-export class SMath_Helper {
+export class xX_SMath_Helper {
 
   /**
    * 精确计算

@@ -1,6 +1,6 @@
 type PhoneMaskOption = 'start' | 'center' | 'end';
 
-export class SString_Helper {
+export class xX_SString_Helper {
 
 	/**
 	 * 创建一个【独一无二】的【随机字符串】

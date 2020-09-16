@@ -8,7 +8,7 @@ declare namespace CountDownNS {
   type StepCb = (res: StepRes, stopFn: Function) => void;
 }
 
-export class SDateTime_Helper {
+export class xX_SDateTime_Helper {
   /**
    * 根据指定时间的倒计时功能
    */
@@ -47,7 +47,7 @@ export class SDateTime_Helper {
         }
         return;
       }
-      result = SDateTime_Helper.getTimePartStr(ms);       // 这一条，可能是负数。
+      result = xX_SDateTime_Helper.getTimePartStr(ms);       // 这一条，可能是负数。
       step_callBack(result, clear);
     }, 1000);
   }
@@ -83,7 +83,7 @@ export class SDateTime_Helper {
 
 }
 
-export class ServerTime_Helper {
+export class xX_ServerTime_Helper {
   /**
    *  差异时间
    *          1.【服务器】-【客户端】。

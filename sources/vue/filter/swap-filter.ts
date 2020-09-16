@@ -1,5 +1,5 @@
 
-export class SwapFilter_Helper {
+export class xX_SwapFilter_Helper {
   private static _Filter = {
     // numberFormat  : Util.numberFormat,
     // splitFormat   : Util.splitFormat,
@@ -11,12 +11,12 @@ export class SwapFilter_Helper {
   };
 
   public static init(vue: VueConstructor_Type) {
-    type KeysType = keyof typeof SwapFilter_Helper._Filter;
-    const filterKeys = Object.keys(SwapFilter_Helper._Filter) as Array<KeysType>;
+    type KeysType = keyof typeof xX_SwapFilter_Helper._Filter;
+    const filterKeys = Object.keys(xX_SwapFilter_Helper._Filter) as Array<KeysType>;
 
     // 批量绑定。
     filterKeys.forEach((key) => {
-      vue.filter(key, SwapFilter_Helper._Filter[key]);
+      vue.filter(key, xX_SwapFilter_Helper._Filter[key]);
     });
     return this._Filter;
   }

@@ -1,4 +1,4 @@
-export class FormValidator {
+export class xX_FormValidator {
   public static chinaCode = '+86';
 
   public static isPureNumber(str: string) {

@@ -3,7 +3,7 @@
  * TIP 该方法，采用了YanNan的方式，目前运转正常。
  */
 
-export class My_RemCompatible_Util {
+export class xX_My_RemCompatible_Util {
   public static dpr: number = 0;
   public static rem: number = 0;
 

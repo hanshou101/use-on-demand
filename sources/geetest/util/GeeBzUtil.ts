@@ -1,4 +1,4 @@
-import {GeeStableE, GeeStableUtil} from './GeeStableUtil';
+import {xX_GeeStableE, xX_GeeStableUtil} from './GeeStableUtil';
 
 const {gtInit} = require('./_util/geetest/geetest.gt.js');    // 在使用工具时，引用该【lib文件】。
 
@@ -9,7 +9,7 @@ enum LangMapE {
 }                                       //
 const lang = LangMapE['zh-HK'];
 
-export class GeeBzUtil {
+export class xX_GeeBzUtil {
 
   /**
    * 内部SDK调用，唤起一次极验。
@@ -55,11 +55,11 @@ export class GeeBzUtil {
       // 向服务器，请求【极验预信息】
       const {data}                  = (await preInfoApi());         // FIXME 这一步，可能会报出异常！
       const {enable, success, sign} = data;
-      const stableE                 = GeeStableUtil.calcCurrent_GeeStable(enable, success);
+      const stableE                 = xX_GeeStableUtil.calcCurrent_GeeStable(enable, success);
       switch (stableE) {
         // 以下两个，header是{}
-        case GeeStableE.NoGeetest_false_0:
-        case GeeStableE.NoGeetest_false_1: {
+        case xX_GeeStableE.NoGeetest_false_0:
+        case xX_GeeStableE.NoGeetest_false_1: {
           console.error('并非 后台开启且第三方正常 的情况，所以不初始化极验；仅仅返回【模拟数据】');
           onFingerSuc(
             {},
@@ -69,7 +69,7 @@ export class GeeBzUtil {
           break;
         }
         // 以下，header是{sign}
-        case GeeStableE.ErrorGeetest__true_0: {
+        case xX_GeeStableE.ErrorGeetest__true_0: {
           onFingerSuc({
             sign,
           }, {
@@ -79,10 +79,10 @@ export class GeeBzUtil {
           break;
         }
         // 以下，header是{3个值}
-        case GeeStableE.SuccessGeetest_true_1: {
+        case xX_GeeStableE.SuccessGeetest_true_1: {
           console.log('后台开启且第三方政策，所以，初始化极验');
           //
-          const geeCtrl = await GeeBzUtil.__innerSdkInit(data, {         // 初始化极验验证的实例
+          const geeCtrl = await xX_GeeBzUtil.__innerSdkInit(data, {         // 初始化极验验证的实例
             onReadySuc    : (_geeCtrl) => {
               console.log('极验SDK内部初始化', '已准备好', _geeCtrl);
               //

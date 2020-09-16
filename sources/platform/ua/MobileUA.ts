@@ -4,7 +4,7 @@
  */
 
 // var browser = {
-export class MyBrowser {
+export class xX_MyBrowser {
   public static versions = function () {
     const u   = navigator.userAgent;
     const app = navigator.appVersion;
@@ -35,7 +35,7 @@ export class MyBrowser {
      * 原因是：
      *        1.MacOS电脑上，安装【苹果APP】无用，给出一个【安卓APP】的下载地址，更好。
      */
-    return MyBrowser.versions.ios || MyBrowser.versions.iPhone || MyBrowser.versions.iPad;
+    return xX_MyBrowser.versions.ios || xX_MyBrowser.versions.iPhone || xX_MyBrowser.versions.iPad;
   }();
 
   // // TIP 处理，市面上最广泛的Android设备（满足android；以及各种杂乱无章安卓UA————非superIOS的都视为安卓设备）

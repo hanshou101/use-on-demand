@@ -678,4 +678,4 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
 __MyTrackballControls.prototype = Object.create(THREE.EventDispatcher.prototype);
 __MyTrackballControls.prototype.constructor = __MyTrackballControls;
 
-export const MyTrackballControls = __MyTrackballControls;
+export const xX_MyTrackballControls = __MyTrackballControls;

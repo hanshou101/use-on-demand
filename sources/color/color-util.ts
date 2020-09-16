@@ -1,6 +1,6 @@
-import {VarsColor} from '../less/diy/less-vars.diy';
+import {xX_VarsColor} from '../less/diy/less-vars.diy';
 
-export class ColorUtil {
+export class xX_ColorUtil {
 
   /**
    * 【RGB】转【HEX】
@@ -25,8 +25,8 @@ export class ColorUtil {
    * 指定某个颜色
    */
   public static ElLoading_color = (function () {
-    const TextPrimary_or_Bg_Color = VarsColor.TextPrimary_or_Bg_Color;
-    const rgbObj                  = ColorUtil.hexToRgb(TextPrimary_or_Bg_Color);
+    const TextPrimary_or_Bg_Color = xX_VarsColor.TextPrimary_or_Bg_Color;
+    const rgbObj                  = xX_ColorUtil.hexToRgb(TextPrimary_or_Bg_Color);
     if (!rgbObj) {
       throw new Error('转化Hex颜色到Rgb颜色，失败！');
     }

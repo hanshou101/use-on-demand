@@ -12,7 +12,7 @@ interface ClickWaveD_Binding extends DirectiveBinding_Type {
 
 }
 
-export function getClickWaveD() {
+export function xX_getClickWaveD() {
 
   // 导入CSS文件
   require('./click-wave.css');

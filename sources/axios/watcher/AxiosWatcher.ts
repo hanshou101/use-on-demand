@@ -6,7 +6,7 @@
  *
  */
 
-import {DebugU, LogE} from '../../debug-util/debug-util';
+import {xX_DebugU, xX_LogE} from '../../debug-util/debug-util';
 
 /**
  * 其实，更好的方法是：
@@ -14,7 +14,7 @@ import {DebugU, LogE} from '../../debug-util/debug-util';
  */
 const isClient = process.client;
 
-export class AxiosWatcher {
+export class xX_AxiosWatcher {
 
   public static saveReqInfo_onClient(config: AxiosRequestConfig_Type) {
     if (isClient) {
@@ -31,7 +31,7 @@ export class AxiosWatcher {
         // map[bzId].requesting = true;    // WARN 有可能，watch/deep无法监听到。
         // window.$nuxt.$set(map[bzId], 'requesting', true);
 
-        DebugU.l(LogE.axiosWatcher, 'bzId', bzId, '正在请求中', JSON.stringify(map));
+        xX_DebugU.l(xX_LogE.axiosWatcher, 'bzId', bzId, '正在请求中', JSON.stringify(map));
       }
     }
   }
@@ -47,7 +47,7 @@ export class AxiosWatcher {
         } as AxiosWatcherMap_Type);   // TIP 正确解法
         // map[bzId].requesting = false;   // WARN 有可能，watch/deep无法监听到。
 
-        DebugU.l(LogE.axiosWatcher, 'bzId', bzId, '正在返回中', JSON.stringify(map));
+        xX_DebugU.l(xX_LogE.axiosWatcher, 'bzId', bzId, '正在返回中', JSON.stringify(map));
       }
     }
   }

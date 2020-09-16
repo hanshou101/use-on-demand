@@ -1,6 +1,6 @@
-import Vue                from 'vue';
-import {DomScript_Helper} from '../../dom/dom-script';
-import {DebugU, LogE}     from '../../debug-util/debug-util';
+import Vue                   from 'vue';
+import {xX_DomScript_Helper} from '../../dom/dom-script';
+import {xX_DebugU, xX_LogE}  from '../../debug-util/debug-util';
 
 
 abstract class BaseSentryUtil {
@@ -19,7 +19,7 @@ class PureJs_SentryUtil extends BaseSentryUtil {
   private readonly pureJsUrl = this.cfg.pureJsUrl;
 
   public init(): Promise<Event> {
-    return DomScript_Helper.loadJsScript_Async(
+    return xX_DomScript_Helper.loadJsScript_Async(
       this.pureJsUrl, {
         crossOrigin: this.crossOrigin,
       },
@@ -37,7 +37,7 @@ class Vue_SentryUtil extends BaseSentryUtil {
   private readonly vueIntegrationUrl = this.cfg.vueIntegrationUrl;
 
   public init(): Promise<Event> {
-    return DomScript_Helper.loadJsScript_Async(
+    return xX_DomScript_Helper.loadJsScript_Async(
       this.vueIntegrationUrl, {
         crossOrigin: this.crossOrigin,
       },
@@ -58,13 +58,13 @@ class Vue_SentryUtil extends BaseSentryUtil {
   }
 }
 
-export function standardInit(cfg: Sentry_Cfg_Type) {
+export function xX_standardInit(cfg: Sentry_Cfg_Type) {
   const PureJsSentry = new PureJs_SentryUtil(cfg);
   const VueSentry    = new Vue_SentryUtil(cfg);
   PureJsSentry.init().then((pureJsSResult) => {
-    DebugU.l(LogE.loadScript, 'PureJsSentry', '初始化成功');
+    xX_DebugU.l(xX_LogE.loadScript, 'PureJsSentry', '初始化成功');
     VueSentry.init().then((vueSResult) => {
-      DebugU.l(LogE.loadScript, 'VueSentry', '初始化成功');
+      xX_DebugU.l(xX_LogE.loadScript, 'VueSentry', '初始化成功');
     });
   });
 }

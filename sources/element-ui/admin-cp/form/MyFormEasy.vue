@@ -314,10 +314,10 @@
 
 <script lang="ts">
 	import { ElUploadInternalFileDetail }       from 'element-ui/types/upload';
-	import { Father_ElFItem }                   from '../ElFItem';
-	import UploadSingleImg                      from '../upload/UploadSingleImg.vue';
-	import MultiLangSimple                      from '../multi-lang/MultiLangSimple.vue';
-	import Count_Input                          from '../input/Count_Input.vue';
+	import { xX_Father_ElFItem }                from '../ElFItem';
+	import xX_UploadSingleImg                   from '../upload/UploadSingleImg.vue';
+	import xX_MultiLangSimple                   from '../multi-lang/MultiLangSimple.vue';
+	import xX_Count_Input                       from '../input/Count_Input.vue';
 	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
 	import { Component, Prop }                  from 'vue-property-decorator';
 
@@ -326,17 +326,17 @@
 		name      : 'MyFormEasy',
 		components: {
 			/*组件*/
-			UploadSingleImg,
-			MultiLangSimple,
-			Count_Input,
+			UploadSingleImg: xX_UploadSingleImg,
+			MultiLangSimple: xX_MultiLangSimple,
+			Count_Input    : xX_Count_Input,
 		},
 		filters   : {},
 	})
-	export default class MyFormEasy
+	export default class xX_MyFormEasy
 		extends xX_Father_BaseVue {    // 混入在此处，进行添加。
 
 		// 数据可以和父级通用
-		@Prop({ type: Array, required: true }) readonly formItems!: Father_ElFItem.Base[];
+		@Prop({ type: Array, required: true }) readonly formItems!: xX_Father_ElFItem.Base[];
 		// 数据可以和父级通用
 		@Prop({ type: Object, required: true }) readonly ruleForm!: IndexedObj<any>;
 		@Prop({ type: Number, default: 1 }) private type!: number;                                          // 有可能是，对话框的类型  新增/编辑/审核 什么的。
@@ -384,11 +384,11 @@
 			this.selectIndex = null;
 		}
 
-		public uploadSingleImageSuccess_Wrapper(item: Father_ElFItem.Base) {              // 在外面包裹一层，兼容【$emit】、【选项传参】两种形式。
+		public uploadSingleImageSuccess_Wrapper(item: xX_Father_ElFItem.Base) {              // 在外面包裹一层，兼容【$emit】、【选项传参】两种形式。
 			console.log('执行了吗1', item);
 			return (res: any, fileDetail: ElUploadInternalFileDetail) => {
 				console.log('执行了吗2', res, fileDetail);
-				const extraCb = (item as Father_ElFItem.UploadImg).uploadSingleImageSuccess_ExtraCb;       // 选项中传参的配置
+				const extraCb = (item as xX_Father_ElFItem.UploadImg).uploadSingleImageSuccess_ExtraCb;       // 选项中传参的配置
 				if (typeof extraCb == 'function') {
 					console.log('图片额外回调中，有选项传参');
 					extraCb(res, fileDetail);

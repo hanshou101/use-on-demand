@@ -1,5 +1,5 @@
-import {ElUploadInternalFileDetail}                         from 'element-ui/types/upload';
-import {MyDialogFormItem_Conf, MyFormItem_SelectOptionConf} from './MyElementUtils';
+import {ElUploadInternalFileDetail}                               from 'element-ui/types/upload';
+import {xX_MyDialogFormItem_Conf, xX_MyFormItem_SelectOptionConf} from './MyElementUtils';
 
 /**
  * 两个参数，一个必传参数对象，一个可选参数对象
@@ -59,14 +59,14 @@ interface HasPrependAppend {
 type Date_or_Time_Range_Types = 'dateRange' | 'paymentDateRange' | 'auditDateRange' | 'updateDateRange';
 
 // tslint:disable-next-line:no-namespace
-export namespace Father_ElFItem {
+export namespace xX_Father_ElFItem {
   export abstract class Base {
     public readonly myCategory!: MyFormItem_Category;
 
     public label!: string;          // 显示的表头
     public prop_AND_bindValue!: string;           // 从listData中取变量的变量名
     public name!: string;           // 和prop保持一致？？？
-    public config: MyDialogFormItem_Conf = {
+    public config: xX_MyDialogFormItem_Conf = {
       notRenderItem: false,           // 会渲染
       disableItem  : false,             // 不禁止
     };
@@ -268,7 +268,7 @@ export namespace Father_ElFItem {
 
   export class Options<T> extends Base {
     public readonly myCategory = 'options';
-    public selectOptionConf!: MyFormItem_SelectOptionConf<T>;
+    public selectOptionConf!: xX_MyFormItem_SelectOptionConf<T>;
 
     constructor(require: Require & {
                   // 下拉框的候选项，一般写在common.ts里面
@@ -283,7 +283,7 @@ export namespace Father_ElFItem {
       super(require, optional);
       if (require) {
         const {selectOptionConf} = require;
-        this.selectOptionConf    = new MyFormItem_SelectOptionConf<T>(selectOptionConf.option).setParseInt(selectOptionConf.needParseInt);
+        this.selectOptionConf    = new xX_MyFormItem_SelectOptionConf<T>(selectOptionConf.option).setParseInt(selectOptionConf.needParseInt);
       }
     }
   }

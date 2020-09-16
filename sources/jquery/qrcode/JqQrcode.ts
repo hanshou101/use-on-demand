@@ -1,4 +1,4 @@
-export class JqQrcode_Helper {
+export class xX_JqQrcode_Helper {
   public static drawQrcode(
     $: JQueryStatic,
     qrTxt: string,

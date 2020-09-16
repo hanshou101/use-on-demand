@@ -2,7 +2,7 @@ function getVideoJS() {
 	return require('video.js').default;
 }
 
-export class MVideo_Helper {
+export class xX_MVideo_Helper {
 	private static isCssLoaded = false;
 
 	public static initLang(

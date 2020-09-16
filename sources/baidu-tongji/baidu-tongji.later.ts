@@ -1,4 +1,4 @@
-export function initBaiduTongji(
+export function xX_initBaiduTongji(
   src = 'https://hm.baidu.com/hm.js?ccb50b59df9bf1fe2e08d732cd3a964e',
 ) {
   // var _hmt = _hmt || [];

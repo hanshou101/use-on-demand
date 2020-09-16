@@ -40,7 +40,7 @@
 		filters   : {},
 	})
 	// export default class HelloWorld extends BaseVueClass {
-	export default class MultiLangTag extends xX_Father_BaseVue {    // 混入在此处，进行添加。
+	export default class xX_MultiLangTag extends xX_Father_BaseVue {    // 混入在此处，进行添加。
 
 		// Prop，在类中的实现
 		@Prop({

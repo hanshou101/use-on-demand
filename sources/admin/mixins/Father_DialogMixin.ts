@@ -4,7 +4,7 @@
 
 import { ElForm } from 'element-ui/types/form';
 
-import Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
+import xX_Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
 
 import { OssUploadBean, PreUploadBean }   from './Father_CommonMixin';
 import { Component, Mixins, Prop, Watch } from 'vue-property-decorator';
@@ -72,7 +72,7 @@ import { MixinLevelTag }                  from './Father_BaseVue';
 	},
 })
 // export default class HelloWorld extends BaseVueClass {
-export default class Father_DialogMixin<SelectOptionType> extends Mixins(Father_ExportExcel_Mixin) {
+export default class xX_Father_DialogMixin<SelectOptionType> extends Mixins(xX_Father_ExportExcel_Mixin) {
 	// 混入在此处，进行添加。
 	// TIP:  Prop，在类中的实现
 	// 控制弹窗显示与隐藏

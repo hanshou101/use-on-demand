@@ -1,6 +1,6 @@
 export const isClient = !process?.server;   // WARN 此处，兼容【nuxt.js】和【非nuxt.js】环境。
 
-export enum LogE {
+export enum xX_LogE {
 	bgTokenAbout          = 'bgTokenAbout',
 	KlinePerformance      = 'KlinePerformance',
 	KlineCycleLife        = 'KlineCycleLife',
@@ -34,36 +34,36 @@ export enum LogE {
 /**
  * console日志工具
  */
-export class DebugU {
+export class xX_DebugU {
 	public static separator = '//';
 
-	private static readonly allowKeys: Array<LogE> = [
-		// LogE.positLine,
-		LogE.tradingViewDraw,
-		LogE.chatroom,
-		LogE.transferWindow,
-		LogE.loadScript,
-		// LogE.axiosBase,
-		LogE.sentry,
-		// LogE.KlineCycleLife,
+	private static readonly allowKeys: Array<xX_LogE> = [
+		// xX_LogE.positLine,
+		xX_LogE.tradingViewDraw,
+		xX_LogE.chatroom,
+		xX_LogE.transferWindow,
+		xX_LogE.loadScript,
+		// xX_LogE.axiosBase,
+		xX_LogE.sentry,
+		// xX_LogE.KlineCycleLife,
 		//
-		// LogE.decorator,
-		// LogE.versionCheck,
+		// xX_LogE.decorator,
+		// xX_LogE.versionCheck,
 	];
 
-	public static l(logEnum: LogE, ...args: Array<any>) {
+	public static l(logEnum: xX_LogE, ...args: Array<any>) {
 		if (this.allowKeys.includes(logEnum)) {
 			// console.log(`%c${logEnum} // ${args}%c 123`, 'background: #f33; font-size: 18px; font-family: monospace; color: #eee; text-shadow:0 0 1px #fff', 'background: #3f3; font-size: 18px; font-family: monospace; color: #eee; text-shadow:0 0 1px #fff');
 			console.log(logEnum, this.separator, ...args);
 		}
 	} //
-	public static e(logEnum: LogE, ...args: Array<any>) {
+	public static e(logEnum: xX_LogE, ...args: Array<any>) {
 		if (this.allowKeys.includes(logEnum)) {
 			console.error(logEnum, this.separator, ...args);
 		}
 	}//
 
-	public static pic(logEnum: LogE, imgUrl: string = 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png') {
+	public static pic(logEnum: xX_LogE, imgUrl: string = 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png') {
 		console.log('%c ', `
         padding           :50px 300px;
         line-height       :100px;

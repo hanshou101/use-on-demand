@@ -1,4 +1,4 @@
-export class Fix_WxRedirec_Util {
+export class xX_Fix_WxRedirec_Util {
   public static check_isRedirctByWx() {
     const hash    = location.hash;
     const wxQuery = location.search;

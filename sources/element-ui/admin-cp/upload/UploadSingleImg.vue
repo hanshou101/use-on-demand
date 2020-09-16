@@ -46,7 +46,7 @@
 		name      : 'UploadSingleImg',
 		components: {},
 	})
-	export default class UploadSingleImg extends xX_Father_BaseVue {    // 混入在此处，进行添加。
+	export default class xX_UploadSingleImg extends xX_Father_BaseVue {    // 混入在此处，进行添加。
 
 		// TIP： Prop，在类中的实现
 		@Prop({ type: String, default: '' }) private value!: string;

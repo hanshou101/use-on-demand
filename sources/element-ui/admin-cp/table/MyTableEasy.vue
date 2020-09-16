@@ -2,9 +2,9 @@
 
 
 	import ElTableItem_DetailInfo               from './ElTableItem_DetailInfo.vue';
-	import { data_elTagColorFilter }            from '../MyElementUtils';
+	import { xX_data_elTagColorFilter }         from '../MyElementUtils';
 	import { Component, Prop }                  from 'vue-property-decorator';
-	import { SString_Helper }                   from '../../../symbol-string/SString_Helper';
+	import { xX_SString_Helper }                from '../../../symbol-string/SString_Helper';
 	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
 
 	@Component({
@@ -16,7 +16,7 @@
 		filters   : {},
 	})
 // export default class HelloWorld extends BaseVueClass {
-	export default class MyTableEasy extends xX_Father_BaseVue {    // 混入在此处，进行添加。
+	export default class xX_MyTableEasy extends xX_Father_BaseVue {    // 混入在此处，进行添加。
 		@Prop({ type: Array, required: true }) readonly tableCols!: [];
 
 		// Data，在类中的实现 （双向绑定除外）
@@ -49,11 +49,11 @@
 		 * 创建v-for独一无二的id。用法：将强制重建  列表循环内的【子组件】项。
 		 */
 		uid() {
-			return SString_Helper.uid();
+			return xX_SString_Helper.uid();
 		}
 
 		public elTagFilter(status: string | number) {
-			return data_elTagColorFilter[status];
+			return xX_data_elTagColorFilter[status];
 		}
 
 		/*{
@@ -311,12 +311,12 @@
 			if (formItem.colorTrans) {
 				// console.log('有colorTrans', '原始色', row[formItem.prop]);
 				// console.log('变换后颜色', formItem.colorTrans(row[formItem.prop]));
-				const color = data_elTagColorFilter[formItem.colorTrans(row[formItem.prop])];
+				const color = xX_data_elTagColorFilter[formItem.colorTrans(row[formItem.prop])];
 				// console.log('变换后颜色为', color);
 				return color;
 			} else {
 				console.log('没有colorTrans');
-				return data_elTagColorFilter[row[formItem.prop]];
+				return xX_data_elTagColorFilter[row[formItem.prop]];
 			}
 		}
 

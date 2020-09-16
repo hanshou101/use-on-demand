@@ -7,9 +7,9 @@
  */
 
 import {ElementUIComponent} from 'element-ui/types/component';
-import {Father_ElTItem}     from '../../../element-ui/admin-cp/ElTItem';
+import {xX_Father_ElTItem}  from '../../../element-ui/admin-cp/ElTItem';
 import {ElUpload}           from 'element-ui/types/upload';
-// import {Father_ElTItem} from '@/_framework/sdk/elment-ui/new/Father_ElTItem';
+// import {xX_Father_ElTItem} from '@/_framework/sdk/elment-ui/new/xX_Father_ElTItem';
 
 declare global {
   interface MyElForm extends ElementUIComponent {
@@ -30,7 +30,7 @@ declare global {
 
   // 回显表格时，转换字段的函数
   type Origin__RowTransformFn = (row: any, field: string) => string;
-  type RowTransformFn<T> = (row: any, item: Father_ElTItem.Base) => T;
+  type RowTransformFn<T> = (row: any, item: xX_Father_ElTItem.Base) => T;
   type DetailInfoTransformFn = (row: any, field: string) => string;
   type Detail_DisableRender_CheckFn = (row: any, field: string) => boolean;
   type SelectableFn = (row: any, index: number) => boolean;

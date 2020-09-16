@@ -1,6 +1,6 @@
 const THREE = require('three');   // 85版本、95版本
 
-export class MyThree_Util {
+export class xX_MyThree_Util {
 
 	/**
 	 * TIP 创建自定义形状。（模子轮廓坐标分布 + 内孔坐标分布）

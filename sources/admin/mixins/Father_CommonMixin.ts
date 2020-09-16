@@ -1,7 +1,7 @@
 // import Dropdown                 from '@/_components/general/dropdown/index.vue';
-import { ElForm }               from 'element-ui/types/form';
-import Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
-import Father_DialogMixin       from './Father_DialogMixin';
+import { ElForm }                  from 'element-ui/types/form';
+import xX_Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
+import xX_Father_DialogMixin       from './Father_DialogMixin';
 import { Component, Mixins }    from 'vue-property-decorator';
 import { Getter }               from 'vuex-class';
 import { MixinLevelTag }        from './Father_BaseVue';
@@ -99,7 +99,7 @@ export interface OssUploadBean {
 	},
 })
 // export default class HelloWorld extends BaseVueClass {
-export default class Father_CommonMixin<SelectOptionType> extends Mixins(Father_ExportExcel_Mixin) {    // 混入在此处，进行添加。
+export default class xX_Father_CommonMixin<SelectOptionType> extends Mixins(xX_Father_ExportExcel_Mixin) {    // 混入在此处，进行添加。
 
 	constructor() {
 		super();
@@ -198,21 +198,21 @@ export default class Father_CommonMixin<SelectOptionType> extends Mixins(Father_
 	public handleCreate(): void {
 		this.dialogControlVisible = true;
 		this.$nextTick(() => {
-			(this.$refs.dialogRef as Father_DialogMixin<SelectOptionType>).showDialog(1);
+			(this.$refs.dialogRef as xX_Father_DialogMixin<SelectOptionType>).showDialog(1);
 		});
 	}
 
 	public handleEdit(index: number, row: {}): void {
 		this.dialogControlVisible = true;
 		this.$nextTick(() => {
-			(this.$refs.dialogRef as Father_DialogMixin<SelectOptionType>).showDialog(2, JSON.parse(JSON.stringify(row)));
+			(this.$refs.dialogRef as xX_Father_DialogMixin<SelectOptionType>).showDialog(2, JSON.parse(JSON.stringify(row)));
 		});
 	}
 
 	public handleDetail(index: number, row: {}): void {
 		this.dialogControlVisible = true;
 		this.$nextTick(() => {
-			(this.$refs.dialogRef as Father_DialogMixin<SelectOptionType>).showDialog(3, JSON.parse(JSON.stringify(row)));
+			(this.$refs.dialogRef as xX_Father_DialogMixin<SelectOptionType>).showDialog(3, JSON.parse(JSON.stringify(row)));
 		});
 	}
 

@@ -15,7 +15,7 @@ const THREE = require('three');   // 85版本、95版本
 //    Zoom - middle mouse, or mousewheel / touch: two finger spread or squish
 //    Pan - right mouse, or arrow keys / touch: three finger swipe
 
-export class MyOrbitControls extends THREE.EventDispatcher {
+export class xX_MyOrbitControls extends THREE.EventDispatcher {
   // TODO 此处，声明一个，从  THREE.EventDispatcher原型链里面，Object.create过来的方法！！！
   // TODO 此处，声明一个，从  THREE.EventDispatcher原型链里面，Object.create过来的方法！！！
   // TODO 此处，声明一个，从  THREE.EventDispatcher原型链里面，Object.create过来的方法！！！
@@ -1085,10 +1085,10 @@ export class MyOrbitControls extends THREE.EventDispatcher {
 //
 // 以下，为原来的js类
 
-// MyOrbitControls.prototype = Object.create(THREE.EventDispatcher.prototype);
+// xX_MyOrbitControls.prototype = Object.create(THREE.EventDispatcher.prototype);
 // TODO 此处，会发现，JS的原型Copy方法，将  MyOrbitControls类的原型给  覆盖掉了。
 
-Object.defineProperties(MyOrbitControls.prototype, {
+Object.defineProperties(xX_MyOrbitControls.prototype, {
 
   center: {
 

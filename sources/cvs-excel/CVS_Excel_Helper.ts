@@ -12,7 +12,7 @@ function getJsZip() {
   return import('jszip');
 }
 
-export class CVS_Excel_Helper {
+export class xX_CVS_Excel_Helper {
 
   /**
    * 先将二维数组转成纯文本，重点是要处理可能在内容中出现的分隔符和双引号：

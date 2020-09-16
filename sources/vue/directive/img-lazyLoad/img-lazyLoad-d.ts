@@ -1,4 +1,4 @@
-import {VHookE} from '../../hook/vue-hook-enum';
+import {xX_VHookE} from '../../hook/vue-hook-enum';
 
 interface LazyLoad_HtmlImageElement extends HTMLImageElement {
   isLoaded: boolean;
@@ -6,7 +6,7 @@ interface LazyLoad_HtmlImageElement extends HTMLImageElement {
 }
 
 
-export class ImgLazyLoad_Directive {
+export class xX_ImgLazyLoad_Directive {
   public static __defaultCfg = {
     /**
      * 1像素透明。
@@ -54,7 +54,7 @@ export class ImgLazyLoad_Directive {
     placeholderImg: string,
   ) {
     let timer: number;
-    const observer                      = ImgLazyLoad_Directive.__getObserver();
+    const observer                      = xX_ImgLazyLoad_Directive.__getObserver();
     const _directive: VueDirective_Type = {
       /**
        * 1.这里用【inserted】和【bind】都行
@@ -77,7 +77,7 @@ export class ImgLazyLoad_Directive {
         const vm = vnode.context;
         timer    = window.setTimeout(() => {
           // 在【组件卸载之前】，停止监听器
-          vm?.$on(VHookE.beforeDestroy, () => {
+          vm?.$on(xX_VHookE.beforeDestroy, () => {
             observer.disconnect();                            // 断开监听器。
           });
         }, 20);

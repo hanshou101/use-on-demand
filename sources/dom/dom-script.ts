@@ -1,16 +1,16 @@
-import {DebugU, LogE} from '../debug-util/debug-util';
+import {xX_DebugU, xX_LogE} from '../debug-util/debug-util';
 
 type sOptionKeys = 'crossOrigin';
 type sOptionType = {
   [key in sOptionKeys]?: HTMLScriptElement[ key ];
 };
 
-export class DomScript_Helper {
+export class xX_DomScript_Helper {
   public static loadJsScript_Async(
     jsUrl: string,
     sProperties: sOptionType = {},
   ): Promise<Event> {
-    DebugU.l(LogE.loadScript, '远程脚本', '开始加载', jsUrl);
+    xX_DebugU.l(xX_LogE.loadScript, '远程脚本', '开始加载', jsUrl);
     return new Promise((resolve) => {
       const scriptNode = document.createElement('script');
 
@@ -27,7 +27,7 @@ export class DomScript_Helper {
         scriptNode[key as sOptionKeys] = value as any;                            // 此处，类型太过宽松？
       });
       scriptNode.onload = function (e: Event) {
-        DebugU.l(LogE.loadScript, '远程脚本', '加载成功', jsUrl);
+        xX_DebugU.l(xX_LogE.loadScript, '远程脚本', '加载成功', jsUrl);
         resolve(e);
       };
       scriptNode.src    = jsUrl;

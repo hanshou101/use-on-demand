@@ -1,4 +1,4 @@
-export class FullScreen_Helper {
+export class xX_FullScreen_Helper {
 
   /**
    * 进入全屏

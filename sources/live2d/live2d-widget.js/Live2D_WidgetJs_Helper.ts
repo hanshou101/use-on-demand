@@ -1,7 +1,7 @@
 // import {L2Dwidget}       from 'live2d-widget/lib/L2Dwidget.min.js';    // 这种方式，不能用import；只能用【window】方式。
-// import {DomScript_Helper} from '../../dom/dom-script';
+// import {xX_DomScript_Helper} from '../../dom/dom-script';
 
-import { DomScript_Helper } from '../../dom/dom-script';
+import { xX_DomScript_Helper } from '../../dom/dom-script';
 
 enum CssE {
 	demo = 'demo',
@@ -19,7 +19,7 @@ enum L2Dwidget_LoadWayE {
 	Require,
 }
 
-export enum Live2DModelE {
+export enum xX_Live2DModelE {
 	'default_demo' = '不需要传值，留一个undefined即可',      // 默认
 	'chitose'      = 'chitose',                         // 西装高个的男生
 	/**
@@ -59,7 +59,7 @@ export enum Live2DModelE {
 }
 
 
-export class Live2D_WidgetJs_Helper {
+export class xX_Live2D_WidgetJs_Helper {
 	/**
 	 * 根据【live2d-widget.js】库的不同版本，选择不同的加载方式。
 	 */
@@ -75,8 +75,8 @@ export class Live2D_WidgetJs_Helper {
 
 
 	public static initDemo(
-		modelE: Live2DModelE = Live2DModelE.default_demo,
-		pathCfg              = this.pathCfg,
+		modelE: xX_Live2DModelE = xX_Live2DModelE.default_demo,
+		pathCfg                 = this.pathCfg,
 	) {
 		getL2Dwidget().then((_exports) => {
 			console.log('最新调用', _exports);
@@ -106,7 +106,7 @@ export class Live2D_WidgetJs_Helper {
 						},
 					},
 					model  : {
-						jsonPath: modelE === Live2DModelE.default_demo ? undefined : getModelUrl(modelE, pathCfg),
+						jsonPath: modelE === xX_Live2DModelE.default_demo ? undefined : getModelUrl(modelE, pathCfg),
 					},
 					display: {
 						position: 'left',
@@ -148,11 +148,11 @@ export class Live2D_WidgetJs_Helper {
 //
 
 function getModelUrl(
-	modelE: Live2DModelE,
-	pathCfg: typeof Live2D_WidgetJs_Helper['pathCfg'],
+	modelE: xX_Live2DModelE,
+	pathCfg: typeof xX_Live2D_WidgetJs_Helper['pathCfg'],
 ) {
 
-	switch (Live2D_WidgetJs_Helper.cdnMode) {
+	switch (xX_Live2D_WidgetJs_Helper.cdnMode) {
 		//
 		//
 		//
@@ -161,9 +161,9 @@ function getModelUrl(
 
 			const fileName = (function() {
 				switch (modelE) {
-					case Live2DModelE.epsilon2_1:
+					case xX_Live2DModelE.epsilon2_1:
 						return 'epsilon2.1';
-					case Live2DModelE.gf:
+					case xX_Live2DModelE.gf:
 						return 'gantzert_felixander';
 					default:
 						return modelE.valueOf().toLowerCase();               // WARN 转化为小写字母。
@@ -179,9 +179,9 @@ function getModelUrl(
 		case CdnModeE.UnPkg: {                          // 从远程 Unpkg.com 网站，进行获取
 			const dirName = (function() {
 				switch (modelE) {
-					case Live2DModelE.haru01:
+					case xX_Live2DModelE.haru01:
 						return 'haru';              // 需要拼接中间目录。
-					case Live2DModelE.haru02:
+					case xX_Live2DModelE.haru02:
 						return 'haru';              // 需要拼接中间目录。
 					default:
 						return modelE.valueOf().toLowerCase();               // WARN 转化为小写字母。
@@ -190,9 +190,9 @@ function getModelUrl(
 
 			const middleDir = (function() {
 				switch (modelE) {
-					case Live2DModelE.haru01:
+					case xX_Live2DModelE.haru01:
 						return '01/';              // 需要拼接中间目录。
-					case Live2DModelE.haru02:
+					case xX_Live2DModelE.haru02:
 						return '02/';              // 需要拼接中间目录。
 					default:
 						return '';                        // 默认没有中间目录
@@ -201,9 +201,9 @@ function getModelUrl(
 
 			const fileName = (function() {
 				switch (modelE) {
-					case Live2DModelE.epsilon2_1:
+					case xX_Live2DModelE.epsilon2_1:
 						return 'Epsilon2.1';                  // 首字母大写！
-					case Live2DModelE.gf:
+					case xX_Live2DModelE.gf:
 						return 'Gantzert_Felixander';
 					default:
 						return modelE.valueOf().toLowerCase();               // WARN 转化为小写字母。
@@ -217,10 +217,10 @@ function getModelUrl(
 }
 
 function getL2Dwidget() {
-	switch (Live2D_WidgetJs_Helper.libLoadWay) {
+	switch (xX_Live2D_WidgetJs_Helper.libLoadWay) {
 		case L2Dwidget_LoadWayE.DynamicLoad: {                                                // TIP 动态脚本加载
 			console.log('此处注意，【public】目录，最终是落在了哪一个项目上');
-			return DomScript_Helper.loadJsScript_Async(
+			return xX_DomScript_Helper.loadJsScript_Async(
 				'/L2Dwidget/3.1.5/L2Dwidget.min.js',
 			).then(() => {
 				return {

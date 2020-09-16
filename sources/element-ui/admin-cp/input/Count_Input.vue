@@ -13,7 +13,7 @@ import {Prop, Watch} from 'vue-property-decorator';
   name: 'Count_Input',
   filters: {},
 })
-export default class Count_Input extends Vue {    // 混入在此处，进行添加。
+export default class xX_Count_Input extends Vue {    // 混入在此处，进行添加。
   @Prop()
   public config: any;
   @Prop()

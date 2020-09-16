@@ -1,4 +1,4 @@
-export class VarsColor {
+export class xX_VarsColor {
   /**
    * 临时的颜色存储
    */

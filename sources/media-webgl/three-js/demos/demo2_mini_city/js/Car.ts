@@ -2,9 +2,9 @@
 
 const THREE = require('three');   // 85版本、95版本
 
-import {MyThree_Util} from './utils';
+import {xX_MyThree_Util} from './utils';
 
-export default class Car {
+export default class xX_Car {
   private color: number;
   public mesh: THREE.Object3D;
   private wheels: any[];
@@ -31,17 +31,17 @@ export default class Car {
 
     const wheelOuterGeometry = new THREE.CylinderGeometry(3, 3, 3, 32);
     wheelOuterGeometry.rotateX(0.5 * Math.PI);
-    const wheelOuter = MyThree_Util.makeMesh('lambert', wheelOuterGeometry, 0x000000);
+    const wheelOuter = xX_MyThree_Util.makeMesh('lambert', wheelOuterGeometry, 0x000000);
     wheel.add(wheelOuter);
 
-    const wheelInner = MyThree_Util.makeMesh('lambert', wheelOuterGeometry, 0xdddddd);
+    const wheelInner = xX_MyThree_Util.makeMesh('lambert', wheelOuterGeometry, 0xdddddd);
     wheelInner.castShadow = false;
     wheelInner.scale.set(0.8, 0.8, 1.1);
     wheel.add(wheelInner);
 
     const wheelCenterGeometry = new THREE.CylinderGeometry(1, 1, 3.6, 4);
     wheelCenterGeometry.rotateX(0.5 * Math.PI);
-    const wheelCenter = MyThree_Util.makeMesh('lambert', wheelCenterGeometry, 0xa7a7a7);
+    const wheelCenter = xX_MyThree_Util.makeMesh('lambert', wheelCenterGeometry, 0xa7a7a7);
     wheelCenter.castShadow = false;
     wheel.add(wheelCenter);
 
@@ -99,7 +99,7 @@ export default class Car {
     carLightsGeometry.merge(carLightBackGeometry);
 
     carLightsGeometry = new THREE.BufferGeometry().fromGeometry(carLightsGeometry);
-    const carLights = MyThree_Util.makeMesh('phong', carLightsGeometry, 0xffffff);
+    const carLights = xX_MyThree_Util.makeMesh('phong', carLightsGeometry, 0xffffff);
     this.mesh.add(carLights);
 
   }
@@ -136,7 +136,7 @@ export default class Car {
     const carWindowFrontGeometry = new THREE.CubeGeometry(0.1, 5, 12);
     carWindowFrontGeometry.rotateZ(0.12 * Math.PI);
     carWindowFrontGeometry.translate(4.2, 10, 0);
-    const carWindowFront = MyThree_Util.makeMesh('phong', carWindowFrontGeometry, 0x000000);
+    const carWindowFront = xX_MyThree_Util.makeMesh('phong', carWindowFrontGeometry, 0x000000);
     carWindows.add(carWindowFront);
 
     const carWindowBack = carWindowFront.clone();
@@ -161,21 +161,21 @@ export default class Car {
       [-13, 8],
       [-13, 2],
     ];
-    const carBodyShape = MyThree_Util.makeShape(carBodyCoords);
-    const carBodyGeometry = MyThree_Util.makeExtrudeGeometry(carBodyShape, 14);
+    const carBodyShape = xX_MyThree_Util.makeShape(carBodyCoords);
+    const carBodyGeometry = xX_MyThree_Util.makeExtrudeGeometry(carBodyShape, 14);
     carBodyGeometry.translate(0, -7, 0);
     carBodyGeometry.rotateX(0.5 * Math.PI);
-    const carBody = MyThree_Util.makeMesh('phong', carBodyGeometry, this.color);
+    const carBody = xX_MyThree_Util.makeMesh('phong', carBodyGeometry, this.color);
     this.mesh.add(carBody);
   }
 
 
   public makeWindow (coords: number[][]) {
     const windowColor = 0x000000;
-    const shape = MyThree_Util.makeShape(coords);
-    const geometry = MyThree_Util.makeExtrudeGeometry(shape, 0.1);
+    const shape = xX_MyThree_Util.makeShape(coords);
+    const geometry = xX_MyThree_Util.makeExtrudeGeometry(shape, 0.1);
     geometry.rotateX(0.5 * Math.PI);
-    const mesh = MyThree_Util.makeMesh('phong', geometry, windowColor);
+    const mesh = xX_MyThree_Util.makeMesh('phong', geometry, windowColor);
     mesh.castShadow = false;
     return mesh;
   }

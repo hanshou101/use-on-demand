@@ -11,7 +11,7 @@
 // }
 // TODO ↑，官方已有一个定义。只是未挂载到  window对象上面。
 
-export class BrowserNativeNotification_Helper {
+export class xX_BrowserNativeNotification_Helper {
 
   /**
    * 测试用的选项

@@ -1,4 +1,4 @@
-export class SArray_Helper {
+export class xX_SArray_Helper {
   /**
    * 获取数组中符合条件的元素的索引
    * @param arr 数组

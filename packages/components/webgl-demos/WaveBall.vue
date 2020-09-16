@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts">
-	import Vue                             from 'vue';
-	import { WebGL_WaveBall_Demo_three56 } from '../../../sources/media-webgl/three-js/demos/WaveBall/WaveBall';
+	import Vue                                from 'vue';
+	import { xX_WebGL_WaveBall_Demo_three56 } from '../../../sources/media-webgl/three-js/demos/WaveBall/WaveBall';
 
 
 	/**
@@ -25,7 +25,7 @@
 		computed  : {},
 		watch     : {},
 		mounted() {
-			const waveBallCtrl = new WebGL_WaveBall_Demo_three56();
+			const waveBallCtrl = new xX_WebGL_WaveBall_Demo_three56();
 			waveBallCtrl.initAll((this.$refs['waveBallContainer'] as HTMLDivElement),
 			);
 		},

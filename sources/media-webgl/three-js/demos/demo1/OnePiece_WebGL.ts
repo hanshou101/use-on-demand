@@ -18,7 +18,7 @@
  *                          3.2.1 【ground.rotation.x = -Math.PI / 2;】，这句加上  负号就好。
  *                          3.2.2 【renderer.setSize(this.screen_width / 2, this.screen_height);】，这句，高度参数不除以2就好。
  */
-import { CDecoratorU } from '../../../../decorator/common-decorator';
+import { xX_CDecoratorU } from '../../../../decorator/common-decorator';
 
 
 // @ts-ignore
@@ -26,7 +26,7 @@ import { CDecoratorU } from '../../../../decorator/common-decorator';
 const THREE = require('three');   // 85版本、95版本
 
 
-import { MyTrackballControlsInterface, MyTrackballControls } from '../Utils/module/TrackballControls';
+import { MyTrackballControlsInterface, xX_MyTrackballControls } from '../Utils/module/TrackballControls';
 
 class Label {
 	public label: string;
@@ -41,7 +41,7 @@ class Label {
 	}
 }
 
-export class OnePiece_three95 {
+export class xX_OnePiece_three95 {
 	private get labelData(): Label[] {
 		return [  // 一个包含人物物体数据的数组
 			new Label('艾斯', '/image/ThreeJS/ace.jpg',
@@ -88,7 +88,7 @@ export class OnePiece_three95 {
 		scene: THREE.Scene;
 	};
 
-	@CDecoratorU.log(this)
+	@xX_CDecoratorU.log(this)
 	public async init() {
 		// 初始化场景
 		const scene = await this.initScene();
@@ -97,13 +97,13 @@ export class OnePiece_three95 {
 		this.view = this.initView(scene);
 
 		// （追踪轨迹球，控制）  其实，就是用鼠标，去实现移动相机（Camera）的效果
-		this.controls = new MyTrackballControls(this.view.camera);
+		this.controls = new xX_MyTrackballControls(this.view.camera);
 
 		// 进行渲染
 		this.animate();
 	}
 
-	@CDecoratorU.log(this)
+	@xX_CDecoratorU.log(this)
 	private async initScene(): Promise<THREE.Scene> {
 
 		return new Promise(async (resolve) => {
@@ -167,7 +167,7 @@ export class OnePiece_three95 {
 		});
 	}
 
-	@CDecoratorU.log(this)
+	@xX_CDecoratorU.log(this)
 	private initView(scene: THREE.Scene) {
 		// 创建相机
 		const camera = new THREE.PerspectiveCamera(this.FOV, this.aspect, this.near, this.far);
@@ -207,7 +207,7 @@ export class OnePiece_three95 {
 		};
 	}
 
-	@CDecoratorU.log(this)
+	@xX_CDecoratorU.log(this)
 	private animate() {
 		// 帧动画
 		requestAnimationFrame(this.animate.bind(this));
@@ -217,7 +217,7 @@ export class OnePiece_three95 {
 		this.render();
 	}
 
-	@CDecoratorU.log(this)
+	@xX_CDecoratorU.log(this)
 	private render() {
 		this.updateRendererSizes();
 
@@ -225,7 +225,7 @@ export class OnePiece_three95 {
 		this.view.renderer.render(this.view.scene, this.view.camera);
 	}
 
-	@CDecoratorU.log(this)
+	@xX_CDecoratorU.log(this)
 	private updateRendererSizes() {
 		this.view.renderer.setSize(this.screen_width, this.screen_height);
 		this.view.camera.aspect = this.aspect;
@@ -236,7 +236,7 @@ export class OnePiece_three95 {
 		}
 	}
 
-	@CDecoratorU.log(this)
+	@xX_CDecoratorU.log(this)
 	private asyncLoad_textureLoader(path: string): Promise<THREE.Texture> {
 		return new Promise((resolve) => {
 			this.textureLoader.load(path, (texture: THREE.Texture) => {

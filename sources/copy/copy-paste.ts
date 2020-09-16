@@ -2,7 +2,7 @@ import Clipboard from 'clipboard';
 
 type Clipboard_SelectorType = string | Element | NodeListOf<Element>;
 
-export class CopyPaste_Util {
+export class xX_CopyPaste_Util {
 
   // 简单复制
   public simpleCopy (selector: Clipboard_SelectorType): ClipboardJS {

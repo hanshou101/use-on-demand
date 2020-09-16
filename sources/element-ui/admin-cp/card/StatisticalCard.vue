@@ -12,7 +12,7 @@
 <script lang="ts">
 
 
-	import { SMath_Helper }                     from '../../../symbol-math/SMath_Helper';
+	import { xX_SMath_Helper }                  from '../../../symbol-math/SMath_Helper';
 	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
 	import { Component, Prop }                  from 'vue-property-decorator';
 
@@ -21,7 +21,7 @@
 		components: {},
 		filters   : {},
 	})
-	export default class StatisticalCard
+	export default class xX_StatisticalCard
 		extends xX_Father_BaseVue {    // 混入在此处，进行添加。
 
 		// 数据可以和父级通用
@@ -30,7 +30,7 @@
 
 		// Method，在类中的实现
 		getThousandthData(val: number) {
-			return SMath_Helper.parseToThousandth(val);
+			return xX_SMath_Helper.parseToThousandth(val);
 		}
 
 		// Lifecycle生命周期，在类中的实现

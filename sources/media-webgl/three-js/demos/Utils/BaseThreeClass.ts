@@ -2,7 +2,7 @@ const THREE = require('three');   // 75版本、85版本、95版本
 
 const Stats = require('stats-js');
 
-export abstract class BaseThreeClass {
+export abstract class xX_BaseThreeClass {
   // 基础变量
   public abstract $scene: THREE.Scene;
   public abstract $camera: THREE.PerspectiveCamera;
@@ -12,7 +12,7 @@ export abstract class BaseThreeClass {
   public abstract $objects: THREE.Object3D[];
 
   // 帮助工具
-  public abstract $helper: BaseThreeClass_Helper; //
+  public abstract $helper: xX_BaseThreeClass_Helper; //
 
   // 帧数统计插件
   public $statsUtil: Stats; // 该工具，必须要render时调用update()，才有帧数更新效果
@@ -58,7 +58,7 @@ export abstract class BaseThreeClass {
   public abstract $1000_threeStart (): void;
 }
 
-export class MyPoint3D {
+export class xX_MyPoint3D {
   constructor (public x: number, public  y: number, public  z: number) {
   }
 }
@@ -76,9 +76,9 @@ interface MyCameraOptions {
   fov?: number;    // filed-of-view ，眼睛视野上下角度
   near?: number;
   far?: number;
-  position?: MyPoint3D;
-  up?: MyPoint3D;
-  lookAt?: MyPoint3D;
+  position?: xX_MyPoint3D;
+  up?: xX_MyPoint3D;
+  lookAt?: xX_MyPoint3D;
 }
 
 // TIP Light的通用配置
@@ -87,15 +87,15 @@ interface MyLightOptions {
   intensity?: number;   // 强度：点光源强度                                 // TODO 默认值 1
   distance?: number;    // 光照最远照射达到距离。为0，表示没有限制（无限远）  // TODO 默认值 0
   decay?: number;       // 光照随距离变远，亮度的衰减速率                    // TODO 默认值 1
-  position?: MyPoint3D;
+  position?: xX_MyPoint3D;
 }
 
 // TIP Object的通用配置
 interface MyObject3DOptions {
-  yuan_zhu?: My_YuanZhu_Option;
-  li_fang_ti?: My_LiFangTi_Option;
-  common_line?: My_CommonLine_Option;
-  color_line?: My_ColorLine_Option;
+  yuan_zhu?: xX_My_YuanZhu_Option;
+  li_fang_ti?: xX_My_LiFangTi_Option;
+  common_line?: xX_My_CommonLine_Option;
+  color_line?: xX_My_ColorLine_Option;
 }
 
 // TIP Object的返回类型
@@ -113,7 +113,7 @@ namespace a {
   }//
 }
 
-export class My_YuanZhu_Option {
+export class xX_My_YuanZhu_Option {
   public geometry: {
     radiusTop: number;        // 顶部圆柱的半径。  默认值 1
     radiusBottom: number;     // 底部圆柱的半径。  默认值 1
@@ -122,16 +122,16 @@ export class My_YuanZhu_Option {
   public material: {
     color: number;
   };
-  public position: MyPoint3D;
+  public position: xX_MyPoint3D;
 
-  constructor (geometry: { radiusTop: number; radiusBottom: number; height: number }, material: { color: number }, position: MyPoint3D) {
+  constructor (geometry: { radiusTop: number; radiusBottom: number; height: number }, material: { color: number }, position: xX_MyPoint3D) {
     this.geometry = geometry;
     this.material = material;
     this.position = position;
   }
 }
 
-export class My_LiFangTi_Option {
+export class xX_My_LiFangTi_Option {
   public geometry: {
     width: number;
     height: number;
@@ -140,16 +140,16 @@ export class My_LiFangTi_Option {
   public material: {
     color: number;
   };
-  public position: MyPoint3D;
+  public position: xX_MyPoint3D;
 
-  constructor (geometry: { width: number; height: number; depth: number }, material: { color: number }, position: MyPoint3D) {
+  constructor (geometry: { width: number; height: number; depth: number }, material: { color: number }, position: xX_MyPoint3D) {
     this.geometry = geometry;
     this.material = material;
     this.position = position;
   }
 }
 
-export class My_CommonLine_Option {
+export class xX_My_CommonLine_Option {
   public geometry: {
     vertices: THREE.Vector3[],
   };
@@ -157,16 +157,16 @@ export class My_CommonLine_Option {
     color: number;
     opacity: number;
   };
-  public position: MyPoint3D;
+  public position: xX_MyPoint3D;
 
-  constructor (geometry: { vertices: THREE.Vector3[] }, material: { color: number; opacity: number }, position: MyPoint3D) {
+  constructor (geometry: { vertices: THREE.Vector3[] }, material: { color: number; opacity: number }, position: xX_MyPoint3D) {
     this.geometry = geometry;
     this.material = material;
     this.position = position;
   }
 }
 
-export class My_ColorLine_Option {
+export class xX_My_ColorLine_Option {
   public geometry: {
     my_vertices: THREE.Vector3[];
     my_colors: number[];
@@ -174,27 +174,27 @@ export class My_ColorLine_Option {
   public material: {
     vertexColors: typeof THREE.VertexColors;    // 可以是顶点决定颜色。也可以传NONE。（None的话，系统会根据  geometry的颜色，来自行绘制）
   };
-  public position: MyPoint3D;
+  public position: xX_MyPoint3D;
 
-  constructor (geometry: { my_vertices: THREE.Vector3[]; my_colors: number[] }, material: { vertexColors: typeof THREE.VertexColors }, position: MyPoint3D) {
+  constructor (geometry: { my_vertices: THREE.Vector3[]; my_colors: number[] }, material: { vertexColors: typeof THREE.VertexColors }, position: xX_MyPoint3D) {
     this.geometry = geometry;
     this.material = material;
     this.position = position;
   }
 }
 
-export abstract class BaseThreeClass_Helper {
+export abstract class xX_BaseThreeClass_Helper {
   // // 创建一个Object3D对象，并进行返回。
   // abstract create<T>(): T;
 
   // TODO 将来，这里可以写一些通用的，工具类方法。
-  public my_Default_Scene (threeClass: BaseThreeClass, options?: any) {
+  public my_Default_Scene (threeClass: xX_BaseThreeClass, options?: any) {
     const scene = new THREE.Scene();
     // scene = scene;
     return scene;
   }
 
-  public my_Default_Camera (threeClass: BaseThreeClass, options: MyCameraOptions): THREE.PerspectiveCamera {
+  public my_Default_Camera (threeClass: xX_BaseThreeClass, options: MyCameraOptions): THREE.PerspectiveCamera {
     const fov = options.fov || 45;
     const near = options.near || 0.1;
     const far = options.far || 10000;
@@ -228,7 +228,7 @@ export abstract class BaseThreeClass_Helper {
 
   }
 
-  public my_DefaultRenderer_haveNotAppend (threeClass: BaseThreeClass, options: MyRendererOptions) {
+  public my_DefaultRenderer_haveNotAppend (threeClass: xX_BaseThreeClass, options: MyRendererOptions) {
     const antialias = options.antialias || true;
     const bg_color = options.bg_color || 0xFFFFFF;
     const bg_alpha = options.bg_alpha || 1.0;
@@ -244,7 +244,7 @@ export abstract class BaseThreeClass_Helper {
     return renderer;
   }
 
-  public my_Default_LightsBundle_haveNotAdd (threeClass: BaseThreeClass, options: MyLightOptions) {
+  public my_Default_LightsBundle_haveNotAdd (threeClass: xX_BaseThreeClass, options: MyLightOptions) {
     const color = options.color || 0xFFFFFF;    // 颜色 默认值
     const intensity = options.intensity || 1;   // 强度 默认值
     const distance = options.distance || 0;     // 光照距离 默认值
@@ -272,7 +272,7 @@ export abstract class BaseThreeClass_Helper {
     };
   }
 
-  public my_Default_Object_haveNotAdd (threeClass: BaseThreeClass, options: MyObject3DOptions):
+  public my_Default_Object_haveNotAdd (threeClass: xX_BaseThreeClass, options: MyObject3DOptions):
     {
       LiFangTi: My_Object3DBundle<THREE.Mesh>;
       YuanZhu: My_Object3DBundle<THREE.Mesh>;

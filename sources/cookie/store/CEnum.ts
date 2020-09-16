@@ -1,4 +1,4 @@
-export enum CkKeys {
+export enum xX_CkKeys {
   Authorization = 'Authorization',
   token         = 'token',
   expired_ts    = 'expired_ts',
@@ -7,18 +7,18 @@ export enum CkKeys {
 }
 
 
-export enum EntrustBaseType {
+export enum xX_EntrustBaseType {
   LimitPrice  = 1,
   MarketPrice = 2,
   Plan        = 3,
 }
 
-export enum PlanStrategyValueType {
+export enum xX_PlanStrategyValueType {
   __LimitPrice = 1,
   __MarketPrice = 2,
 }
 
-export enum __CAreaTypeE {
+export enum xX___CAreaTypeE {
   /**
    * 1 USDT  2 币本位  4 模拟区
    */

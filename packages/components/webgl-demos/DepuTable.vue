@@ -14,7 +14,7 @@
 <script lang="ts">
 
 
-	import { DepuTable_three95 }                from '../../../sources/media-webgl/three-js/demos/DepuTable/DepuTable';
+	import { xX_DepuTable_three95 }             from '../../../sources/media-webgl/three-js/demos/DepuTable/DepuTable';
 	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
 	import { Component }                        from 'vue-property-decorator';
 
@@ -38,7 +38,7 @@
 		};
 
 		mounted(): void {
-			new DepuTable_three95().startDepu();
+			new xX_DepuTable_three95().startDepu();
 		};
 
 		activated(): void {

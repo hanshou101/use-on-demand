@@ -1,8 +1,8 @@
-import {BaseThreeClass, BaseThreeClass_Helper, My_YuanZhu_Option, MyPoint3D} from '../Utils/BaseThreeClass';
+import {xX_BaseThreeClass, xX_BaseThreeClass_Helper, xX_My_YuanZhu_Option, xX_MyPoint3D} from '../Utils/BaseThreeClass';
 
 const THREE = require('three');   // 75版本、85版本、95版本
 
-export class chapter4_three75 extends BaseThreeClass {
+export class chapter4_three75 extends xX_BaseThreeClass {
   public $scene!: THREE.Scene;
   public $camera!: THREE.PerspectiveCamera;
   public $renderer!: THREE.WebGLRenderer;
@@ -20,9 +20,9 @@ export class chapter4_three75 extends BaseThreeClass {
       fov: 45,
       near: 1,
       far: 10000,
-      position: new MyPoint3D(0, 0, 600),
-      up: new MyPoint3D(0, 1, 0),
-      lookAt: new MyPoint3D(0, 0, 0),
+      position: new xX_MyPoint3D(0, 0, 600),
+      up: new xX_MyPoint3D(0, 1, 0),
+      lookAt: new xX_MyPoint3D(0, 0, 0),
     });
 
     return this.$camera = camera;
@@ -40,11 +40,11 @@ export class chapter4_three75 extends BaseThreeClass {
   public $4_initLight_needAdd (): THREE.Light[] {
     const {ambientLight} = this.$helper.my_Default_LightsBundle_haveNotAdd(this, {
       color: 0xFFFFFF,  // 环境光：白色
-      position: new MyPoint3D(100, 100, 200),
+      position: new xX_MyPoint3D(100, 100, 200),
     });
     const {pointLight} = this.$helper.my_Default_LightsBundle_haveNotAdd(this, {
       color: 0x00FF00,  // 点光源：绿色
-      position: new MyPoint3D(0, 0, 300),
+      position: new xX_MyPoint3D(0, 0, 300),
     });
 
     this.$scene.add(ambientLight);
@@ -55,13 +55,13 @@ export class chapter4_three75 extends BaseThreeClass {
 
   public $5_initObject_needAdd (): THREE.Object3D[] {
     const {YuanZhu} = this.$helper.my_Default_Object_haveNotAdd(this, {
-      yuan_zhu: new My_YuanZhu_Option(
+      yuan_zhu: new xX_My_YuanZhu_Option(
         {
           radiusTop: 100, radiusBottom: 150, height: 400,
         }, {
           color: 0x00FF00,
         },
-        new MyPoint3D(0, 0, 0),
+        new xX_MyPoint3D(0, 0, 0),
       ),
     });
 
@@ -95,6 +95,6 @@ export class chapter4_three75 extends BaseThreeClass {
 
 }
 
-class Chapter4_Helper extends BaseThreeClass_Helper {
+class Chapter4_Helper extends xX_BaseThreeClass_Helper {
 
 }

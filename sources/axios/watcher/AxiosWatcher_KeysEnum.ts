@@ -1,4 +1,4 @@
-export enum AWatKeys {
+export enum xX_AWatKeys {
   refreshBgCoinToken = 'refreshBgCoinToken',
   cancelOrders       = 'cancelOrders',          // 取消当前订单
   submitOrder        = 'submitOrder',           // 提交立即执行委托
@@ -14,5 +14,5 @@ export enum AWatKeys {
 }
 
 declare global {
-  type AWatKeys_Type = typeof AWatKeys;
+  type AWatKeys_Type = typeof xX_AWatKeys;
 }

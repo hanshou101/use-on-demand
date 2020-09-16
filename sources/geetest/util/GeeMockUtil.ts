@@ -1,15 +1,15 @@
 /**
  * 模拟工具
  */
-import {GeeStableE} from './GeeStableUtil';
+import {xX_GeeStableE} from './GeeStableUtil';
 
-export class GeeMockUtil {
+export class xX_GeeMockUtil {
 
   /**
    * 模拟不同【环境Env】
    */
   public static mockEnv(
-    env: GeeStableE,
+    env: xX_GeeStableE,
     _data: GeePreInfo,
   ) {
     let data = _data;
@@ -21,7 +21,7 @@ export class GeeMockUtil {
     const defaultChallenge = '不知道存不存在这个challenge？？？';
 
     switch (env) {
-      case GeeStableE.NoGeetest_false_1 : {
+      case xX_GeeStableE.NoGeetest_false_1 : {
         data = {
           ...data,
           // TIP————————————————以下，要改的值
@@ -39,7 +39,7 @@ export class GeeMockUtil {
         };
         break;
       }
-      case GeeStableE.NoGeetest_false_0 : {
+      case xX_GeeStableE.NoGeetest_false_0 : {
         data = {
           ...data,
           // TIP————————————————以下，要改的值
@@ -64,7 +64,7 @@ export class GeeMockUtil {
       //
       //
       //
-      case GeeStableE.SuccessGeetest_true_1 : {
+      case xX_GeeStableE.SuccessGeetest_true_1 : {
         data = {
           ...data,
           // TIP————————————————以下，要改的值
@@ -88,7 +88,7 @@ export class GeeMockUtil {
         */
         break;
       }
-      case GeeStableE.ErrorGeetest__true_0 : {
+      case xX_GeeStableE.ErrorGeetest__true_0 : {
         data = {
           ...data,
           // TIP————————————————以下，要改的值
@@ -107,7 +107,7 @@ export class GeeMockUtil {
         break;
       }
       default: {
-        throw new Error('GeeMockUtil.mockEnv，传参错误。');
+        throw new Error('xX_GeeMockUtil.mockEnv，传参错误。');
       }
     }
   }

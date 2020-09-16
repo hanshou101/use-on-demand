@@ -1,4 +1,4 @@
-export class WasmHelper {
+export class xX_WasmHelper {
   public static mdnInit(
     url = '/wasm/program.wasm',
   ): Promise<WasmObjExports_Type> {

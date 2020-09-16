@@ -1,7 +1,7 @@
-import { ElForm }                           from 'element-ui/types/form';
-import { CVS_Excel_Helper }                 from '../../cvs-excel/CVS_Excel_Helper';
-import { AdminHelper }                      from '../admin-helper';
-import { Component }                        from 'vue-property-decorator';
+import { ElForm }              from 'element-ui/types/form';
+import { xX_CVS_Excel_Helper } from '../../cvs-excel/CVS_Excel_Helper';
+import { xX_AdminHelper }      from '../admin-helper';
+import { Component }        from 'vue-property-decorator';
 import { MixinLevelTag, xX_Father_BaseVue } from './Father_BaseVue';
 
 
@@ -13,7 +13,7 @@ import { MixinLevelTag, xX_Father_BaseVue } from './Father_BaseVue';
 	filters   : {},
 })
 // export default class HelloWorld extends BaseVueClass {
-export default class Father_ExportExcel_Mixin extends xX_Father_BaseVue {    // 混入在此处，进行添加。
+export default class xX_Father_ExportExcel_Mixin extends xX_Father_BaseVue {    // 混入在此处，进行添加。
 
 	constructor() {
 		super();
@@ -37,7 +37,7 @@ export default class Father_ExportExcel_Mixin extends xX_Father_BaseVue {    // 
 				const filename      = fileName ? fileName + '.xlsx' : extractFilename;   // TIP 此处，若是自定义文件名，则加上【.csv】文件类型后缀名。
 				if (res.data) {     // IF分支，如果Response有Body存在。 TIP 后台仅仅在，有数据的情况下会返回Body；如果没有数据，则后台直接return，此时就没有Body，axios的解析，也就没有res.data。
 					console.log('【导出】返回数据为：', res);
-					CVS_Excel_Helper.downloadExcel(res.request.responseURL, filename);
+					xX_CVS_Excel_Helper.downloadExcel(res.request.responseURL, filename);
 				} else {            // ELSE分支，如果Response没有Body。（意味着，没有查询到数据。）
 					console.warn('【无导出数据】因为后台没有查找到数据，所以直接return。所以没有body，所以也就没有res.data');
 					this.$message({
@@ -59,7 +59,7 @@ export default class Father_ExportExcel_Mixin extends xX_Father_BaseVue {    // 
 				if (valid) {
 					const { ruleForm, current, size }   = (this.$refs[formName_orParamsObj] as ElForm).$parent as any;
 					const params: ExportExcelParam_Type = {};
-					AdminHelper.formDateRange(params, ruleForm);
+					xX_AdminHelper.formDateRange(params, ruleForm);
 					params.current = current;
 					params.size    = size;
 					console.log('filename', fileName);

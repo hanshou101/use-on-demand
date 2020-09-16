@@ -1,4 +1,4 @@
-export class AdminHelper {
+export class xX_AdminHelper {
   /**
    * 将MultiLang，迅速转化为  已有ruleForm的一部分。
    */

@@ -1,4 +1,4 @@
-const treesPosition: number[][] = [
+const xX_treesPosition: number[][] = [
     [-110, -110],
     [-90, -110],
     [-70, -110],
@@ -42,4 +42,4 @@ const treesPosition: number[][] = [
     [110, 70],
     [110, 90],
 ];
-export default treesPosition;
+export default xX_treesPosition;

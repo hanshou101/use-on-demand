@@ -40,7 +40,7 @@
 	@Component({
 		name: 'MultiLangSimple',
 	})
-	export default class MultiLangSimple extends xX_Father_BaseVue {
+	export default class xX_MultiLangSimple extends xX_Father_BaseVue {
 		MixinsData_1: MixinLevelTag = {};
 		/* props */
 		@Prop({ type: Boolean, default: true }) readonly zh_CN!: boolean; // 是否开启简体中文

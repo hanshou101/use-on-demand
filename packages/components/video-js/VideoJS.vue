@@ -19,10 +19,10 @@
 <script lang="ts">
 	import VideoJS_TypeNS, { VideoJsPlayer } from 'video.js';
 	import Vue                               from 'vue';
-	import { MVideo_Helper }                 from '../../../sources/media-video/MVideo_Helper';
+	import { xX_MVideo_Helper }              from '../../../sources/media-video/MVideo_Helper';
 
 	// 初始化【CSS样式】
-	MVideo_Helper.loadCss();
+	xX_MVideo_Helper.loadCss();
 
 
 	type SrcObj = VideoJS_TypeNS.Tech.SourceObject;
@@ -84,7 +84,7 @@
 						}
 						sources.push(obj);
 					}
-					const VideoPlayer = MVideo_Helper.initLang({ 'zh-CN': {}, en: {} });
+					const VideoPlayer = xX_MVideo_Helper.initLang({ 'zh-CN': {}, en: {} });
 					this.player       = VideoPlayer(this.$refs.myVideo, {
 						controls         : true,
 						poster           : this.video.poster,

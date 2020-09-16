@@ -1,3 +1,3 @@
-export class Rt_TinyMce_Helper {
+export class xX_Rt_TinyMce_Helper {
 
 }

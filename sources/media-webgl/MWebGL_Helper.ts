@@ -1,3 +1,3 @@
-export class MWebGL_Helper{
+export class xX_MWebGL_Helper{
 
 }

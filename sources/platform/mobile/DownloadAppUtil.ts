@@ -1,6 +1,6 @@
-import {MyBrowser} from '../ua/MobileUA';
+import {xX_MyBrowser} from '../ua/MobileUA';
 
-export class CheckAddressNew_Util {
+export class xX_CheckAddressNew_Util {
   private readonly aliveDuration = 1 * 1000;    // 一分钟
 
   constructor(
@@ -21,7 +21,7 @@ export class CheckAddressNew_Util {
   }
 }
 
-export class DownloadAppUtil {
+export class xX_DownloadAppUtil {
   //
   //
   //
@@ -31,20 +31,20 @@ export class DownloadAppUtil {
    */
   public static autoDownload(option: { androidUrl: string; iosUrl: string }) {
 
-    console.log('手机用户代理', MyBrowser.versions);
+    console.log('手机用户代理', xX_MyBrowser.versions);
 
     // var text = "";
 
-    if (MyBrowser.superIOSCheck) {
+    if (xX_MyBrowser.superIOSCheck) {
       // alert('您的手机被识别为iphone')
       // text                 = text + "iOS";
       this.downloadIOS(option.iosUrl);
-    } else if (MyBrowser.versions.android) {
+    } else if (xX_MyBrowser.versions.android) {
       // alert('您的手机被识别为Android')
       // text = text + "android";
       this.downloadAndroid(option.androidUrl);
 
-      // if (MyBrowser.versions.weixin) {
+      // if (xX_MyBrowser.versions.weixin) {
       //   $('.tips').css('display', 'block');
       // } else {
       //   window.location.href = androidUrl;

@@ -248,7 +248,7 @@ class LostError_Util {
 
 }
 
-export function init_LostErrorSentry(cfg: Sentry_Cfg_Type) {
+export function xX_init_LostErrorSentry(cfg: Sentry_Cfg_Type) {
 
 	const lostErrorUtil = new LostError_Util();
 	lostErrorUtil.logLostError();

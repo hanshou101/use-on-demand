@@ -7,7 +7,7 @@ function getSoundJs() {
  *          1.  https://github.com/CreateJS/SoundJS
  *          2.
  */
-export class MSound_Helper {
+export class xX_MSound_Helper {
   public static playSound(url: string) {
     return new Promise((resolve, reject) => {
       try {

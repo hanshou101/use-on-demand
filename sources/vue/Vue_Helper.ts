@@ -1,4 +1,4 @@
-export class Vue_Helper {
+export class xX_Vue_Helper {
   /**
    * TIP 远程加载【在线资源的Vue组件】。
    *        示例：

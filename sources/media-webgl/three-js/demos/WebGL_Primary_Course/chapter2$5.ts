@@ -1,8 +1,8 @@
-import {BaseThreeClass, BaseThreeClass_Helper} from '../Utils/BaseThreeClass';
+import {xX_BaseThreeClass, xX_BaseThreeClass_Helper} from '../Utils/BaseThreeClass';
 
 const THREE = require('three');   // 85版本、95版本
 
-export  class chapter2$5_three75 extends BaseThreeClass {
+export  class chapter2$5_three75 extends xX_BaseThreeClass {
   public $renderer!: THREE.WebGLRenderer;
   public $camera!: THREE.PerspectiveCamera;
   public $scene!: THREE.Scene;
@@ -110,7 +110,7 @@ export  class chapter2$5_three75 extends BaseThreeClass {
 
 }
 
-class Chapter2$5_helper extends BaseThreeClass_Helper {
+class Chapter2$5_helper extends xX_BaseThreeClass_Helper {
   public createLine (): THREE.Line {
     //  形状a
     const geometry = new THREE.Geometry();

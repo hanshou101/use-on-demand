@@ -1,4 +1,4 @@
-export class MImage_Helper {
+export class xX_MImage_Helper {
 
 
 }

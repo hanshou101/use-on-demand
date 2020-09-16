@@ -3,9 +3,9 @@
  *          1.【常用函数】，在合适的时机，可以考虑换成【lodash】所采用的方法。
  *          2.
  */
-import { DebugU, LogE } from '../debug-util/debug-util';
+import { xX_DebugU, xX_LogE } from '../debug-util/debug-util';
 
-export class CDecoratorU {
+export class xX_CDecoratorU {
 	/**
 	 * 应用于成员方法之上
 	 *        1.类的原型——成员方法名字——对象内部属性描述符
@@ -13,19 +13,19 @@ export class CDecoratorU {
 	 */
 	public static log = (that: any, type = 'verbose') => {
 		return (target: {}, name: string, descriptor: PropertyDescriptor) => {
-			DebugU.l(LogE.decorator, 'target', target);
-			DebugU.l(LogE.decorator, 'descriptor', descriptor);
+			xX_DebugU.l(xX_LogE.decorator, 'target', target);
+			xX_DebugU.l(xX_LogE.decorator, 'descriptor', descriptor);
 			const method = descriptor.value;   // 获取描述符的值——方法
-			DebugU.l(LogE.decorator, 'method', method);
+			xX_DebugU.l(xX_LogE.decorator, 'method', method);
 
 			descriptor.value = function(...args: Array<any>) {
 				console.info(`${type} 正在进行：${name}(${args}) = ?`);
 
 				let result;
 				try {
-					DebugU.l(LogE.decorator, 'target值', target);
-					DebugU.l(LogE.decorator, 'that值', that);
-					DebugU.l(LogE.decorator, 'this值', this);
+					xX_DebugU.l(xX_LogE.decorator, 'target值', target);
+					xX_DebugU.l(xX_LogE.decorator, 'that值', that);
+					xX_DebugU.l(xX_LogE.decorator, 'this值', this);
 					// 这种方式可以
 					result = method.apply(this, args);
 					// 这种方式不行

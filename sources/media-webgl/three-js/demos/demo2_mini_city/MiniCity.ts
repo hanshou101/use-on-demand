@@ -1,14 +1,14 @@
-import {MyThree_Util} from './js/utils';
+import {xX_MyThree_Util} from './js/utils';
 
 
 const THREE = require('three');   // 85版本、95版本
 
-import textures          from './js/textures';
-import Car               from './js/Car';
-import treesPosition     from './config/treesPosition';
-import {MyOrbitControls} from './js/MyOrbitControls';
+import xX_textures from './js/textures';
+import xX_Car      from './js/Car';
+import xX_treesPosition     from './config/treesPosition';
+import {xX_MyOrbitControls} from './js/MyOrbitControls';
 
-export class MiniCity_three95 {
+export class xX_MiniCity_three95 {
   // 屏幕参数
   public width?: number;
   public height?: number;
@@ -18,7 +18,7 @@ export class MiniCity_three95 {
   public camera!: THREE.PerspectiveCamera;
   public renderer!: THREE.WebGLRenderer;
   // 汽车
-  public cars: Car[] = [];
+  public cars: xX_Car[] = [];
 
   /**
    * TODO 以下为启动阶段：
@@ -88,7 +88,7 @@ export class MiniCity_three95 {
     this.scene.add(gridHelper);
 
     // 允许【视角旋转】、【视角放大缩小】。（包括阻尼系数）
-    const controls         = new MyOrbitControls(this.camera, this.renderer.domElement);
+    const controls         = new xX_MyOrbitControls(this.camera, this.renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.25;
     controls.rotateSpeed   = 0.35;
@@ -146,7 +146,7 @@ export class MiniCity_three95 {
   private Building_add_Plane (): void {  // 添加大平板
     // 绘制大平板（作为地基板块）
     const planeGeometry = new THREE.BoxBufferGeometry(320, 6, 320);
-    const plane         = MyThree_Util.makeMesh('lambert', planeGeometry, 0x6F5F6A);
+    const plane         = xX_MyThree_Util.makeMesh('lambert', planeGeometry, 0x6F5F6A);
     plane.position.y    = -3;
     this.scene.add(plane);
   }
@@ -168,10 +168,10 @@ export class MiniCity_three95 {
       [-20, -130],
       [-130, -130],
     ];
-    const fenseShape  = MyThree_Util.makeShape(fenseCoords);
+    const fenseShape  = xX_MyThree_Util.makeShape(fenseCoords);
 
-    const fenseGeometry = MyThree_Util.makeExtrudeGeometry(fenseShape, 3);
-    const fense         = MyThree_Util.makeMesh('lambert', fenseGeometry, 0xE5CABF);
+    const fenseGeometry = xX_MyThree_Util.makeExtrudeGeometry(fenseShape, 3);
+    const fense         = xX_MyThree_Util.makeMesh('lambert', fenseGeometry, 0xE5CABF);
     this.scene.add(fense);
   }
 
@@ -192,16 +192,16 @@ export class MiniCity_three95 {
       [-20, -120],
       [-120, -120],
     ];
-    const greenShape  = MyThree_Util.makeShape(greenCoords);
+    const greenShape  = xX_MyThree_Util.makeShape(greenCoords);
 
-    const greenGeometry = MyThree_Util.makeExtrudeGeometry(greenShape, 3);
-    const green         = MyThree_Util.makeMesh('lambert', greenGeometry, 0xC0C06A);
+    const greenGeometry = xX_MyThree_Util.makeExtrudeGeometry(greenShape, 3);
+    const green         = xX_MyThree_Util.makeMesh('lambert', greenGeometry, 0xC0C06A);
     this.scene.add(green);
   }
 
   // TIP 添加长在【矮小灌木丛】之上的大树
   private Building_add_Trees (): void {   // 添加大树
-    treesPosition.forEach((elem) => {
+    xX_treesPosition.forEach((elem) => {
       const x    = elem[0];
       const y    = 1;
       const z    = elem[1];
@@ -276,9 +276,9 @@ export class MiniCity_three95 {
       [159, -159],
       [159, 159],
     ];
-    const roadBorderOuterShape      = MyThree_Util.makeShape(roadBorderOuterCoords, roadBorderOuterHoleCoords);
-    const roadBorderOuterGeometry   = MyThree_Util.makeExtrudeGeometry(roadBorderOuterShape, 0.1);
-    const roadBorderOuter           = MyThree_Util.makeMesh('phong', roadBorderOuterGeometry, roadColor);
+    const roadBorderOuterShape      = xX_MyThree_Util.makeShape(roadBorderOuterCoords, roadBorderOuterHoleCoords);
+    const roadBorderOuterGeometry   = xX_MyThree_Util.makeExtrudeGeometry(roadBorderOuterShape, 0.1);
+    const roadBorderOuter           = xX_MyThree_Util.makeMesh('phong', roadBorderOuterGeometry, roadColor);
     road.add(roadBorderOuter);
     // TIP end，外部
 
@@ -298,9 +298,9 @@ export class MiniCity_three95 {
       [-19, 99],
       [-19, 131],
     ];
-    const roadBorderInnerShape    = MyThree_Util.makeShape(roadBorderInnerCoords);
-    const roadBorderInnerGeometry = MyThree_Util.makeExtrudeGeometry(roadBorderInnerShape, 0.1);
-    const roadBorderInner         = MyThree_Util.makeMesh('phong', roadBorderInnerGeometry, roadColor);
+    const roadBorderInnerShape    = xX_MyThree_Util.makeShape(roadBorderInnerCoords);
+    const roadBorderInnerGeometry = xX_MyThree_Util.makeExtrudeGeometry(roadBorderInnerShape, 0.1);
+    const roadBorderInner         = xX_MyThree_Util.makeMesh('phong', roadBorderInnerGeometry, roadColor);
     roadBorderInner.rotation.y    = Math.PI;
     road.add(roadBorderInner);
     // TIP end，内部
@@ -336,7 +336,7 @@ export class MiniCity_three95 {
     roadLinesGeometry.merge(roadLinesRightGeometry);
 
     roadLinesGeometry = new THREE.BufferGeometry().fromGeometry(roadLinesGeometry);
-    const roadLines   = MyThree_Util.makeMesh('phong', roadLinesGeometry, roadColor);
+    const roadLines   = xX_MyThree_Util.makeMesh('phong', roadLinesGeometry, roadColor);
     road.add(roadLines);
     // TIP end，线条
 
@@ -356,7 +356,7 @@ export class MiniCity_three95 {
 
     // 生成。放置。
     carsPosition.forEach((elem) => {
-      const car = new Car();
+      const car = new xX_Car();
       const x   = elem[0];
       const z   = elem[1];
       const r   = elem[2];
@@ -381,7 +381,7 @@ export class MiniCity_three95 {
 
     // 生成。放置。
     carsPosition.forEach((elem) => {
-      const car = new Car();
+      const car = new xX_Car();
       const x   = elem[0];
       const z   = elem[1];
       const r   = elem[2];
@@ -420,7 +420,7 @@ export class MiniCity_three95 {
 
 class MyCarHelper {
   // TIP 令车辆开始移动
-  public static carMoving (car: Car): void {    // 令车辆开始移动
+  public static carMoving (car: xX_Car): void {    // 令车辆开始移动
     const angle = car.mesh.rotation.y;
     const x     = car.mesh.position.x;
     const z     = car.mesh.position.z;
@@ -457,18 +457,18 @@ class BuildingHelper {
     // 路灯杆子
     const pillarGeomertry = new THREE.CubeGeometry(2, 30, 2);
     pillarGeomertry.translate(0, 15, 0);
-    const pillar = MyThree_Util.makeMesh('phong', pillarGeomertry, 0xEBD1C2);
+    const pillar = xX_MyThree_Util.makeMesh('phong', pillarGeomertry, 0xEBD1C2);
     lamp.add(pillar);
 
     // 连接处（路灯头和路灯杆子的连接）
     const connectGeometry = new THREE.CubeGeometry(10, 1, 1);
-    const connect         = MyThree_Util.makeMesh('phong', connectGeometry, 0x2C0E0E);
+    const connect         = xX_MyThree_Util.makeMesh('phong', connectGeometry, 0x2C0E0E);
     connect.position.set(3, 30, 0);
     lamp.add(connect);
 
     // 路灯头
     const lightGeometry = new THREE.CubeGeometry(6, 2, 4);
-    const light         = MyThree_Util.makeMesh('phong', lightGeometry, 0xEBD1C2);
+    const light         = xX_MyThree_Util.makeMesh('phong', lightGeometry, 0xEBD1C2);
     light.position.set(10, 30, 0);
     lamp.add(light);
 
@@ -484,12 +484,12 @@ class BuildingHelper {
     const tree = new THREE.Object3D();
 
     const treeTrunkGeometry = new THREE.BoxBufferGeometry(2, 16, 2);
-    const treeTrunk         = MyThree_Util.makeMesh('lambert', treeTrunkGeometry, 0x8A613A);
+    const treeTrunk         = xX_MyThree_Util.makeMesh('lambert', treeTrunkGeometry, 0x8A613A);
     treeTrunk.position.y    = 8;
     tree.add(treeTrunk);
 
     const treeLeafsGeometry = new THREE.BoxBufferGeometry(8, 8, 8);
-    const treeLeafs         = MyThree_Util.makeMesh('lambert', treeLeafsGeometry, 0x9C9E5D);
+    const treeLeafs         = xX_MyThree_Util.makeMesh('lambert', treeLeafsGeometry, 0x9C9E5D);
     treeLeafs.position.y    = 13;
     tree.add(treeLeafs);
 
@@ -540,16 +540,16 @@ class HospitalHelper {
   public static create_Hospital_WhiteBase (): THREE.Mesh {
     // 白色地基底座。
     const baseGeometry = new THREE.BoxBufferGeometry(180, 3, 140);
-    const base         = MyThree_Util.makeMesh('lambert', baseGeometry, 0xFFFFFF);
+    const base         = xX_MyThree_Util.makeMesh('lambert', baseGeometry, 0xFFFFFF);
     base.position.y    = 1;
     return base;
   }
 
   public static create_Hospital_FrontMain (): THREE.Mesh {
-    const frontMainShape                             = MyThree_Util.makeShape(this.frontMainCoords);
+    const frontMainShape                             = xX_MyThree_Util.makeShape(this.frontMainCoords);
     // 前栋大楼。
-    const frontMainGeometry                          = MyThree_Util.makeExtrudeGeometry(frontMainShape, 100);
-    const frontMainMaterial: THREE.MeshPhongMaterial = new THREE.MeshPhongMaterial({map: textures.window()});
+    const frontMainGeometry                          = xX_MyThree_Util.makeExtrudeGeometry(frontMainShape, 100);
+    const frontMainMaterial: THREE.MeshPhongMaterial = new THREE.MeshPhongMaterial({map: xX_textures.window() as THREE.Texture });
     frontMainMaterial.map.repeat.set(0.1, 0.08);
     const frontMain         = new THREE.Mesh(frontMainGeometry, frontMainMaterial);
     frontMain.castShadow    = true;
@@ -558,10 +558,10 @@ class HospitalHelper {
   }
 
   public static create_Hospital_FrontRooftop (): THREE.Mesh {
-    const frontTopShape    = MyThree_Util.makeShape(this.frontMainCoords);
+    const frontTopShape    = xX_MyThree_Util.makeShape(this.frontMainCoords);
     // 前栋大楼的天台石质板块。
-    const frontTopGeometry = MyThree_Util.makeExtrudeGeometry(frontTopShape, 5);
-    const frontTop         = MyThree_Util.makeMesh('lambert', frontTopGeometry, 0xB1A7AF);
+    const frontTopGeometry = xX_MyThree_Util.makeExtrudeGeometry(frontTopShape, 5);
+    const frontTop         = xX_MyThree_Util.makeMesh('lambert', frontTopGeometry, 0xB1A7AF);
     frontTop.position.y    = 100;
     return frontTop;
   }
@@ -607,7 +607,7 @@ class HospitalHelper {
     //   frontRoofShelfGeometry.merge(geometry);
     // }
     frontRoofShelfGeometry = new THREE.BufferGeometry().fromGeometry(frontRoofShelfGeometry);
-    const frontRoofShelf   = MyThree_Util.makeMesh('phong', frontRoofShelfGeometry, 0xFFFFFF);
+    const frontRoofShelf   = xX_MyThree_Util.makeMesh('phong', frontRoofShelfGeometry, 0xFFFFFF);
     frontRoofShelf.position.set(-70, 115, 5);
     return frontRoofShelf;
   }
@@ -615,7 +615,7 @@ class HospitalHelper {
   public static create_Hospital_FrontSecondFloor_GardenPlane (): THREE.Mesh {
     // 二层大露台的地板。
     const frontPlatGeometry = new THREE.BoxBufferGeometry(150, 3, 90);
-    const fronPlat          = MyThree_Util.makeMesh('lambert', frontPlatGeometry, 0x0792A5);
+    const fronPlat          = xX_MyThree_Util.makeMesh('lambert', frontPlatGeometry, 0x0792A5);
     fronPlat.position.set(-3, 18, 25);
     return fronPlat;
   }
@@ -623,7 +623,7 @@ class HospitalHelper {
   public static create_Hospital_FrontSecondFloor_Langan_BlueWall (): THREE.Mesh {
     // 二层大露台的【栏杆-蓝色墙体】。
     const frontPlatVerticalGeometry = new THREE.BoxBufferGeometry(150, 15, 3);
-    const frontPlatVertical         = MyThree_Util.makeMesh('phong', frontPlatVerticalGeometry, 0x0792A5);
+    const frontPlatVertical         = xX_MyThree_Util.makeMesh('phong', frontPlatVerticalGeometry, 0x0792A5);
     frontPlatVertical.receiveShadow = false;
     frontPlatVertical.position.set(-3, 24, 68.5);
     return frontPlatVertical;
@@ -632,7 +632,7 @@ class HospitalHelper {
   public static create_Hospital_FrontSecondFloor_Langan_WhiteFushou (): THREE.Mesh {
     // 二层大露台的【栏杆-白色扶手】。
     const frontPlatVerticalWhiteGeometry = new THREE.BoxBufferGeometry(150, 3, 3);
-    const frontPlatVerticalWhite         = MyThree_Util.makeMesh('phong', frontPlatVerticalWhiteGeometry, 0xFFFFFF);
+    const frontPlatVerticalWhite         = xX_MyThree_Util.makeMesh('phong', frontPlatVerticalWhiteGeometry, 0xFFFFFF);
     frontPlatVerticalWhite.position.set(-3, 33, 68.5);
     return frontPlatVerticalWhite;
   }
@@ -640,7 +640,7 @@ class HospitalHelper {
   public static create_Hospital_Pillar_UnderFrontSecondFloor (): THREE.Mesh[] {
     // 支撑二层大露台的【柱子：一】
     const frontPlatPillarGeometry = new THREE.CylinderGeometry(2, 2, 15, 32);
-    const frontPlatPillar         = MyThree_Util.makeMesh('lambert', frontPlatPillarGeometry, 0xFFFFFF);
+    const frontPlatPillar         = xX_MyThree_Util.makeMesh('lambert', frontPlatPillarGeometry, 0xFFFFFF);
     frontPlatPillar.position.set(-60, 10, 55);
     // 支撑二层大露台的【柱子：二】
     const frontPlatPillar2 = frontPlatPillar.clone();
@@ -653,7 +653,7 @@ class HospitalHelper {
     // 前栋大楼，三条竖直的【转角包边-白色棱线】。
     const frontBorderVerticles        = new THREE.Object3D();
     const frontBorderVerticleGeometry = new THREE.BoxBufferGeometry(4, 106, 4);
-    const frontBorderVerticleMesh     = MyThree_Util.makeMesh('phong', frontBorderVerticleGeometry, 0xFFFFFF);
+    const frontBorderVerticleMesh     = xX_MyThree_Util.makeMesh('phong', frontBorderVerticleGeometry, 0xFFFFFF);
     const frontBorderVerticle1        = frontBorderVerticleMesh.clone();
     frontBorderVerticle1.position.set(-80, 52, 30);
     frontBorderVerticles.add(frontBorderVerticle1);
@@ -684,9 +684,9 @@ class HospitalHelper {
       [-78, 18],
       [-78, -28],
     ];
-    const frontRoofShape    = MyThree_Util.makeShape(frontRoofCoords, frontRoofHolePath);
-    const frontRoofGeometry = MyThree_Util.makeExtrudeGeometry(frontRoofShape, 8);
-    const frontRoof         = MyThree_Util.makeMesh('phong', frontRoofGeometry, 0xFFFFFF);
+    const frontRoofShape    = xX_MyThree_Util.makeShape(frontRoofCoords, frontRoofHolePath);
+    const frontRoofGeometry = xX_MyThree_Util.makeExtrudeGeometry(frontRoofShape, 8);
+    const frontRoof         = xX_MyThree_Util.makeMesh('phong', frontRoofGeometry, 0xFFFFFF);
     frontRoof.position.y    = 100;
     return frontRoof;
   }
@@ -707,9 +707,9 @@ class HospitalHelper {
       [-78, 58],
       [-78, 22],
     ];
-    const backMainShape    = MyThree_Util.makeShape(backMainCoords, backMainHolePath);
-    const backMainGeometry = MyThree_Util.makeExtrudeGeometry(backMainShape, 90);
-    const backMain         = MyThree_Util.makeMesh('lambert', backMainGeometry, 0xF2E21B);
+    const backMainShape    = xX_MyThree_Util.makeShape(backMainCoords, backMainHolePath);
+    const backMainGeometry = xX_MyThree_Util.makeExtrudeGeometry(backMainShape, 90);
+    const backMain         = xX_MyThree_Util.makeMesh('lambert', backMainGeometry, 0xF2E21B);
     return backMain;
   }
 
@@ -729,9 +729,9 @@ class HospitalHelper {
       [2, 68],
       [2, 2],
     ];
-    const backMiddleShape    = MyThree_Util.makeShape(backMiddleCoords, backMiddleHolePath);
-    const backMiddkeGeometry = MyThree_Util.makeExtrudeGeometry(backMiddleShape, 165);
-    const backMiddle         = MyThree_Util.makeMesh('lambert', backMiddkeGeometry, 0xFFFFFF);
+    const backMiddleShape    = xX_MyThree_Util.makeShape(backMiddleCoords, backMiddleHolePath);
+    const backMiddkeGeometry = xX_MyThree_Util.makeExtrudeGeometry(backMiddleShape, 165);
+    const backMiddle         = xX_MyThree_Util.makeMesh('lambert', backMiddkeGeometry, 0xFFFFFF);
     backMiddle.rotation.x    = -0.5 * Math.PI;
     backMiddle.rotation.z    = -0.5 * Math.PI;
     backMiddle.position.y    = 86;
@@ -744,7 +744,7 @@ class HospitalHelper {
     // 后栋大楼，侧边的整面【幕墙墙体】。
     const backMiddleWindowGeometry = new
     THREE.PlaneGeometry(32, 66, 1, 1);
-    const backMiddleWindowMaterial = new THREE.MeshPhongMaterial({map: textures.window()});
+    const backMiddleWindowMaterial = new THREE.MeshPhongMaterial({map: xX_textures.window() as THREE.Texture});
     backMiddleWindowMaterial.map.repeat.set(2, 6);
     const backMiddleWindow = new THREE.Mesh(backMiddleWindowGeometry, backMiddleWindowMaterial);
     backMiddleWindow.position.set(83, 51, -40);
@@ -774,11 +774,11 @@ class HospitalHelper {
   private static inner_create_Hospital_Window (): THREE.Object3D {   // 创建大楼窗户
     const windowObj     = new THREE.Object3D();
     const glassGeometry = new THREE.PlaneGeometry(20, 20);
-    const glass         = MyThree_Util.makeMesh('phong', glassGeometry, 0x6A5E74);
+    const glass         = xX_MyThree_Util.makeMesh('phong', glassGeometry, 0x6A5E74);
     windowObj.add(glass);
 
     const windowBorderGeometry = new THREE.BoxBufferGeometry(22, 2, 2);
-    const windowBorder         = MyThree_Util.makeMesh('phong', windowBorderGeometry, 0xFFFFFF);
+    const windowBorder         = xX_MyThree_Util.makeMesh('phong', windowBorderGeometry, 0xFFFFFF);
 
     const windowBorderTop      = windowBorder.clone();
     windowBorderTop.position.y = 10;

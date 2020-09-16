@@ -1,4 +1,4 @@
-export class FabricObjsMap {
+export class xX_FabricObjsMap {
   public static triangle = 'triangle';
   public static circle = 'circle';
   public static rect = 'rect';

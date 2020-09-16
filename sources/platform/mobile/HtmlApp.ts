@@ -1,5 +1,5 @@
-import {checkHtmlVersion}      from '../url-location/url-location';
-import {My_RemCompatible_Util} from '../../viewport/rem-responsive/RemCompatible_Util';
+import {xX_checkHtmlVersion}      from '../url-location/url-location';
+import {xX_My_RemCompatible_Util} from '../../viewport/rem-responsive/RemCompatible_Util';
 
 window.Promise = Promise; // FIXME 可有效修复，Webpack/Parcel中，有些Promise语法  没有经过polyfill 的问题！！！
 
@@ -18,7 +18,7 @@ declare global {
 interface IBasicInit {
   // designWidth: number;                      //
 
-  // checkHtmlVersion (): void;                //
+  // xX_checkHtmlVersion (): void;                //
   calcRemCompatible(designWidth: number, adjustRatio: number): void;          //
 //
 //   getPageConfig: GetPageConfig;
@@ -28,11 +28,11 @@ interface IOnLoadInit {
   onWindowLoaded(): void;
 }
 
-export abstract class HtmlApp implements IBasicInit, IOnLoadInit {
+export abstract class xX_HtmlApp implements IBasicInit, IOnLoadInit {
   // public readonly designWidth: number       = 750;
   // public readonly designAdjustRatio: number = 1;
-  // public readonly checkHtmlVersion  !: () => void;                                  //
-  public readonly calcRemCompatible = My_RemCompatible_Util.calc_remCompatible_YanNan.bind(this);               //
+  // public readonly xX_checkHtmlVersion  !: () => void;                                  //
+  public readonly calcRemCompatible = xX_My_RemCompatible_Util.calc_remCompatible_YanNan.bind(this);               //
   //
   // public abstract getPageConfig (): PageConfig;                                     //
   //
@@ -41,7 +41,7 @@ export abstract class HtmlApp implements IBasicInit, IOnLoadInit {
   constructor(public pageConfig: PageConfig) {
     // 检查更新
     if (pageConfig.need_checkHtmlVersion) {
-      checkHtmlVersion();
+      xX_checkHtmlVersion();
     }
     // 设置rem
     if (pageConfig.need_calcRemCompatible) {

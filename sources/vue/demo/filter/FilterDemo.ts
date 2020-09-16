@@ -1,5 +1,5 @@
-import Vue                 from 'vue';
-import {SwapFilter_Helper} from '../../filter/swap-filter';
+import Vue                    from 'vue';
+import {xX_SwapFilter_Helper} from '../../filter/swap-filter';
 
 
-SwapFilter_Helper.init(Vue);
+xX_SwapFilter_Helper.init(Vue);

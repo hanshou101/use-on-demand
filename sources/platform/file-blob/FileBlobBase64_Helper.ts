@@ -1,4 +1,4 @@
-export class FileBlobBase64_Helper {
+export class xX_FileBlobBase64_Helper {
 
   /**
    * 【Base64】格式，转【Blob】格式。

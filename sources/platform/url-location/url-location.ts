@@ -1,7 +1,7 @@
 /**
  * 参考资料：https://www.runoob.com/w3cnote/js-get-url-param.html
  */
-export function getQueryField(
+export function xX_getQueryField(
   key: string,
   likeQuery?: string // 如果外部没有传入，则取默认值
 ) {
@@ -16,7 +16,7 @@ export function getQueryField(
   return undefined;
 }
 
-export function getFullQueryObj() {
+export function xX_getFullQueryObj() {
   const theRequest: { [key: string]: any } = {};
 
   const url = location.search; // 获取url中"?"符后的字串
@@ -33,7 +33,7 @@ export function getFullQueryObj() {
 /**
  * 【WebView】中，location.replace存在兼容性问题！
  */
-export function fixbug_locationReplace(url: string) {
+export function xX_fixbug_locationReplace(url: string) {
   if (history.replaceState) {
     history.replaceState(null, document.title, url);
     history.go(0);
@@ -45,9 +45,9 @@ export function fixbug_locationReplace(url: string) {
 /**
  * 通过【Url+时间戳】，来实现【防止缓存】。
  */
-export function checkHtmlVersion() {
+export function xX_checkHtmlVersion() {
   // 获取query参数
-  const Request        = getFullQueryObj();
+  const Request        = xX_getFullQueryObj();
   const key            = Request.random;
   const originQuerySeq = Object.entries(Request).map((entry) => {
     return `&${entry[0]}=${entry[1]}`;        // 拼接，有两种方式。这里用第二种。（第一种，join('&')）
@@ -71,7 +71,7 @@ export function checkHtmlVersion() {
     const refreshTarget  = `?random=${new Date().getTime()}${otherQuery}`; // 跳转
     window.location.href = refreshTarget;            // 策略一，会产生一条历史记录
     // window.location.replace(refreshTarget);        // 策略二，不会产生历史记录
-    // fixbug_locationReplace(refreshTarget);
+    // xX_fixbug_locationReplace(refreshTarget);
   } else {
     // TIP 如果超过了5分钟，则自动进行一次新的【replace】。
     const ts  = parseInt(key);
@@ -82,7 +82,7 @@ export function checkHtmlVersion() {
       const refreshTarget  = `?${otherQuery.substring(1)}`.replace(/random=\d+/, `random=${now}`); // 跳转      // TODO 此处，必定有一个【  ?random  】，所以不用担心query为空的问题。
       window.location.href = refreshTarget;
       // window.location.replace(refreshTarget);
-      // fixbug_locationReplace(refreshTarget);
+      // xX_fixbug_locationReplace(refreshTarget);
     } else {
       console.log('未超时');
       // alert('未超时：' + window.location.href);
@@ -94,7 +94,7 @@ export function checkHtmlVersion() {
  * 平滑滚到某元素
  *        1.方案A。
  */
-export function smoothJump(id: string) {
+export function xX_smoothJump(id: string) {
   console.log('开始jump');
   const dom = document.querySelector(`#${id}`);
   if (dom) {
@@ -111,7 +111,7 @@ export function smoothJump(id: string) {
  * 平滑滚到某元素
  *        1.方案B。
  */
-export function scrollToSmooth_methodB(element: HTMLElement, to: number, duration: number) {
+export function xX_scrollToSmooth_methodB(element: HTMLElement, to: number, duration: number) {
   if (duration <= 0) {
     return;
   }
@@ -123,7 +123,7 @@ export function scrollToSmooth_methodB(element: HTMLElement, to: number, duratio
     if (element.scrollTop === to) {
       return;
     }
-    scrollToSmooth_methodB(element, to, duration - 10);
+    xX_scrollToSmooth_methodB(element, to, duration - 10);
   }, 10);
 }
 
@@ -132,7 +132,7 @@ export function scrollToSmooth_methodB(element: HTMLElement, to: number, duratio
  *        1.使用场景：
  *                第三方登录，弹出新网页
  */
-export function openWindow(
+export function xX_openWindow(
   url: string,                  // 新窗口网页地址
   title: string,                // 标题
   w: number,

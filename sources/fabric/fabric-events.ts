@@ -1,5 +1,5 @@
 
-export class FabricEventsMap {
+export class xX_FabricEventsMap {
   public static Global_MOUSE = {
     up: 'mouse:up',
 

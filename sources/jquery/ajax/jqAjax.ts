@@ -69,7 +69,7 @@ const $: JQueryStatic = jquery;
 
 // TIP——————————————————————————————————正式逻辑————————————————————————————————————————
 
-export class JqAjax {
+export class xX_JqAjax {
 
   /**
    * GET请求

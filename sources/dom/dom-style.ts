@@ -3,7 +3,7 @@ interface MyAbsolutePosition {
   left: number;
 }
 
-export class DomStyle_Helper {
+export class xX_DomStyle_Helper {
 
   /**
    * 获取元素的css属性值
@@ -85,7 +85,7 @@ export class DomStyle_Helper {
   public static get_eB2wB_eR2wR(e: HTMLElement) {
     // alert('尺寸改变，开始检测');
     const domAttr = {
-      posit  : DomStyle_Helper.get_AbsoluteOffset_Position(e),
+      posit  : xX_DomStyle_Helper.get_AbsoluteOffset_Position(e),
       oHeight: e.offsetHeight,
       oWidth : e.offsetWidth,
     };

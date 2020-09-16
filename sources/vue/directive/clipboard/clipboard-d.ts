@@ -21,7 +21,7 @@ interface ClipboardD_Binding extends Omit<DirectiveBinding_Type, 'arg'> {
     | 'cut' | 'copy' | undefined;
 }
 
-export const ClipboardD: VueDirective_Type = {
+export const xX_ClipboardD: VueDirective_Type = {
   //
   bind  : function (el: ClipboardD_El, binding: ClipboardD_Binding) {
     if (binding.arg === 'success') {

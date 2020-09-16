@@ -1,8 +1,8 @@
 import FStream          from 'fs';
-import axios            from 'axios';
-import { DebugU, LogE } from '../../../debug-util/debug-util';
+import axios                  from 'axios';
+import { xX_DebugU, xX_LogE } from '../../../debug-util/debug-util';
 
-export class VersionUpdate_Helper {
+export class xX_VersionUpdate_Helper {
 	private static vFileName       = 'version.js';
 	private static lastCheckTs     = new Date().getTime();
 	private static checkIntervalTs = 1 * 1000;
@@ -19,7 +19,7 @@ export class VersionUpdate_Helper {
 	 */
 	public static setVersion_onBuild: VueCliService_ProjectOptions_Type['configureWebpack'] = function(
 		config,
-		versionFilePath = `public/${VersionUpdate_Helper.vFileName}`,
+		versionFilePath = `public/${xX_VersionUpdate_Helper.vFileName}`,
 	) {
 		const definePlugin: any = config.plugins?.find(item => {
 			return item.hasOwnProperty('definitions');
@@ -60,8 +60,8 @@ export class VersionUpdate_Helper {
 			this.lastCheckTs = new Date().getTime();
 			axios.get(this.getCheckUrl()).then(({ data: resContent }) => {
 					const localVersion = process.env.VUE_APP_VERSION;
-					DebugU.l(LogE.versionCheck, '【新版线上】检查更新时，获得的版本号为：', resContent, '【老版本地】本地记录的版本号为：', localVersion);
-					DebugU.l(LogE.versionCheck, '当前检查更新的时间戳为：', this.lastCheckTs);
+					xX_DebugU.l(xX_LogE.versionCheck, '【新版线上】检查更新时，获得的版本号为：', resContent, '【老版本地】本地记录的版本号为：', localVersion);
+					xX_DebugU.l(xX_LogE.versionCheck, '当前检查更新的时间戳为：', this.lastCheckTs);
 					// 暂时不作，当前环境的检测。
 					if (`${localVersion}` !== `${resContent}`) {     			// TIP 都转化为字符串后，进行判断。
 						console.log('判断：版本号不一致，开始更新。');

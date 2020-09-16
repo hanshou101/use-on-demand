@@ -7,7 +7,7 @@
 
 <script lang="ts">
 
-	import { OnePiece_three95 }                 from '../../../sources/media-webgl/three-js/demos/demo1/OnePiece_WebGL';
+	import { xX_OnePiece_three95 }              from '../../../sources/media-webgl/three-js/demos/demo1/OnePiece_WebGL';
 	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
 	import { Component }                        from 'vue-property-decorator';
 
@@ -35,7 +35,7 @@
 		};
 
 		mounted(): void {
-			new OnePiece_three95().init();
+			new xX_OnePiece_three95().init();
 		};
 
 		activated(): void {

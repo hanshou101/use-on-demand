@@ -1,11 +1,11 @@
 // import {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'ts/ts-types/axios/Axios';
 // import {ac}                                               from '~/assets/js/axiosConfig';
 // import AxiosClassOriginCoin                               from '~/assets/js/axiosClassOriginCoin';
-// import {AWatKeys}                                         from '~/assets/js/axiosWatcher_KeysEnum';
+// import {xX_AWatKeys}                                         from '~/assets/js/axiosWatcher_KeysEnum';
 
 import Vue                                                from 'vue';
 import {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
-import {AWatKeys}                                         from '../../../axios/watcher/AxiosWatcher_KeysEnum';
+import {xX_AWatKeys}                                      from '../../../axios/watcher/AxiosWatcher_KeysEnum';
 
 declare global {
   type AxiosInstanceType = AxiosInstance;
@@ -32,7 +32,7 @@ declare global {
      * TIP 此处，使用这种方式，可以【阴差阳错】地，保持Enum中 key和value 必须为同一个值。（不然TypeScript会报错）
      *                1.纯属阴差阳错
      */
-    [value in AWatKeys]: AxiosWatcherMap_ItemType;   // 酷炫的泛型
+    [value in xX_AWatKeys]: AxiosWatcherMap_ItemType;   // 酷炫的泛型
   }
 
 }

@@ -1,4 +1,4 @@
-export enum GeeStableE {
+export enum xX_GeeStableE {
   // 以下两个，header是{}
   NoGeetest_false_0     = 'NoGeetest_false_0',
   NoGeetest_false_1     = 'NoGeetest_false_1',
@@ -8,7 +8,7 @@ export enum GeeStableE {
   SuccessGeetest_true_1 = 'SuccessGeetest_true_1',
 }
 
-export class GeeStableUtil {
+export class xX_GeeStableUtil {
   /**
    * 根据服务器的两个字段，判断当前【极验稳定性级别】。
    *        1.可用。
@@ -23,18 +23,18 @@ export class GeeStableUtil {
 
     if (enable !== undefined && enable === false) {
       if (success === 1) {
-        return GeeStableE.NoGeetest_false_1;       // false 1
+        return xX_GeeStableE.NoGeetest_false_1;       // false 1
       } else if (success === 0) {
-        return GeeStableE.NoGeetest_false_0;       // false 0
+        return xX_GeeStableE.NoGeetest_false_0;       // false 0
       } else {
         alert(errorStr);
         throw new Error(errorStr);
       }
     } else {      // WARN enable为true或undefined的情况
       if (success === 1) {
-        return GeeStableE.SuccessGeetest_true_1;   // true  1
+        return xX_GeeStableE.SuccessGeetest_true_1;   // true  1
       } else if (success === 0) {
-        return GeeStableE.ErrorGeetest__true_0;    // true  0
+        return xX_GeeStableE.ErrorGeetest__true_0;    // true  0
       } else {
         alert(errorStr);
         throw new Error(errorStr);
@@ -49,21 +49,21 @@ export class GeeStableUtil {
   public static getRequest_GeeHeader(
     {geetest_challenge, geetest_validate, geetest_seccode}: SdkVerifyFingerResNS._RawData_SucType,
     sign: string,
-    geeStatus: GeeStableE,
+    geeStatus: xX_GeeStableE,
   ) {
     switch (geeStatus) {
-      case GeeStableE.NoGeetest_false_1:
-      case GeeStableE.NoGeetest_false_0: {
+      case xX_GeeStableE.NoGeetest_false_1:
+      case xX_GeeStableE.NoGeetest_false_0: {
         return {};                                      // 不用传任何header
       }
-      case GeeStableE.SuccessGeetest_true_1: {
+      case xX_GeeStableE.SuccessGeetest_true_1: {
         return {
           'gt-challenge': geetest_challenge,
           'gt-validate' : geetest_validate,
           'gt-seccode'  : geetest_seccode,
         };                                              // 极验成功
       }
-      case GeeStableE.ErrorGeetest__true_0: {
+      case xX_GeeStableE.ErrorGeetest__true_0: {
         return {
           'gt-sign': sign,
         };

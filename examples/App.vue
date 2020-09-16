@@ -53,14 +53,14 @@
 </template>
 
 <script lang="ts">
-	import Vue                                      from 'vue';
-	import { Live2D_WidgetJs_Helper, Live2DModelE } from '../sources/live2d/live2d-widget.js/Live2D_WidgetJs_Helper';
-	import Course                                   from '../packages/components/webgl-demos/Course.vue';
-	import ThreeJS_MiniCity                         from '../packages/components/webgl-demos/ThreeJS_MiniCity.vue';
-	import DepuTableCp                              from '../packages/components/webgl-demos/DepuTable.vue';
-	import WaveBall                                 from '../packages/components/webgl-demos/WaveBall.vue';
-	import OnePieceDemo                             from '../packages/components/webgl-demos/OnePieceDemo.vue';
-	import VideoJS                                  from '../packages/components/video-js/VideoJS.vue';
+	import Vue                                            from 'vue';
+	import { xX_Live2D_WidgetJs_Helper, xX_Live2DModelE } from '../sources/live2d/live2d-widget.js/Live2D_WidgetJs_Helper';
+	import Course                                         from '../packages/components/webgl-demos/Course.vue';
+	import ThreeJS_MiniCity                               from '../packages/components/webgl-demos/ThreeJS_MiniCity.vue';
+	import DepuTableCp                                    from '../packages/components/webgl-demos/DepuTable.vue';
+	import WaveBall                                       from '../packages/components/webgl-demos/WaveBall.vue';
+	import OnePieceDemo                                   from '../packages/components/webgl-demos/OnePieceDemo.vue';
+	import VideoJS                                        from '../packages/components/video-js/VideoJS.vue';
 
 
 	export default Vue.extend({
@@ -94,7 +94,7 @@
 		},
 		mounted() {
 			if (this.show.live2D) {
-				Live2D_WidgetJs_Helper.initDemo(Live2DModelE.tororo);
+				xX_Live2D_WidgetJs_Helper.initDemo(xX_Live2DModelE.tororo);
 			}
 		},
 	});

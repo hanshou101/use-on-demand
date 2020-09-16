@@ -1,6 +1,6 @@
 //
 
-import {SArray_Helper} from '../symbol-array/SArray_Helper';
+import {xX_SArray_Helper} from '../symbol-array/SArray_Helper';
 
 interface My_DragItems_CB {
   plainString_CB?: (str: string) => void;           // 普通文本
@@ -19,7 +19,7 @@ type MyEventTarget = (/*GlobalEventHandlers |*/ HTMLElement | Window) & {
 };
 
 
-export class DomEvt_Helper {
+export class xX_DomEvt_Helper {
 
   /**
    * 绑定事件
@@ -88,7 +88,7 @@ export class DomEvt_Helper {
         });
       }
     } else {
-      const index = SArray_Helper.getIndex_fromRule(ele._events[eventName], function (item) {
+      const index = xX_SArray_Helper.getIndex_fromRule(ele._events[eventName], function (item) {
         return item === fn;
       });
       if (index < 0 || typeof index === 'undefined') {
@@ -145,7 +145,7 @@ export class DomEvt_Helper {
           ele.removeEventListener(eventName, fn, false);
           delete ele._events[eventName];
         } else {
-          index = SArray_Helper.getIndex_fromRule(events, function (item) {
+          index = xX_SArray_Helper.getIndex_fromRule(events, function (item) {
             return item === fn;
           });
           if (index > -1) {
@@ -160,7 +160,7 @@ export class DomEvt_Helper {
           ele.detachEvent('on' + eventName, fn);
           delete ele._events[eventName];
         } else {
-          index = SArray_Helper.getIndex_fromRule(events, function (item) {
+          index = xX_SArray_Helper.getIndex_fromRule(events, function (item) {
             return item === fn;
           });
           if (index > -1) {
@@ -236,7 +236,7 @@ export class DomEvt_Helper {
 //
 //
 
-export class BrowserEventMap {
+export class xX_BrowserEventMap {
   public static MOUSE = {
     // 单次左键【完整点击】
     click   : 'click',

@@ -1,9 +1,9 @@
 // 对cookie的用法进行封装
 
 
-import {DebugU, LogE} from '../debug-util/debug-util';
+import {xX_DebugU, xX_LogE} from '../debug-util/debug-util';
 
-export class CookieHelper {
+export class xX_CookieHelper {
 
   // 设置cookie
   public static setCookie(
@@ -25,7 +25,7 @@ export class CookieHelper {
     }
     window.document.cookie = name + '=' + value + stExdays + ';path=' + path + stDomain;
 
-    DebugU.l(LogE.cookieUtil, '设置cookie',
+    xX_DebugU.l(xX_LogE.cookieUtil, '设置cookie',
       'name', name,
       'value', value,
       'exdays', exdays,
@@ -67,14 +67,14 @@ export class CookieHelper {
     } else {
       alert(name + '的值为空！');
     }
-    DebugU.l(LogE.cookieUtil, '清除cookie',
+    xX_DebugU.l(xX_LogE.cookieUtil, '清除cookie',
       'name', name,
       'domain', domain,
     );
   }
 }
 
-export function quickSave(
+export function xX_quickSave(
   key: string,
   _value: string,
   domain = location.hostname,
@@ -85,12 +85,12 @@ export function quickSave(
   } else {
     finalV = _value;
   }
-  CookieHelper.setCookie(
+  xX_CookieHelper.setCookie(
     key, finalV,
     1,                                            // 默认有效期1天。
     '/', domain);
 }
 
-export function quickGet(name: string) {
-  return CookieHelper.getCookie(name);
+export function xX_quickGet(name: string) {
+  return xX_CookieHelper.getCookie(name);
 }

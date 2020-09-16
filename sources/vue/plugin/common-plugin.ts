@@ -1,4 +1,4 @@
-export class CPlugin_Helper{
+export class xX_CPlugin_Helper{
   /**
    * 初始化【v-viewer】，可拖动、放大的对话框。
    */

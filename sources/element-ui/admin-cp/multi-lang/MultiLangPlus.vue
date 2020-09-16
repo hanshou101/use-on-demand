@@ -128,7 +128,7 @@
 		filters   : {},
 	})
 // export default class HelloWorld extends BaseVueClass {
-	export default class MultiLangPlus extends xX_Father_BaseVue {    // 混入在此处，进行添加。
+	export default class xX_MultiLangPlus extends xX_Father_BaseVue {    // 混入在此处，进行添加。
 		@Getter('language') public language!: string; // 语言
 
 		// Prop，在类中的实现

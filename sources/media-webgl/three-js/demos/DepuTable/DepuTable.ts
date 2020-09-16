@@ -9,15 +9,15 @@
 
 
 
-import {MyThree_Util} from '../demo2_mini_city/js/utils';
+import {xX_MyThree_Util} from '../demo2_mini_city/js/utils';
 
 
 const THREE = require('three');   // 85版本、95版本
 
-import Car               from '../demo2_mini_city/js/Car';
-import {MyOrbitControls} from '../demo2_mini_city/js/MyOrbitControls';
+import xX_Car               from '../demo2_mini_city/js/Car';
+import {xX_MyOrbitControls} from '../demo2_mini_city/js/MyOrbitControls';
 
-export class DepuTable_three95 {
+export class xX_DepuTable_three95 {
   // 屏幕参数
   public width?: number;
   public height?: number;
@@ -27,7 +27,7 @@ export class DepuTable_three95 {
   public camera!: THREE.PerspectiveCamera;
   public renderer!: THREE.WebGLRenderer;
   // 汽车
-  public cars: Car[] = [];
+  public cars: xX_Car[] = [];
 
   /**
    * TODO 以下为启动阶段：
@@ -102,7 +102,7 @@ export class DepuTable_three95 {
     this.scene.add(gridHelper);
 
     // 允许【视角旋转】、【视角放大缩小】。（包括阻尼系数）
-    const controls         = new MyOrbitControls(this.camera, this.renderer.domElement);
+    const controls         = new xX_MyOrbitControls(this.camera, this.renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.25;
     controls.rotateSpeed   = 0.35;
@@ -146,8 +146,8 @@ export class DepuTable_three95 {
   // 创建桌子
   public buildTable (): void {
     const tableShape    = TableHelper.roundedRect(-100, -50, 200, 100, 50);
-    const tableGeometry = MyThree_Util.makeExtrudeGeometry(tableShape, 10);
-    const tableMesh     = MyThree_Util.makeMesh('lambert', tableGeometry, 0x274C2B);
+    const tableGeometry = xX_MyThree_Util.makeExtrudeGeometry(tableShape, 10);
+    const tableMesh     = xX_MyThree_Util.makeMesh('lambert', tableGeometry, 0x274C2B);
 
     tableMesh.position.y = 0;
 
@@ -217,8 +217,8 @@ class PokerHelper {
   // 创建空白扑克
   public static createOne_EmptyPoker (w = 14.5, h = 20): THREE.Mesh {
     const pokerShape     = TableHelper.roundedRect(-w / 2, -h / 2, w, h, w / 6);
-    const pokerGeometry  = MyThree_Util.makeExtrudeGeometry(pokerShape, 0.3);
-    const pokerMesh      = MyThree_Util.makeMesh('lambert', pokerGeometry, 0xFFFFFF);
+    const pokerGeometry  = xX_MyThree_Util.makeExtrudeGeometry(pokerShape, 0.3);
+    const pokerMesh      = xX_MyThree_Util.makeMesh('lambert', pokerGeometry, 0xFFFFFF);
     pokerMesh.position.y = 20;
     return pokerMesh;
   }
@@ -230,7 +230,7 @@ class PokerHelper {
   public static async createOne_FlowerPoker (w = 14.5, h = 20): Promise<THREE.Mesh> {
 
     const path         = `/image/poker/${Math.floor(2 + (Math.random() * 13))}-1.png`;
-    const pokerTexture = await MyThree_Util.asyncLoad_textureLoader(path);
+    const pokerTexture = await xX_MyThree_Util.asyncLoad_textureLoader(path);
 
     const oldTexture: () => THREE.Mesh = () => {
       // TIP 纹理矩阵参考资料：98 Three.js 通过设置纹理属性来修改纹理贴图的位置和大小 - 现在学习也不晚 - CSDN博客 - https://blog.csdn.net/qq_30100043/article/details/80260345
@@ -240,7 +240,7 @@ class PokerHelper {
         map:  pokerTexture,
         side: THREE.FrontSide,
       });
-      const pokerGeometry     = MyThree_Util.makeExtrudeGeometry(pokerShape, 0.3);
+      const pokerGeometry     = xX_MyThree_Util.makeExtrudeGeometry(pokerShape, 0.3);
       const pokerMesh         = new THREE.Mesh(pokerGeometry, pokerMaterial);
       // 别忘了添加阴影。
       pokerMesh.castShadow    = true;

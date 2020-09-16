@@ -14,9 +14,9 @@
 <script lang="ts">
 
 
-	import { MiniCity_three95 }                                 from '../../../sources/media-webgl/three-js/demos/demo2_mini_city/MiniCity';
+	import { xX_MiniCity_three95 }               from '../../../sources/media-webgl/three-js/demos/demo2_mini_city/MiniCity';
 	import {  MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
-	import { Component }                                        from 'vue-property-decorator';
+	import { Component }                         from 'vue-property-decorator';
 
 	@Component({
 		name      : 'ThreeJS_MiniCity',
@@ -38,7 +38,7 @@
 		};
 
 		mounted(): void {
-			new MiniCity_three95().startCity();
+			new xX_MiniCity_three95().startCity();
 		};
 
 		activated(): void {

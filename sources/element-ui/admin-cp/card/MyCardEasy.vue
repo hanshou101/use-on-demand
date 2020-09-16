@@ -32,7 +32,7 @@
 </template>
 <script lang="ts">
 
-	import { MyEl_Cards }                       from '../MyElementUtils';
+	import { xX_MyEl_Cards }                    from '../MyElementUtils';
 	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
 	import { Component, Prop }                  from 'vue-property-decorator';
 
@@ -44,9 +44,9 @@
 		filters   : {},
 	})
 	// export default class HelloWorld extends BaseVueClass {
-	export default class MyCardEasy
+	export default class xX_MyCardEasy
 		extends xX_Father_BaseVue {    // 混入在此处，进行添加。
-		@Prop({ type: [Object], required: true }) readonly baseInfo!: MyEl_Cards;
+		@Prop({ type: [Object], required: true }) readonly baseInfo!: xX_MyEl_Cards;
 
 		// Data，在类中的实现 （双向绑定除外）
 
