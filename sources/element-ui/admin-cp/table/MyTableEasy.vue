@@ -1,11 +1,11 @@
 <script lang="ts">
 
 
-	import ElTableItem_DetailInfo            from './ElTableItem_DetailInfo.vue';
-	import { data_elTagColorFilter }         from '../MyElementUtils';
-	import { Component, Prop }               from 'vue-property-decorator';
-	import { Father_BaseVue, MixinLevelTag } from '../../../admin/mixins/Father_BaseVue';
-	import { SString_Helper }                from '../../../symbol-string/SString_Helper';
+	import ElTableItem_DetailInfo               from './ElTableItem_DetailInfo.vue';
+	import { data_elTagColorFilter }            from '../MyElementUtils';
+	import { Component, Prop }                  from 'vue-property-decorator';
+	import { SString_Helper }                   from '../../../symbol-string/SString_Helper';
+	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
 
 	@Component({
 		name      : 'MyTableEasy',
@@ -16,7 +16,7 @@
 		filters   : {},
 	})
 // export default class HelloWorld extends BaseVueClass {
-	export default class MyTableEasy extends Father_BaseVue {    // 混入在此处，进行添加。
+	export default class MyTableEasy extends xX_Father_BaseVue {    // 混入在此处，进行添加。
 		@Prop({ type: Array, required: true }) readonly tableCols!: [];
 
 		// Data，在类中的实现 （双向绑定除外）

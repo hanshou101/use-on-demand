@@ -28,9 +28,9 @@
 <script lang="ts">
 
 
-	import { Component, Prop }               from 'vue-property-decorator';
-	import { Getter }                        from 'vuex-class';
-	import { Father_BaseVue, MixinLevelTag } from '../../../admin/mixins/Father_BaseVue';
+	import { Component, Prop }                  from 'vue-property-decorator';
+	import { Getter }                           from 'vuex-class';
+	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
 
 	@Component({
 		name      : 'MultiLangTag',
@@ -40,7 +40,7 @@
 		filters   : {},
 	})
 	// export default class HelloWorld extends BaseVueClass {
-	export default class MultiLangTag extends Father_BaseVue {    // 混入在此处，进行添加。
+	export default class MultiLangTag extends xX_Father_BaseVue {    // 混入在此处，进行添加。
 
 		// Prop，在类中的实现
 		@Prop({

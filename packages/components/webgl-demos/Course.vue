@@ -4,13 +4,13 @@
 <script lang="ts">
 
 
-	import { chapter2_three75 }              from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter2';
-	import { chapter2$5_three75 }            from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter2$5';
-	import { chapter4_three75 }              from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter4';
-	import { chapter3_three75 }              from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter3';
-	import { chapter5_three75 }              from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter5';
-	import { Father_BaseVue, MixinLevelTag } from '../../../sources/admin/mixins/Father_BaseVue';
-	import { Component }                     from 'vue-property-decorator';
+	import { chapter2_three75 }                 from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter2';
+	import { chapter2$5_three75 }               from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter2$5';
+	import { chapter4_three75 }                 from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter4';
+	import { chapter3_three75 }                 from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter3';
+	import { chapter5_three75 }                 from '../../../sources/media-webgl/three-js/demos/WebGL_Primary_Course/chapter5';
+	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
+	import { Component }                        from 'vue-property-decorator';
 
 
 	/**
@@ -25,7 +25,7 @@
 	})
 // export default class HelloWorld extends BaseVueClass {
 	export default class Course
-		extends Father_BaseVue {    // 混入在此处，进行添加。
+		extends xX_Father_BaseVue {    // 混入在此处，进行添加。
 
 		// Data，在类中的实现 （双向绑定除外）
 		canvasId = 'canvas-frame';

@@ -116,9 +116,9 @@
 <script lang="ts">
 
 
-	import { Father_BaseVue, MixinLevelTag } from '../../../admin/mixins/Father_BaseVue';
-	import { Component, Prop }               from 'vue-property-decorator';
-	import { Getter }                        from 'vuex-class';
+	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
+	import { Component, Prop }                  from 'vue-property-decorator';
+	import { Getter }                           from 'vuex-class';
 
 	@Component({
 		name      : 'MultiLangPlus',
@@ -128,7 +128,7 @@
 		filters   : {},
 	})
 // export default class HelloWorld extends BaseVueClass {
-	export default class MultiLangPlus extends Father_BaseVue {    // 混入在此处，进行添加。
+	export default class MultiLangPlus extends xX_Father_BaseVue {    // 混入在此处，进行添加。
 		@Getter('language') public language!: string; // 语言
 
 		// Prop，在类中的实现

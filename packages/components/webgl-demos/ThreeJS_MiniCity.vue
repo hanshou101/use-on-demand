@@ -14,9 +14,9 @@
 <script lang="ts">
 
 
-	import { MiniCity_three95 }              from '../../../sources/media-webgl/three-js/demos/demo2_mini_city/MiniCity';
-	import { Father_BaseVue, MixinLevelTag } from '../../../sources/admin/mixins/Father_BaseVue';
-	import { Component }                     from 'vue-property-decorator';
+	import { MiniCity_three95 }                                 from '../../../sources/media-webgl/three-js/demos/demo2_mini_city/MiniCity';
+	import {  MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
+	import { Component }                                        from 'vue-property-decorator';
 
 	@Component({
 		name      : 'ThreeJS_MiniCity',
@@ -27,7 +27,7 @@
 	})
 // export default class HelloWorld extends BaseVueClass {
 	export default class ThreeJS_MiniCity
-		extends Father_BaseVue {    // 混入在此处，进行添加。
+		extends xX_Father_BaseVue {    // 混入在此处，进行添加。
 
 		// Data，在类中的实现 （双向绑定除外）
 

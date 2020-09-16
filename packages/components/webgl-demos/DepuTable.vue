@@ -14,9 +14,9 @@
 <script lang="ts">
 
 
-	import { DepuTable_three95 }             from '../../../sources/media-webgl/three-js/demos/DepuTable/DepuTable';
-	import { Father_BaseVue, MixinLevelTag } from '../../../sources/admin/mixins/Father_BaseVue';
-	import { Component }                     from 'vue-property-decorator';
+	import { DepuTable_three95 }                from '../../../sources/media-webgl/three-js/demos/DepuTable/DepuTable';
+	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
+	import { Component }                        from 'vue-property-decorator';
 
 	@Component({
 		name      : 'DepuTableCp',
@@ -27,7 +27,7 @@
 	})
 // export default class HelloWorld extends BaseVueClass {
 	export default class DepuTableCp
-		extends Father_BaseVue {    // 混入在此处，进行添加。
+		extends xX_Father_BaseVue {    // 混入在此处，进行添加。
 
 		// Data，在类中的实现 （双向绑定除外）
 

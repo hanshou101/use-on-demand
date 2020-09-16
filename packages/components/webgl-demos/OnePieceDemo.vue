@@ -7,9 +7,9 @@
 
 <script lang="ts">
 
-	import { OnePiece_three95 }              from '../../../sources/media-webgl/three-js/demos/demo1/OnePiece_WebGL';
-	import { Father_BaseVue, MixinLevelTag } from '../../../sources/admin/mixins/Father_BaseVue';
-	import { Component }                     from 'vue-property-decorator';
+	import { OnePiece_three95 }                 from '../../../sources/media-webgl/three-js/demos/demo1/OnePiece_WebGL';
+	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
+	import { Component }                        from 'vue-property-decorator';
 
 
 	/**
@@ -24,7 +24,7 @@
 	})
 // export default class HelloWorld extends BaseVueClass {
 	export default class OnePieceDemo
-		extends Father_BaseVue {    // 混入在此处，进行添加。
+		extends xX_Father_BaseVue {    // 混入在此处，进行添加。
 
 		// Data，在类中的实现 （双向绑定除外）
 
