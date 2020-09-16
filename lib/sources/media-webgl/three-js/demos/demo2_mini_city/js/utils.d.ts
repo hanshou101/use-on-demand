@@ -1,4 +1,4 @@
-export declare class MyThree_Util {
+export declare class xX_MyThree_Util {
     /**
      * TIP 创建自定义形状。（模子轮廓坐标分布 + 内孔坐标分布）
      * 参考资料：  43 Three.js自定义二维图形THREE.ShapeGeometry - 现在学习也不晚 - CSDN博客 - https://blog.csdn.net/qq_30100043/article/details/78808725#commentBox

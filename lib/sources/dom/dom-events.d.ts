@@ -12,7 +12,7 @@ declare type MyEventTarget = (/*GlobalEventHandlers |*/ HTMLElement | Window) & 
         [key: string]: any;
     };
 };
-export declare class DomEvt_Helper {
+export declare class xX_DomEvt_Helper {
     /**
      * 绑定事件
      * @param ele dom元素
@@ -32,7 +32,7 @@ export declare class DomEvt_Helper {
      */
     onDragDom_handleDataTransferItems(items: DataTransferItemList, callbackBundle: My_DragItems_CB): void;
 }
-export declare class BrowserEventMap {
+export declare class xX_BrowserEventMap {
     static MOUSE: {
         click: string;
         dblclick: string;

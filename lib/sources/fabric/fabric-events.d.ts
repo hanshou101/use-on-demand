@@ -1,4 +1,4 @@
-export declare class FabricEventsMap {
+export declare class xX_FabricEventsMap {
     static Global_MOUSE: {
         up: string;
         down: string;

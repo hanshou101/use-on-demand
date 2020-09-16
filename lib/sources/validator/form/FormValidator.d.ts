@@ -1,4 +1,4 @@
-export declare class FormValidator {
+export declare class xX_FormValidator {
     static chinaCode: string;
     static isPureNumber(str: string): boolean;
     /**

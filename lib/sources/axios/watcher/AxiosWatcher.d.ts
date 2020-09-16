@@ -5,7 +5,7 @@
  *                3.
  *
  */
-export declare class AxiosWatcher {
+export declare class xX_AxiosWatcher {
     static saveReqInfo_onClient(config: AxiosRequestConfig_Type): void;
     static saveRespInfo_onClient(res: AxiosResponse_Type<any>): void;
 }

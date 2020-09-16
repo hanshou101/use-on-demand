@@ -6,7 +6,7 @@
  * @author erich666 / http://erichaines.com
  */
 declare const THREE: any;
-export declare class MyOrbitControls extends THREE.EventDispatcher {
+export declare class xX_MyOrbitControls extends THREE.EventDispatcher {
     dispatchEvent: (e: any) => void;
     private object;
     private readonly domElement;

@@ -1,4 +1,4 @@
-export declare class CDecoratorU {
+export declare class xX_CDecoratorU {
     /**
      * 应用于成员方法之上
      *        1.类的原型——成员方法名字——对象内部属性描述符

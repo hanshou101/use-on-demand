@@ -1,10 +1,10 @@
-export declare class CheckAddressNew_Util {
+export declare class xX_CheckAddressNew_Util {
     private updateTime;
     private readonly aliveDuration;
     constructor(updateTime?: number);
     checkOrRefresh(refreshFn: Promise<any>): Promise<any>;
 }
-export declare class DownloadAppUtil {
+export declare class xX_DownloadAppUtil {
     /**
      *
      */

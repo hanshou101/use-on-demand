@@ -6,8 +6,8 @@
  *            4.筹码、卡面 - http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%BE%B7%E5%85%8B%E8%90%A8%E6%96%AF%E6%89%91%E5%85%8B%20%E7%89%8C%E9%A6%86&step_word=&hs=0&pn=32&spn=0&di=80080&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&istype=0&ie=utf-8&oe=utf-8&in=&cl=2&lm=-1&st=undefined&cs=684707031%2C1784232358&os=789242937%2C1989135310&simid=0%2C0&adpicid=0&lpn=0&ln=1379&fr=&fmq=1555756344952_R&fm=&ic=undefined&s=undefined&hd=undefined&latest=undefined&copyright=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&ist=&jit=&cg=&bdtype=0&oriquery=&objurl=http%3A%2F%2F02.imgmini.eastday.com%2Fmobile%2F20180403%2F20180403002347_24b6d50b4ca3d5985eb25697bf834c30_1.jpeg&fromurl=ippr_z2C%24qAzdH3FAzdH3Ffr56pf_z%26e3Bjwfp1wy_z%26e3Bv54AzdH3FwAzdH3F8ba9anaadn90amlaaaaaa_z%26e3Bip4s&gsm=0&rpstart=0&rpnum=0&islist=&querylist=&force=undefined
  *            5.
  */
-import Car from '../demo2_mini_city/js/Car';
-export declare class DepuTable_three95 {
+import xX_Car from '../demo2_mini_city/js/Car';
+export declare class xX_DepuTable_three95 {
     width?: number;
     height?: number;
     config: {
@@ -17,7 +17,7 @@ export declare class DepuTable_three95 {
     scene: THREE.Scene;
     camera: THREE.PerspectiveCamera;
     renderer: THREE.WebGLRenderer;
-    cars: Car[];
+    cars: xX_Car[];
     /**
      * TODO 以下为启动阶段：
      *            1.【开始】

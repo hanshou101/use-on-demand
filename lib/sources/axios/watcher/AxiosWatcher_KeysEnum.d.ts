@@ -1,4 +1,4 @@
-export declare enum AWatKeys {
+export declare enum xX_AWatKeys {
     refreshBgCoinToken = "refreshBgCoinToken",
     cancelOrders = "cancelOrders",
     submitOrder = "submitOrder",
@@ -13,6 +13,6 @@ export declare enum AWatKeys {
     sendSms = "sendSms"
 }
 declare global {
-    type AWatKeys_Type = typeof AWatKeys;
+    type AWatKeys_Type = typeof xX_AWatKeys;
 }
 //# sourceMappingURL=AxiosWatcher_KeysEnum.d.ts.map

@@ -1,4 +1,4 @@
-export declare class ColorUtil {
+export declare class xX_ColorUtil {
     /**
      * 【RGB】转【HEX】
      */

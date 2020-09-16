@@ -1,4 +1,4 @@
-export declare class LoopCheckUtil {
+export declare class xX_LoopCheckUtil {
     private static preCookie;
     private static timer;
     private static updatedFirstT;

@@ -25,7 +25,7 @@ interface ElementTableColumnAttrs {
     fixed: 'right' | 'left';
     align: 'center' | 'right' | 'left';
 }
-export declare namespace Father_ElTItem {
+export declare namespace xX_Father_ElTItem {
     abstract class Base<T = Default_valueFunction_RtnType> {
         label: string;
         prop: string;

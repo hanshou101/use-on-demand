@@ -2,7 +2,7 @@
  * 判断是否微信登陆
  *            参考资料：http://caibaojian.com/browser-ios-or-android.html
  */
-export declare class MyBrowser {
+export declare class xX_MyBrowser {
     static versions: {
         trident: boolean;
         presto: boolean;

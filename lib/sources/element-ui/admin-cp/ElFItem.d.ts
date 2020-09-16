@@ -1,5 +1,5 @@
 import { ElUploadInternalFileDetail } from 'element-ui/types/upload';
-import { MyDialogFormItem_Conf, MyFormItem_SelectOptionConf } from './MyElementUtils';
+import { xX_MyDialogFormItem_Conf, xX_MyFormItem_SelectOptionConf } from './MyElementUtils';
 /**
  * 两个参数，一个必传参数对象，一个可选参数对象
  *
@@ -37,13 +37,13 @@ interface HasPrependAppend {
     append?: string;
 }
 declare type Date_or_Time_Range_Types = 'dateRange' | 'paymentDateRange' | 'auditDateRange' | 'updateDateRange';
-export declare namespace Father_ElFItem {
+export declare namespace xX_Father_ElFItem {
     export abstract class Base {
         readonly myCategory: MyFormItem_Category;
         label: string;
         prop_AND_bindValue: string;
         name: string;
-        config: MyDialogFormItem_Conf;
+        config: xX_MyDialogFormItem_Conf;
         placeholder?: string;
         labelWidth?: string;
         protected constructor(require: Require, optional?: Optional);
@@ -120,7 +120,7 @@ export declare namespace Father_ElFItem {
     }
     export class Options<T> extends Base {
         readonly myCategory = "options";
-        selectOptionConf: MyFormItem_SelectOptionConf<T>;
+        selectOptionConf: xX_MyFormItem_SelectOptionConf<T>;
         constructor(require: Require & {
             selectOptionConf: {
                 option: T;

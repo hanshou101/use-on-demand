@@ -1,4 +1,4 @@
-export declare const Demo_Sentry_Cfg: {
+export declare const xX_Demo_Sentry_Cfg: {
     crossOrigin: string;
     dns: string;
     pureJsUrl: string;
@@ -6,6 +6,6 @@ export declare const Demo_Sentry_Cfg: {
     envName: string;
 };
 declare global {
-    type Sentry_Cfg_Type = typeof Demo_Sentry_Cfg;
+    type Sentry_Cfg_Type = typeof xX_Demo_Sentry_Cfg;
 }
 //# sourceMappingURL=demo-config.d.ts.map

@@ -1,4 +1,4 @@
-import Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
+import xX_Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
 import { MixinLevelTag } from './Father_BaseVue';
 export interface PreUploadBean {
     dir?: string;
@@ -17,7 +17,7 @@ export interface OssUploadBean {
     callback?: string;
     signature?: string;
 }
-declare const Father_CommonMixin_base: import("vue-class-component/lib/declarations").VueClass<Father_ExportExcel_Mixin>;
+declare const xX_Father_CommonMixin_base: import("vue-class-component/lib/declarations").VueClass<xX_Father_ExportExcel_Mixin>;
 /**
  * 可能最后，还是要用【Mixins】去解决！！！。
  * 可能最后，还是要用【Mixins】去解决！！！。
@@ -61,7 +61,7 @@ declare const Father_CommonMixin_base: import("vue-class-component/lib/declarati
 /**
  * 全局CRUD组件抽取
  */
-export default class Father_CommonMixin<SelectOptionType> extends Father_CommonMixin_base {
+export default class xX_Father_CommonMixin<SelectOptionType> extends xX_Father_CommonMixin_base {
     constructor();
     language: string;
     dialogControlVisible: boolean;

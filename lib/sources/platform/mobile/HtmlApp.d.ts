@@ -1,4 +1,4 @@
-import { My_RemCompatible_Util } from '../../viewport/rem-responsive/RemCompatible_Util';
+import { xX_My_RemCompatible_Util } from '../../viewport/rem-responsive/RemCompatible_Util';
 declare global {
     interface PageConfig {
         need_checkHtmlVersion: boolean;
@@ -13,9 +13,9 @@ interface IBasicInit {
 interface IOnLoadInit {
     onWindowLoaded(): void;
 }
-export declare abstract class HtmlApp implements IBasicInit, IOnLoadInit {
+export declare abstract class xX_HtmlApp implements IBasicInit, IOnLoadInit {
     pageConfig: PageConfig;
-    readonly calcRemCompatible: typeof My_RemCompatible_Util.calc_remCompatible_YanNan;
+    readonly calcRemCompatible: typeof xX_My_RemCompatible_Util.calc_remCompatible_YanNan;
     abstract onWindowLoaded(): void;
     constructor(pageConfig: PageConfig);
 }

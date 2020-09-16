@@ -1,1 +1,1 @@
-{"version":3,"file":"Fix_WxRedirec_Util.d.ts","sourceRoot":"","sources":["../../../../sources/platform/wx/Fix_WxRedirec_Util.ts"],"names":[],"mappings":"AAAA,qBAAa,kBAAkB;WACf,mBAAmB;CAgBlC"}
+{"version":3,"file":"Fix_WxRedirec_Util.d.ts","sourceRoot":"","sources":["../../../../sources/platform/wx/Fix_WxRedirec_Util.ts"],"names":[],"mappings":"AAAA,qBAAa,qBAAqB;WAClB,mBAAmB;CAgBlC"}

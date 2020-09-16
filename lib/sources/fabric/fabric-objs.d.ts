@@ -1,4 +1,4 @@
-export declare class FabricObjsMap {
+export declare class xX_FabricObjsMap {
     static triangle: string;
     static circle: string;
     static rect: string;

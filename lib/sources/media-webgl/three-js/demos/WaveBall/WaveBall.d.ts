@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-export declare class WebGL_WaveBall_Demo_three56 {
+export declare class xX_WebGL_WaveBall_Demo_three56 {
     SEPARATION: number;
     AMOUNTX: number;
     AMOUNTY: number;

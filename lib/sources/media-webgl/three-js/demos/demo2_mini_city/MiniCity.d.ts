@@ -1,5 +1,5 @@
-import Car from './js/Car';
-export declare class MiniCity_three95 {
+import xX_Car from './js/Car';
+export declare class xX_MiniCity_three95 {
     width?: number;
     height?: number;
     config: {
@@ -9,7 +9,7 @@ export declare class MiniCity_three95 {
     scene: THREE.Scene;
     camera: THREE.PerspectiveCamera;
     renderer: THREE.WebGLRenderer;
-    cars: Car[];
+    cars: xX_Car[];
     /**
      * TODO 以下为启动阶段：
      *            1.【开始】

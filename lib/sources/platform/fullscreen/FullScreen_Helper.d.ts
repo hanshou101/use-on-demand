@@ -1,4 +1,4 @@
-export declare class FullScreen_Helper {
+export declare class xX_FullScreen_Helper {
     /**
      * 进入全屏
      */

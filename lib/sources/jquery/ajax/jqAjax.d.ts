@@ -8,7 +8,7 @@ declare global {
         errmsg: number;
     }
 }
-export declare class JqAjax {
+export declare class xX_JqAjax {
     /**
      * GET请求
      * 参考资料：jQuery封装的AJAX - 葵花点穴手 - CSDN博客 - https://blog.csdn.net/weixin_42248745/article/details/80640830

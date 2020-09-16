@@ -7,7 +7,7 @@ declare namespace CountDownNS {
     }
     type StepCb = (res: StepRes, stopFn: Function) => void;
 }
-export declare class SDateTime_Helper {
+export declare class xX_SDateTime_Helper {
     /**
      * 根据指定时间的倒计时功能
      */
@@ -26,7 +26,7 @@ export declare class SDateTime_Helper {
      */
     static completeTimePartZero(timePart: string | number): string;
 }
-export declare class ServerTime_Helper {
+export declare class xX_ServerTime_Helper {
     /**
      *  差异时间
      *          1.【服务器】-【客户端】。

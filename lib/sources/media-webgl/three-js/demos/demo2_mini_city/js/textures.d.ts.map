@@ -1,1 +1,1 @@
-{"version":3,"file":"textures.d.ts","sourceRoot":"","sources":["../../../../../../../sources/media-webgl/three-js/demos/demo2_mini_city/js/textures.ts"],"names":[],"mappings":"AAEA,QAAA,MAAM,QAAQ;;CAkCb,CAAC;AAEF,eAAe,QAAQ,CAAC"}
+{"version":3,"file":"textures.d.ts","sourceRoot":"","sources":["../../../../../../../sources/media-webgl/three-js/demos/demo2_mini_city/js/textures.ts"],"names":[],"mappings":"AAEA,QAAA,MAAM,WAAW;;CAkChB,CAAC;AAEF,eAAe,WAAW,CAAC"}

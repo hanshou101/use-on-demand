@@ -1,4 +1,4 @@
-export declare class VersionUpdate_Helper {
+export declare class xX_VersionUpdate_Helper {
     private static vFileName;
     private static lastCheckTs;
     private static checkIntervalTs;

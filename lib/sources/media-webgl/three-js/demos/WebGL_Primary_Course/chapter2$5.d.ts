@@ -1,5 +1,5 @@
-import { BaseThreeClass, BaseThreeClass_Helper } from '../Utils/BaseThreeClass';
-export declare class chapter2$5_three75 extends BaseThreeClass {
+import { xX_BaseThreeClass, xX_BaseThreeClass_Helper } from '../Utils/BaseThreeClass';
+export declare class chapter2$5_three75 extends xX_BaseThreeClass {
     $renderer: THREE.WebGLRenderer;
     $camera: THREE.PerspectiveCamera;
     $scene: THREE.Scene;
@@ -15,7 +15,7 @@ export declare class chapter2$5_three75 extends BaseThreeClass {
     $999_loopChange_Render(): void;
     $1000_threeStart(): void;
 }
-declare class Chapter2$5_helper extends BaseThreeClass_Helper {
+declare class Chapter2$5_helper extends xX_BaseThreeClass_Helper {
     createLine(): THREE.Line;
 }
 export {};

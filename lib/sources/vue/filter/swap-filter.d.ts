@@ -1,4 +1,4 @@
-export declare class SwapFilter_Helper {
+export declare class xX_SwapFilter_Helper {
     private static _Filter;
     static init(vue: VueConstructor_Type): {};
 }

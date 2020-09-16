@@ -1,4 +1,4 @@
-export declare function initBaiduTongji(src?: string): void;
+export declare function xX_initBaiduTongji(src?: string): void;
 declare global {
     interface Window {
         _hmt?: Array<any>;

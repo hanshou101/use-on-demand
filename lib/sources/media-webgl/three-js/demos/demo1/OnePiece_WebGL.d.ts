@@ -1,4 +1,4 @@
-export declare class OnePiece_three95 {
+export declare class xX_OnePiece_three95 {
     private get labelData();
     private FOV;
     private get screen_width();

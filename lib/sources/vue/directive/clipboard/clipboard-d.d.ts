@@ -1,2 +1,2 @@
-export declare const ClipboardD: VueDirective_Type;
+export declare const xX_ClipboardD: VueDirective_Type;
 //# sourceMappingURL=clipboard-d.d.ts.map

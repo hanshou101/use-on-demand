@@ -1,4 +1,4 @@
-export declare class MVideo_Helper {
+export declare class xX_MVideo_Helper {
     private static isCssLoaded;
     static initLang(lang: {
         'zh-CN': any;

@@ -1,5 +1,5 @@
-declare const textures: {
-    window: () => any;
+declare const xX_textures: {
+    window: () => THREE.Texture | null;
 };
-export default textures;
+export default xX_textures;
 //# sourceMappingURL=textures.d.ts.map

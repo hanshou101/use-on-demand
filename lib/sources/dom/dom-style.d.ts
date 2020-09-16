@@ -2,7 +2,7 @@ interface MyAbsolutePosition {
     top: number;
     left: number;
 }
-export declare class DomStyle_Helper {
+export declare class xX_DomStyle_Helper {
     /**
      * 获取元素的css属性值
      */

@@ -34,6 +34,6 @@ export interface MyTrackballControlsInterface {
     handleEvent: (event: any) => void;
     [key: string]: any;
 }
-export declare const MyTrackballControls: new (object: THREE.PerspectiveCamera, domElement?: HTMLElement | undefined) => MyTrackballControlsInterface;
+export declare const xX_MyTrackballControls: new (object: THREE.PerspectiveCamera, domElement?: HTMLElement | undefined) => MyTrackballControlsInterface;
 export {};
 //# sourceMappingURL=TrackballControls.d.ts.map

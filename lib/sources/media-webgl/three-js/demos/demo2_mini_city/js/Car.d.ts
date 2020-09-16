@@ -1,4 +1,4 @@
-export default class Car {
+export default class xX_Car {
     private color;
     mesh: THREE.Object3D;
     private wheels;

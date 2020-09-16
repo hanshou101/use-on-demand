@@ -1,43 +1,43 @@
 /**
  * 下拉选项的配置类
  */
-export declare class MyFormItem_SelectOptionConf<SOption> {
+export declare class xX_MyFormItem_SelectOptionConf<SOption> {
     enumOptions: SOption;
     mustParseInt_toFitBackend: boolean;
     constructor(enumOptions: SOption);
-    setParseInt(____mustParseInt_toFitBackend: boolean): MyFormItem_SelectOptionConf<SOption>;
+    setParseInt(____mustParseInt_toFitBackend: boolean): xX_MyFormItem_SelectOptionConf<SOption>;
 }
-export declare const data_elTagColorFilter: IndexedObj;
+export declare const xX_data_elTagColorFilter: IndexedObj;
 /**
  * 表单Item类
  */
-export declare abstract class MyEl_FormItem<SOption> {
+export declare abstract class xX_MyEl_FormItem<SOption> {
     myCategory: MyFormItem_Category;
     prop_AND_bindValue: string;
     label: string;
     placeholder: string;
-    selectOptionConf: MyFormItem_SelectOptionConf<SOption>;
+    selectOptionConf: xX_MyFormItem_SelectOptionConf<SOption>;
     constructor(prop_AND_bindValue: string, label: string, myCategory?: MyFormItem_Category, // 不填则默认text
     placeholder?: string, // 不填则默认''
-    selectOptionConf?: MyFormItem_SelectOptionConf<SOption>);
+    selectOptionConf?: xX_MyFormItem_SelectOptionConf<SOption>);
 }
 /**
  * 适用于Dialog的表单子类。
  */
-export interface MyDialogFormItem_Conf extends Object {
+export interface xX_MyDialogFormItem_Conf extends Object {
     disableItem?: boolean;
     notRenderItem?: boolean;
     [key: string]: any;
 }
-export declare abstract class MyEl_FormItem__inDialog<SOption> extends MyEl_FormItem<SOption> {
-    config: MyDialogFormItem_Conf;
-    setDialogConfig(__config: MyDialogFormItem_Conf): this;
+export declare abstract class xX_MyEl_FormItem__inDialog<SOption> extends xX_MyEl_FormItem<SOption> {
+    config: xX_MyDialogFormItem_Conf;
+    setDialogConfig(__config: xX_MyDialogFormItem_Conf): this;
 }
 /**
  * 表单校验的总配置
  */
-export interface MyEl_FormItem_Rule_Config {
-    [key: string]: Array<MyEl_RuleItem>;
+export interface xX_MyEl_FormItem_Rule_Config {
+    [key: string]: Array<xX_MyEl_RuleItem>;
 }
 declare type MyElForm_TriggerType = 'blur' | 'change';
 declare type validatorCB_Success = () => void;
@@ -46,7 +46,7 @@ declare type MyElForm_validatorType = (rule: object, formValue: any, callback: (
 /**
  * 表单校验的Item
  */
-export declare class MyEl_RuleItem {
+export declare class xX_MyEl_RuleItem {
     required: boolean;
     message: string;
     trigger: MyElForm_TriggerType;
@@ -56,7 +56,7 @@ export declare class MyEl_RuleItem {
 /**
  * 表格的Column配置
  */
-export declare class MyElement_TableCol<SOption> {
+export declare class xX_MyElement_TableCol<SOption> {
     myCategory: MyTableCol_Category;
     label: string;
     prop: string;
@@ -72,17 +72,17 @@ export declare class MyElement_TableCol<SOption> {
  *
  * TODO 具体使用方式：查看  PlayerDetail_Page.vue 文件。
  */
-export declare class MyEl_Cards {
-    array: Array<MyEl_OneCard>;
-    constructor(array: Array<MyEl_OneCard>);
+export declare class xX_MyEl_Cards {
+    array: Array<xX_MyEl_OneCard>;
+    constructor(array: Array<xX_MyEl_OneCard>);
 }
-export declare class MyEl_OneCard {
+export declare class xX_MyEl_OneCard {
     cardTitle: string;
     rows: Array<MyEl_OneRow>;
     constructor(cardTitle: string, rows: Array<MyEl_OneRow>);
 }
-declare type MyEl_OneRow = Array<MyEl_OneCol>;
-export declare class MyEl_OneCol {
+declare type MyEl_OneRow = Array<xX_MyEl_OneCol>;
+export declare class xX_MyEl_OneCol {
     leftLabel: string;
     rightProp: string;
     constructor(leftLabel: string, rightProp: string);

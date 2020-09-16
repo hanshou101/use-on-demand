@@ -2,7 +2,7 @@ interface LazyLoad_Cfg {
     placeholderImg: string | undefined;
     directiveId: string | undefined;
 }
-export declare class CDirective_Helper {
+export declare class xX_CDirective_Helper {
     /**
      * 图片懒加载
      */

@@ -1,4 +1,4 @@
-export declare class ImgLazyLoad_Directive {
+export declare class xX_ImgLazyLoad_Directive {
     static __defaultCfg: {
         /**
          * 1像素透明。

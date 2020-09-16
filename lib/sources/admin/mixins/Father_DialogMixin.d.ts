@@ -1,10 +1,10 @@
 /**
  * 全局CRUD对话框组件抽取
  */
-import Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
+import xX_Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
 import { OssUploadBean } from './Father_CommonMixin';
 import { MixinLevelTag } from './Father_BaseVue';
-declare const Father_DialogMixin_base: import("vue-class-component/lib/declarations").VueClass<Father_ExportExcel_Mixin>;
+declare const xX_Father_DialogMixin_base: import("vue-class-component/lib/declarations").VueClass<xX_Father_ExportExcel_Mixin>;
 /**
  * 可能最后，还是要用【Mixins】去解决！！！。
  * 可能最后，还是要用【Mixins】去解决！！！。
@@ -45,7 +45,7 @@ declare const Father_DialogMixin_base: import("vue-class-component/lib/declarati
  * 可能最后，还是要用【Mixins】去解决！！！。
  * 可能最后，还是要用【Mixins】去解决！！！。
  */
-export default class Father_DialogMixin<SelectOptionType> extends Father_DialogMixin_base {
+export default class xX_Father_DialogMixin<SelectOptionType> extends xX_Father_DialogMixin_base {
     private show;
     initData: any;
     dialogType: number;

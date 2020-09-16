@@ -8,7 +8,7 @@ declare enum L2Dwidget_LoadWayE {
     SrcModuleImport = 2,
     Require = 3
 }
-export declare enum Live2DModelE {
+export declare enum xX_Live2DModelE {
     'default_demo' = "\u4E0D\u9700\u8981\u4F20\u503C\uFF0C\u7559\u4E00\u4E2Aundefined\u5373\u53EF",
     'chitose' = "chitose",
     /**
@@ -40,7 +40,7 @@ export declare enum Live2DModelE {
     'wanko' = "wanko",
     'z16' = "z16"
 }
-export declare class Live2D_WidgetJs_Helper {
+export declare class xX_Live2D_WidgetJs_Helper {
     /**
      * 根据【live2d-widget.js】库的不同版本，选择不同的加载方式。
      */
@@ -52,7 +52,7 @@ export declare class Live2D_WidgetJs_Helper {
     static readonly pathCfg: {
         modelBase: string;
     };
-    static initDemo(modelE?: Live2DModelE, pathCfg?: {
+    static initDemo(modelE?: xX_Live2DModelE, pathCfg?: {
         modelBase: string;
     }): void;
     /**

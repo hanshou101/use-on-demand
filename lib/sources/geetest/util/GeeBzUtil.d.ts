@@ -1,4 +1,4 @@
-export declare class GeeBzUtil {
+export declare class xX_GeeBzUtil {
     /**
      * 内部SDK调用，唤起一次极验。
      */

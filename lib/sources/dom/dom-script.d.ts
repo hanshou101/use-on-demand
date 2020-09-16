@@ -2,7 +2,7 @@ declare type sOptionKeys = 'crossOrigin';
 declare type sOptionType = {
     [key in sOptionKeys]?: HTMLScriptElement[key];
 };
-export declare class DomScript_Helper {
+export declare class xX_DomScript_Helper {
     static loadJsScript_Async(jsUrl: string, sProperties?: sOptionType): Promise<Event>;
 }
 export {};

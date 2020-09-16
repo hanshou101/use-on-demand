@@ -1,4 +1,4 @@
-export declare class SMath_Helper {
+export declare class xX_SMath_Helper {
     /**
      * 精确计算
      */

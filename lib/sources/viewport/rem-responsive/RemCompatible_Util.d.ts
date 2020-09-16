@@ -2,7 +2,7 @@
  * 计算屏幕尺寸相关。并调整尺寸。
  * TIP 该方法，采用了YanNan的方式，目前运转正常。
  */
-export declare class My_RemCompatible_Util {
+export declare class xX_My_RemCompatible_Util {
     static dpr: number;
     static rem: number;
     static rem2px(v: number): number;
