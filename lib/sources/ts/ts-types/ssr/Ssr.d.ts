@@ -1,9 +1,9 @@
-// import {CkKeys}     from '~/assets/js/_enum/CEnum';
+// import {xX_CkKeys}     from '~/assets/js/_enum/CEnum';
 
 import {NuxtConfig} from '@nuxt/types';
 
 type CKeys = {
-  // [key in keyof typeof CkKeys]?: string | undefined;
+  // [key in keyof typeof xX_CkKeys]?: string | undefined;
 }
 
 declare global {

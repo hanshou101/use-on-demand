@@ -1,7 +1,7 @@
 import {IPositionLineAdapter} from '../../../tradingview/charting_library/charting_library.min';
-import {__CAreaTypeE}         from '../../../cookie/store/CEnum';
+import {xX___CAreaTypeE}      from '../../../cookie/store/CEnum';
 // import {PositionType_QuanOrZhu} from '~/assets/js/_enum/ApiEnum';
-// import {__CAreaTypeE}           from '~/assets/js/_enum/CEnum';
+// import {xX___CAreaTypeE}           from '~/assets/js/_enum/CEnum';
 
 declare global {
   interface BgHeaderMixins_NaveData {
@@ -204,7 +204,7 @@ declare global {
     }
 
     interface ContractArea_Type {
-      areaV: __CAreaTypeE;
+      areaV: xX___CAreaTypeE;
       label: string;
     }
   }
