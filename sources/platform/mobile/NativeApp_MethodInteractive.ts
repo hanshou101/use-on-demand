@@ -1,3 +1,15 @@
+function is_MatchArray_equal(
+	matchArr: RegExpMatchArray | null,
+	targetStr: string,
+) {
+	//@ts-ignore
+	// FIXME 此处，感觉是一个经典错误
+	return matchArr == targetStr
+		|| matchArr?.find(str => {
+			return targetStr.toLocaleLowerCase() === str/*.trim()*/.toLocaleLowerCase(); // 查看，是否和数组元素相等
+		});
+}
+
 class BrowserChecker {
 	public static getBrowserInfo() {
 
@@ -20,11 +32,7 @@ class BrowserChecker {
 		const qqMatch = userAgent.match(/\sQQ/i);
 		// FIXME 此处，感觉是一个经典错误
 		// qq     : userAgent.match(/\sQQ/i) == ' qq', //是否QQ
-		const isQQ = //@ts-ignore
-						qqMatch == ' qq'
-						|| qqMatch?.find(str => {
-							return str/*.trim()*/.toLocaleLowerCase().includes(' qq');			// 查看，是否包含了【空格QQ】字段。
-						});
+		const isQQ = is_MatchArray_equal(qqMatch, ' qq');
 		const obj  = {
 			// 浏览器检查
 			isChrome,
@@ -57,6 +65,36 @@ class BrowserChecker {
 			}
 		}
 		return obj;
+	}
+}
+
+/**
+ * 判断页面是否是在webview中打开
+ * 				1.一般来说，【WebView】和【浏览器】之间的差异，在于以下几点：
+ * 		    				1.【WebView】，一般业务逻辑，不走【手动登录】。
+ * 		    								1.因而，存在，在不知情情况下，【更换账号】的情况。
+ * 		    							  2.所有的【账号凭证】，都应该依赖于【原生App】传过来的【内存数据】。
+ * 		    							  3.因此，不该做这方面【和身份信息相关】的持久化。
+ * 		    				2.
+ * 		    				3.
+ */
+function isOpenInWebview() {
+	const ua = navigator.userAgent.toLowerCase();
+	if (is_MatchArray_equal(ua.match(/MicroMessenger/i), 'micromessenger')) { 		// 微信内置WebView判断
+		return false;
+	} else if (is_MatchArray_equal(ua.match(/QQ/i), 'qq')) { 										// QQ内置WebView判断
+		return false;
+	} else if (is_MatchArray_equal(ua.match(/WeiBo/i), 'weibo')) {								// 微博内置WebView判断
+		return false;
+	} else {
+		if (ua.match(/Android/i) != null) {
+			return ua.match(/browser/i) == null;
+		} else if (ua.match(/iPhone/i) != null) {
+			return ua.match(/safari/i) == null;
+		} else {
+			return ua.match(/macintosh/i) == null
+				&& ua.match(/windows/i) == null;
+		}
 	}
 }
 
