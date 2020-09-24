@@ -102,10 +102,10 @@ function isOpenInWebview() {
 export class xX_NativeApp_MethodInteractive {
 	private static readonly _paramSeparator = ',';
 
-	public static invokeNativeMethod(
+	public static invokeNativeMethod<T = any>(
 		methodName: string, 		// 方法名
 		...params: Array<any>		// 一组参数
-	): Promise<any> {
+	): Promise<T> {
 		const browserInfo = BrowserChecker.getBrowserInfo();
 		const that        = this;
 
@@ -113,9 +113,9 @@ export class xX_NativeApp_MethodInteractive {
 
 			// 如果存在【webkit】的调用器。（已经加载完成）
 			if (window.webkit) {
-				return this.invoke_iosFn(methodName, ...params);
+				return this.invoke_iosFn<T>(methodName, ...params);
 			} else {
-				return new Promise(function(resolve, reject) {
+				return new Promise<T>(function(resolve, reject) {
 					let count = 0;
 					let timer = setInterval(() => {
 						count++;
@@ -126,18 +126,21 @@ export class xX_NativeApp_MethodInteractive {
 						if (window.webkit) {										// 如果已经加载完成
 							clearInterval(timer);
 							// 返回成功。
-							resolve(that.invoke_iosFn(methodName, ...params));
+							that.invoke_iosFn<T>(methodName, ...params).then(res => {
+								resolve(res);
+							});
 						} else {
 							console.error('window.webkit还没初始化');
 						}
 					}, 100);
 				}).catch((err) => {
 					console.error(err);
+					return Promise.reject(err);
 				});
 			}
 		} else {											// TIP Android平台
 			console.error('调安卓方法了');
-			return new Promise(function(resolve) {
+			return new Promise<T>(function(resolve) {
 				if (!window.android) {
 					throw new Error('window.android不存在！！！');
 				}
@@ -148,18 +151,19 @@ export class xX_NativeApp_MethodInteractive {
 					res = window.android[methodName]();
 				}
 				// 将返回的【字符串形式】，转化为真正的数据。
-				let data = (new Function('return ' + res))();
+				let data = (new Function('return ' + res))() as T;
 				resolve(data);				// 成功返回
 			}).catch((err) => {
 				console.error(err);
+				return Promise.reject(err);
 			});
 		}
 	}
 
-	private static invoke_iosFn(
+	private static invoke_iosFn<R>(
 		methodName: string,		// 方法名
 		...params: Array<any>	// 一组参数
-	): Promise<any> {
+	): Promise<R> {
 
 		/**
 		 * 1.此处，用于异步接受【iOS】传回的处理结果。
@@ -171,9 +175,9 @@ export class xX_NativeApp_MethodInteractive {
 		 * 2.综上所述
 		 * 				1.web端调用【APP原生A方法】————————APP接收，处理完毕，调用【Web端A方法】，来返回数据。
 		 */
-		let asyncResult_promise = new Promise(function(resolve) {
+		let asyncResult_promise = new Promise<R>(function(resolve) {
 			// 此处名字不重要，但要保证和【APP原生A方法】同名。形成一种规范。
-			(window as any)[methodName] = function(res: any) {
+			(window as any)[methodName] = function(res: R) {
 				resolve(res);
 			};
 		});
