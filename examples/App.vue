@@ -61,6 +61,7 @@
 	import WaveBall                                       from '../packages/components/webgl-demos/WaveBall.vue';
 	import OnePieceDemo                                   from '../packages/components/webgl-demos/OnePieceDemo.vue';
 	import VideoJS                                        from '../packages/components/video-js/VideoJS.vue';
+	import { xX_FileMd5_Helper }                          from '../sources/platform/file-blob/FileMd5_Helper';
 
 
 	export default Vue.extend({
@@ -96,8 +97,14 @@
 			if (this.show.live2D) {
 				xX_Live2D_WidgetJs_Helper.initDemo(xX_Live2DModelE.tororo);
 			}
+
+			xX_FileMd5_Helper.downloadAndCreateHash('https://assets.yuegouba.cn/img/logo.90c1f919.svg').then(res => {
+				console.log('测试hash', res);
+			});
+
 		},
 	});
+
 
 </script>
 
