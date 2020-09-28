@@ -58,6 +58,7 @@ module.exports = {
 				npsUtils.series.nps('ts.gen-tsconfig'),
 				'tsc',          // 1.先进行编译
 				`${tsNode_cmdHead} ./sources/gen/demo/copy-after-tsc.ts`,                   // 2.再进行【复制】
+				`${tsNode_cmdHead} ./sources/gen/demo/clean-after-copy.ts`,
 			),
 		},
 

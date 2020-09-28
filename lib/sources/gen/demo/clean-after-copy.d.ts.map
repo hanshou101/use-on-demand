@@ -1,0 +1,1 @@
+{"version":3,"file":"clean-after-copy.d.ts","sourceRoot":"","sources":["../../../../sources/gen/demo/clean-after-copy.ts"],"names":[],"mappings":"AAAA,QAAA,MAAM,EAAE,KAAgB,CAAC;AAGzB,cAAM,SAAS;IACd,OAAc,SAAS,SAA2B;IAClD,OAAc,UAAU,WAAe;CACvC;AAED,iBAAS,WAAW,IAAI,KAAK,CAAC,MAAM,CAAC,CAEpC;AAED,QAAA,MAAM,QAAQ,EAAE,KAAK,CAAC,MAAM,CAAiB,CAAC;AAI9C,QAAA,MAAM,SAAS,UAEb,CAAC"}
