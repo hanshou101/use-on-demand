@@ -66,7 +66,7 @@ export class xX_WebGL_WaveBall_Demo_three56 {
 		this.renderer.setSize(window.innerWidth, window.innerHeight);
 		this.container.appendChild(this.renderer.domElement);
 
-		document.addEventListener('mousemove', this.onDocumentMouseMove, false);
+		document.addEventListener?.('mousemove', this.onDocumentMouseMove, false);
 		//
 
 		window.addEventListener('resize', this.onWindowResize, false);

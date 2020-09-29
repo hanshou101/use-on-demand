@@ -467,8 +467,8 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
 
     }
 
-    document.addEventListener('mousemove', mousemove, false);
-    document.addEventListener('mouseup', mouseup, false);
+    document.addEventListener?.('mousemove', mousemove, false);
+    document.addEventListener?.('mouseup', mouseup, false);
 
     that.dispatchEvent(startEvent);
 
@@ -507,8 +507,8 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
 
     _state = STATE.NONE;
 
-    document.removeEventListener('mousemove', mousemove);
-    document.removeEventListener('mouseup', mouseup);
+    document.removeEventListener?.('mousemove', mousemove);
+    document.removeEventListener?.('mouseup', mouseup);
     that.dispatchEvent(endEvent);
 
   }
@@ -632,32 +632,32 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
 
   this.dispose = function () {
 
-    this.domElement.removeEventListener('contextmenu', contextmenu, false);
-    this.domElement.removeEventListener('mousedown', mousedown, false);
-    this.domElement.removeEventListener('wheel', mousewheel, false);
+    this.domElement.removeEventListener?.('contextmenu', contextmenu, false);
+    this.domElement.removeEventListener?.('mousedown', mousedown, false);
+    this.domElement.removeEventListener?.('wheel', mousewheel, false);
 
-    this.domElement.removeEventListener('touchstart', touchstart, false);
-    this.domElement.removeEventListener('touchend', touchend, false);
-    this.domElement.removeEventListener('touchmove', touchmove, false);
+    this.domElement.removeEventListener?.('touchstart', touchstart, false);
+    this.domElement.removeEventListener?.('touchend', touchend, false);
+    this.domElement.removeEventListener?.('touchmove', touchmove, false);
 
-    document.removeEventListener('mousemove', mousemove, false);
-    document.removeEventListener('mouseup', mouseup, false);
+    document.removeEventListener?.('mousemove', mousemove, false);
+    document.removeEventListener?.('mouseup', mouseup, false);
 
-    window.removeEventListener('keydown', keydown, false);
-    window.removeEventListener('keyup', keyup, false);
+    window.removeEventListener?.('keydown', keydown, false);
+    window.removeEventListener?.('keyup', keyup, false);
 
   };
 
-  this.domElement.addEventListener('contextmenu', contextmenu, false);
-  this.domElement.addEventListener('mousedown', mousedown, false);
-  this.domElement.addEventListener('wheel', mousewheel, false);
+  this.domElement.addEventListener?.('contextmenu', contextmenu, false);
+  this.domElement.addEventListener?.('mousedown', mousedown, false);
+  this.domElement.addEventListener?.('wheel', mousewheel, false);
 
-  this.domElement.addEventListener('touchstart', touchstart, false);
-  this.domElement.addEventListener('touchend', touchend, false);
-  this.domElement.addEventListener('touchmove', touchmove, false);
+  this.domElement.addEventListener?.('touchstart', touchstart, false);
+  this.domElement.addEventListener?.('touchend', touchend, false);
+  this.domElement.addEventListener?.('touchmove', touchmove, false);
 
-  window.addEventListener('keydown', keydown, false);
-  window.addEventListener('keyup', keyup, false);
+  window.addEventListener?.('keydown', keydown, false);
+  window.addEventListener?.('keyup', keyup, false);
 
   this.handleResize();
 
