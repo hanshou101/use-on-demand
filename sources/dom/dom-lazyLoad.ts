@@ -1,10 +1,10 @@
 namespace EchoNS {
 
 	interface EchoOption {
-		offset: number;       // 视口外【多远距离】，开始懒加载
-		throttle: number;     // 检测【onscroll】事件的间隔阈值
-		unload: boolean;      // 超出视口范围后，是否卸载图片
-		callback(element: HTMLElement, op: string): void;  // 图片操作的回调
+		offset?: number;       // 视口外【多远距离】，开始懒加载
+		throttle?: number;     // 【节流】。检测【onscroll】事件的间隔阈值
+		unload?: boolean;      // 超出视口范围后，是否卸载图片
+		callback?(element: HTMLElement, op: string): void;  // 图片操作的回调
 		//
 		//
 		// TIP 以下，是不常用属性
@@ -14,7 +14,7 @@ namespace EchoNS {
 		offsetBottom?: number;
 		offsetLeft?: number;
 		offsetRight?: number;
-		debounce?: boolean;
+		debounce?: boolean;		// 【防抖】
 	}
 
 	interface EchoOffset {
@@ -26,10 +26,11 @@ namespace EchoNS {
 
 
 	export class Echo {
-		callback!: EchoOption['callback'];
+		callback: EchoOption['callback'] = function() {
+		};
 		offset!: EchoOffset;
-		poll: NullableType<number> = null;
-		delay!: number;
+		poll: NullableType<number>       = null;
+		throttleDelay!: number;
 		useDebounce!: boolean;
 		unload!: boolean;
 
@@ -37,8 +38,10 @@ namespace EchoNS {
 
 		}
 
-		public init(opts: EchoOption) {
-			opts                   = opts || {};
+		public init(opts: EchoOption = {}) {
+			/**
+			 * 赋予【边界距离】默认值。
+			 */
 			const offsetAll        = opts.offset || 0;
 			const offsetVertical   = opts.offsetVertical || offsetAll;
 			const offsetHorizontal = opts.offsetHorizontal || offsetAll;
@@ -51,14 +54,20 @@ namespace EchoNS {
 				l: optionToInt(opts.offsetLeft, offsetHorizontal),
 				r: optionToInt(opts.offsetRight, offsetHorizontal),
 			};
-			this.delay             = optionToInt(opts.throttle, 250);
-			this.useDebounce       = opts.debounce !== false;
+
+			// 【节流】
+			this.throttleDelay = optionToInt(opts.throttle, 250);
+			// 【防抖】
+			this.useDebounce   = opts.debounce !== false;
 			// noinspection PointlessBooleanExpressionJS
-			this.unload            = !!opts.unload;
-			this.callback          = opts.callback || this.callback;
+			// 【自动卸载】
+			this.unload   = !!opts.unload;
+			// 【加载完成回调】
+			this.callback = opts.callback || this.callback;
+			// 触发渲染
 			this.render();
 
-			// @ts-ignore
+			// 绑定监听
 			if (document.addEventListener) {
 				this.root.addEventListener('scroll', this.__debounceOrThrottle, false);
 				this.root.addEventListener('load', this.__debounceOrThrottle, false);
@@ -98,7 +107,7 @@ namespace EchoNS {
 						elem.removeAttribute('data-echo-background');
 					}
 
-					this.callback(elem, 'load');
+					this.callback?.(elem, 'load');
 				} else if (this.unload && !!(src = elem.getAttribute('data-echo-placeholder') || '未获取到')) {
 
 					if (elem.getAttribute('data-echo-background') !== null) {
@@ -108,7 +117,7 @@ namespace EchoNS {
 					}
 
 					elem.removeAttribute('data-echo-placeholder');
-					this.callback(elem, 'unload');
+					this.callback?.(elem, 'unload');
 				}
 			}
 			if (!length) {
@@ -117,7 +126,6 @@ namespace EchoNS {
 		};
 
 		public detach() {
-			// @ts-ignore
 			if (document.removeEventListener) {
 				this.root.removeEventListener('scroll', this.__debounceOrThrottle);
 			} else {
@@ -146,7 +154,7 @@ namespace EchoNS {
 			this.poll = window.setTimeout(() => {
 				this.render();
 				this.poll = null;
-			}, this.delay);
+			}, this.throttleDelay);
 		};
 
 
