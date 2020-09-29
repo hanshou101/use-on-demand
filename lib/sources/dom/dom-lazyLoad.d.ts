@@ -1,9 +1,9 @@
 declare namespace EchoNS {
     interface EchoOption {
-        offset: number;
-        throttle: number;
-        unload: boolean;
-        callback(element: HTMLElement, op: string): void;
+        offset?: number;
+        throttle?: number;
+        unload?: boolean;
+        callback?(element: HTMLElement, op: string): void;
         offsetVertical?: number;
         offsetHorizontal?: number;
         offsetTop?: number;
@@ -23,11 +23,11 @@ declare namespace EchoNS {
         callback: EchoOption['callback'];
         offset: EchoOffset;
         poll: NullableType<number>;
-        delay: number;
+        throttleDelay: number;
         useDebounce: boolean;
         unload: boolean;
         constructor(root: Window);
-        init(opts: EchoOption): void;
+        init(opts?: EchoOption): void;
         render(context?: Document): void;
         detach(): void;
         private __debounceOrThrottle;
