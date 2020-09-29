@@ -98,7 +98,7 @@
 				xX_Live2D_WidgetJs_Helper.initDemo(xX_Live2DModelE.tororo);
 			}
 
-			xX_FileMd5_Helper.downloadAndCreateHash('https://assets.yuegouba.cn/img/logo.90c1f919.svg').then(res => {
+			xX_FileMd5_Helper.downloadAndCreateHash('http://sit17.me/index.php?user/publicLink&fid=de18XYhH-M0HJD3DzEQoRhXyARaduLwejOI9sFspvlCacO--A6XHrOUF_7V8mLwWHLWywNJU89T18Pr-ZMSX7jnQBjElJSHo-oaOEopyR43e6q8qR166Zx1ohNLZBQMZxBPrdhLri7jJskYrZQV_MtD9V9-QVdcNzg&file_name=/app.apk').then(res => {
 				console.log('测试hash', res);
 			});
 
