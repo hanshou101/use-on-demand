@@ -1,4 +1,4 @@
-export declare class VueRouter_Helper {
+export declare class xX_VueRouter_Helper {
     /**
      * 用于修复【navigation cancelled from / to /login with a new navigation】报错的问题。
      * 				1.直接原因：
