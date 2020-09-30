@@ -8,6 +8,14 @@ declare enum L2Dwidget_LoadWayE {
     SrcModuleImport = 2,
     Require = 3
 }
+interface Live2D_CfgOption {
+    customPathCfg?: (typeof xX_Live2D_WidgetJs_Helper)['customPathCfg'];
+    fallbackModel?: xX_Live2DModelE;
+    forceUseModel?: xX_Live2DModelE;
+    savePref?: boolean;
+    prefKey?: string;
+    forceLoad?: boolean;
+}
 export declare enum xX_Live2DModelE {
     'default_demo' = "\u4E0D\u9700\u8981\u4F20\u503C\uFF0C\u7559\u4E00\u4E2Aundefined\u5373\u53EF",
     'chitose' = "chitose",
@@ -46,20 +54,34 @@ export declare class xX_Live2D_WidgetJs_Helper {
      */
     static readonly libLoadWay: L2Dwidget_LoadWayE;
     static readonly cdnMode: CdnModeE;
+    static readonly rootDom = "#live2d-widget";
+    static readonly defaultPrefKey = "xX_Live2D_WidgetJs_Helper";
     /**
      * Model存储空间 的【远程路径】。
      */
-    static readonly pathCfg: {
+    static readonly customPathCfg: {
         modelBase: string;
     };
-    static initDemo(modelE?: xX_Live2DModelE, pathCfg?: {
-        modelBase: string;
-    }): void;
+    /**
+     * 移除Demo
+     */
+    static removeDemo(): void;
+    /**
+     * 初始化Live2D的Demo
+     */
+    static initDemo(option?: Live2D_CfgOption): Promise<unknown>;
     /**
      * CSS，加载状态表
      */
     private static cssLoadStatus;
+    /**
+     * 加载CSS
+     */
     private static loadDemoCss;
+    /**
+     * 获取本地Pref存储
+     */
+    private static getPref_InLocal;
 }
 export {};
 //# sourceMappingURL=Live2D_WidgetJs_Helper.d.ts.map

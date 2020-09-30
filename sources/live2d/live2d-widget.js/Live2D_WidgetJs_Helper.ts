@@ -19,6 +19,20 @@ enum L2Dwidget_LoadWayE {
 	Require,
 }
 
+interface Live2D_CfgOption {
+	//
+	customPathCfg?: (typeof xX_Live2D_WidgetJs_Helper)['customPathCfg'];	// 【有默认值】
+	fallbackModel?: xX_Live2DModelE;				// 【有默认值】保底目标模型
+	forceUseModel?: xX_Live2DModelE;					// 强行指定，目标模型
+	savePref?: boolean;				// 保存【偏好】
+	prefKey?: string;					// 【偏好】的LocalStorage键名
+	forceLoad?: boolean;			// 强制从【本地】读取【偏好】
+}
+
+interface Live2D_Pref {
+	modelE?: xX_Live2DModelE;
+}
+
 export enum xX_Live2DModelE {
 	'default_demo' = '不需要传值，留一个undefined即可',      // 默认
 	'chitose'      = 'chitose',                         // 西装高个的男生
@@ -65,63 +79,109 @@ export class xX_Live2D_WidgetJs_Helper {
 	 */
 	public static readonly libLoadWay: L2Dwidget_LoadWayE = L2Dwidget_LoadWayE.SrcModuleImport;
 	public static readonly cdnMode: CdnModeE              = CdnModeE.UnPkg;
+	public static readonly rootDom                        = '#live2d-widget';
+	public static readonly defaultPrefKey                 = 'xX_Live2D_WidgetJs_Helper';
 
 	/**
 	 * Model存储空间 的【远程路径】。
 	 */
-	public static readonly pathCfg = {
+	public static readonly customPathCfg = {
 		modelBase: 'http://test-admin.bgex.link/',
 	};
 
 
-	public static initDemo(
-		modelE: xX_Live2DModelE = xX_Live2DModelE.default_demo,
-		pathCfg                 = this.pathCfg,
-	) {
-		getL2Dwidget().then((_exports) => {
-			console.log('最新调用', _exports);
-			const { L2Dwidget } = _exports;
-			this.loadDemoCss(CssE.demo);      // 尝试加载CSS
+	/**
+	 * 移除Demo
+	 */
+	public static removeDemo() {
+		console.log('尝试，对Live2D的Demo，进行移除。');
+		console.error('Live2D-widget.js，目前销毁功能并不完善，请谨慎使用！    建议使用【刷新】来重建。');
+		const demoDom = document.querySelector(this.rootDom);
+		demoDom?.remove();
+	}
 
-			L2Dwidget
-				.on('*', (name) => {
-					console.log(
-						'%c EVENT ' + '%c -> ' + name,      // 事件
-						'background: #222; color: yellow', 'background: #fff; color: #000',   // 修饰的CSS
-					);
-				})
-				.init({
-					dialog : {
-						// 开启对话框
-						enable: true,
-						script: {
-							// 每空闲 10 秒钟，显示一条一言
-							'every idle 10s': '$hitokoto$',
-							// 当触摸到星星图案
-							'hover .star'   : '星星在天上而你在我心里 (*/ω＼*)',
-							// 当触摸到角色身体
-							'tap body'      : '哎呀！别碰我！',
-							// 当触摸到角色头部
-							'tap face'      : '人家已经不是小孩子了！',
+	/**
+	 * 初始化Live2D的Demo
+	 */
+	public static initDemo(
+		option?: Live2D_CfgOption,
+	) {
+		return new Promise(((resolve, /* reject */) => {
+
+
+			// 处理默认值
+			let modelE        = option?.fallbackModel || xX_Live2DModelE.default_demo;
+			let customPathCfg = option?.customPathCfg || this.customPathCfg;
+			const prefKey     = option?.prefKey || this.defaultPrefKey;
+			//
+			if (option?.forceUseModel) {									// TIP 【1】强行指定，优先级最高
+				modelE = option?.forceUseModel;
+			} else if (option?.forceLoad) {								// TIP 【2】如果，从【本地】读取
+				const prefObj = this.getPref_InLocal(prefKey);
+				if (prefObj.modelE) {
+					modelE = prefObj.modelE;		// 有则取，没有则回退。
+				}
+				console.log('从本地读取', prefObj);
+			}
+
+
+			getL2Dwidget().then((_exports) => {
+				console.log('最新调用', _exports);
+				const { L2Dwidget } = _exports;
+				this.loadDemoCss(CssE.demo);      // 尝试加载CSS
+
+				L2Dwidget
+					.on('*', (name) => {
+						console.log(
+							'%c EVENT ' + '%c -> ' + name,      // 事件
+							'background: #222; color: yellow', 'background: #fff; color: #000',   // 修饰的CSS
+						);
+					})
+					.init({
+						dialog : {
+							// 开启对话框
+							enable: true,
+							script: {
+								// 每空闲 10 秒钟，显示一条一言
+								'every idle 10s': '$hitokoto$',
+								// 当触摸到星星图案
+								'hover .star'   : '星星在天上而你在我心里 (*/ω＼*)',
+								// 当触摸到角色身体
+								'tap body'      : '哎呀！别碰我！',
+								// 当触摸到角色头部
+								'tap face'      : '人家已经不是小孩子了！',
+							},
 						},
-					},
-					model  : {
-						jsonPath: modelE === xX_Live2DModelE.default_demo ? undefined : getModelUrl(modelE, pathCfg),
-					},
-					display: {
-						position: 'left',
-					},
-				});
-			// });
-		});
+						model  : {
+							jsonPath: modelE === xX_Live2DModelE.default_demo ? undefined : getModelUrl(modelE, customPathCfg),
+						},
+						display: {
+							position: 'left',
+						},
+					});
+
+				if (option?.savePref) {		// TIP 如果，保存【偏好】
+					const prefObj: Live2D_Pref = {
+						...this.getPref_InLocal(prefKey),
+						modelE: modelE,
+					};
+					localStorage.setItem(prefKey, JSON.stringify(prefObj));
+					console.log('存储到本地', prefObj);
+				}
+
+				resolve('初始化完毕');
+
+			});
+
+		}));
 
 	}
 
-	//
-	//
-	//
-	//
-	//
+	// ———————————————————————————————————————————————————————————————————————————
+	// ———————————————————————————————————————————————————————————————————————————
+	// ———————————————————————————————————————————————————————————————————————————
+	// ———————————————————————————————————————————————————————————————————————————
+	// ———————————————————————————————————————————————————————————————————————————
 
 	/**
 	 * CSS，加载状态表
@@ -130,6 +190,9 @@ export class xX_Live2D_WidgetJs_Helper {
 		[CssE.demo]: false,
 	};
 
+	/**
+	 * 加载CSS
+	 */
 	private static loadDemoCss(cssE: CssE) {
 		if (!this.cssLoadStatus[cssE]) {      // 未加载过该CSS
 			this.cssLoadStatus[cssE] = true;                // TIP 记录，该CSS已经加载
@@ -143,13 +206,20 @@ export class xX_Live2D_WidgetJs_Helper {
 		}
 	}
 
+	/**
+	 * 获取本地Pref存储
+	 */
+	private static getPref_InLocal(prefKey: string) {
+		return JSON.parse<Live2D_Pref>(localStorage.getItem(prefKey) || '{}');
+	}
+
 }
 
 //
 
 function getModelUrl(
 	modelE: xX_Live2DModelE,
-	pathCfg: typeof xX_Live2D_WidgetJs_Helper['pathCfg'],
+	customPathCfg: typeof xX_Live2D_WidgetJs_Helper['customPathCfg'],
 ) {
 
 	switch (xX_Live2D_WidgetJs_Helper.cdnMode) {
@@ -171,7 +241,7 @@ function getModelUrl(
 			})();
 
 			// TIP 加上远程路径。
-			return pathCfg.modelBase + `live2d/model/live2d-widget-model-${dirName}/assets/${fileName}.model.json`;
+			return customPathCfg.modelBase + `live2d/model/live2d-widget-model-${dirName}/assets/${fileName}.model.json`;
 		}
 		//
 		//
