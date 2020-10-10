@@ -12,7 +12,7 @@ export class xX_VueRouter_Helper {
 		const originalPush: Router_PushFn_A_Type = _router.prototype.push;
 		_router.prototype.push                   = function push(location: RawLocation_Type) {
 			return originalPush.call(this, location).catch(err => {
-				console.log('Router报错', err);
+				console.error('Router报错', err);
 				return err;
 			});
 		};
