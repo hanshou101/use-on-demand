@@ -12,6 +12,11 @@ declare type MyEventTarget = (/*GlobalEventHandlers |*/ HTMLElement | Window) & 
         [key: string]: any;
     };
 };
+declare global {
+    type KeyCode_MAP_Type = typeof xX_BrowserEventMap.KEYBOARD.KeyCode_MAP;
+    type KeyCode_MAP_Type__Keys = keyof KeyCode_MAP_Type;
+    type KeyCode_MAP_Type__Values = KeyCode_MAP_Type[KeyCode_MAP_Type__Keys];
+}
 export declare class xX_DomEvt_Helper {
     /**
      * 绑定事件
@@ -49,82 +54,82 @@ export declare class xX_BrowserEventMap {
         };
     };
     static KEYBOARD: {
-        keypress: string;
-        keydown: string;
-        keyup: string;
+        readonly keypress: "keypress";
+        readonly keydown: "keydown";
+        readonly keyup: "keyup";
         /**
          * 参考资料：
          *          键盘按钮keyCode大全，keyCode列表对照表 - 如果声音记得 - 博客园 - https://www.cnblogs.com/jf-guo/p/5235136.html
          */
-        KeyCode_MAP: {
-            0: number;
-            1: number;
-            2: number;
-            3: number;
-            4: number;
-            5: number;
-            6: number;
-            7: number;
-            8: number;
-            9: number;
-            A: number;
-            B: number;
-            C: number;
-            D: number;
-            E: number;
-            F: number;
-            G: number;
-            H: number;
-            I: number;
-            J: number;
-            K: number;
-            L: number;
-            M: number;
-            N: number;
-            O: number;
-            P: number;
-            Q: number;
-            R: number;
-            S: number;
-            T: number;
-            U: number;
-            V: number;
-            W: number;
-            X: number;
-            Y: number;
-            Z: number;
-            F1: number;
-            F2: number;
-            F3: number;
-            F4: number;
-            F5: number;
-            F6: number;
-            F7: number;
-            F8: number;
-            F9: number;
-            F10: number;
-            F11: number;
-            F12: number;
-            BackSpace: number;
-            Tab: number;
-            Enter: number;
-            Caps_Lock: number;
-            Control: number;
-            Shift: number;
-            Alt: number;
-            Left_Arrow: number;
-            Up_Arrow: number;
-            Right_Arrow: number;
-            Down_Arrow: number;
-            Insert: number;
-            Delete: number;
-            Num_Lock: number;
+        readonly KeyCode_MAP: {
+            readonly 0: 48;
+            readonly 1: 49;
+            readonly 2: 50;
+            readonly 3: 51;
+            readonly 4: 52;
+            readonly 5: 53;
+            readonly 6: 54;
+            readonly 7: 55;
+            readonly 8: 56;
+            readonly 9: 57;
+            readonly A: 65;
+            readonly B: 66;
+            readonly C: 67;
+            readonly D: 68;
+            readonly E: 69;
+            readonly F: 70;
+            readonly G: 71;
+            readonly H: 72;
+            readonly I: 73;
+            readonly J: 74;
+            readonly K: 75;
+            readonly L: 76;
+            readonly M: 77;
+            readonly N: 78;
+            readonly O: 79;
+            readonly P: 80;
+            readonly Q: 81;
+            readonly R: 82;
+            readonly S: 83;
+            readonly T: 84;
+            readonly U: 85;
+            readonly V: 86;
+            readonly W: 87;
+            readonly X: 88;
+            readonly Y: 89;
+            readonly Z: 90;
+            readonly F1: 112;
+            readonly F2: 113;
+            readonly F3: 114;
+            readonly F4: 115;
+            readonly F5: 116;
+            readonly F6: 117;
+            readonly F7: 118;
+            readonly F8: 119;
+            readonly F9: 120;
+            readonly F10: 121;
+            readonly F11: 122;
+            readonly F12: 123;
+            readonly BackSpace: 8;
+            readonly Tab: 9;
+            readonly Enter: 13;
+            readonly Caps_Lock: 20;
+            readonly Control: 17;
+            readonly Shift: 16;
+            readonly Alt: 18;
+            readonly Left_Arrow: 37;
+            readonly Up_Arrow: 38;
+            readonly Right_Arrow: 39;
+            readonly Down_Arrow: 40;
+            readonly Insert: 45;
+            readonly Delete: 46;
+            readonly Num_Lock: 144;
         };
         /**
          * 参考资料：
          *          浅谈JavaScript中按键事件的e.keyCode || e.which || e.charCode - 筱葭的博客 - CSDN博客 - https://blog.csdn.net/zhouziyu2011/article/details/53978293
          */
-        getKeyCode(__e: Event): number;
+        readonly getKeyCode: (__e: Event) => number;
     };
     static ClipBoard: {
         copy: string;

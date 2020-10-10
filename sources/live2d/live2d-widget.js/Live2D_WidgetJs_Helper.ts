@@ -89,7 +89,6 @@ export class xX_Live2D_WidgetJs_Helper {
 		modelBase: 'http://test-admin.bgex.link/',
 	};
 
-
 	/**
 	 * 移除Demo
 	 */
@@ -106,7 +105,7 @@ export class xX_Live2D_WidgetJs_Helper {
 	public static initDemo(
 		option?: Live2D_CfgOption,
 	) {
-		return new Promise(((resolve, /* reject */) => {
+		return new Promise(((resolve /* reject */) => {
 
 
 			// 处理默认值
@@ -125,7 +124,7 @@ export class xX_Live2D_WidgetJs_Helper {
 			}
 
 
-			getL2Dwidget().then((_exports) => {
+			PrivateHelper.getL2Dwidget().then((_exports) => {
 				console.log('最新调用', _exports);
 				const { L2Dwidget } = _exports;
 				this.loadDemoCss(CssE.demo);      // 尝试加载CSS
@@ -153,7 +152,7 @@ export class xX_Live2D_WidgetJs_Helper {
 							},
 						},
 						model  : {
-							jsonPath: modelE === xX_Live2DModelE.default_demo ? undefined : getModelUrl(modelE, customPathCfg),
+							jsonPath: modelE === xX_Live2DModelE.default_demo ? undefined : PrivateHelper.getModelUrl(modelE, customPathCfg),
 						},
 						display: {
 							position: 'left',
@@ -175,6 +174,38 @@ export class xX_Live2D_WidgetJs_Helper {
 
 		}));
 
+	}
+
+	/**
+	 * 绑定快捷键
+	 * 				1.Ctrl + Alt + Shift + 【你自己的快捷键】。
+	 * 				2.
+	 *
+	 */
+	public static bindHotKey(
+		hotKey: KeyCode_MAP_Type__Values,		// 快捷键
+		callback: () => void,								// 回调
+	) {
+		document.onkeydown = function(_evt) {
+			PrivateHelper.get_DomEvents().then(({ xX_BrowserEventMap }) => {
+				const { KEYBOARD } = xX_BrowserEventMap;
+				const keyCode      = KEYBOARD.getKeyCode(_evt);
+				if (_evt.shiftKey
+					&& _evt.altKey
+					&& _evt.ctrlKey) {
+					switch (keyCode) {
+						case hotKey: {
+							console.log('按下了live2D的快捷键');
+							callback();														// 执行回调。
+							break;
+						}
+						default: {
+							console.log('其它快捷键');
+						}
+					}
+				}
+			});
+		};
 	}
 
 	// ———————————————————————————————————————————————————————————————————————————
@@ -217,112 +248,121 @@ export class xX_Live2D_WidgetJs_Helper {
 
 //
 
-function getModelUrl(
-	modelE: xX_Live2DModelE,
-	customPathCfg: typeof xX_Live2D_WidgetJs_Helper['customPathCfg'],
-) {
+class PrivateHelper {
 
-	switch (xX_Live2D_WidgetJs_Helper.cdnMode) {
-		//
-		//
-		//
-		case CdnModeE.SelfPublic: {                     // 从自身public目录获取
-			const dirName = modelE.valueOf().toLowerCase();
+	public static getModelUrl(
+		modelE: xX_Live2DModelE,
+		customPathCfg: typeof xX_Live2D_WidgetJs_Helper['customPathCfg'],
+	) {
 
-			const fileName = (function() {
-				switch (modelE) {
-					case xX_Live2DModelE.epsilon2_1:
-						return 'epsilon2.1';
-					case xX_Live2DModelE.gf:
-						return 'gantzert_felixander';
-					default:
-						return modelE.valueOf().toLowerCase();               // WARN 转化为小写字母。
-				}
-			})();
+		switch (xX_Live2D_WidgetJs_Helper.cdnMode) {
+			//
+			//
+			//
+			case CdnModeE.SelfPublic: {                     // 从自身public目录获取
+				const dirName = modelE.valueOf().toLowerCase();
 
-			// TIP 加上远程路径。
-			return customPathCfg.modelBase + `live2d/model/live2d-widget-model-${dirName}/assets/${fileName}.model.json`;
+				const fileName = (function() {
+					switch (modelE) {
+						case xX_Live2DModelE.epsilon2_1:
+							return 'epsilon2.1';
+						case xX_Live2DModelE.gf:
+							return 'gantzert_felixander';
+						default:
+							return modelE.valueOf().toLowerCase();               // WARN 转化为小写字母。
+					}
+				})();
+
+				// TIP 加上远程路径。
+				return customPathCfg.modelBase + `live2d/model/live2d-widget-model-${dirName}/assets/${fileName}.model.json`;
+			}
+			//
+			//
+			//
+			case CdnModeE.UnPkg: {                          // 从远程 Unpkg.com 网站，进行获取
+				const dirName = (function() {
+					switch (modelE) {
+						case xX_Live2DModelE.haru01:
+							return 'haru';              // 需要拼接中间目录。
+						case xX_Live2DModelE.haru02:
+							return 'haru';              // 需要拼接中间目录。
+						default:
+							return modelE.valueOf().toLowerCase();               // WARN 转化为小写字母。
+					}
+				})();
+
+				const middleDir = (function() {
+					switch (modelE) {
+						case xX_Live2DModelE.haru01:
+							return '01/';              // 需要拼接中间目录。
+						case xX_Live2DModelE.haru02:
+							return '02/';              // 需要拼接中间目录。
+						default:
+							return '';                        // 默认没有中间目录
+					}
+				})();
+
+				const fileName = (function() {
+					switch (modelE) {
+						case xX_Live2DModelE.epsilon2_1:
+							return 'Epsilon2.1';                  // 首字母大写！
+						case xX_Live2DModelE.gf:
+							return 'Gantzert_Felixander';
+						default:
+							return modelE.valueOf().toLowerCase();               // WARN 转化为小写字母。
+					}
+				})();
+
+				return `https://unpkg.com/live2d-widget-model-${dirName}@latest/${middleDir}assets/${fileName}.model.json`;
+			}
 		}
-		//
-		//
-		//
-		case CdnModeE.UnPkg: {                          // 从远程 Unpkg.com 网站，进行获取
-			const dirName = (function() {
-				switch (modelE) {
-					case xX_Live2DModelE.haru01:
-						return 'haru';              // 需要拼接中间目录。
-					case xX_Live2DModelE.haru02:
-						return 'haru';              // 需要拼接中间目录。
-					default:
-						return modelE.valueOf().toLowerCase();               // WARN 转化为小写字母。
-				}
-			})();
 
-			const middleDir = (function() {
-				switch (modelE) {
-					case xX_Live2DModelE.haru01:
-						return '01/';              // 需要拼接中间目录。
-					case xX_Live2DModelE.haru02:
-						return '02/';              // 需要拼接中间目录。
-					default:
-						return '';                        // 默认没有中间目录
-				}
-			})();
+	}
 
-			const fileName = (function() {
-				switch (modelE) {
-					case xX_Live2DModelE.epsilon2_1:
-						return 'Epsilon2.1';                  // 首字母大写！
-					case xX_Live2DModelE.gf:
-						return 'Gantzert_Felixander';
-					default:
-						return modelE.valueOf().toLowerCase();               // WARN 转化为小写字母。
-				}
-			})();
-
-			return `https://unpkg.com/live2d-widget-model-${dirName}@latest/${middleDir}assets/${fileName}.model.json`;
+	public static getL2Dwidget() {
+		switch (xX_Live2D_WidgetJs_Helper.libLoadWay) {
+			case L2Dwidget_LoadWayE.DynamicLoad: {                                                // TIP 动态脚本加载
+				console.log('此处注意，【public】目录，最终是落在了哪一个项目上');
+				return xX_DomScript_Helper.loadJsScript_Async(
+					'/L2Dwidget/3.1.5/L2Dwidget.min.js',
+				).then(() => {
+					return {
+						L2Dwidget: (window as any).L2Dwidget as L2Dwidget_SimpleNS.L2Dwidget_Type,
+					};
+				});
+			}
+			case L2Dwidget_LoadWayE.Import: {                                                     // TIP Import方式
+				return import('live2d-widget');
+			}
+			/**
+			 * TIP 此处，官方的【发行版本】并没有给出最新的【common.js】。
+			 *        1.我们可以【下载代码】，然后【手动打包】出来。
+			 *        2.
+			 */
+			case L2Dwidget_LoadWayE.SrcModuleImport: {
+				// 								上面方法，好像个别环境，会有【exports is not defined】的问题。
+				return Promise.resolve(require('./3.1.5/L2Dwidget.common.js') as {
+					L2Dwidget: L2Dwidget_SimpleNS.L2Dwidget_Type,
+				});
+				// @ts-ignore
+				// return import('./3.1.5/L2Dwidget.common.js').then(exports => {
+				// 	return {
+				// 		L2Dwidget: exports as L2Dwidget_SimpleNS.L2Dwidget_Type,
+				// 	};
+				// });
+			}
+			case L2Dwidget_LoadWayE.Require: {
+				return Promise.resolve({
+					L2Dwidget: require('live2d-widget/lib/L2Dwidget.min.js') as L2Dwidget_SimpleNS.L2Dwidget_Type,
+				});
+			}
 		}
+	}
+
+	public static get_DomEvents() {
+		return import('../../dom/dom-events');
 	}
 
 }
 
-function getL2Dwidget() {
-	switch (xX_Live2D_WidgetJs_Helper.libLoadWay) {
-		case L2Dwidget_LoadWayE.DynamicLoad: {                                                // TIP 动态脚本加载
-			console.log('此处注意，【public】目录，最终是落在了哪一个项目上');
-			return xX_DomScript_Helper.loadJsScript_Async(
-				'/L2Dwidget/3.1.5/L2Dwidget.min.js',
-			).then(() => {
-				return {
-					L2Dwidget: (window as any).L2Dwidget as L2Dwidget_SimpleNS.L2Dwidget_Type,
-				};
-			});
-		}
-		case L2Dwidget_LoadWayE.Import: {                                                     // TIP Import方式
-			return import('live2d-widget');
-		}
-		/**
-		 * TIP 此处，官方的【发行版本】并没有给出最新的【common.js】。
-		 *        1.我们可以【下载代码】，然后【手动打包】出来。
-		 *        2.
-		 */
-		case L2Dwidget_LoadWayE.SrcModuleImport: {
-			// 								上面方法，好像个别环境，会有【exports is not defined】的问题。
-			return Promise.resolve(require('./3.1.5/L2Dwidget.common.js') as {
-				L2Dwidget: L2Dwidget_SimpleNS.L2Dwidget_Type,
-			});
-			// @ts-ignore
-			// return import('./3.1.5/L2Dwidget.common.js').then(exports => {
-			// 	return {
-			// 		L2Dwidget: exports as L2Dwidget_SimpleNS.L2Dwidget_Type,
-			// 	};
-			// });
-		}
-		case L2Dwidget_LoadWayE.Require: {
-			return Promise.resolve({
-				L2Dwidget: require('live2d-widget/lib/L2Dwidget.min.js') as L2Dwidget_SimpleNS.L2Dwidget_Type,
-			});
-		}
-	}
-}
 

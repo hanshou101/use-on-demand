@@ -19,6 +19,12 @@ type MyEventTarget = (/*GlobalEventHandlers |*/ HTMLElement | Window) & {
 };
 
 
+declare global {
+	type KeyCode_MAP_Type = typeof xX_BrowserEventMap.KEYBOARD.KeyCode_MAP;
+	type KeyCode_MAP_Type__Keys = keyof KeyCode_MAP_Type;
+	type KeyCode_MAP_Type__Values = KeyCode_MAP_Type[KeyCode_MAP_Type__Keys];
+}
+
 export class xX_DomEvt_Helper {
 
 	/**
@@ -312,7 +318,7 @@ export class xX_BrowserEventMap {
 			const e = (__e || window.event) as KeyboardEvent;		// 此处，做出IE兼容。
 			return e.keyCode || e.which || e.charCode;
 		},
-	};
+	} as const;
 
 	public static ClipBoard = {
 		copy : 'copy',       // Ctrl+C，复制

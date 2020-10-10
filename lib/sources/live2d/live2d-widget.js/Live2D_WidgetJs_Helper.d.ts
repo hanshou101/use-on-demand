@@ -71,6 +71,14 @@ export declare class xX_Live2D_WidgetJs_Helper {
      */
     static initDemo(option?: Live2D_CfgOption): Promise<unknown>;
     /**
+     * 绑定快捷键
+     * 				1.Ctrl + Alt + Shift + 【你自己的快捷键】。
+     * 				2.
+     *
+     */
+    static bindHotKey(hotKey: KeyCode_MAP_Type__Values, // 快捷键
+    callback: () => void): void;
+    /**
      * CSS，加载状态表
      */
     private static cssLoadStatus;
