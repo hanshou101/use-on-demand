@@ -1,3 +1,5 @@
+// @ts-nocheck TIP 临时忽略所有报错
+
 function getHelloWorldCfg_import() {
   return import("./components/hello-world/HelloWorld");
 }

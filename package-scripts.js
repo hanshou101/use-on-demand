@@ -106,6 +106,15 @@ module.exports = {
 					//
 					'packages/to-build.ts',
 				].join(' '),
+
+
+				/**
+				 * TIP 多组件打包
+				 */
+				'multi-cp': {
+					'serve': 'vue-cli-service serve',
+					'build': 'vue-cli-service build',
+				},
 			},
 
 

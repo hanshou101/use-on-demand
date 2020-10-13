@@ -110,7 +110,7 @@ export class xX_Live2D_WidgetJs_Helper {
 
 			// 处理默认值
 			let modelE        = option?.fallbackModel || xX_Live2DModelE.default_demo;
-			let customPathCfg = option?.customPathCfg || this.customPathCfg;
+			const customPathCfg = option?.customPathCfg || this.customPathCfg;
 			const prefKey     = option?.prefKey || this.defaultPrefKey;
 			//
 			if (option?.forceUseModel) {									// TIP 【1】强行指定，优先级最高

@@ -1,76 +1,100 @@
-const path = require('path');
+const { xX_getEntries, xX_resolve } = require('./sources/webpack/webpack-util');
 
-function resolve(dir) {
-	return path.resolve(__dirname, dir);
-}
-
-const ComponentsEntry = require('./packages/components/components.json');   // WARN 无效，【lib】模式不支持多入口。
 
 /**
+ * TIP 开发环境配置
  * @type { VueCliService_ProjectOptions_Type }
  */
-const cfg = {
-	/**
-	 * 【开发模式】页面。
-	 */
-	pages              : {
+const devConfig = {
+	pages           : {
 		index: {
 			entry   : 'examples/main.ts',
 			template: 'public/index.html',
 			filename: 'index.html',
 		},
 	},
-	/**
-	 * 关闭source map有两个好处
-	 *
-	 * 减少打包编译的时间；
-	 * 避免在生产环境中用F12开发者工具在Sources中看到源码。
-	 */
-	productionSourceMap: false,
-	/**
-	 * 当作为一个库构建时，要将其设置为 false 免得用户自己导入 CSS。
-	 */
-	css                : {
-		extract: false,
+	configureWebpack: {
+		resolve: {
+			extensions: [
+				'.js', '.vue', '.json',
+				'.ts', '.tsx',
+			],
+			alias     : {
+				'@'     : xX_resolve('packages'),
+				'assets': xX_resolve('examples/assets'),
+				'views' : xX_resolve('examples/views'),
+			},
+		},
 	},
-	/**
-	 * devServer项
-	 */
-	devServer          : {
+	chainWebpack    : config => {
+		config.module
+					.rule('js')        // TIP 此处，是TS转化过后的JS文件
+					.include
+					.add('/packages')
+					.end()
+					.use('babel')
+					.loader('babel-loader')
+					.tap(options => {
+						return options;
+					});
+	},
+	devServer       : {
 		port: 8091,
 		hot : true,
 		open: 'Google Chrome',
 	},
-	/**
-	 *
-	 */
-	configureWebpack   : {
-		resolve: {
-			extensions: ['.js', '.ts', 'tsx',/*    */'.vue', '.json'],
-			/**
-			 * 文件别名
-			 */
-			alias     : {
-				'@'   : resolve('packages'),
-				assets: resolve('examples/assets'),
-				views : resolve('examples/views'),
-			},
-		},
-		/**
-		 * 暴露默认导出配置
-		 */
-		output : {
-			libraryExport: 'default',
-		},
-		/**
-		 * 【打包模式】入口文件。
-		 *        1.WARN 无效，【lib】模式不支持多入口。
-		 */
-		// entry              : ComponentsEntry,
-	},
-	/** @type {import('webpack-chain')} */
-	chainWebpack       : config => {
-	},
 };
 
-module.exports = cfg;
+
+/**
+ * TIP 打包环境配置
+ * @type { VueCliService_ProjectOptions_Type }
+ */
+const buildConfig = {
+	css                : {
+		sourceMap: true,
+		extract  : {
+			filename: 'style/[name].css',
+		},
+	},
+	configureWebpack   : {
+		entry : {
+			...xX_getEntries('packages/components'),
+		},
+		output: {
+			filename     : '[name]/index.js',
+			libraryTarget: 'commonjs2',
+		},
+	},
+	chainWebpack       : config => {
+		config.module
+					.rule('js')        // TIP 此处，是TS转化过后的JS文件
+					.include
+					.add('/packages')
+					.end()
+					.use('babel')
+					.loader('babel-loader')
+					.tap(options => {
+						return options;
+					});
+		config.optimization.delete('splitChunks');
+		config.plugins.delete('copy');
+		config.plugins.delete('html');
+		config.plugins.delete('preload');
+		config.plugins.delete('prefetch');
+		config.plugins.delete('hmr');
+		config.entryPoints.delete('app');
+
+		config.module
+					.rule('fonts')
+					.use('url-loader')
+					.tap(option => {
+						option.fallback.options.name = 'static/fonts/[name].[hash:8].[ext]';
+						return option;
+					});
+	},
+	outputDir          : 'lib-cp',		// 略微改名
+	productionSourceMap: false,
+};
+
+module.exports = process.env.NODE_ENV === 'development' ? devConfig : buildConfig;
