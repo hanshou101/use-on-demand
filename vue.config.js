@@ -2,6 +2,38 @@ const { xX_getEntries, xX_resolve } = require('./sources/webpack/webpack-util');
 
 console.log('当前Node环境', process.env.NODE_ENV);
 
+
+const InteractOuterProject_Helper = {
+	/**
+	 * 1.支持以下形式：
+	 * 					string
+	 * 					Array
+	 * 					Object
+	 * 					Function
+	 * 					Regex
+	 * 2.【key】为require后的模块名，【value】为【模块内主入口，导出的根变量】的名字。
+	 * 					1.import Vue from 'vue' ————————> export default Vue ————————> 'vue' : 'Vue'
+	 */
+	__externals: {
+		'vue': {
+			// commonjs : 'Vue',				// module.exports = Vue ;
+			// commonjs2: 'Vue',				// module.exports.default = Vue ;
+			// amd      : 'Vue',				// 类似 commonjs ，但是用【AMD模块系统】
+			// root     : 'Vue',				// window.Vue ; 挂载在Window上面。
+
+			/**
+			 * WARN 见鬼了？？？？？？
+			 * 				1.网上教的都是一些傻逼么？
+			 */
+			root     : 'Vue',
+			commonjs : 'vue',
+			commonjs2: 'vue',
+			amd      : 'vue',
+		},
+	},
+	// externalsType: 'var',		// 另外一项功能
+};
+
 /**
  * TIP 开发环境配置
  * @type { VueCliService_ProjectOptions_Type }
@@ -101,6 +133,15 @@ const buildConfig = {
 						option.fallback.options.name = 'static/fonts/[name].[hash:8].[ext]';
 						return option;
 					});
+
+
+		config.externals({
+			...config.get('externals'),											// 防止被直接覆盖
+			...InteractOuterProject_Helper.__externals,
+		});		// 将【部分使用中依赖】，由外部提供。
+
+		// console.log('真正配置', config.get('externals'));
+
 	},
 	outputDir          : 'lib-cp',		// 略微改名
 	productionSourceMap: false,

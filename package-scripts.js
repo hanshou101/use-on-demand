@@ -115,6 +115,15 @@ module.exports = {
 					'serve': 'vue-cli-service serve',
 					'build': 'vue-cli-service build',
 				},
+
+				/**
+				 * 1.参考资料：
+				 * 				[webpack 相关 | Vue CLI](https://cli.vuejs.org/zh/guide/webpack.html#%E4%BF%AE%E6%94%B9%E6%8F%92%E4%BB%B6%E9%80%89%E9%A1%B9)
+				 */
+				'inspect-config': {
+					'production': 'vue-cli-service inspect --mode production > inspect-output.production.js',
+				},
+
 			},
 
 
