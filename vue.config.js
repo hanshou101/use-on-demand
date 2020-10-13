@@ -1,5 +1,6 @@
 const { xX_getEntries, xX_resolve } = require('./sources/webpack/webpack-util');
 
+console.log('当前Node环境', process.env.NODE_ENV);
 
 /**
  * TIP 开发环境配置
@@ -27,6 +28,7 @@ const devConfig = {
 		},
 	},
 	chainWebpack    : config => {
+		// Babel编译
 		config.module
 					.rule('js')        // TIP 此处，是TS转化过后的JS文件
 					.include
@@ -53,20 +55,24 @@ const devConfig = {
 const buildConfig = {
 	css                : {
 		sourceMap: true,
+		// 打包时，样式抽取出来
 		extract  : {
-			filename: 'style/[name].css',
+			filename: 'style/[name].css',	// 在lib文件夹中建立style文件夹中，生成对应的css文件。
 		},
 	},
 	configureWebpack   : {
+		// 多入口
 		entry : {
 			...xX_getEntries('packages/components'),
 		},
+		// 打包后的文件输出
 		output: {
 			filename     : '[name]/index.js',
 			libraryTarget: 'commonjs2',
 		},
 	},
 	chainWebpack       : config => {
+		// Babel编译
 		config.module
 					.rule('js')        // TIP 此处，是TS转化过后的JS文件
 					.include
@@ -77,6 +83,8 @@ const buildConfig = {
 					.tap(options => {
 						return options;
 					});
+
+		// 删除一些【无用功能】
 		config.optimization.delete('splitChunks');
 		config.plugins.delete('copy');
 		config.plugins.delete('html');
@@ -85,6 +93,7 @@ const buildConfig = {
 		config.plugins.delete('hmr');
 		config.entryPoints.delete('app');
 
+		// 字体Loader
 		config.module
 					.rule('fonts')
 					.use('url-loader')

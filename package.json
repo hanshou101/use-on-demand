@@ -152,7 +152,7 @@
     "url": "https://github.com/hanshou101/use-on-demand/issues"
   },
   "                         发包属性————————————————————————————————————": "————————————————",
-  "main": "lib-cp/use-on-demand.umd.min.js",
+  "main": "lib-cp/index/index.js",
   "typings": "packages/index.d.ts",
   "files": [
     "————————————————————TS工具库",
