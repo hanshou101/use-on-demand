@@ -60,7 +60,7 @@
 	import DepuTableCp                                    from '../packages/components/webgl-demos/DepuTable.vue';
 	import WaveBall                                       from '../packages/components/webgl-demos/WaveBall.vue';
 	import OnePieceDemo                                   from '../packages/components/webgl-demos/OnePieceDemo.vue';
-	import VideoJS                                        from '../packages/components/video-js/VideoJS.vue';
+	import VideoJS                                        from '../packages/components/VideoJS/VideoJS.vue';
 	import { xX_FileMd5_Helper }                          from '../sources/platform/file-blob/FileMd5_Helper';
 
 

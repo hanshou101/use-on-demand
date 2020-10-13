@@ -1,5 +1,5 @@
-import HelloWorldCfg from './hello-world';
-import VideoJSCfg    from './video-js';
+import HelloWorldCfg from './HelloWorld';
+import VideoJSCfg    from './VideoJS';
 
 const install = function(Vue: VueConstructor_Type, opts = {}) {
 	Vue.use(HelloWorldCfg);

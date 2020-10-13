@@ -1,7 +1,7 @@
 // @ts-nocheck TIP 临时忽略所有报错
 
-import * as HelloWorldCfg from './components/hello-world/HelloWorld';
-import * as VideoJSCfg    from './components/video-js/VideoJS';
+import * as HelloWorldCfg from './components/HelloWorld/HelloWorld';
+import * as VideoJSCfg    from './components/VideoJS/VideoJS';
 
 const components: Array<{ cp: VueConstructor_Type, cpName: string, }> = [
 	HelloWorldCfg, VideoJSCfg,

@@ -16,9 +16,10 @@
 # 使用方式
 
 1. 【TS库】，直接使用
-2. 【组件库】，需要加入
-    1. 【Webpack】的Tree-Shaking。
-    2.
+2. 【组件库】
+    1. 需要加入【babel-plugin-import】插件的配置，使其能对【use-on-demand】按需导入。
+    2. 需要在【main.js】中，提前用【Vue.use】加载。
+        1. 目前，不支持【业务组件中import，然后放到components选项】的这种形式。
 
 
 # 本地开发方式

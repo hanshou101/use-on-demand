@@ -1,19 +1,19 @@
 // @ts-nocheck TIP 临时忽略所有报错
 
 function getHelloWorldCfg_import() {
-  return import("./components/hello-world/HelloWorld");
+  return import("./components/HelloWorld/HelloWorld");
 }
 
 function getVideoJSCfg_import() {
-  return import("./components/video-js/VideoJS");
+  return import("./components/VideoJS/VideoJS");
 }
 
 function getHelloWorldCfg_require() {
-  return require("./components/hello-world/HelloWorld");
+  return require("./components/HelloWorld/HelloWorld");
 }
 
 function getVideoJSCfg_require() {
-  return require("./components/video-js/VideoJS");
+  return require("./components/VideoJS/VideoJS");
 }
 
 function installByImport(Vue: VueConstructor_Type, opts = {}) {
