@@ -1,5 +1,6 @@
-import Vue from 'vue';
-import App from './App.vue';
+import Vue           from 'vue';
+import App           from './App.vue';
+import { AppRouter } from './router';
 
 
 // import HelloWorld from '../packages/to-build';
@@ -15,5 +16,6 @@ Vue.config.productionTip = false;
 // Vue.use(Cp);
 
 new Vue({
-  render: h => h(App)
+	render: h => h(App),
+	router: AppRouter,
 }).$mount('#app');

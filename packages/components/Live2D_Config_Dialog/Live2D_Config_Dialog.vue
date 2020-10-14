@@ -15,13 +15,13 @@
 		<!--对话框按钮组：确定、取消-->
 		<div slot="footer" class="dialog-footer">
 			<!--取消按钮。将会把this.dialogVisible值变为false-->
-			<el-button @click="dialogVisible = false">{{ $t('dialog.Cancel') }}</el-button>
+			<el-button @click="dialogVisible = false">{{ t('dialog.Cancel') }}</el-button>
 			<!--确定按钮。submitForm方法提交ruleFormRef表单。-->
 			<el-button
 				@click="submitForm('ruleFormRef')"
 				type="primary"
 				:loading="dataCommitting"
-				:disabled="dataCommitting">{{ $t('dialog.Confirm') }}
+				:disabled="dataCommitting">{{ t('dialog.Confirm') }}
 			</el-button>
 		</div>
 
@@ -34,6 +34,9 @@
 	import { xX_Father_ElFItem }                          from '../../../sources/element-ui/admin-cp/ElFItem';
 	import { xX_Live2D_WidgetJs_Helper, xX_Live2DModelE } from '../../../sources/live2d/live2d-widget.js/Live2D_WidgetJs_Helper';
 	import { xX_MyEl_FormItem_Rule_Config }               from '../../../sources/element-ui/admin-cp/MyElementUtils';
+
+	import VueI18n from 'vue-i18n';
+
 
 	@Component({
 		name      : 'Live2D_Config_Dialog',
@@ -51,7 +54,7 @@
 		// 表单检验规则配置
 		get rules(): xX_MyEl_FormItem_Rule_Config {
 			return { // 示范
-				// demo: [new MyEl_RuleItem(this.$t("websiteOperation.articleManager.Select_Category").toString(),)],
+				// demo: [new MyEl_RuleItem(this.t("websiteOperation.articleManager.Select_Category").toString(),)],
 			};
 		};
 
@@ -75,9 +78,9 @@
 		// 弹窗标题
 		get dialogTitle(): string {
 			if (this.dialogType === 1) {
-				return this.$t('dialog.Create').toString();
+				return this.t('dialog.Create').toString();
 			} else {
-				return this.$t('Live2D 动画模型配置').toString();
+				return this.t('Live2D 动画模型配置').toString();
 			}
 		}
 
@@ -85,11 +88,14 @@
 		/*
 					@Watch("dialogType", {immediate:true})
 					public watch_dialogType(newVal: any, oldVal: any) {               // 新建/编辑 对话框的标题
-						this.dialogTitle = newVal === 1 ? this.$t('dialog.Create').toString() : this.$t('table.Edit').toString()
+						this.dialogTitle = newVal === 1 ? this.t('dialog.Create').toString() : this.t('table.Edit').toString()
 					}
 			*/
 
 		// TIP————————————————————————————————————Method，在类中的实现————————————————————————————————————————
+
+		t = VueI18n.prototype.t;	// I18N，翻译方法
+
 
 		// TIP————————————————————————————————————Vue生命周期，在类中的实现——————————————————————————————————
 		created(): void {
