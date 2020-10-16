@@ -34,7 +34,7 @@
 	import { xX_Father_ElFItem }                          from '../../../sources/element-ui/admin-cp/ElFItem';
 	import { xX_Live2D_WidgetJs_Helper, xX_Live2DModelE } from '../../../sources/live2d/live2d-widget.js/Live2D_WidgetJs_Helper';
 	import { xX_MyEl_FormItem_Rule_Config }               from '../../../sources/element-ui/admin-cp/MyElementUtils';
-	import xX_MyFormEasy                                  from '../../../sources/element-ui/admin-cp/form/MyFormEasy.vue';
+	import xX_MyFormEasy                                  from '../../cp-element-ui/MyFormEasy/MyFormEasy.vue';
 
 	// import Vue from 'vue';
 	// Vue.use(ElDialog);

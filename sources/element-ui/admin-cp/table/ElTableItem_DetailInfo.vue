@@ -2,7 +2,8 @@
 	<div class="elTableItem-detailInfo" ref="elTableItem-detailInfo">
 		<table class="table detail-table">
 			<tbody>
-			<tr v-for="(item,index) in pairs" v-if=" !calc_IfDisableRender(item) ">
+			<tr v-for="(item,index) in pairs" v-if=" !calc_IfDisableRender(item) "
+					:key="index + '_' + uid()">
 				<td class="td-field" :style="{ width: calcLabelMaxWidth }">
 					<span v-html="item.leftLabel"></span><!--TIP 此处，支持<br/>等html标签-->
 				</td>
@@ -18,6 +19,7 @@
 	import { xX_Father_ElTItem }                from '../ElTItem';
 	import { Component, Prop }                  from 'vue-property-decorator';
 	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
+	import { xX_SString_Helper }                from '../../../symbol-string/SString_Helper';
 
 	@Component({
 		name      : 'ElTableItem_DetailInfo',
@@ -95,6 +97,13 @@
 				return false;                                                                   // 不禁用
 			}
 			return item.disableRender(this.row, propText);                                    // 判断是否禁用
+		}
+
+		/**
+		 * 创建v-for独一无二的id。用法：将强制重建  列表循环内的【子组件】项。
+		 */
+		uid() {
+			return xX_SString_Helper.uid();
 		}
 
 		// TIP——————————————————————————————————————Vue生命周期，在类中的实现——————————————————————————————————

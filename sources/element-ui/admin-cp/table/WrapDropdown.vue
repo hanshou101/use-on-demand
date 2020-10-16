@@ -14,7 +14,7 @@
 
 <script lang="ts">
 
-	import { MixinLevelTag, xX_Father_BaseVue } from '../mixins/Father_BaseVue';
+	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
 	import { Component }                        from 'vue-property-decorator';
 
 	@Component({

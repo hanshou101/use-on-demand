@@ -1,17 +1,39 @@
 <script lang="ts">
 
+	import { VNode } from 'vue';
 
-	import ElTableItem_DetailInfo               from './ElTableItem_DetailInfo.vue';
-	import { xX_data_elTagColorFilter }         from '../MyElementUtils';
+	import ElTableItem_DetailInfo               from '../../../sources/element-ui/admin-cp/table/ElTableItem_DetailInfo.vue';
+	import WrapDropdown               from '../../../sources/element-ui/admin-cp/table/WrapDropdown.vue';
+	import { xX_data_elTagColorFilter }         from '../../../sources/element-ui/admin-cp/MyElementUtils';
 	import { Component, Prop }                  from 'vue-property-decorator';
-	import { xX_SString_Helper }                from '../../../symbol-string/SString_Helper';
-	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
+	import { xX_SString_Helper }                from '../../../sources/symbol-string/SString_Helper';
+	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
+
+	import {
+		TableColumn as ElTableColumn,
+		Tag as ElTag,
+	} from 'element-ui';
+
+	// @ts-ignore
+	import { Fragment, Plugin } from 'vue-fragment';
+
+	type NotArray<T> = T extends Array<any> ? never : T;
+
+	interface RenderFn {
+		<T/*extends NotArray<T>*/>(tagName: string, datas: NotArray<T>, children?: string | any[]): VNode;   //
+		(tagName: string, children?: string | any[]): VNode;                  //
+	}
 
 	@Component({
 		name      : 'MyTableEasy',
 		components: {
 			/*组件*/
 			ElTableItem_DetailInfo,
+
+			Fragment,
+			ElTableColumn,
+			ElTag,
+			WrapDropdown,
 		},
 		filters   : {},
 	})
@@ -87,7 +109,7 @@
 				// 新增无数据undefined时展示值
 				noDataVal: {}
 			}*/
-		public render(h: (tagName: string, datas?: object, children?: string | any[]) => any): any {
+		public render(h: RenderFn): any {
 			// 判断用户是否传递了slot，即用户是否需要自定内容
 			const $slots          = (this as any).$scopedSlots;
 			const children: any[] = this.resortTableCols.map((item: any) => {
@@ -109,13 +131,25 @@
 					},
 				};
 
-				const disableRenderCache = () => ({
-					/**
-					 * 1.此处，每一个【item】的key，还不能完全一样！必须是独立的。
-					 * 2.TODO 而且，我们可以在【代码中】检查，凡是有【vue组件】的，必须要拥有一个key；以免漏掉！
-					 */
-					key: this.uid(),    // item.name 并不能起到【防缓存】的效果。（因为每一列的name都是一样的）
-				});
+				const that = this;
+
+				function disableRenderCache(
+					forceUse = true,                     // 是否强制开启？（此处，更加小粒度，进行控制）
+				) {
+					return forceUse
+						? {
+							/**
+							 * 1.此处，每一个【item】的key，还不能完全一样！必须是独立的。
+							 * 2.TODO 而且，我们可以在【代码中】检查，凡是有【vue组件】的，必须要拥有一个key；以免漏掉！
+							 *
+							 * 3.后来发现，其实这里没有【防缓存】也是能在【正常环境】下工作的。出现问题只是因为【谷歌翻译】！
+							 */
+							// FIXME 因为发现，是【谷歌翻译】引起的，所以暂时关闭【防缓存】。
+							// 又再次打开了
+							key: that.uid(),    // item.name 并不能起到【防缓存】的效果。（因为每一列的name都是一样的）
+						}
+						: {};
+				}
 
 
 				/* 列名优先使用label字段，如果传递了labelFunction，则由用户自定义；如果传递了i18nKey，则从i18n中获取 */
@@ -151,9 +185,12 @@
 								scopedSlots = {
 									default: (props: any) => {
 
-										return h('div', [         // 原生组件
-											item.valueFunction(props.row, item),
-										]);
+										return h('div', {
+												...disableRenderCache() as { key: string },    // 防缓存
+											},
+											[         // 原生组件
+												item.valueFunction(props.row, item),
+											]);
 									},
 								};
 							} else {
@@ -226,13 +263,17 @@
 					case 'image': {
 						scopedSlots = {
 							default: (props: any) => {
-								return h('viewer', [h('img', {
-									staticClass: 'table-column-img',
-									attrs      : {
-										src: props.row[item.prop],
+								return h('viewer', {
+										...disableRenderCache() as { key: string },    // 防缓存
 									},
-									...disableRenderCache() as { key: string },    // 防缓存
-								})]);
+									[h('img',
+										{
+											staticClass: 'table-column-img',
+											attrs      : {
+												src: props.row[item.prop],
+											},
+											...disableRenderCache() as { key: string },
+										})]);
 							},
 						};
 						break;
@@ -253,13 +294,18 @@
 										...disableRenderCache() as { key: string },    // 防缓存
 									},
 									list.map(str => {                                             // 循环遍历
-											return h('viewer', [
-												h('img', {
-													staticClass: 'table-column-img',
-													attrs      : {
-														src: str,
-													},
-												})],
+											return h('viewer',
+												{
+													...disableRenderCache() as { key: string }, // 防缓存
+												},
+												[
+													h('img', {
+														staticClass: 'table-column-img',
+														attrs      : {
+															src: str,
+														},
+														...disableRenderCache() as { key: string }, // 防缓存
+													})],
 											);
 										},
 									),

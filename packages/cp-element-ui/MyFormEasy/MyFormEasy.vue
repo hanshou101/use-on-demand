@@ -338,24 +338,25 @@
 
 <script lang="ts">
 	import { ElUploadInternalFileDetail }       from 'element-ui/types/upload';
-	import { xX_Father_ElFItem }                from '../ElFItem';
-	import xX_UploadSingleImg                   from '../upload/UploadSingleImg.vue';
-	import xX_MultiLangSimple                   from '../multi-lang/MultiLangSimple.vue';
-	import xX_Count_Input                       from '../input/Count_Input.vue';
-	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
+	import { xX_Father_ElFItem }                from '../../../sources/element-ui/admin-cp/ElFItem';
+	import xX_UploadSingleImg                   from '../../../sources/element-ui/admin-cp/upload/UploadSingleImg.vue';
+	import xX_MultiLangSimple                   from '../../../sources/element-ui/admin-cp/multi-lang/MultiLangSimple.vue';
+	import xX_Count_Input                       from '../../../sources/element-ui/admin-cp/input/Count_Input.vue';
+	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
 	import { Component, Prop }                  from 'vue-property-decorator';
 
-	const { getCurrentday, getCurrentWeek, getCurrentMonth, getDay, getBeforeOneMonth } = require('../temp____lib/util.js');
+	const { getCurrentday, getCurrentWeek, getCurrentMonth, getDay, getBeforeOneMonth } = require('../../../sources/element-ui/admin-cp/temp____lib/util.js');
 
 	import {
 		FormItem as ElFormItem,
 		Select as ElSelect,
 		Option as ElOption,
+		Input as ElInput,
 	} from 'element-ui';
 
 	// @ts-ignore
 	import { Fragment, Plugin }  from 'vue-fragment';
-	import { xX_SString_Helper } from '../../../symbol-string/SString_Helper';
+	import { xX_SString_Helper } from '../../../sources/symbol-string/SString_Helper';
 
 	@Component({
 		name      : 'MyFormEasy',
@@ -368,6 +369,7 @@
 			ElFormItem,
 			ElSelect,
 			ElOption,
+			ElInput,
 			Fragment,
 		},
 		filters   : {},

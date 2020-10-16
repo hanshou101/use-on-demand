@@ -105,6 +105,7 @@ const buildConfig = {
 		// 多入口
 		entry : {
 			...xX_getEntries('packages/components'),
+			...xX_getEntries('packages/cp-element-ui'),
 		},
 		// 打包后的文件输出
 		output: {
