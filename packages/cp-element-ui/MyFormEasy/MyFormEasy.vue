@@ -117,8 +117,8 @@
 												:arrow-control="true"
 												:selectableRange="'00:00:00 - 23:59:59'"
 												:format="item.format" :value-format="item.format"
-												:start-placeholder="$t('form.Time_Picker_Start_Time')"
-												:end-placeholder="$t('form.Time_Picker_End_Time')"
+												:start-placeholder="t('form.Time_Picker_Start_Time')"
+												:end-placeholder="t('form.Time_Picker_End_Time')"
 												:editable="false" clearable
 												:disabled=" ( (item ).config||{} ).disableItem ">
 				</el-time-picker>
@@ -149,8 +149,8 @@
 												:arrow-control="true"
 												:selectableRange="'00:00:00 - 23:59:59'"
 												:format="item.format" :value-format="item.format"
-												:start-placeholder="$t('form.Time_Picker_Start_Time')"
-												:end-placeholder="$t('form.Time_Picker_End_Time')"
+												:start-placeholder="t('form.Time_Picker_Start_Time')"
+												:end-placeholder="t('form.Time_Picker_End_Time')"
 												:editable="false" clearable
 												:disabled=" ( (item ).config||{} ).disableItem ">
 				</el-time-picker>
@@ -169,8 +169,8 @@
 				<el-date-picker v-model="ruleForm[item.prop_AND_bindValue]"
 												class="widthauto" type="daterange"
 												:format="item.format" :value-format="item.format"
-												:start-placeholder="$t('form.Time_Picker_Start_Time')"
-												:end-placeholder="$t('form.Time_Picker_End_Time')"
+												:start-placeholder="t('form.Time_Picker_Start_Time')"
+												:end-placeholder="t('form.Time_Picker_End_Time')"
 												:editable="false" clearable
 												:disabled=" ( (item ).config||{} ).disableItem ">
 				</el-date-picker>
@@ -183,7 +183,8 @@
 				<el-date-picker v-model="ruleForm[item.prop_AND_bindValue]"
 												class="widthauto" type="datetimerange"
 												format="yyyy-MM-dd HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss"
-												:start-placeholder="$t('form.Time_Picker_Start_Time')" :end-placeholder="$t('form.Time_Picker_End_Time')"
+												:start-placeholder="t('form.Time_Picker_Start_Time')"
+												:end-placeholder="t('form.Time_Picker_End_Time')"
 												:editable="false" clearable
 												:disabled=" ( (item ).config||{} ).disableItem ">
 				</el-date-picker>
@@ -197,8 +198,8 @@
 				<el-date-picker v-model="ruleForm[item.prop_AND_bindValue]"
 												class="widthauto" type="datetimerange"
 												format="yyyy-MM-dd HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss"
-												:start-placeholder="$t('form.Time_Picker_Start_Time')"
-												:end-placeholder="$t('form.Time_Picker_End_Time')"
+												:start-placeholder="t('form.Time_Picker_Start_Time')"
+												:end-placeholder="t('form.Time_Picker_End_Time')"
 												:editable="false" clearable
 												@change="changeSelectTime"
 												:disabled=" ( (item ).config||{} ).disableItem ">
@@ -224,6 +225,7 @@
 												 :width="150" :height="150"
 												 :disabled=" ( (item ).config||{} ).disableItem "
 												 v-model="ruleForm[item.prop_AND_bindValue]"
+												 :preupload-api_-promise="preuploadApi_Promise"
 												 @uploadSuccess="uploadSingleImageSuccess_Wrapper(item)(/*...arguments*/ arguments[0],arguments[1] )"></UploadSingleImg>
 			</el-form-item>
 
@@ -337,6 +339,8 @@
 </template>
 
 <script lang="ts">
+	import Vue from 'vue';
+
 	import { ElUploadInternalFileDetail }       from 'element-ui/types/upload';
 	import { xX_Father_ElFItem }                from '../../../sources/element-ui/admin-cp/ElFItem';
 	import xX_UploadSingleImg                   from '../../../sources/element-ui/admin-cp/upload/UploadSingleImg.vue';
@@ -352,11 +356,27 @@
 		Select as ElSelect,
 		Option as ElOption,
 		Input as ElInput,
+		InputNumber as ElInputNumber,
+		Cascader as ElCascader,
+		Radio as ElRadio,
+		RadioGroup as ElRadioGroup,
+		TimePicker as ElTimePicker,
+		DatePicker as ElDatePicker,
 	} from 'element-ui';
 
 	// @ts-ignore
-	import { Fragment, Plugin }  from 'vue-fragment';
-	import { xX_SString_Helper } from '../../../sources/symbol-string/SString_Helper';
+	import { Fragment, Plugin }     from 'vue-fragment';
+	import { xX_SString_Helper }    from '../../../sources/symbol-string/SString_Helper';
+	import { t }                    from '../../cp-util/locale/locale';
+	import { xX_Rt_UEditor_Helper } from '../../../sources/editor/richtext-editor/Rt_UEditor_Helper';
+
+	// FIXME 此处，暂时没有调通！！！
+	// FIXME 此处，暂时没有调通！！！
+	// FIXME 此处，暂时没有调通！！！
+	// FIXME 此处，暂时没有调通！！！
+	// FIXME 此处，暂时没有调通！！！
+	// FIXME 此处，暂时没有调通！！！
+	// xX_Rt_UEditor_Helper.initUEditor(Vue);
 
 	@Component({
 		name      : 'MyFormEasy',
@@ -370,6 +390,13 @@
 			ElSelect,
 			ElOption,
 			ElInput,
+			ElInputNumber,
+			ElCascader,
+			ElRadio,
+			ElRadioGroup,
+			ElTimePicker,
+			ElDatePicker,
+			//
 			Fragment,
 		},
 		filters   : {},
@@ -381,11 +408,14 @@
 		@Prop({ type: Array, required: true }) readonly formItems!: xX_Father_ElFItem.Base[];
 		// 数据可以和父级通用
 		@Prop({ type: Object, required: true }) readonly ruleForm!: IndexedObj<any>;
+		@Prop({ type: Object, required: true }) private preuploadApi_Promise!: Promise<Function>;
+
 		@Prop({ type: Number, default: 1 }) private type!: number;                                          // 有可能是，对话框的类型  新增/编辑/审核 什么的。
 
 		@Prop({ type: Boolean, default: true }) private hasKR!: boolean;        // 是否开启韩文
 		@Prop({ type: Boolean, default: true }) private hasJP!: boolean;        // 是否开启日文
 		@Prop({ type: Boolean, default: true }) private hasRU!: boolean;        // 是否开启俄文
+
 
 		// Data，在类中的实现 （双向绑定除外）
 		public selectIndex: any   = null;
@@ -455,6 +485,8 @@
 		uid() {
 			return xX_SString_Helper.uid();
 		}
+
+		t = t;
 
 		// Lifecycle生命周期，在类中的实现
 		created(): void {

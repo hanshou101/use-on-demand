@@ -1,9 +1,7 @@
 <script lang="ts">
 
-	import { VNode } from 'vue';
+	import Vue, { VNode } from 'vue';
 
-	import ElTableItem_DetailInfo               from '../../../sources/element-ui/admin-cp/table/ElTableItem_DetailInfo.vue';
-	import WrapDropdown               from '../../../sources/element-ui/admin-cp/table/WrapDropdown.vue';
 	import { xX_data_elTagColorFilter }         from '../../../sources/element-ui/admin-cp/MyElementUtils';
 	import { Component, Prop }                  from 'vue-property-decorator';
 	import { xX_SString_Helper }                from '../../../sources/symbol-string/SString_Helper';
@@ -12,10 +10,15 @@
 	import {
 		TableColumn as ElTableColumn,
 		Tag as ElTag,
-	} from 'element-ui';
+	}                             from 'element-ui';
+	import ElTableItem_DetailInfo from '../../../sources/element-ui/admin-cp/table/ElTableItem_DetailInfo.vue';
+	// import WrapDropdown           from '../../../sources/element-ui/admin-cp/table/WrapDropdown.vue';
+
+	xX_CPlugin_Helper.init_vViewer(Vue);	// 初始化【v-viewer】组件。
 
 	// @ts-ignore
-	import { Fragment, Plugin } from 'vue-fragment';
+	import { Fragment, Plugin }  from 'vue-fragment';
+	import { xX_CPlugin_Helper } from '../../../sources/vue/plugin/common-plugin';
 
 	type NotArray<T> = T extends Array<any> ? never : T;
 
@@ -33,7 +36,8 @@
 			Fragment,
 			ElTableColumn,
 			ElTag,
-			WrapDropdown,
+			// WrapDropdown,
+			// Viewer,		// WARN 因为包含【组件 + 指令】，所以用 Vue.use 直接导入比较简单。
 		},
 		filters   : {},
 	})

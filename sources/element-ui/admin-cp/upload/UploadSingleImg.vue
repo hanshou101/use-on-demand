@@ -6,7 +6,7 @@
 		<el-upload
 			ref="upload_single_img"
 			class="avatar-uploader"
-      :class="{'disabled':disabled}"
+			:class="{'disabled':disabled}"
 			:action="uploadHost"
 			:show-file-list="false"
 			:accept="acceptInner"
@@ -38,77 +38,99 @@
 	// API，建议采用相对路径。
 
 
-	import { ElUploadInternalFileDetail }       from 'element-ui/types/upload';
-	import { ElUpload }                         from 'element-ui/types/element-ui';
-	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
-	import { Component, Prop, Watch }           from 'vue-property-decorator';
+	import { ElUploadInternalFileDetail }             from 'element-ui/types/upload';
+	import { ElUpload }                               from 'element-ui/types/element-ui';
+	import { MixinLevelTag, xX_Father_BaseVue }       from '../../../admin/mixins/Father_BaseVue';
+	import { Component, InjectReactive, Prop, Watch } from 'vue-property-decorator';
 
-/**
- * 1.参考资料：
- *        [图片格式_百度百科](https://baike.baidu.com/item/%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F/381122?fr=aladdin)
- */
-const AllImageType = [
-  'JPG',
-  'JPEG',
-  'PNG',
-  //
-  'BMP',
-  'GIF',
-  'WEBP',
-  //
-  'JFIF',
-  'PJPEG',
-  'PJP',
-  'TIF',
-  'PCX',
-  'TGA',
-  'EXIF',
-  'FPX',
-  'SVG',
-  'PSD',
-  'CDR',
-  'PCD',
-  'DXF',
-  'UFO',
-  'EPS',
-  'AI',
-  'RAW',
-  'WMF',
-  'AVIF',
-];
+	import {
+		Upload as ElUpload____Cp,
+		Button as ElButton,
+	} from 'element-ui';
+
+	/**
+	 * 1.参考资料：
+	 *        [图片格式_百度百科](https://baike.baidu.com/item/%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F/381122?fr=aladdin)
+	 */
+	const AllImageType = [
+		'JPG',
+		'JPEG',
+		'PNG',
+		//
+		'BMP',
+		'GIF',
+		'WEBP',
+		//
+		'JFIF',
+		'PJPEG',
+		'PJP',
+		'TIF',
+		'PCX',
+		'TGA',
+		'EXIF',
+		'FPX',
+		'SVG',
+		'PSD',
+		'CDR',
+		'PCD',
+		'DXF',
+		'UFO',
+		'EPS',
+		'AI',
+		'RAW',
+		'WMF',
+		'AVIF',
+	];
 
 	@Component({
 		name      : 'UploadSingleImg',
-		components: {},
+		components: {
+			ElButton,
+			ElUpload: ElUpload____Cp,
+		},
 	})
 	export default class xX_UploadSingleImg extends xX_Father_BaseVue {    // 混入在此处，进行添加。
+
+		// TIP： Inject，从任意层级父组件，传入数据
+		/**
+		 * 1.Inject的写法
+		 *
+		 * 2.Provide的写法：
+		 * 				@ProvideReactive(/_* Provide的key *_/ 'preuploadApi') /_* data中的key *_/ two = /_*初始值*_/ 'value';
+		 */
+		// @InjectReactive(/* 别名 key */) /* data中的key */ preuploadApi!: /* 类型 */ Function  /* 没有初始值 */;
+		/**
+		 * 如果用这种方式，可以参照：
+		 * 				1.https://stackoverflow.com/a/52592047/6264260。对【MyFormEasy】的初始化，做特殊处理。（很棒的思路！）
+		 */
+		@Prop({ type: Object, required: true }) private preuploadApi_Promise!: Promise<Function>;
+
 
 		// TIP： Prop，在类中的实现
 		@Prop({ type: String, default: '' }) private value!: string;
 		// 单个文件最大体积，默认5M
-  @Prop({type: Number, default: 1 * 1024 * 1024}) private maxSize!: number;
+		@Prop({ type: Number, default: 1 * 1024 * 1024 }) private maxSize!: number;
 		@Prop({ type: Boolean, default: false }) private disabled!: boolean;
 		@Prop({ type: Boolean, default: true }) private showPreview!: boolean;
 
-  // TODO 此处，只是软性限制。可以用【JS逻辑】加上硬性限制！
-  @Prop({
-    type: Array, default: function () {
-      return AllImageType;
-    }
-  }) private accept!: Array<string>;
+		// TODO 此处，只是软性限制。可以用【JS逻辑】加上硬性限制！
+		@Prop({
+			type: Array, default: function() {
+				return AllImageType;
+			},
+		}) private accept!: Array<string>;
 
 		@Prop({ type: Number, default: 180 }) private width!: number;
 		@Prop({ type: Number, default: 120 }) private height!: number;
-		@Prop({ type: Function, required: true }) private preuploadApi!: Function;
 
 
 		// TIP： Data，在类中的实现 （双向绑定除外）
 		// 预览图片地址
 		previewImg: string | Blob = '';
 		disabled_inner: boolean   = false;
-  acceptInner: string       = this.accept.map(type => {
-    return `image/${type.toLocaleLowerCase()}`;
-  }).join(',');
+		acceptInner: string       = this.accept.map(type => {
+			return `image/${type.toLocaleLowerCase()}`;
+		}).join(',');
 		// 上传时的额外参数
 		uploadData: any           = {};
 		// 上传url
@@ -144,8 +166,8 @@ const AllImageType = [
 
 		// TIP： Method，在类中的实现
 		// 文件状态改变时的钩子，添加文件、上传成功和上传失败时都会被调用
-  public _fileOnChange(file: ElUploadInternalFileDetail, fileList: object[]): void {
-    // console.log('添加文件了', file, fileList);
+		public _fileOnChange(file: ElUploadInternalFileDetail, fileList: object[]): void {
+			// console.log('添加文件了', file, fileList);
 			// 文件状态为 ready 则表明是添加文件
 			if (file.status === 'ready') {
 				// 文件大小超出
@@ -157,26 +179,26 @@ const AllImageType = [
 
 					// 向上传递事件
 					this.$emit('error', 'MAX_SIZE_LIMIT', this.maxSize);
-        // @ts-ignore
-        (this.$refs.upload_single_img as ElUpload).uploadFiles.splice(0, 1);        // 删除文件
-        return;
-      }
-      // TIP 文件格式不对
-      if (
-          !this.accept.find((type) => {
-            return file.name.toLocaleLowerCase().includes(
-                type.toLocaleLowerCase()
-            );
-          })
-      ) {
-        // 弹出提示
-        console.log('文件格式不对');
-        this.$notify.warning(`图片格式错误。当前文件格式： 【${file.raw.type}】 格式。应该上传的文件格式： 【${this.accept.join('/')}】 。`);
+					// @ts-ignore
+					(this.$refs.upload_single_img as ElUpload).uploadFiles.splice(0, 1);        // 删除文件
+					return;
+				}
+				// TIP 文件格式不对
+				if (
+					!this.accept.find((type) => {
+						return file.name.toLocaleLowerCase().includes(
+							type.toLocaleLowerCase(),
+						);
+					})
+				) {
+					// 弹出提示
+					console.log('文件格式不对');
+					this.$notify.warning(`图片格式错误。当前文件格式： 【${file.raw.type}】 格式。应该上传的文件格式： 【${this.accept.join('/')}】 。`);
 
-        // 向上传递事件
-        this.$emit('error', 'MAX_SIZE_LIMIT', this.maxSize);
-        // @ts-ignore
-        (this.$refs.upload_single_img as ElUpload).uploadFiles.splice(0, 1);        // 删除文件
+					// 向上传递事件
+					this.$emit('error', 'MAX_SIZE_LIMIT', this.maxSize);
+					// @ts-ignore
+					(this.$refs.upload_single_img as ElUpload).uploadFiles.splice(0, 1);        // 删除文件
 					return;
 				}
 
@@ -194,32 +216,42 @@ const AllImageType = [
 		};
 
 		// 预上传
-  _preUpload(file: ElUploadInternalFileDetail): void {
+		_preUpload(file: ElUploadInternalFileDetail): void {
 			this.disabled_inner = true;
 			this.preUploadFaild = false;
 			this.uploading      = true;
 
 			const arr    = file.name.split('.');
 			const suffix = arr[arr.length - 1];
-			this.preuploadApi()
-					.then((res: any) => {
-						console.log(res);
-						this.uploadHost                       = res.host;
-						this.uploadData.name                  = res.signature;
-						this.uploadData.key                   = `${res.dir}${new Date().getTime()}.${suffix}`;
-						this.uploadData.policy                = res.policy;
-						this.uploadData.OSSAccessKeyId        = res.accessid;
-						this.uploadData.success_action_status = 200;
-						this.uploadData.callback              = res.callback;
-						this.uploadData.signature             = res.signature;
 
-						this.upload();
-					})
-					.catch(() => {
-						this.disabled_inner = false;
-						this.preUploadFaild = true;
-						this.uploading      = false;
-					});
+			if (!this.preuploadApi_Promise) {
+				throw new Error(`
+				如果你采用【Inject】方式：
+								请从父组件的【Provide 或者 ProvideReactive】，传入【Inject 中的 preuploadApi_Promise】
+				如果你采用【Prop】方式：
+								请从<MyFormEasy>传入【Prop 中的 preuploadApi_Promise】
+				`);
+			}
+
+			this.preuploadApi_Promise.then(fn => {
+				fn().then((res: any) => {
+					console.log(res);
+					this.uploadHost                       = res.host;
+					this.uploadData.name                  = res.signature;
+					this.uploadData.key                   = `${res.dir}${new Date().getTime()}.${suffix}`;
+					this.uploadData.policy                = res.policy;
+					this.uploadData.OSSAccessKeyId        = res.accessid;
+					this.uploadData.success_action_status = 200;
+					this.uploadData.callback              = res.callback;
+					this.uploadData.signature             = res.signature;
+
+					this.upload();
+				}).catch(() => {
+					this.disabled_inner = false;
+					this.preUploadFaild = true;
+					this.uploading      = false;
+				});
+			});
 		}
 
 		// 上传图片
@@ -228,7 +260,7 @@ const AllImageType = [
 				// 上传重试，hack，element ui默认不支持重新上传
 				if (retry) {
 					this.currentFile.status = 'ready';
-        // @ts-ignore
+					// @ts-ignore
 					(this.$refs.upload_single_img as ElUpload).uploadFiles.push(this.currentFile);
 				}
 				this.uploading = true;
@@ -332,12 +364,12 @@ const AllImageType = [
 <style rel="stylesheet/scss" lang="scss">
 	.upload-single-img-com {
 
-  .disabled {
-    background : #F5F7FA;
-    .el-upload {
-      cursor : not-allowed;
-    }
-  }
+		.disabled {
+			background : #F5F7FA;
+			.el-upload {
+				cursor : not-allowed;
+			}
+		}
 
 		.avatar-uploader .el-upload {
 			/*width: 180px;*/

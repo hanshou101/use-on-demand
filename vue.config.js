@@ -39,6 +39,10 @@ const InteractOuterProject_Helper = {
 
 
 		// 'vue-fragment': 'vue-fragment',	// WARN 此处，暂时交由内部打包
+		// 'v-viewer': 'v-viewer',					// WARN 此处，暂时交由内部打包
+
+		'vue-ueditor-wrap': 'vue-ueditor-wrap',	// TIP 如果放在内部打包，会报错。（因为机制比较特殊）
+
 	},
 	// externalsType: 'var',		// 另外一项功能
 };

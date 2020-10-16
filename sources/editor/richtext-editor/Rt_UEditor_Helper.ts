@@ -35,6 +35,11 @@ export class xX_Rt_UEditor_Helper {
 	// TIP——————————————————————————————————
 
 	private static get_VueUeditorWrap() {
+		/**
+		 * WARN 此处，非常特殊：
+		 * 				1.【组件库】，打包是在【node_modules】里面的。
+		 * 				2.但是稍候，程序会尝试用【/js/hash值.js】去拼接它，再网络获取。
+		 */
 		// @ts-ignore
 		return import('vue-ueditor-wrap');
 	}

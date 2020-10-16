@@ -6,6 +6,13 @@ const defaultLang = {																					// 默认国际化语言
 		Cancel : '取消',
 		Create : '新建',
 	},
+	table : {
+		Operation: '操作',
+	},
+	form  : {
+		Time_Picker_Start_Time: '开始时间',
+		Time_Picker_End_Time  : '结束时间',
+	},
 };
 import Vue        from 'vue';
 import deepmerge  from 'deepmerge';
