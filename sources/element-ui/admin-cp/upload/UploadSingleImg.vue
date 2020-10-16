@@ -6,6 +6,7 @@
 		<el-upload
 			ref="upload_single_img"
 			class="avatar-uploader"
+      :class="{'disabled':disabled}"
 			:action="uploadHost"
 			:show-file-list="false"
 			:accept="acceptInner"
@@ -42,6 +43,40 @@
 	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
 	import { Component, Prop, Watch }           from 'vue-property-decorator';
 
+/**
+ * 1.参考资料：
+ *        [图片格式_百度百科](https://baike.baidu.com/item/%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F/381122?fr=aladdin)
+ */
+const AllImageType = [
+  'JPG',
+  'JPEG',
+  'PNG',
+  //
+  'BMP',
+  'GIF',
+  'WEBP',
+  //
+  'JFIF',
+  'PJPEG',
+  'PJP',
+  'TIF',
+  'PCX',
+  'TGA',
+  'EXIF',
+  'FPX',
+  'SVG',
+  'PSD',
+  'CDR',
+  'PCD',
+  'DXF',
+  'UFO',
+  'EPS',
+  'AI',
+  'RAW',
+  'WMF',
+  'AVIF',
+];
+
 	@Component({
 		name      : 'UploadSingleImg',
 		components: {},
@@ -51,10 +86,17 @@
 		// TIP： Prop，在类中的实现
 		@Prop({ type: String, default: '' }) private value!: string;
 		// 单个文件最大体积，默认5M
-		@Prop({ type: Number, default: 5242880 }) private maxSize!: number;
+  @Prop({type: Number, default: 1 * 1024 * 1024}) private maxSize!: number;
 		@Prop({ type: Boolean, default: false }) private disabled!: boolean;
 		@Prop({ type: Boolean, default: true }) private showPreview!: boolean;
-		@Prop({ type: String, default: 'image/jpg,image/jpeg,image/png,image/bmp,image/gif,image/webp' }) private accept!: string;
+
+  // TODO 此处，只是软性限制。可以用【JS逻辑】加上硬性限制！
+  @Prop({
+    type: Array, default: function () {
+      return AllImageType;
+    }
+  }) private accept!: Array<string>;
+
 		@Prop({ type: Number, default: 180 }) private width!: number;
 		@Prop({ type: Number, default: 120 }) private height!: number;
 		@Prop({ type: Function, required: true }) private preuploadApi!: Function;
@@ -64,7 +106,9 @@
 		// 预览图片地址
 		previewImg: string | Blob = '';
 		disabled_inner: boolean   = false;
-		acceptInner: string       = this.accept;
+  acceptInner: string       = this.accept.map(type => {
+    return `image/${type.toLocaleLowerCase()}`;
+  }).join(',');
 		// 上传时的额外参数
 		uploadData: any           = {};
 		// 上传url
@@ -100,8 +144,8 @@
 
 		// TIP： Method，在类中的实现
 		// 文件状态改变时的钩子，添加文件、上传成功和上传失败时都会被调用
-		public _fileOnChange(file: any, fileList: object[]): void {
-			//console.log("添加文件了", file, fileList);
+  public _fileOnChange(file: ElUploadInternalFileDetail, fileList: object[]): void {
+    // console.log('添加文件了', file, fileList);
 			// 文件状态为 ready 则表明是添加文件
 			if (file.status === 'ready') {
 				// 文件大小超出
@@ -113,8 +157,26 @@
 
 					// 向上传递事件
 					this.$emit('error', 'MAX_SIZE_LIMIT', this.maxSize);
+        // @ts-ignore
+        (this.$refs.upload_single_img as ElUpload).uploadFiles.splice(0, 1);        // 删除文件
+        return;
+      }
+      // TIP 文件格式不对
+      if (
+          !this.accept.find((type) => {
+            return file.name.toLocaleLowerCase().includes(
+                type.toLocaleLowerCase()
+            );
+          })
+      ) {
+        // 弹出提示
+        console.log('文件格式不对');
+        this.$notify.warning(`图片格式错误。当前文件格式： 【${file.raw.type}】 格式。应该上传的文件格式： 【${this.accept.join('/')}】 。`);
 
-					(this.$refs.upload_single_img as ElUpload).uploadFiles.splice(0, 1);
+        // 向上传递事件
+        this.$emit('error', 'MAX_SIZE_LIMIT', this.maxSize);
+        // @ts-ignore
+        (this.$refs.upload_single_img as ElUpload).uploadFiles.splice(0, 1);        // 删除文件
 					return;
 				}
 
@@ -132,7 +194,7 @@
 		};
 
 		// 预上传
-		_preUpload(file: File): void {
+  _preUpload(file: ElUploadInternalFileDetail): void {
 			this.disabled_inner = true;
 			this.preUploadFaild = false;
 			this.uploading      = true;
@@ -166,6 +228,7 @@
 				// 上传重试，hack，element ui默认不支持重新上传
 				if (retry) {
 					this.currentFile.status = 'ready';
+        // @ts-ignore
 					(this.$refs.upload_single_img as ElUpload).uploadFiles.push(this.currentFile);
 				}
 				this.uploading = true;
@@ -268,6 +331,14 @@
 
 <style rel="stylesheet/scss" lang="scss">
 	.upload-single-img-com {
+
+  .disabled {
+    background : #F5F7FA;
+    .el-upload {
+      cursor : not-allowed;
+    }
+  }
+
 		.avatar-uploader .el-upload {
 			/*width: 180px;*/
 			/*height: 120px;*/

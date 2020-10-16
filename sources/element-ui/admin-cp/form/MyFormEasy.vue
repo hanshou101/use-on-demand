@@ -5,6 +5,7 @@
 			<!--常规字段-->
 			<el-form-item
 				v-if="item.myCategory === 'text' || item.myCategory === 'textarea' || item.myCategory === 'number' || item.myCategory === 'password' "
+				:key="item.prop_AND_bindValue + '_' + uid()"
 				:label="item.label"
 				:prop="item.prop_AND_bindValue">
 				<!--TIP :disabled项，专用于  Dialog有时需要禁用输入项的处理。-->
@@ -22,6 +23,7 @@
 			</el-form-item>
 			<!--  数字范围输入框  -->
 			<el-form-item v-else-if="item.myCategory === 'number_range' "
+										:key="item.prop_AND_bindValue + '_' + uid()"
 										:label="item.label"
 										:labelWidth="item.labelWidth"
 										:prop="item.prop_AND_bindValue">
@@ -35,15 +37,16 @@
 				-->
 
 				<!--简单版本-->
-				<el-input class="numberRangeInput" v-model="ruleForm[item.leftProp]"
+				<el-input class="numberRangeInput" v-model="ruleForm[item.leftProp]" clearable
 									:type="item.inputType" />
 				- -
-				<el-input class="numberRangeInput" v-model="ruleForm[item.rightProp]"
+				<el-input class="numberRangeInput" v-model="ruleForm[item.rightProp]" clearable
 									:type="item.inputType" />
 
 			</el-form-item>
 			<!--  正数input框  -->
 			<el-form-item v-else-if="item.myCategory === 'positiveNumber' "
+										:key="item.prop_AND_bindValue + '_' + uid()"
 										:label="item.label"
 										:prop="item.prop_AND_bindValue">
 				<Count_Input
@@ -53,12 +56,14 @@
 			</el-form-item>
 			<!--  步进器  -->
 			<el-form-item v-else-if="item.myCategory === 'step' "
+										:key="item.prop_AND_bindValue + '_' + uid()"
 										:label="item.label"
 										:prop="item.prop_AND_bindValue">
 				<el-input-number v-model="ruleForm[item.prop_AND_bindValue]" :min="0" :max="99999999" label="描述文字"></el-input-number>
 			</el-form-item>
 			<!--下拉选项-->
 			<el-form-item v-else-if="item.myCategory === 'options' "
+										:key="item.prop_AND_bindValue + '_' + uid()"
 										:label="item.label"
 										:prop="item.prop_AND_bindValue">
 				<!--TIP :disabled项，专用于  Dialog有时需要禁用输入项的处理。-->
@@ -74,7 +79,9 @@
 				</el-select>
 			</el-form-item>
 			<!--级联选择器-->
-			<el-form-item :label="item.label" :prop="item.prop_AND_bindValue" v-if="item.myCategory === 'cascader' ">
+			<el-form-item :label="item.label" :prop="item.prop_AND_bindValue"
+										v-if="item.myCategory === 'cascader' "
+										:key="item.prop_AND_bindValue + '_' + uid()">
 				<el-cascader
 					class="form-input"
 					clearable
@@ -87,6 +94,7 @@
 			</el-form-item>
 			<!--单选框-->
 			<el-form-item v-else-if="item.myCategory === 'radio' "
+										:key="item.prop_AND_bindValue + '_' + uid()"
 										:label="item.label"
 										:prop="item.prop_AND_bindValue">
 				<el-radio-group v-model="ruleForm[item.prop_AND_bindValue]">
@@ -100,6 +108,7 @@
 			</el-form-item>
 			<!--TIP 时间选择（无日期）-->
 			<el-form-item v-else-if="item.myCategory === 'time' "
+										:key="item.prop_AND_bindValue + '_' + uid()"
 										:label="item.label"
 										:prop="item.prop_AND_bindValue">
 				<el-time-picker v-model="ruleForm[item.prop_AND_bindValue]"
@@ -116,6 +125,7 @@
 			</el-form-item>
 			<!--TIP 日期选择（无时间）-->
 			<el-form-item v-else-if="item.myCategory === 'single_date' "
+										:key="item.prop_AND_bindValue + '_' + uid()"
 										:label="item.label"
 										:prop="item.prop_AND_bindValue">
 				<el-date-picker v-model="ruleForm[item.prop_AND_bindValue]"
@@ -130,6 +140,7 @@
 			</el-form-item>
 			<!--TIP 时间范围选择（无日期）-->
 			<el-form-item v-else-if="item.myCategory === 'time_range' "
+										:key="item.prop_AND_bindValue + '_' + uid()"
 										:label="item.label"
 										:prop="item.prop_AND_bindValue">
 				<el-time-picker v-model="ruleForm[item.prop_AND_bindValue]"
@@ -146,6 +157,7 @@
 			</el-form-item>
 			<!--TIP 日期范围选择（无时间）-->
 			<el-form-item v-else-if="item.myCategory === 'date_time' "
+										:key="item.prop_AND_bindValue + '_' + uid()"
 										:label="item.label"
 										:prop="item.prop_AND_bindValue">
 				<!--daterange，选择日期+起始范围。-->
@@ -165,6 +177,7 @@
 			</el-form-item>
 			<!--TIP 日期时间范围选择/带时间选择(12小时制)（有日期、有时间）-->
 			<el-form-item v-else-if="item.myCategory === 'date_time_range' "
+										:key="item.prop_AND_bindValue + '_' + uid()"
 										:label="item.label"
 										:prop="item.prop_AND_bindValue">
 				<el-date-picker v-model="ruleForm[item.prop_AND_bindValue]"
@@ -178,6 +191,7 @@
 
 			<!--TIP 日期时间范围选择/带时间选择(24小时制)/带时间选择快捷按钮  （有日期、有时间）-->
 			<el-form-item v-if="item.myCategory === 'date_time_range_btn' "
+										:key="item.prop_AND_bindValue + '_' + uid()"
 										:label="item.label"
 										:prop="item.prop_AND_bindValue">
 				<el-date-picker v-model="ruleForm[item.prop_AND_bindValue]"
@@ -192,6 +206,7 @@
 			</el-form-item>
 			<!--附属于上面类型-->
 			<el-form-item v-if="item.myCategory === 'date_time_range_btn' "
+										:key="item.prop_AND_bindValue + '_' + uid()"
 										lable-width="0"
 										class="date-time-range-btn"
 										:prop="item.prop_AND_bindValue">
@@ -202,13 +217,20 @@
 			</el-form-item>
 
 			<!--单张图片上传-->
-			<el-form-item :label="item.label" :prop="item.prop_AND_bindValue" ref="imageUrlRef" v-if="item.myCategory === 'upload_img' ">
+			<el-form-item :label="item.label" :prop="item.prop_AND_bindValue" ref="imageUrlRef" v-if="item.myCategory === 'upload_img' "
+										:key="item.prop_AND_bindValue + '_' + uid()"
+			>
 				<UploadSingleImg :max-size="item.maxSize"
-												 :width="150" :height="150" v-model="ruleForm[item.prop_AND_bindValue]" @uploadSuccess="uploadSingleImageSuccess_Wrapper(item)(/*...arguments*/ arguments[0],arguments[1] )"></UploadSingleImg>
+												 :width="150" :height="150"
+												 :disabled=" ( (item ).config||{} ).disableItem "
+												 v-model="ruleForm[item.prop_AND_bindValue]"
+												 @uploadSuccess="uploadSingleImageSuccess_Wrapper(item)(/*...arguments*/ arguments[0],arguments[1] )"></UploadSingleImg>
 			</el-form-item>
 
 			<!--TIP 【纯文本】多语言输入：单行/多行-->
-			<el-form-item :label="item.label" :prop="item.prop_AND_bindValue" v-if="item.myCategory === 'lang_input' || item.myCategory === 'lang_inputTextarea' ">
+			<el-form-item :label="item.label" :prop="item.prop_AND_bindValue" v-if="item.myCategory === 'lang_input' || item.myCategory === 'lang_inputTextarea' "
+										:key="item.prop_AND_bindValue + '_' + uid()"
+			>
 				<MultiLangSimple
 					:ko_KR="hasKR"
 					:ja_JP="hasJP"
@@ -261,7 +283,9 @@
 			</el-form-item>
 
 			<!--TIP 【富文本】多语言输入：UEditor-->
-			<el-form-item :label="item.label" :prop="item.prop_AND_bindValue" v-if="item.myCategory === 'lang_ueditor' ">
+			<el-form-item :label="item.label" :prop="item.prop_AND_bindValue" v-if="item.myCategory === 'lang_ueditor' "
+										:key="item.prop_AND_bindValue + '_' + uid()"
+			>
 				<MultiLangSimple
 					@clickTab="clickTabUeditor"
 					:ko_KR="hasKR"
@@ -321,7 +345,18 @@
 	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
 	import { Component, Prop }                  from 'vue-property-decorator';
 
-	const { getCurrentday, getCurrentWeek, getCurrentMonth, getDay, getBeforeOneMonth } = require('@/project-tools/util');
+	const { getCurrentday, getCurrentWeek, getCurrentMonth, getDay, getBeforeOneMonth } = require('../temp____lib/util.js');
+
+	import {
+		FormItem as ElFormItem,
+		Select as ElSelect,
+		Option as ElOption,
+	} from 'element-ui';
+
+	// @ts-ignore
+	import { Fragment, Plugin }  from 'vue-fragment';
+	import { xX_SString_Helper } from '../../../symbol-string/SString_Helper';
+
 	@Component({
 		name      : 'MyFormEasy',
 		components: {
@@ -329,6 +364,11 @@
 			UploadSingleImg: xX_UploadSingleImg,
 			MultiLangSimple: xX_MultiLangSimple,
 			Count_Input    : xX_Count_Input,
+			//
+			ElFormItem,
+			ElSelect,
+			ElOption,
+			Fragment,
 		},
 		filters   : {},
 	})
@@ -407,9 +447,21 @@
 			this.$emit('clickTab');
 		}
 
+		/**
+		 * 创建v-for独一无二的id。用法：将强制重建  列表循环内的【子组件】项。
+		 */
+		uid() {
+			return xX_SString_Helper.uid();
+		}
+
 		// Lifecycle生命周期，在类中的实现
 		created(): void {
-			this.ueditorConfig = (this as any).$getUEditorConfig();
+			const _uEditorConfig: UndefinedAbleType<any> = (this as any).$getUEditorConfig?.();
+			if (_uEditorConfig) {
+				this.ueditorConfig = _uEditorConfig;
+			} else {
+				console.error('没有 ueditorConfig 配置！');
+			}
 		};
 
 		mounted(): void {
@@ -451,11 +503,11 @@
 
 </style>
 
-<style lang="scss" scoped>
+<style lang="stylus" scoped>
 	// 略微修改样式，便于【item文字换行】。
 	/deep/ .el-form-item__label {
-		word-break  : break-all;
-		white-space : pre-line;
+		word-break: break-all;
+		white-space: pre-line;
 	}
 
 </style>

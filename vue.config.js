@@ -15,6 +15,7 @@ const InteractOuterProject_Helper = {
 	 * 					1.import Vue from 'vue' ————————> export default Vue ————————> 'vue' : 'Vue'
 	 */
 	__externals: {
+		// 交给【外部】
 		'vue': {
 			// commonjs : 'Vue',				// module.exports = Vue ;
 			// commonjs2: 'Vue',				// module.exports.default = Vue ;
@@ -24,12 +25,20 @@ const InteractOuterProject_Helper = {
 			/**
 			 * WARN 见鬼了？？？？？？
 			 * 				1.网上教的都是一些傻逼么？
+			 * 				2.原本的正确解法的链接，找不到了。
 			 */
 			root     : 'Vue',
 			commonjs : 'vue',
 			commonjs2: 'vue',
 			amd      : 'vue',
 		},
+
+		// 'element-ui': 'ElementUI',				// 交给【外部】
+		// 'element-ui': 'Element',				// 交给【外部】
+		'element-ui': 'element-ui',				// 交给【外部】
+
+
+		// 'vue-fragment': 'vue-fragment',	// WARN 此处，暂时交由内部打包
 	},
 	// externalsType: 'var',		// 另外一项功能
 };

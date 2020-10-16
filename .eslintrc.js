@@ -58,6 +58,11 @@ module.exports = {
 		'prefer-rest-params'                     : 'off',
 		'no-async-promise-executor'              : 'off',
 		'no-empty'                               : 'off',
+
+
+		// TODO 临时关闭，将来还需要开启
+		'vue/no-use-v-if-with-v-for': 'warn',
+		'vue/no-unused-vars'        : 'warn',
 	},
 };
 

@@ -34,13 +34,27 @@
 	import { xX_Father_ElFItem }                          from '../../../sources/element-ui/admin-cp/ElFItem';
 	import { xX_Live2D_WidgetJs_Helper, xX_Live2DModelE } from '../../../sources/live2d/live2d-widget.js/Live2D_WidgetJs_Helper';
 	import { xX_MyEl_FormItem_Rule_Config }               from '../../../sources/element-ui/admin-cp/MyElementUtils';
+	import xX_MyFormEasy                                  from '../../../sources/element-ui/admin-cp/form/MyFormEasy.vue';
 
-	import VueI18n from 'vue-i18n';
+	// import Vue from 'vue';
+	// Vue.use(ElDialog);
+	// Vue.use(ElButton);
+	// Vue.use(ElForm);
 
+	import {
+		Dialog as ElDialog,
+		Button as ElButton,
+		Form as ElForm, Dialog,
+	}            from 'element-ui';
+	import { t } from '../../cp-util/locale/locale';
 
 	@Component({
 		name      : 'Live2D_Config_Dialog',
 		components: { /*组件*/
+			ElDialog,
+			ElButton,
+			ElForm,
+			MyFormEasy: xX_MyFormEasy,
 		},
 		filters   : {},
 	})
@@ -80,7 +94,8 @@
 			if (this.dialogType === 1) {
 				return this.t('dialog.Create').toString();
 			} else {
-				return this.t('Live2D 动画模型配置').toString();
+				// return this.t('Live2D 动画模型配置').toString();
+				return 'Live2D 动画模型配置';
 			}
 		}
 
@@ -94,7 +109,8 @@
 
 		// TIP————————————————————————————————————Method，在类中的实现————————————————————————————————————————
 
-		t = VueI18n.prototype.t;	// I18N，翻译方法
+		// t = VueI18n.prototype.t;	// I18N，翻译方法
+		t = t;	// I18N，翻译方法
 
 
 		// TIP————————————————————————————————————Vue生命周期，在类中的实现——————————————————————————————————
