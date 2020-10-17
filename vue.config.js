@@ -15,33 +15,45 @@ const InteractOuterProject_Helper = {
 	 * 					1.import Vue from 'vue' ————————> export default Vue ————————> 'vue' : 'Vue'
 	 */
 	__externals: {
-		// 交给【外部】
-		'vue': {
-			// commonjs : 'Vue',				// module.exports = Vue ;
-			// commonjs2: 'Vue',				// module.exports.default = Vue ;
-			// amd      : 'Vue',				// 类似 commonjs ，但是用【AMD模块系统】
-			// root     : 'Vue',				// window.Vue ; 挂载在Window上面。
+		/*
+				// 交给【外部】
+				'vue': {
+					// commonjs : 'Vue',				// module.exports = Vue ;
+					// commonjs2: 'Vue',				// module.exports.default = Vue ;
+					// amd      : 'Vue',				// 类似 commonjs ，但是用【AMD模块系统】
+					// root     : 'Vue',				// window.Vue ; 挂载在Window上面。
 
-			/**
-			 * WARN 见鬼了？？？？？？
-			 * 				1.网上教的都是一些傻逼么？
-			 * 				2.原本的正确解法的链接，找不到了。
-			 */
-			root     : 'Vue',
-			commonjs : 'vue',
-			commonjs2: 'vue',
-			amd      : 'vue',
-		},
+					/!**
+					 * WARN 见鬼了？？？？？？
+					 * 				1.网上教的都是一些傻逼么？
+					 * 				2.来自【Element-UI】源码库，可以正常工作。
+					 *!/
+					root     : 'Vue',
+					commonjs : 'vue',
+					commonjs2: 'vue',
+					amd      : 'vue',
+				},
+		*/
+		// WARN 采用【Element-UI】源码库，的另一种build配置
+		vue: 'vue',	// TIP 尝试
+		// vue: 'Vue',	// TIP 尝试
 
 		// 'element-ui': 'ElementUI',				// 交给【外部】
 		// 'element-ui': 'Element',				// 交给【外部】
 		'element-ui': 'element-ui',				// 交给【外部】
+		// 'element-ui': 'ELEMENT',					// 交给【外部】
 
+		// 'vue-property-decorator': 'vue-property-decorator',
+
+		// 'vue-router': 'VueRouter',
+		// 'highlight.js': 'hljs',
 
 		// 'vue-fragment': 'vue-fragment',	// WARN 此处，暂时交由内部打包
 		// 'v-viewer': 'v-viewer',					// WARN 此处，暂时交由内部打包
 
-		'vue-ueditor-wrap': 'vue-ueditor-wrap',	// TIP 如果放在内部打包，会报错。（因为机制比较特殊）
+		// 'vue-ueditor-wrap': 'vue-ueditor-wrap',	// TIP 如果放在内部打包，会报错。（因为机制比较特殊）
+
+
 
 	},
 	// externalsType: 'var',		// 另外一项功能
