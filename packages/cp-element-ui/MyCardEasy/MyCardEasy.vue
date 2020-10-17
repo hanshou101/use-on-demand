@@ -32,14 +32,28 @@
 </template>
 <script lang="ts">
 
-	import { xX_MyEl_Cards }                    from '../MyElementUtils';
-	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
+	import { xX_MyEl_Cards }                    from '../../../sources/element-ui/admin-cp/MyElementUtils';
+	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
 	import { Component, Prop }                  from 'vue-property-decorator';
+
+
+	import {
+		Card as ElCard,
+		Row as ElRow,
+		Col as ElCol,
+	} from 'element-ui';
+
+
+	// @ts-ignore
+	import { Fragment, Plugin } from 'vue-fragment';
 
 	@Component({
 		name      : 'MyCardEasy',
 		components: {
-			/*组件*/
+			ElCard,
+			ElRow,
+			ElCol,
+			Fragment,
 		},
 		filters   : {},
 	})
@@ -73,10 +87,10 @@
 
 </script>
 
-<style rel="stylesheet/scss" lang="scss" type="text/scss">
+<style rel="stylesheet/scss" lang="stylus" type="text/stylus">
 	// 尝试一些特别的命名法。比如【BEM】
 	.container__elCard {
-		width : calc(100% - 40px);
+		width: calc(100% - 40px);
 
 		/*.item__text--left {*/
 		/*text-align: left;*/
@@ -87,32 +101,32 @@
 		/*}*/
 
 		/deep/ .el-col {
-			text-align : left;
+			text-align: left;
 
 			div {
-				padding : 15px 5px;
-				display : inline-block;
+				padding: 15px 5px;
+				display: inline-block;
 			}
 
 			div:nth-last-child(1) {
-				text-align : right;
-				border     : 1px solid #ff780011;
-				padding    : 10px;
+				text-align: right;
+				border: 1px solid #ff780011;
+				padding: 10px;
 			}
 
 			div:nth-child(1) {
-				text-align  : left;
-				min-width   : 120px;
+				text-align: left;
+				min-width: 120px;
 
-				font-size   : 18px;
-				font-weight : bold;
+				font-size: 18px;
+				font-weight: bold;
 
-				border      : 0px solid #f00;
+				border: 0px solid #f00;
 			}
 		}
 
 		.rightProp {
-			word-break : break-all; // 过长，则自动分行
+			word-break: break-all; // 过长，则自动分行
 		}
 
 	}

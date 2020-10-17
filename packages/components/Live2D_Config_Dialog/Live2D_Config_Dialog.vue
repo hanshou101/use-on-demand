@@ -8,7 +8,10 @@
 		<!--总表单-->
 		<el-form :model="MixinsData_2.ruleForm" :rules="rules" ref="ruleFormRef" label-width="120px"
 						 class="dialog-container">
-			<MyFormEasy :form-items="formItems" :ruleForm="MixinsData_2.ruleForm"></MyFormEasy>
+			<MyFormEasy
+				:form-items="formItems"
+				:ruleForm="MixinsData_2.ruleForm"
+			></MyFormEasy>
 			<!--{{ MixinsData_2.ruleForm}}-->
 		</el-form>
 

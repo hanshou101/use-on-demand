@@ -34,11 +34,20 @@
 <script lang="ts">
 
 
-	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
+	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
 	import { Component, Prop }                  from 'vue-property-decorator';
 
+	import {
+		TabPane as ElTabPane,
+		Tabs as ElTabs,
+	} from 'element-ui';
+
 	@Component({
-		name: 'MultiLangSimple',
+		name      : 'MultiLangSimple',
+		components: {
+			ElTabPane,
+			ElTabs,
+		},
 	})
 	export default class xX_MultiLangSimple extends xX_Father_BaseVue {
 		MixinsData_1: MixinLevelTag = {};

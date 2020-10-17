@@ -344,7 +344,7 @@
 	import { ElUploadInternalFileDetail }       from 'element-ui/types/upload';
 	import { xX_Father_ElFItem }                from '../../../sources/element-ui/admin-cp/ElFItem';
 	import xX_UploadSingleImg                   from '../../../sources/element-ui/admin-cp/upload/UploadSingleImg.vue';
-	import xX_MultiLangSimple                   from '../../../sources/element-ui/admin-cp/multi-lang/MultiLangSimple.vue';
+	import xX_MultiLangSimple                   from '../MultiLangSimple/MultiLangSimple.vue';
 	import xX_Count_Input                       from '../../../sources/element-ui/admin-cp/input/Count_Input.vue';
 	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
 	import { Component, Prop }                  from 'vue-property-decorator';
@@ -408,7 +408,7 @@
 		@Prop({ type: Array, required: true }) readonly formItems!: xX_Father_ElFItem.Base[];
 		// 数据可以和父级通用
 		@Prop({ type: Object, required: true }) readonly ruleForm!: IndexedObj<any>;
-		@Prop({ type: Object, required: true }) private preuploadApi_Promise!: Promise<Function>;
+		@Prop({ type: Object, required: false }) private preuploadApi_Promise!: Promise<Function>;
 
 		@Prop({ type: Number, default: 1 }) private type!: number;                                          // 有可能是，对话框的类型  新增/编辑/审核 什么的。
 

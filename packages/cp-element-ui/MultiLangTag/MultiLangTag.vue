@@ -30,12 +30,18 @@
 
 	import { Component, Prop }                  from 'vue-property-decorator';
 	import { Getter }                           from 'vuex-class';
-	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
+	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
+
+	import {
+		Popover as ElPopover,
+		Tag as ElTag,
+	} from 'element-ui';
 
 	@Component({
 		name      : 'MultiLangTag',
 		components: {
-			/*组件*/
+			ElPopover,
+			ElTag,
 		},
 		filters   : {},
 	})
