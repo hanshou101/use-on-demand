@@ -33,7 +33,16 @@ function xX_getEntries(path) {
 	return entries;
 }
 
+
+const Externals_TypeE = {
+	Window_Root               : 'root',				// Window上的全局
+	Module_Exports            : 'commonjs',		// module.exports = Xxx
+	Module_Exports_Default    : 'commonjs2', 	// module.exports.default = Xxx
+	Module_Exports_Default_AMD: 'amd',				// 是【module.exports.default = Xxx】的AMD写法
+};
+
 module.exports = {
 	xX_resolve,
 	xX_getEntries,
+	Externals_TypeE,
 };

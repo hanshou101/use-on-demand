@@ -1,3 +1,4 @@
+const { Externals_TypeE }           = require('./sources/webpack/webpack-util');
 const { xX_getEntries, xX_resolve } = require('./sources/webpack/webpack-util');
 
 console.log('当前Node环境', process.env.NODE_ENV);
@@ -15,33 +16,40 @@ const InteractOuterProject_Helper = {
 	 * 					1.import Vue from 'vue' ————————> export default Vue ————————> 'vue' : 'Vue'
 	 */
 	__externals: {
-		/*
-				// 交给【外部】
-				'vue': {
-					// commonjs : 'Vue',				// module.exports = Vue ;
-					// commonjs2: 'Vue',				// module.exports.default = Vue ;
-					// amd      : 'Vue',				// 类似 commonjs ，但是用【AMD模块系统】
-					// root     : 'Vue',				// window.Vue ; 挂载在Window上面。
+		// 交给【外部】
+		'vue': {
+			// commonjs : 'Vue',				// module.exports = Vue ;
+			// commonjs2: 'Vue',				// module.exports.default = Vue ;
+			// amd      : 'Vue',				// 类似 commonjs ，但是用【AMD模块系统】
+			// root     : 'Vue',				// window.Vue ; 挂载在Window上面。
 
-					/!**
-					 * WARN 见鬼了？？？？？？
-					 * 				1.网上教的都是一些傻逼么？
-					 * 				2.来自【Element-UI】源码库，可以正常工作。
-					 *!/
-					root     : 'Vue',
-					commonjs : 'vue',
-					commonjs2: 'vue',
-					amd      : 'vue',
-				},
-		*/
+			/**
+			 * WARN 见鬼了？？？？？？
+			 * 				1.网上教的都是一些傻逼么？
+			 * 				2.来自【Element-UI】源码库，可以正常工作。
+			 */
+			[Externals_TypeE.Window_Root]               : 'Vue',
+			[Externals_TypeE.Module_Exports]            : 'vue',
+			[Externals_TypeE.Module_Exports_Default]    : 'vue',		// TIP 【试验】得出，import模式主要是用这个！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+			[Externals_TypeE.Module_Exports_Default_AMD]: 'vue',
+		},
 		// WARN 采用【Element-UI】源码库，的另一种build配置
-		vue: 'vue',	// TIP 尝试
+		// vue: 'vue',	// TIP 尝试
 		// vue: 'Vue',	// TIP 尝试
 
 		// 'element-ui': 'ElementUI',				// 交给【外部】
 		// 'element-ui': 'Element',				// 交给【外部】
-		'element-ui': 'element-ui',				// 交给【外部】
+		// 'element-ui': 'element-ui',				// 交给【外部】
 		// 'element-ui': 'ELEMENT',					// 交给【外部】
+
+		'element-ui': {
+			[Externals_TypeE.Window_Root]               : 'Element',			// TIP Window的【CDN】模式
+			[Externals_TypeE.Module_Exports]            : 'A',
+			// commonjs2: 'ElementUI',		// TIP 【试验】得出，import模式主要是用这个！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+			// commonjs2: 'ELEMENTUI',		// TIP 【试验】得出，import模式主要是用这个！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+			[Externals_TypeE.Module_Exports_Default]    : 'element-ui',		// TIP 【试验】得出，import模式主要是用这个！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+			[Externals_TypeE.Module_Exports_Default_AMD]: 'C',
+		},
 
 		// 'vue-property-decorator': 'vue-property-decorator',
 
@@ -52,7 +60,6 @@ const InteractOuterProject_Helper = {
 		// 'v-viewer': 'v-viewer',					// WARN 此处，暂时交由内部打包
 
 		// 'vue-ueditor-wrap': 'vue-ueditor-wrap',	// TIP 如果放在内部打包，会报错。（因为机制比较特殊）
-
 
 
 	},
