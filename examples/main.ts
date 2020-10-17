@@ -3,7 +3,8 @@ import App           from './App.vue';
 import { AppRouter } from './router';
 // import { AppI18n }   from './i18n';
 
-import 'element-ui/lib/theme-chalk/index.css';		// Element-UI的CSS。
+import 'element-ui/lib/theme-chalk/index.css';
+import { AppStore }  from './store';		// Element-UI的CSS。
 
 
 // import HelloWorld from '../packages/to-build';
@@ -21,5 +22,6 @@ Vue.config.productionTip = false;
 new Vue({
 	render: h => h(App),
 	router: AppRouter,
+	store : AppStore,
 	// i18n  : AppI18n,
 }).$mount('#app');

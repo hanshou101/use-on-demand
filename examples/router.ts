@@ -74,6 +74,13 @@ const _routes: Array<Enhanced_RouteConfig_Type> = [
 		path     : 'live-2d-config-dialog-demo',
 		component: () => import('./views/Live2D_Config_Dialog_Demo.vue'),
 	},
+	// ElementUI-列表测试
+	{
+		intro    : 'ElementUI-列表测试',
+		name     : 'element-ui-list-demo',
+		path     : 'element-ui-list-demo',
+		component: () => import('./views/ElementUI_ListDemo.vue'),
+	},
 ];
 
 export const AppRouter = new VueRouter({
