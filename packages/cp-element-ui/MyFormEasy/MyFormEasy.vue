@@ -5,7 +5,7 @@
 			<!--常规字段-->
 			<el-form-item
 				v-if="item.myCategory === 'text' || item.myCategory === 'textarea' || item.myCategory === 'number' || item.myCategory === 'password' "
-				:key="item.prop_AND_bindValue + '_' + uid()"
+				:key="item.prop_AND_bindValue/* + '_' + uid()*/"
 				:label="item.label"
 				:prop="item.prop_AND_bindValue">
 				<!--TIP :disabled项，专用于  Dialog有时需要禁用输入项的处理。-->
@@ -23,7 +23,7 @@
 			</el-form-item>
 			<!--  数字范围输入框  -->
 			<el-form-item v-else-if="item.myCategory === 'number_range' "
-										:key="item.prop_AND_bindValue + '_' + uid()"
+										:key="item.prop_AND_bindValue/* + '_' + uid()*/"
 										:label="item.label"
 										:labelWidth="item.labelWidth"
 										:prop="item.prop_AND_bindValue">
@@ -46,7 +46,7 @@
 			</el-form-item>
 			<!--  正数input框  -->
 			<el-form-item v-else-if="item.myCategory === 'positiveNumber' "
-										:key="item.prop_AND_bindValue + '_' + uid()"
+										:key="item.prop_AND_bindValue/* + '_' + uid()*/"
 										:label="item.label"
 										:prop="item.prop_AND_bindValue">
 				<Count_Input
@@ -56,14 +56,14 @@
 			</el-form-item>
 			<!--  步进器  -->
 			<el-form-item v-else-if="item.myCategory === 'step' "
-										:key="item.prop_AND_bindValue + '_' + uid()"
+										:key="item.prop_AND_bindValue/* + '_' + uid()*/"
 										:label="item.label"
 										:prop="item.prop_AND_bindValue">
 				<el-input-number v-model="ruleForm[item.prop_AND_bindValue]" :min="0" :max="99999999" label="描述文字"></el-input-number>
 			</el-form-item>
 			<!--下拉选项-->
 			<el-form-item v-else-if="item.myCategory === 'options' "
-										:key="item.prop_AND_bindValue + '_' + uid()"
+										:key="item.prop_AND_bindValue/* + '_' + uid()*/"
 										:label="item.label"
 										:prop="item.prop_AND_bindValue">
 				<!--TIP :disabled项，专用于  Dialog有时需要禁用输入项的处理。-->
@@ -81,7 +81,7 @@
 			<!--级联选择器-->
 			<el-form-item :label="item.label" :prop="item.prop_AND_bindValue"
 										v-if="item.myCategory === 'cascader' "
-										:key="item.prop_AND_bindValue + '_' + uid()">
+										:key="item.prop_AND_bindValue/* + '_' + uid()*/">
 				<el-cascader
 					class="form-input"
 					clearable
@@ -94,7 +94,7 @@
 			</el-form-item>
 			<!--单选框-->
 			<el-form-item v-else-if="item.myCategory === 'radio' "
-										:key="item.prop_AND_bindValue + '_' + uid()"
+										:key="item.prop_AND_bindValue/* + '_' + uid()*/"
 										:label="item.label"
 										:prop="item.prop_AND_bindValue">
 				<el-radio-group v-model="ruleForm[item.prop_AND_bindValue]">
@@ -108,7 +108,7 @@
 			</el-form-item>
 			<!--TIP 时间选择（无日期）-->
 			<el-form-item v-else-if="item.myCategory === 'time' "
-										:key="item.prop_AND_bindValue + '_' + uid()"
+										:key="item.prop_AND_bindValue/* + '_' + uid()*/"
 										:label="item.label"
 										:prop="item.prop_AND_bindValue">
 				<el-time-picker v-model="ruleForm[item.prop_AND_bindValue]"
@@ -125,7 +125,7 @@
 			</el-form-item>
 			<!--TIP 日期选择（无时间）-->
 			<el-form-item v-else-if="item.myCategory === 'single_date' "
-										:key="item.prop_AND_bindValue + '_' + uid()"
+										:key="item.prop_AND_bindValue/* + '_' + uid()*/"
 										:label="item.label"
 										:prop="item.prop_AND_bindValue">
 				<el-date-picker v-model="ruleForm[item.prop_AND_bindValue]"
@@ -140,7 +140,7 @@
 			</el-form-item>
 			<!--TIP 时间范围选择（无日期）-->
 			<el-form-item v-else-if="item.myCategory === 'time_range' "
-										:key="item.prop_AND_bindValue + '_' + uid()"
+										:key="item.prop_AND_bindValue/* + '_' + uid()*/"
 										:label="item.label"
 										:prop="item.prop_AND_bindValue">
 				<el-time-picker v-model="ruleForm[item.prop_AND_bindValue]"
@@ -157,7 +157,7 @@
 			</el-form-item>
 			<!--TIP 日期范围选择（无时间）-->
 			<el-form-item v-else-if="item.myCategory === 'date_time' "
-										:key="item.prop_AND_bindValue + '_' + uid()"
+										:key="item.prop_AND_bindValue/* + '_' + uid()*/"
 										:label="item.label"
 										:prop="item.prop_AND_bindValue">
 				<!--daterange，选择日期+起始范围。-->
@@ -177,7 +177,7 @@
 			</el-form-item>
 			<!--TIP 日期时间范围选择/带时间选择(12小时制)（有日期、有时间）-->
 			<el-form-item v-else-if="item.myCategory === 'date_time_range' "
-										:key="item.prop_AND_bindValue + '_' + uid()"
+										:key="item.prop_AND_bindValue/* + '_' + uid()*/"
 										:label="item.label"
 										:prop="item.prop_AND_bindValue">
 				<el-date-picker v-model="ruleForm[item.prop_AND_bindValue]"
@@ -192,7 +192,7 @@
 
 			<!--TIP 日期时间范围选择/带时间选择(24小时制)/带时间选择快捷按钮  （有日期、有时间）-->
 			<el-form-item v-if="item.myCategory === 'date_time_range_btn' "
-										:key="item.prop_AND_bindValue + '_' + uid()"
+										:key="item.prop_AND_bindValue/* + '_' + uid()*/"
 										:label="item.label"
 										:prop="item.prop_AND_bindValue">
 				<el-date-picker v-model="ruleForm[item.prop_AND_bindValue]"
@@ -207,7 +207,7 @@
 			</el-form-item>
 			<!--附属于上面类型-->
 			<el-form-item v-if="item.myCategory === 'date_time_range_btn' "
-										:key="item.prop_AND_bindValue + '_' + uid()"
+										:key="item.prop_AND_bindValue/* + '_' + uid()*/"
 										lable-width="0"
 										class="date-time-range-btn"
 										:prop="item.prop_AND_bindValue">
@@ -219,7 +219,7 @@
 
 			<!--单张图片上传-->
 			<el-form-item :label="item.label" :prop="item.prop_AND_bindValue" ref="imageUrlRef" v-if="item.myCategory === 'upload_img' "
-										:key="item.prop_AND_bindValue + '_' + uid()"
+										:key="item.prop_AND_bindValue/* + '_' + uid()*/"
 			>
 				<UploadSingleImg :max-size="item.maxSize"
 												 :width="150" :height="150"
@@ -231,7 +231,7 @@
 
 			<!--TIP 【纯文本】多语言输入：单行/多行-->
 			<el-form-item :label="item.label" :prop="item.prop_AND_bindValue" v-if="item.myCategory === 'lang_input' || item.myCategory === 'lang_inputTextarea' "
-										:key="item.prop_AND_bindValue + '_' + uid()"
+										:key="item.prop_AND_bindValue/* + '_' + uid()*/"
 			>
 				<MultiLangSimple
 					:ko_KR="hasKR"
@@ -286,7 +286,7 @@
 
 			<!--TIP 【富文本】多语言输入：UEditor-->
 			<el-form-item :label="item.label" :prop="item.prop_AND_bindValue" v-if="item.myCategory === 'lang_ueditor' "
-										:key="item.prop_AND_bindValue + '_' + uid()"
+										:key="item.prop_AND_bindValue/* + '_' + uid()*/"
 			>
 				<MultiLangSimple
 					@clickTab="clickTabUeditor"
@@ -499,6 +499,9 @@
 		};
 
 		mounted(): void {
+			console.log(`【uid()】方法，不适合使用的几种情况：
+			1.会在【输入框输入时】，触发【视图重新渲染】，这个时候会丢失焦点。
+			`);
 		};
 
 		activated(): void {
