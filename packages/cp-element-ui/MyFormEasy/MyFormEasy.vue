@@ -408,7 +408,7 @@
 		@Prop({ type: Array, required: true }) readonly formItems!: xX_Father_ElFItem.Base[];
 		// 数据可以和父级通用
 		@Prop({ type: Object, required: true }) readonly ruleForm!: IndexedObj<any>;
-		@Prop({ type: Object, required: false }) private preuploadApi_Promise!: Promise<Function>;
+		@Prop({ /* type: Object, */ required: false }) private preuploadApi_Promise!: Promise<Function>;
 
 		@Prop({ type: Number, default: 1 }) private type!: number;                                          // 有可能是，对话框的类型  新增/编辑/审核 什么的。
 

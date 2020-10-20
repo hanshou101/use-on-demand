@@ -103,7 +103,7 @@
 		 * 如果用这种方式，可以参照：
 		 * 				1.https://stackoverflow.com/a/52592047/6264260。对【MyFormEasy】的初始化，做特殊处理。（很棒的思路！）
 		 */
-		@Prop({ type: Object, required: false }) private preuploadApi_Promise!: Promise<Function>;
+		@Prop({ /* type: Object, */ required: false }) private preuploadApi_Promise!: Promise<Function>;
 
 
 		// TIP： Prop，在类中的实现
