@@ -103,7 +103,7 @@
 		 * 如果用这种方式，可以参照：
 		 * 				1.https://stackoverflow.com/a/52592047/6264260。对【MyFormEasy】的初始化，做特殊处理。（很棒的思路！）
 		 */
-		@Prop({ /* type: Object, */ required: false }) private preuploadApi_Promise!: Promise<Function>;
+		@Prop({ /* type: Object, */ required: false }) private preuploadApi_Promise!: Promise<() => Promise<PreUploadBean_Type>>;
 
 
 		// TIP： Prop，在类中的实现
@@ -126,23 +126,23 @@
 
 		// TIP： Data，在类中的实现 （双向绑定除外）
 		// 预览图片地址
-		previewImg: string | Blob = '';
-		disabled_inner: boolean   = false;
-		acceptInner: string       = this.accept.map(type => {
+		previewImg: string | Blob      = '';
+		disabled_inner: boolean        = false;
+		acceptInner: string            = this.accept.map(type => {
 			return `image/${type.toLocaleLowerCase()}`;
 		}).join(',');
 		// 上传时的额外参数
-		uploadData: any           = {};
+		uploadData: any                = {};
 		// 上传url
-		uploadHost: string        = '';
+		uploadHost: string | undefined = '';
 		// 预上传失败
-		preUploadFaild: boolean   = false;
+		preUploadFaild: boolean        = false;
 		// 上传失败
-		uploadFaild: boolean      = false;
-		currentFile: File | any   = null;
-		uploading: boolean        = false;
+		uploadFaild: boolean           = false;
+		currentFile: File | any        = null;
+		uploading: boolean             = false;
 		// 最后一次上传成功后的图片地址
-		imgUri: string            = '';
+		imgUri: string                 = '';
 
 
 		// TIP： Computed，在类中的实现
@@ -234,7 +234,7 @@
 			}
 
 			this.preuploadApi_Promise.then(fn => {
-				fn().then((res: any) => {
+				fn().then((res) => {
 					console.log(res);
 					this.uploadHost                       = res.host;
 					this.uploadData.name                  = res.signature;

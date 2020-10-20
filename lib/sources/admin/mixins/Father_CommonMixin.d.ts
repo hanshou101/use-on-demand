@@ -17,6 +17,10 @@ export interface OssUploadBean {
     callback?: string;
     signature?: string;
 }
+declare global {
+    type PreUploadBean_Type = PreUploadBean;
+    type OssUploadBean_Type = OssUploadBean;
+}
 declare const xX_Father_CommonMixin_base: import("vue-class-component/lib/declarations").VueClass<xX_Father_ExportExcel_Mixin>;
 /**
  * 可能最后，还是要用【Mixins】去解决！！！。

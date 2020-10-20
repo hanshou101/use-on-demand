@@ -2,9 +2,9 @@
 import { ElForm }                  from 'element-ui/types/form';
 import xX_Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
 import xX_Father_DialogMixin       from './Father_DialogMixin';
-import { Component, Mixins }    from 'vue-property-decorator';
-import { Getter }               from 'vuex-class';
-import { MixinLevelTag }        from './Father_BaseVue';
+import { Component, Mixins }       from 'vue-property-decorator';
+import { Getter }                  from 'vuex-class';
+import { MixinLevelTag }           from './Father_BaseVue';
 
 export interface PreUploadBean {
 	dir?: string;
@@ -25,6 +25,10 @@ export interface OssUploadBean {
 	signature?: string;
 }
 
+declare global {
+	type PreUploadBean_Type = PreUploadBean;
+	type OssUploadBean_Type = OssUploadBean;
+}
 
 /**
  * 可能最后，还是要用【Mixins】去解决！！！。

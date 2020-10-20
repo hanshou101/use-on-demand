@@ -3,6 +3,7 @@
 		<div class="tinymce-textarea" :id="tinymceId"></div>
 		<div class="editor-custom-btn-container">
 			<editorImage color="#1890ff" class="editor-upload-btn"
+									 :preupload-api_-promise="preuploadApi_Promise"
 									 @successCBK="imageSuccessCBK"></editorImage>
 		</div>
 	</div>

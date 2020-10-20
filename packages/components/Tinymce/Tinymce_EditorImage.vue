@@ -28,7 +28,6 @@
 
 	import { Component, Prop }                  from 'vue-property-decorator';
 	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
-	import { OssUploadBean, PreUploadBean }     from '../../../sources/admin/mixins/Father_CommonMixin';
 
 	import {
 		Button as ElButton,
@@ -60,7 +59,7 @@
 		 * 如果用这种方式，可以参照：
 		 * 				1.https://stackoverflow.com/a/52592047/6264260。对【MyFormEasy】的初始化，做特殊处理。（很棒的思路！）
 		 */
-		@Prop({ /* type: Object, */ required: false }) private preuploadApi_Promise!: Promise<Function>;
+		@Prop({ /* type: Object, */ required: false }) private preuploadApi_Promise!: Promise<() => Promise<PreUploadBean_Type>>;
 
 
 		//
@@ -74,7 +73,7 @@
 		// oss预上传数据
 		uploadHost                = '';
 		// 上传携带参数
-		uploadData: OssUploadBean = {};
+		uploadData: OssUploadBean_Type = {};
 
 		t = t;
 
@@ -139,7 +138,14 @@
 				}
 			}
 
-			const preUploadData: PreUploadBean = ((await this.preuploadApi_Promise)()) as PreUploadBean;
+			const preUploadData = (
+				await (
+					(
+						await this.preuploadApi_Promise
+					)()
+				)
+			);
+			console.log('得到的预获取信息', preUploadData);
 			if (preUploadData) {
 				const { dir, policy, signature, callback, accessid, host } = preUploadData;
 				this.uploadHost                                            = host || '万一没获取到url？';
