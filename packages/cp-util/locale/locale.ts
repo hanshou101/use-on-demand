@@ -1,17 +1,22 @@
 // import defaultLang from 'element-ui/src/locale/lang/zh-CN';
 
 const defaultLang = {																					// 默认国际化语言
-	dialog: {
-		Confirm: '确认',
-		Cancel : '取消',
-		Create : '新建',
+	dialog : {
+		Confirm     : '确认',
+		Cancel      : '取消',
+		Create      : '新建',
+		Upload_Img  : '上传图片',
+		Click_Upload: '点击上传',
 	},
-	table : {
+	table  : {
 		Operation: '操作',
 	},
-	form  : {
+	form   : {
 		Time_Picker_Start_Time: '开始时间',
 		Time_Picker_End_Time  : '结束时间',
+	},
+	message: {
+		Please_Wait_All_Pics_Upload_Success: '请等待所有图片上传成功 或 出现了网络问题，请刷新页面重新上传！',
 	},
 };
 import Vue        from 'vue';

@@ -2,7 +2,7 @@
 	<div class="upload-container">
 		<el-button icon='el-icon-upload' size="mini" :style="{background:color,borderColor:color}"
 							 @click=" dialogVisible=true" type="primary">
-			{{ $t('dialog.Upload_Img') }}
+			{{ t('dialog.Upload_Img') }}
 		</el-button>
 		<el-dialog append-to-body :visible.sync="dialogVisible">
 			<el-upload class="editor-slide-upload"
@@ -16,10 +16,10 @@
 								 :before-upload="beforeUpload"
 								 :data="uploadData"
 			>
-				<el-button size="small" type="primary">{{ $t('dialog.Click_Upload') }}</el-button>
+				<el-button size="small" type="primary">{{ t('dialog.Click_Upload') }}</el-button>
 			</el-upload>
-			<el-button @click="dialogVisible = false">{{ $t('dialog.Cancel') }}</el-button>
-			<el-button type="primary" @click="handleSubmit">{{ $t('dialog.Confirm') }}</el-button>
+			<el-button @click="dialogVisible = false">{{ t('dialog.Cancel') }}</el-button>
+			<el-button type="primary" @click="handleSubmit">{{ t('dialog.Confirm') }}</el-button>
 		</el-dialog>
 	</div>
 </template>
@@ -34,7 +34,8 @@
 		Button as ElButton,
 		Dialog as ElDialog,
 		Upload as ElUpload,
-	} from 'element-ui';
+	}            from 'element-ui';
+	import { t } from '../../cp-util/locale/locale';
 
 	@Component({
 		name      : 'EditorImage',
@@ -75,6 +76,7 @@
 		// 上传携带参数
 		uploadData: OssUploadBean = {};
 
+		t = t;
 
 		// Method，在类中的实现
 		checkAllSuccess() {
@@ -85,7 +87,7 @@
 			const arr = Object.keys(this.listObj).map((v: any) => this.listObj[v]);
 			if (!this.checkAllSuccess()) {
 				this.$message(
-					this.$t('message.Please_Wait_All_Pics_Upload_Success').toString(),/* 请等待所有图片上传成功 或 出现了网络问题，请刷新页面重新上传！*/
+					this.t('message.Please_Wait_All_Pics_Upload_Success').toString(),/* 请等待所有图片上传成功 或 出现了网络问题，请刷新页面重新上传！*/
 				);
 
 				return;
@@ -124,12 +126,17 @@
 			console.log('富文本图片上传，beforeUpload');
 
 			if (!this.preuploadApi_Promise) {
-				throw new Error(`
-				如果你采用【Inject】方式：
-								请从父组件的【Provide 或者 ProvideReactive】，传入【Inject 中的 preuploadApi_Promise】
-				如果你采用【Prop】方式：
-								请从<TinyMce>传入【Prop 中的 preuploadApi_Promise】
-				`);
+				try {
+					throw new Error(`
+					如果你采用【Inject】方式：
+									请从父组件的【Provide 或者 ProvideReactive】，传入【Inject 中的 preuploadApi_Promise】
+					如果你采用【Prop】方式：
+									请从<TinyMce>传入【Prop 中的 preuploadApi_Promise】
+					`);
+				} catch (e) {
+					// WARN 此处，非常诡异的【Element-UI】会把所有Error抛出都吃掉。所以我们只能手动打印错误日志了。
+					console.error(e);
+				}
 			}
 
 			const preUploadData: PreUploadBean = ((await this.preuploadApi_Promise)()) as PreUploadBean;

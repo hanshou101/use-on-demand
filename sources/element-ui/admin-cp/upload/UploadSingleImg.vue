@@ -224,7 +224,7 @@
 			const arr    = file.name.split('.');
 			const suffix = arr[arr.length - 1];
 
-			if (!this.preuploadApi_Promise) {
+			if (!this.preuploadApi_Promise) {			// WARN 此处，不像【Tinymce_EditorImage】那边被包裹在【async】当中，所以此处的Error抛出，正常抛即可。
 				throw new Error(`
 				如果你采用【Inject】方式：
 								请从父组件的【Provide 或者 ProvideReactive】，传入【Inject 中的 preuploadApi_Promise】

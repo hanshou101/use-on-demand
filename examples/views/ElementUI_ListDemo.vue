@@ -43,14 +43,14 @@
 		<!--Dialog总控制器。当触发【新建】、【更改】操作时，会触发父组件的_getList刷新。-->
 
 		<!--TODO 解开这里，即可召唤神龙实现你的愿望。-->
-		<!--<YourDialog
-        ref="dialogRef"
-        v-if="dialogVisible"
-        :show.sync="dialogVisible"
-        :init-data="dialogData"
-        :dialog-type="dialogType"
-        @refreshList="_getList">
-    </YourDialog>-->
+		<Article_Create_Dialog
+			ref="dialogRef"
+			v-if="dialogVisible"
+			:show.sync="dialogVisible"
+			:init-data="dialogData"
+			:dialog-type="dialogType"
+			@refreshList="_getList">
+		</Article_Create_Dialog>
 	</div>
 </template>
 
@@ -80,6 +80,7 @@
 	import { xX_MyElementUtils_Helper } from '../../sources/element-ui/admin-cp/MyElementUtils_Helper';
 	import { selectOption }             from '../enum-options/select-options';
 	import { UserList_Mock_Data }       from '../mock-data/MockData';
+	import Article_Create_Dialog        from './components/Article_Create_Dialog.vue';
 
 	Vue.use(Loading.directive);
 
@@ -99,6 +100,8 @@
 			MyFormEasy,
 			MyTableEasy,
 			WrapDropdown,
+			//
+			Article_Create_Dialog,
 		},
 		filters   : {},
 	})
@@ -130,18 +133,22 @@
 				//
 				//
 
-				new xX_Father_ElFItem.Text({ name: 'userName', label: '用户名' }),
+				// new xX_Father_ElFItem.Text({ name: 'userName', label: '用户名' }),
 				new xX_Father_ElFItem.Text({ name: 'realName', label: '真实姓名' }),
-				new xX_Father_ElFItem.Text({ name: 'mobile', label: '手机号' }),
-				new xX_Father_ElFItem.Text({ name: 'email', label: '邮箱' }),
-				new xX_Father_ElFItem.Options<any>({
-					name: 'status', label: '审核状态', selectOptionConf: {
-						option      : AuditOptions,
-						needParseInt: true,
-					},
-				}),
+				// new xX_Father_ElFItem.Text({ name: 'mobile', label: '手机号' }),
+				// new xX_Father_ElFItem.Text({ name: 'email', label: '邮箱' }),
+				// new xX_Father_ElFItem.Options<any>({
+				// 	name: 'status', label: '审核状态', selectOptionConf: {
+				// 		option      : AuditOptions,
+				// 		needParseInt: true,
+				// 	},
+				// }),
 				new xX_Father_ElFItem.DateRange({ name: 'dateRange', label: '时间范围' }),
 
+				//
+				//
+				//
+				//
 
 				new xX_Father_ElFItem.Text({ name: 'userId', label: '用户ID' }),
 				new xX_Father_ElFItem.Text({ name: 'userName', label: '用户名' }),
