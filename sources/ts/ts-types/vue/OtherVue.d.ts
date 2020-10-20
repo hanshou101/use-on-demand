@@ -13,6 +13,7 @@ import { PropOptions }                                           from 'vue';
 import { Vue }                                                   from 'vue/types/vue';
 import { VueConstructor }                                        from 'vue';
 import { DirectiveBinding, DirectiveFunction, DirectiveOptions } from 'vue/types/options';
+import { Configuration as WebpackOptions }                       from 'webpack';
 
 
 declare global {
@@ -28,5 +29,6 @@ declare global {
 	type DirectiveBinding_Type = DirectiveBinding;
 
 
-	type VueCliService_ProjectOptions_Type = CliService.ProjectOptions
+	type VueCliService_ProjectOptions_Type = CliService.ProjectOptions;
+	type WebpackOptions_Type = WebpackOptions;
 }

@@ -5,6 +5,9 @@ const absPath = process.cwd();
 const relPath = __dirname;
 console.log('路径', '相对路径', relPath, '绝对路径', absPath);
 
+/**
+ * 解析路径相关。
+ */
 function xX_resolve(dir) {
 	// return path.resolve(relPath, dir);							// 不用【相对路径】
 	// 采用【绝对路径】
@@ -13,6 +16,9 @@ function xX_resolve(dir) {
 
 const join = path.join;
 
+/**
+ * 获取【多组件多入口】。
+ */
 function xX_getEntries(path) {
 	const files = fs.readdirSync(xX_resolve(path));
 	console.log('files', files);
@@ -41,8 +47,43 @@ const Externals_TypeE = {
 	Module_Exports_Default_AMD: 'amd',				// 是【module.exports.default = Xxx】的AMD写法
 };
 
+
+const mapToFolder = (dependencies, folder = './node_modules') =>
+	dependencies.reduce((preObj, dependency) => {
+		return {
+			[dependency]: path.resolve(`${folder}/${dependency}`),
+			...preObj,
+		};
+	}, {});
+
+/**
+ * 从根源上，修复一个曾经很棘手的问题。
+ * 				1.【npm link】+【业务库 & 组件库】时，同一个【vue】、【element-ui】会同时存在两个，导致【逻辑出错】。
+ * @param	{WebpackOptions_Type} config
+ * @param {Array<string>} packageArray
+ */
+function fix_NpmLink_TwoProject_DuplicatePackage_Error(
+	config,
+	packageArray,
+) {
+	const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
+
+	config.plugins.push(new DuplicatePackageCheckerPlugin({
+		emitError: false,  // 【默认-false】
+		showHelp : true,  // 【默认-true】
+		strict   : true,  // 【默认-true】
+	}));
+
+	config.resolve.alias = {
+		...config.resolve.alias,
+		...mapToFolder(packageArray),
+	};
+
+}
+
 module.exports = {
 	xX_resolve,
 	xX_getEntries,
 	Externals_TypeE,
+	fix_NpmLink_TwoProject_DuplicatePackage_Error,
 };

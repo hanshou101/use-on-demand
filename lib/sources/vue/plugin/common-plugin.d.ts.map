@@ -1,1 +1,1 @@
-{"version":3,"file":"common-plugin.d.ts","sourceRoot":"","sources":["../../../../sources/vue/plugin/common-plugin.ts"],"names":[],"mappings":"AAAA,qBAAa,iBAAiB;IAC5B;;OAEG;WACW,YAAY,CAAC,GAAG,EAAE,mBAAmB;CAMpD"}
+{"version":3,"file":"common-plugin.d.ts","sourceRoot":"","sources":["../../../../sources/vue/plugin/common-plugin.ts"],"names":[],"mappings":"AAIA,qBAAa,iBAAiB;IAC7B,OAAO,CAAC,MAAM,CAAC,aAAa,CAE1B;IAEF;;OAEG;WACW,YAAY,CAAC,GAAG,EAAE,mBAAmB;CAcnD"}

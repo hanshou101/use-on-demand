@@ -8,6 +8,7 @@ declare interface IndexedObj<T = any> {
 }
 
 declare type NullableType<T> = T | null;
+declare type UndefinedAbleType<T> = T | undefined;
 
 declare type NumOrStr = number | string;
 
