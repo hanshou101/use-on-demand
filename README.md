@@ -20,6 +20,9 @@
     1. 需要加入【babel-plugin-import】插件的配置，使其能对【use-on-demand】按需导入。
     2. 每个库组件，需要在【main.js】中，提前用【Vue.use】加载。
         1. 目前，不支持【业务组件中import，然后放到components选项】的这种形式。
+3.其它的一些地方：
+    1.使用【npx check-peer-dependencies】工具，来检查【peerDependencies】的对齐。
+
 
 # 本地开发方式
 1. 将该仓库，Clone下来，执行【npm link】
