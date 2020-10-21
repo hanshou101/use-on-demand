@@ -58,7 +58,7 @@ class Vue_SentryUtil extends BaseSentryUtil {
   }
 }
 
-export function xX_standardInit(cfg: Sentry_Cfg_Type) {
+export function xX_Sentry_standardInit(cfg: Sentry_Cfg_Type) {
   const PureJsSentry = new PureJs_SentryUtil(cfg);
   const VueSentry    = new Vue_SentryUtil(cfg);
   PureJsSentry.init().then((pureJsSResult) => {
