@@ -54,7 +54,7 @@ export class xX_DomEvt_Helper {
 			// 非IE浏览器，采用这个方式绑定
 			// @ts-ignore
 			if (document.addEventListener) {
-				ele.addEventListener(eventName, function(e) {
+				ele.addEventListener(eventName, function(e:Event) {
 					if (ele._events) {
 						const events = ele._events[eventName];
 						if (events && events.length > 0) {

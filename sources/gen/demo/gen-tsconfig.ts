@@ -230,6 +230,7 @@ class GenTsconfigUtil {
 				'dom',
 				'dom.iterable',
 				'scripthost',
+				'webworker',			// 用于支持【ServiceWorker】。
 			],
 			'noEmit'                          : NuxtJs_TsConfig_Helper._compilerOptions._noEmit,
 			/*这可以对 `this` 上的数据属性进行更严格的推断-1*/

@@ -114,11 +114,11 @@ class LostError_Util {
 		const that                            = this;
 		// 全局错误捕捉
 		const errHandler: OnErrorEventHandler = function(
-			event,
-			source,
-			lineno,
-			colno,
-			error,
+			event: Event | string,
+			source?: string,
+			lineno?: number,
+			colno?: number,
+			error?: Error,
 		) {
 			// 异步方式，避免阻塞
 			setTimeout(() => {
@@ -175,7 +175,7 @@ class LostError_Util {
 	private log_documentOnError() {
 		const that       = this;
 		document.onerror = function(
-			event,                          // 似乎比较特殊，隶属于【element.onerror】，只有这一个参数
+			event: Event | string,                          // 似乎比较特殊，隶属于【element.onerror】，只有这一个参数
 		) {
 			// 异步方式，避免阻塞
 			setTimeout(() => {

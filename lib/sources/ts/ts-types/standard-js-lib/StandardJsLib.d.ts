@@ -26,7 +26,9 @@ declare function isNaN(
 	number: number | string,    // TIP 经过试验，如果传入【字符串的NaN】，也可以正常识别为true
 ): boolean;
 
-interface Window {
+interface Window
+	// extends ServiceWorkerGlobalScope		// WARN 拓展【ServiceWorker】为【Window】的父类型。
+{
 	attachEvent?(eventName: string, cb: Function): void;  // 兼容性处理：IE，独有方法。
 	detachEvent?(eventName: string, cb: Function): void;  // 兼容性处理：IE，独有方法。
 	webkitURL?: {                                         // 有可能存在，也有可能不存在。（仅用于Chrome）

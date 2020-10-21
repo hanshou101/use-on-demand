@@ -20,6 +20,7 @@
 	import { xX_Live2D_WidgetJs_Helper, xX_Live2DModelE } from '../sources/live2d/live2d-widget.js/Live2D_WidgetJs_Helper';
 	import { xX_FileMd5_Helper }                          from '../sources/platform/file-blob/FileMd5_Helper';
 	import { flatRoute_toArr }                            from './router';
+	import { xX_ServiceWorker_Client_Helper }             from '../sources/service-worker/client/ServiceWorker_Client_Helper';
 
 
 	export default Vue.extend({
@@ -46,6 +47,9 @@
 				routeMap: flatRoute_toArr(),
 			};
 		},
+		beforeMount() {
+			xX_ServiceWorker_Client_Helper.demo();
+		},
 		mounted() {
 			if (this.show.live2D) {
 				xX_Live2D_WidgetJs_Helper.initDemo({
@@ -56,7 +60,6 @@
 			xX_FileMd5_Helper.downloadAndCreateHash('http://sit17.me/index.php?user/publicLink&fid=de18XYhH-M0HJD3DzEQoRhXyARaduLwejOI9sFspvlCacO--A6XHrOUF_7V8mLwWHLWywNJU89T18Pr-ZMSX7jnQBjElJSHo-oaOEopyR43e6q8qR166Zx1ohNLZBQMZxBPrdhLri7jJskYrZQV_MtD9V9-QVdcNzg&file_name=/app.apk').then(res => {
 				console.log('测试hash', res);
 			});
-
 		},
 	});
 
@@ -80,7 +83,7 @@
 		column-gap     : 20px;
 
 		.route-item {
-			cursor: progress;
+			cursor : progress;
 			&.active {
 				color : red;
 			}

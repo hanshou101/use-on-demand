@@ -31,7 +31,8 @@
       "es5",
       "dom",
       "dom.iterable",
-      "scripthost"
+      "scripthost",
+      "webworker"
     ],
     "noEmit": false,
     "strict": true,
