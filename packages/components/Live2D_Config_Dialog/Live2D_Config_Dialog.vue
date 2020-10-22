@@ -47,7 +47,7 @@
 	import {
 		Dialog as ElDialog,
 		Button as ElButton,
-		Form as ElForm, Dialog,
+		Form as ElForm,
 	}            from 'element-ui';
 	import { t } from '../../cp-util/locale/locale';
 
