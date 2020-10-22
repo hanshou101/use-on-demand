@@ -18,6 +18,23 @@ const defaultLang = {																					// 默认国际化语言
 	message: {
 		Please_Wait_All_Pics_Upload_Success: '请等待所有图片上传成功 或 出现了网络问题，请刷新页面重新上传！',
 	},
+	element: {
+		multi_lang_plus: {
+			Alert_Title          : '翻译结果仅供参考',
+			Alert_Description    : '系统语言为英语时,请先输入英语再翻译;系统语言为简体中文时,请先输入简体中文再翻译',
+			Translate_Button_Text: '自动翻译5种语言',
+
+			Please_Input_The_Field_To_Be_Translate: '请输入待翻译字段',
+			Please_Input_Simplified_Chinese       : '请输入中文待翻译字段',
+			Please_Input_English                  : '请输入英文待翻译字段',
+			Please_Input_Traditional_English      : '请输入繁体中文待翻译字段',
+			Please_Input_Korean                   : '请输入韩语待翻译字段',
+			Please_Input_Japanese                 : '请输入日语待翻译字段',
+
+			Translate_Success: '翻译成功',
+			Translate_Failure: '翻译失败',
+		},
+	},
 };
 import Vue        from 'vue';
 import deepmerge  from 'deepmerge';

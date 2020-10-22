@@ -19,6 +19,7 @@
 	// @ts-ignore
 	import { Fragment, Plugin }  from 'vue-fragment';
 	import { xX_CPlugin_Helper } from '../../../sources/vue/plugin/common-plugin';
+	import { t }                 from '../../cp-util/locale/locale';
 
 	type NotArray<T> = T extends Array<any> ? never : T;
 
@@ -77,6 +78,8 @@
 		uid() {
 			return xX_SString_Helper.uid();
 		}
+
+		t = t;
 
 		public elTagFilter(status: string | number) {
 			return xX_data_elTagColorFilter[status];
@@ -160,7 +163,7 @@
 				if (item.labelFunction && typeof item.labelFunction === 'function') {
 					label = item.labelFunction(item);
 				} else if (item.i18nKey) {
-					label = this.$t(item.i18nKey);
+					label = this.t(item.i18nKey);
 				}
 				// 设置label，即列名
 				options.props.label = label;

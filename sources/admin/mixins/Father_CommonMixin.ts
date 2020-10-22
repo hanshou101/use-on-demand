@@ -5,6 +5,7 @@ import xX_Father_DialogMixin       from './Father_DialogMixin';
 import { Component, Mixins }       from 'vue-property-decorator';
 import { Getter }                  from 'vuex-class';
 import { MixinLevelTag }           from './Father_BaseVue';
+import { t }                       from '../../../packages/cp-util/locale/locale';
 
 export interface PreUploadBean {
 	dir?: string;
@@ -144,6 +145,8 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends Mixins(xX_F
 	//
 	//
 
+	t = t;
+
 	public async _getList(): Promise<any> {
 		if (typeof this.MixinsData_2.listCallback === 'function') {
 			this.listLoading = true;
@@ -230,8 +233,8 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends Mixins(xX_F
 		await this.MixinsData_2.deleteCallback(row.id);
 		this.$notify({
 			type   : 'success',
-			title  : this.$t('message.Prompt').toString(),
-			message: this.$t('message.Delete_Success').toString(), /* 删除成功*/
+			title  : this.t('message.Prompt').toString(),
+			message: this.t('message.Delete_Success').toString(), /* 删除成功*/
 		});
 		this._getList();
 	}
@@ -239,15 +242,15 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends Mixins(xX_F
 	// 批量删除数据
 	public handleDelete(): void {
 		if (this.deleteItems.length === 0) {
-			this.$alert(this.$t('message.Delete_Prompt').toString(), this.$t('message.Prompt').toString(), {
-				confirmButtonText: this.$t('message.Confirm').toString(),
+			this.$alert(this.t('message.Delete_Prompt').toString(), this.t('message.Prompt').toString(), {
+				confirmButtonText: this.t('message.Confirm').toString(),
 				type             : 'warning',
 				callback         : (action: string) => {
 				},
 			});
 		} else {
-			this.$alert(this.$t('message.Delete_Confirm').toString(), this.$t('message.Prompt').toString(), {
-				confirmButtonText: this.$t('message.Confirm').toString(),
+			this.$alert(this.t('message.Delete_Confirm').toString(), this.t('message.Prompt').toString(), {
+				confirmButtonText: this.t('message.Confirm').toString(),
 				type             : 'warning',
 				callback         : (action: string) => {
 					if (action === 'confirm') {
@@ -264,8 +267,8 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends Mixins(xX_F
 		await this.MixinsData_2.changeStatusCallback(id, status);
 		this.$notify({
 			type   : 'success',
-			title  : this.$t('message.Prompt').toString(),
-			message: this.$t('message.Update_Success').toString(), /* 更新成功*/
+			title  : this.t('message.Prompt').toString(),
+			message: this.t('message.Update_Success').toString(), /* 更新成功*/
 		});
 		this._getList();
 	}
@@ -285,8 +288,8 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends Mixins(xX_F
 		await this.MixinsData_2.deleteCallback(ids);
 		this.$notify({
 			type   : 'success',
-			title  : this.$t('message.Prompt').toString(),
-			message: this.$t('message.Delete_Success').toString(), /* 删除成功*/
+			title  : this.t('message.Prompt').toString(),
+			message: this.t('message.Delete_Success').toString(), /* 删除成功*/
 		});
 		this._getList();
 	}
@@ -394,14 +397,14 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends Mixins(xX_F
 	 * 以下方法，都是需要在子类中实现的interface方法。父类中只有空的。
 	 */
 
-				 // public checkImg!: CommonMixinImpl['checkImg'];
-				 // public centerDialogVisible!: CommonMixinImpl['centerDialogVisible'];
-				 // public listCallback!: CommonMixinImpl['listCallback'];
-				 // public needListProcess!: CommonMixinImpl['needListProcess'];
-				 // public changeStatusCallback!: CommonMixinImpl['changeStatusCallback'];
-				 // public deleteCallback!: CommonMixinImpl['deleteCallback'];
-				 // public coinForm!: CommonMixinImpl['coinForm'];
-				 // public lang!: CommonMixinImpl['lang'];
+	// public checkImg!: CommonMixinImpl['checkImg'];
+	// public centerDialogVisible!: CommonMixinImpl['centerDialogVisible'];
+	// public listCallback!: CommonMixinImpl['listCallback'];
+	// public needListProcess!: CommonMixinImpl['needListProcess'];
+	// public changeStatusCallback!: CommonMixinImpl['changeStatusCallback'];
+	// public deleteCallback!: CommonMixinImpl['deleteCallback'];
+	// public coinForm!: CommonMixinImpl['coinForm'];
+	// public lang!: CommonMixinImpl['lang'];
 
 	public MixinsData_2: MixinLevelTag & CommonMixinImpl & ExtendImpl<SelectOptionType> = {} as any;
 

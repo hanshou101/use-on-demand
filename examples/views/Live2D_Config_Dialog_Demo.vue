@@ -8,8 +8,10 @@
 </template>
 
 <script lang="ts">
-	import Vue                  from 'vue';
-	import Live2D_Config_Dialog from '../../packages/components/Live2D_Config_Dialog';
+	import Vue                           from 'vue';
+	import Live2D_Config_Dialog          from '../../packages/components/Live2D_Config_Dialog';
+	import { xX_Live2D_WidgetJs_Helper } from '../../sources/live2d/live2d-widget.js/Live2D_WidgetJs_Helper';
+	import { xX_BrowserEventMap }        from '../../sources/dom/dom-events';
 
 	export default Vue.extend({
 		name      : 'Live2D_Config_Dialog_Demo',
@@ -21,12 +23,15 @@
 		props     : {},
 		data() {
 			return {
-				show_Live2D_Dialog: true,
+				show_Live2D_Dialog: false,
 			};
 		},
 		computed  : {},
 		watch     : {},
 		mounted() {
+			xX_Live2D_WidgetJs_Helper.bindHotKey(xX_BrowserEventMap.KEYBOARD.KeyCode_MAP.K, () => {
+				this.show_Live2D_Dialog = !this.show_Live2D_Dialog;
+			});
 		},
 		methods   : {},
 	});

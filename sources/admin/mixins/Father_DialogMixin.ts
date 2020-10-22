@@ -10,6 +10,7 @@ import { OssUploadBean, PreUploadBean }   from './Father_CommonMixin';
 import { Component, Mixins, Prop, Watch } from 'vue-property-decorator';
 import { Getter }                         from 'vuex-class';
 import { MixinLevelTag }                  from './Father_BaseVue';
+import { t }                       from '../../../packages/cp-util/locale/locale';
 
 /**
  * 可能最后，还是要用【Mixins】去解决！！！。
@@ -135,6 +136,8 @@ export default class xX_Father_DialogMixin<SelectOptionType> extends Mixins(xX_F
 			});
 		}
 	}
+
+	t = t;
 
 	// TIP: methods 在类中的实现
 	public showDialog(type: number, row?: {} | null): void {
@@ -270,8 +273,8 @@ export default class xX_Father_DialogMixin<SelectOptionType> extends Mixins(xX_F
 				.then((res: any) => {
 					this.$notify({
 						type   : 'success',
-						title  : this.$t('message.Prompt').toString(),
-						message: this.$t('message.Create_Success').toString(),
+						title  : this.t('message.Prompt').toString(),
+						message: this.t('message.Create_Success').toString(),
 					});
 					this.dialogVisible = false;
 					this.$emit('update:show', false);
@@ -292,8 +295,8 @@ export default class xX_Father_DialogMixin<SelectOptionType> extends Mixins(xX_F
 				.then((res: any) => {
 					this.$notify({
 						type   : 'success',
-						title  : this.$t('message.Prompt').toString(),
-						message: this.$t('message.Update_Success').toString(),
+						title  : this.t('message.Prompt').toString(),
+						message: this.t('message.Update_Success').toString(),
 					});
 					this.dialogVisible = false;
 					this.$emit('update:show', true);
@@ -341,16 +344,16 @@ export default class xX_Father_DialogMixin<SelectOptionType> extends Mixins(xX_F
 	 * 以下方法，都是需要在子类中实现的interface方法。父类中只有空的。
 	 */
 
-				 // TODO 因为方法的调整，从【9.3.3】调整为了【9.7】，所以以下的标准语法，被注释掉了。
-				 // public ruleForm!: DialogMixinImpl['ruleForm'];
-				 // public addCallback!: DialogMixinImpl['addCallback'];
-				 // public editCallback!: DialogMixinImpl['editCallback'];
-				 // public closeCallback!: DialogMixinImpl['closeCallback'];
-				 // public createCallback!: DialogMixinImpl['createCallback'];
-				 // public processCreatedCallback!: DialogMixinImpl['processCreatedCallback'];
-				 // public updateCallback!: DialogMixinImpl['updateCallback'];
+	// TODO 因为方法的调整，从【9.3.3】调整为了【9.7】，所以以下的标准语法，被注释掉了。
+	// public ruleForm!: DialogMixinImpl['ruleForm'];
+	// public addCallback!: DialogMixinImpl['addCallback'];
+	// public editCallback!: DialogMixinImpl['editCallback'];
+	// public closeCallback!: DialogMixinImpl['closeCallback'];
+	// public createCallback!: DialogMixinImpl['createCallback'];
+	// public processCreatedCallback!: DialogMixinImpl['processCreatedCallback'];
+	// public updateCallback!: DialogMixinImpl['updateCallback'];
 
-				 // public Companion!: MixinsInheritCompanion<MixinFather> & DialogMixinImpl;
+	// public Companion!: MixinsInheritCompanion<MixinFather> & DialogMixinImpl;
 
 	public MixinsData_2: MixinLevelTag & DialogMixinImpl & ExtendImpl<SelectOptionType> = {} as any;
 }

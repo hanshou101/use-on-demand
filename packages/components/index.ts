@@ -7,6 +7,7 @@ import WrapDropdown         from '../cp-element-ui/WrapDropdown';
 import MyCardEasy           from '../cp-element-ui/MyCardEasy';
 import MultiLangSimple      from '../cp-element-ui/MultiLangSimple';
 import Tinymce              from '../components/Tinymce';
+import SimpleDemo_Dialog    from '../components/SimpleDemo_Dialog';
 
 const install = function(Vue: VueConstructor_Type, opts = {}) {
 	Vue.use(HelloWorldCfg);
@@ -18,6 +19,7 @@ const install = function(Vue: VueConstructor_Type, opts = {}) {
 	Vue.use(MyCardEasy);
 	Vue.use(MultiLangSimple);
 	Vue.use(Tinymce);
+	Vue.use(SimpleDemo_Dialog);
 };
 
 /* 支持使用标签的方式引入 */

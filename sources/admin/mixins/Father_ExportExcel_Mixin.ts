@@ -1,8 +1,9 @@
-import { ElForm }              from 'element-ui/types/form';
-import { xX_CVS_Excel_Helper } from '../../cvs-excel/CVS_Excel_Helper';
-import { xX_AdminHelper }      from '../admin-helper';
-import { Component }        from 'vue-property-decorator';
+import { ElForm }                           from 'element-ui/types/form';
+import { xX_CVS_Excel_Helper }              from '../../cvs-excel/CVS_Excel_Helper';
+import { xX_AdminHelper }                   from '../admin-helper';
+import { Component }                        from 'vue-property-decorator';
 import { MixinLevelTag, xX_Father_BaseVue } from './Father_BaseVue';
+import { t }                                from '../../../packages/cp-util/locale/locale';
 
 
 @Component({
@@ -19,6 +20,8 @@ export default class xX_Father_ExportExcel_Mixin extends xX_Father_BaseVue {    
 		super();
 		//  console.log('ExportExcelMixin初始化了', this);
 	}
+
+	t = t;
 
 	// TIP 偶尔要用到的【对话框导出】功能。
 	// TIP 导出excel（很方便的方法。）
@@ -43,7 +46,7 @@ export default class xX_Father_ExportExcel_Mixin extends xX_Father_BaseVue {    
 					this.$message({
 						type     : 'warning',                                                              // 不同状态：primary,success,info,warning,error
 						showClose: true,                                                              // 是否显示关闭按钮
-						message  : this.$t('message.Not_Found_Required_Data_Set').toString(),
+						message  : this.t('message.Not_Found_Required_Data_Set').toString(),
 						duration : 3000,                                                               // 设置为0时，将不会自动关闭。默认为3000，消息消失前时间。
 						center   : false,                                                                // 默认为否：否时，为向左靠齐。是：将文字水平居中。
 					});

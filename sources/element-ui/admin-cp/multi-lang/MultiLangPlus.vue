@@ -2,8 +2,8 @@
 	<div>
 
 		<!--提示标题、提示描述-->
-		<el-alert type="success" :title="$t('element.multi_lang_plus.Alert_Title')"
-							:description="$t('element.multi_lang_plus.Alert_Description')"
+		<el-alert type="success" :title="t('element.multi_lang_plus.Alert_Title')"
+							:description="t('element.multi_lang_plus.Alert_Description')"
 							:closable="false" class="alert-container"
 		>
 		</el-alert>
@@ -11,7 +11,7 @@
 		<el-tabs v-model="activePaneName" type="border-card">
 
 			<!--简体中文-->
-			<el-tab-pane :label="$t('lang.Simple_Chinese')" name="1">
+			<el-tab-pane :label="t('lang.Simple_Chinese')" name="1">
 				<!--此处 写单独的rules为了解决blur事件不触发校验的问题-->
 				<el-form-item :label="labelName" prop="translate.zh_CN"
 				>
@@ -29,7 +29,7 @@
 
 						type="danger" @click="handleTranslate" size="mini"
 						:loading="translateLoading" icon="el-icon-search">
-						{{ this.$t('element.multi_lang_plus.Translate_Button_Text') }}
+						{{ this.t('element.multi_lang_plus.Translate_Button_Text') }}
 					</el-button>
 
 				</el-form-item>
@@ -37,7 +37,7 @@
 			</el-tab-pane>
 
 			<!--英文-->
-			<el-tab-pane :label="$t('lang.English')" name="2">
+			<el-tab-pane :label="t('lang.English')" name="2">
 				<el-form-item :label="labelName" prop="translate.en_US">
 					<el-input
 						:disabled="disabled"
@@ -53,7 +53,7 @@
 
 						type="danger" @click="handleTranslate" size="mini"
 						:loading="translateLoading" icon="el-icon-search">
-						{{ this.$t('element.multi_lang_plus.Translate_Button_Text') }}
+						{{ this.t('element.multi_lang_plus.Translate_Button_Text') }}
 					</el-button>
 
 				</el-form-item>
@@ -61,7 +61,7 @@
 			</el-tab-pane>
 
 			<!--繁体中文-->
-			<el-tab-pane :label="$t('lang.Traditional_Chinese')" name="3">
+			<el-tab-pane :label="t('lang.Traditional_Chinese')" name="3">
 				<el-form-item :label="labelName"> <!--prop="translate.zh_TW"-->
 
 					<el-input
@@ -77,7 +77,7 @@
 			</el-tab-pane>
 
 			<!--韩文-->
-			<el-tab-pane :label="$t('lang.Korean')" name="4">
+			<el-tab-pane :label="t('lang.Korean')" name="4">
 
 				<el-form-item :label="labelName"> <!--prop="translate.ko_KR"-->
 
@@ -94,7 +94,7 @@
 			</el-tab-pane>
 
 			<!--日文-->
-			<el-tab-pane :label="$t('lang.Japanese')" name="5">
+			<el-tab-pane :label="t('lang.Japanese')" name="5">
 				<el-form-item :label="labelName"> <!--prop="translate.ja_JP"-->
 
 					<el-input
@@ -119,6 +119,7 @@
 	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
 	import { Component, Prop }                  from 'vue-property-decorator';
 	import { Getter }                           from 'vuex-class';
+	import { t }                                from '../../../../packages/cp-util/locale/locale';
 
 	@Component({
 		name      : 'MultiLangPlus',
@@ -184,10 +185,10 @@
 			const checkDesc   = (rule: any, value: string, callback: Function) => {
 				// 请输入待翻译字段
 				if (value === '') {
-					callback(new Error(this.$t('element.multi_lang_plus.Please_Input_The_Field_To_Be_Translate').toString()));
+					callback(new Error(this.t('element.multi_lang_plus.Please_Input_The_Field_To_Be_Translate').toString()));
 					this.$message({
 						type   : 'warning',
-						message: this.$t('element.multi_lang_plus.Please_Input_The_Field_To_Be_Translate').toString(),
+						message: this.t('element.multi_lang_plus.Please_Input_The_Field_To_Be_Translate').toString(),
 					});
 				} else {
 					callback();
@@ -196,10 +197,10 @@
 			const checkZHDesc = (rule: any, value: string, callback: Function) => {
 				// 请输入中文待翻译字段
 				if (value === '') {
-					callback(new Error(this.$t('element.multi_lang_plus.Please_Input_Simplified_Chinese').toString()));
+					callback(new Error(this.t('element.multi_lang_plus.Please_Input_Simplified_Chinese').toString()));
 					this.$message({
 						type   : 'warning',
-						message: this.$t('element.multi_lang_plus.Please_Input_Simplified_Chinese').toString(),
+						message: this.t('element.multi_lang_plus.Please_Input_Simplified_Chinese').toString(),
 					});
 				} else {
 					callback();
@@ -208,10 +209,10 @@
 			const checkENDesc = (rule: any, value: string, callback: Function) => {
 				// 请输入英文待翻译字段
 				if (value === '') {
-					callback(new Error(this.$t('element.multi_lang_plus.Please_Input_English').toString()));
+					callback(new Error(this.t('element.multi_lang_plus.Please_Input_English').toString()));
 					this.$message({
 						type   : 'warning',
-						message: this.$t('element.multi_lang_plus.Please_Input_English').toString(),
+						message: this.t('element.multi_lang_plus.Please_Input_English').toString(),
 					});
 				} else {
 					callback();
@@ -220,10 +221,10 @@
 			const checkTWDesc = (rule: any, value: string, callback: Function) => {
 				// 请输入繁体中文待翻译字段
 				if (value === '') {
-					callback(new Error(this.$t('element.multi_lang_plus.Please_Input_Traditional_English').toString()));
+					callback(new Error(this.t('element.multi_lang_plus.Please_Input_Traditional_English').toString()));
 					this.$message({
 						type   : 'warning',
-						message: this.$t('element.multi_lang_plus.Please_Input_Traditional_English').toString(),
+						message: this.t('element.multi_lang_plus.Please_Input_Traditional_English').toString(),
 					});
 				} else {
 					callback();
@@ -232,10 +233,10 @@
 			const checkKRDesc = (rule: any, value: string, callback: Function) => {
 				// 请输入韩语待翻译字段
 				// if (value === '') {
-				//   callback(new Error(this.$t('element.multi_lang_plus.Please_Input_Korean')))
+				//   callback(new Error(this.t('element.multi_lang_plus.Please_Input_Korean')))
 				//   this.$message({
 				//     type: 'warning',
-				//     message: this.$t('element.multi_lang_plus.Please_Input_Korean'),
+				//     message: this.t('element.multi_lang_plus.Please_Input_Korean'),
 				//   })
 				// } else {
 				//   callback()
@@ -244,10 +245,10 @@
 			const checkJPDesc = (rule: any, value: string, callback: Function) => {
 				// 请输入日语待翻译字段
 				// if (value === '') {
-				//   callback(new Error(this.$t('element.multi_lang_plus.Please_Input_Japanese')))
+				//   callback(new Error(this.t('element.multi_lang_plus.Please_Input_Japanese')))
 				//   this.$message({
 				//     type: 'error',
-				//     message: this.$t('element.multi_lang_plus.Please_Input_Japanese'),
+				//     message: this.t('element.multi_lang_plus.Please_Input_Japanese'),
 				//   })
 				// } else {
 				//   callback()
@@ -354,16 +355,18 @@
 				//this.ruleForm.translate.ja_JP = transJpRes.trans_result[ 0 ].dst
 				// 翻译成功
 				this.$message.success(
-					this.$t('element.multi_lang_plus.Translate_Success').toString(), /* 翻译成功*/
+					this.t('element.multi_lang_plus.Translate_Success').toString(), /* 翻译成功*/
 				);
 			} catch (e) {
 				// 翻译失败
-				console.log(this.$t('element.multi_lang_plus.Translate_Failure').toString(), e);
+				console.log(this.t('element.multi_lang_plus.Translate_Failure').toString(), e);
 				this.translateLoading = false;
 			}
 
 			// console.log("翻译结果", this.ruleForm)
 		}
+
+		t = t;
 
 		//
 		//
