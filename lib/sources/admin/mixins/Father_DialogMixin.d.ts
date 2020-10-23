@@ -48,7 +48,7 @@ export default class xX_Father_DialogMixin<SelectOptionType> extends xX_Father_D
     private show;
     initData: any;
     dialogType: number;
-    language: string;
+    get language(): string;
     dialogVisible: boolean;
     uploadHost: string;
     uploadData: OssUploadBean_Type;

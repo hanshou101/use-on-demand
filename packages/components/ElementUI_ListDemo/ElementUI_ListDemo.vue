@@ -56,12 +56,12 @@
 
 <script lang="ts">
 
-	import { Mixins }                       from 'vue-property-decorator';
-	import Component                        from 'vue-class-component';
+	import { Mixins }   from 'vue-property-decorator';
+	import Component    from 'vue-class-component';
 	//
-	import MyTableEasy                      from '../../packages/cp-element-ui/MyTableEasy/MyTableEasy.vue';
-	import MyFormEasy                       from '../../packages/cp-element-ui/MyFormEasy/MyFormEasy.vue';
-	import WrapDropdown                     from '../../packages/cp-element-ui/WrapDropdown/WrapDropdown.vue';
+	import MyTableEasy  from '../../../packages/cp-element-ui/MyTableEasy/MyTableEasy.vue';
+	import MyFormEasy   from '../../../packages/cp-element-ui/MyFormEasy/MyFormEasy.vue';
+	import WrapDropdown from '../../../packages/cp-element-ui/WrapDropdown/WrapDropdown.vue';
 
 	import Vue from 'vue';
 
@@ -72,7 +72,6 @@
 		Pagination as ElPagination,
 		Loading,
 	}                                       from 'element-ui';
-	import Article_Create_Dialog            from './components/Article_Create_Dialog.vue';
 	import { xX_MyElementUtils_Helper }     from '../../../sources/element-ui/admin-cp/MyElementUtils_Helper';
 	import { xX_Father_ElFItem }            from '../../../sources/element-ui/admin-cp/ElFItem';
 	import { t }                            from '../../cp-util/locale/locale';
@@ -81,6 +80,7 @@
 	import xX_Father_CommonMixin            from '../../../sources/admin/mixins/Father_CommonMixin';
 	import { xX_Father_ElTItem }            from '../../../sources/element-ui/admin-cp/ElTItem';
 	import { UserList_Mock_Data }           from '../../../examples/mock-data/MockData';
+	import Article_Create_Dialog            from '../../../examples/views/components/Article_Create_Dialog.vue';
 
 	Vue.use(Loading.directive);
 
