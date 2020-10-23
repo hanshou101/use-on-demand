@@ -67,7 +67,7 @@ declare const xX_Father_CommonMixin_base: import("vue-class-component/lib/declar
  */
 export default class xX_Father_CommonMixin<SelectOptionType> extends xX_Father_CommonMixin_base {
     constructor();
-    get language(): string;
+    language: string;
     dialogControlVisible: boolean;
     listLoading: boolean;
     listQuery: {
@@ -82,7 +82,6 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends xX_Father_C
     ruleFormRef: null;
     dialogType: number;
     preventGetList_in_activatedFunc: boolean;
-    t: (path: string, ...options: any[]) => any;
     _getList(): Promise<any>;
     submitForm(formName?: string): void;
     handleSelectionChange(val: any): void;

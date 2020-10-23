@@ -23,7 +23,7 @@
 		DropdownMenu as ElDropdownMenu,
 		DropdownItem as ElDropdownItem,
 	}            from 'element-ui';
-	import { t } from '../../../sources/cp-util/locale/locale';
+	import { t } from '../../cp-util/locale/locale';
 
 	@Component({
 		name      : 'WrapDropdown',

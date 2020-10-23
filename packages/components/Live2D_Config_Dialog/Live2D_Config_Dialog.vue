@@ -49,7 +49,7 @@
 		Button as ElButton,
 		Form as ElForm,
 	}            from 'element-ui';
-	import { t } from '../../../sources/cp-util/locale/locale';
+	import { t } from '../../cp-util/locale/locale';
 
 	@Component({
 		name      : 'Live2D_Config_Dialog',

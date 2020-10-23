@@ -2,8 +2,8 @@
 import xX_Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
 import xX_Father_DialogMixin       from './Father_DialogMixin';
 import { Component, Mixins }       from 'vue-property-decorator';
-import { MixinLevelTag } from './Father_BaseVue';
-import { t }             from '../../cp-util/locale/locale';
+import { MixinLevelTag }           from './Father_BaseVue';
+import { t }                       from '../../../packages/cp-util/locale/locale';
 
 export interface PreUploadBean {
 	dir?: string;
@@ -110,19 +110,7 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends Mixins(xX_F
 		// console.log('this', this.listQuery);
 	}
 
-	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
-	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
-	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
-	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
-	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
-	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
-	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
-	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
-	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
-	public get language(): string {
-		console.error('此处，@Getter的【language】用法，已不再使用！！！');
-		return '';
-	} ; // 语言
+	 public language: string = 'en'; // 语言
 
 	// public selectOption: MySelectOption_AllConfig                      = selectOption;
 	// get selectOption(): object {

@@ -6,8 +6,8 @@
 import xX_Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
 
 import { Component, Mixins, Prop, Watch } from 'vue-property-decorator';
-import { MixinLevelTag } from './Father_BaseVue';
-import { t }             from '../../cp-util/locale/locale';
+import { MixinLevelTag }                  from './Father_BaseVue';
+import { t }                              from '../../../packages/cp-util/locale/locale';
 
 
 /**
@@ -95,20 +95,7 @@ export default class xX_Father_DialogMixin<SelectOptionType> extends Mixins(xX_F
 		required: false,
 	})
 	public dialogType!: number;
-
-	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
-	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
-	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
-	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
-	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
-	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
-	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
-	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
-	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
-	public get language(): string {
-		console.error('此处，@Getter的【language】用法，已不再使用！！！');
-		return '';
-	} ; // 语言
+	public language: string = 'en'; // 语言
 
 	// public dialogType: number = 1;
 	public dialogVisible: boolean = this.show;

@@ -164,7 +164,6 @@ module.exports = {
 		npm: {
 			'auto-publish'      : npsUtils.series(
 				npsUtils.series.nps('ts.compile-lib'),
-				npsUtils.series.nps('vue.cli-4.multi-cp.build'),
 				'npm version patch',
 				'npm publish',
 			),
