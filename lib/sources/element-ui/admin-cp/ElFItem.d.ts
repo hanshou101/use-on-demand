@@ -1,4 +1,3 @@
-import { ElUploadInternalFileDetail } from 'element-ui/types/upload';
 import { xX_MyDialogFormItem_Conf, xX_MyFormItem_SelectOptionConf } from './MyElementUtils';
 /**
  * 两个参数，一个必传参数对象，一个可选参数对象
@@ -111,10 +110,10 @@ export declare namespace xX_Father_ElFItem {
     }
     export class UploadImg extends Base {
         readonly myCategory = "upload_img";
-        uploadSingleImageSuccess_ExtraCb?: (res: any, file: ElUploadInternalFileDetail) => void;
+        uploadSingleImageSuccess_ExtraCb?: (res: any, file: ElUploadInternalFileDetail_Type) => void;
         maxSize: number;
         constructor(require: Require, optional?: Optional & {
-            uploadSingleImageSuccess_ExtraCb?: (res: any, file: ElUploadInternalFileDetail) => void;
+            uploadSingleImageSuccess_ExtraCb?: (res: any, file: ElUploadInternalFileDetail_Type) => void;
             maxSize?: number;
         });
     }

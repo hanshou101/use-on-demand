@@ -1,4 +1,4 @@
-import Vue, { VueConstructor } from 'vue';
+import Vue  from 'vue';
 
 /*
         import {

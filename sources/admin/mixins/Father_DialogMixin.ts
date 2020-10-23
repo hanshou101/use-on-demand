@@ -2,15 +2,13 @@
  * 全局CRUD对话框组件抽取
  */
 
-import { ElForm } from 'element-ui/types/form';
 
 import xX_Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
 
-import { OssUploadBean, PreUploadBean }   from './Father_CommonMixin';
 import { Component, Mixins, Prop, Watch } from 'vue-property-decorator';
-import { Getter }                         from 'vuex-class';
 import { MixinLevelTag }                  from './Father_BaseVue';
-import { t }                       from '../../../packages/cp-util/locale/locale';
+import { t }                              from '../../../packages/cp-util/locale/locale';
+
 
 /**
  * 可能最后，还是要用【Mixins】去解决！！！。
@@ -97,16 +95,16 @@ export default class xX_Father_DialogMixin<SelectOptionType> extends Mixins(xX_F
 		required: false,
 	})
 	public dialogType!: number;
-	@Getter('language') public language!: string; // 语言
+	public language: string = 'en'; // 语言
 
 	// public dialogType: number = 1;
 	public dialogVisible: boolean = this.show;
 	// public uploadImgUrl = userServiceApi.aliyunUrl;
 	// public statusFlag: string = '';
 	// oss预上传数据
-	public uploadHost: string        = '';
+	public uploadHost: string             = '';
 	// 上传携带参数
-	public uploadData: OssUploadBean = {};
+	public uploadData: OssUploadBean_Type = {};
 	// 翻译结果
 	// public tranlateRes = {};
 	// 表单是否正在提交中
@@ -189,7 +187,7 @@ export default class xX_Father_DialogMixin<SelectOptionType> extends Mixins(xX_F
 	}
 
 	public submitForm(formName: string): void {
-		(this.$refs[formName] as ElForm).validate((valid: boolean) => {
+		(this.$refs[formName] as MyElForm).validate((valid: boolean) => {
 			if (valid) {
 				if (this.dialogType === 1) {
 					if (this.dataCommitting) {
@@ -317,7 +315,7 @@ export default class xX_Father_DialogMixin<SelectOptionType> extends Mixins(xX_F
 	}
 
 	public async beforeUpload(): Promise<any> {
-		const preUploadData: PreUploadBean = (await this.MixinsData_2.preuploadApi()) as PreUploadBean;
+		const preUploadData: PreUploadBean_Type = (await this.MixinsData_2.preuploadApi()) as PreUploadBean_Type;
 		if (preUploadData) {
 			const {
 							dir,

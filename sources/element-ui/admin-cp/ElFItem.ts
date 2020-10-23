@@ -1,4 +1,3 @@
-import {ElUploadInternalFileDetail}                               from 'element-ui/types/upload';
 import {xX_MyDialogFormItem_Conf, xX_MyFormItem_SelectOptionConf} from './MyElementUtils';
 
 /**
@@ -244,13 +243,13 @@ export namespace xX_Father_ElFItem {
 
   export class UploadImg extends Base {
     public readonly myCategory = 'upload_img';  // 该属性，不能使用static。否则Vue将不会取到。
-    public uploadSingleImageSuccess_ExtraCb?: (res: any, file: ElUploadInternalFileDetail) => void;
+    public uploadSingleImageSuccess_ExtraCb?: (res: any, file: ElUploadInternalFileDetail_Type) => void;
     public maxSize: number     = 5242880;           // 初始值（5MB）
 
     constructor(require: Require,
                 optional?: Optional & {
                   // 额外的回调。（基本逻辑，已经内聚封装完毕；此处是额外的回调封装）
-                  uploadSingleImageSuccess_ExtraCb?: (res: any, file: ElUploadInternalFileDetail) => void,
+                  uploadSingleImageSuccess_ExtraCb?: (res: any, file: ElUploadInternalFileDetail_Type) => void,
                   maxSize?: number,
                 }) {
       super(require, optional);

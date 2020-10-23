@@ -1,9 +1,7 @@
 // import Dropdown                 from '@/_components/general/dropdown/index.vue';
-import { ElForm }                  from 'element-ui/types/form';
 import xX_Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
 import xX_Father_DialogMixin       from './Father_DialogMixin';
 import { Component, Mixins }       from 'vue-property-decorator';
-import { Getter }                  from 'vuex-class';
 import { MixinLevelTag }           from './Father_BaseVue';
 import { t }                       from '../../../packages/cp-util/locale/locale';
 
@@ -112,7 +110,7 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends Mixins(xX_F
 		// console.log('this', this.listQuery);
 	}
 
-	@Getter('language') public language!: string; // 语言
+	 public language: string = 'en'; // 语言
 
 	// public selectOption: MySelectOption_AllConfig                      = selectOption;
 	// get selectOption(): object {
@@ -175,7 +173,7 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends Mixins(xX_F
 		}
 		this.listQuery.current = 1;
 
-		const elForm = this.$refs[formName] as (ElForm | undefined);
+		const elForm = this.$refs[formName] as (MyElForm | undefined);
 
 		if (elForm) {                                         // 找到了【ref】
 			elForm.validate((valid: boolean) => {
@@ -262,8 +260,9 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends Mixins(xX_F
 	}
 
 	public async handleChangeStatus(index: number, row: { id?: string, status?: number }): Promise<any> {
-		let { id, status } = row;
-		status             = (status === 1 ? 0 : 1);
+		const { id }   = row;
+		let { status } = row;
+		status         = (status === 1 ? 0 : 1);
 		await this.MixinsData_2.changeStatusCallback(id, status);
 		this.$notify({
 			type   : 'success',

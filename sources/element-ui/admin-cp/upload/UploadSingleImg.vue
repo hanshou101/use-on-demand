@@ -38,8 +38,6 @@
 	// API，建议采用相对路径。
 
 
-	import { ElUploadInternalFileDetail }             from 'element-ui/types/upload';
-	import { ElUpload }                               from 'element-ui/types/element-ui';
 	import { MixinLevelTag, xX_Father_BaseVue }       from '../../../admin/mixins/Father_BaseVue';
 	import { Component, InjectReactive, Prop, Watch } from 'vue-property-decorator';
 
@@ -166,7 +164,7 @@
 
 		// TIP： Method，在类中的实现
 		// 文件状态改变时的钩子，添加文件、上传成功和上传失败时都会被调用
-		public _fileOnChange(file: ElUploadInternalFileDetail, fileList: object[]): void {
+		public _fileOnChange(file: ElUploadInternalFileDetail_Type, fileList: object[]): void {
 			// console.log('添加文件了', file, fileList);
 			// 文件状态为 ready 则表明是添加文件
 			if (file.status === 'ready') {
@@ -180,7 +178,7 @@
 					// 向上传递事件
 					this.$emit('error', 'MAX_SIZE_LIMIT', this.maxSize);
 					// @ts-ignore
-					(this.$refs.upload_single_img as ElUpload).uploadFiles.splice(0, 1);        // 删除文件
+					(this.$refs.upload_single_img as ElUpload_Type).uploadFiles.splice(0, 1);        // 删除文件
 					return;
 				}
 				// TIP 文件格式不对
@@ -198,7 +196,7 @@
 					// 向上传递事件
 					this.$emit('error', 'MAX_SIZE_LIMIT', this.maxSize);
 					// @ts-ignore
-					(this.$refs.upload_single_img as ElUpload).uploadFiles.splice(0, 1);        // 删除文件
+					(this.$refs.upload_single_img as ElUpload_Type).uploadFiles.splice(0, 1);        // 删除文件
 					return;
 				}
 
@@ -216,7 +214,7 @@
 		};
 
 		// 预上传
-		_preUpload(file: ElUploadInternalFileDetail): void {
+		_preUpload(file: ElUploadInternalFileDetail_Type): void {
 			this.disabled_inner = true;
 			this.preUploadFaild = false;
 			this.uploading      = true;
@@ -261,10 +259,10 @@
 				if (retry) {
 					this.currentFile.status = 'ready';
 					// @ts-ignore
-					(this.$refs.upload_single_img as ElUpload).uploadFiles.push(this.currentFile);
+					(this.$refs.upload_single_img as ElUpload_Type).uploadFiles.push(this.currentFile);
 				}
 				this.uploading = true;
-				(this.$refs.upload_single_img as ElUpload).submit();
+				(this.$refs.upload_single_img as ElUpload_Type).submit();
 			});
 		};
 
@@ -311,7 +309,7 @@
 		};
 
 		// 图片上传成功回调
-		public _handleUploadSuccess(res: any, file: ElUploadInternalFileDetail): void {
+		public _handleUploadSuccess(res: any, file: ElUploadInternalFileDetail_Type): void {
 			this.disabled_inner = false;
 			this.preUploadFaild = false;
 			this.uploadFaild    = false;

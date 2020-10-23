@@ -2,7 +2,6 @@
  * 全局CRUD对话框组件抽取
  */
 import xX_Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
-import { OssUploadBean } from './Father_CommonMixin';
 import { MixinLevelTag } from './Father_BaseVue';
 declare const xX_Father_DialogMixin_base: import("vue-class-component/lib/declarations").VueClass<xX_Father_ExportExcel_Mixin>;
 /**
@@ -52,9 +51,10 @@ export default class xX_Father_DialogMixin<SelectOptionType> extends xX_Father_D
     language: string;
     dialogVisible: boolean;
     uploadHost: string;
-    uploadData: OssUploadBean;
+    uploadData: OssUploadBean_Type;
     dataCommitting: boolean;
     watch_show(newVal: boolean): void;
+    t: (path: string, ...options: any[]) => any;
     showDialog(type: number, row?: {} | null): void;
     closeDialog(): void;
     submitForm(formName: string): void;

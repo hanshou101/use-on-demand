@@ -153,7 +153,9 @@
 
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/less" lang="less" scoped>
 	// 尝试规范的进行  CSS开发。
+	.common-dialog {
 
+	}
 </style>

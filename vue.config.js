@@ -1,5 +1,6 @@
-const { Externals_TypeE }           = require('./sources/webpack/webpack-util');
-const { xX_getEntries, xX_resolve } = require('./sources/webpack/webpack-util');
+const { xX_add_CircularDependencyPlugin } = require('./sources/webpack/webpack-util');
+const { Externals_TypeE }                 = require('./sources/webpack/webpack-util');
+const { xX_getEntries, xX_resolve }       = require('./sources/webpack/webpack-util');
 
 console.log('当前Node环境', process.env.NODE_ENV);
 
@@ -52,6 +53,9 @@ const InteractOuterProject_Helper = {
 		},
 
 		// 'vue-property-decorator': 'vue-property-decorator',
+		// 'vuex-class'            : 'vuex-class',
+		// 'vue-class-component'   : 'vue-class-component',
+		// 'vuex'                  : 'vuex',
 
 		// 'vue-router': 'VueRouter',
 		// 'highlight.js': 'hljs',
@@ -103,6 +107,7 @@ const devConfig = {
 					.tap(options => {
 						return options;
 					});
+		xX_add_CircularDependencyPlugin(config);
 	},
 	devServer       : {
 		port: 8091,
@@ -174,7 +179,7 @@ const buildConfig = {
 		});		// 将【部分使用中依赖】，由外部提供。
 
 		// console.log('真正配置', config.get('externals'));
-
+		xX_add_CircularDependencyPlugin(config);
 	},
 	outputDir          : 'lib-cp',		// 略微改名
 	productionSourceMap: false,

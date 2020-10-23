@@ -79,7 +79,7 @@ const _routes: Array<Enhanced_RouteConfig_Type> = [
 		intro    : 'ElementUI-列表测试',
 		name     : 'element-ui-list-demo',
 		path     : 'element-ui-list-demo',
-		component: () => import('./views/ElementUI_ListDemo.vue'),
+		component: () => import('../packages/components/ElementUI_ListDemo/ElementUI_ListDemo.vue'),
 	},
 ];
 

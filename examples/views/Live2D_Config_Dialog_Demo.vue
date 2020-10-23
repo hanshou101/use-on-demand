@@ -38,4 +38,7 @@
 </script>
 
 <style lang="less" scoped>
+	.Live2D_Config_Dialog_Demo{
+
+	}
 </style>

@@ -1,4 +1,3 @@
-import { ElForm }                           from 'element-ui/types/form';
 import { xX_CVS_Excel_Helper }              from '../../cvs-excel/CVS_Excel_Helper';
 import { xX_AdminHelper }                   from '../admin-helper';
 import { Component }                        from 'vue-property-decorator';
@@ -58,9 +57,9 @@ export default class xX_Father_ExportExcel_Mixin extends xX_Father_BaseVue {    
 
 		// TIP 途径之① 传入了表单的Ref名字。
 		if (typeof formName_orParamsObj === 'string') {
-			(this.$refs[formName_orParamsObj] as ElForm).validate((valid: boolean) => {
+			(this.$refs[formName_orParamsObj] as MyElForm).validate((valid: boolean) => {
 				if (valid) {
-					const { ruleForm, current, size }   = (this.$refs[formName_orParamsObj] as ElForm).$parent as any;
+					const { ruleForm, current, size }   = (this.$refs[formName_orParamsObj] as MyElForm).$parent as any;
 					const params: ExportExcelParam_Type = {};
 					xX_AdminHelper.formDateRange(params, ruleForm);
 					params.current = current;

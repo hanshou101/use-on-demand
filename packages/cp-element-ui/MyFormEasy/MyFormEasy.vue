@@ -339,9 +339,7 @@
 </template>
 
 <script lang="ts">
-	import Vue from 'vue';
 
-	import { ElUploadInternalFileDetail }       from 'element-ui/types/upload';
 	import { xX_Father_ElFItem }                from '../../../sources/element-ui/admin-cp/ElFItem';
 	import xX_UploadSingleImg                   from '../../../sources/element-ui/admin-cp/upload/UploadSingleImg.vue';
 	import xX_MultiLangSimple                   from '../MultiLangSimple/MultiLangSimple.vue';
@@ -458,7 +456,7 @@
 
 		public uploadSingleImageSuccess_Wrapper(item: xX_Father_ElFItem.Base) {              // 在外面包裹一层，兼容【$emit】、【选项传参】两种形式。
 			console.log('执行了吗1', item);
-			return (res: any, fileDetail: ElUploadInternalFileDetail) => {
+			return (res: any, fileDetail: ElUploadInternalFileDetail_Type) => {
 				console.log('执行了吗2', res, fileDetail);
 				const extraCb = (item as xX_Father_ElFItem.UploadImg).uploadSingleImageSuccess_ExtraCb;       // 选项中传参的配置
 				if (typeof extraCb == 'function') {
