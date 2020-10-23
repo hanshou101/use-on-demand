@@ -2,6 +2,7 @@ import { MixinLevelTag, xX_Father_BaseVue } from './Father_BaseVue';
 export default class xX_Father_ExportExcel_Mixin extends xX_Father_BaseVue {
     constructor();
     t: (path: string, ...options: any[]) => any;
+    exportExcel(formName_orParamsObj: string | {}, baseOption: ExportExcelOption_Type, fileName: string): void;
     activated(): void;
     created(): void;
     destroyed(): void;
