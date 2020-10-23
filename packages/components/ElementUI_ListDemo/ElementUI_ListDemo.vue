@@ -74,7 +74,7 @@
 	}                                       from 'element-ui';
 	import { xX_MyElementUtils_Helper }     from '../../../sources/element-ui/admin-cp/MyElementUtils_Helper';
 	import { xX_Father_ElFItem }            from '../../../sources/element-ui/admin-cp/ElFItem';
-	import { t }                            from '../../cp-util/locale/locale';
+	import { t }                            from '../../../sources/cp-util/locale/locale';
 	import { selectOption }                 from '../../../examples/enum-options/select-options';
 	import { xX_MyEl_FormItem_Rule_Config } from '../../../sources/element-ui/admin-cp/MyElementUtils';
 	import xX_Father_CommonMixin            from '../../../sources/admin/mixins/Father_CommonMixin';

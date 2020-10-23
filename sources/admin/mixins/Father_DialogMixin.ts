@@ -6,8 +6,8 @@
 import xX_Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
 
 import { Component, Mixins, Prop, Watch } from 'vue-property-decorator';
-import { MixinLevelTag }                  from './Father_BaseVue';
-import { t }                              from '../../../packages/cp-util/locale/locale';
+import { MixinLevelTag } from './Father_BaseVue';
+import { t }             from '../../cp-util/locale/locale';
 
 
 /**

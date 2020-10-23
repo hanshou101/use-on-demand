@@ -365,7 +365,7 @@
 	// @ts-ignore
 	import { Fragment, Plugin }     from 'vue-fragment';
 	import { xX_SString_Helper }    from '../../../sources/symbol-string/SString_Helper';
-	import { t }                    from '../../cp-util/locale/locale';
+	import { t }                    from '../../../sources/cp-util/locale/locale';
 	import { xX_Rt_UEditor_Helper } from '../../../sources/editor/richtext-editor/Rt_UEditor_Helper';
 
 	// FIXME 此处，暂时没有调通！！！

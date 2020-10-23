@@ -2,7 +2,7 @@ import { xX_CVS_Excel_Helper }              from '../../cvs-excel/CVS_Excel_Help
 import { xX_AdminHelper }                   from '../admin-helper';
 import { Component }                        from 'vue-property-decorator';
 import { MixinLevelTag, xX_Father_BaseVue } from './Father_BaseVue';
-import { t }                                from '../../../packages/cp-util/locale/locale';
+import { t }                                from '../../cp-util/locale/locale';
 
 
 @Component({
