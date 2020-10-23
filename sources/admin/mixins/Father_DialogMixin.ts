@@ -6,9 +6,10 @@
 import xX_Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
 
 import { Component, Mixins, Prop, Watch } from 'vue-property-decorator';
-import { MixinLevelTag }                  from './Father_BaseVue';
-import { t }                              from '../../../packages/cp-util/locale/locale';
+import { MixinLevelTag } from './Father_BaseVue';
+import { t }             from '../../cp-util/locale/locale';
 
+import { Getter }                  from 'vuex-class';
 
 /**
  * 可能最后，还是要用【Mixins】去解决！！！。
@@ -95,7 +96,8 @@ export default class xX_Father_DialogMixin<SelectOptionType> extends Mixins(xX_F
 		required: false,
 	})
 	public dialogType!: number;
-	public language: string = 'en'; // 语言
+
+	@Getter('language') public language!: string; // 语言
 
 	// public dialogType: number = 1;
 	public dialogVisible: boolean = this.show;

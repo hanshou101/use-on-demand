@@ -62,7 +62,7 @@ const mapToFolder = (dependencies, folder = './node_modules') =>
  * @param	{WebpackOptions_Type} config
  * @param {Array<string>} packageArray
  */
-function fix_NpmLink_TwoProject_DuplicatePackage_Error(
+function xX_fix_NpmLink_TwoProject_DuplicatePackage_Error(
 	config,
 	packageArray,
 ) {
@@ -81,9 +81,27 @@ function fix_NpmLink_TwoProject_DuplicatePackage_Error(
 
 }
 
+/**
+ *
+ * @param {ChainableWebpackConfig_Type} config
+ */
+function xX_add_CircularDependencyPlugin(config){
+	const CircularDependencyPlugin = require('circular-dependency-plugin');
+	const circlePlugin             = new CircularDependencyPlugin({
+		exclude         : /a\.js|node_modules/,       // exclude detection of files based on a RegExp
+		failOnError     : 'error',                    // add errors to webpack instead of warnings TODO 此处，临时修改为只warning，而不error
+		allowAsyncCycles: false,                      // // allow import cycles that include an asyncronous import,    e.g. via import(/* webpackMode: "weak" */ './file.js')
+		cwd             : process.cwd(),              // set the current working directory for displaying module paths
+	});
+
+	config.plugin('circle-plugin').use(circlePlugin);
+
+}
+
 module.exports = {
 	xX_resolve,
 	xX_getEntries,
 	Externals_TypeE,
-	fix_NpmLink_TwoProject_DuplicatePackage_Error,
+	xX_fix_NpmLink_TwoProject_DuplicatePackage_Error,
+	xX_add_CircularDependencyPlugin,
 };

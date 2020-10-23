@@ -34,7 +34,7 @@
 		Dialog as ElDialog,
 		Upload as ElUpload,
 	}            from 'element-ui';
-	import { t } from '../../cp-util/locale/locale';
+	import { t } from '../../../sources/cp-util/locale/locale';
 
 	@Component({
 		name      : 'EditorImage',

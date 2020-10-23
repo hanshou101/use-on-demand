@@ -2,8 +2,10 @@
 import xX_Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
 import xX_Father_DialogMixin       from './Father_DialogMixin';
 import { Component, Mixins }       from 'vue-property-decorator';
-import { MixinLevelTag }           from './Father_BaseVue';
-import { t }                       from '../../../packages/cp-util/locale/locale';
+import { MixinLevelTag } from './Father_BaseVue';
+import { t }             from '../../cp-util/locale/locale';
+
+import { Getter }                  from 'vuex-class';
 
 export interface PreUploadBean {
 	dir?: string;
@@ -110,7 +112,7 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends Mixins(xX_F
 		// console.log('this', this.listQuery);
 	}
 
-	 public language: string = 'en'; // 语言
+	@Getter('language') public language!: string; // 语言
 
 	// public selectOption: MySelectOption_AllConfig                      = selectOption;
 	// get selectOption(): object {

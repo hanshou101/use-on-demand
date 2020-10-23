@@ -1,13 +1,6 @@
-const CircularDependencyPlugin = require('circular-dependency-plugin');
-const circlePlugin             = new CircularDependencyPlugin({
-	exclude         : /a\.js|node_modules/,       // exclude detection of files based on a RegExp
-	failOnError     : 'error',                    // add errors to webpack instead of warnings TODO 此处，临时修改为只warning，而不error
-	allowAsyncCycles: false,                      // // allow import cycles that include an asyncronous import,    e.g. via import(/* webpackMode: "weak" */ './file.js')
-	cwd             : process.cwd(),              // set the current working directory for displaying module paths
-});
-
-const { Externals_TypeE }           = require('./sources/webpack/webpack-util');
-const { xX_getEntries, xX_resolve } = require('./sources/webpack/webpack-util');
+const { xX_add_CircularDependencyPlugin } = require('./sources/webpack/webpack-util');
+const { Externals_TypeE }                 = require('./sources/webpack/webpack-util');
+const { xX_getEntries, xX_resolve }       = require('./sources/webpack/webpack-util');
 
 console.log('当前Node环境', process.env.NODE_ENV);
 
@@ -59,10 +52,10 @@ const InteractOuterProject_Helper = {
 			[Externals_TypeE.Module_Exports_Default_AMD]: 'C',
 		},
 
-		'vue-property-decorator': 'vue-property-decorator',
-		'vuex-class'            : 'vuex-class',
-		'vue-class-component'   : 'vue-class-component',
-		'vuex'                  : 'vuex',
+		// 'vue-property-decorator': 'vue-property-decorator',
+		// 'vuex-class'            : 'vuex-class',
+		// 'vue-class-component'   : 'vue-class-component',
+		// 'vuex'                  : 'vuex',
 
 		// 'vue-router': 'VueRouter',
 		// 'highlight.js': 'hljs',
@@ -114,9 +107,7 @@ const devConfig = {
 					.tap(options => {
 						return options;
 					});
-
-		config.plugin('circle-plugin').use(circlePlugin);
-
+		xX_add_CircularDependencyPlugin(config);
 	},
 	devServer       : {
 		port: 8091,
@@ -188,10 +179,7 @@ const buildConfig = {
 		});		// 将【部分使用中依赖】，由外部提供。
 
 		// console.log('真正配置', config.get('externals'));
-
-
-		config.plugin('circle-plugin').use(circlePlugin);
-
+		xX_add_CircularDependencyPlugin(config);
 	},
 	outputDir          : 'lib-cp',		// 略微改名
 	productionSourceMap: false,

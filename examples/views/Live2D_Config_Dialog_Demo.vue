@@ -9,17 +9,14 @@
 
 <script lang="ts">
 	import Vue                           from 'vue';
-	// @ts-ignore
-	import Live2D_Config_Dialog          from '../../lib-cp/Live2D_Config_Dialog/index.js';
+	import Live2D_Config_Dialog          from '../../packages/components/Live2D_Config_Dialog';
 	import { xX_Live2D_WidgetJs_Helper } from '../../sources/live2d/live2d-widget.js/Live2D_WidgetJs_Helper';
 	import { xX_BrowserEventMap }        from '../../sources/dom/dom-events';
-
-	Vue.use(Live2D_Config_Dialog);
 
 	export default Vue.extend({
 		name      : 'Live2D_Config_Dialog_Demo',
 		components: {
-			// Live2D_Config_Dialog,
+			Live2D_Config_Dialog,
 		},
 		filters   : {},
 		mixins    : [],

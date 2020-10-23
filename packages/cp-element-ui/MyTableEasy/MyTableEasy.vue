@@ -19,7 +19,7 @@
 	// @ts-ignore
 	import { Fragment, Plugin }  from 'vue-fragment';
 	import { xX_CPlugin_Helper } from '../../../sources/vue/plugin/common-plugin';
-	import { t }                 from '../../cp-util/locale/locale';
+	import { t }                 from '../../../sources/cp-util/locale/locale';
 
 	type NotArray<T> = T extends Array<any> ? never : T;
 
