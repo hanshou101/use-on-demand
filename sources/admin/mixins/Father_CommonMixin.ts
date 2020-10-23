@@ -110,7 +110,19 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends Mixins(xX_F
 		// console.log('this', this.listQuery);
 	}
 
-	 public language: string = 'en'; // 语言
+	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
+	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
+	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
+	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
+	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
+	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
+	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
+	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
+	// FIXME 此处，需要修正！！！！！！！！！@Getter的真正原因 尚未找出！！！！！！！！！
+	public get language(): string {
+		console.error('此处，@Getter的【language】用法，已不再使用！！！');
+		return '';
+	} ; // 语言
 
 	// public selectOption: MySelectOption_AllConfig                      = selectOption;
 	// get selectOption(): object {
