@@ -178,9 +178,9 @@ export class xX_CVS_Excel_Helper {
 					getFileSaver().then((FileSaver) => {                              // 导入库
 						FileSaver.saveAs(blob, `${zip_name}.zip`);    // FIXME ？？？？？？
 						resolve();
-					}).catch((e) => [
-						reject(e),
-					]);
+					}).catch((e) => {
+						return [reject(e)];
+					});
 				}, (err) => {
 					console.error(err);
 					// alert(i18n.t('message.Export_Failure'));
