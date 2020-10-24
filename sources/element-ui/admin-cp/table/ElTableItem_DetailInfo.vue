@@ -20,6 +20,7 @@
 	import { Component, Prop }                  from 'vue-property-decorator';
 	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
 	import { xX_SString_Helper }                from '../../../symbol-string/SString_Helper';
+	import { xX_ExceptionError_Helper }         from '../../../exception-error/ExceptionError_Helper';
 
 	@Component({
 		name      : 'ElTableItem_DetailInfo',
@@ -68,7 +69,7 @@
 					break;
 				}
 				default: {
-					throw new Error('getItemText item类型错误');
+					throw new Error(xX_ExceptionError_Helper.throwError_andLog('getItemText item类型错误'));
 				}
 			}
 
@@ -90,7 +91,7 @@
 					break;
 				}
 				default: {
-					throw new Error('calc_IfDisableRender item类型错误');
+					throw new Error(xX_ExceptionError_Helper.throwError_andLog('calc_IfDisableRender item类型错误'));
 				}
 			}
 			if (typeof item.disableRender == 'undefined') {
@@ -121,7 +122,7 @@
 				elTdEl.style.verticalAlign = 'middle';                  // 全部居中
 
 			} else {
-				throw new Error('寻找El的祖父级标签，发生错误！未找到目标中的  <td>标签！');
+				throw new Error(xX_ExceptionError_Helper.throwError_andLog('寻找El的祖父级标签，发生错误！未找到目标中的  <td>标签！'));
 			}
 		};
 

@@ -2,10 +2,11 @@
 import xX_Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
 import xX_Father_DialogMixin       from './Father_DialogMixin';
 import { Component, Mixins }       from 'vue-property-decorator';
-import { MixinLevelTag } from './Father_BaseVue';
-import { t }             from '../../cp-util/locale/locale';
+import { MixinLevelTag }           from './Father_BaseVue';
+import { t }                       from '../../cp-util/locale/locale';
 
-import { Getter }                  from 'vuex-class';
+import { Getter }                   from 'vuex-class';
+import { xX_ExceptionError_Helper } from '../../exception-error/ExceptionError_Helper';
 
 export interface PreUploadBean {
 	dir?: string;
@@ -116,7 +117,7 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends Mixins(xX_F
 
 	// public selectOption: MySelectOption_AllConfig                      = selectOption;
 	// get selectOption(): object {
-	// 	throw new Error('selectOption 属性需要重写！！！');
+	// 	xX_ExceptionError_Helper.throwError_andLog('selectOption 属性需要重写！！！');
 	// }
 
 	//
@@ -163,7 +164,8 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends Mixins(xX_F
 					this.listQuery.size    = res.size;
 					this.listQuery.total   = parseInt(res.total);
 				}
-			} catch (e) {
+			} catch (err) {
+				console.error(err);
 				this.listLoading = false;
 			}
 		}
@@ -297,7 +299,7 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends Mixins(xX_F
 
 	public async deleteSingle(index: number, data_or_row_or_id: any) {
 		if (this.MixinsData_2.deleteSingleCallback == undefined) {
-			throw new Error('deleteSingle中，所需的deleteSingleCallback不存在');
+			throw new Error(xX_ExceptionError_Helper.throwError_andLog('deleteSingle中，所需的deleteSingleCallback不存在'));
 		}
 		const cbFn = this.MixinsData_2.deleteSingleCallback;              // 常量const赋值，确保不是undefined。
 

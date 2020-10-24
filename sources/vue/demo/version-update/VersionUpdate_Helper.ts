@@ -1,6 +1,7 @@
-import FStream          from 'fs';
-import axios                  from 'axios';
-import { xX_DebugU, xX_LogE } from '../../../debug-util/debug-util';
+import FStream                      from 'fs';
+import axios                        from 'axios';
+import { xX_DebugU, xX_LogE }       from '../../../debug-util/debug-util';
+import { xX_ExceptionError_Helper } from '../../../exception-error/ExceptionError_Helper';
 
 export class xX_VersionUpdate_Helper {
 	private static vFileName       = 'version.js';
@@ -25,7 +26,7 @@ export class xX_VersionUpdate_Helper {
 			return item.hasOwnProperty('definitions');
 		});
 		if (!definePlugin) {
-			throw new Error('definePlugin不存在！');
+			throw new Error(xX_ExceptionError_Helper.throwError_andLog('definePlugin不存在！'));
 		}
 		const processEnv = definePlugin.definitions['process.env'];
 		console.log('检测更新，对应插件', definePlugin);

@@ -6,10 +6,10 @@
 import xX_Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
 
 import { Component, Mixins, Prop, Watch } from 'vue-property-decorator';
-import { MixinLevelTag } from './Father_BaseVue';
-import { t }             from '../../cp-util/locale/locale';
+import { MixinLevelTag }                  from './Father_BaseVue';
+import { t }                              from '../../cp-util/locale/locale';
 
-import { Getter }                  from 'vuex-class';
+import { Getter } from 'vuex-class';
 
 /**
  * 可能最后，还是要用【Mixins】去解决！！！。
@@ -285,7 +285,8 @@ export default class xX_Father_DialogMixin<SelectOptionType> extends Mixins(xX_F
 						this.MixinsData_2.processCreatedCallback(res);
 					}
 				})
-				.catch(() => {
+				.catch((err: any) => {
+					console.error(err);
 					this.dataCommitting = false;
 				});
 	}
@@ -303,7 +304,8 @@ export default class xX_Father_DialogMixin<SelectOptionType> extends Mixins(xX_F
 					this.dataCommitting = false;
 					this.$emit('refreshList');
 				})
-				.catch(() => {
+				.catch((err: any) => {
+					console.error(err);
 					this.dataCommitting = false;
 				});
 	}

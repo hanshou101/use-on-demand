@@ -26,6 +26,7 @@ class LostError_Util {
 			this.log_windowAddEvent_unhandledrejection();
 			// this.log_consoleError(); // WARN 暂时隐藏【console.error】的捕捉。
 		} catch (e) {                                                                           // 捕捉，初始化过程中，可能的报错。
+			console.error(e);
 			this._errArr.push(e as any);
 		}
 	}

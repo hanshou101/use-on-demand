@@ -1,3 +1,5 @@
+import { xX_ExceptionError_Helper } from '../../exception-error/ExceptionError_Helper';
+
 function is_MatchArray_equal(
 	matchArr: RegExpMatchArray | null,
 	targetStr: string,
@@ -142,7 +144,7 @@ export class xX_NativeApp_MethodInteractive {
 			console.error('调安卓方法了');
 			return new Promise<T>(function(resolve) {
 				if (!window.android) {
-					throw new Error('window.android不存在！！！');
+					throw new Error(xX_ExceptionError_Helper.throwError_andLog('window.android不存在！！！'));
 				}
 				let res;
 				if (params && params.length > 0) {				// 有参数
@@ -192,7 +194,7 @@ export class xX_NativeApp_MethodInteractive {
 				// 清除定时器，释放资源。
 				clearTimeout(timer);
 				if (!window.webkit) {
-					throw new Error('window.webkit不存在！！！');
+					throw new Error(xX_ExceptionError_Helper.throwError_andLog('window.webkit不存在！！！'));
 				}
 				/**
 				 * 向【iOS端】，指定的方法，发送消息。

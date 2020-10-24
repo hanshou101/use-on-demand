@@ -44,7 +44,8 @@
 	import {
 		Upload as ElUpload____Cp,
 		Button as ElButton,
-	} from 'element-ui';
+	}                                   from 'element-ui';
+	import { xX_ExceptionError_Helper } from '../../../exception-error/ExceptionError_Helper';
 
 	/**
 	 * 1.参考资料：
@@ -223,12 +224,12 @@
 			const suffix = arr[arr.length - 1];
 
 			if (!this.preuploadApi_Promise) {			// WARN 此处，不像【Tinymce_EditorImage】那边被包裹在【async】当中，所以此处的Error抛出，正常抛即可。
-				throw new Error(`
+				throw new Error(xX_ExceptionError_Helper.throwError_andLog(`
 				如果你采用【Inject】方式：
 								请从父组件的【Provide 或者 ProvideReactive】，传入【Inject 中的 preuploadApi_Promise】
 				如果你采用【Prop】方式：
 								请从<MyFormEasy>传入【Prop 中的 preuploadApi_Promise】
-				`);
+				`));
 			}
 
 			this.preuploadApi_Promise.then(fn => {
@@ -244,7 +245,8 @@
 					this.uploadData.signature             = res.signature;
 
 					this.upload();
-				}).catch(() => {
+				}).catch((err) => {
+					console.error(err);
 					this.disabled_inner = false;
 					this.preUploadFaild = true;
 					this.uploading      = false;

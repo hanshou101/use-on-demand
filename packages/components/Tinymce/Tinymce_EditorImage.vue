@@ -33,8 +33,9 @@
 		Button as ElButton,
 		Dialog as ElDialog,
 		Upload as ElUpload,
-	}            from 'element-ui';
-	import { t } from '../../../sources/cp-util/locale/locale';
+	}                                   from 'element-ui';
+	import { t }                        from '../../../sources/cp-util/locale/locale';
+	import { xX_ExceptionError_Helper } from '../../../sources/exception-error/ExceptionError_Helper';
 
 	@Component({
 		name      : 'EditorImage',
@@ -67,11 +68,11 @@
 		//
 
 		// Data，在类中的实现 （双向绑定除外）
-		dialogVisible             = false;
-		listObj: any              = {};
-		fileList                  = [];
+		dialogVisible                  = false;
+		listObj: any                   = {};
+		fileList                       = [];
 		// oss预上传数据
-		uploadHost                = '';
+		uploadHost                     = '';
 		// 上传携带参数
 		uploadData: OssUploadBean_Type = {};
 
@@ -126,12 +127,12 @@
 
 			if (!this.preuploadApi_Promise) {
 				try {
-					throw new Error(`
+					throw new Error(xX_ExceptionError_Helper.throwError_andLog(`
 					如果你采用【Inject】方式：
 									请从父组件的【Provide 或者 ProvideReactive】，传入【Inject 中的 preuploadApi_Promise】
 					如果你采用【Prop】方式：
 									请从<TinyMce>传入【Prop 中的 preuploadApi_Promise】
-					`);
+					`));
 				} catch (e) {
 					// WARN 此处，非常诡异的【Element-UI】会把所有Error抛出都吃掉。所以我们只能手动打印错误日志了。
 					console.error(e);

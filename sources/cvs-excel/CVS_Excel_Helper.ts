@@ -109,7 +109,7 @@ export class xX_CVS_Excel_Helper {
 							type: 'binary',
 						});
 					} catch (e) {
-						console.log('文件类型不正确，', e);
+						console.error('文件类型不正确，', e);
 						reject(e);   // TODO Promise失败返回
 						return;
 					}
@@ -142,6 +142,7 @@ export class xX_CVS_Excel_Helper {
 				fileReader.onload = fileOnLoadCb;
 				fileReader.readAsBinaryString(excel_file);
 			}).catch((e) => {
+				console.error(e);
 				reject(e);
 			});
 
@@ -181,11 +182,13 @@ export class xX_CVS_Excel_Helper {
 						reject(e),
 					]);
 				}, (err) => {
+					console.error(err);
 					// alert(i18n.t('message.Export_Failure'));
 					alert(`导出失败！${err}`);
 					reject(err);
 				});
 			}).catch((e) => {
+				console.error(e);
 				reject(e);
 			});
 		});

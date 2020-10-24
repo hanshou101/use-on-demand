@@ -37,7 +37,7 @@ export class xX_MyThree_Util {
 		// }
 		return shape;
 		// } else {
-		//   throw new Error('Something wrong!')
+		//   throw new Error(xX_ExceptionError_Helper.throwError_andLog('Something wrong!'));
 		// }
 	}
 

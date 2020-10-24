@@ -1,5 +1,7 @@
 // import defaultLang from 'element-ui/src/locale/lang/zh-CN';
 
+import { xX_ExceptionError_Helper } from '../../exception-error/ExceptionError_Helper';
+
 const defaultLang = {																					// 默认国际化语言
 	dialog : {
 		Confirm     : '确认',
@@ -36,9 +38,9 @@ const defaultLang = {																					// 默认国际化语言
 		},
 	},
 };
-import Vue        from 'vue';
-import deepmerge  from 'deepmerge';
-import { Format } from './format';
+import Vue                          from 'vue';
+import deepmerge                    from 'deepmerge';
+import { Format }                   from './format';
 
 const format     = Format(Vue);
 let lang: object = defaultLang;
@@ -80,7 +82,7 @@ export const t = function(path: string, ...options: Array<any>) {
 		// @ts-ignore
 		value          = current[property];
 		if (!value) {
-			throw new Error(`内置国际化的key不存在！ ${property}`);
+			throw new Error(xX_ExceptionError_Helper.throwError_andLog(`内置国际化的key不存在！ ${property}`));
 		}
 		if (i === j - 1) return format(value, options);					// 如果字符串，需要格式化 （如 【xxx year yyy month】这种）
 		if (!value) return '';

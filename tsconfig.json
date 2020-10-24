@@ -48,7 +48,7 @@
     "baseUrl": ".",
     "noImplicitAny": true,
     "strictPropertyInitialization": true,
-    "allowJs": false,
+    "allowJs": true,
     "downlevelIteration": true,
     "diagnostics": true,
     "noImplicitReturns": true,

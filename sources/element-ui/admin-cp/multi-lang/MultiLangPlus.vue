@@ -358,6 +358,7 @@
 					this.t('element.multi_lang_plus.Translate_Success').toString(), /* 翻译成功*/
 				);
 			} catch (e) {
+				console.error(e);
 				// 翻译失败
 				console.log(this.t('element.multi_lang_plus.Translate_Failure').toString(), e);
 				this.translateLoading = false;

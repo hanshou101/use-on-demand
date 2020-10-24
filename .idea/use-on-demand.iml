@@ -5,6 +5,10 @@
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/lib" />
       <excludeFolder url="file://$MODULE_DIR$/lib-cp" />
+      <excludeFolder url="file://$MODULE_DIR$/public/tinymce_5.2.2" />
+      <excludeFolder url="file://$MODULE_DIR$/sources/geetest/alone-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/sources/live2d/live2d-widget.js/3.1.5" />
+      <excludeFolder url="file://$MODULE_DIR$/sources/tradingview/charting_library" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
     </content>

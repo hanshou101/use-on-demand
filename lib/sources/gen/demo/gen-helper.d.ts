@@ -14,7 +14,7 @@ export declare class SpeedUpFlags {
      *        1.在【长时间编译】中，可以减少【7秒】左右的编译时间。
      *                1.在有【3个js脚本】的前提下，进行的测试。
      */
-    static readonly notAllow_JsInTs = true;
+    static readonly notAllow_JsInTs = false;
 }
 export declare class TypeScript_SpeedUp_Helper {
     /**

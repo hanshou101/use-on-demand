@@ -23,6 +23,7 @@ export class xX_MSound_Helper {
           createjs.Sound.registerSound({src: url, id: id});                 // 加载网络资源
         });
       } catch (e) {
+        console.error(e);
         reject(e);                          // TIP 失败
       }
     });
