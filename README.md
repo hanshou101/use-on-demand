@@ -13,7 +13,7 @@
 ------------
 
 
-# 使用方式
+# 1.1 使用方式
 
 1. 【TS库】，直接使用
 2. 【组件库】
@@ -23,8 +23,20 @@
 3.其它的一些地方：
     1.使用【npx check-peer-dependencies】工具，来检查【peerDependencies】的对齐。
 
+# 1.2 常见问题
 
-# 本地开发方式
+1.报错【Error: ENOTEMPTY: directory not empty, rmdir 】
+
+        1.需要升级到【 Node.js 12.10.0】，或以上。
+
+
+2.报错【Cannot find module 'duplicate-package-checker-webpack-plugin'】
+        
+        1.需要检查，【npm link】和【npm link use-on-demand】设置是否正确。
+
+3.
+
+# 2.1 本地开发方式
 1. 将该仓库，Clone下来，执行【npm link】
 2. 在其它业务仓库，导入库
     1. dependencies里，加入【"use-on-demand": "github:hanshou101/use-on-demand#master"】

@@ -1,1 +1,1 @@
-{"version":3,"file":"GeeMockUtil.d.ts","sourceRoot":"","sources":["../../../../sources/geetest/util/GeeMockUtil.ts"],"names":[],"mappings":"AAAA;;GAEG;AACH,OAAO,EAAC,aAAa,EAAC,MAAM,iBAAiB,CAAC;AAE9C,qBAAa,cAAc;IAEzB;;OAEG;WACW,OAAO,CACnB,GAAG,EAAE,aAAa,EAClB,KAAK,EAAE,UAAU;CAsGpB"}
+{"version":3,"file":"GeeMockUtil.d.ts","sourceRoot":"","sources":["../../../../sources/geetest/util/GeeMockUtil.ts"],"names":[],"mappings":"AAAA;;GAEG;AACH,OAAO,EAAE,aAAa,EAAE,MAAiB,iBAAiB,CAAC;AAG3D,qBAAa,cAAc;IAE1B;;OAEG;WACW,OAAO,CACpB,GAAG,EAAE,aAAa,EAClB,KAAK,EAAE,UAAU;CAsGlB"}
