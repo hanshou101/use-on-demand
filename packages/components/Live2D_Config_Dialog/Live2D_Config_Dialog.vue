@@ -8,10 +8,10 @@
 		<!--总表单-->
 		<el-form :model="MixinsData_2.ruleForm" :rules="rules" ref="ruleFormRef" label-width="120px"
 						 class="dialog-container">
-			<MyFormEasy
+			<CpLib_MyFormEasy
 				:form-items="formItems"
 				:ruleForm="MixinsData_2.ruleForm"
-			></MyFormEasy>
+			></CpLib_MyFormEasy>
 			<!--{{ MixinsData_2.ruleForm}}-->
 		</el-form>
 
@@ -42,6 +42,12 @@
 	import { xX_MyEl_FormItem_Rule_Config }               from '../../../sources/element-ui/admin-cp/MyElementUtils';
 	import xX_MyFormEasy                                  from '../../cp-element-ui/MyFormEasy/index';
 
+
+	console.log('导入的xX_MyFormEasy', xX_MyFormEasy);
+
+	Vue.component('CpLib_MyFormEasy',xX_MyFormEasy);
+
+
 	// import Vue from 'vue';
 	// Vue.use(ElDialog);
 	// Vue.use(ElButton);
@@ -54,7 +60,6 @@
 	}            from 'element-ui';
 	import { t } from '../../../sources/cp-util/locale/locale';
 
-	Vue.use(xX_MyFormEasy);
 
 	@Component({
 		name      : 'Live2D_Config_Dialog',
