@@ -8,10 +8,10 @@
 		<!--总表单-->
 		<el-form :model="MixinsData_2.ruleForm" :rules="rules" ref="ruleFormRef" label-width="120px"
 						 class="dialog-container">
-			<CpLib_MyFormEasy
+			<MyFormEasy
 				:form-items="formItems"
 				:ruleForm="MixinsData_2.ruleForm"
-			></CpLib_MyFormEasy>
+			></MyFormEasy>
 			<!--{{ MixinsData_2.ruleForm}}-->
 		</el-form>
 
@@ -57,7 +57,7 @@
 			ElDialog,
 			ElButton,
 			ElForm,
-			CpLib_MyFormEasy: xX_MyFormEasy,
+			MyFormEasy: xX_MyFormEasy,
 		},
 		filters   : {},
 	})
