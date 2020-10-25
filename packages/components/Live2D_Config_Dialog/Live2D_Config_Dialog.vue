@@ -32,12 +32,15 @@
 </template>
 
 <script lang="ts">
+
+	import Vue from 'vue';
+
 	import { Component, Mixins, Prop }                    from 'vue-property-decorator';
 	import xX_Father_DialogMixin                          from '../../../sources/admin/mixins/Father_DialogMixin';
 	import { xX_Father_ElFItem }                          from '../../../sources/element-ui/admin-cp/ElFItem';
 	import { xX_Live2D_WidgetJs_Helper, xX_Live2DModelE } from '../../../sources/live2d/live2d-widget.js/Live2D_WidgetJs_Helper';
 	import { xX_MyEl_FormItem_Rule_Config }               from '../../../sources/element-ui/admin-cp/MyElementUtils';
-	import xX_MyFormEasy                                  from '../../cp-element-ui/MyFormEasy/MyFormEasy.vue';
+	import xX_MyFormEasy                                  from '../../cp-element-ui/MyFormEasy/index';
 
 	// import Vue from 'vue';
 	// Vue.use(ElDialog);
@@ -51,13 +54,15 @@
 	}            from 'element-ui';
 	import { t } from '../../../sources/cp-util/locale/locale';
 
+	Vue.use(xX_MyFormEasy);
+
 	@Component({
 		name      : 'Live2D_Config_Dialog',
 		components: { /*组件*/
 			ElDialog,
 			ElButton,
 			ElForm,
-			MyFormEasy: xX_MyFormEasy,
+			// MyFormEasy: xX_MyFormEasy,						// 此处，似乎不能这样使用？？？？？？
 		},
 		filters   : {},
 	})
