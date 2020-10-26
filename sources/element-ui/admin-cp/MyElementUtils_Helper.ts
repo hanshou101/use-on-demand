@@ -1,4 +1,4 @@
-import {xX_data_elTagColorFilter} from './MyElementUtils';
+import { xX_data_elTagColorFilter } from './ElTagItem';
 
 export class xX_MyElementUtils_Helper {
   public static get_MyElTagLike_HtmlText(colorIndex: number, optionText: string) {

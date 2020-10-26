@@ -9,7 +9,8 @@ import { Component, Mixins, Prop, Watch } from 'vue-property-decorator';
 import { MixinLevelTag }                  from './Father_BaseVue';
 import { t }                              from '../../cp-util/locale/locale';
 
-import { Getter } from 'vuex-class';
+import { Getter }                   from 'vuex-class';
+import { xX_data_elTagColorFilter } from '../../element-ui/admin-cp/ElTagItem';
 
 /**
  * 可能最后，还是要用【Mixins】去解决！！！。
@@ -60,14 +61,7 @@ import { Getter } from 'vuex-class';
 	},
 	filters   : {
 		elTagFilter(status: string | number) {
-			const statusMap = {
-				0: 'danger',
-				1: 'success',
-				2: 'info',
-				3: 'primary',
-				4: 'warning',
-			};
-			return (statusMap as any)[status];
+			return (xX_data_elTagColorFilter as any)[status];
 		},
 	},
 })

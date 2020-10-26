@@ -61,7 +61,7 @@
 		Button as ElButton,
 	}                                       from 'element-ui';
 	import Tinymce                          from '../../../packages/components/Tinymce';
-	import { xX_MyEl_FormItem_Rule_Config } from '../../../sources/element-ui/admin-cp/MyElementUtils';
+	import { xX_MyEl_FormItem_Rule_Config } from '../../../sources/element-ui/admin-cp/ElRuleItem';
 
 	const CreateBean = {
 		'author'      : 'string',

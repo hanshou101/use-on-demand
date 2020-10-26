@@ -7,6 +7,7 @@ import { t }                       from '../../cp-util/locale/locale';
 
 import { Getter }                   from 'vuex-class';
 import { xX_ExceptionError_Helper } from '../../exception-error/ExceptionError_Helper';
+import { xX_data_elTagColorFilter } from '../../element-ui/admin-cp/ElTagItem';
 
 export interface PreUploadBean {
 	dir?: string;
@@ -85,14 +86,7 @@ declare global {
 	},
 	filters   : {  // 第一种<el-tag>的样式Filter
 		elTagFilter(status: string | number) {
-			const statusMap = {
-				0: 'danger',
-				1: 'success',
-				2: 'info',
-				3: 'primary',
-				4: 'warning',
-			};
-			return (statusMap as any)[status];
+			return (xX_data_elTagColorFilter as any)[status];
 		},
 		// 第二种<el-tag>的样式Filter
 		elTagFilter2(status: string | number) {

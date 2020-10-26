@@ -32,8 +32,8 @@
 	import { Component, Mixins, Prop }      from 'vue-property-decorator';
 	import xX_Father_DialogMixin            from '../../../sources/admin/mixins/Father_DialogMixin';
 	import { xX_Father_ElFItem }            from '../../../sources/element-ui/admin-cp/ElFItem';
-	import { xX_MyEl_FormItem_Rule_Config } from '../../../sources/element-ui/admin-cp/MyElementUtils';
 	import { selectOption }                 from '../../../examples/enum-options/select-options';
+	import { xX_MyEl_FormItem_Rule_Config } from '../../../sources/element-ui/admin-cp/ElRuleItem';
 
 	@Component({
 		name      : 'SimpleDemo_Dialog',

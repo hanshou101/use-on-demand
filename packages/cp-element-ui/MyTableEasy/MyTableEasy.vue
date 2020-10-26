@@ -2,7 +2,6 @@
 
 	import Vue, { VNode } from 'vue';
 
-	import { xX_data_elTagColorFilter }         from '../../../sources/element-ui/admin-cp/MyElementUtils';
 	import { Component, Prop }                  from 'vue-property-decorator';
 	import { xX_SString_Helper }                from '../../../sources/symbol-string/SString_Helper';
 	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
@@ -17,9 +16,10 @@
 	xX_CPlugin_Helper.init_vViewer(Vue);	// 初始化【v-viewer】组件。
 
 	// @ts-ignore
-	import { Fragment, Plugin }  from 'vue-fragment';
-	import { xX_CPlugin_Helper } from '../../../sources/vue/plugin/common-plugin';
-	import { t }                 from '../../../sources/cp-util/locale/locale';
+	import { Fragment, Plugin }         from 'vue-fragment';
+	import { xX_CPlugin_Helper }        from '../../../sources/vue/plugin/common-plugin';
+	import { t }                        from '../../../sources/cp-util/locale/locale';
+	import { xX_data_elTagColorFilter } from '../../../sources/element-ui/admin-cp/ElTagItem';
 
 	type NotArray<T> = T extends Array<any> ? never : T;
 

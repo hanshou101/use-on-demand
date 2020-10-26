@@ -1,4 +1,61 @@
-import {xX_MyDialogFormItem_Conf, xX_MyFormItem_SelectOptionConf} from './MyElementUtils';
+import {ElUploadInternalFileDetail} from 'element-ui/types/upload';
+
+
+namespace Old {
+
+  /**
+   * 下拉选项的配置类
+   */
+  export class xX_MyFormItem_SelectOptionConf<T extends any> {
+    public enumOptions: T;
+    public mustParseInt_toFitBackend: boolean = false;   // TODO 是否必须转化为Int（原因是，后台有时用Int做枚举，有时用String做枚举；  回显时需要注意；）
+
+    constructor(enumOptions: T) {
+      this.enumOptions = enumOptions;
+    }//
+    public setParseInt(____mustParseInt_toFitBackend: boolean): xX_MyFormItem_SelectOptionConf<T> {
+      this.mustParseInt_toFitBackend = ____mustParseInt_toFitBackend;
+      return this;
+    }
+  }
+
+  /**
+   * 适用于Dialog的表单子类。
+   */
+  export interface xX_MyDialogFormItem_Conf extends Object {
+    disableItem?: boolean;
+    notRenderItem?: boolean; //
+    [key: string]: any;
+  } //
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 /**
  * 两个参数，一个必传参数对象，一个可选参数对象
@@ -65,13 +122,13 @@ export namespace xX_Father_ElFItem {
     public label!: string;          // 显示的表头
     public prop_AND_bindValue!: string;           // 从listData中取变量的变量名
     public name!: string;           // 和prop保持一致？？？
-    public config: xX_MyDialogFormItem_Conf = {
+    public config: Old.xX_MyDialogFormItem_Conf = {
       notRenderItem: false,           // 会渲染
       disableItem  : false,             // 不禁止
     };
     public placeholder?: string;    // 输入提示
     // Label宽度
-    public labelWidth?: string;
+    labelWidth?: string;
 
     protected constructor(require: Require, optional?: Optional) {                      // 处理通用逻辑
       if (require) {
@@ -243,13 +300,13 @@ export namespace xX_Father_ElFItem {
 
   export class UploadImg extends Base {
     public readonly myCategory = 'upload_img';  // 该属性，不能使用static。否则Vue将不会取到。
-    public uploadSingleImageSuccess_ExtraCb?: (res: any, file: ElUploadInternalFileDetail_Type) => void;
+    public uploadSingleImageSuccess_ExtraCb?: (res: any, file: ElUploadInternalFileDetail) => void;
     public maxSize: number     = 5242880;           // 初始值（5MB）
 
     constructor(require: Require,
                 optional?: Optional & {
                   // 额外的回调。（基本逻辑，已经内聚封装完毕；此处是额外的回调封装）
-                  uploadSingleImageSuccess_ExtraCb?: (res: any, file: ElUploadInternalFileDetail_Type) => void,
+                  uploadSingleImageSuccess_ExtraCb?: (res: any, file: ElUploadInternalFileDetail) => void,
                   maxSize?: number,
                 }) {
       super(require, optional);
@@ -265,9 +322,9 @@ export namespace xX_Father_ElFItem {
     }
   }
 
-  export class Options<T> extends Base {
+  export class Options<T extends any> extends Base {
     public readonly myCategory = 'options';
-    public selectOptionConf!: xX_MyFormItem_SelectOptionConf<T>;
+    public selectOptionConf!: Old.xX_MyFormItem_SelectOptionConf<T>;
 
     constructor(require: Require & {
                   // 下拉框的候选项，一般写在common.ts里面
@@ -282,7 +339,7 @@ export namespace xX_Father_ElFItem {
       super(require, optional);
       if (require) {
         const {selectOptionConf} = require;
-        this.selectOptionConf    = new xX_MyFormItem_SelectOptionConf<T>(selectOptionConf.option).setParseInt(selectOptionConf.needParseInt);
+        this.selectOptionConf    = new Old.xX_MyFormItem_SelectOptionConf(selectOptionConf.option).setParseInt(selectOptionConf.needParseInt);
       }
     }
   }

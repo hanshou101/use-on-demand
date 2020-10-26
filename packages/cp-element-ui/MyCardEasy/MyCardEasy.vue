@@ -32,7 +32,6 @@
 </template>
 <script lang="ts">
 
-	import { xX_MyEl_Cards }                    from '../../../sources/element-ui/admin-cp/MyElementUtils';
 	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
 	import { Component, Prop }                  from 'vue-property-decorator';
 
@@ -46,6 +45,7 @@
 
 	// @ts-ignore
 	import { Fragment, Plugin } from 'vue-fragment';
+	import { xX_MyEl_Cards }    from '../../../sources/element-ui/admin-cp/ElCardItem';
 
 	@Component({
 		name      : 'MyCardEasy',

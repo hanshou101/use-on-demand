@@ -21,7 +21,7 @@ interface Require {
 type Default_valueFunction_RtnType = string;
 
 // 可以选填的字段
-interface Optional<T = Default_valueFunction_RtnType> {
+interface Optional<RtnT = Default_valueFunction_RtnType> {
   width?: number;
   // 最小宽度。（最终宽度 = 最小宽度 + 平分剩余宽度）
   minWidth?: number;
@@ -30,23 +30,23 @@ interface Optional<T = Default_valueFunction_RtnType> {
   showOverflowTooltip?: boolean;
 
   // 传入[row,item]，返回string
-  valueFunction?: RowTransformFn<T>;
+  valueFunction?: RowTransformFn<RtnT>;
   // 国际化字段所用的键。（例子：table.username）
   i18nKey?: string;
 }
 
 interface ElementTableColumnAttrs {
   // 固定在一行的位置。（right、left）
-  fixed: 'right' | 'left';
+  fixed: 'right' | 'left',
   // 内部内容排布方向。（left、right、center）
-  align: 'center' | 'right' | 'left';
+  align: 'center' | 'right' | 'left',
 }
 
 // tslint:disable-next-line:no-namespace
 export namespace xX_Father_ElTItem {
 
   // 基类
-  export abstract class Base<T = Default_valueFunction_RtnType> {
+  export abstract class Base<RtnT = Default_valueFunction_RtnType> {
     public label!: string;          // 显示的表头
     public prop!: string;           // 从listData中取变量的变量名
     public name!: string;           // 和prop保持一致？？？
@@ -54,9 +54,9 @@ export namespace xX_Father_ElTItem {
     public minWidth: number = 110;  // 最小宽度
     public showOverflowTooltip?: boolean;         // 是否当内容过长时，自动隐藏
 
-    public valueFunction?: RowTransformFn<T>;     // 数值转化函数
+    public valueFunction?: RowTransformFn<RtnT>;     // 数值转化函数
 
-    protected constructor(require: Require | null, optional?: Optional<T>) {
+    protected constructor(require: Require | null, optional?: Optional<RtnT>) {
       if (require) {
         const {name, label} = require;
         this.prop           = name;
@@ -109,16 +109,16 @@ export namespace xX_Father_ElTItem {
   }
 
   // 枚举展示
-  export class EnumTag<SOption> extends Base {
+  export class EnumTag<T extends any> extends Base {
     public readonly type = 'enumTag';
-    public selectOption!: SOption;      // FIXME 可能要绑在，某个实体类上面，以此获得泛型？？？
+    public selectOption!: T;
 
     public colorTrans?: (typeNum: string) => string;
 
     constructor(
       require: Require & {
         // 下拉框的候选项，一般写在common.ts里面
-        selectOption: SOption,      // FIXME 可能要绑在，某个实体类上面，以此获得泛型？？？
+        selectOption: T,
       },
       optional?: Optional & {
         // 颜色转化
@@ -150,19 +150,19 @@ export namespace xX_Father_ElTItem {
   }
 
   // 图片
-  export class Image<T = string> extends Base<T> {
+  export class Image<RtnT = string> extends Base<RtnT> {
     public readonly type = 'image';
 
-    constructor(require: Require, optional?: Optional<T>) {
+    constructor(require: Require, optional?: Optional<RtnT>) {
       super(require, optional);
     }
   }
 
   // 图片列表（一组）
-  export class ImageList<T = Array<string>> extends Base<T> {
+  export class ImageList<RtnT = string[]> extends Base<RtnT> {
     public readonly type = 'imageList';
 
-    constructor(require: Require, optional?: Optional<T>) {
+    constructor(require: Require, optional?: Optional<RtnT>) {
       super(require, optional);
     }
   }
@@ -187,16 +187,17 @@ export namespace xX_Father_ElTItem {
     }
   }
 
+
   // 详情多行字段展示
   export class DetailInfo extends Base {
     public readonly type = 'detailInfo';
-    public pairs !: Array<DetailInfoPair>;
+    public pairs !: DetailInfoPair[];
     public leftEm?: number;
 
     // public rightEm?: number;     // 后来发现，似乎用不到
 
     constructor(require: Require /*| { label: string; name?: string }*/ & {
-      pairs: Array<DetailInfoPair>,
+      pairs: DetailInfoPair[],
     }, optional?: Optional & {
       // 左侧Label宽度
       leftEm?: number;
@@ -211,7 +212,7 @@ export namespace xX_Father_ElTItem {
       }
 
       if (optional) {
-        const {leftEm /*rightEm*/} = optional;
+        const {leftEm, /*rightEm*/} = optional;
         if (leftEm != undefined) {
           this.leftEm = leftEm;
         }
