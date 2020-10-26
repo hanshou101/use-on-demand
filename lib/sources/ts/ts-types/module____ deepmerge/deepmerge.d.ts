@@ -1,3 +1,5 @@
+type CustomMerge_Fn_Rtn = (((valueA: any, valueB: any) => any) | undefined);
+
 declare module 'deepmerge' {
 
 	interface ArrayMergeOptions {
@@ -37,7 +39,7 @@ declare module 'deepmerge' {
 		 * 				1.对于每个key，可以采用特定的函数，来进行合并值处理。
 		 * 								1.如果返回undefined	，则使用【默认合并行为】。
 		 */
-		customMerge?(key: string): (((valueA, valueB) => any) | undefined);
+		customMerge?(key: string): CustomMerge_Fn_Rtn;
 
 		/**
 		 * 不推荐使用。默认为true。

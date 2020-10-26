@@ -21,7 +21,7 @@ declare global {
 
 	type Vue_Type = Vue;
 
-	type VueConstructor_Type<T = Vue> = VueConstructor<T>;
+	type VueConstructor_Type<T extends Vue = Vue> = VueConstructor<T>;
 
 	type VueDirective_Type = DirectiveFunction | DirectiveOptions;
 	type DirectiveFunction_Type = DirectiveFunction;
