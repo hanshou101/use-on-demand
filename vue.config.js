@@ -17,6 +17,8 @@ const InteractOuterProject_Helper = {
 	 * 					1.import Vue from 'vue' ————————> export default Vue ————————> 'vue' : 'Vue'
 	 */
 	__externals: {
+
+
 		// 交给【外部】
 		'vue': {
 			// commonjs : 'Vue',				// module.exports = Vue ;
@@ -51,6 +53,10 @@ const InteractOuterProject_Helper = {
 			[Externals_TypeE.Module_Exports_Default]    : 'element-ui',		// TIP 【试验】得出，import模式主要是用这个！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 			[Externals_TypeE.Module_Exports_Default_AMD]: 'C',
 		},
+
+		'use-on-demand'                  : 'use-on-demand',				// WARN 自身【组件A】调用【组件B】，也用【use-on-demand】库名 来调用。
+		// 子目录，webpack需要完整的路径
+		'use-on-demand/lib-cp/MyFormEasy': 'use-on-demand/lib-cp/MyFormEasy',
 
 		// 'vue-property-decorator': 'vue-property-decorator',
 		// 'vuex-class'            : 'vuex-class',

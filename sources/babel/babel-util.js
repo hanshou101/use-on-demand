@@ -21,6 +21,8 @@ function __customName(name, file) {
 	return `antd/lib/${name}`;
 }
 
+const subCpDir = 'lib-cp';
+
 const Cp_UseOnDemand_BabelCfg = {
 	__presets: ['@vue/app'], 								// TIP 很多时候，【业务项目】自带了这个。
 	__plugins: [
@@ -30,7 +32,8 @@ const Cp_UseOnDemand_BabelCfg = {
 				/**
 				 * 以下3句，是【组件按需导入】
 				 */
-				'libraryName'                 : pName,	// 组件库名称
+				// WARN 此处，为了【避免某些特殊用途，需要用到子路径】的【路径污染】，所以将【组件库名称】细分为【子目录引用】。
+				'libraryName'                 : `${pName}/${subCpDir}`,	// 组件库名称
 				'camel2DashComponentName'     : false,	// 关闭驼峰自动转链式
 				'camel2UnderlineComponentName': false,	// 关闭蛇形自动转链式
 				/**
@@ -46,7 +49,10 @@ const Cp_UseOnDemand_BabelCfg = {
 				/**
 				 * FIXME 对于原【教程文档】的修正。
 				 */
-				'libraryDirectory': 'lib-cp',							// 【Cp组件】——————将【import {}】转路径的过程中，拼接的【目录前缀】。
+				// 'libraryDirectory': subCpDir,							// 【Cp组件】——————将【import {}】转路径的过程中，拼接的【目录前缀】。
+				'libraryDirectory': '',									// WARN 此处，因为【模块名】已自带了【子目录】，所以可以置为空！
+
+
 				// 'styleLibraryDirectory': 'lib/theme-chalk',			// 【Style样式】——————将【import {}】转路径的过程中，拼接的【目录前缀】。
 				// customName      : __customName,					// 自定义【import {} 命名跳转】规则。
 			},

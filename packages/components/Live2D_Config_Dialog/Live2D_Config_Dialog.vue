@@ -36,7 +36,12 @@
 	import xX_Father_DialogMixin                          from '../../../sources/admin/mixins/Father_DialogMixin';
 	import { xX_Father_ElFItem }                          from '../../../sources/element-ui/admin-cp/ElFItem';
 	import { xX_Live2D_WidgetJs_Helper, xX_Live2DModelE } from '../../../sources/live2d/live2d-widget.js/Live2D_WidgetJs_Helper';
-	import xX_MyFormEasy                                  from '../../cp-element-ui/MyFormEasy/MyFormEasy.vue';
+	//
+	// @ts-ignore
+	import MyFormEasy                                     from 'use-on-demand/lib-cp/MyFormEasy';
+	import Vue                                            from 'vue';
+	//
+	Vue.use(MyFormEasy);
 
 	// import Vue from 'vue';
 	// Vue.use(ElDialog);
@@ -57,7 +62,7 @@
 			ElDialog,
 			ElButton,
 			ElForm,
-			MyFormEasy: xX_MyFormEasy,
+			// MyFormEasy,
 		},
 		filters   : {},
 	})

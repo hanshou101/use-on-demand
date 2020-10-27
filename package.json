@@ -1,6 +1,9 @@
 {
   "                          脚本、生命周期————————————————————————————————————": "————————————————",
   "scripts": {
+    "           postinstall注释": "每次install之后，都会执行",
+    "           曾经遇到【externals无法识别，后来修复了该问题】postinstall": "echo '安装完毕'  &&  echo '此处，不能用npm link，不然的话，会陷入一个【悖论 - 打包前先清空，清空了找不到，找不到失败，失败了没有打包】' ",
+    "postinstall": " echo '问题已修复，可以继续使用 npm link '  &&  echo '安装完毕'  &&  npm link use-on-demand",
     "                        sentry注释": "",
     "sentry____combine-tsc-uglifyjs": "nps sentry.combine-tsc-uglifyjs",
     "                        swap注释": "",
@@ -119,6 +122,7 @@
     "@vue/eslint-config-prettier": "6.0.0",
     "@vue/eslint-config-typescript": "5.1.0",
     "@vue/test-utils": "1.0.5",
+    "babel-plugin-import": "1.13.1",
     "circular-dependency-plugin": "5.2.0",
     "duplicate-package-checker-webpack-plugin": "3.0.0",
     "eslint": "6.8.0",
@@ -139,6 +143,7 @@
     "tsargs": "1.4.0",
     "tslib": "2.0.0",
     "typescript": "4.0.2",
+    "use-on-demand": "github:hanshou101/use-on-demand#master",
     "vue-template-compiler": "~2.6.12",
     "vue-type-declaration": "~2.0.3"
   },
