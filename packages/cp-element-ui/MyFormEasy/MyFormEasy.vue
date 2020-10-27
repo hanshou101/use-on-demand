@@ -376,6 +376,7 @@
 	// FIXME 此处，暂时没有调通！！！
 	// xX_Rt_UEditor_Helper.initUEditor(Vue);
 
+
 	@Component({
 		name      : 'MyFormEasy',
 		components: {
@@ -513,6 +514,9 @@
 
 		MixinsData_1: MixinLevelTag = {} as any;
 	}
+
+
+	console.log('导入了组件库的【MyFormEasy】', xX_MyFormEasy);
 
 </script>
 
