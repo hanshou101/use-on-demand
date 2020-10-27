@@ -58,6 +58,8 @@ const InteractOuterProject_Helper = {
 		// 子目录，webpack需要完整的路径
 		'use-on-demand/lib-cp/MyFormEasy': 'use-on-demand/lib-cp/MyFormEasy',
 
+		'vue-fragment': 'vue-fragment',	// WARN 此处，暂时交由内部打包
+
 		// 'vue-property-decorator': 'vue-property-decorator',
 		// 'vuex-class'            : 'vuex-class',
 		// 'vue-class-component'   : 'vue-class-component',
@@ -66,7 +68,6 @@ const InteractOuterProject_Helper = {
 		// 'vue-router': 'VueRouter',
 		// 'highlight.js': 'hljs',
 
-		// 'vue-fragment': 'vue-fragment',	// WARN 此处，暂时交由内部打包
 		// 'v-viewer': 'v-viewer',					// WARN 此处，暂时交由内部打包
 
 		// 'vue-ueditor-wrap': 'vue-ueditor-wrap',	// TIP 如果放在内部打包，会报错。（因为机制比较特殊）

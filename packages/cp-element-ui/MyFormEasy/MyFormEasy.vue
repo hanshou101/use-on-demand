@@ -378,6 +378,7 @@
 
 	import Vue from 'vue';							//
 	Vue.use(Plugin);	// 这种初始化方式。
+	console.log('Plugin', Plugin);
 
 	@Component({
 		name      : 'MyFormEasy',
