@@ -376,8 +376,9 @@
 	// FIXME 此处，暂时没有调通！！！
 	// xX_Rt_UEditor_Helper.initUEditor(Vue);
 
-	import Vue from 'vue';							//
-	Vue.use(Plugin);	// 这种初始化方式。
+	// import Vue from 'vue';							//
+	// Vue.use(Plugin);	// 这种初始化方式。
+	console.log('Fragment', Fragment);
 	console.log('Plugin', Plugin);
 
 	@Component({
@@ -399,7 +400,7 @@
 			ElTimePicker,
 			ElDatePicker,
 			//
-			// Fragment,
+			Fragment,
 		},
 		filters   : {},
 	})
