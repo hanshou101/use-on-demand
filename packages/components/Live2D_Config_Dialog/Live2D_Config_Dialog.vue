@@ -39,9 +39,9 @@
 	//
 	// @ts-ignore
 	import MyFormEasy                                     from 'use-on-demand/lib-cp/MyFormEasy';
-	import Vue                                            from 'vue';
+	// import Vue                                            from 'vue';
 	//
-	Vue.use(MyFormEasy);
+	// Vue.use(MyFormEasy);
 
 	// import Vue from 'vue';
 	// Vue.use(ElDialog);
@@ -62,7 +62,7 @@
 			ElDialog,
 			ElButton,
 			ElForm,
-			// MyFormEasy,
+			MyFormEasy,
 		},
 		filters   : {},
 	})
