@@ -363,9 +363,11 @@
 	} from 'element-ui';
 
 	// @ts-ignore
-	import { Fragment, Plugin }     from 'vue-fragment';
-	import { xX_SString_Helper }    from '../../../sources/symbol-string/SString_Helper';
-	import { t }                    from '../../../sources/cp-util/locale/locale';
+	import { Fragment, Plugin }  from 'vue-fragment';
+	// @ts-ignore
+	import TotalFragment         from 'vue-fragment';
+	import { xX_SString_Helper } from '../../../sources/symbol-string/SString_Helper';
+	import { t }                 from '../../../sources/cp-util/locale/locale';
 	// import { xX_Rt_UEditor_Helper } from '../../../sources/editor/richtext-editor/Rt_UEditor_Helper';
 
 	// FIXME 此处，暂时没有调通！！！
@@ -376,10 +378,13 @@
 	// FIXME 此处，暂时没有调通！！！
 	// xX_Rt_UEditor_Helper.initUEditor(Vue);
 
-	// import Vue from 'vue';							//
-	// Vue.use(Plugin);	// 这种初始化方式。
+	import Vue from 'vue';							//
+	Vue.use(Plugin);	// 这种初始化方式。
 	console.log('Fragment', Fragment);
+	console.log('Fragment123123');
 	console.log('Plugin', Plugin);
+
+	console.log('Fragment默认', TotalFragment);
 
 	@Component({
 		name      : 'MyFormEasy',
@@ -400,7 +405,7 @@
 			ElTimePicker,
 			ElDatePicker,
 			//
-			Fragment,
+			// Fragment,
 		},
 		filters   : {},
 	})
