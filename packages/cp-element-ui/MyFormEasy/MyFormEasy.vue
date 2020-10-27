@@ -341,9 +341,9 @@
 <script lang="ts">
 
 	import { xX_Father_ElFItem }                from '../../../sources/element-ui/admin-cp/ElFItem';
-	import xX_UploadSingleImg                   from '../../../sources/element-ui/admin-cp/upload/UploadSingleImg.vue';
-	import xX_MultiLangSimple                   from '../MultiLangSimple/MultiLangSimple.vue';
-	import xX_Count_Input                       from '../../../sources/element-ui/admin-cp/input/Count_Input.vue';
+	// import xX_UploadSingleImg                   from '../../../sources/element-ui/admin-cp/upload/UploadSingleImg.vue';
+	// import xX_MultiLangSimple                   from '../MultiLangSimple/MultiLangSimple.vue';
+	// import xX_Count_Input                       from '../../../sources/element-ui/admin-cp/input/Count_Input.vue';
 	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
 	import { Component, Prop }                  from 'vue-property-decorator';
 
@@ -376,14 +376,16 @@
 	// FIXME 此处，暂时没有调通！！！
 	// xX_Rt_UEditor_Helper.initUEditor(Vue);
 
+	import Vue from 'vue';							//
+	Vue.use(Plugin);	// 这种初始化方式。
 
 	@Component({
 		name      : 'MyFormEasy',
 		components: {
 			/*组件*/
-			UploadSingleImg: xX_UploadSingleImg,
-			MultiLangSimple: xX_MultiLangSimple,
-			Count_Input    : xX_Count_Input,
+			// UploadSingleImg: xX_UploadSingleImg,
+			// MultiLangSimple: xX_MultiLangSimple,
+			// Count_Input    : xX_Count_Input,
 			//
 			ElFormItem,
 			ElSelect,
@@ -396,7 +398,7 @@
 			ElTimePicker,
 			ElDatePicker,
 			//
-			Fragment,
+			// Fragment,
 		},
 		filters   : {},
 	})
