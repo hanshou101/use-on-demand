@@ -1,5 +1,5 @@
 // 给业务库用
-export interface PreUploadBean {
+export declare interface PreUploadBean {
 	dir?: string;
 	policy?: string;
 	signature?: string;
@@ -9,7 +9,7 @@ export interface PreUploadBean {
 }
 
 // 给业务库用
-export interface OssUploadBean {
+export declare interface OssUploadBean {
 	name?: string;
 	key?: string;
 	policy?: string;
