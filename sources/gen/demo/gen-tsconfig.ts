@@ -108,16 +108,17 @@ class NuxtJs_TsConfig_Helper {
 			'jest',
 		],
 		_paths            : {
-			/*
-												// WARN 适配【nuxt.js】
-												'~/!*': [
-													'./!*',
-												],
-												// WARN 适配【nuxt.js】
-												'@/!*': [
-													'./!*',
-												],
-			*/
+			// FIXME 因为WebStorm的Bug，只能用【单行注释】！！！不然内容被错乱！！！
+			//
+			// // WARN 适配【nuxt.js】
+			// '~/*': [
+			// 	'./*',
+			// ],
+			// // WARN 适配【nuxt.js】
+			// '@/*': [
+			// 	'./*',
+			// ],
+			//
 		},
 		_typeRoots        : [         // WARN 适配【nuxt.js】
 			'./types',      // FIXME 其实，这个多此一举；因为【includes】选项里面，已经添加该项了。
@@ -190,6 +191,16 @@ class NpmBuild_Helper {
 	};
 
 
+}
+
+/**
+ * 为【lib-cp】目录，提供
+ */
+class CpLib_Alias_Helper {
+	public static _paths = {
+		'@lib-ts/*': ['./lib/sources/*'],
+		'@lib-cp/*': ['./lib-cp/*'],
+	};
 }
 
 class GenTsconfigUtil {
@@ -296,6 +307,7 @@ class GenTsconfigUtil {
             "src*//*"
           ],
         */
+				...CpLib_Alias_Helper._paths,
 			},
 			'typeRoots'                       : [
 				// ...NuxtJs_TsConfig_Helper._compilerOptions._typeRoots,       注释掉，因为全部在【includes】选项里，处理了

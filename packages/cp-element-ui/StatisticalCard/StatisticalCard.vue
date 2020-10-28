@@ -12,8 +12,8 @@
 <script lang="ts">
 
 
-	import { xX_SMath_Helper }                  from '../../../symbol-math/SMath_Helper';
-	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
+	import { xX_SMath_Helper }                  from '@lib-ts/symbol-math/SMath_Helper';
+	import { MixinLevelTag, xX_Father_BaseVue } from '@lib-ts/admin/mixins/Father_BaseVue';
 	import { Component, Prop }                  from 'vue-property-decorator';
 
 	@Component({

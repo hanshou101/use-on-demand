@@ -30,7 +30,7 @@
 
 	import { Component, Prop }                  from 'vue-property-decorator';
 	import { Getter }                           from 'vuex-class';
-	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
+	import { MixinLevelTag, xX_Father_BaseVue } from '@lib-ts/admin/mixins/Father_BaseVue';
 
 	import {
 		Popover as ElPopover,

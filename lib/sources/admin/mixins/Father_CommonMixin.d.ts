@@ -1,26 +1,5 @@
 import xX_Father_ExportExcel_Mixin from './Father_ExportExcel_Mixin';
 import { MixinLevelTag } from './Father_BaseVue';
-export interface PreUploadBean {
-    dir?: string;
-    policy?: string;
-    signature?: string;
-    callback?: string;
-    accessid?: string;
-    host?: string;
-}
-export interface OssUploadBean {
-    name?: string;
-    key?: string;
-    policy?: string;
-    OSSAccessKeyId?: string;
-    success_action_status?: number;
-    callback?: string;
-    signature?: string;
-}
-declare global {
-    type PreUploadBean_Type = PreUploadBean;
-    type OssUploadBean_Type = OssUploadBean;
-}
 declare const xX_Father_CommonMixin_base: import("vue-class-component/lib/declarations").VueClass<xX_Father_ExportExcel_Mixin>;
 /**
  * 可能最后，还是要用【Mixins】去解决！！！。
@@ -78,7 +57,7 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends xX_Father_C
     listData: Array<any>;
     deleteItems: Array<any>;
     uploadHost: string;
-    uploadData: OssUploadBean;
+    uploadData: OssUploadBean_Type;
     ruleFormRef: null;
     dialogType: number;
     preventGetList_in_activatedFunc: boolean;

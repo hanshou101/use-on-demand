@@ -1,9 +1,65 @@
 const { xX_add_CircularDependencyPlugin } = require('./sources/webpack/webpack-util');
 const { Externals_TypeE }                 = require('./sources/webpack/webpack-util');
 const { xX_getEntries, xX_resolve }       = require('./sources/webpack/webpack-util');
+const fs                                  = require('fs');
 
 console.log('当前Node环境', process.env.NODE_ENV);
 
+const cpEntryRoots = [
+	'packages/components',
+	'packages/cp-element-ui',
+];
+
+const pJson                              = require('./package.json');
+const { name: pName, version: pVersion } = pJson;
+console.log('package.json', 'name', pName, 'version', pVersion);
+
+class Alias_Helper {
+
+	/**
+	 * Alias别名映射
+	 */
+	static #aliasMap = {
+		'@lib-ts': xX_resolve('lib/sources'),
+		'@lib-cp': xX_resolve('lib-cp'),
+	};
+
+	/**
+	 * @type {Array<string>>}
+	 */
+	static #defaultAll_libCp_Dirs = cpEntryRoots.map(name => {
+		return fs.readdirSync(xX_resolve(name));	// 解开目录
+	}).flat(1);
+
+	static getAlias() {
+		return this.#aliasMap;
+	}
+
+	/**
+	 *
+	 * @param {Array<any>} cpDirNameArray
+	 */
+	static getCpExternals(cpDirNameArray = this.#defaultAll_libCp_Dirs) {
+		console.log('对应目录列表 cpDirNameArray', cpDirNameArray);
+		const cpExternals = cpDirNameArray.reduce((preObj, name) => {
+			/**
+			 * 原本的带Alias的目录。
+			 * 				1.也就是，源码中，所使用的【@xxx】目录。
+			 */
+			const aliasDirName         = `@lib-cp/${name}`;
+			/**
+			 * 终极目录
+			 * 				1.形如【 use-on-demand/lib-cp/MyFormEasy 】。
+			 */
+			const finalExternalDirName = `${pName}/lib-cp/${name}`;
+			preObj[aliasDirName]       = finalExternalDirName;
+			return preObj;
+		}, {});
+		console.log('组件由外部提供 cpExternals', cpExternals);
+		return cpExternals;
+	}
+
+}
 
 const InteractOuterProject_Helper = {
 	/**
@@ -54,9 +110,11 @@ const InteractOuterProject_Helper = {
 			[Externals_TypeE.Module_Exports_Default_AMD]: 'C',
 		},
 
-		'use-on-demand'                  : 'use-on-demand',				// WARN 自身【组件A】调用【组件B】，也用【use-on-demand】库名 来调用。
+		'use-on-demand': 'use-on-demand',				// WARN 自身【组件A】调用【组件B】，也用【use-on-demand】库名 来调用。
 		// 子目录，webpack需要完整的路径
-		'use-on-demand/lib-cp/MyFormEasy': 'use-on-demand/lib-cp/MyFormEasy',
+		// 'use-on-demand/lib-cp/MyFormEasy' : 'use-on-demand/lib-cp/MyFormEasy',
+		// 'use-on-demand/lib-cp/MyTableEasy': 'use-on-demand/lib-cp/MyTableEasy',
+		...Alias_Helper.getCpExternals(),
 
 		'vue-fragment': 'vue-fragment',	// WARN 此处，暂时交由内部打包
 
@@ -99,6 +157,8 @@ const devConfig = {
 				'@'     : xX_resolve('packages'),
 				'assets': xX_resolve('examples/assets'),
 				'views' : xX_resolve('examples/views'),
+				// 测试环境
+				...Alias_Helper.getAlias(),										// WARN 更多别名
 			},
 		},
 	},
@@ -138,14 +198,26 @@ const buildConfig = {
 	},
 	configureWebpack   : {
 		// 多入口
-		entry : {
-			...xX_getEntries('packages/components'),
-			...xX_getEntries('packages/cp-element-ui'),
+		entry  : {
+			// TIP 从多个目录，进行解析入口
+			...cpEntryRoots.reduce((preObj, name) => {
+				return {
+					...preObj,
+					...xX_getEntries(name),
+				};
+			}, {}),
 		},
 		// 打包后的文件输出
-		output: {
+		output : {
 			filename     : '[name]/index.js',
 			libraryTarget: 'commonjs2',
+		},
+		// 建立一个【alias别名】的解析
+		resolve: {
+			alias: {
+				// 打包环境
+				...Alias_Helper.getAlias(),										// WARN 更多别名
+			},
 		},
 	},
 	chainWebpack       : config => {

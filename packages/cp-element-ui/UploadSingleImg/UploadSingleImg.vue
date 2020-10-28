@@ -38,14 +38,14 @@
 	// API，建议采用相对路径。
 
 
-	import { MixinLevelTag, xX_Father_BaseVue }       from '../../../admin/mixins/Father_BaseVue';
+	import { MixinLevelTag, xX_Father_BaseVue }       from '@lib-ts/admin/mixins/Father_BaseVue';
 	import { Component, InjectReactive, Prop, Watch } from 'vue-property-decorator';
 
 	import {
 		Upload as ElUpload____Cp,
 		Button as ElButton,
 	}                                   from 'element-ui';
-	import { xX_ExceptionError_Helper } from '../../../exception-error/ExceptionError_Helper';
+	import { xX_ExceptionError_Helper } from '../../../sources/exception-error/ExceptionError_Helper';
 
 	/**
 	 * 1.参考资料：

@@ -27,15 +27,15 @@
 <script lang="ts">
 
 	import { Component, Prop }                  from 'vue-property-decorator';
-	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
+	import { MixinLevelTag, xX_Father_BaseVue } from '@lib-ts/admin/mixins/Father_BaseVue';
+	import { t }                                from '@lib-ts/cp-util/locale/locale';
+	import { xX_ExceptionError_Helper }         from '@lib-ts/exception-error/ExceptionError_Helper';
 
 	import {
 		Button as ElButton,
 		Dialog as ElDialog,
 		Upload as ElUpload,
-	}                                   from 'element-ui';
-	import { t }                        from '../../../sources/cp-util/locale/locale';
-	import { xX_ExceptionError_Helper } from '../../../sources/exception-error/ExceptionError_Helper';
+	} from 'element-ui';
 
 	@Component({
 		name      : 'EditorImage',

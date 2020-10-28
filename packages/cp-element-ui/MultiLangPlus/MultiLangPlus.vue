@@ -116,10 +116,10 @@
 <script lang="ts">
 
 
-	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
-	import { Component, Prop }                  from 'vue-property-decorator';
 	import { Getter }                           from 'vuex-class';
-	import { t }                                from '../../../cp-util/locale/locale';
+	import { Component, Prop }                  from 'vue-property-decorator';
+	import { MixinLevelTag, xX_Father_BaseVue } from '@lib-ts/admin/mixins/Father_BaseVue';
+	import { t }                                from '@lib-ts/cp-util/locale/locale';
 
 	@Component({
 		name      : 'MultiLangPlus',

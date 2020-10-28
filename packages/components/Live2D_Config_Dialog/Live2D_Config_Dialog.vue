@@ -33,12 +33,12 @@
 
 <script lang="ts">
 	import { Component, Mixins, Prop }                    from 'vue-property-decorator';
-	import xX_Father_DialogMixin                          from '../../../sources/admin/mixins/Father_DialogMixin';
-	import { xX_Father_ElFItem }                          from '../../../sources/element-ui/admin-cp/ElFItem';
-	import { xX_Live2D_WidgetJs_Helper, xX_Live2DModelE } from '../../../sources/live2d/live2d-widget.js/Live2D_WidgetJs_Helper';
+	import xX_Father_DialogMixin                          from '@lib-ts/admin/mixins/Father_DialogMixin';
+	import { xX_Father_ElFItem }                          from '@lib-ts/element-ui/admin-cp/ElFItem';
+	import { xX_Live2D_WidgetJs_Helper, xX_Live2DModelE } from '@lib-ts/live2d/live2d-widget.js/Live2D_WidgetJs_Helper';
 	//
 	// @ts-ignore
-	import MyFormEasy                                     from 'use-on-demand/lib-cp/MyFormEasy';
+	import MyFormEasy                                     from '@lib-cp/MyFormEasy';
 	// import Vue                                            from 'vue';
 	//
 	// Vue.use(MyFormEasy);
@@ -53,8 +53,8 @@
 		Button as ElButton,
 		Form as ElForm,
 	}                                       from 'element-ui';
-	import { t }                            from '../../../sources/cp-util/locale/locale';
-	import { xX_MyEl_FormItem_Rule_Config } from '../../../sources/element-ui/admin-cp/ElRuleItem';
+	import { t }                            from '@lib-ts/cp-util/locale/locale';
+	import { xX_MyEl_FormItem_Rule_Config } from '@lib-ts/element-ui/admin-cp/ElRuleItem';
 
 	@Component({
 		name      : 'Live2D_Config_Dialog',

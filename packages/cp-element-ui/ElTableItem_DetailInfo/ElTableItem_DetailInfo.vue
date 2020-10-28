@@ -16,11 +16,11 @@
 
 <script lang="ts">
 
-	import { xX_Father_ElTItem }                from '../ElTItem';
 	import { Component, Prop }                  from 'vue-property-decorator';
-	import { MixinLevelTag, xX_Father_BaseVue } from '../../../admin/mixins/Father_BaseVue';
-	import { xX_SString_Helper }                from '../../../symbol-string/SString_Helper';
-	import { xX_ExceptionError_Helper }         from '../../../exception-error/ExceptionError_Helper';
+	import { xX_Father_ElTItem }                from '@lib-ts/element-ui/admin-cp/ElTItem';
+	import { MixinLevelTag, xX_Father_BaseVue } from '@lib-ts/admin/mixins/Father_BaseVue';
+	import { xX_SString_Helper }                from '@lib-ts/symbol-string/SString_Helper';
+	import { xX_ExceptionError_Helper }         from '@lib-ts/exception-error/ExceptionError_Helper';
 
 	@Component({
 		name      : 'ElTableItem_DetailInfo',

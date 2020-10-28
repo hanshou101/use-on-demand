@@ -14,16 +14,15 @@
 
 <script lang="ts">
 
-	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
+	import { MixinLevelTag, xX_Father_BaseVue } from '@lib-ts/admin/mixins/Father_BaseVue';
 	import { Component }                        from 'vue-property-decorator';
-
+	import { t }                                from '@lib-ts/cp-util/locale/locale';
 	import {
 		Button as ElButton,
 		Dropdown as ElDropdown,
 		DropdownMenu as ElDropdownMenu,
 		DropdownItem as ElDropdownItem,
-	}            from 'element-ui';
-	import { t } from '../../../sources/cp-util/locale/locale';
+	}                                           from 'element-ui';
 
 	@Component({
 		name      : 'WrapDropdown',
