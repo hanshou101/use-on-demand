@@ -25,7 +25,7 @@ class Alias_Helper {
 	};
 
 	/**
-	 * @type {Array<string>>}
+	 * @type {Array<any>}
 	 */
 	static #defaultAll_libCp_Dirs = cpEntryRoots.map(name => {
 		return fs.readdirSync(xX_resolve(name));	// 解开目录
@@ -61,7 +61,7 @@ class Alias_Helper {
 
 }
 
-const InteractOuterProject_Helper = {
+class InteractOuterProject_Helper {
 	/**
 	 * 1.支持以下形式：
 	 * 					string
@@ -72,7 +72,7 @@ const InteractOuterProject_Helper = {
 	 * 2.【key】为require后的模块名，【value】为【模块内主入口，导出的根变量】的名字。
 	 * 					1.import Vue from 'vue' ————————> export default Vue ————————> 'vue' : 'Vue'
 	 */
-	__externals: {
+	static  __externals = {
 
 
 		// 交给【外部】
@@ -131,9 +131,48 @@ const InteractOuterProject_Helper = {
 		// 'vue-ueditor-wrap': 'vue-ueditor-wrap',	// TIP 如果放在内部打包，会报错。（因为机制比较特殊）
 
 
-	},
+	};
 	// externalsType: 'var',		// 另外一项功能
-};
+}
+
+
+class WorkerLoaderCfg {
+	static _rule = {
+		// 匹配 *.worker.js
+		test: /\.worker\.[jt]s$/,										// WARN 此处，增加对【ts、js】文件的双重支持。
+		use : {
+			loader : 'worker-loader',
+			options: {																// WARN 此处，【3.x】和【2.x】的配置，大大不一样！！！！！！
+				// name  : '[name]:[hash:8].js',
+				chunkFilename: '[id].[contenthash].worker.js',
+				/**
+				 * 将【worker】作为【blob】进行内联
+				 * 				1.要注意，内联模式将额外为浏览器创建 chunk，即使对于不支持内联 worker 的浏览器也是如此
+				 * 				2.若这种浏览器想要禁用这种行为，只需要将 fallback 参数设置为 false 即可。
+				 */
+				// inline  : true,
+				inline       : 'fallback',  // 3.x用这个
+				// fallback: false,														// 配合 inline 使用。
+				// publicPath: '/scripts/workers/',					// 【publicPath】用于 重写 【worker脚本】的 下载url。
+			},
+		},
+	};
+	/*
+					static _output = {
+						globalObject: 'this',														// 用于修复 【Uncaught ReferenceError: window is not defined】 的问题。
+					};
+	*/
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /**
  * TIP 开发环境配置
@@ -147,6 +186,10 @@ const devConfig = {
 			filename: 'index.html',
 		},
 	},
+	/**
+	 * 该对象将会被 webpack-merge 合并入最终的 webpack 配置。
+	 * 				0.参考资料：https://cli.vuejs.org/zh/guide/webpack.html
+	 */
 	configureWebpack: {
 		resolve: {
 			extensions: [
@@ -160,6 +203,11 @@ const devConfig = {
 				// 测试环境
 				...Alias_Helper.getAlias(),										// WARN 更多别名
 			},
+		},
+		module : {
+			rules: [
+				WorkerLoaderCfg._rule,			// TIP 添加【Worker-Loader】的 Rule 。用于【Web-Worker】。
+			],
 		},
 	},
 	chainWebpack    : config => {
@@ -189,13 +237,18 @@ const devConfig = {
  * @type { VueCliService_ProjectOptions_Type }
  */
 const buildConfig = {
-	css                : {
+	css: {
 		sourceMap: true,
 		// 打包时，样式抽取出来
 		extract  : {
 			filename: 'style/[name].css',	// 在lib文件夹中建立style文件夹中，生成对应的css文件。
 		},
 	},
+
+	/**
+	 * 该对象将会被 webpack-merge 合并入最终的 webpack 配置。
+	 * 				0.参考资料：https://cli.vuejs.org/zh/guide/webpack.html
+	 */
 	configureWebpack   : {
 		// 多入口
 		entry  : {
@@ -218,6 +271,11 @@ const buildConfig = {
 				// 打包环境
 				...Alias_Helper.getAlias(),										// WARN 更多别名
 			},
+		},
+		module : {
+			rules: [
+				WorkerLoaderCfg._rule,			// TIP 添加【Worker-Loader】的 Rule 。用于【Web-Worker】。
+			],
 		},
 	},
 	chainWebpack       : config => {

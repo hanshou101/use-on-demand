@@ -1,5 +1,6 @@
 // service-worker.js
 declare var self: ServiceWorkerGlobalScope;
+// declare var this: ServiceWorkerGlobalScope;
 
 export class xX_ServiceWorker_Worker_Helper {
 
