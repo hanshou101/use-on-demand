@@ -30,8 +30,8 @@ export enum xX_LogE {
 	decorator             = 'decorator',
 	versionCheck          = 'versionCheck',
 
-	wClientSide           = 'wClientSide',
-	wWorkerSide           = 'wWorkerSide',
+	wClient_Side          = 'wClient_Side',
+	wWorker_Side          = 'wWorker_Side',
 
 }
 
@@ -53,8 +53,8 @@ export class xX_DebugU {
 		//
 		// xX_LogE.decorator,
 		// xX_LogE.versionCheck,
-		xX_LogE.wClientSide,
-		xX_LogE.wWorkerSide,
+		xX_LogE.wClient_Side,
+		xX_LogE.wWorker_Side,
 	];
 
 	public static l(logEnum: xX_LogE, ...args: Array<any>) {
