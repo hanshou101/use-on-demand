@@ -2,11 +2,11 @@
 import { xX_DebugU, xX_LogE } from '../../debug-util/debug-util';
 
 function cL(...msgs: Array<any>) {
-	xX_DebugU.l(xX_LogE.wClientSide, ...msgs);
+	xX_DebugU.l(xX_LogE.wClient_Side, ...msgs);
 }
 
 function wL(...msgs: Array<any>) {
-	xX_DebugU.l(xX_LogE.wWorkerSide, ...msgs);
+	xX_DebugU.l(xX_LogE.wWorker_Side, ...msgs);
 }
 
 /**
@@ -153,7 +153,7 @@ export namespace WebWorker_Helper {
 		/**
 		 * 初始化，一些监听。
 		 */
-		private __initListener</* 此处，竟然无法使用泛型 */>(
+		private __initListener /* < 此处，竟然无法使用泛型 > */(
 			cfg: WebWorker_NS.WorkerCfg,
 		) {
 			type T = WebWorker_NS.MsgEvt;

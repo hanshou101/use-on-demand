@@ -26,7 +26,9 @@ export declare enum xX_LogE {
     loadScript = "loadScript",
     sentry = "sentry",
     decorator = "decorator",
-    versionCheck = "versionCheck"
+    versionCheck = "versionCheck",
+    wClient_Side = "wClient_Side",
+    wWorker_Side = "wWorker_Side"
 }
 /**
  * console日志工具
