@@ -21,7 +21,7 @@
 	import { xX_FileMd5_Helper }                          from '../sources/platform/file-blob/FileMd5_Helper';
 	import { flatRoute_toArr }                            from './router';
 	// import { xX_ServiceWorker_Client_Helper }             from '../sources/service-worker/util/ServiceWorker_Client_Helper';
-	import { FirstClient }                                from '../sources/service-worker/demo/first/First.client';
+	import { FirstClient }                                from '../sources/worker/demo/first/First.client';
 
 
 	export default Vue.extend({
