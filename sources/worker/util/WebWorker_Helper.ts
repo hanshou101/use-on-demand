@@ -12,7 +12,7 @@ function wL(...msgs: Array<any>) {
 /**
  *
  */
-export namespace WebWorker_Helper {
+export namespace xX_WebWorker_Helper {
 
 
 	export class _Client {
@@ -98,12 +98,16 @@ export namespace WebWorker_Helper {
 
 	}
 
-	export class _Worker {
+	export class _Worker<															//
+		CFG extends WebWorker_NS.WorkerCfg = WebWorker_NS.WorkerCfg,
+		MsgEvt extends MessageEvent = WebWorker_NS.MsgEvt,
+		MsgBean extends WebWorker_NS.MsgBean = WebWorker_NS.MsgBean,
+		> {
 		/**
 		 *
 		 */
 		constructor(
-			cfg: WebWorker_NS.WorkerCfg,
+			cfg: CFG,
 		) {
 			wL('已进入Worker', '名称', self.name);
 			// 初始化监听
@@ -117,7 +121,7 @@ export namespace WebWorker_Helper {
 		 * 				1.直接产生，额外一份【原数据拷贝】。
 		 */
 		public postSmallMsg(
-			msg: WebWorker_NS.MsgBean,
+			msg: MsgBean,
 		) {
 			wL('发送小量数据');
 			self.postMessage(msg);
@@ -154,20 +158,21 @@ export namespace WebWorker_Helper {
 		 * 初始化，一些监听。
 		 */
 		private __initListener /* < 此处，竟然无法使用泛型 > */(
-			cfg: WebWorker_NS.WorkerCfg,
+			cfg: CFG,
 		) {
-			type T = WebWorker_NS.MsgEvt;
 			//
 			if (cfg._onmessage) {
 				// 接收消息
-				self.onmessage = function(ev: T) {
+				self.onmessage = function(_ev: MessageEvent) {
+					const ev = _ev as MsgEvt;
 					wL('【Worker】', '接收消息', ev.data);
 					cfg._onmessage.bind(this)(ev);				// 执行
 				};
 			}
 			// 【序列化错误】处理
 			if (cfg._onmessageerror) {
-				self.onmessageerror = function(ev: T) {
+				self.onmessageerror = function(_ev: MessageEvent) {
+					const ev = _ev as MsgEvt;
 					wL('序列化过程中，发生了错误', ev);
 					cfg._onmessageerror.bind(this)(ev);	// 执行
 				};

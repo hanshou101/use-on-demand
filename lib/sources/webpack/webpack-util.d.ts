@@ -33,4 +33,16 @@ export namespace xX_NodeEnvE {
  * @param {xX_NodeEnvE_KeyType} env
  */
 export function xX_isNodeEnv(env: xX_NodeEnvE_KeyType): boolean;
+export namespace xX_WorkerLoaderCfg {
+    namespace _rule {
+        const test: RegExp;
+        namespace use {
+            const loader: string;
+            namespace options {
+                const chunkFilename: string;
+                const inline: string;
+            }
+        }
+    }
+}
 //# sourceMappingURL=webpack-util.d.ts.map

@@ -1,13 +1,21 @@
-import { WebWorker_Helper } from '../../util/WebWorker_Helper';
+import { xX_WebWorker_Helper } from '../../util/WebWorker_Helper';
 
-const worker = new WebWorker_Helper._Worker({
+const worker = new xX_WebWorker_Helper._Worker({
 	_onmessage(ev) {
+		setTimeout(() => {
+			worker.postSmallMsg({
+				method: 'Pong',
+				args  : [
+					new Date().valueOf(),
+				],
+			});
+		}, 3000);
 	},
 	_onmessageerror(ev) {
 	},
 });
 
-worker.postSmallMsg({
-	method: '来自Worker',
-	args  : [1, 2, 3],
-});
+// worker.postSmallMsg({
+// 	method: '来自Worker',
+// 	args  : [1, 2, 3],
+// });

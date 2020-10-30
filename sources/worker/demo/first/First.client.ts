@@ -1,12 +1,19 @@
 // @ts-ignore
-import FirstWorker          from './First.worker';
-import { WebWorker_Helper } from '../../util/WebWorker_Helper';
-import WorkerLoader_Constructor = WebWorker_NS.WorkerLoader_Constructor;
+import FirstWorker             from './First.worker';
+import { xX_WebWorker_Helper } from '../../util/WebWorker_Helper';
 
 export class FirstClient {
 	init() {
-		const client = new WebWorker_Helper._Client(FirstWorker as WorkerLoader_Constructor, {
+		const client = new xX_WebWorker_Helper._Client(FirstWorker as WebWorker_NS.WorkerLoader_Constructor, {
 			_onmessage(ev) {
+				setTimeout(() => {
+					client.postSmallMsg({
+						method: 'Ping',
+						args  : [
+							new Date().valueOf(),
+						],
+					});
+				}, 3000);
 			},
 			_onmessageerror(ev) {
 			},
@@ -15,8 +22,10 @@ export class FirstClient {
 		});
 
 		client.postSmallMsg({
-			method: '来自Client',
-			args  : [0, 0, 0],
+			method: 'Start',
+			args  : [
+				new Date().valueOf(),
+			],
 		});
 	}
 }

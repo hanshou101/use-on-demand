@@ -1,7 +1,7 @@
 /**
  *
  */
-export declare namespace WebWorker_Helper {
+export declare namespace xX_WebWorker_Helper {
     class _Client {
         worker: Worker_Type;
         /**
@@ -25,16 +25,17 @@ export declare namespace WebWorker_Helper {
          */
         private __initListener;
     }
-    class _Worker {
+    class _Worker<//
+    CFG extends WebWorker_NS.WorkerCfg = WebWorker_NS.WorkerCfg, MsgEvt extends MessageEvent = WebWorker_NS.MsgEvt, MsgBean extends WebWorker_NS.MsgBean = WebWorker_NS.MsgBean> {
         /**
          *
          */
-        constructor(cfg: WebWorker_NS.WorkerCfg);
+        constructor(cfg: CFG);
         /**
          * 普通的小量数据。
          * 				1.直接产生，额外一份【原数据拷贝】。
          */
-        postSmallMsg(msg: WebWorker_NS.MsgBean): void;
+        postSmallMsg(msg: MsgBean): void;
         /**
          * 体积较大的数据。
          * 				1.会走【Transferable Objects】，不会产生 额外拷贝。
