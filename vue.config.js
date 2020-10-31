@@ -117,20 +117,24 @@ class InteractOuterProject_Helper {
 		// 'use-on-demand/lib-cp/MyTableEasy': 'use-on-demand/lib-cp/MyTableEasy',
 		...Alias_Helper.getCpExternals(),
 
-		'vue-fragment': 'vue-fragment',	// WARN 此处，暂时交由内部打包
+		'vue-fragment': 'vue-fragment',	// WARN 此处，暂时交由内部打包 FIXME ？？？？？？？？？？？？？？？？？？？？？？
 
-		// 'vue-property-decorator': 'vue-property-decorator',
-		// 'vuex-class'            : 'vuex-class',
-		// 'vue-class-component'   : 'vue-class-component',
-		// 'vuex'                  : 'vuex',
 
-		// 'vue-router': 'VueRouter',
+		/**
+		 * 以下，统一交给外部，能够有效节省【打包体积】。
+		 */
+		'vue-property-decorator': 'vue-property-decorator',
+		'vuex-class'            : 'vuex-class',
+		'vue-class-component'   : 'vue-class-component',
+		'vuex'                  : 'vuex',
+		'vue-router'            : 'VueRouter',
 		// 'highlight.js': 'hljs',
+		'v-viewer'              : 'v-viewer',					// WARN 此处，暂时交由内部打包 FIXME ？？？？？？？？？？？？？？？？？？？？？？
+		'vue-ueditor-wrap'      : 'vue-ueditor-wrap',	// TIP FIXME 如果放在内部打包，会报错。（因为机制比较特殊）
 
-		// 'v-viewer': 'v-viewer',					// WARN 此处，暂时交由内部打包
-
-		// 'vue-ueditor-wrap': 'vue-ueditor-wrap',	// TIP 如果放在内部打包，会报错。（因为机制比较特殊）
-
+		/**
+		 *
+		 */
 
 	};
 	// externalsType: 'var',		// 另外一项功能
