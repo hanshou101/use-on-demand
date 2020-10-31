@@ -33,7 +33,37 @@ declare namespace WebWorker_NS {
 
 declare type Worker_Type = Worker;
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 interface Window {
-	// FIXME 此处，修正【WebWorker】所缺失的类型。（MDN上是有的）。
-	postMessage(message: any, transfer?: Transferable[]): void;
+	postMessage(message: any, transfer?: Transferable[]): void;					// FIXME 此处，修正【WebWorker】所缺失的类型。（MDN上是有的）。
 }
+
+// interface InstallEvent_Type extends Event {
+// 	waitUntil()
+// }
+//
+// interface ServiceWorkerEventMap {
+// 	'install': any;
+// 	'fetch': any;
+// }
+//
+// interface ServiceWorker {
+// 	skipWaiting(): void;
+//
+// 	importScripts(...urls: string[]): void;
+//
+// }
