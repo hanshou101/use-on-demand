@@ -2,9 +2,13 @@
 	<el-row :gutter="20">
 		<el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="5" v-for="(item,index) in statisticalData" :key="index">
 			<div class="statistical-item">
-				<p class="title">{{ item.name }}</p>
-				<!--                <count-to :end="item.value" count-class="num"></count-to>-->
-				<p class="num">{{ getThousandthData(item.value) }}</p>
+				<slot name="title">
+					<p class="title">{{ item.name }}</p>
+				</slot>
+				<slot name="content">
+					<!--                <count-to :end="item.value" count-class="num"></count-to>-->
+					<p class="num">{{ getThousandthData(item.value) }}</p>
+				</slot>
 			</div>
 		</el-col>
 	</el-row>
@@ -25,7 +29,10 @@
 		extends xX_Father_BaseVue {    // 混入在此处，进行添加。
 
 		// 数据可以和父级通用
-		@Prop({ type: Array, required: true }) readonly statisticalData!: Array<any>;
+		@Prop({ type: Array, required: true }) readonly statisticalData!: Array<{
+			name: any,
+			value: any
+		}>;
 		// Data，在类中的实现 （双向绑定除外）
 
 		// Method，在类中的实现
@@ -59,7 +66,6 @@
 	.statistical-item {
 		border        : 1px solid #eee;
 		border-radius : 10px;
-		margin-right  : 20px;
 		box-sizing    : border-box;
 		padding       : 30px 0 30px 30px;
 		margin        : 10px 0;
