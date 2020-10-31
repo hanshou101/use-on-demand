@@ -25,6 +25,7 @@ const defaultLang = {																					// 默认国际化语言
 		Delete_Success                     : '删除成功！',
 		Delete_Prompt                      : '请选择需要删除的列表项!',
 		Delete_Confirm                     : '确定要删除吗？',
+		Confirm                            : '确定',
 	},
 	element: {
 		multi_lang_plus: {
