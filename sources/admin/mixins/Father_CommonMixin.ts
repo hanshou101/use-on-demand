@@ -7,30 +7,7 @@ import { t }                       from '../../cp-util/locale/locale';
 
 import { Getter }                   from 'vuex-class';
 import { xX_ExceptionError_Helper } from '../../exception-error/ExceptionError_Helper';
-
-export interface PreUploadBean {
-	dir?: string;
-	policy?: string;
-	signature?: string;
-	callback?: string;
-	accessid?: string;
-	host?: string;
-}
-
-export interface OssUploadBean {
-	name?: string;
-	key?: string;
-	policy?: string;
-	OSSAccessKeyId?: string;
-	success_action_status?: number;
-	callback?: string;
-	signature?: string;
-}
-
-declare global {
-	type PreUploadBean_Type = PreUploadBean;
-	type OssUploadBean_Type = OssUploadBean;
-}
+import { xX_data_elTagColorFilter } from '../../element-ui/admin-cp/ElTagItem';
 
 /**
  * 可能最后，还是要用【Mixins】去解决！！！。
@@ -85,14 +62,7 @@ declare global {
 	},
 	filters   : {  // 第一种<el-tag>的样式Filter
 		elTagFilter(status: string | number) {
-			const statusMap = {
-				0: 'danger',
-				1: 'success',
-				2: 'info',
-				3: 'primary',
-				4: 'warning',
-			};
-			return (statusMap as any)[status];
+			return (xX_data_elTagColorFilter as any)[status];
 		},
 		// 第二种<el-tag>的样式Filter
 		elTagFilter2(status: string | number) {
@@ -133,7 +103,7 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends Mixins(xX_F
 	// oss预上传数据
 	public uploadHost: string                                          = '';
 	// 上传携带参数
-	public uploadData: OssUploadBean                                   = {};
+	public uploadData: OssUploadBean_Type                                   = {};
 	public ruleFormRef                                                 = null;
 	// 弹窗类型，1-新建，2-编辑，3-其他
 	public dialogType: number                                          = 1;
@@ -317,7 +287,7 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends Mixins(xX_F
 	}
 
 	public async beforeUpload(): Promise<any> {
-		const preUploadData: PreUploadBean = (await this.MixinsData_2.preuploadApi()) as PreUploadBean;
+		const preUploadData: PreUploadBean_Type = (await this.MixinsData_2.preuploadApi()) as PreUploadBean_Type;
 		if (preUploadData) {
 			const { dir, policy, signature, callback, accessid, host } = preUploadData;
 			this.uploadHost                                            = host || '域名没获取到';

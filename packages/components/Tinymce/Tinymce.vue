@@ -10,15 +10,16 @@
 </template>
 
 <script lang="ts">
-	import EditorImage from './Tinymce_EditorImage.vue';
-	import plugins     from './plugins';
-	import toolbar     from './toolbar';
+	// @ts-ignore
+	import EditorImage from '@lib-cp/Tinymce_EditorImage';
 
 	// TIP 在此文件中，可以自由地修改【Tinymce富文本编辑器】的配置。
 	// TIP 官方配置文档地址：https://www.tiny.cloud/docs/
 
 	import { Component, Prop, Watch }           from 'vue-property-decorator';
-	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
+	import { MixinLevelTag, xX_Father_BaseVue } from '@lib-ts/admin/mixins/Father_BaseVue';
+	import plugins                              from './plugins';
+	import toolbar                              from './toolbar';
 
 
 	@Component({

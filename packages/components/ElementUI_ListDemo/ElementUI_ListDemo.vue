@@ -59,9 +59,12 @@
 	import { Mixins }   from 'vue-property-decorator';
 	import Component    from 'vue-class-component';
 	//
-	import MyTableEasy  from '../../../packages/cp-element-ui/MyTableEasy/MyTableEasy.vue';
-	import MyFormEasy   from '../../../packages/cp-element-ui/MyFormEasy/MyFormEasy.vue';
-	import WrapDropdown from '../../../packages/cp-element-ui/WrapDropdown/WrapDropdown.vue';
+	// @ts-ignore
+	import MyTableEasy  from '@lib-cp/MyTableEasy';
+	// @ts-ignore
+	import MyFormEasy   from '@lib-cp/MyFormEasy';
+	// @ts-ignore
+	import WrapDropdown from '@lib-cp/WrapDropdown';
 
 	import Vue from 'vue';
 
@@ -72,13 +75,13 @@
 		Pagination as ElPagination,
 		Loading,
 	}                                       from 'element-ui';
-	import { xX_MyElementUtils_Helper }     from '../../../sources/element-ui/admin-cp/MyElementUtils_Helper';
-	import { xX_Father_ElFItem }            from '../../../sources/element-ui/admin-cp/ElFItem';
-	import { t }                            from '../../../sources/cp-util/locale/locale';
+	import { xX_MyElementUtils_Helper }     from '@lib-ts/element-ui/admin-cp/MyElementUtils_Helper';
+	import { xX_Father_ElFItem }            from '@lib-ts/element-ui/admin-cp/ElFItem';
+	import { t }                            from '@lib-ts/cp-util/locale/locale';
+	import xX_Father_CommonMixin            from '@lib-ts/admin/mixins/Father_CommonMixin';
+	import { xX_Father_ElTItem }            from '@lib-ts/element-ui/admin-cp/ElTItem';
+	import { xX_MyEl_FormItem_Rule_Config } from '@lib-ts/element-ui/admin-cp/ElRuleItem';
 	import { selectOption }                 from '../../../examples/enum-options/select-options';
-	import { xX_MyEl_FormItem_Rule_Config } from '../../../sources/element-ui/admin-cp/MyElementUtils';
-	import xX_Father_CommonMixin            from '../../../sources/admin/mixins/Father_CommonMixin';
-	import { xX_Father_ElTItem }            from '../../../sources/element-ui/admin-cp/ElTItem';
 	import { UserList_Mock_Data }           from '../../../examples/mock-data/MockData';
 	import Article_Create_Dialog            from '../../../examples/views/components/Article_Create_Dialog.vue';
 
@@ -201,7 +204,7 @@
 								simpleValueFunction(row, field) {
 									const type = row[field];
 									const text = (selectOption.userTypeOptions as any)[type];
-									return xX_MyElementUtils_Helper.get_ElTag_HtmlText(type, text);
+									return xX_MyElementUtils_Helper.get_MyElTagLike_HtmlText(type, text);
 								},
 							}, leftLabel: '用户类型',
 						},
@@ -211,7 +214,7 @@
 								simpleValueFunction(row, field) {
 									const registerType = row[field];
 									const text         = (selectOption.registerTypeOption as any)[registerType];
-									return xX_MyElementUtils_Helper.get_ElTag_HtmlText(registerType, text);
+									return xX_MyElementUtils_Helper.get_MyElTagLike_HtmlText(registerType, text);
 								},
 							}, leftLabel: '注册类型',
 						},
@@ -234,7 +237,7 @@
 								simpleValueFunction(row, field) {
 									const status = row[field];
 									const text   = (selectOption.status as any)[status];
-									return xX_MyElementUtils_Helper.get_ElTag_HtmlText(status, text);
+									return xX_MyElementUtils_Helper.get_MyElTagLike_HtmlText(status, text);
 								},
 							}, leftLabel: '用户状态',
 						},
@@ -244,7 +247,7 @@
 								simpleValueFunction(row, field) {
 									const kycLevel = row[field];
 									const text     = (selectOption.status as any)[kycLevel];
-									return xX_MyElementUtils_Helper.get_ElTag_HtmlText(kycLevel, text);
+									return xX_MyElementUtils_Helper.get_MyElTagLike_HtmlText(kycLevel, text);
 								},
 							}, leftLabel: '是否绑定银行卡',
 						},
@@ -254,7 +257,7 @@
 								simpleValueFunction(row, field) {
 									const paypassSetting = row[field];
 									const text           = (selectOption.yes_or_no as any)[paypassSetting];
-									return xX_MyElementUtils_Helper.get_ElTag_HtmlText(paypassSetting, text);
+									return xX_MyElementUtils_Helper.get_MyElTagLike_HtmlText(paypassSetting, text);
 								},
 							}, leftLabel: '交易密码设置状态',
 						},

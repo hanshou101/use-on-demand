@@ -1,11 +1,11 @@
 import {Mutation, MutationTree, Store} from 'vuex';
-import {StateType}                     from 'typed-vuex/lib/types/state';
+// import {StateType}                     from 'typed-vuex/lib/index';
 
 declare global {
   type StoreType<T> = Store<T>;
   type MutationType<T> = Mutation<T>;
   type MutationTreeType<T> = MutationTree<T>;
-  type StateType_Type<S> = StateType<S>;
+  // type StateType_Type<S> = StateType<S>;
 
   // Accessor冗余垫片
   type VuexRedundancyPolyfill = any;

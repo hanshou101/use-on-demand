@@ -19,7 +19,7 @@
 <script lang="ts">
 	import VideoJS_TypeNS, { VideoJsPlayer } from 'video.js';
 	import Vue                               from 'vue';
-	import { xX_MVideo_Helper }              from '../../../sources/media-video/MVideo_Helper';
+	import { xX_MVideo_Helper }              from '@lib-ts/media-video/MVideo_Helper';
 
 	// 初始化【CSS样式】
 	xX_MVideo_Helper.loadCss();

@@ -18,6 +18,6 @@ declare global {
 
 	type ChainableWebpackConfig_Type = ChainableWebpackConfig;
 
-	type xX_NodeEnvE_KeyType = keyof xX_NodeEnvE;
+	type xX_NodeEnvE_KeyType = keyof typeof xX_NodeEnvE;
 
 }

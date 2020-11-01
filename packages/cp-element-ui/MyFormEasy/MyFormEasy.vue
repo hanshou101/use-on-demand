@@ -340,14 +340,15 @@
 
 <script lang="ts">
 
-	import { xX_Father_ElFItem }                from '../../../sources/element-ui/admin-cp/ElFItem';
-	import xX_UploadSingleImg                   from '../../../sources/element-ui/admin-cp/upload/UploadSingleImg.vue';
-	import xX_MultiLangSimple                   from '../MultiLangSimple/MultiLangSimple.vue';
-	import xX_Count_Input                       from '../../../sources/element-ui/admin-cp/input/Count_Input.vue';
-	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
+	import { xX_Father_ElFItem }                from '@lib-ts/element-ui/admin-cp/ElFItem';
+	// @ts-ignore
+	import xX_UploadSingleImg                   from '@lib-cp/UploadSingleImg';
+	// @ts-ignore
+	import xX_Count_Input                       from '@lib-cp/Count_Input';
+	import { MixinLevelTag, xX_Father_BaseVue } from '@lib-ts/admin/mixins/Father_BaseVue';
 	import { Component, Prop }                  from 'vue-property-decorator';
 
-	const { getCurrentday, getCurrentWeek, getCurrentMonth, getDay, getBeforeOneMonth } = require('../../../sources/element-ui/admin-cp/temp____lib/util.js');
+	const { getCurrentday, getCurrentWeek, getCurrentMonth, getDay, getBeforeOneMonth } = require('@lib-ts/element-ui/admin-cp/temp____lib/util.js');
 
 	import {
 		FormItem as ElFormItem,
@@ -364,9 +365,12 @@
 
 	// @ts-ignore
 	import { Fragment, Plugin }     from 'vue-fragment';
-	import { xX_SString_Helper }    from '../../../sources/symbol-string/SString_Helper';
-	import { t }                    from '../../../sources/cp-util/locale/locale';
-	import { xX_Rt_UEditor_Helper } from '../../../sources/editor/richtext-editor/Rt_UEditor_Helper';
+	import { xX_SString_Helper }    from '@lib-ts/symbol-string/SString_Helper';
+	import { t }                    from '@lib-ts/cp-util/locale/locale';
+	import { xX_Rt_UEditor_Helper } from '@lib-ts/editor/richtext-editor/Rt_UEditor_Helper';
+
+	// @ts-ignore
+	import xX_MultiLangSimple from '@lib-cp/MultiLangSimple';
 
 	// FIXME 此处，暂时没有调通！！！
 	// FIXME 此处，暂时没有调通！！！
@@ -375,6 +379,14 @@
 	// FIXME 此处，暂时没有调通！！！
 	// FIXME 此处，暂时没有调通！！！
 	// xX_Rt_UEditor_Helper.initUEditor(Vue);
+
+	// import Vue from 'vue';							//
+	// Vue.use(Plugin);	// 这种初始化方式。
+	console.log('Fragment', Fragment);
+	console.log('Fragment123123');
+	console.log('Plugin', Plugin);
+
+	// console.log('Fragment默认', TotalFragment);
 
 	@Component({
 		name      : 'MyFormEasy',
@@ -513,6 +525,9 @@
 
 		MixinsData_1: MixinLevelTag = {} as any;
 	}
+
+
+	console.log('导入了组件库的【MyFormEasy】', xX_MyFormEasy);
 
 </script>
 

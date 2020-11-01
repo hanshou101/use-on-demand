@@ -3,3 +3,5 @@
 
 lib-cp/
 lib/
+# sources/sentry/init/LostErrorSentry.js
+# sources/sentry/init/LostErrorSentry.min.js

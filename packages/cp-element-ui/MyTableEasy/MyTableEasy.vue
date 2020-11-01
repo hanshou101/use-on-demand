@@ -2,24 +2,26 @@
 
 	import Vue, { VNode } from 'vue';
 
-	import { xX_data_elTagColorFilter }         from '../../../sources/element-ui/admin-cp/MyElementUtils';
 	import { Component, Prop }                  from 'vue-property-decorator';
-	import { xX_SString_Helper }                from '../../../sources/symbol-string/SString_Helper';
-	import { MixinLevelTag, xX_Father_BaseVue } from '../../../sources/admin/mixins/Father_BaseVue';
+	import { xX_SString_Helper }                from '@lib-ts/symbol-string/SString_Helper';
+	import { MixinLevelTag, xX_Father_BaseVue } from '@lib-ts/admin/mixins/Father_BaseVue';
 
 	import {
 		TableColumn as ElTableColumn,
 		Tag as ElTag,
 	}                             from 'element-ui';
-	import ElTableItem_DetailInfo from '../../../sources/element-ui/admin-cp/table/ElTableItem_DetailInfo.vue';
-	// import WrapDropdown           from '../../../sources/element-ui/admin-cp/table/WrapDropdown.vue';
+
+	// @ts-ignore
+	import ElTableItem_DetailInfo from '@lib-cp/ElTableItem_DetailInfo';
+	// import WrapDropdown           from '@lib-ts/element-ui/admin-cp/table/WrapDropdown.vue';
 
 	xX_CPlugin_Helper.init_vViewer(Vue);	// 初始化【v-viewer】组件。
 
 	// @ts-ignore
-	import { Fragment, Plugin }  from 'vue-fragment';
-	import { xX_CPlugin_Helper } from '../../../sources/vue/plugin/common-plugin';
-	import { t }                 from '../../../sources/cp-util/locale/locale';
+	import { Fragment, Plugin }         from 'vue-fragment';
+	import { xX_CPlugin_Helper }        from '@lib-ts/vue/plugin/common-plugin';
+	import { t }                        from '@lib-ts/cp-util/locale/locale';
+	import { xX_data_elTagColorFilter } from '@lib-ts/element-ui/admin-cp/ElTagItem';
 
 	type NotArray<T> = T extends Array<any> ? never : T;
 

@@ -113,7 +113,16 @@ module.exports = {
 				 */
 				'multi-cp': {
 					'serve': 'vue-cli-service serve',
-					'build': 'vue-cli-service build',
+					'build': npsUtils.series(
+						/**
+						 * FIXME 此处，【NPM】工具会报错【Refusing to install package with name "use-on-demand" under a package also called "use-on-demand". Did you name your project the same as the dependency you're installing?】
+						 * 				0.参考资料：https://docs.npmjs.com/cli/install#limitations-of-npms-install-algorithm
+						 * 				1.根据官方提示，加上【--force】标记，即可。
+						 */
+						// 'echo "首先，从GitHub上拉一次包。因为【特殊原因】无法使用 npm link。"    &&    npm install github:hanshou101/use-on-demand#master --force',
+						'echo "问题已修复，可以正常使用 npm link" ',
+						'vue-cli-service build',
+					),
 				},
 
 				/**

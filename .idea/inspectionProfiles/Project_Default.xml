@@ -11,7 +11,7 @@
     <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="12">
+          <list size="14">
             <item index="0" class="java.lang.String" itemvalue="nobr" />
             <item index="1" class="java.lang.String" itemvalue="noembed" />
             <item index="2" class="java.lang.String" itemvalue="comment" />
@@ -24,6 +24,8 @@
             <item index="9" class="java.lang.String" itemvalue="userlevel_all_relationlist" />
             <item index="10" class="java.lang.String" itemvalue="myformeasy" />
             <item index="11" class="java.lang.String" itemvalue="markdown-editor" />
+            <item index="12" class="java.lang.String" itemvalue="el-col" />
+            <item index="13" class="java.lang.String" itemvalue="el-row" />
           </list>
         </value>
       </option>

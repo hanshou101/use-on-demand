@@ -14,11 +14,11 @@ interface Require {
     label: string;
 }
 declare type Default_valueFunction_RtnType = string;
-interface Optional<T = Default_valueFunction_RtnType> {
+interface Optional<RtnT = Default_valueFunction_RtnType> {
     width?: number;
     minWidth?: number;
     showOverflowTooltip?: boolean;
-    valueFunction?: RowTransformFn<T>;
+    valueFunction?: RowTransformFn<RtnT>;
     i18nKey?: string;
 }
 interface ElementTableColumnAttrs {
@@ -26,15 +26,15 @@ interface ElementTableColumnAttrs {
     align: 'center' | 'right' | 'left';
 }
 export declare namespace xX_Father_ElTItem {
-    abstract class Base<T = Default_valueFunction_RtnType> {
+    abstract class Base<RtnT = Default_valueFunction_RtnType> {
         label: string;
         prop: string;
         name: string;
         width?: number;
         minWidth: number;
         showOverflowTooltip?: boolean;
-        valueFunction?: RowTransformFn<T>;
-        protected constructor(require: Require | null, optional?: Optional<T>);
+        valueFunction?: RowTransformFn<RtnT>;
+        protected constructor(require: Require | null, optional?: Optional<RtnT>);
     }
     class Text extends Base {
         readonly type = "text";
@@ -47,12 +47,12 @@ export declare namespace xX_Father_ElTItem {
             selectableFunction?: SelectableFn;
         });
     }
-    class EnumTag<SOption> extends Base {
+    class EnumTag<T extends any> extends Base {
         readonly type = "enumTag";
-        selectOption: SOption;
+        selectOption: T;
         colorTrans?: (typeNum: string) => string;
         constructor(require: Require & {
-            selectOption: SOption;
+            selectOption: T;
         }, optional?: Optional & {
             colorTrans?: (typeNum: string) => string;
         });
@@ -61,13 +61,13 @@ export declare namespace xX_Father_ElTItem {
         readonly type = "langTag";
         constructor(require: Require, optional?: Optional);
     }
-    class Image<T = string> extends Base<T> {
+    class Image<RtnT = string> extends Base<RtnT> {
         readonly type = "image";
-        constructor(require: Require, optional?: Optional<T>);
+        constructor(require: Require, optional?: Optional<RtnT>);
     }
-    class ImageList<T = Array<string>> extends Base<T> {
+    class ImageList<RtnT = string[]> extends Base<RtnT> {
         readonly type = "imageList";
-        constructor(require: Require, optional?: Optional<T>);
+        constructor(require: Require, optional?: Optional<RtnT>);
     }
     class Custom extends Base {
         readonly type: undefined;
@@ -78,10 +78,10 @@ export declare namespace xX_Father_ElTItem {
     }
     class DetailInfo extends Base {
         readonly type = "detailInfo";
-        pairs: Array<DetailInfoPair>;
+        pairs: DetailInfoPair[];
         leftEm?: number;
         constructor(require: Require & {
-            pairs: Array<DetailInfoPair>;
+            pairs: DetailInfoPair[];
         }, optional?: Optional & {
             leftEm?: number;
         });

@@ -1,4 +1,23 @@
-import { xX_MyDialogFormItem_Conf, xX_MyFormItem_SelectOptionConf } from './MyElementUtils';
+import { ElUploadInternalFileDetail } from 'element-ui/types/upload';
+declare namespace Old {
+    /**
+     * 下拉选项的配置类
+     */
+    class xX_MyFormItem_SelectOptionConf<T extends any> {
+        enumOptions: T;
+        mustParseInt_toFitBackend: boolean;
+        constructor(enumOptions: T);
+        setParseInt(____mustParseInt_toFitBackend: boolean): xX_MyFormItem_SelectOptionConf<T>;
+    }
+    /**
+     * 适用于Dialog的表单子类。
+     */
+    interface xX_MyDialogFormItem_Conf extends Object {
+        disableItem?: boolean;
+        notRenderItem?: boolean;
+        [key: string]: any;
+    }
+}
 /**
  * 两个参数，一个必传参数对象，一个可选参数对象
  *
@@ -42,7 +61,7 @@ export declare namespace xX_Father_ElFItem {
         label: string;
         prop_AND_bindValue: string;
         name: string;
-        config: xX_MyDialogFormItem_Conf;
+        config: Old.xX_MyDialogFormItem_Conf;
         placeholder?: string;
         labelWidth?: string;
         protected constructor(require: Require, optional?: Optional);
@@ -110,16 +129,16 @@ export declare namespace xX_Father_ElFItem {
     }
     export class UploadImg extends Base {
         readonly myCategory = "upload_img";
-        uploadSingleImageSuccess_ExtraCb?: (res: any, file: ElUploadInternalFileDetail_Type) => void;
+        uploadSingleImageSuccess_ExtraCb?: (res: any, file: ElUploadInternalFileDetail) => void;
         maxSize: number;
         constructor(require: Require, optional?: Optional & {
-            uploadSingleImageSuccess_ExtraCb?: (res: any, file: ElUploadInternalFileDetail_Type) => void;
+            uploadSingleImageSuccess_ExtraCb?: (res: any, file: ElUploadInternalFileDetail) => void;
             maxSize?: number;
         });
     }
-    export class Options<T> extends Base {
+    export class Options<T extends any> extends Base {
         readonly myCategory = "options";
-        selectOptionConf: xX_MyFormItem_SelectOptionConf<T>;
+        selectOptionConf: Old.xX_MyFormItem_SelectOptionConf<T>;
         constructor(require: Require & {
             selectOptionConf: {
                 option: T;

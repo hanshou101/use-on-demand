@@ -63,7 +63,14 @@
       "webpack-env",
       "jest"
     ],
-    "paths": {},
+    "paths": {
+      "@lib-ts/*": [
+        "./lib/sources/*"
+      ],
+      "@lib-cp/*": [
+        "./lib-cp/*"
+      ]
+    },
     "typeRoots": [],
     "resolveJsonModule": true,
     "importsNotUsedAsValues": "remove"

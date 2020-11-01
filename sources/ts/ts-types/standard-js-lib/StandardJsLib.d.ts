@@ -75,7 +75,9 @@ interface Document {
 
 	//
 
+	// @ts-ignore 暂时注释
 	removeEventListener?: RawDocument['removeEventListener'];				// WARN 变为可选
+	// @ts-ignore 暂时注释
 	addEventListener?: RawDocument['addEventListener'];							// WARN 变为可选
 }
 
