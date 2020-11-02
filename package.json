@@ -22,7 +22,9 @@
     "vue____gen-cp-type": "nps vue.cp.gen-type",
     "                        npm注释": "",
     "npm____auto-publish": "nps npm.auto-publish",
-    "npm____complete-reinstall": "npm link nps-utils && nps npm.complete-reinstall"
+    "npm____complete-reinstall": "npm link nps-utils && nps npm.complete-reinstall",
+    "                        robot注释": "",
+    "robot____": "nps robot.Demo1"
   },
   "lint-staged": {
     "*.ts": [
@@ -134,6 +136,7 @@
     "nps-utils": "1.7.0",
     "ncp": "2.0.0",
     "prettier": "2.1.1",
+    "robotjs": "0.6.0",
     "sass": "1.26.10",
     "sass-loader": "10.0.1",
     "script-loader": "0.7.2",

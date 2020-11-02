@@ -182,5 +182,13 @@ module.exports = {
 				'npm install',                                                        // 重装依赖
 			),
 		},
+
+
+		/**
+		 * Robot自动机器人。
+		 */
+		robot: {
+			Demo1: `${tsNode_cmdHead}  ./sources/robot/demo/Demo1.ts`,
+		},
 	},
 };
