@@ -1,3 +1,7 @@
+import xX_Father_CommonMixin from './mixins/Father_CommonMixin';
+
+type listQuery_type = xX_Father_CommonMixin<any>['listQuery']
+
 export class xX_AdminHelper {
 	/**
 	 * 将MultiLang，迅速转化为  已有ruleForm的一部分。
@@ -105,4 +109,27 @@ export class xX_AdminHelper {
 
 	//
 	//
+
+	/**
+	 * 模拟分页
+	 */
+	public static mockPage(data: any, context: {
+		listQuery: listQuery_type,
+	}) {
+		const clone_listQuery: listQuery_type = JSON.parse(JSON.stringify(context.listQuery));
+		setTimeout(() => {
+			clone_listQuery.total = 12345678;
+			// WARN 此处需要【避免丢失引用】。
+			(Object.keys(context.listQuery) as Array<keyof listQuery_type>)
+				.forEach((key) => {
+					context.listQuery[key] = clone_listQuery[key];
+				});
+			//
+		}, 100);
+		return {
+			records: data,
+			...context.listQuery,
+		};
+	}
+
 }

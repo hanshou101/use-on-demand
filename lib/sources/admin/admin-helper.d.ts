@@ -1,3 +1,5 @@
+import xX_Father_CommonMixin from './mixins/Father_CommonMixin';
+declare type listQuery_type = xX_Father_CommonMixin<any>['listQuery'];
 export declare class xX_AdminHelper {
     /**
      * 将MultiLang，迅速转化为  已有ruleForm的一部分。
@@ -18,5 +20,17 @@ export declare class xX_AdminHelper {
      *          1.目前，经常用于【提交数据】的筛选。
      */
     static filterTargetFields<T>(originObj: IndexedObj<any>, filterObj: object, needTrimEmpty?: boolean): IndexedObj<any>;
+    /**
+     * 模拟分页
+     */
+    static mockPage(data: any, context: {
+        listQuery: listQuery_type;
+    }): {
+        total: number;
+        current: number;
+        size: number;
+        records: any;
+    };
 }
+export {};
 //# sourceMappingURL=admin-helper.d.ts.map
