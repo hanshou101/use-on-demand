@@ -45,7 +45,7 @@ export default class xX_Father_ExportExcel_Mixin extends xX_Father_BaseVue {    
 			// TIP 此处，要记住，在【request.js】里面，有个配套的处理过程。（比如，专门对于【二进制流application/octet-stream】的处理。）
 			this.MixinsData_1.exportExcelApi(baseOption, your_params).then((res: any) => {
 				console.log('接口返回', res);
-				let extractFilename = res.headers['content-disposition'] || res.headers['Content-disposition'];
+				let extractFilename = res?.headers?.['content-disposition'] || res?.headers?.['Content-disposition'] || fileName;
 				extractFilename     = extractFilename.substr(extractFilename.lastIndexOf('=') + 1);
 				const filename      = fileName ? fileName + '.xlsx' : extractFilename;   // TIP 此处，若是自定义文件名，则加上【.csv】文件类型后缀名。
 				if (res.data) {     // IF分支，如果Response有Body存在。 TIP 后台仅仅在，有数据的情况下会返回Body；如果没有数据，则后台直接return，此时就没有Body，axios的解析，也就没有res.data。
@@ -113,4 +113,18 @@ export interface ExportExcelMixinImpl {
 	exportExcelApi: (
 		baseOption: ExportExcelOption_Type, form: ExportExcelParam_Type, current?: number, size?: number,
 	) => Promise<any>;
+}
+
+export class xX_ExportExcel_Mixin_Helper {
+	public static checkIs_ExcelOrFile(
+		response: AxiosResponse_Type<any>,
+	) {
+		return !!response.headers																			// 存在Header
+			&& [
+				'application/octet-stream;charset=utf-8',
+				'application/ms-excel; charset=utf-8',
+				// 新增一项下载。
+				'application/x-download',
+			].includes(response.headers['content-type']);								// 并且，包括某些特定Content-Type。
+	}
 }

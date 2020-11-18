@@ -3,6 +3,11 @@ import xX_Father_CommonMixin from './mixins/Father_CommonMixin';
 type listQuery_type = xX_Father_CommonMixin<any>['listQuery']
 
 export class xX_AdminHelper {
+
+	public static __placeholder_1 = '————~~~~~————';
+	public static __placeholder_2 = '↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑';
+	public static __placeholder_3 = '> > > > >';
+
 	/**
 	 * 将MultiLang，迅速转化为  已有ruleForm的一部分。
 	 */

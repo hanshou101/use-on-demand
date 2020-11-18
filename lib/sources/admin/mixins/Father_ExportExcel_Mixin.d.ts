@@ -13,4 +13,7 @@ export default class xX_Father_ExportExcel_Mixin extends xX_Father_BaseVue {
 export interface ExportExcelMixinImpl {
     exportExcelApi: (baseOption: ExportExcelOption_Type, form: ExportExcelParam_Type, current?: number, size?: number) => Promise<any>;
 }
+export declare class xX_ExportExcel_Mixin_Helper {
+    static checkIs_ExcelOrFile(response: AxiosResponse_Type<any>): boolean;
+}
 //# sourceMappingURL=Father_ExportExcel_Mixin.d.ts.map

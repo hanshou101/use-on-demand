@@ -1,6 +1,9 @@
 import xX_Father_CommonMixin from './mixins/Father_CommonMixin';
 declare type listQuery_type = xX_Father_CommonMixin<any>['listQuery'];
 export declare class xX_AdminHelper {
+    static __placeholder_1: string;
+    static __placeholder_2: string;
+    static __placeholder_3: string;
     /**
      * 将MultiLang，迅速转化为  已有ruleForm的一部分。
      */
