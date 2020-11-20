@@ -41,7 +41,7 @@ export class xX_VersionUpdate_Helper {
 		console.log('尝试写入：版本信息文件');
 		FStream.writeFile(versionFilePath, processEnv.VUE_APP_VERSION, function(err) {
 			if (err) {
-				throw err;
+				throw new Error(xX_ExceptionError_Helper.throwError_andLog(err.message));
 			} else {
 				console.log('写入成功');
 			}

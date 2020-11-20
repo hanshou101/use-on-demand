@@ -3,7 +3,8 @@
  *          1.【常用函数】，在合适的时机，可以考虑换成【lodash】所采用的方法。
  *          2.
  */
-import { xX_DebugU, xX_LogE } from '../debug-util/debug-util';
+import { xX_DebugU, xX_LogE }       from '../debug-util/debug-util';
+import { xX_ExceptionError_Helper } from '../exception-error/ExceptionError_Helper';
 
 export class xX_CDecoratorU {
 	/**
@@ -50,7 +51,7 @@ export class xX_CDecoratorU {
 			const callback = descriptor.value;
 
 			if (typeof callback !== 'function') {
-				throw new SyntaxError('Only functions can be debounced');
+				throw new SyntaxError(xX_ExceptionError_Helper.throwError_andLog('Only functions can be debounced'));
 			}
 
 			const fn = CDecoratorU_Helper.__debounce(callback, wait, immediate);
@@ -78,7 +79,7 @@ export class xX_CDecoratorU {
 		return function handleDescriptor(this: any, target: {}, key: string, descriptor: PropertyDescriptor) {
 			const callback = descriptor.value;
 			if (typeof callback !== 'function') {
-				throw new SyntaxError('Only functions can be throttled');
+				throw new SyntaxError(xX_ExceptionError_Helper.throwError_andLog('Only functions can be throttled'));
 			}
 			const fn = CDecoratorU_Helper.__throttle(callback, wait, __options);
 
