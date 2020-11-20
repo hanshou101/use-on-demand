@@ -91,24 +91,24 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends Mixins(xX_F
 	// }
 
 	//
-	public dialogControlVisible: boolean                               = false;
-	public listLoading: boolean                                        = true;
-	public listQuery: { total: number; current: number; size: number } = {
+	public dialogControlVisible: boolean  = false;
+	public listLoading: boolean           = true;
+	public listQuery                      = {
 		size   : 10,
 		total  : 0,
 		current: 1,
 	};
-	public listData: Array<any>                                        = [];
-	public deleteItems: Array<any>                                     = [];
+	public listData: Array<any>           = [];
+	public deleteItems: Array<any>        = [];
 	// oss预上传数据
-	public uploadHost: string                                          = '';
+	public uploadHost: string             = '';
 	// 上传携带参数
-	public uploadData: OssUploadBean_Type                                   = {};
-	public ruleFormRef                                                 = null;
+	public uploadData: OssUploadBean_Type = {};
+	public ruleFormRef                    = null;
 	// 弹窗类型，1-新建，2-编辑，3-其他
 	// public dialogType: number                                          = 1;
 	// TIP 这是一个标记量：mounted钩子仅执行一次，当这一次执行时，首次activated方法不执行_getList；对于之后的activated方法，执行_getList。
-	public preventGetList_in_activatedFunc: boolean                    = true;
+	public preventGetList_in_activatedFunc: boolean = true;
 
 	// 以下是Method。
 	//

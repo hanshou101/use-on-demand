@@ -26,13 +26,13 @@ export declare class xX_AdminHelper {
     /**
      * 模拟分页
      */
-    static mockPage(data: any, context: {
+    static mockPage(records: Array<any>, context: {
         listQuery: listQuery_type;
     }): {
+        size: number;
         total: number;
         current: number;
-        size: number;
-        records: any;
+        records: any[];
     };
 }
 export {};

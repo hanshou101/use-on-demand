@@ -118,23 +118,49 @@ export class xX_AdminHelper {
 	/**
 	 * 模拟分页
 	 */
-	public static mockPage(data: any, context: {
-		listQuery: listQuery_type,
-	}) {
-		const clone_listQuery: listQuery_type = JSON.parse(JSON.stringify(context.listQuery));
-		setTimeout(() => {
-			clone_listQuery.total = 12345678;
-			// WARN 此处需要【避免丢失引用】。
-			(Object.keys(context.listQuery) as Array<keyof listQuery_type>)
-				.forEach((key) => {
-					context.listQuery[key] = clone_listQuery[key];
-				});
-			//
-		}, 100);
-		return {
-			records: data,
+	public static mockPage(
+		records: Array<any>,
+		context: { listQuery: listQuery_type },
+	) {
+		// 克隆一份数据
+		const clone_listQuery = JSON.parse<listQuery_type>(JSON.stringify(context.listQuery));
+		const Max_Size        = 99999999;
+		const len             = records.length;
+
+		// 返回时，先保持原样。
+		const result = {
+			records,
 			...context.listQuery,
 		};
+
+		// 100毫秒后，再进行设置。（错开一个时间差）
+		setTimeout(() => {
+			const { current, size, total } = clone_listQuery;
+			if (len < clone_listQuery.size) {									// 返回数据未满，视为已经结束了。
+				// 计算总量
+				clone_listQuery.total = size * (current - 1) + len;
+
+				if (len === 0) {					// 当前页，没有数据。
+					/**
+					 * WARN 此处，略微有特殊的地方
+					 * 				1.如，21页没数据，20页有10条数据。此时，从20页翻21页，会没有数据，但页数会显示为【20页】。
+					 * 								1.这样，看上去就很奇怪了。
+					 */
+					clone_listQuery.total += 1;		// 此处，保持仍多一个。
+				}
+				// 其它不变
+			} else {																					// 返回了足额数据，视为还有下一页
+				clone_listQuery.total = Max_Size;
+			}
+
+			(Object.keys(context.listQuery) as Array<keyof listQuery_type>).forEach((key) => {
+				// WARN 此处需要【避免丢失引用】。所以只设置对象的属性，不改变对象本身引用。
+				context.listQuery[key] = clone_listQuery[key];
+			});
+			//
+		}, 100);
+
+		return result;
 	}
 
 }

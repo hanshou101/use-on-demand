@@ -50,9 +50,9 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends xX_Father_C
     dialogControlVisible: boolean;
     listLoading: boolean;
     listQuery: {
+        size: number;
         total: number;
         current: number;
-        size: number;
     };
     listData: Array<any>;
     deleteItems: Array<any>;
