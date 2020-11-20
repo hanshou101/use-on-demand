@@ -106,7 +106,7 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends Mixins(xX_F
 	public uploadData: OssUploadBean_Type                                   = {};
 	public ruleFormRef                                                 = null;
 	// 弹窗类型，1-新建，2-编辑，3-其他
-	public dialogType: number                                          = 1;
+	// public dialogType: number                                          = 1;
 	// TIP 这是一个标记量：mounted钩子仅执行一次，当这一次执行时，首次activated方法不执行_getList；对于之后的activated方法，执行_getList。
 	public preventGetList_in_activatedFunc: boolean                    = true;
 
