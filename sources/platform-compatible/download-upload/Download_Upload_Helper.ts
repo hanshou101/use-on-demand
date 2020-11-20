@@ -4,6 +4,41 @@ export namespace xX_Download_Upload_Helper {
 	}
 
 	export class Upload {
+
+		/**
+		 * 1.参考资料：
+		 *        [图片格式_百度百科](https://baike.baidu.com/item/%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F/381122?fr=aladdin)
+		 */
+		public static imageExts = [		// 注意，都转化为小写的。
+			'JPG',
+			'JPEG',
+			'PNG',
+			//
+			'BMP',
+			'GIF',
+			'WEBP',
+			//
+			'JFIF',
+			'PJPEG',
+			'PJP',
+			'TIF',
+			'PCX',
+			'TGA',
+			'EXIF',
+			'FPX',
+			'SVG',
+			'PSD',
+			'CDR',
+			'PCD',
+			'DXF',
+			'UFO',
+			'EPS',
+			'AI',
+			'RAW',
+			'WMF',
+			'AVIF',
+		].map(name => name.toLowerCase());
+
 		public static acceptMap = {
 			/**
 			 * 1.此处，StackOverFlow，给出的高赞答案，在【macOS 10.15.7 Catalina】版本下，是有错误的：
@@ -29,7 +64,10 @@ export namespace xX_Download_Upload_Helper {
 				'application/vnd.ms-excel',
 				'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
 			].join(' , '),
-		};
+
+			image: Upload.imageExts.map(type => `image/${type}`).join(' , '),
+
+		} as const;
 
 		/**
 		 * 检查【文件后缀名】

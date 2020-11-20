@@ -44,42 +44,9 @@
 	import {
 		Upload as ElUpload____Cp,
 		Button as ElButton,
-	}                                   from 'element-ui';
-	import { xX_ExceptionError_Helper } from '../../../sources/exception-error/ExceptionError_Helper';
-
-	/**
-	 * 1.参考资料：
-	 *        [图片格式_百度百科](https://baike.baidu.com/item/%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F/381122?fr=aladdin)
-	 */
-	const AllImageType = [
-		'JPG',
-		'JPEG',
-		'PNG',
-		//
-		'BMP',
-		'GIF',
-		'WEBP',
-		//
-		'JFIF',
-		'PJPEG',
-		'PJP',
-		'TIF',
-		'PCX',
-		'TGA',
-		'EXIF',
-		'FPX',
-		'SVG',
-		'PSD',
-		'CDR',
-		'PCD',
-		'DXF',
-		'UFO',
-		'EPS',
-		'AI',
-		'RAW',
-		'WMF',
-		'AVIF',
-	];
+	}                                    from 'element-ui';
+	import { xX_ExceptionError_Helper }  from '../../../sources/exception-error/ExceptionError_Helper';
+	import { xX_Download_Upload_Helper } from '../../../sources/platform-compatible/download-upload/Download_Upload_Helper';
 
 	@Component({
 		name      : 'UploadSingleImg',
@@ -115,7 +82,7 @@
 		// TODO 此处，只是软性限制。可以用【JS逻辑】加上硬性限制！
 		@Prop({
 			type: Array, default: function() {
-				return AllImageType;
+				return xX_Download_Upload_Helper.Upload.imageExts;
 			},
 		}) private accept!: Array<string>;
 
@@ -125,11 +92,11 @@
 
 		// TIP： Data，在类中的实现 （双向绑定除外）
 		// 预览图片地址
-		previewImg: string | Blob      = '';
-		disabled_inner: boolean        = false;
-		acceptInner: string            = this.accept.map(type => {
+		previewImg: string | Blob = '';
+		disabled_inner: boolean   = false;
+		acceptInner: string       = this.accept.map(type => {
 			return `image/${type.toLocaleLowerCase()}`;
-		}).join(',');
+		}).join(',') || xX_Download_Upload_Helper.Upload.acceptMap.image;			// 后备选项。（其实有点重复了）
 		// 上传时的额外参数
 		uploadData: any                = {};
 		// 上传url
