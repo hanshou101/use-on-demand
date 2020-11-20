@@ -1,9 +1,9 @@
 export namespace xX_Download_Upload_Helper {
-	class Download {
+	export class Download {
 
 	}
 
-	class Upload {
+	export class Upload {
 		public static acceptMap = {
 			/**
 			 * 1.此处，StackOverFlow，给出的高赞答案，在【macOS 10.15.7 Catalina】版本下，是有错误的：
