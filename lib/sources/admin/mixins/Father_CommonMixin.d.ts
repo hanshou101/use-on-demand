@@ -59,7 +59,6 @@ export default class xX_Father_CommonMixin<SelectOptionType> extends xX_Father_C
     uploadHost: string;
     uploadData: OssUploadBean_Type;
     ruleFormRef: null;
-    dialogType: number;
     preventGetList_in_activatedFunc: boolean;
     t: (path: string, ...options: any[]) => any;
     _getList(): Promise<any>;

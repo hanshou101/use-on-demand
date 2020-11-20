@@ -1,4 +1,4 @@
-import { xX_FileBlobBase64_Helper } from '../../../platform/file-blob/FileBlobBase64_Helper';
+import { xX_FileBlobBase64_Helper } from '../../../platform-compatible/file-blob-base64/FileBlobBase64_Helper';
 
 export class SW_DemoClient_1 {
 

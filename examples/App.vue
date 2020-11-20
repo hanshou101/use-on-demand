@@ -18,7 +18,7 @@
 <script lang="ts">
 	import Vue                                            from 'vue';
 	import { xX_Live2D_WidgetJs_Helper, xX_Live2DModelE } from '../sources/live2d/live2d-widget.js/Live2D_WidgetJs_Helper';
-	import { xX_FileMd5_Helper }                          from '../sources/platform/file-blob/FileMd5_Helper';
+	import { xX_FileMd5_Helper }                          from '../sources/platform-compatible/file-blob-base64/FileMd5_Helper';
 	import { flatRoute_toArr }                            from './router';
 	// import { xX_ServiceWorker_Client_Helper }             from '../sources/service-worker/util/ServiceWorker_Client_Helper';
 	import { FirstClient }                                from '../sources/worker/demo/first/First.client';
