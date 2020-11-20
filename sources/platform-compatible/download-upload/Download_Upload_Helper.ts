@@ -78,7 +78,7 @@ export namespace xX_Download_Upload_Helper {
 		 */
 		checkFileExt(sender: HTMLInputElement) {
 			const validExts = ['.xlsx', '.xls', '.csv'];
-			let fileName    = sender.value;
+			const fileName = sender.value;
 			const fileExt   = fileName.substring(fileName.lastIndexOf('.'));
 			if (validExts.indexOf(fileExt) < 0) {
 				alert(`Invalid file selected, valid files are of ${validExts.toString()} types.`);
