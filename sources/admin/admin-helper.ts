@@ -136,11 +136,11 @@ export class xX_AdminHelper {
 		// 100毫秒后，再进行设置。（错开一个时间差）
 		setTimeout(() => {
 			const { current, size, total } = clone_listQuery;
-			if (len < clone_listQuery.size) {									// 返回数据未满，视为已经结束了。
+			if (len < clone_listQuery.size) {															// 返回数据未满，视为已经结束了。
 				// 计算总量
 				clone_listQuery.total = size * (current - 1) + len;
 
-				if (len === 0) {					// 当前页，没有数据。
+				if (len === 0) {																						// 当前页，没有数据。
 					/**
 					 * WARN 此处，略微有特殊的地方
 					 * 				1.如，21页没数据，20页有10条数据。此时，从20页翻21页，会没有数据，但页数会显示为【20页】。
@@ -149,8 +149,10 @@ export class xX_AdminHelper {
 					clone_listQuery.total += 1;		// 此处，保持仍多一个。
 				}
 				// 其它不变
-			} else {																					// 返回了足额数据，视为还有下一页
-				clone_listQuery.total = Max_Size;
+			} else {																											// 返回了足额数据，视为还有下一页
+				clone_listQuery.total = (total === 0)
+					? Max_Size																			// 处理，初始化时 total等于0 的情况。
+					: Math.min(Max_Size, total);							// 此处，Max_Size仅仅为【后备值】。
 			}
 
 			(Object.keys(context.listQuery) as Array<keyof listQuery_type>).forEach((key) => {
