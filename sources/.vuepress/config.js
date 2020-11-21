@@ -11,7 +11,10 @@ function getAutoSidebar(
 
 	// 根据你的目录结构，指定搜索方式。
 
-	// Glob搜索方式
+	/**
+	 * Glob搜索方式
+	 * 				0.参考资料：https://github.com/isaacs/node-glob#dots
+	 */
 	let markdownFiles = require('glob').sync(
 		// './sources/**/*.md',																		// 以【cwd】为基准目录。
 		`${mdBasePath}/**/*.md`,																		// 以【cwd】为基准目录。
@@ -58,7 +61,7 @@ const baseCfg = {
 	// temp: '/path/to/@vuepress/core/.temp',                   // 客户端文件的临时目录。
 
 
-	dest: 'docs-dist' /*'.vuepress/dist'*/,                                  // vuepress build 的输出目录
+	dest: 'lib-docs-dist' /*'.vuepress/dist'*/,                                  // vuepress build 的输出目录
 
 	// locales:undefined,                                    // 多语言支持的语言配置
 

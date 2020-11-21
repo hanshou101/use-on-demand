@@ -27,7 +27,9 @@
     "robot____Demo1": "nps robot.Demo1",
     "                        vuepress注释": "",
     "vuepress____docs:dev": "nps vuepress.docs.dev",
-    "vuepress____docs:build": "nps vuepress.docs.build"
+    "vuepress____docs:build": "nps vuepress.docs.build",
+    "vuepress____docs:deploy.github-pages____nps": "nps vuepress.docs.deploy.github-pages____nps",
+    "vuepress____docs:deploy.github-pages____sh": "nps vuepress.docs.deploy.github-pages____sh"
   },
   "lint-staged": {
     "*.ts": [

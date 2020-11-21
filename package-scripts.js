@@ -196,8 +196,43 @@ module.exports = {
 		 */
 		vuepress: {
 			'docs': {
-				'dev'  : 'vuepress dev ./sources',
-				'build': 'vuepress build ./sources',
+				'dev'                   : 'vuepress dev ./sources',
+				'build'                 : 'vuepress build ./sources',
+				'deploy':{
+					'github-pages____nps': npsUtils.series(
+						`echo '老是用CMD执行并报错，我也不知道为什么，就很烦' && exit 1`,
+						// 头（不知道有没有用）
+						// `#!/usr/bin/env sh`,
+						// 确保脚本抛出遇到的错误
+						'set -e',
+						// 生成静态文件
+						'npm run vuepress____docs:build',
+						// 进入生成的文件夹
+						'cd docs-dist',
+						// 如果是发布到自定义域名
+						// `echo 'www.example.com' > CNAME`,
+						// 新建Git仓库信息（一般来说，打包过程中，已经把之前的Git信息 清掉）
+						`git init`,
+						`git add -A`,
+						`git commit -m 'deploy'`,
+						/**
+						 * 如果发布到 https://<USERNAME>.github.io
+						 * 				1.强制push，覆盖掉之前的内容。
+						 * 				2.WARN 特别注意，GitHub于最近，将【main】而不是【master】 作为了仓库的默认分支。
+						 */
+						`git push -f git@github.com:hanshou101/hanshou101.github.io.git master`,
+						// 如果发布到 https://<USERNAME>.github.io/<REPO>
+						// `git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages`,
+						/**
+						 * 将【单破折号 -】指定为参数，它将替换为的值是【OLDPWD】。
+						 * 				0.参考资料：
+						 * 								https://stackoverflow.com/a/9740356/6264260
+						 * 				1.即以前的工作目录。（上一个工作目录，cd前的）
+						 */
+						'cd -',
+					),
+					'github-pages____sh': './sources/.vuepress/deploy.sh'
+				},
 			},
 		},
 	},
