@@ -46,7 +46,7 @@
 		Button as ElButton,
 	}                                    from 'element-ui';
 	import { xX_ExceptionError_Helper }  from '../../../sources/exception-error/ExceptionError_Helper';
-	import { xX_Download_Upload_Helper } from '../../../sources/platform-compatible/download-upload/Download_Upload_Helper';
+	import { xX_Download_Upload_Helper } from '../../../sources/platform-ecosystem-compatible/download-upload/Download_Upload_Helper';
 
 	@Component({
 		name      : 'UploadSingleImg',
