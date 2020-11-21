@@ -24,7 +24,10 @@
     "npm____auto-publish": "nps npm.auto-publish",
     "npm____complete-reinstall": "npm link nps-utils && nps npm.complete-reinstall",
     "                        robot注释": "",
-    "robot____": "nps robot.Demo1"
+    "robot____Demo1": "nps robot.Demo1",
+    "                        vuepress注释": "",
+    "vuepress____docs:dev": "nps vuepress.docs.dev",
+    "vuepress____docs:build": "nps vuepress.docs.build"
   },
   "lint-staged": {
     "*.ts": [
@@ -131,7 +134,7 @@
     "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-vue": "6.2.2",
     "less": "3.12.2",
-    "less-loader": "5.0.0",
+    "less-loader": "7.1.0",
     "lint-staged": "10.2.11",
     "nps-utils": "1.7.0",
     "ncp": "2.0.0",
@@ -149,6 +152,7 @@
     "use-on-demand": "github:hanshou101/use-on-demand#master",
     "vue-template-compiler": "~2.6.12",
     "vue-type-declaration": "~2.0.3",
+    "vuepress": "^1.7.1",
     "worker-loader": "3.0.5"
   },
   "                         文字属性————————————————————————————————————": "————————————————",

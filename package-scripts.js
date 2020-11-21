@@ -190,5 +190,15 @@ module.exports = {
 		robot: {
 			Demo1: `${tsNode_cmdHead}  ./sources/robot/demo/Demo1.ts`,
 		},
+
+		/**
+		 * VuePress文档
+		 */
+		vuepress: {
+			'docs': {
+				'dev'  : 'vuepress dev ./sources',
+				'build': 'vuepress build ./sources',
+			},
+		},
 	},
 };
