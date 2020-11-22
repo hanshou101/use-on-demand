@@ -6,6 +6,9 @@ set -e
 # 生成静态文件
 npm run vuepress____docs:build
 
+# TIP 生成【sitemap.xml】和【robots.txt】
+npm run vuepress____gen-sitemap
+
 # 进入生成的文件夹
 #cd docs/.vuepress/dist
 cd "../../lib-docs-dist"
