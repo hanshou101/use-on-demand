@@ -27,7 +27,7 @@ function getAutoSidebar(
 
 
 	const escaped_mdBasePath = __escapeRegex(mdBasePath);
-	const reg_mdBasePath     = new RegExp(escaped_mdBasePath);
+	const reg_mdBasePath     = new RegExp(`^${escaped_mdBasePath}`);				// 行首
 	console.log('转义后的mdBasePath', escaped_mdBasePath, reg_mdBasePath);
 
 	markdownFiles = markdownFiles.map(f => {
@@ -57,7 +57,7 @@ const baseCfg = {
 	*/
 
 	// host: '0.0.0.0',                                      // dev server 的主机名
-	// port: 8080,                                              // dev server 的端口
+	port: 28080,                                              // dev server 的端口
 	// temp: '/path/to/@vuepress/core/.temp',                   // 客户端文件的临时目录。
 
 

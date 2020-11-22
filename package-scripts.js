@@ -195,10 +195,10 @@ module.exports = {
 		 * VuePress文档
 		 */
 		vuepress: {
-			'docs': {
-				'dev'                   : 'vuepress dev ./sources',
-				'build'                 : 'vuepress build ./sources',
-				'deploy':{
+			'docs'       : {
+				'dev'   : 'vuepress dev ./sources',
+				'build' : 'vuepress build ./sources',
+				'deploy': {
 					'github-pages____nps': npsUtils.series(
 						`echo '老是用CMD执行并报错，我也不知道为什么，就很烦' && exit 1`,
 						// 头（不知道有没有用）
@@ -231,9 +231,13 @@ module.exports = {
 						 */
 						'cd -',
 					),
-					'github-pages____sh': './sources/.vuepress/deploy.sh'
+					'github-pages____sh' : './sources/.vuepress/deploy.sh',
 				},
 			},
+			'gen-sitemap': npsUtils.series(
+				// 'set NODE_TLS_REJECT_UNAUTHORIZED=1',										// WARN 用于屏蔽【安全性报错】
+				`${tsNode_cmdHead}  ./sources/gen/demo/gen-sitemap.ts`,
+			),
 		},
 	},
 };
