@@ -153,6 +153,16 @@ const themeCfg = {
 			'/',
 		],
 		*/
+
+
+		/**
+		 * 启用【Algolia】搜索。
+		 */
+		algolia: {
+			apiKey   : '25626fae796133dc1e734c6bcaaeac3c',
+			indexName: 'docsearch',
+		},
+
 	},
 };
 
