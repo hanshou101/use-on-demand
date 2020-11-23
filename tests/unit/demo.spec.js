@@ -103,8 +103,8 @@ expect(wrapper.emitted().foo[1]).toEqual([123]);
  * 子组件的【emit发射事件】
  */
 // import { mount } from '@vue/test-utils'
-import ParentComponent              from './demos/ParentComponent';
-import ChildComponent               from './demos/ChildComponent';
+import ParentComponent   from '../demos/ParentComponent';
+import ChildComponent    from './demos/ChildComponent';
 
 describe('ParentComponent', () => {
 	it('displays \'Emitted!\' when custom event is emitted', () => {
@@ -138,7 +138,7 @@ mount(Component, {
  *        1.这个似乎有点Bug。
  *                1.使用【transitionStub】助手，进行修复。
  */
-import Foo                          from './demos/Foo';
+import Foo               from '../demos/Foo';
 
 test('should render Foo, then hide it', async () => {
 	const wrapper = mount(Foo);
@@ -296,8 +296,8 @@ describe('B', () => {
 /** ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————
  * 鼠标点击事件，的示例
  */
-import YesNoComponent               from './demos/YesNoComponent';
-import {/*mount*/ }                 from '@vue/test-utils';
+import YesNoComponent    from '../demos/YesNoComponent';
+import {/*mount*/ }      from '@vue/test-utils';
 import sinon                        from 'sinon';
 
 describe('Click event', () => {
@@ -318,8 +318,8 @@ describe('Click event', () => {
 /** ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————
  * 键盘事件，的示例
  */
-import QuantityComponent            from './demos/QuantityComponent';
-import {/*mount*/ }                 from '@vue/test-utils';
+import QuantityComponent from '../demos/QuantityComponent';
+import {/*mount*/ }      from '@vue/test-utils';
 
 describe('Key event tests', () => {
 	it('Quantity is zero by default', () => {
@@ -381,8 +381,8 @@ it('button click should increment the count text', async () => {
  * 【异步】Vue之外的异步行为-第一种
  */
 
-import {/*shallowMount*/ }  from '@vue/test-utils';
-import Foo2                 from './demos/Foo2';
+import {/*shallowMount*/ } from '@vue/test-utils';
+import Foo2                from '../demos/Foo2';
 
 jest.mock('axios', () => ({
 	get: Promise.resolve('value'),

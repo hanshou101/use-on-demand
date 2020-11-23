@@ -6,6 +6,8 @@ const __customCfg = {
 	],
 };
 
+console.log('jest', '当前工作目录', process.cwd());
+
 /**
  * 设置【测试范围】
  */
@@ -20,13 +22,26 @@ const targetCfg = {
 	 *        4.【+(a|b)】，1次或更多次
 	 *        5.【@(a|b)】，1次
 	 */
-	'testMatch': [
+	'testMatch'           : [
 		`**/${__customCfg.testFileDir}/?(*.)+(spec|test).[jt]s?(x)`,
 	],
-
+	/**
+	 * ？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+	 *
+	 * 场景：测试时，报有些【package.json】解析错误。
+	 *
+	 * 解决：
+	 * 				1.最开始，以为是【解析目录】出现了问题。
+	 * 				2.后来发现，只是另外两个【package.json】文件为空，没有按照【标准规范】来。
+	 */
+	/*
+	rootDir               : process.cwd(),																			  //
+	*/
 	//
 	'moduleFileExtensions': [
 		'js',
+		'ts',																// 新加
+		// 'tsx',
 		'json',
 		// tell Jest to handle `*.vue` files
 		'vue',
@@ -58,13 +73,20 @@ const coverageCfg = {
 	// 测试覆盖率
 	'collectCoverage'    : true,
 	'collectCoverageFrom': [
+		// TIP——————————————————————————————包含路径——————————————————————————————————
 		// 此处，竟然不能用【斜杠 /】？？？又是什么【glob】的怪癖么？？？
 		// 'src/**/*.{js,vue}',
 		...__customCfg.coverageDirs.map(d => {
-			return `${d}/**/*.{js,vue}`;
+			return `${d}/**/*.{ts,js,vue}`;
 		}),
+		// TIP——————————————————————————————排除路径——————————————————————————————————
 		'!**/node_modules/**',
+		// WARN 此处，可以指定相对路径？（这就很棒）
+		'!sources/tradingview/charting_library/**',				// 忽略【TradingView】的打包后文件。
+		// WARN 此处，可以指定相对路径？（这就很棒）
+		'!sources/swap/CalcReturnTest/data/bitmex.ts',					// 排除过大的测试数据。
 	],
+	'coverageDirectory'  : 'tests/coverage',												// 输出【覆盖率分析结果】文件的路径。
 };
 
 

@@ -14,6 +14,7 @@
       <excludeFolder url="file://$MODULE_DIR$/sources/live2d/live2d-widget.js/3.1.5" />
       <excludeFolder url="file://$MODULE_DIR$/sources/tradingview/charting_library" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/coverage" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
     </content>
     <content url="file://$MODULE_DIR$/node_modules" />
