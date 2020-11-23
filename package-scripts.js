@@ -239,5 +239,13 @@ module.exports = {
 				`${tsNode_cmdHead}  ./sources/gen/demo/gen-sitemap.ts`,
 			),
 		},
+
+		/**
+		 * 测试
+		 */
+		test: {
+			jest: 'jest',
+		},
+
 	},
 };

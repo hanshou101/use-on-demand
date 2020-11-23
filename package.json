@@ -30,7 +30,9 @@
     "vuepress____docs:build": "nps vuepress.docs.build",
     "vuepress____docs:deploy.github-pages____nps": "nps vuepress.docs.deploy.github-pages____nps",
     "vuepress____docs:deploy.github-pages____sh": "nps vuepress.docs.deploy.github-pages____sh",
-    "vuepress____gen-sitemap": "nps vuepress.gen-sitemap"
+    "vuepress____gen-sitemap": "nps vuepress.gen-sitemap",
+    "                        test注释": "",
+    "test____jest": "nps test.jest"
   },
   "lint-staged": {
     "*.ts": [
