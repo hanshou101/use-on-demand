@@ -2,9 +2,17 @@ console.log('use-on-demand项目的 babel.config.js ');
 
 const { Cp_UseOnDemand_BabelCfg } = require('./lib/sources/babel/babel-util');				// WARN 此处，从【打出的包】中，读取文件；以保持【路径】一致。
 
+
+const jestBabelCfg = {
+	presets: [
+		'@babel/preset-env',																// 用于 Jest 测试。
+	],
+};
+
 module.exports = {
 	presets: [
 		'@vue/cli-plugin-babel/preset',
+		...jestBabelCfg.presets,		// jest相关
 	],
 	plugins: [
 		/**
