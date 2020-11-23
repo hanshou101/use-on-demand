@@ -11,10 +11,13 @@ export class xX_VueRouter_Helper {
 		console.error('此处，用于修复【Vue-Router-3】的【跳转Promise报错】，导致中断的Bug。');
 		const originalPush: Router_PushFn_A_Type = _router.prototype.push;
 		_router.prototype.push                   = function push(location: RawLocation_Type) {
-			return originalPush.call(this, location).catch(err => {
-				console.error('Router报错', err);
-				return err;
-			});
+
+			return originalPush.call(this, location)
+				// 此处，可能在低版本，是undefined。
+												 ?.catch(err => {
+													 console.error('Router报错', err);
+													 return err;
+												 });
 		};
 	}
 }
