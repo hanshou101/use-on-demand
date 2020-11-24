@@ -5,7 +5,7 @@
     "           曾经遇到【externals无法识别，后来修复了该问题】postinstall": "echo '安装完毕'  &&  echo '此处，不能用npm link，不然的话，会陷入一个【悖论 - 打包前先清空，清空了找不到，找不到失败，失败了没有打包】' ",
     "postinstall": " echo '问题已修复，可以继续使用 npm link '  &&  echo '安装完毕'  &&  npm link use-on-demand  --local",
     "           postversion注释": "每次version之后，都会执行",
-    "postversion": "git push",
+    "postversion": "echo 'version已更新' ",
     "                        sentry注释": "",
     "sentry____combine-tsc-uglifyjs": "nps sentry.combine-tsc-uglifyjs",
     "                        swap注释": "",
