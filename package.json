@@ -35,9 +35,9 @@
     "test____jest": "nps test.jest"
   },
   "gitHooks": {
-    "pre-commit": "echo 'pre-commit' ",
-    "post-commit": "echo 'post-commit' ",
-    "pre-push": "echo 'pre-push' "
+    "pre-commit": "echo 'pre-commit 这里放入，提交前检查' ",
+    "post-commit": "echo 'post-commit 这里放入，提交后操作' ",
+    "pre-push": "echo 'pre-push 这里放入，推送仓库前操作' "
   },
   "lint-staged": {
     "*.ts": [
