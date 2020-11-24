@@ -22,7 +22,7 @@ git commit -m 'deploy'
 
 # WARN 特别注意，GitHub于最近，将【main】而不是【master】 作为了仓库的默认分支。
 # 如果发布到 https://<USERNAME>.github.io
- git push -f git@github.com:hanshou101/hanshou101.github.io.git master
+ git push -f "git@github.com:hanshou101/hanshou101.github.io.git" master
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages

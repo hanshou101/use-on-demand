@@ -1,10 +1,18 @@
+/**
+ * WARN 此处，因为某些【docker】环境，无法解析和硬件相关的API。所以我们从【依赖】中，临时去除了【robotjs】。
+ */
+function getRobotJs() {
+	// @ts-ignore
+	return require('robotjs');
+}
+
 export class xX_Robot_Demo1 {
 	public static test() {
 		/**
 		 * Move the mouse across the screen as a sine wave.
 		 * 				1.以【Sin函数波浪】，将鼠标移动过屏幕。
 		 */
-		const robot = require('robotjs');
+		const robot = getRobotJs();
 
 		/**
 		 * Speed up the mouse.
@@ -34,7 +42,7 @@ export class xX_Robot_Demo1 {
 		 * Type "Hello World" then press enter.
 		 * 				1.输入"Hello World"，并按下Enter。
 		 */
-		const robot = require('robotjs');
+		const robot = getRobotJs();
 		robot.typeString('H-e-l-l-o    W-o-r-l-d');
 		setTimeout(() => {
 			robot.keyTap('enter');
@@ -50,7 +58,7 @@ export class xX_Robot_Demo1 {
 		 * Get pixel color under the mouse.
 		 * 				1.从鼠标，获取到像素颜色。
 		 */
-		const robot = require('robotjs');
+		const robot = getRobotJs();
 
 		/**
 		 * Get mouse position.
