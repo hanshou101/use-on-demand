@@ -116,10 +116,10 @@ after_script:
   # 命令里面的变量都是在Travis CI里配置过的。
   - echo '这里，经过了重新改造'
   - cd "./lib-docs-dist"
-  - git config user.name "${GitHub_UserName}"
-  - git config user.email "${GitHub_UserEmail}"
   - git init
   - git add .
+  - git config user.name "${GitHub_UserName}"
+  - git config user.email "${GitHub_UserEmail}"
   - git commit -m ":construction_worker:- Build & Deploy by Travis CI"
   #  - git push --force --quiet "https://${GitHub_Token}@${GH_REF}" gh-pages:${D_BRANCH}
   - git push -f  "${GitHub_Pages_Repo_Url}"  ${GitHub_Pages_Repo_Branch}
