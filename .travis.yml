@@ -1,0 +1,97 @@
+# 设置语言
+language: node_js
+
+# 设置语言版本
+node_js: "12.16.1"
+
+# 这种方式，更为专业，会从【$HOME/.npm or node_modules】中自动选择。（【npm install】和【npm ci】，存在区别）
+cache: npm
+# 这种方式，较为死板
+#cache:
+#  directories:
+#    - node_modules #缓存依赖
+
+
+
+before_cache:
+  - echo 'before_cache'
+
+# 构建生命周期
+# S: Build Lifecycle
+
+# 【install】阶段之前执行
+before_install:
+  - echo 'before_install'
+install:
+  - npm i
+
+# 【script】阶段之前执行
+before_script:
+  - echo 'before-script'
+script:
+  - # 生成静态文件
+  - npm run vuepress____docs:build
+  - npm run vuepress____gen-sitemap
+
+# 【script】阶段失败时执行
+after_failure:
+  - echo 'after_failure'
+
+# 【script】阶段成功时执行
+after_success:
+  - echo 'after_success'
+
+# 【deploy】步骤之前执行
+before_deploy:
+  - echo 'before_deploy'
+
+# 以下，是【GitHub Pages】的另外一种配置方法
+deploy:
+  #  provider: pages
+  #  skip_cleanup: true
+  #  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  #  on:
+  #    branch: master
+  #
+  #
+  #
+  #
+  # 命令里面的变量都是在Travis CI里配置过的。
+  - echo '这里，经过了重新改造'
+  - cd "../../lib-docs-dist"
+  - git config user.name "${GitHub_UserName}"
+  - git config user.email "${GitHub_UserEmail}"
+  - git init
+  - git add .
+  - git commit -m ":construction_worker:- Build & Deploy by Travis CI"
+  #  - git push --force --quiet "https://${GitHub_Token}@${GH_REF}" gh-pages:${D_BRANCH}
+  - git push -f  "${GitHub_Pages_Repo}"  ${GitHub_Pages_Repo_Branch}
+  - cd -
+
+# 【deploy】步骤之后执行
+after_deploy:
+  - echo 'after_deploy'
+
+# 【script】阶段之后执行
+after_script:
+  - echo 'after_script'
+  # after_script前5句是把部署分支的.git文件夹保护起来，用于保留历史部署的commit日志，否则部署分支永远只有一条commit记录。
+  #  - echo "开始备份【历史部署的commit日志】"
+  #  - git clone https://${GH_REF} .temp
+  #  - cd .temp
+  #  - git checkout gh-pages
+  #  - cd ../
+  #  - mv .temp/.git dist
+  #  - cd dist
+  # 命令里面的变量都是在Travis CI里配置过的。
+  #  - git config user.name "${U_NAME}"
+  #  - git config user.email "${U_EMAIL}"
+  #  - git add .
+  #  - git commit -m ":construction_worker:- Build & Deploy by Travis CI"
+  #  - git push --force --quiet "https://${Travis_Token}@${GH_REF}" gh-pages:${D_BRANCH}
+# End结束: Build LifeCycle
+
+# 只有指定的分支提交时才会运行脚本
+branches:
+  only:
+    - master
