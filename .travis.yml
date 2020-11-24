@@ -122,7 +122,8 @@ after_script:
   - git config user.email "${GitHub_UserEmail}"
   - git commit -m ":construction_worker:- Build & Deploy by Travis CI"
   #  - git push --force --quiet "https://${GitHub_Token}@${GH_REF}" gh-pages:${D_BRANCH}
-  - git push -f  "${GitHub_Pages_Repo_Url}"  ${GitHub_Pages_Repo_Branch}
+  # WARN 务必要开启【quiet】选项，不然你的【API TOKEN】可能会泄露！
+  - git push -f  "https://hanshou101:${GitHub_Token}@github.com/hanshou101/hanshou101.github.io.git"  ${GitHub_Pages_Repo_Branch}
   - cd -
 # End结束: Build LifeCycle
 
