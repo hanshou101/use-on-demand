@@ -3,7 +3,7 @@
   "scripts": {
     "           postinstall注释": "每次install之后，都会执行",
     "           曾经遇到【externals无法识别，后来修复了该问题】postinstall": "echo '安装完毕'  &&  echo '此处，不能用npm link，不然的话，会陷入一个【悖论 - 打包前先清空，清空了找不到，找不到失败，失败了没有打包】' ",
-    "postinstall": " echo '问题已修复，可以继续使用 npm link '  &&  echo '安装完毕'  &&  npm link use-on-demand  --local",
+    "postinstall": " echo '问题已修复，可以继续使用 npm link '  &&  echo '安装完毕'  &&  echo '不带【--local】有的环境下会报错，不知道为什么。'  &&  npm link use-on-demand  --local",
     "           postversion注释": "每次version之后，都会执行",
     "postversion": "echo 'version已更新' && git push && echo '开始发布到npm平台' ",
     "                        sentry注释": "",
