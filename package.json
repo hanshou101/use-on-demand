@@ -34,6 +34,11 @@
     "                        test注释": "",
     "test____jest": "nps test.jest"
   },
+  "gitHooks": {
+    "pre-commit": "echo 'pre-commit' ",
+    "post-commit": "echo 'post-commit' ",
+    "pre-push": "echo 'pre-push' "
+  },
   "lint-staged": {
     "*.ts": [
       "vue-cli-service lint",
