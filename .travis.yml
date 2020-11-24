@@ -42,7 +42,7 @@ before_cache:
 before_install:
   - echo 'before_install'
   # 后续很多命令，都要用到【nps】这个工具
-  - npm cache clean --force && echo '清除缓存'
+  - echo '清除缓存开始'  &&  npm cache clean --force  &&  rm -rf node_modules package-lock.json  &&  echo '清除缓存完毕'
   - npm i nps -g
 install:
   - npm i
