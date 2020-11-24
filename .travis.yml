@@ -68,26 +68,27 @@ before_deploy:
 
 # 以下，是【GitHub Pages】的另外一种配置方法
 deploy:
-  #  provider: pages
-  #  skip_cleanup: true
-  #  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-  #  on:
-  #    branch: master
-  #
-  #
-  #
-  #
-  # 命令里面的变量都是在Travis CI里配置过的。
-  - echo '这里，经过了重新改造'
-  - cd "../../lib-docs-dist"
-  - git config user.name "${GitHub_UserName}"
-  - git config user.email "${GitHub_UserEmail}"
-  - git init
-  - git add .
-  - git commit -m ":construction_worker:- Build & Deploy by Travis CI"
-  #  - git push --force --quiet "https://${GitHub_Token}@${GH_REF}" gh-pages:${D_BRANCH}
-  - git push -f  "${GitHub_Pages_Repo}"  ${GitHub_Pages_Repo_Branch}
-  - cd -
+#  provider: pages
+#  skip_cleanup: true
+#  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+#  on:
+#    branch: master
+#
+#
+#
+#
+# WARN 【deploy】的配置方法和常规的不同！！！不能用常规的思路去配置
+# 命令里面的变量都是在Travis CI里配置过的。
+#  - echo '这里，经过了重新改造'
+#  - cd "../../lib-docs-dist"
+#  - git config user.name "${GitHub_UserName}"
+#  - git config user.email "${GitHub_UserEmail}"
+#  - git init
+#  - git add .
+#  - git commit -m ":construction_worker:- Build & Deploy by Travis CI"
+#  #  - git push --force --quiet "https://${GitHub_Token}@${GH_REF}" gh-pages:${D_BRANCH}
+#  - git push -f  "${GitHub_Pages_Repo}"  ${GitHub_Pages_Repo_Branch}
+#  - cd -
 
 # 【deploy】步骤之后执行
 after_deploy:
@@ -110,6 +111,18 @@ after_script:
   #  - git add .
   #  - git commit -m ":construction_worker:- Build & Deploy by Travis CI"
   #  - git push --force --quiet "https://${Travis_Token}@${GH_REF}" gh-pages:${D_BRANCH}
+  #
+  # 命令里面的变量都是在Travis CI里配置过的。
+  - echo '这里，经过了重新改造'
+  - cd "../../lib-docs-dist"
+  - git config user.name "${GitHub_UserName}"
+  - git config user.email "${GitHub_UserEmail}"
+  - git init
+  - git add .
+  - git commit -m ":construction_worker:- Build & Deploy by Travis CI"
+  #  - git push --force --quiet "https://${GitHub_Token}@${GH_REF}" gh-pages:${D_BRANCH}
+  - git push -f  "${GitHub_Pages_Repo}"  ${GitHub_Pages_Repo_Branch}
+  - cd -
 # End结束: Build LifeCycle
 
 # 只有指定的分支提交时才会运行脚本
