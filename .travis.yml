@@ -1,13 +1,19 @@
+# TIP 第一种【AMD】的处理器
+arch: amd64          # optional, this is default, routes to a full VM
+os: linux            # optional, this is default
+dist: focal          # or bionic | xenial | trusty | precise with xenial as default
 
-# 处理器架构，影响【VM】和【LXD】的选用
-arch: arm64-graviton2 # in AWS over Graviton2 CPU
-# 虚拟机的架构类型
-virt: vm              # required, routes to a 'full VM' instance
-# 操作系统
-os: linux             # required for arch different than amd64
-# 发行版本
-dist: focal           # or bionic | xenial | trusty | precise with xenial as default
-group: edge
+# TIP 第二种【ARM】的处理器
+## 处理器架构，影响【VM】和【LXD】的选用
+#arch: arm64-graviton2 # in AWS over Graviton2 CPU
+## 虚拟机的架构类型
+#virt: vm              # required, routes to a 'full VM' instance
+## 操作系统
+#os: linux             # required for arch different than amd64
+## 发行版本
+#dist: focal           # or bionic | xenial | trusty | precise with xenial as default
+#group: edge
+#
 
 # ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
