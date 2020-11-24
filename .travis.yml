@@ -88,7 +88,7 @@ deploy:
 #  - git add .
 #  - git commit -m ":construction_worker:- Build & Deploy by Travis CI"
 #  #  - git push --force --quiet "https://${GitHub_Token}@${GH_REF}" gh-pages:${D_BRANCH}
-#  - git push -f  "${GitHub_Pages_Repo}"  ${GitHub_Pages_Repo_Branch}
+#  - git push -f  "${GitHub_Pages_Repo_Url}"  ${GitHub_Pages_Repo_Branch}
 #  - cd -
 
 # 【deploy】步骤之后执行
@@ -122,7 +122,7 @@ after_script:
   - git add .
   - git commit -m ":construction_worker:- Build & Deploy by Travis CI"
   #  - git push --force --quiet "https://${GitHub_Token}@${GH_REF}" gh-pages:${D_BRANCH}
-  - git push -f  "${GitHub_Pages_Repo}"  ${GitHub_Pages_Repo_Branch}
+  - git push -f  "${GitHub_Pages_Repo_Url}"  ${GitHub_Pages_Repo_Branch}
   - cd -
 # End结束: Build LifeCycle
 
