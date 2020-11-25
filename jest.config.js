@@ -85,6 +85,7 @@ const coverageCfg = {
 		'!sources/tradingview/charting_library/**',				// 忽略【TradingView】的打包后文件。
 		// WARN 此处，可以指定相对路径？（这就很棒）
 		'!sources/swap/CalcReturnTest/data/bitmex.ts',					// 排除过大的测试数据。
+		'!sources/swap/CalcReturnTest/data/bgex.ts',					// 排除过大的测试数据。
 	],
 	'coverageDirectory'  : 'tests/coverage',												// 输出【覆盖率分析结果】文件的路径。
 };
