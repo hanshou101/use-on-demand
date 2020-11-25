@@ -59,7 +59,9 @@ before_script :
 - echo 'before-script'
 script :
 # 开始进行测试报告
-- npm run test____jest && codecov
+- npm run test____jest
+# 分成两句写，这样前面的【测试】失败后，后面的【codecov】仍然能执行。
+- codecov
 # 生成静态文件
 - npm run vuepress____docs:build
 - npm run vuepress____gen-sitemap
