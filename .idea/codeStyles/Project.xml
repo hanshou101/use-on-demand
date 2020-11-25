@@ -101,6 +101,7 @@
       <option name="XML_LEGACY_SETTINGS_IMPORTED" value="true" />
     </XML>
     <yaml>
+      <option name="INDENT_SEQUENCE_VALUE" value="false" />
       <option name="SEQUENCE_ON_NEW_LINE" value="true" />
       <option name="BLOCK_MAPPING_ON_NEW_LINE" value="true" />
       <option name="SPACE_BEFORE_COLON" value="true" />

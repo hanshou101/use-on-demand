@@ -33,7 +33,7 @@ cache : npm
 
 
 before_cache :
-  - echo 'before_cache'
+- echo 'before_cache'
 
 # 构建生命周期
 # S: Build Lifecycle
@@ -41,36 +41,38 @@ before_cache :
 
 # 【install】阶段之前执行
 before_install :
-  - echo 'before_install'
-  # 后续很多命令，都要用到【nps】这个工具
-  # WARN 此处，关于【清除缓存】的处理
-  - pwd
-  - ls node_modules
-  #  - echo '清除缓存开始'  &&  npm cache clean --force  &&  rm -rf node_modules package-lock.json  &&  echo '清除缓存完毕'
-  - npm i nps -g
+- echo 'before_install'
+# 后续很多命令，都要用到【nps】这个工具
+# WARN 此处，关于【清除缓存】的处理
+- pwd
+- ls node_modules
+# WARN 如果没有【npm install "github:hanshou101/use-on-demand#master" --force】的话，则【Travis】必须要清除缓存，才能正常运行这个项目。（就很奇怪？？？？？？）
+#- echo '清除缓存开始'  &&  npm cache clean --force  &&  rm -rf node_modules package-lock.json  &&  echo '清除缓存完毕'
+- npm i nps -g
 install :
-  - npm install "github:hanshou101/use-on-demand#master" --force
-  - npm i
+# WARN 在【npm install】之前使用这句话，避免了【找不到  use-on-demand/node_modules/use-on-demand】的错误。
+- npm install "github:hanshou101/use-on-demand#master" --force
+- npm i
 
 # 【script】阶段之前执行
 before_script :
-  - echo 'before-script'
+- echo 'before-script'
 script :
-  - # 生成静态文件
-  - npm run vuepress____docs:build
-  - npm run vuepress____gen-sitemap
+- # 生成静态文件
+- npm run vuepress____docs:build
+- npm run vuepress____gen-sitemap
 
 # 【script】阶段失败时执行
 after_failure :
-  - echo 'after_failure'
+- echo 'after_failure'
 
 # 【script】阶段成功时执行
 after_success :
-  - echo 'after_success'
+- echo 'after_success'
 
 # 【deploy】步骤之前执行
 before_deploy :
-  - echo 'before_deploy'
+- echo 'before_deploy'
 
 # 以下，是【GitHub Pages】的另外一种配置方法
 deploy :
@@ -98,41 +100,41 @@ deploy :
 
 # 【deploy】步骤之后执行
 after_deploy :
-  - echo 'after_deploy'
+- echo 'after_deploy'
 
 # 【script】阶段之后执行
 after_script :
-  - echo 'after_script'
-  # after_script前5句是把部署分支的.git文件夹保护起来，用于保留历史部署的commit日志，否则部署分支永远只有一条commit记录。
-  #  - echo "开始备份【历史部署的commit日志】"
-  #  - git clone https://${GH_REF} .temp
-  #  - cd .temp
-  #  - git checkout gh-pages
-  #  - cd ../
-  #  - mv .temp/.git dist
-  #  - cd dist
-  # 命令里面的变量都是在Travis CI里配置过的。
-  #  - git config user.name "${U_NAME}"
-  #  - git config user.email "${U_EMAIL}"
-  #  - git add .
-  #  - git commit -m ":construction_worker:- Build & Deploy by Travis CI"
-  #  - git push --force --quiet "https://${Travis_Token}@${GH_REF}" gh-pages:${D_BRANCH}
-  #
-  # 命令里面的变量都是在Travis CI里配置过的。
-  - echo '这里，经过了重新改造'
-  - cd "./lib-docs-dist"
-  - git init
-  - git add .
-  - git config user.name "${GitHub_UserName}"
-  - git config user.email "${GitHub_UserEmail}"
-  - git commit -m ":construction_worker:- Build & Deploy by Travis CI"
-  #  - git push --force --quiet "https://${GitHub_Token}@${GH_REF}" gh-pages:${D_BRANCH}
-  # WARN 务必要开启【quiet】选项，不然你的【API TOKEN】可能会泄露！
-  - git push -f  "https://hanshou101:${GitHub_Token}@github.com/hanshou101/hanshou101.github.io.git"  ${GitHub_Pages_Repo_Branch}
-  - cd -
+- echo 'after_script'
+# after_script前5句是把部署分支的.git文件夹保护起来，用于保留历史部署的commit日志，否则部署分支永远只有一条commit记录。
+#  - echo "开始备份【历史部署的commit日志】"
+#  - git clone https://${GH_REF} .temp
+#  - cd .temp
+#  - git checkout gh-pages
+#  - cd ../
+#  - mv .temp/.git dist
+#  - cd dist
+# 命令里面的变量都是在Travis CI里配置过的。
+#  - git config user.name "${U_NAME}"
+#  - git config user.email "${U_EMAIL}"
+#  - git add .
+#  - git commit -m ":construction_worker:- Build & Deploy by Travis CI"
+#  - git push --force --quiet "https://${Travis_Token}@${GH_REF}" gh-pages:${D_BRANCH}
+#
+# 命令里面的变量都是在Travis CI里配置过的。
+- echo '这里，经过了重新改造'
+- cd "./lib-docs-dist"
+- git init
+- git add .
+- git config user.name "${GitHub_UserName}"
+- git config user.email "${GitHub_UserEmail}"
+- git commit -m ":construction_worker:- Build & Deploy by Travis CI"
+#  - git push --force --quiet "https://${GitHub_Token}@${GH_REF}" gh-pages:${D_BRANCH}
+# WARN 务必要开启【quiet】选项，不然你的【API TOKEN】可能会泄露！
+- git push -f  "https://hanshou101:${GitHub_Token}@github.com/hanshou101/hanshou101.github.io.git"  ${GitHub_Pages_Repo_Branch}
+- cd -
 # End结束: Build LifeCycle
 
 # 只有指定的分支提交时才会运行脚本
 branches :
   only :
-    - master
+  - master

@@ -10,7 +10,7 @@ export class xX_CopyPaste_Util {
     return clipboard;
   }
 
-  // 带回调的赋值
+  // 带回调的复制
   public copyWithCb (selector: Clipboard_SelectorType,
                      sucCb: (e: Event) => void,
                      errCb: (e: Event) => void,
