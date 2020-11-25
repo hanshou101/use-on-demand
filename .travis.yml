@@ -49,7 +49,7 @@ before_install :
   #  - echo '清除缓存开始'  &&  npm cache clean --force  &&  rm -rf node_modules package-lock.json  &&  echo '清除缓存完毕'
   - npm i nps -g
 install :
-  - npm install "github:hanshou101/use-on-demand#master"
+  - npm install "github:hanshou101/use-on-demand#master" --force
   - npm i
 
 # 【script】阶段之前执行
