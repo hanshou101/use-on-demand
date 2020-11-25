@@ -38,6 +38,7 @@ before_cache:
 # 构建生命周期
 # S: Build Lifecycle
 
+
 # 【install】阶段之前执行
 before_install:
   - echo 'before_install'
