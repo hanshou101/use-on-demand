@@ -1,4 +1,5 @@
-# Hello VuePress [![Build Status](https://travis-ci.com/hanshou101/use-on-demand.svg?branch=master)](https://travis-ci.com/hanshou101/use-on-demand.svg?branch=master)
+# Hello VuePress
+[![Build Status](https://travis-ci.com/hanshou101/use-on-demand.svg?branch=master)](https://travis-ci.com/hanshou101/use-on-demand)
 
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
