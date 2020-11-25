@@ -49,6 +49,7 @@ before_install :
 # WARN 如果没有【npm install "github:hanshou101/use-on-demand#master" --force】的话，则【Travis】必须要清除缓存，才能正常运行这个项目。（就很奇怪？？？？？？）
 #- echo '清除缓存开始'  &&  npm cache clean --force  &&  rm -rf node_modules package-lock.json  &&  echo '清除缓存完毕'
 - npm i nps -g
+- npm i codecov -g
 install :
 # WARN 在【npm install】之前使用这句话，避免了【找不到  use-on-demand/node_modules/use-on-demand】的错误。
 - npm install "github:hanshou101/use-on-demand#master" --force
