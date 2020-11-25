@@ -100,6 +100,11 @@
     <XML>
       <option name="XML_LEGACY_SETTINGS_IMPORTED" value="true" />
     </XML>
+    <yaml>
+      <option name="SEQUENCE_ON_NEW_LINE" value="true" />
+      <option name="BLOCK_MAPPING_ON_NEW_LINE" value="true" />
+      <option name="SPACE_BEFORE_COLON" value="true" />
+    </yaml>
     <codeStyleSettings language="HTML">
       <option name="SOFT_MARGINS" value="80" />
       <indentOptions>
@@ -317,6 +322,11 @@
           </section>
         </rules>
       </arrangement>
+    </codeStyleSettings>
+    <codeStyleSettings language="yaml">
+      <indentOptions>
+        <option name="KEEP_INDENTS_ON_EMPTY_LINES" value="true" />
+      </indentOptions>
     </codeStyleSettings>
   </code_scheme>
 </component>
