@@ -1,6 +1,5 @@
 # Hello VuePress [![Build Status](https://travis-ci.com/hanshou101/use-on-demand.svg?branch=master)](https://travis-ci.com/hanshou101/use-on-demand.svg?branch=master)
 
-
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
 | col 3 is      | right-aligned | $1600 |
