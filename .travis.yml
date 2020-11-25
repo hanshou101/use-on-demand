@@ -58,9 +58,12 @@ install :
 before_script :
 - echo 'before-script'
 script :
-- # 生成静态文件
+# 开始进行测试报告
+- npm run test____jest && codecov
+# 生成静态文件
 - npm run vuepress____docs:build
 - npm run vuepress____gen-sitemap
+
 
 # 【script】阶段失败时执行
 after_failure :

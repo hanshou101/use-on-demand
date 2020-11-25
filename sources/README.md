@@ -1,6 +1,8 @@
 # Hello VuePress
 [![Build Status](https://travis-ci.com/hanshou101/use-on-demand.svg?branch=master)](https://travis-ci.com/hanshou101/use-on-demand)
 
+[![Codecov Coverage](https://img.shields.io/codecov/c/github/hanshou101/use-on-demand/master.svg?style=flat-square)](https://codecov.io/gh/hanshou101/use-on-demand/)
+
 [![](https://img.shields.io/badge/pink-pink)](https://img.shields.io)
 
 [![](https://img.shields.io/badge/pink.svg-pink.svg)](https://img.shields.io)

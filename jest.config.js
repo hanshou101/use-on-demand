@@ -1,5 +1,5 @@
 const __customCfg = {
-	testFileDir : 'tests',
+	testFileDir : 'tests/unit',
 	coverageDirs: [
 		'sources',
 		'packages',
