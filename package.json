@@ -39,7 +39,7 @@
   "gitHooks": {
     "pre-commit": "echo 'pre-commit 这里放入，提交前检查' ",
     "post-commit": "echo 'post-commit 这里放入，提交后操作' ",
-    "pre-push": "echo 'pre-push 这里放入，推送仓库前操作' "
+    "pre-push": "echo 'pre-push 这里放入，推送仓库前操作'  &&  echo '在Push成功后，【Travis】将会自动打包。'  "
   },
   "lint-staged": {
     "*.ts": [

@@ -1,6 +1,66 @@
 # Hello VuePress
 [![Build Status](https://travis-ci.com/hanshou101/use-on-demand.svg?branch=master)](https://travis-ci.com/hanshou101/use-on-demand)
 
+[![](https://img.shields.io/badge/pink-pink)](https://img.shields.io)
+
+[![](https://img.shields.io/badge/pink.svg-pink.svg)](https://img.shields.io)
+
+[![](https://img.shields.io/badge/brightgreen-brightgreen)](https://img.shields.io)
+
+[![](https://img.shields.io/badge/royalblue-royalblue)](https://img.shields.io)
+
+[![](https://img.shields.io/badge/cyan-cyan)](https://img.shields.io)
+
+[![](https://img.shields.io/badge/lightgrey-lightgrey)](https://img.shields.io)
+
+[![](https://img.shields.io/badge/success-success)](https://img.shields.io)
+
+[![](https://img.shields.io/badge/important-important)](https://img.shields.io)
+
+[![](https://img.shields.io/badge/critical-critical)](https://img.shields.io)
+
+[![](https://img.shields.io/badge/informational-informational)](https://img.shields.io)
+
+[![](https://img.shields.io/badge/inactive-inactive)](https://img.shields.io)
+
+[![](https://img.shields.io/badge/ffb6c1-ffb6c1)](https://img.shields.io)
+
+[![](https://img.shields.io/badge/7b68ee-7b68ee)](https://img.shields.io)
+
+[![](https://img.shields.io/badge/5f9ea0-5f9ea0)](https://img.shields.io)
+
+[![塑料材质](https://img.shields.io/badge/style-plastic-green?style=plastic)](https://img.shields.io)
+
+[![平](https://img.shields.io/badge/style-flat-green?style=flat)](https://img.shields.io)
+
+[![平+方](https://img.shields.io/badge/style-flat--square-green?style=flat-square)](https://img.shields.io)
+
+[![for-the-badge是啥？](https://img.shields.io/badge/style-for--the--badge-green?style=for-the-badge)](https://img.shields.io)
+
+[![social是啥？](https://img.shields.io/badge/style-social-green?style=social)](https://img.shields.io)
+
+[^_^ 注释：这个是ios平台相关的工具]:
+![platform](https://img.shields.io/cocoapods/p/Kingfisher)
+
+[^_^ 注释：这个是ios平台相关的工具]:
+![version](https://img.shields.io/cocoapods/v/Kingfisher)
+
+![followers](https://img.shields.io/github/followers/hanshou101?label=Follow)
+
+![forks](https://img.shields.io/github/forks/hanshou101/use-on-demand?label=Fork)
+
+![stars](https://img.shields.io/github/stars/hanshou101/use-on-demand?style=social)
+
+![stars](https://img.shields.io/github/stars/hanshou101/use-on-demand)
+
+![watchers](https://img.shields.io/github/watchers/hanshou101/use-on-demand?label=Watchers)
+
+![GitHub All Releases](https://img.shields.io/github/downloads/hanshou101/use-on-demand/total)
+
+![GitHub Releases](https://img.shields.io/github/downloads/hanshou101/use-on-demand/v1.2.37/total)
+
+
+
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
 | col 3 is      | right-aligned | $1600 |
