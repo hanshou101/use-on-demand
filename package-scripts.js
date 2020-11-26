@@ -60,6 +60,13 @@ module.exports = {
 				`${tsNode_cmdHead} ./sources/gen/demo/copy-after-tsc.ts`,                   // 2.再进行【复制】
 				`${tsNode_cmdHead} ./sources/gen/demo/clean-after-copy.ts`,
 			),
+			typedoc       : {
+				'gen-typedoc-cfg': `${tsNode_cmdHead}  ./sources/gen/demo/gen-typedoc.ts`,
+				'build-typedoc'  : npsUtils.series(
+					`${tsNode_cmdHead}  ./sources/gen/demo/gen-typedoc.ts`,					// 先生成配置文件
+					'typedoc',																														// 再生成文档
+				),
+			},
 		},
 
 

@@ -61,6 +61,22 @@
 
 ![GitHub Releases](https://img.shields.io/github/downloads/hanshou101/use-on-demand/v1.2.37/total)
 
+[^_^ 注释]:
+以下，是NPN相关的徽章。
+
+![npm](https://img.shields.io/npm/dw/use-on-demand)
+
+![npm](https://img.shields.io/npm/dm/use-on-demand)
+
+![npm](https://img.shields.io/npm/dy/use-on-demand)
+
+![npm](https://img.shields.io/npm/dt/use-on-demand)
+
+![npm bundle size](https://img.shields.io/bundlephobia/min/use-on-demand)
+
+![npm](https://img.shields.io/npm/v/use-on-demand)
+
+![npm (tag)](https://img.shields.io/npm/v/use-on-demand/latest)
 
 
 | Tables        | Are           | Cool  |

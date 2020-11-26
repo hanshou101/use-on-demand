@@ -1,0 +1,21 @@
+{
+  "mode": "file",
+  "inputFiles": [
+    "./sources"
+  ],
+  "exclude": [
+    "**/*+(index|.spec|.e2e).ts",
+    "**/**.d.ts",
+    "sources/tradingview/**/*.*"
+  ],
+  "includeDeclarations": true,
+  "excludeExternals": true,
+  "externalPattern": [
+    "(lib|external)/**/*.ts",
+    "lib-cp/**/*.ts",
+    "examples/**/*.ts",
+    "packages/**/*.ts"
+  ],
+  "ignoreCompilerErrors": true,
+  "out": "ts-docs"
+}
