@@ -17,5 +17,5 @@
     "packages/**/*.ts"
   ],
   "ignoreCompilerErrors": true,
-  "out": "ts-docs"
+  "out": "lib-docs-dist/ts-docs"
 }

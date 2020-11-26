@@ -66,6 +66,8 @@ script :
 # 生成静态文件
 - npm run vuepress____docs:build
 - npm run vuepress____gen-sitemap
+# 生成【typedoc】TypeScript文档
+- npm run ts____build-typedoc
 
 
 # 【script】阶段失败时执行

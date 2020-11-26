@@ -87,8 +87,10 @@ class GenTypedocUtil {
 
 		/**
 		 * 输出目录
+		 * 				1.WARN 此处有一个小技巧，将【ts-docs】文件，放到【vuepress】的子目录下。
 		 */
-		'out': 'ts-docs',
+		// 'out': 'ts-docs',
+		'out': 'lib-docs-dist/ts-docs',
 		//
 		//
 		//
