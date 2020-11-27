@@ -20,6 +20,19 @@ export enum xX_Zepto_TypeDetectE {
 	error    = 'error',
 }
 
+namespace FlagJsonNS {
+	export interface Cfg {
+		readonly superDeep?: boolean;									// 是否非常深入。深入到连【数组】的索引 0、1 ，都要拆开？
+		readonly needRemainValue?: boolean;						// 是否同时，保留【Value值】的显示。（如果只需要key，不需要value，则可以保持内存的节省）
+	}
+
+	export interface Data {
+		prevKey?: string;
+		resultMap?: IndexedObj;
+	}
+}
+
+
 const class2type: IndexedObj<xX_Zepto_TypeDetectE> = {};
 'Boolean Number String Function Array Date RegExp Object Error'.split(' ').forEach(function(name, i) {
 	class2type['[object ' + name + ']'] = name.toLowerCase() as xX_Zepto_TypeDetectE;
@@ -54,22 +67,43 @@ export class xX_SObject_Helper {
 	 */
 	public static flatJson_toKeyChain(
 		json: IndexedObj,
-		prevKey               = '',
-		resultMap: IndexedObj = {},
+		__cfg: FlagJsonNS.Cfg   = {},
+		__data: FlagJsonNS.Data = {},
 	): IndexedObj {
+		const cfg  = {
+			// 默认项
+			superDeep      : true,						// 默认很深入。
+			needRemainValue: true,						// 默认保留值的显示。
+			// 用户传入项
+			...__cfg,
+		} as NoUndefinedField<FlagJsonNS.Cfg>;
+		const data = {
+			// 默认项
+			prevKey  : '',
+			resultMap: {} as IndexedObj,
+			// 用户传入项
+			...__data,
+		} as NoUndefinedField<FlagJsonNS.Data>;
+
 		Object.keys(json).forEach(newKey => {
 			// 拼接成【a.b】。（a可能已是多节。）
-			const thisKey = `${prevKey ? `${prevKey}.` : ''}${newKey}`;
+			const thisKey = `${data.prevKey ? `${data.prevKey}.` : ''}${newKey}`;
+
+			const v = json[newKey];
 
 			// 如果仍是【对象】或【数组】。
 			[
 				xX_Zepto_TypeDetectE.object,
-				xX_Zepto_TypeDetectE.array,
-			].includes(this.typeDetect_judgeType_inZeptoLib(json[newKey]))
-				? this.flatJson_toKeyChain(json[newKey], thisKey, resultMap)
-				: (resultMap[thisKey] = null);
+				cfg.superDeep ? xX_Zepto_TypeDetectE.array : null,													// 是否深入到【数组】的索引？？？
+			].filter(v => !!v)
+			 .includes(this.typeDetect_judgeType_inZeptoLib(v))
+				? this.flatJson_toKeyChain(v, cfg, {
+					prevKey  : thisKey,
+					resultMap: data.resultMap,
+				})
+				: (data.resultMap[thisKey] = cfg.needRemainValue ? v : undefined);
 		});
-		return resultMap;
+		return data.resultMap;
 	}
 
 	/**

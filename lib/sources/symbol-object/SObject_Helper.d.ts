@@ -18,6 +18,16 @@ export declare enum xX_Zepto_TypeDetectE {
     object = "object",
     error = "error"
 }
+declare namespace FlagJsonNS {
+    interface Cfg {
+        readonly superDeep?: boolean;
+        readonly needRemainValue?: boolean;
+    }
+    interface Data {
+        prevKey?: string;
+        resultMap?: IndexedObj;
+    }
+}
 export declare class xX_SObject_Helper {
     /**
      * 获取【普通变量】的【具体类型】。
@@ -35,11 +45,12 @@ export declare class xX_SObject_Helper {
      * 将一个【JSON对象】的所有key，展开为 全部由【a.b.c】组成的数组形式。
      * @return 返回一个Map，key为多节，value为【叶子末梢】值。
      */
-    static flatJson_toKeyChain(json: IndexedObj, prevKey?: string, resultMap?: IndexedObj): IndexedObj;
+    static flatJson_toKeyChain(json: IndexedObj, __cfg?: FlagJsonNS.Cfg, __data?: FlagJsonNS.Data): IndexedObj;
     /**
      * 根据【已知value】，搜索【对应的key】
      *        1.可能有多个，所以是数组
      */
     findKey_byValue_inObj(byValue: any, inObj: IndexedObj): Array<string>;
 }
+export {};
 //# sourceMappingURL=SObject_Helper.d.ts.map
