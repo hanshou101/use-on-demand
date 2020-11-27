@@ -67,6 +67,16 @@ module.exports = {
 					'typedoc',																														// 再生成文档
 				),
 			},
+			i18n          : {
+				'$t_search': npsUtils.series(
+					'cd ./sources/vue/i18n',												// 先进入目录，然后再执行。（这样，相对路径友好一些。）
+					`${tsNode_cmdHead}  	xX_VueI18N_$t_search.ts`,				// 搜索全量【$t】
+				),
+				'map': npsUtils.series(
+					'cd ./sources/vue/i18n',												// 先进入目录，然后再执行。（这样，相对路径友好一些。）
+					`${tsNode_cmdHead}  	xX_VueI18N_map.ts`,				// 搜索全量【$t】
+				),
+			},
 		},
 
 
