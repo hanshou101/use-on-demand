@@ -230,8 +230,11 @@
 						scopedSlots = {
 							default: (props: any) => {
 								//console.log(11111111111,item)
-								const content = this.getEnum_fromField(item.selectOption, this.anyToString(props.row[item.prop]));
-
+                let content = this.getEnum_fromField(item.selectOption, this.anyToString(
+                    item.valueFunction
+                        ? item.valueFunction(props.row, item)
+                        : props.row[item.prop],
+                ));
 								const type = this.getEnumColor(item, props.row);
 
 								// console.log('枚举条目', 'content', content, 'type', type, 'props', props,);
