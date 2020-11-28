@@ -142,6 +142,11 @@ after_script :
 - cd -
 # End结束: Build LifeCycle
 
+
+
+
+
+
 # 只有指定的分支提交时才会运行脚本
 branches :
   only :
