@@ -31,6 +31,8 @@ function formatDirSep(filePath: string) {
 
 /**
  * 从数组中，根据Value值，移除（遇到的）第一个元素。
+ * 				0.参考资料：
+ * 								[javascript-如何通过值从数组中删除项目？ - 堆栈溢出](https://stackoverflow.com/a/3954451/6264260)
  * 				1.只移除一个。
  * 				2.如果有多个的情况下，只会移除第一个。
  */
@@ -59,7 +61,7 @@ namespace xX_VueI18N_Cli {
 		 */
 		public static writeOut_filePaths(matches: Array<MatchItem>, fileName: string) {
 			// console.log('输出结果', matches);
-			fs.writeFileSync(GlobalCfg.outDir + fileName, JSON.stringify(matches, null, 2));
+			fs.writeFileSync(Logic.GlobalCfg.outDir + fileName, JSON.stringify(matches, null, 2));
 			console.log('生成了文件');
 		}
 
@@ -277,145 +279,247 @@ namespace xX_VueI18N_Cli {
 
 	}
 
-}
 
+	export class KeyMap_Helper {
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-const GlobalCfg = {
-	targetDir: '../../../../fgex_admin/src',
-	outDir   : './build/',
-};
-
-function searchOnce(
-	pattern: RegExp,
-	outName: UndefinedAbleType<string> = undefined,
-) {
-	const allFiles = xX_VueI18N_Cli.FilePathSearcher.allFilesInDirectory(GlobalCfg.targetDir, {
-		pattern: pattern,
-	});
-
-	const matches: Array<MatchItem> = [];
-
-	allFiles.forEach(f => {
-		const item = xX_VueI18N_Cli.FilePathSearcher.handleSingleFile_logic(f, pattern);
-		if (item) {
-			matches.push(item);
+		public static fromPath(fPath: string) {
+			const str = fs.readFileSync(fPath, { encoding: 'utf-8' });
+			console.log('str', str);
 		}
-	});
-	console.log('完成了所有匹配');
-	if (outName) {
-		xX_VueI18N_Cli.FilePathSearcher.writeOut_filePaths(matches, outName);
+
+		public static extractMap(
+			obj: object,
+		) {
+			// console.log('obj', obj);
+			const resultMap = xX_SObject_Helper.flatJson_toKeyChain(obj, {
+				superDeep      : false,
+				needRemainValue: false,
+			});
+			console.log('resultMap', resultMap);
+			fs.writeFileSync(
+				Logic.GlobalCfg.outDir + Logic.GlobalCfg.keyMapJsonFname,
+				JSON.stringify(resultMap, (k, v) => (v === undefined ? null : v), 2),
+			);
+		}
+
 	}
-	return matches;
+
 }
 
 
-class Step1 {
-	public static run() {
-		searchOnce(/\$t\(/g, 'xX_$t.json');
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+namespace xX_VueI18N_simplifySlim_Helper {
+
+	function searchOnce(
+		pattern: RegExp,
+		outName: UndefinedAbleType<string> = undefined,
+	) {
+		const allFiles = xX_VueI18N_Cli.FilePathSearcher.allFilesInDirectory(Logic.GlobalCfg.targetDir, {
+			pattern: pattern,
+		});
+
+		const matches: Array<MatchItem> = [];
+
+		allFiles.forEach(f => {
+			const item = xX_VueI18N_Cli.FilePathSearcher.handleSingleFile_logic(f, pattern);
+			if (item) {
+				matches.push(item);
+			}
+		});
+		console.log('完成了所有匹配');
+		if (outName) {
+			xX_VueI18N_Cli.FilePathSearcher.writeOut_filePaths(matches, outName);
+		}
+		return matches;
 	}
-}
 
-class Step2 {
-	public static run() {
-		const middleStr = `(${Object.keys(require('./build/xX_map.json')).map(k => {
-			return xX_SRegexp_Helper.escapeRegex(k);
-		}).join('|')})`;
-		const regExp    = new RegExp(
-			'\\$t\\([\'\"\`]' + middleStr + '[\'\"\`]\\)',
-			'g',
-		);
-		console.log('正则', regExp);
-		searchOnce(
-			// /\$t\(['"`]form.Enable['"`]\)/,
-			regExp,
-			'xX_$t_map.json',
-		);
+	function getSurroundReg(middle: string) {
+		/*
+		return '\\$t\\([\'\"\`]' + middle + '[\'\"\`]\\)';
+		*/
+		return '[$.]t\\([\'\"\`]' + middle + '[\'\"\`]\\)';
 	}
-}
 
-class Step3 {
-	public static run() {
-		console.log('执行第一步');
-		Step1.run();
-		console.log('执行第二步');
-		Step2.run();
+	function getBaseReg() {
+		return /[$.]t\(/g;
+	}
 
-		const all: Array<MatchItem>   = require('./build/xX_$t.json');
-		const exact: Array<MatchItem> = require('./build/xX_$t_map.json');
 
-		const reduce = (all
-			.map(preItem => {
-				const preKey    = preItem.filePath;
-				const exactItem = exact.find(e => {
-					return e.filePath === preKey;
-				});
-				if (!exactItem) {
-					console.log('key不存在', 'preKey', preKey);
-					console.error('exactItem 元素不存在');
-					return undefined;
+	// TIP——————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+	export class Step1_findAll {
+		public static run() {
+			searchOnce(getBaseReg(), Logic.GlobalCfg.allOccurFname);
+		}
+	}
+
+
+	export class Step2_genKeyMap {
+		public static run() {
+			xX_VueI18N_Cli.KeyMap_Helper.extractMap(Logic.GlobalCfg.langObj);
+		}
+	}
+
+	export class Step3_findMap_Occur {
+		public static run() {
+			const keyMapJson = require(Logic.GlobalCfg.outDir + Logic.GlobalCfg.keyMapJsonFname);
+			const middleStr  = `(${Object.keys(keyMapJson).map(k => {
+				return xX_SRegexp_Helper.escapeRegex(k);
+			}).join('|')})`;
+			const regExp     = new RegExp(
+				getSurroundReg(middleStr),
+				'g',
+			);
+			console.log('正则', regExp);
+			searchOnce(
+				// /\$t\(['"`]form.Enable['"`]\)/,
+				regExp,
+				Logic.GlobalCfg.keyOccurFname,
+			);
+		}
+	}
+
+	export class Step4_InCp_NotInMap {
+		public static run(
+			// needRun_Step_1_2 = false,
+		) {
+			/*
+			if (needRun_Step_1_2) {
+				console.log('执行第一步');
+				Step1_findAll.run();
+				console.log('执行第二步');
+				Step2_genKeyMap.run();
+			}
+			*/
+
+			const all: Array<MatchItem>   = require(Logic.GlobalCfg.outDir + Logic.GlobalCfg.allOccurFname);
+			const exact: Array<MatchItem> = require(Logic.GlobalCfg.outDir + Logic.GlobalCfg.keyOccurFname);
+
+			const reduce = (all
+				.map(preItem => {
+					const preKey    = preItem.filePath;
+					const exactItem = exact.find(e => {
+						return e.filePath === preKey;
+					});
+					if (!exactItem) {
+						console.log('key不存在', 'preKey', preKey);
+						console.error('exactItem 元素不存在');
+						return undefined;
+					}
+
+					return {
+						filePath  : preKey,
+						/**
+						 * FIXME 此处，必须考虑一个问题
+						 * 				1.一行中，出现了多个【$t】，则不应该都移除掉。
+						 * 				2.应该按照【出现次数】，一次一次的移除。
+						 */
+						/*
+						occurLines: preItem.occurLines.filter(preLine => {
+							return !exactItem.occurLines.includes(preLine);					// 只有不再包含的，才保留。
+						}),
+						*/
+						occurLines: function() {
+							// TIP 此处，Exact行号数字的集合，必然是【ALL的行号数字的集合】的子集。
+							exactItem.occurLines.forEach(line => {
+								// 开始移除
+								removeOneElement_fisrtOccur_inArray(line, preItem.occurLines);
+							});
+							return preItem.occurLines;
+						}(),
+					};
+				})
+				.filter(e => !!e) as Array<MatchItem>)
+				.filter(e => e.occurLines.length > 0);
+
+			console.log('已经做了，同一行出现多个【$t】，的判断处理。    （测试通过）');
+			xX_VueI18N_Cli.FilePathSearcher.writeOut_filePaths(reduce, Logic.GlobalCfg.InCp_NoInMap_FName);
+			console.log('【组件用到 $t】比【国际化定义 $t】多的部分，已经处理完毕。');
+		}
+	}
+
+	export class Step5_NotInCp_InMap {
+		public static run() {
+			const keys = Object.keys(require(Logic.GlobalCfg.outDir + Logic.GlobalCfg.keyMapJsonFname));
+
+			const noOccurKeys: Array<string> = [];
+			keys.forEach(k => {
+				const regExp  = new RegExp(
+					getSurroundReg(k),
+					'g',
+				);
+				// console.log('正则', regExp);
+				const matches = searchOnce(regExp);
+				if (matches.length === 0) {
+					// throw new Error(xX_ExceptionError_Helper.throwError_andLog(`${k} 未匹配到任何项`));
+					// console.error(`${k} 未匹配到任何项`);
+					noOccurKeys.push(k);
 				}
-
-				return {
-					filePath  : preKey,
-					/**
-					 * FIXME 此处，必须考虑一个问题
-					 * 				1.一行中，出现了多个【$t】，则不应该都移除掉。
-					 * 				2.应该按照【出现次数】，一次一次的移除。
-					 */
-					/*
-					occurLines: preItem.occurLines.filter(preLine => {
-						return !exactItem.occurLines.includes(preLine);					// 只有不再包含的，才保留。
-					}),
-					*/
-					occurLines: function() {
-						// TIP 此处，Exact行号数字的集合，必然是【ALL的行号数字的集合】的子集。
-						exactItem.occurLines.forEach(line => {
-							// 开始移除
-							removeOneElement_fisrtOccur_inArray(line, preItem.occurLines);
-						});
-						return preItem.occurLines;
-					}(),
-				};
-			})
-			.filter(e => !!e) as Array<MatchItem>)
-			.filter(e => e.occurLines.length > 0);
-
-		console.log('已经做了，同一行出现多个【$t】，的判断处理。    （测试通过）');
-		xX_VueI18N_Cli.FilePathSearcher.writeOut_filePaths(reduce, 'xX_$t_reduce.json');
-		console.log('【组件用到 $t】比【国际化定义 $t】多的部分，已经处理完毕。');
+			});
+			// console.log('未出现的key', noOccurKeys);
+			xX_VueI18N_Cli.FilePathSearcher.writeOut_filePaths(noOccurKeys as any, Logic.GlobalCfg.NotInCp_InMap_FName);
+		}
 	}
+
+	// TIP——————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
 }
 
-Step3.run();
+class Logic {
+	public static GlobalCfg = {
+		targetDir          : '../../../../fgex_admin/src',
+		outDir             : './build/',
+		allOccurFname      : 'i18n_all_occur.json',
+		keyOccurFname      : 'i18n_key_occur.json',
+		langObj            : require('../../../../fgex_admin/src/project-config/i18n/zh').zhCN,
+		keyMapJsonFname    : 'map-key.json',
+		InCp_NoInMap_FName : '',
+		NotInCp_InMap_FName: '',
+	};
+
+	public static search(cfg?: typeof Logic.GlobalCfg) {
+		if (cfg) {
+			Logic.GlobalCfg = cfg;
+		}
+		xX_VueI18N_simplifySlim_Helper.Step1_findAll.run();
+		xX_VueI18N_simplifySlim_Helper.Step2_genKeyMap.run();
+		xX_VueI18N_simplifySlim_Helper.Step3_findMap_Occur.run();
+		xX_VueI18N_simplifySlim_Helper.Step4_InCp_NotInMap.run();
+		xX_VueI18N_simplifySlim_Helper.Step5_NotInCp_InMap.run();
+	}
+
+}

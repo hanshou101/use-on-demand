@@ -14,7 +14,7 @@
     "ts____gen-tsconfig": "nps ts.gen-tsconfig",
     "ts____compile-lib": "nps ts.compile-lib",
     "ts____build-typedoc": "nps ts.typedoc.build-typedoc",
-    "ts____$t_search": "nps ts.i18n.$t_search",
+    "ts____i18n.simplifySlim": "nps ts.i18n.simplifySlim",
     "ts____map": "nps ts.i18n.map",
     "                        vue注释": "",
     "vue____single-cp____serve": "nps vue.cli-4.serve",

@@ -1,5 +1,20 @@
 [
   {
+    "filePath": "../../../../fgex_admin/src/enum-options/common.ts",
+    "occurLines": [
+      24,
+      49,
+      50,
+      107,
+      166,
+      167,
+      176,
+      177,
+      227,
+      228
+    ]
+  },
+  {
     "filePath": "../../../../fgex_admin/src/views/activity-manage/contract-simulation-activity/components/ContractSimulationActivity_Create_Dialog.vue",
     "occurLines": [
       65
