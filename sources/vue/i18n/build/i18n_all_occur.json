@@ -1,254 +1,686 @@
 [
   {
+    "filePath": "../../../../fgex_admin/src/AppWrapper.vue",
+    "occurLines": [
+      34
+    ]
+  },
+  {
     "filePath": "../../../../fgex_admin/src/enum-options/common.ts",
     "occurLines": [
+      21,
+      22,
+      23,
       24,
+      25,
+      42,
+      43,
+      44,
+      45,
       49,
       50,
+      57,
+      58,
+      63,
+      64,
+      68,
+      69,
+      70,
+      74,
+      75,
+      79,
+      80,
+      84,
+      85,
+      89,
+      90,
+      91,
+      92,
+      99,
+      100,
+      104,
+      105,
+      106,
       107,
+      108,
+      112,
+      113,
+      114,
+      115,
+      116,
+      121,
+      122,
+      127,
+      139,
+      140,
+      141,
+      150,
+      151,
+      155,
+      156,
+      160,
+      161,
+      162,
       166,
       167,
+      171,
+      172,
       176,
       177,
+      181,
+      182,
+      183,
+      184,
+      185,
+      194,
+      195,
+      196,
+      197,
+      198,
+      199,
+      200,
+      205,
+      206,
+      210,
+      211,
+      215,
+      216,
+      220,
+      221,
       227,
-      228
+      228,
+      232,
+      233,
+      237,
+      238,
+      242,
+      243,
+      249,
+      250,
+      251,
+      256,
+      257,
+      261,
+      262,
+      263,
+      268,
+      269,
+      270,
+      271,
+      275,
+      276,
+      277,
+      397,
+      398,
+      399,
+      729,
+      730,
+      735,
+      736,
+      740,
+      741,
+      1381,
+      1382,
+      1383,
+      1384,
+      1385,
+      1386,
+      1387
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/project-config/net/ResponseInterceptor.ts",
+    "occurLines": [
+      92,
+      100,
+      108,
+      129,
+      136,
+      209,
+      210,
+      211,
+      212,
+      222,
+      222,
+      223,
+      224
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/project-tools/special-request.js",
+    "occurLines": [
+      75,
+      84,
+      93,
+      125,
+      166,
+      166,
+      167,
+      168,
+      190,
+      191
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/activity-manage/contract-simulation-activity/components/ContractSimulationActivity_Create_Dialog.vue",
     "occurLines": [
-      65
+      18,
+      24,
+      65,
+      88,
+      90,
+      98,
+      98
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/activity-manage/contract-simulation-activity/ContractSimulationActivity_DayRank_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      35,
+      37,
+      39,
+      41,
       99
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/activity-manage/contract-simulation-activity/ContractSimulationActivity_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       90
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/activity-manage/contract-simulation-activity/ContractSimulationActivity_TotalRank_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      35,
+      37,
+      39,
+      41,
       99
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/components/Change_Contract_RankRunningStatus_Dialog.vue",
     "occurLines": [
-      60
+      18,
+      24,
+      60,
+      91,
+      91
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/components/Change_Spot_RankRunningStatus_Dialog.vue",
     "occurLines": [
-      60
+      18,
+      24,
+      60,
+      91,
+      91
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/components/RankSetting_Contract_Day_Create_Dialog.vue",
     "occurLines": [
-      65
+      18,
+      24,
+      65,
+      86,
+      88,
+      96,
+      96
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/components/RankSetting_Contract_Total_Create_Dialog.vue",
     "occurLines": [
-      65
+      18,
+      24,
+      65,
+      86,
+      88,
+      96,
+      96
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/components/RankSetting_Spot_Day_Create_Dialog.vue",
     "occurLines": [
+      18,
+      24,
       65,
+      86,
+      88,
+      96,
       96
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/components/RankSetting_Spot_Total_Create_Dialog.vue",
     "occurLines": [
-      65
+      18,
+      24,
+      65,
+      86,
+      88,
+      96,
+      96
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/RankSetting_Contract_Day_List.vue",
     "occurLines": [
+      11,
+      12,
+      13,
+      26,
+      28,
+      30,
+      32,
       91
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/RankSetting_Contract_Total_List.vue",
     "occurLines": [
+      11,
+      12,
+      13,
+      26,
+      28,
+      30,
+      32,
       91
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/RankSetting_Spot_Day_List.vue",
     "occurLines": [
+      11,
+      12,
+      13,
+      26,
+      28,
+      30,
+      32,
       91
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/RankSetting_Spot_Total_List.vue",
     "occurLines": [
+      11,
+      12,
+      13,
+      26,
+      28,
+      30,
+      32,
       91
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/SimulationActivity_RankSetting_Page.vue",
+    "occurLines": [
+      142,
+      142
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/activity-manage/spot-simulation-activity/components/SpotSimulationActivity_Create_Dialog.vue",
     "occurLines": [
-      65
+      18,
+      24,
+      65,
+      88,
+      90,
+      98,
+      98
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/activity-manage/spot-simulation-activity/SpotSimulationActivity_DayRank_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      35,
+      37,
+      39,
+      41,
       99
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/activity-manage/spot-simulation-activity/SpotSimulationActivity_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       90
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/activity-manage/spot-simulation-activity/SpotSimulationActivity_TotalRank_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      35,
+      37,
+      39,
+      41,
       99
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/assets/AccountAssets_List.vue",
     "occurLines": [
+      10,
+      20,
+      21,
+      35,
+      37,
+      39,
+      41,
       163
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/assets/alipay-record/Alipay_RechargeRecord_List.vue",
     "occurLines": [
+      10,
+      21,
+      22,
+      35,
+      37,
+      39,
+      41,
       99
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/assets/alipay-record/Alipay_WithdrawRecord_List.vue",
     "occurLines": [
+      10,
+      21,
+      22,
+      35,
+      37,
+      39,
+      41,
       99
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/assets/AssetsFlow_History_List.vue",
     "occurLines": [
+      10,
+      18,
+      19,
+      32,
+      34,
+      36,
+      38,
       96
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/assets/AssetsFlow_List.vue",
     "occurLines": [
+      10,
+      19,
+      20,
+      33,
+      35,
+      37,
+      39,
       97
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/assets/bankcard-trade-record/Bankcard_RechargeRecord_List.vue",
     "occurLines": [
+      10,
+      21,
+      22,
+      35,
+      37,
+      39,
+      41,
       99
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/assets/bankcard-trade-record/Bankcard_WithdrawRecord_List.vue",
     "occurLines": [
+      10,
+      21,
+      22,
+      35,
+      37,
+      39,
+      41,
       99
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/assets/components/AccountAssets_Deduct_Dialog.vue",
+    "occurLines": [
+      18,
+      24,
+      84,
+      86,
+      94,
+      94
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/assets/components/AccountAssets_Recharge_Dialog.vue",
+    "occurLines": [
+      18,
+      24,
+      87,
+      89,
+      97,
+      97
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/assets/exchange-record/CoinEntrust_List.vue",
     "occurLines": [
+      10,
+      20,
+      21,
+      34,
+      36,
+      38,
+      40,
       98
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/assets/exchange-record/Coin_TurnOverRecord_List.vue",
     "occurLines": [
+      10,
+      20,
+      21,
+      34,
+      36,
+      38,
+      40,
       98
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/assets/InnerTransfer_Record_List.vue",
     "occurLines": [
+      10,
+      18,
+      19,
+      32,
+      34,
+      36,
+      38,
       96
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/assets/recharge-withdraw-record/Cny_RechargeRecord_List.vue",
     "occurLines": [
+      10,
+      18,
+      19,
+      32,
+      34,
+      36,
+      38,
       95
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/assets/recharge-withdraw-record/Cny_WithdrawRecord_List.vue",
     "occurLines": [
+      10,
+      18,
+      19,
+      32,
+      34,
+      36,
+      38,
       96
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/assets/recharge-withdraw-record/Coin_RechargeRecord_List.vue",
     "occurLines": [
+      10,
+      20,
+      21,
+      34,
+      36,
+      38,
+      40,
       97
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/assets/recharge-withdraw-record/Coin_WithdrawRecord_List.vue",
     "occurLines": [
+      10,
+      18,
+      19,
+      32,
+      34,
+      36,
+      38,
       96
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/assets/User_KongTou_Record_List.vue",
     "occurLines": [
+      10,
       11,
       15,
+      33,
+      35,
+      37,
+      39,
       102
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/community/community-content/Community_Comment_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      26,
+      28,
+      30,
+      33,
       92
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/community/community-content/Community_Dongtai_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       91
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/community/community-user/Community_User_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
       25,
+      27,
+      29,
+      31,
       90
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/community/community-user/components/Community_User_Status_Dialog.vue",
     "occurLines": [
-      63
+      18,
+      24,
+      63,
+      83,
+      85,
+      93,
+      93
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/community/community-wallet/Community_RewardOthers_Record_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       89
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/finance/BgAlipay_WithdrawAudit_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      42,
+      44,
+      46,
+      48,
       112,
       113
     ]
@@ -256,122 +688,297 @@
   {
     "filePath": "../../../../fgex_admin/src/views/finance/CnyRecharge_Audit_List.vue",
     "occurLines": [
+      10,
+      18,
+      19,
       34,
+      37,
+      39,
+      41,
       102
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/finance/CnyWithdraw_Audit_List.vue",
     "occurLines": [
+      10,
+      18,
+      19,
       33,
+      36,
+      38,
+      40,
       102
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/finance/CoinWithdraw_Audit_List.vue",
     "occurLines": [
+      10,
+      18,
+      19,
       33,
+      36,
+      38,
+      40,
       46,
       132
     ]
   },
   {
+    "filePath": "../../../../fgex_admin/src/views/finance/components/CnyRecharge_Audit_Dialog.vue",
+    "occurLines": [
+      18,
+      24,
+      88,
+      98,
+      98
+    ]
+  },
+  {
     "filePath": "../../../../fgex_admin/src/views/finance/components/CnyWithdraw_Audit_Dialog.vue",
     "occurLines": [
-      92
+      18,
+      24,
+      90,
+      92,
+      100,
+      100
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/finance/components/CoinWithdraw_Audit_Dialog.vue",
     "occurLines": [
-      93
+      18,
+      24,
+      91,
+      93,
+      101,
+      101
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/finance/components/CoinWithdraw_EnsureSendMoney_Dialog.vue",
     "occurLines": [
+      18,
+      24,
       55,
-      78
+      76,
+      78,
+      86,
+      86
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/components/SnapshotManage_Create_Dialog.vue",
+    "occurLines": [
+      18,
+      24,
+      116,
+      118,
+      126,
+      126
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/components/Unfreeze_UserAssets_Dialog.vue",
+    "occurLines": [
+      18,
+      24,
+      74,
+      76,
+      84,
+      84
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/finance/fenhong/Community_Construction_FenHong_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
       25,
+      27,
+      29,
+      31,
       119
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/finance/fenhong/components/Community_Construction_FenHong_Detail_Dialog.vue",
     "occurLines": [
+      22,
+      28,
       59,
-      82
+      80,
+      82,
+      90,
+      90
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/finance/fenhong/components/Community_Construction_FenHong_Detail____InnerList.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       90
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/finance/fenhong/components/Community_Construction_FenHong____Create_Dialog.vue",
     "occurLines": [
-      95
+      50,
+      57,
+      95,
+      116,
+      118
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/fenhong/components/FenHong_Manage_Create_Dialog.vue",
+    "occurLines": [
+      157,
+      163,
+      246,
+      248,
+      256,
+      256
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/fenhong/components/FenHong_Manage_SuanLi_Dialog.vue",
+    "occurLines": [
+      22,
+      28,
+      120,
+      128,
+      128
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/finance/fenhong/FenHong_Manage_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      28,
+      30,
+      32,
+      34,
       116
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/finance/fenyong/CommonFenyong_Statistic_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       91
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/finance/fenyong/MineFenyong_Statistic_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       89
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/finance/snapshot/SnapshotManage_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      26,
+      28,
+      30,
+      32,
       99
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/finance/snapshot/Snapshot_UserDetail_List.vue",
     "occurLines": [
+      10,
+      22,
+      23,
+      36,
+      38,
+      40,
+      42,
       102
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/finance/third-partner/components/Third_CoinRecharge_Manage_Audit_Dialog.vue",
     "occurLines": [
-      85
+      18,
+      24,
+      83,
+      85,
+      93,
+      93
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/third-partner/components/Third_CoinWithdraw_Manage_Audit_Dialog.vue",
+    "occurLines": [
+      18,
+      24,
+      83,
+      85,
+      93,
+      93
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/finance/third-partner/Third_CoinRecharge_Manage_List.vue",
     "occurLines": [
+      10,
+      18,
+      19,
       33,
+      36,
+      38,
+      40,
       99
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/finance/third-partner/Third_CoinWithdraw_Manage_List.vue",
     "occurLines": [
+      10,
+      20,
+      21,
+      34,
+      36,
+      38,
+      40,
       99
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/finance/User_AssetsDetail_Page.vue",
     "occurLines": [
+      10,
+      11,
+      12,
       27,
       34,
       43,
@@ -380,160 +987,403 @@
       71,
       83,
       91,
-      99
+      99,
+      119,
+      121,
+      123,
+      125
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/components/OtcAppeal_FinishOrder_Dialog.vue",
     "occurLines": [
-      176
+      107,
+      113,
+      174,
+      176,
+      184,
+      184
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/components/OtcMerchant_PayType_Create_Dialog.vue",
     "occurLines": [
-      78
+      18,
+      24,
+      78,
+      96,
+      98,
+      106,
+      106
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/components/Otc_Ad_Create_Dialog.vue",
+    "occurLines": [
+      30,
+      36,
+      169,
+      171
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/components/Otc_Ad_PutOff_Dialog.vue",
     "occurLines": [
+      23,
       29,
-      78
+      78,
+      117,
+      119,
+      127,
+      127
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/components/Otc_UserAssets_Deduct_Dialog.vue",
     "occurLines": [
-      88
+      18,
+      24,
+      86,
+      88,
+      96,
+      96
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/components/Otc_UserAssets_Flow_Dialog.vue",
     "occurLines": [
-      57
+      20,
+      26,
+      57,
+      78,
+      80,
+      88,
+      88
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/components/Otc_UserAssets_Flow_InnerList.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      33,
+      35,
+      37,
+      39,
       98
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/components/Otc_UserAssets_Recharge_Dialog.vue",
     "occurLines": [
-      88
+      18,
+      24,
+      86,
+      88,
+      96,
+      96
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/otc-merchant/components/OtcMerchant_Audit_Dialog.vue",
+    "occurLines": [
+      18,
+      24,
+      136,
+      138,
+      146,
+      146
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/otc-merchant/components/OtcMerchant_Create_Dialog.vue",
+    "occurLines": [
+      18,
+      24,
+      87,
+      89
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/otc-merchant/components/OtcMerchant_FreezeAd_Dialog.vue",
+    "occurLines": [
+      33,
+      39,
+      134,
+      136
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/otc-merchant/components/OtcMerchant_QuitMerchant_Audit_Dialog.vue",
     "occurLines": [
-      63
+      18,
+      24,
+      63,
+      97,
+      99,
+      107,
+      107
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/otc-merchant/OtcMerchant_Audit_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       97
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/otc-merchant/OtcMerchant_List.vue",
     "occurLines": [
+      10,
       11,
+      12,
+      26,
+      29,
+      31,
+      33,
       126
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/otc-merchant/OtcMerchant_QuitMerchant_Audit_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       98
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/otc-merchant/Otc_Ad_BlackList_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       101
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/otc-param-config/components/Otc_Currency_Config_Create_Dialog.vue",
+    "occurLines": [
+      18,
+      24,
+      133,
+      135,
+      143,
+      143
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/otc-param-config/components/Otc_DigitalCoin_Config_Create_Dialog.vue",
+    "occurLines": [
+      28,
+      34,
+      238,
+      240,
+      248,
+      248
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/otc-param-config/components/Otc_MarketConfig_Create_Dialog.vue",
+    "occurLines": [
+      18,
+      24,
+      125,
+      127,
+      135,
+      135
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/otc-param-config/Otc_Currency_Config_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       89
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/otc-param-config/Otc_DigitalCoin_Config_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       89
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/otc-param-config/Otc_MarketConfig_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       89
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/otc-user/components/OtcUser_Freeze_Dialog.vue",
+    "occurLines": [
+      33,
+      39,
+      125,
+      127
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/otc-user/OtcUser_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       102
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/otc-user/Otc_TradeBlackList_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       100
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/Otc_Ad_List.vue",
     "occurLines": [
+      10,
       11,
+      12,
+      25,
+      27,
+      29,
+      31,
       120
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/Otc_Appeal_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      30,
+      32,
+      34,
+      36,
       94
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/Otc_FinishedOrder_List.vue",
     "occurLines": [
+      10,
+      18,
+      19,
+      32,
+      34,
+      36,
+      38,
       95
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/Otc_Order_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      30,
+      32,
+      34,
+      36,
       94
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/otc-config/Otc_UserAssets_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       147
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/param-config/AppVersionManagement.vue",
     "occurLines": [
+      10,
+      12,
+      30,
+      35,
+      45,
       98
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/param-config/BackendConstants_Config_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       89
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/param-config/CompanyBankcard_List.vue",
     "occurLines": [
+      10,
       11,
+      12,
+      25,
+      27,
+      29,
+      31,
       89
     ]
   },
@@ -542,85 +1392,237 @@
     "occurLines": [
       17,
       35,
-      66
+      66,
+      73,
+      75,
+      158,
+      323,
+      326,
+      329,
+      384
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/param-config/components/BackendConstants_Config_Create_Dialog.vue",
+    "occurLines": [
+      18,
+      24,
+      90,
+      92,
+      100,
+      100
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/param-config/components/CompanyBankcard_Create_Dialog.vue",
+    "occurLines": [
+      18,
+      24,
+      85,
+      87,
+      95,
+      95
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/param-config/components/ThirdPartner_Manage_Create_Dialog.vue",
+    "occurLines": [
+      18,
+      24,
+      75,
+      77,
+      85,
+      85
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/param-config/ThirdPartner_Manage_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       89
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/statistic/CnyRecharge_Statistic_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       88
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/statistic/CnyWithdraw_Statistic_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       88
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/statistic/CoinRecharge_Statistic_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       92
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/statistic/CoinWithdraw_Statistic_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       88
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/statistic/exchange/ExchangeRank_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       87
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/statistic/LoginStatistic_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       87
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/statistic/RegistStatistic_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       88
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/system-config/authority/components/EmployeeManager_Create_Dialog.vue",
+    "occurLines": [
+      27,
+      33,
+      208,
+      210,
+      218,
+      218
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/system-config/authority/components/RoleManager_Create_Dialog.vue",
+    "occurLines": [
+      18,
+      24,
+      81,
+      83,
+      91,
+      91
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/system-config/authority/EmployeeManager_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       89
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/system-config/authority/RoleManager_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
       25,
+      27,
+      29,
+      31,
       96
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/system-config/SystemLog_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       88
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/trade-config/CoinMarket_Config_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       89
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/trade-config/CoinType_Config_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       89
     ]
   },
@@ -632,12 +1634,21 @@
       25,
       150,
       164,
-      166
+      166,
+      174,
+      176
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/trade-config/Coin_Config_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       88
     ]
   },
@@ -650,6 +1661,8 @@
       35,
       48,
       58,
+      67,
+      68,
       74,
       78,
       84,
@@ -659,10 +1672,14 @@
       114,
       123,
       132,
+      140,
+      141,
       147,
       162,
       180,
       189,
+      193,
+      194,
       235,
       244,
       252,
@@ -673,6 +1690,8 @@
       307,
       318,
       320,
+      328,
+      329,
       566,
       574,
       582,
@@ -719,18 +1738,68 @@
       663,
       664,
       665,
-      718
+      718,
+      725,
+      752,
+      752
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/trade-config/components/CoinMarket_Create_Dialog.vue",
+    "occurLines": [
+      42,
+      48,
+      245,
+      247,
+      255,
+      255
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/trade-config/components/CoinType_Create_Dialog.vue",
+    "occurLines": [
+      18,
+      24,
+      84,
+      86,
+      94,
+      94
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/trade-config/components/TradeArea_Create_Dialog.vue",
+    "occurLines": [
+      28,
+      34,
+      114,
+      116,
+      124,
+      124
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/trade-config/TradeArea_Config_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       89
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/chatroom/ChatRoom_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      26,
+      28,
+      30,
+      32,
       35,
       94
     ]
@@ -738,12 +1807,25 @@
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/chatroom/components/ChatRoom_Members_Dialog.vue",
     "occurLines": [
-      60
+      21,
+      28,
+      60,
+      81,
+      83,
+      91,
+      91
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/chatroom/components/ChatRoom_Members_InnerList.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      26,
+      28,
+      30,
+      32,
       37,
       41,
       46,
@@ -754,193 +1836,488 @@
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/components/InviteUser_Audit_Dialog.vue",
     "occurLines": [
+      18,
+      24,
       61,
       62,
-      103
+      101,
+      103,
+      111,
+      111
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/contract-broker-level/components/ContractBrokerLevel_Create_Dialog.vue",
+    "occurLines": [
+      18,
+      24,
+      87,
+      89,
+      97,
+      97
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/contract-broker-level/ContractBrokerLevel_List.vue",
     "occurLines": [
+      10,
       11,
+      12,
+      25,
+      28,
+      30,
+      33,
       91
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/InviteUser_Audit_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
       25,
+      28,
+      30,
+      32,
       92
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/renren-broker/ProfitDetail_List.vue",
     "occurLines": [
+      18,
+      19,
+      20,
+      33,
+      35,
+      37,
+      39,
       98
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/renren-broker/ProfitStatistic_List.vue",
     "occurLines": [
+      20,
+      21,
+      22,
+      36,
+      38,
+      40,
+      42,
       101
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/renren-broker/UserContract_TradeData_List.vue",
     "occurLines": [
+      19,
+      20,
+      21,
+      34,
+      36,
+      38,
+      40,
       97
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/third-bankcard/BankcardVerifyCount_Page.vue",
+    "occurLines": [
+      11
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/third-bankcard/UserBankcardDetection_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      28,
+      30,
+      32,
+      34,
       106
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/components/FindUser_ByAddress_Dialog.vue",
     "occurLines": [
+      21,
+      28,
       60,
       81,
-      83
+      83,
+      91,
+      91
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/components/FindUser_ByAddress_InnerList.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       93
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/components/UserAddress_Tab_List.vue",
     "occurLines": [
+      11,
+      12,
+      13,
+      26,
+      28,
+      30,
+      32,
       91
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/components/UserBank_Tab_List.vue",
     "occurLines": [
+      11,
+      12,
+      13,
+      27,
+      29,
+      31,
+      33,
       91
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/components/UserInviter_Tab_List.vue",
     "occurLines": [
+      12,
+      13,
+      14,
+      28,
+      30,
+      32,
+      34,
       92
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/components/UserWallet_Tab_List.vue",
     "occurLines": [
+      11,
+      12,
+      13,
+      27,
+      29,
+      31,
+      33,
       91
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/components/User_ChangeEmail_Dialog.vue",
     "occurLines": [
-      55
+      18,
+      24,
+      55,
+      70,
+      72,
+      80,
+      80
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/components/User_ChangeMobile_Dialog.vue",
     "occurLines": [
-      55
+      18,
+      24,
+      55,
+      70,
+      72,
+      80,
+      80
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/components/User_ChangeStatus_Dialog.vue",
+    "occurLines": [
+      18,
+      24,
+      96,
+      98,
+      106,
+      106
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/components/User_Destroy_Dialog.vue",
     "occurLines": [
-      54
+      18,
+      24,
+      54,
+      68,
+      78,
+      78
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/UserAuth_Primary_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      26,
+      28,
+      30,
+      32,
       103
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/UserInfo_List.vue",
     "occurLines": [
+      10,
+      13,
+      14,
       214
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/UserFreezeOperateLog_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       88
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/usercenter/UserLoginLogs_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      31,
       89
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/website-operation/article-manager/ArticleType_List.vue",
     "occurLines": [
+      21,
+      22,
+      23,
+      36,
+      38,
+      40,
+      45,
+      47,
+      49,
+      52,
       113
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/website-operation/article-manager/Article_List.vue",
     "occurLines": [
+      20,
+      21,
+      22,
+      35,
+      37,
+      39,
+      44,
+      46,
+      48,
+      50,
       110
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/website-operation/article-manager/components/ArticleType_Create_Dialog.vue",
     "occurLines": [
-      102
+      32,
+      38,
+      102,
+      136,
+      138,
+      146,
+      146
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/website-operation/article-manager/components/Article_Create_Dialog.vue",
     "occurLines": [
-      110
+      34,
+      40,
+      110,
+      142,
+      144,
+      152,
+      152
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/website-operation/components/ContractLicense_Create_Dialog.vue",
     "occurLines": [
-      73
+      25,
+      31,
+      73,
+      102,
+      104,
+      112,
+      112
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/website-operation/components/HomePageInfo_Create_Dialog.vue",
     "occurLines": [
-      54
+      18,
+      24,
+      54,
+      73,
+      75,
+      83,
+      83
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/components/NoticeManager_Create_Dialog.vue",
+    "occurLines": [
+      18,
+      24,
+      94,
+      96,
+      104,
+      104
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/components/PropagandaSite_Create_Dialog.vue",
+    "occurLines": [
+      26,
+      32,
+      122,
+      124,
+      132,
+      132
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/components/ResourceConfig_Create_Dialog.vue",
+    "occurLines": [
+      18,
+      24,
+      127,
+      129,
+      137,
+      137
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/components/Service_Reply_Dialog.vue",
+    "occurLines": [
+      18,
+      24,
+      76,
+      78,
+      86,
+      86
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/website-operation/contract-open-manager/components/ContractQuestions_Create_Dialog.vue",
     "occurLines": [
-      119
+      65,
+      71,
+      119,
+      143,
+      145
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/website-operation/contract-open-manager/ContractQuestions_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      34,
+      36,
+      38,
+      40,
       99
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/website-operation/ContractLicense_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      34,
+      36,
+      38,
+      40,
       101
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/website-operation/HomePageInfo_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      33,
+      36,
+      38,
+      40,
       98
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/newspaper-manager/components/Newspaper_Create_Dialog.vue",
+    "occurLines": [
+      108,
+      114,
+      256,
+      258,
+      266,
+      266
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/website-operation/newspaper-manager/Newspaper_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
       34,
+      36,
+      38,
+      40,
       101,
       102
     ]
@@ -948,44 +2325,134 @@
   {
     "filePath": "../../../../fgex_admin/src/views/website-operation/newspaper-manager/QuickPaperSharing_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      33,
+      35,
+      37,
+      39,
       95
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/website-operation/NoticeManager_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      34,
+      36,
+      38,
+      40,
       99
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/website-operation/PropagandaSite_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      34,
+      36,
+      38,
+      40,
       99
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/website-operation/ResourceConfig_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      34,
+      37,
+      39,
+      41,
       101
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/website-operation/Service_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
       35,
+      39,
+      41,
+      43,
       104
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/website-operation/StationLetter_List.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      34,
+      36,
+      38,
+      40,
       98
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/_basic/errorPage/401.vue",
+    "occurLines": [
+      4,
+      9,
+      10,
+      11,
+      12,
+      14,
+      16,
+      18,
+      20,
+      29
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/_basic/errorPage/404.vue",
+    "occurLines": [
+      12,
+      13,
+      16,
+      17,
+      37
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/views/_basic/login/Login.vue",
     "occurLines": [
+      10,
+      75,
+      79,
       80,
+      80,
+      84,
+      85,
       85,
       88,
       91,
@@ -993,14 +2460,104 @@
     ]
   },
   {
+    "filePath": "../../../../fgex_admin/src/views/_basic/login/_Login.ts",
+    "occurLines": [
+      48,
+      53,
+      72,
+      180,
+      180,
+      181,
+      182,
+      184,
+      201
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/_basic/web-layout/components/Navbar.vue",
+    "occurLines": [
+      42,
+      50,
+      63,
+      67,
+      72,
+      76
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/_basic/web-layout/components/TagsView.vue",
+    "occurLines": [
+      14,
+      15,
+      16
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/_components/general/dropdown/index.vue",
+    "occurLines": [
+      4
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/_components/general/screen-full/index.vue",
+    "occurLines": [
+      60
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/_components/general/theme-picker/index.vue",
+    "occurLines": [
+      80
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/_framework/i18n/MyBase_i18n.ts",
+    "occurLines": [
+      46
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/_framework/net/MyBaseAxios.ts",
+    "occurLines": [
+      37,
+      38
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/_framework/router/router-permission.ts",
+    "occurLines": [
+      109
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/_framework/sdk/elment-ui/ElementUI_SDK_Init.ts",
+    "occurLines": [
+      21
+    ]
+  },
+  {
     "filePath": "../../../../fgex_admin/src/__todo-lib/dialog/simple-choose-user/SimpleChooseUser_Dialog.vue",
     "occurLines": [
-      38
+      38,
+      60,
+      62,
+      69,
+      69
     ]
   },
   {
     "filePath": "../../../../fgex_admin/src/__todo-lib/dialog/simple-choose-user/SimpleChooseUser_Dialog_InnerList.vue",
     "occurLines": [
+      10,
+      11,
+      12,
+      25,
+      27,
+      29,
+      35,
+      37,
+      39,
+      41,
       99
     ]
   }

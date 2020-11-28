@@ -1,0 +1,1006 @@
+[
+  {
+    "filePath": "../../../../fgex_admin/src/enum-options/common.ts",
+    "occurLines": [
+      24,
+      49,
+      50,
+      107,
+      166,
+      167,
+      176,
+      177,
+      227,
+      228
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/activity-manage/contract-simulation-activity/components/ContractSimulationActivity_Create_Dialog.vue",
+    "occurLines": [
+      65
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/activity-manage/contract-simulation-activity/ContractSimulationActivity_DayRank_List.vue",
+    "occurLines": [
+      99
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/activity-manage/contract-simulation-activity/ContractSimulationActivity_List.vue",
+    "occurLines": [
+      90
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/activity-manage/contract-simulation-activity/ContractSimulationActivity_TotalRank_List.vue",
+    "occurLines": [
+      99
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/components/Change_Contract_RankRunningStatus_Dialog.vue",
+    "occurLines": [
+      60
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/components/Change_Spot_RankRunningStatus_Dialog.vue",
+    "occurLines": [
+      60
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/components/RankSetting_Contract_Day_Create_Dialog.vue",
+    "occurLines": [
+      65
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/components/RankSetting_Contract_Total_Create_Dialog.vue",
+    "occurLines": [
+      65
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/components/RankSetting_Spot_Day_Create_Dialog.vue",
+    "occurLines": [
+      65
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/components/RankSetting_Spot_Total_Create_Dialog.vue",
+    "occurLines": [
+      65
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/RankSetting_Contract_Day_List.vue",
+    "occurLines": [
+      91
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/RankSetting_Contract_Total_List.vue",
+    "occurLines": [
+      91
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/RankSetting_Spot_Day_List.vue",
+    "occurLines": [
+      91
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/activity-manage/rank-setting/RankSetting_Spot_Total_List.vue",
+    "occurLines": [
+      91
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/activity-manage/spot-simulation-activity/components/SpotSimulationActivity_Create_Dialog.vue",
+    "occurLines": [
+      65
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/activity-manage/spot-simulation-activity/SpotSimulationActivity_DayRank_List.vue",
+    "occurLines": [
+      99
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/activity-manage/spot-simulation-activity/SpotSimulationActivity_List.vue",
+    "occurLines": [
+      90
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/activity-manage/spot-simulation-activity/SpotSimulationActivity_TotalRank_List.vue",
+    "occurLines": [
+      99
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/assets/AccountAssets_List.vue",
+    "occurLines": [
+      163
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/assets/alipay-record/Alipay_RechargeRecord_List.vue",
+    "occurLines": [
+      99
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/assets/alipay-record/Alipay_WithdrawRecord_List.vue",
+    "occurLines": [
+      99
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/assets/AssetsFlow_History_List.vue",
+    "occurLines": [
+      96
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/assets/AssetsFlow_List.vue",
+    "occurLines": [
+      97
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/assets/bankcard-trade-record/Bankcard_RechargeRecord_List.vue",
+    "occurLines": [
+      99
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/assets/bankcard-trade-record/Bankcard_WithdrawRecord_List.vue",
+    "occurLines": [
+      99
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/assets/exchange-record/CoinEntrust_List.vue",
+    "occurLines": [
+      98
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/assets/exchange-record/Coin_TurnOverRecord_List.vue",
+    "occurLines": [
+      98
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/assets/InnerTransfer_Record_List.vue",
+    "occurLines": [
+      96
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/assets/recharge-withdraw-record/Cny_RechargeRecord_List.vue",
+    "occurLines": [
+      95
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/assets/recharge-withdraw-record/Cny_WithdrawRecord_List.vue",
+    "occurLines": [
+      96
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/assets/recharge-withdraw-record/Coin_RechargeRecord_List.vue",
+    "occurLines": [
+      97
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/assets/recharge-withdraw-record/Coin_WithdrawRecord_List.vue",
+    "occurLines": [
+      96
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/assets/User_KongTou_Record_List.vue",
+    "occurLines": [
+      11,
+      15,
+      102
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/community/community-content/Community_Comment_List.vue",
+    "occurLines": [
+      92
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/community/community-content/Community_Dongtai_List.vue",
+    "occurLines": [
+      91
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/community/community-user/Community_User_List.vue",
+    "occurLines": [
+      25,
+      90
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/community/community-user/components/Community_User_Status_Dialog.vue",
+    "occurLines": [
+      63
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/community/community-wallet/Community_RewardOthers_Record_List.vue",
+    "occurLines": [
+      89
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/BgAlipay_WithdrawAudit_List.vue",
+    "occurLines": [
+      112,
+      113
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/CnyRecharge_Audit_List.vue",
+    "occurLines": [
+      34,
+      102
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/CnyWithdraw_Audit_List.vue",
+    "occurLines": [
+      33,
+      102
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/CoinWithdraw_Audit_List.vue",
+    "occurLines": [
+      33,
+      46,
+      132
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/components/CnyWithdraw_Audit_Dialog.vue",
+    "occurLines": [
+      92
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/components/CoinWithdraw_Audit_Dialog.vue",
+    "occurLines": [
+      93
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/components/CoinWithdraw_EnsureSendMoney_Dialog.vue",
+    "occurLines": [
+      55,
+      78
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/fenhong/Community_Construction_FenHong_List.vue",
+    "occurLines": [
+      25,
+      119
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/fenhong/components/Community_Construction_FenHong_Detail_Dialog.vue",
+    "occurLines": [
+      59,
+      82
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/fenhong/components/Community_Construction_FenHong_Detail____InnerList.vue",
+    "occurLines": [
+      90
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/fenhong/components/Community_Construction_FenHong____Create_Dialog.vue",
+    "occurLines": [
+      95
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/fenhong/FenHong_Manage_List.vue",
+    "occurLines": [
+      116
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/fenyong/CommonFenyong_Statistic_List.vue",
+    "occurLines": [
+      91
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/fenyong/MineFenyong_Statistic_List.vue",
+    "occurLines": [
+      89
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/snapshot/SnapshotManage_List.vue",
+    "occurLines": [
+      99
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/snapshot/Snapshot_UserDetail_List.vue",
+    "occurLines": [
+      102
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/third-partner/components/Third_CoinRecharge_Manage_Audit_Dialog.vue",
+    "occurLines": [
+      85
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/third-partner/Third_CoinRecharge_Manage_List.vue",
+    "occurLines": [
+      33,
+      99
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/third-partner/Third_CoinWithdraw_Manage_List.vue",
+    "occurLines": [
+      99
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/finance/User_AssetsDetail_Page.vue",
+    "occurLines": [
+      27,
+      34,
+      43,
+      55,
+      63,
+      71,
+      83,
+      91,
+      99
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/components/OtcAppeal_FinishOrder_Dialog.vue",
+    "occurLines": [
+      176
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/components/OtcMerchant_PayType_Create_Dialog.vue",
+    "occurLines": [
+      78
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/components/Otc_Ad_PutOff_Dialog.vue",
+    "occurLines": [
+      29,
+      78
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/components/Otc_UserAssets_Deduct_Dialog.vue",
+    "occurLines": [
+      88
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/components/Otc_UserAssets_Flow_Dialog.vue",
+    "occurLines": [
+      57
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/components/Otc_UserAssets_Flow_InnerList.vue",
+    "occurLines": [
+      98
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/components/Otc_UserAssets_Recharge_Dialog.vue",
+    "occurLines": [
+      88
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/otc-merchant/components/OtcMerchant_QuitMerchant_Audit_Dialog.vue",
+    "occurLines": [
+      63
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/otc-merchant/OtcMerchant_Audit_List.vue",
+    "occurLines": [
+      97
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/otc-merchant/OtcMerchant_List.vue",
+    "occurLines": [
+      11,
+      126
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/otc-merchant/OtcMerchant_QuitMerchant_Audit_List.vue",
+    "occurLines": [
+      98
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/otc-merchant/Otc_Ad_BlackList_List.vue",
+    "occurLines": [
+      101
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/otc-param-config/Otc_Currency_Config_List.vue",
+    "occurLines": [
+      89
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/otc-param-config/Otc_DigitalCoin_Config_List.vue",
+    "occurLines": [
+      89
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/otc-param-config/Otc_MarketConfig_List.vue",
+    "occurLines": [
+      89
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/otc-user/OtcUser_List.vue",
+    "occurLines": [
+      102
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/otc-user/Otc_TradeBlackList_List.vue",
+    "occurLines": [
+      100
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/Otc_Ad_List.vue",
+    "occurLines": [
+      11,
+      120
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/Otc_Appeal_List.vue",
+    "occurLines": [
+      94
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/Otc_FinishedOrder_List.vue",
+    "occurLines": [
+      95
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/Otc_Order_List.vue",
+    "occurLines": [
+      94
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/otc-config/Otc_UserAssets_List.vue",
+    "occurLines": [
+      147
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/param-config/AppVersionManagement.vue",
+    "occurLines": [
+      98
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/param-config/BackendConstants_Config_List.vue",
+    "occurLines": [
+      89
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/param-config/CompanyBankcard_List.vue",
+    "occurLines": [
+      11,
+      89
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/param-config/components/AppVersionManagementDialog.vue",
+    "occurLines": [
+      17,
+      35,
+      66
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/param-config/ThirdPartner_Manage_List.vue",
+    "occurLines": [
+      89
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/statistic/CnyRecharge_Statistic_List.vue",
+    "occurLines": [
+      88
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/statistic/CnyWithdraw_Statistic_List.vue",
+    "occurLines": [
+      88
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/statistic/CoinRecharge_Statistic_List.vue",
+    "occurLines": [
+      92
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/statistic/CoinWithdraw_Statistic_List.vue",
+    "occurLines": [
+      88
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/statistic/exchange/ExchangeRank_List.vue",
+    "occurLines": [
+      87
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/statistic/LoginStatistic_List.vue",
+    "occurLines": [
+      87
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/statistic/RegistStatistic_List.vue",
+    "occurLines": [
+      88
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/system-config/authority/EmployeeManager_List.vue",
+    "occurLines": [
+      89
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/system-config/authority/RoleManager_List.vue",
+    "occurLines": [
+      25,
+      96
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/system-config/SystemLog_List.vue",
+    "occurLines": [
+      88
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/trade-config/CoinMarket_Config_List.vue",
+    "occurLines": [
+      89
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/trade-config/CoinType_Config_List.vue",
+    "occurLines": [
+      89
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/trade-config/Coin_Config_DetailPage.vue",
+    "occurLines": [
+      5,
+      16,
+      25,
+      150,
+      164,
+      166
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/trade-config/Coin_Config_List.vue",
+    "occurLines": [
+      88
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/trade-config/components/CoinBaseInfoConfig.vue",
+    "occurLines": [
+      12,
+      20,
+      33,
+      35,
+      48,
+      58,
+      74,
+      78,
+      84,
+      88,
+      95,
+      104,
+      114,
+      123,
+      132,
+      147,
+      162,
+      180,
+      189,
+      235,
+      244,
+      252,
+      262,
+      272,
+      282,
+      292,
+      307,
+      318,
+      320,
+      566,
+      574,
+      582,
+      585,
+      588,
+      590,
+      591,
+      593,
+      594,
+      596,
+      598,
+      600,
+      602,
+      603,
+      605,
+      606,
+      608,
+      610,
+      612,
+      614,
+      616,
+      618,
+      620,
+      622,
+      624,
+      627,
+      629,
+      630,
+      635,
+      636,
+      638,
+      640,
+      642,
+      644,
+      645,
+      647,
+      648,
+      651,
+      653,
+      655,
+      657,
+      659,
+      662,
+      663,
+      664,
+      665,
+      718
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/trade-config/TradeArea_Config_List.vue",
+    "occurLines": [
+      89
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/chatroom/ChatRoom_List.vue",
+    "occurLines": [
+      35,
+      94
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/chatroom/components/ChatRoom_Members_Dialog.vue",
+    "occurLines": [
+      60
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/chatroom/components/ChatRoom_Members_InnerList.vue",
+    "occurLines": [
+      37,
+      41,
+      46,
+      50,
+      111
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/components/InviteUser_Audit_Dialog.vue",
+    "occurLines": [
+      61,
+      62,
+      103
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/contract-broker-level/ContractBrokerLevel_List.vue",
+    "occurLines": [
+      11,
+      91
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/InviteUser_Audit_List.vue",
+    "occurLines": [
+      25,
+      92
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/renren-broker/ProfitDetail_List.vue",
+    "occurLines": [
+      98
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/renren-broker/ProfitStatistic_List.vue",
+    "occurLines": [
+      101
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/renren-broker/UserContract_TradeData_List.vue",
+    "occurLines": [
+      97
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/third-bankcard/UserBankcardDetection_List.vue",
+    "occurLines": [
+      106
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/components/FindUser_ByAddress_Dialog.vue",
+    "occurLines": [
+      60,
+      81,
+      83
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/components/FindUser_ByAddress_InnerList.vue",
+    "occurLines": [
+      93
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/components/UserAddress_Tab_List.vue",
+    "occurLines": [
+      91
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/components/UserBank_Tab_List.vue",
+    "occurLines": [
+      91
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/components/UserInviter_Tab_List.vue",
+    "occurLines": [
+      92
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/components/UserWallet_Tab_List.vue",
+    "occurLines": [
+      91
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/components/User_ChangeEmail_Dialog.vue",
+    "occurLines": [
+      55
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/components/User_ChangeMobile_Dialog.vue",
+    "occurLines": [
+      55
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/components/User_Destroy_Dialog.vue",
+    "occurLines": [
+      54
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/UserAuth_Primary_List.vue",
+    "occurLines": [
+      103
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/user-manage/UserInfo_List.vue",
+    "occurLines": [
+      214
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/UserFreezeOperateLog_List.vue",
+    "occurLines": [
+      88
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/usercenter/UserLoginLogs_List.vue",
+    "occurLines": [
+      89
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/article-manager/ArticleType_List.vue",
+    "occurLines": [
+      113
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/article-manager/Article_List.vue",
+    "occurLines": [
+      110
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/article-manager/components/ArticleType_Create_Dialog.vue",
+    "occurLines": [
+      102
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/article-manager/components/Article_Create_Dialog.vue",
+    "occurLines": [
+      110
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/components/ContractLicense_Create_Dialog.vue",
+    "occurLines": [
+      73
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/components/HomePageInfo_Create_Dialog.vue",
+    "occurLines": [
+      54
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/contract-open-manager/components/ContractQuestions_Create_Dialog.vue",
+    "occurLines": [
+      119
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/contract-open-manager/ContractQuestions_List.vue",
+    "occurLines": [
+      99
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/ContractLicense_List.vue",
+    "occurLines": [
+      101
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/HomePageInfo_List.vue",
+    "occurLines": [
+      98
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/newspaper-manager/Newspaper_List.vue",
+    "occurLines": [
+      34,
+      101,
+      102
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/newspaper-manager/QuickPaperSharing_List.vue",
+    "occurLines": [
+      95
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/NoticeManager_List.vue",
+    "occurLines": [
+      99
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/PropagandaSite_List.vue",
+    "occurLines": [
+      99
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/ResourceConfig_List.vue",
+    "occurLines": [
+      101
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/Service_List.vue",
+    "occurLines": [
+      35,
+      104
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/website-operation/StationLetter_List.vue",
+    "occurLines": [
+      98
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/views/_basic/login/Login.vue",
+    "occurLines": [
+      80,
+      85,
+      88,
+      91,
+      92
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/__todo-lib/dialog/simple-choose-user/SimpleChooseUser_Dialog.vue",
+    "occurLines": [
+      38
+    ]
+  },
+  {
+    "filePath": "../../../../fgex_admin/src/__todo-lib/dialog/simple-choose-user/SimpleChooseUser_Dialog_InnerList.vue",
+    "occurLines": [
+      99
+    ]
+  }
+]

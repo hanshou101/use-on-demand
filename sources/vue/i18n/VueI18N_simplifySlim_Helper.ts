@@ -60,6 +60,11 @@ namespace xX_VueI18N_Cli {
 		 * 写出【文件路径】的JSON文件。
 		 */
 		public static writeOut_filePaths(matches: Array<MatchItem>, fileName: string) {
+
+			if (!fs.existsSync(Logic.GlobalCfg.outDir)) {						// 如果目录不存在
+				fs.mkdirSync(Logic.GlobalCfg.outDir);	// 生成目录
+			}
+
 			// console.log('输出结果', matches);
 			fs.writeFileSync(Logic.GlobalCfg.outDir + fileName, JSON.stringify(matches, null, 2));
 			console.log('生成了文件');
@@ -295,7 +300,7 @@ namespace xX_VueI18N_Cli {
 				superDeep      : false,
 				needRemainValue: false,
 			});
-			console.log('resultMap', resultMap);
+			// console.log('resultMap', resultMap);
 			fs.writeFileSync(
 				Logic.GlobalCfg.outDir + Logic.GlobalCfg.keyMapJsonFname,
 				JSON.stringify(resultMap, (k, v) => (v === undefined ? null : v), 2),
@@ -376,6 +381,15 @@ namespace xX_VueI18N_simplifySlim_Helper {
 		return /[$.]t\(/g;
 	}
 
+	function readJson_fromFileSync(path: string) {
+		/*
+		return require(Logic.GlobalCfg.outDir + path);
+		*/
+		return JSON.parse(
+			fs.readFileSync(path, 'utf8'),
+		) as any;
+	}
+
 
 	// TIP——————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -395,7 +409,8 @@ namespace xX_VueI18N_simplifySlim_Helper {
 
 	export class Step3_findMap_Occur {
 		public static run() {
-			const keyMapJson = require(Logic.GlobalCfg.outDir + Logic.GlobalCfg.keyMapJsonFname);
+			// const keyMapJson = require(Logic.GlobalCfg.outDir + Logic.GlobalCfg.keyMapJsonFname);
+			const keyMapJson = readJson_fromFileSync(Logic.GlobalCfg.outDir + Logic.GlobalCfg.keyMapJsonFname);
 			const middleStr  = `(${Object.keys(keyMapJson).map(k => {
 				return xX_SRegexp_Helper.escapeRegex(k);
 			}).join('|')})`;
@@ -425,8 +440,12 @@ namespace xX_VueI18N_simplifySlim_Helper {
 			}
 			*/
 
-			const all: Array<MatchItem>   = require(Logic.GlobalCfg.outDir + Logic.GlobalCfg.allOccurFname);
-			const exact: Array<MatchItem> = require(Logic.GlobalCfg.outDir + Logic.GlobalCfg.keyOccurFname);
+			// const all: Array<MatchItem>   = require(Logic.GlobalCfg.outDir + Logic.GlobalCfg.allOccurFname);
+			const all: Array<MatchItem> = readJson_fromFileSync(Logic.GlobalCfg.outDir + Logic.GlobalCfg.allOccurFname);
+			// console.log('all', all);
+			// const exact: Array<MatchItem> = require(Logic.GlobalCfg.outDir + Logic.GlobalCfg.keyOccurFname);
+			const exact: Array<MatchItem> = readJson_fromFileSync(Logic.GlobalCfg.outDir + Logic.GlobalCfg.keyOccurFname);
+			// console.log('exact', exact);
 
 			const reduce = (all
 				.map(preItem => {
@@ -473,7 +492,10 @@ namespace xX_VueI18N_simplifySlim_Helper {
 
 	export class Step5_NotInCp_InMap {
 		public static run() {
-			const keys = Object.keys(require(Logic.GlobalCfg.outDir + Logic.GlobalCfg.keyMapJsonFname));
+			const keys = Object.keys(
+				// require(Logic.GlobalCfg.outDir + Logic.GlobalCfg.keyMapJsonFname),
+				readJson_fromFileSync(Logic.GlobalCfg.outDir + Logic.GlobalCfg.keyMapJsonFname),
+			);
 
 			const noOccurKeys: Array<string> = [];
 			keys.forEach(k => {
@@ -499,21 +521,40 @@ namespace xX_VueI18N_simplifySlim_Helper {
 
 }
 
+interface CfgType {
+	targetDir?: string;
+	outDir?: string;
+	keyMapJsonFname?: string;
+	allOccurFname?: string;
+	keyOccurFname?: string;
+	InCp_NoInMap_FName?: string;
+	NotInCp_InMap_FName?: string;
+	langObj?: object;
+}
+
 class Logic {
-	public static GlobalCfg = {
+
+	//
+	public static GlobalCfg: NoUndefinedField<CfgType> = {
 		targetDir          : '../../../../fgex_admin/src',
 		outDir             : './build/',
+		keyMapJsonFname    : 'map-key.json',
 		allOccurFname      : 'i18n_all_occur.json',
 		keyOccurFname      : 'i18n_key_occur.json',
-		langObj            : require('../../../../fgex_admin/src/project-config/i18n/zh').zhCN,
-		keyMapJsonFname    : 'map-key.json',
-		InCp_NoInMap_FName : '',
-		NotInCp_InMap_FName: '',
+		InCp_NoInMap_FName : 'i18n_InCp_NoInMap.json',
+		NotInCp_InMap_FName: 'i18n_NotInCp_InMap',
+		langObj            : {},// require('../../../../fgex_admin/src/project-config/i18n/zh').zhCN,
 	};
 
-	public static search(cfg?: typeof Logic.GlobalCfg) {
+	//
+	public static search(cfg?: CfgType) {
 		if (cfg) {
-			Logic.GlobalCfg = cfg;
+			Logic.GlobalCfg = {
+				// 默认项
+				...Logic.GlobalCfg,
+				// 用户传入项
+				...cfg,
+			};
 		}
 		xX_VueI18N_simplifySlim_Helper.Step1_findAll.run();
 		xX_VueI18N_simplifySlim_Helper.Step2_genKeyMap.run();
@@ -523,3 +564,12 @@ class Logic {
 	}
 
 }
+
+/*
+Logic.search(
+	require('../../../../fgex_admin/src/project-config/i18n/zh').zhCN,
+);
+*/
+
+
+export const xX_VueI18N_simplifySlim_Helper_Logic = Logic;
