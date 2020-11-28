@@ -1,12 +1,12 @@
 interface CfgType {
-    targetDir?: string;
-    outDir?: string;
+    targetDir: string;
+    outDir: string;
+    langObj: object;
     keyMapJsonFname?: string;
     allOccurFname?: string;
     keyOccurFname?: string;
     InCp_NoInMap_FName?: string;
     NotInCp_InMap_FName?: string;
-    langObj?: object;
 }
 declare class Logic {
     static GlobalCfg: NoUndefinedField<CfgType>;

@@ -1,6 +1,5 @@
 import fs                                          from 'fs';
 import path                                        from 'path';
-import { __escapeRegex }                           from '../../symbol-regexp/SRegexp_Helper.compatible';
 import { xX_SObject_Helper, xX_Zepto_TypeDetectE } from '../../symbol-object/SObject_Helper';
 import { xX_ExceptionError_Helper }                from '../../exception-error/ExceptionError_Helper';
 import { xX_SRegexp_Helper }                       from '../../symbol-regexp/SRegexp_Helper';
@@ -134,7 +133,7 @@ namespace xX_VueI18N_Cli {
 				regex = cfg.pattern as RegExp;
 			} else {
 				// WARN 此处，必须要考虑Regexp转义
-				const escapedStr = __escapeRegex(cfg.pattern as string);
+				const escapedStr = xX_SRegexp_Helper.escapeRegex(cfg.pattern as string);
 				console.log('转换后文本', escapedStr);
 				// We want full words, so we use full word boundary in regex.
 				regex = cfg.needBoundary
@@ -522,14 +521,15 @@ namespace xX_VueI18N_simplifySlim_Helper {
 }
 
 interface CfgType {
-	targetDir?: string;
-	outDir?: string;
+	targetDir: string;
+	outDir: string;
+	langObj: object;
+	//
 	keyMapJsonFname?: string;
 	allOccurFname?: string;
 	keyOccurFname?: string;
 	InCp_NoInMap_FName?: string;
 	NotInCp_InMap_FName?: string;
-	langObj?: object;
 }
 
 class Logic {

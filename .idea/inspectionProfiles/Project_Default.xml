@@ -42,6 +42,7 @@
     <inspection_tool class="RequiredAttributes" enabled="true" level="ERROR" enabled_by_default="true">
       <option name="myAdditionalRequiredHtmlAttributes" value="" />
     </inspection_tool>
+    <inspection_tool class="SuspiciousTypeOfGuard" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="TypeScriptValidateJSTypes" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="UnnecessaryLocalVariableJS" enabled="true" level="WEAK WARNING" enabled_by_default="true">
       <option name="m_ignoreImmediatelyReturnedVariables" value="false" />

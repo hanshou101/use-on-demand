@@ -1,9 +1,11 @@
+require = require('esm')(module);
+
 /**
  * 参考资料：
  *        讨论：https://github.com/vuejs/vuepress/issues/613
  */
+const { xX_SRegexp_Helper } = require('../../lib/sources/symbol-regexp/SRegexp_Helper');
 
-const { __escapeRegex } = require('../symbol-regexp/SRegexp_Helper.compatible');
 
 function getAutoSidebar(
 	mdBasePath = './sources',
@@ -26,7 +28,7 @@ function getAutoSidebar(
 	);
 
 
-	const escaped_mdBasePath = __escapeRegex(mdBasePath);
+	const escaped_mdBasePath = xX_SRegexp_Helper.escapeRegex(mdBasePath);
 	const reg_mdBasePath     = new RegExp(`^${escaped_mdBasePath}`);				// 行首
 	console.log('转义后的mdBasePath', escaped_mdBasePath, reg_mdBasePath);
 
