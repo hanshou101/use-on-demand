@@ -39,7 +39,9 @@
     "                        test注释": "",
     "test____jest": "nps test.jest",
     "                        server注释": "",
-    "server____corsProxy": "nps server.corsProxy_demo1"
+    "server____corsProxy": "nps server.corsProxy_demo1",
+    "                        md注释": "",
+    "md____drawFlow": "nps md.drawFlow"
   },
   "gitHooks": {
     "pre-commit": "echo 'pre-commit 这里放入，提交前检查' ",

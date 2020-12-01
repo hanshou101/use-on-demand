@@ -274,5 +274,12 @@ module.exports = {
 			corsProxy_demo1: `${tsNode_cmdHead}  ./sources/server/demo/proxy-demo-1.ts  `,
 		},
 
+		/**
+		 * Markdown相关
+		 */
+		md:{
+			drawFlow:`${tsNode_cmdHead}  ./sources/markdown/draw-flow-graph/DrawMdFlow.ts`,
+		},
+
 	},
 };

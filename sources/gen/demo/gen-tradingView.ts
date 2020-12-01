@@ -1,7 +1,8 @@
 import fs from 'fs';
 
-import {CDN_Helper} from './gen-helper';
-import {EnvFlags}   from '../envir/env-flags';
+import {CDN_Helper}         from './gen-helper';
+import {EnvFlags}           from '../envir/env-flags';
+import { staticImplements } from '../../ts/TsType_Helper';
 
 /**
  * 一些类型设定。
@@ -21,11 +22,6 @@ interface TplConfig_Static {
   };                                     //
 }
 
-function staticImplements<T>() {
-  return <U extends T>(constructor: U) => {
-    constructor;
-  };
-}
 
 //
 //
