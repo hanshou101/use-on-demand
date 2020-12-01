@@ -271,14 +271,14 @@ module.exports = {
 		 * 服务器
 		 */
 		server: {
-			corsProxy_demo1: `${tsNode_cmdHead}  ./sources/server/demo/proxy-demo-1.ts  `,
+			corsProxy_demo1: `${tsNode_cmdHead}  ./sources/server/api-proxy/demo/proxy-demo-1.ts  `,
 		},
 
 		/**
 		 * Markdown相关
 		 */
-		md:{
-			drawFlow:`${tsNode_cmdHead}  ./sources/markdown/draw-flow-graph/DrawMdFlow.ts`,
+		md: {
+			drawFlow: `${tsNode_cmdHead}  ./sources/markdown/draw-flow-graph/DrawMdFlow.ts`,
 		},
 
 	},

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>1. Basic</title>
+    <link type="text/css"
+          href="./MY-LOCAL/styles/tui-color-picker.css"
+          rel="stylesheet">
+    <link type="text/css" href="css/service-basic.css"
+          rel="stylesheet">
+</head>
+<body>
+<div class="body-container">
+    <div class="tui-image-editor-controls">
+        <div class="header">
+            <img class="logo" src="img/TOAST UI Component.png">
+            <span class="name"> Image Editor</span>
+            <ul class="menu">
+                <li class="menu-item border input-wrapper">
+                    加载本地图片
+                    <input type="file" accept="image/*"
+                           id="input-image-file">
+                </li>
+                <li class="menu-item border" id="btn-download">
+                    下载图片到本地
+                </li>
+            </ul>
+        </div>
+
+        <div class="tui-image-editor"></div>
+
+
+        <div class="sub-menu-container" id="crop-sub-menu">
+            <ul class="menu">
+                <li class="menu-item" id="btn-apply-crop">确认选取</li>
+                <li class="menu-item" id="btn-cancel-crop">取消</li>
+            </ul>
+        </div>
+        <div class="sub-menu-container" id="flip-sub-menu">
+            <ul class="menu">
+                <li class="menu-item" id="btn-flip-x">X轴翻转</li>
+                <li class="menu-item" id="btn-flip-y">Y轴翻转</li>
+                <li class="menu-item" id="btn-reset-flip">重置</li>
+                <li class="menu-item close">点此关闭</li>
+            </ul>
+        </div>
+        <div class="sub-menu-container" id="rotation-sub-menu">
+            <ul class="menu">
+                <li class="menu-item" id="btn-rotate-clockwise">
+                    顺时针(30°)
+                </li>
+                <li class="menu-item"
+                    id="btn-rotate-counter-clockwise">
+                    逆时针(-30°)
+                </li>
+                <li class="menu-item no-pointer"><label>范围
+                    选取<input id="input-rotation-range" type="range"
+                             min="-360" value="0"
+                             max="360"></label></li>
+                <li class="menu-item close">点此关闭</li>
+            </ul>
+        </div>
+        <div class="sub-menu-container menu" id="draw-line-sub-menu">
+            <ul class="menu">
+                <li class="menu-item">
+                    <label><input type="radio" name="select-line-type"
+                                  value="freeDrawing"
+                                  checked="checked"> 自由绘制</label>
+                    <label><input type="radio" name="select-line-type"
+                                  value="lineDrawing"> 直线</label>
+                </li>
+                <li class="menu-item">
+                    <div id="tui-brush-color-picker">笔触颜色</div>
+                </li>
+                <li class="menu-item"><label
+                    class="menu-item no-pointer">笔触宽度<input
+                    id="input-brush-width-range" type="range" min="5"
+                    max="30" value="12"></label></li>
+                <li class="menu-item close">点此关闭</li>
+            </ul>
+        </div>
+        <div class="sub-menu-container" id="draw-shape-sub-menu">
+            <ul class="menu">
+                <li class="menu-item">
+                    <label><input type="radio"
+                                  name="select-shape-type"
+                                  value="rect" checked="checked">
+                        矩形</label>
+                    <label><input type="radio"
+                                  name="select-shape-type"
+                                  value="circle"> 原型</label>
+                    <label><input type="radio"
+                                  name="select-shape-type"
+                                  value="triangle"> 三角形</label>
+                </li>
+                <li class="menu-item">
+                    <select name="select-color-type">
+                        <option value="fill">内容填充颜色</option>
+                        <option value="stroke">轮廓颜色</option>
+                    </select>
+                    <label><input type="checkbox"
+                                  id="input-check-transparent">透明度</label>
+                    <div id="tui-shape-color-picker"></div>
+                </li>
+                <li class="menu-item"><label
+                    class="menu-item no-pointer">笔触宽度<input
+                    id="input-stroke-width-range" type="range" min="0"
+                    max="300" value="12"></label></li>
+                <li class="menu-item close">点此关闭</li>
+            </ul>
+        </div>
+        <div class="sub-menu-container" id="icon-sub-menu">
+            <ul class="menu">
+                <li class="menu-item">
+                    <div id="tui-icon-color-picker">图标颜色</div>
+                </li>
+                <li class="menu-item border" id="btn-register-icon">
+                    使用自定义图标
+                </li>
+                <li class="menu-item icon-text"
+                    data-icon-type="arrow">➡
+                </li>
+                <li class="menu-item icon-text"
+                    data-icon-type="cancel">✖
+                </li>
+                <li class="menu-item close">点此关闭</li>
+            </ul>
+        </div>
+        <div class="sub-menu-container" id="text-sub-menu">
+            <ul class="menu">
+                <li class="menu-item">
+                    <div>
+                        <button class="btn-text-style"
+                                data-style-type="b">粗体
+                        </button>
+                        <button class="btn-text-style"
+                                data-style-type="i">斜体
+                        </button>
+                        <button class="btn-text-style"
+                                data-style-type="u">下划线
+                        </button>
+                    </div>
+                    <div>
+                        <button class="btn-text-style"
+                                data-style-type="l">靠左
+                        </button>
+                        <button class="btn-text-style"
+                                data-style-type="c">居中
+                        </button>
+                        <button class="btn-text-style"
+                                data-style-type="r">靠右
+                        </button>
+                    </div>
+                </li>
+                <li class="menu-item"><label class="no-pointer"><input
+                    id="input-font-size-range" type="range" min="10"
+                    max="100" value="10"></label></li>
+                <li class="menu-item">
+                    <div id="tui-text-color-picker">文本颜色</div>
+                </li>
+                <li class="menu-item close">点此关闭</li>
+            </ul>
+        </div>
+        <div class="sub-menu-container" id="filter-sub-menu">
+            <ul class="menu">
+                <li class="menu-item border input-wrapper">
+                    本地读取遮罩图片
+                    <input type="file" accept="image/*"
+                           id="input-mask-image-file">
+                </li>
+                <li class="menu-item" id="btn-apply-mask">使用遮罩过滤
+                </li>
+                <li class="menu-item close">点此关闭</li>
+            </ul>
+        </div>
+        <div class="sub-menu-container" id="image-filter-sub-menu">
+            <ul class="menu">
+                <li class="menu-item align-left-top">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td><label><input type="checkbox"
+                                              id="input-check-grayscale">灰度</label>
+                            </td>
+                            <td><label><input type="checkbox"
+                                              id="input-check-invert">颠倒</label>
+                            </td>
+                            <td><label><input type="checkbox"
+                                              id="input-check-sepia">棕褐色</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label><input type="checkbox"
+                                              id="input-check-sepia2">棕褐色2</label>
+                            </td>
+                            <td><label><input type="checkbox"
+                                              id="input-check-blur">模糊</label>
+                            </td>
+                            <td><label><input type="checkbox"
+                                              id="input-check-sharpen">锐化</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label><input type="checkbox"
+                                              id="input-check-emboss">浮雕</label>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li class="menu-item align-left-top">
+                    <p>
+                        <label><input type="checkbox"
+                                      id="input-check-remove-white">去白</label><br>
+                        <label>阈值<input class="range-narrow"
+                                        id="input-range-remove-white-threshold"
+                                        type="range" min="0"
+                                        value="60"
+                                        max="255"></label><br>
+                        <label>距离<input class="range-narrow"
+                                        id="input-range-remove-white-distance"
+                                        type="range" min="0"
+                                        value="10"
+                                        max="255"></label>
+                    </p>
+                </li>
+                <li class="menu-item align-left-top">
+                    <p>
+                        <label><input type="checkbox"
+                                      id="input-check-brightness">亮度</label><br>
+                        <label>数值<input class="range-narrow"
+                                        id="input-range-brightness-value"
+                                        type="range" min="-255"
+                                        value="100"
+                                        max="255"></label>
+                    </p>
+                </li>
+                <li class="menu-item align-left-top">
+                    <p>
+                        <label><input type="checkbox"
+                                      id="input-check-noise">噪点</label><br>
+                        <label>数值<input class="range-narrow"
+                                        id="input-range-noise-value"
+                                        type="range" min="0"
+                                        value="100"
+                                        max="1000"></label>
+                    </p>
+                </li>
+                <li class="menu-item align-left-top">
+                    <p>
+                        <label><input type="checkbox"
+                                      id="input-check-gradient-transparancy">渐变透明度</label><br>
+                        <label>数值<input class="range-narrow"
+                                        id="input-range-gradient-transparency-value"
+                                        type="range" min="0"
+                                        value="100"
+                                        max="255"></label>
+                    </p>
+                </li>
+                <li class="menu-item align-left-top">
+                    <p>
+                        <label><input type="checkbox"
+                                      id="input-check-pixelate">像素化</label><br>
+                        <label>数值<input class="range-narrow"
+                                        id="input-range-pixelate-value"
+                                        type="range" min="2"
+                                        value="4" max="20"></label>
+                    </p>
+                </li>
+                <li class="menu-item align-left-top">
+                    <p>
+                        <label><input type="checkbox"
+                                      id="input-check-tint">着色</label><br>
+                    <div id="tui-tint-color-picker"></div>
+                    <label>不透明度<input class="range-narrow"
+                                      id="input-range-tint-opacity-value"
+                                      type="range" min="0"
+                                      value="1" max="1"
+                                      step="0.1"></label>
+                    </p>
+                </li>
+                <li class="menu-item align-left-top">
+                    <p>
+                        <label><input type="checkbox"
+                                      id="input-check-multiply">倍数</label>
+                    <div id="tui-multiply-color-picker"></div>
+                    </p>
+                </li>
+                <li class="menu-item align-left-top">
+                    <p>
+                        <label><input type="checkbox"
+                                      id="input-check-blend">混合</label>
+                    <div id="tui-blend-color-picker"></div>
+                    <select name="select-blend-type">
+                        <option value="add" selected>叠加</option>
+                        <option value="diff">区别</option>
+                        <option value="diff">相减</option>
+                        <option value="multiply">相乘</option>
+                        <option value="screen">屏幕</option>
+                        <option value="lighten">亮化</option>
+                        <option value="darken">暗化</option>
+                    </select>
+                    </p>
+                </li>
+                <li class="menu-item align-left-top">
+                    <p>
+                        <label><input type="checkbox"
+                                      id="input-check-color-filter">颜色选取</label><br>
+                        <label>阈值<input class="range-narrow"
+                                        id="input-range-color-filter-value"
+                                        type="range" min="0"
+                                        value="45"
+                                        max="255"></label>
+                    </p>
+                </li>
+                <li class="menu-item close">点此关闭</li>
+            </ul>
+        </div>
+
+        <ul class="menu">
+            <li class="menu-item disabled" id="btn-undo">撤销</li>
+            <li class="menu-item disabled" id="btn-redo">重复</li>
+            <li class="menu-item" id="btn-clear-objects">清空所有附加元素</li>
+            <li class="menu-item" id="btn-remove-active-object">
+                清除当前选中元素
+            </li>
+            <li class="menu-item" id="btn-crop">裁剪</li>
+            <li class="menu-item" id="btn-flip">翻转</li>
+            <li class="menu-item" id="btn-rotation">旋转</li>
+            <li class="menu-item" id="btn-draw-line">线条</li>
+            <li class="menu-item" id="btn-draw-shape">形状</li>
+            <li class="menu-item" id="btn-add-icon">图标</li>
+            <li class="menu-item" id="btn-text">文本</li>
+            <li class="menu-item" id="btn-mask-filter">遮罩</li>
+            <li class="menu-item" id="btn-image-filter">滤镜Filter</li>
+        </ul>
+
+    </div>
+</div>
+<script type="text/javascript"
+        src="./MY-LOCAL/scripts/fabric.js"></script>
+<script type="text/javascript"
+        src="./MY-LOCAL/scripts/tui-code-snippet.min.js"></script>
+<script type="text/javascript"
+        src="./MY-LOCAL/scripts/jquery.min.js"></script>
+<script type="text/javascript"
+        src="./MY-LOCAL/scripts/FileSaver.min.js"></script>
+<script type="text/javascript"
+        src="./MY-LOCAL/scripts/colorpicker.min.js"></script>
+<script type="text/javascript"
+        src="./MY-LOCAL/scripts/tui-image-editor.min.js"></script>
+
+<!--TIP 用作逻辑控制。-->
+<script src="js/service-basic.js"></script>
+</body>
+</html>

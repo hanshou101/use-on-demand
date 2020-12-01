@@ -1,3 +1,5 @@
+import {Server as HttpServer} from 'http';
+
 type P_Simple_SsrReq = Partial<Simple_SsrReq>
 type P_Simple_SsrReq_Keys = keyof P_Simple_SsrReq;
 type P_Simple_SsrReq__Type = {
