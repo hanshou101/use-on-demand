@@ -266,5 +266,13 @@ module.exports = {
 			jest: 'jest',
 		},
 
+
+		/**
+		 * 服务器
+		 */
+		server: {
+			corsProxy_demo1: `${tsNode_cmdHead}  ./sources/server/demo/proxy-demo-1.ts  `,
+		},
+
 	},
 };
