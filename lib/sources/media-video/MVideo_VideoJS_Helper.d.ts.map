@@ -1,0 +1,1 @@
+{"version":3,"file":"MVideo_VideoJS_Helper.d.ts","sourceRoot":"","sources":["../../../sources/media-video/MVideo_VideoJS_Helper.ts"],"names":[],"mappings":"AAIA,qBAAa,wBAAwB;IACpC,OAAO,CAAC,MAAM,CAAC,WAAW,CAAS;WAErB,cAAc,CAC3B,IAAI,EAAE;QAAE,OAAO,EAAE,GAAG,CAAC;QAAC,IAAI,EAAE,GAAG,CAAA;KAAE,EACjC,OAAO,GAAE,OAAc;WAwBV,aAAa;CAQ3B"}

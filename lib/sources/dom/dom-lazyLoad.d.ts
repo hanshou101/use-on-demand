@@ -21,7 +21,7 @@ declare namespace EchoNS {
     /**
      *
      */
-    export class Echo {
+    export class EchoLazy {
         private root;
         callback: EchoOption['callback'];
         offsetCfg: CustomViewPortOffset;
@@ -55,7 +55,7 @@ declare namespace EchoNS {
     export {};
 }
 export declare class xX_DomLazyLoad_Helper {
-    static Echo_ImgLazyLoader: typeof EchoNS.Echo;
+    static Echo_ImgLazyLoader: typeof EchoNS.EchoLazy;
 }
 export {};
 //# sourceMappingURL=dom-lazyLoad.d.ts.map

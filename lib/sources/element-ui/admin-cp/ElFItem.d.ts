@@ -99,6 +99,12 @@ export declare namespace xX_Father_ElFItem {
             name: TranslateKey;
         }, optional?: Optional);
     }
+    export class Single_RichText_Tinymce extends Base__Translate {
+        readonly myCategory = "lang_single_tinymce";
+        constructor(require: Require & {
+            name: TranslateKey;
+        }, optional?: Optional);
+    }
     export class I18N_RichText_UEditor extends Base__Translate {
         readonly myCategory = "lang_ueditor";
         constructor(require: Require & {

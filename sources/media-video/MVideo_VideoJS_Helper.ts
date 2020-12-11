@@ -2,10 +2,10 @@ function getVideoJS() {
 	return require('video.js').default;
 }
 
-export class xX_MVideo_Helper {
+export class xX_MVideo_VideoJS_Helper {
 	private static isCssLoaded = false;
 
-	public static initLang(
+	public static initLang_forCp(
 		lang: { 'zh-CN': any, 'en': any },
 		loadCss: boolean = true,                    // 是否同时加载CSS？
 	) {
@@ -25,13 +25,13 @@ export class xX_MVideo_Helper {
 		});
 
 		if (loadCss) {
-			this.loadCss();
+			this.loadCss_forCp();
 		}
 
 		return VideoJs;
 	}
 
-	public static loadCss() {
+	public static loadCss_forCp() {
 		if (!this.isCssLoaded) {            // 还未加载CSS
 			this.isCssLoaded = true;          // 记录【已加载CSS】
 			// TIP 初始化【CSS样式】

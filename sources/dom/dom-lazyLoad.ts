@@ -36,7 +36,7 @@ namespace EchoNS {
 	/**
 	 *
 	 */
-	export class Echo {
+	export class EchoLazy {
 		callback: EchoOption['callback']  = function() {
 		};
 		offsetCfg!: CustomViewPortOffset;
@@ -95,7 +95,7 @@ namespace EchoNS {
 
 		public render(context?: Document) {
 			// 查找，所有的相关节点。
-			const nodes: Array<HTMLImageElement> = (context || document).querySelectorAll(Echo._selector.join(' , ')) as any as Array<HTMLImageElement>;
+			const nodes: Array<HTMLImageElement> = (context || document).querySelectorAll(EchoLazy._selector.join(' , ')) as any as Array<HTMLImageElement>;
 
 			const length = nodes.length;
 			let lazySrc: NullableType<string>;
@@ -114,7 +114,7 @@ namespace EchoNS {
 				elem = nodes[i];
 
 
-				if (Echo.__inView(elem, view)) {																																			// 在【加载范围】内 WARN 加载图片
+				if (EchoLazy.__inView(elem, view)) {																																			// 在【加载范围】内 WARN 加载图片
 
 					/**
 					 * 1.需要卸载。
@@ -243,7 +243,7 @@ namespace EchoNS {
 		 * 判断【元素】是否在【视图】之内。
 		 */
 		private static __inView(element: HTMLElement, view: CustomViewPortOffset) {
-			if (Echo.__isDisplayNone(element)) {
+			if (EchoLazy.__isDisplayNone(element)) {
 				return false;
 			}
 
@@ -303,6 +303,6 @@ namespace EchoNS {
 // TIP——————————————————————————————————————————————————————————————————————————
 
 export class xX_DomLazyLoad_Helper {
-	public static Echo_ImgLazyLoader = EchoNS.Echo;
+	public static Echo_ImgLazyLoader = EchoNS.EchoLazy;
 }
 

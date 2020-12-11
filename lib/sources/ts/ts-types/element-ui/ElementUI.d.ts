@@ -26,7 +26,7 @@ declare global {
 		| 'options' | 'options_arr'
 		| 'date_time' | 'date_time_range' | 'date_time_range_btn' | 'time' | 'time_range' | 'single_date'
 		| 'custom' | 'textarea'
-		| 'upload_img' | 'lang_input' | 'lang_inputTextarea' | 'lang_ueditor' | 'cascader'
+		| 'upload_img' | 'lang_input' | 'lang_inputTextarea' | 'lang_ueditor' | 'lang_single_tinymce' | 'cascader'
 		| 'number_range' | 'password'; //
 	// 用于回显表格
 	type MyTableCol_Category = 'text' | 'selection' | 'enumTag' | 'i18nDisplay' | 'image' | 'custom'; //

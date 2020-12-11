@@ -1,32 +1,32 @@
-import {ElUploadInternalFileDetail} from 'element-ui/types/upload';
+import { ElUploadInternalFileDetail } from 'element-ui/types/upload';
 
 
 namespace Old {
 
-  /**
-   * 下拉选项的配置类
-   */
-  export class xX_MyFormItem_SelectOptionConf<T extends any> {
-    public enumOptions: T;
-    public mustParseInt_toFitBackend: boolean = false;   // TODO 是否必须转化为Int（原因是，后台有时用Int做枚举，有时用String做枚举；  回显时需要注意；）
+	/**
+	 * 下拉选项的配置类
+	 */
+	export class xX_MyFormItem_SelectOptionConf<T extends any> {
+		public enumOptions: T;
+		public mustParseInt_toFitBackend: boolean = false;   // TODO 是否必须转化为Int（原因是，后台有时用Int做枚举，有时用String做枚举；  回显时需要注意；）
 
-    constructor(enumOptions: T) {
-      this.enumOptions = enumOptions;
-    }//
-    public setParseInt(____mustParseInt_toFitBackend: boolean): xX_MyFormItem_SelectOptionConf<T> {
-      this.mustParseInt_toFitBackend = ____mustParseInt_toFitBackend;
-      return this;
-    }
-  }
+		constructor(enumOptions: T) {
+			this.enumOptions = enumOptions;
+		}//
+		public setParseInt(____mustParseInt_toFitBackend: boolean): xX_MyFormItem_SelectOptionConf<T> {
+			this.mustParseInt_toFitBackend = ____mustParseInt_toFitBackend;
+			return this;
+		}
+	}
 
-  /**
-   * 适用于Dialog的表单子类。
-   */
-  export interface xX_MyDialogFormItem_Conf extends Object {
-    disableItem?: boolean;
-    notRenderItem?: boolean; //
-    [key: string]: any;
-  } //
+	/**
+	 * 适用于Dialog的表单子类。
+	 */
+	export interface xX_MyDialogFormItem_Conf extends Object {
+		disableItem?: boolean;
+		notRenderItem?: boolean; //
+		[key: string]: any;
+	} //
 }
 
 //
@@ -79,36 +79,36 @@ namespace Old {
  */
 // 无论如何，都必传的字段
 interface Require {
-  // 所占用字段（和prop等值。一般用于  取值、唯一key、slot插槽 等）
-  name: string;
-  // 当前列标题
-  label: string;
+	// 所占用字段（和prop等值。一般用于  取值、唯一key、slot插槽 等）
+	name: string;
+	// 当前列标题
+	label: string;
 }
 
 // 可以选填的字段
 interface Optional {
-  // 输入提示
-  placeholder?: string;
-  // 是否渲染显示
-  render?: boolean;
-  // 是否禁用
-  disabled?: boolean;
+	// 输入提示
+	placeholder?: string;
+	// 是否渲染显示
+	render?: boolean;
+	// 是否禁用
+	disabled?: boolean;
 
-  // Label宽度
-  labelWidth?: string;
+	// Label宽度
+	labelWidth?: string;
 
-  // ——————————以前Table的
-  // 国际化字段所用的键。（例子：table.username）
-  i18nKey?: string;
+	// ——————————以前Table的
+	// 国际化字段所用的键。（例子：table.username）
+	i18nKey?: string;
 }
 
 type TranslateKey = 'translate' | 'translate_2' | 'translate_3' | 'translate_4' | 'translate_5';
 
 interface HasPrependAppend {
-  // 输入框的前置内容
-  prepend?: string;
-  // 输入框的后置内容
-  append?: string;
+	// 输入框的前置内容
+	prepend?: string;
+	// 输入框的后置内容
+	append?: string;
 }
 
 // 此处，将常见的几种拆分字段，列举出供选
@@ -116,323 +116,334 @@ type Date_or_Time_Range_Types = 'dateRange' | 'paymentDateRange' | 'auditDateRan
 
 // tslint:disable-next-line:no-namespace
 export namespace xX_Father_ElFItem {
-  export abstract class Base {
-    public readonly myCategory!: MyFormItem_Category;
+	export abstract class Base {
+		public readonly myCategory!: MyFormItem_Category;
 
-    public label!: string;          // 显示的表头
-    public prop_AND_bindValue!: string;           // 从listData中取变量的变量名
-    public name!: string;           // 和prop保持一致？？？
-    public config: Old.xX_MyDialogFormItem_Conf = {
-      notRenderItem: false,           // 会渲染
-      disableItem  : false,             // 不禁止
-    };
-    public placeholder?: string;    // 输入提示
-    // Label宽度
-    labelWidth?: string;
+		public label!: string;          // 显示的表头
+		public prop_AND_bindValue!: string;           // 从listData中取变量的变量名
+		public name!: string;           // 和prop保持一致？？？
+		public config: Old.xX_MyDialogFormItem_Conf = {
+			notRenderItem: false,           // 会渲染
+			disableItem  : false,             // 不禁止
+		};
+		public placeholder?: string;    // 输入提示
+		// Label宽度
+		labelWidth?: string;
 
-    protected constructor(require: Require, optional?: Optional) {                      // 处理通用逻辑
-      if (require) {
-        const {name, label}     = require;
-        this.prop_AND_bindValue = name;
-        this.name               = name;
-        this.label              = label;
-      }
-      if (optional) {
-        const {placeholder, render, disabled, labelWidth} = optional;
-        this.placeholder                                  = placeholder != undefined ? placeholder : this.placeholder;
-        this.config                                       = {
-          notRenderItem: render != undefined ? (!render) : this.config.notRenderItem,
-          disableItem  : disabled != undefined ? disabled : this.config.disableItem,
-        };
-        if (labelWidth) {
-          console.warn('目前，仅仅【number_range】实现了  单个条目的labelWidth');
-          this.labelWidth = labelWidth;   // 不设置默认值
-        }
-      }
-    }
-
-
-    protected add_prepend_and_append(item: HasPrependAppend, optional?: Optional & {
-      // 输入框的前置内容
-      prepend?: string;
-      // 输入框的后置内容
-      append?: string;
-    }) {
-      if (optional != undefined) {
-        const {prepend, append} = optional;
-        item.prepend            = prepend != undefined ? prepend : item.prepend;
-        item.append             = append != undefined ? append : item.append;
-      }
-    }
-
-  }
-
-  export class Text extends Base implements HasPrependAppend {
-    public readonly myCategory = 'text';  // 该属性，不能使用static。否则Vue将不会取到。
-    public prepend ?: string;
-    public append ?: string;
-
-    constructor(require: Require, optional?: Optional & HasPrependAppend) {
-      super(require, optional);
-      if (optional != undefined) {
-        this.add_prepend_and_append(this, optional);      // 处理 prepend、append。
-      }
-    }
-  }
-
-  export class TextArea extends Base {
-    public readonly myCategory = 'textarea';  // 该属性，不能使用static。否则Vue将不会取到。
-
-    constructor(require: Require, optional?: Optional) {
-      super(require, optional);
-    }
-  }
-
-  // 抽象基类
-  abstract class Base__Translate extends Base {
-    protected constructor(require: Require, optional?: Optional) {
-      super(require, optional);
-      console.log('——————————————————————注意——————————————————————————');
-      console.log('1.使用【国际化的FormItem】时，注意一定要在    【ruleForm】里面，放入【translate】变量！！！否则无法激活  【双向绑定】');
-      console.log('2.如果需要【回显】，在  updateCallback 方法里，需要加入  【fetch】模式的combine_MultiLangPlus方法逻辑');
-      console.log('3.如果需要【新增】，在  createCallback 方法里，需要加入  【upload】模式的combine_MultiLangPlus方法逻辑');
-      console.log('4.如果需要【编辑】，在  createCallback 方法里，需要加入  【upload】模式的combine_MultiLangPlus方法逻辑');
-    }
-  }
-
-  // TIP 【纯文本】多语言输入：单行
-  export class I18N_PureText_SingleLineInput extends Base__Translate {
-    public readonly myCategory = 'lang_input';  // 该属性，不能使用static。否则Vue将不会取到。
-
-    constructor(require: Require & {
-      name: TranslateKey,
-    }, optional?: Optional) {
-      super(require, optional);
-    }
-  }
-
-  /**
-   * TIP 【纯文本】多语言输入：多行
-   *        1.参照【WelfareHammer_Order_CreateDialog】。
-   */
-  export class I18N_PureText_TextArea extends Base__Translate {
-    public readonly myCategory = 'lang_inputTextarea';  // 该属性，不能使用static。否则Vue将不会取到。
-
-    constructor(require: Require & {
-      name: TranslateKey,
-    }, optional?: Optional) {
-      super(require, optional);
-    }
-  }
-
-  // TIP 【富文本】多语言输入：UEditor
-  export class I18N_RichText_UEditor extends Base__Translate {
-    public readonly myCategory = 'lang_ueditor';  // 该属性，不能使用static。否则Vue将不会取到。
-
-    constructor(require: Require & {
-      name: TranslateKey,
-    }, optional?: Optional) {
-      super(require, optional);
-    }
-  }
+		protected constructor(require: Require, optional?: Optional) {                      // 处理通用逻辑
+			if (require) {
+				const { name, label }   = require;
+				this.prop_AND_bindValue = name;
+				this.name               = name;
+				this.label              = label;
+			}
+			if (optional) {
+				const { placeholder, render, disabled, labelWidth } = optional;
+				this.placeholder                                    = placeholder != undefined ? placeholder : this.placeholder;
+				this.config                                         = {
+					notRenderItem: render != undefined ? (!render) : this.config.notRenderItem,
+					disableItem  : disabled != undefined ? disabled : this.config.disableItem,
+				};
+				if (labelWidth) {
+					console.warn('目前，仅仅【number_range】实现了  单个条目的labelWidth');
+					this.labelWidth = labelWidth;   // 不设置默认值
+				}
+			}
+		}
 
 
-  export class Password extends Base {
-    public readonly myCategory = 'password';  // 该属性，不能使用static。否则Vue将不会取到。
+		protected add_prepend_and_append(item: HasPrependAppend, optional?: Optional & {
+			// 输入框的前置内容
+			prepend?: string;
+			// 输入框的后置内容
+			append?: string;
+		}) {
+			if (optional != undefined) {
+				const { prepend, append } = optional;
+				item.prepend              = prepend != undefined ? prepend : item.prepend;
+				item.append               = append != undefined ? append : item.append;
+			}
+		}
 
-    constructor(require: Require, optional?: Optional) {
-      super(require, optional);
-    }
-  }
+	}
 
-  export class Number extends Base implements HasPrependAppend {
-    public readonly myCategory = 'number';  // 该属性，不能使用static。否则Vue将不会取到。
-    public prepend ?: string;
-    public append ?: string;
+	export class Text extends Base implements HasPrependAppend {
+		public readonly myCategory = 'text';  // 该属性，不能使用static。否则Vue将不会取到。
+		public prepend ?: string;
+		public append ?: string;
 
-    constructor(require: Require, optional?: Optional & HasPrependAppend) {
-      super(require, optional);
-      if (optional != undefined) {
-        console.log('开始添加append');
-        this.add_prepend_and_append(this, optional);      // 处理 prepend、append。
-      }
-    }
-  }
+		constructor(require: Require, optional?: Optional & HasPrependAppend) {
+			super(require, optional);
+			if (optional != undefined) {
+				this.add_prepend_and_append(this, optional);      // 处理 prepend、append。
+			}
+		}
+	}
 
-  export class NumberRange extends Base {
-    public readonly myCategory = 'number_range';
+	export class TextArea extends Base {
+		public readonly myCategory = 'textarea';  // 该属性，不能使用static。否则Vue将不会取到。
 
-    // 复杂版本
-    // public left!: { require: Require, optional?: Optional };
-    // public right!: { require: Require, optional?: Optional };
+		constructor(require: Require, optional?: Optional) {
+			super(require, optional);
+		}
+	}
 
-    // 简单版本
-    public leftProp!: string;
-    public rightProp!: string;
+	// 抽象基类
+	abstract class Base__Translate extends Base {
+		protected constructor(require: Require, optional?: Optional) {
+			super(require, optional);
+			console.log('——————————————————————注意——————————————————————————');
+			console.log('1.使用【国际化的FormItem】时，注意一定要在    【ruleForm】里面，放入【translate】变量！！！否则无法激活  【双向绑定】');
+			console.log('2.如果需要【回显】，在  updateCallback 方法里，需要加入  【fetch】模式的combine_MultiLangPlus方法逻辑');
+			console.log('3.如果需要【新增】，在  createCallback 方法里，需要加入  【upload】模式的combine_MultiLangPlus方法逻辑');
+			console.log('4.如果需要【编辑】，在  createCallback 方法里，需要加入  【upload】模式的combine_MultiLangPlus方法逻辑');
+		}
+	}
 
-    public inputType!: 'number';
+	// TIP 【纯文本】多语言输入：单行
+	export class I18N_PureText_SingleLineInput extends Base__Translate {
+		public readonly myCategory = 'lang_input';  // 该属性，不能使用static。否则Vue将不会取到。
 
-    constructor(
-      require: Require & {
-        // 开始值保存的变量
-        // left: { require: Require, optional?: Optional },
-        // 结束值保存的变量
-        // right: { require: Require, optional?: Optional },
+		constructor(require: Require & {
+			name: TranslateKey,
+		}, optional?: Optional) {
+			super(require, optional);
+		}
+	}
 
-        // 开始值保存的变量
-        leftProp: string,
-        // 结束值保存的变量
-        rightProp: string,
-      },
-      optional?: Optional & {
-        inputType?: 'number';
-      }) {
-      super(require, optional);
-      this.leftProp  = require.leftProp;
-      this.rightProp = require.rightProp;
-      if (optional != undefined) {
-        if (optional.inputType != undefined) {
-          this.inputType = optional.inputType;
-        }
-      }
-    }
-  }
+	/**
+	 * TIP 【纯文本】多语言输入：多行
+	 *        1.参照【WelfareHammer_Order_CreateDialog】。
+	 */
+	export class I18N_PureText_TextArea extends Base__Translate {
+		public readonly myCategory = 'lang_inputTextarea';  // 该属性，不能使用static。否则Vue将不会取到。
 
-  export class UploadImg extends Base {
-    public readonly myCategory = 'upload_img';  // 该属性，不能使用static。否则Vue将不会取到。
-    public uploadSingleImageSuccess_ExtraCb?: (res: any, file: ElUploadInternalFileDetail) => void;
-    public maxSize: number     = 5242880;           // 初始值（5MB）
+		constructor(require: Require & {
+			name: TranslateKey,
+		}, optional?: Optional) {
+			super(require, optional);
+		}
+	}
 
-    constructor(require: Require,
-                optional?: Optional & {
-                  // 额外的回调。（基本逻辑，已经内聚封装完毕；此处是额外的回调封装）
-                  uploadSingleImageSuccess_ExtraCb?: (res: any, file: ElUploadInternalFileDetail) => void,
-                  maxSize?: number,
-                }) {
-      super(require, optional);
-      if (optional) {
-        const {uploadSingleImageSuccess_ExtraCb, maxSize} = optional;
-        if (uploadSingleImageSuccess_ExtraCb != undefined) {
-          this.uploadSingleImageSuccess_ExtraCb = uploadSingleImageSuccess_ExtraCb;
-        }
-        if (maxSize != undefined) {
-          this.maxSize = maxSize;
-        }
-      }
-    }
-  }
+	// TIP 【富文本】单一语言输入：tinymce
+	export class Single_RichText_Tinymce extends Base__Translate {
+		public readonly myCategory = 'lang_single_tinymce';  // 该属性，不能使用static。否则Vue将不会取到。
 
-  export class Options<T extends any> extends Base {
-    public readonly myCategory = 'options';
-    public selectOptionConf!: Old.xX_MyFormItem_SelectOptionConf<T>;
+		constructor(require: Require & {
+			name: TranslateKey,
+		}, optional?: Optional) {
+			super(require, optional);
+		}
+	}
 
-    constructor(require: Require & {
-                  // 下拉框的候选项，一般写在common.ts里面
-                  selectOptionConf: {
-                    // 候选项
-                    option: T;
-                    // 是否进行parseInt转换
-                    needParseInt: boolean;
-                  },
-                },
-                optional?: Optional) {
-      super(require, optional);
-      if (require) {
-        const {selectOptionConf} = require;
-        this.selectOptionConf    = new Old.xX_MyFormItem_SelectOptionConf(selectOptionConf.option).setParseInt(selectOptionConf.needParseInt);
-      }
-    }
-  }
+	// TIP 【富文本】多语言输入：UEditor
+	export class I18N_RichText_UEditor extends Base__Translate {
+		public readonly myCategory = 'lang_ueditor';  // 该属性，不能使用static。否则Vue将不会取到。
 
-  export class SingleTime extends Base {
-    public readonly myCategory = 'time';
-    public format: string      = 'HH:mm:ss';         // 默认值
+		constructor(require: Require & {
+			name: TranslateKey,
+		}, optional?: Optional) {
+			super(require, optional);
+		}
+	}
 
-    constructor(require: Require, optional?: Optional & {
-      // 时间格式
-      format?: 'HH:mm:ss' | 'HH:mm',
-    }) {
-      super(require, optional);
-      if (optional != undefined) {
-        const {format} = optional;
-        if (format != undefined) {
-          this.format = format;
-        }
-      }
-    }
-  }
 
-  export class SingleDate extends Base {
-    public readonly myCategory = 'single_date';
-    public format: string      = 'yyyy-MM-dd';         // 默认值
+	export class Password extends Base {
+		public readonly myCategory = 'password';  // 该属性，不能使用static。否则Vue将不会取到。
 
-    constructor(require: Require, optional?: Optional & {
-      // 时间格式
-      format?: 'yyyy-MM-dd' | 'yyyy-MM-dd HH:mm:ss',
-    }) {
-      super(require, optional);
-      if (optional != undefined) {
-        const {format} = optional;
-        if (format != undefined) {
-          this.format = format;
-        }
-      }
-    }
-  }
+		constructor(require: Require, optional?: Optional) {
+			super(require, optional);
+		}
+	}
 
-  export class TimeRange extends Base {
-    public readonly myCategory = 'time_range';
-    public format: string      = 'HH:mm:ss';         // 默认值
+	export class Number extends Base implements HasPrependAppend {
+		public readonly myCategory = 'number';  // 该属性，不能使用static。否则Vue将不会取到。
+		public prepend ?: string;
+		public append ?: string;
 
-    constructor(require: Require, optional?: Optional & {
-      // 时间格式
-      format?: 'HH:mm:ss' | 'HH:mm',
-    }) {
-      super(require, optional);
-      if (optional != undefined) {
-        const {format} = optional;
-        if (format != undefined) {
-          this.format = format;
-        }
-      }
-    }
-  }
+		constructor(require: Require, optional?: Optional & HasPrependAppend) {
+			super(require, optional);
+			if (optional != undefined) {
+				console.log('开始添加append');
+				this.add_prepend_and_append(this, optional);      // 处理 prepend、append。
+			}
+		}
+	}
 
-  export class DateRange extends Base {
-    public readonly myCategory = 'date_time';   // FIXME 此处，应该是【 date_range 】最为贴切；date_time这个带误导性的名称 是为了兼容以前的书写错误
-    public format: string      = 'yyyy-MM-dd';         // 默认值
+	export class NumberRange extends Base {
+		public readonly myCategory = 'number_range';
 
-    constructor(require: Require & {
-      // 此处，将常见的几种拆分字段，列举出供选
-      name: Date_or_Time_Range_Types,
-    }, optional?: Optional & {
-      // 时间格式
-      format?: 'yyyy-MM-dd',
-    }) {
-      super(require, optional);
-      if (optional != undefined) {
-        const {format} = optional;
-        if (format != undefined) {
-          this.format = format;
-        }
-      }
-    }
-  }
+		// 复杂版本
+		// public left!: { require: Require, optional?: Optional };
+		// public right!: { require: Require, optional?: Optional };
 
-  export class DateTimeRange extends Base {
-    public readonly myCategory = 'date_time_range';
+		// 简单版本
+		public leftProp!: string;
+		public rightProp!: string;
 
-    constructor(require: Require, optional?: Optional) {
-      super(require, optional);
-    }
-  }
+		public inputType!: 'number';
 
-  export class DateTimeRangeBtn extends Base {
-    public readonly myCategory = 'date_time_range_btn';
+		constructor(
+			require: Require & {
+				// 开始值保存的变量
+				// left: { require: Require, optional?: Optional },
+				// 结束值保存的变量
+				// right: { require: Require, optional?: Optional },
 
-    constructor(require: Require, optional?: Optional) {
-      super(require, optional);
-    }
-  }
+				// 开始值保存的变量
+				leftProp: string,
+				// 结束值保存的变量
+				rightProp: string,
+			},
+			optional?: Optional & {
+				inputType?: 'number';
+			}) {
+			super(require, optional);
+			this.leftProp  = require.leftProp;
+			this.rightProp = require.rightProp;
+			if (optional != undefined) {
+				if (optional.inputType != undefined) {
+					this.inputType = optional.inputType;
+				}
+			}
+		}
+	}
+
+	export class UploadImg extends Base {
+		public readonly myCategory = 'upload_img';  // 该属性，不能使用static。否则Vue将不会取到。
+		public uploadSingleImageSuccess_ExtraCb?: (res: any, file: ElUploadInternalFileDetail) => void;
+		public maxSize: number     = 5242880;           // 初始值（5MB）
+
+		constructor(require: Require,
+								optional?: Optional & {
+									// 额外的回调。（基本逻辑，已经内聚封装完毕；此处是额外的回调封装）
+									uploadSingleImageSuccess_ExtraCb?: (res: any, file: ElUploadInternalFileDetail) => void,
+									maxSize?: number,
+								}) {
+			super(require, optional);
+			if (optional) {
+				const { uploadSingleImageSuccess_ExtraCb, maxSize } = optional;
+				if (uploadSingleImageSuccess_ExtraCb != undefined) {
+					this.uploadSingleImageSuccess_ExtraCb = uploadSingleImageSuccess_ExtraCb;
+				}
+				if (maxSize != undefined) {
+					this.maxSize = maxSize;
+				}
+			}
+		}
+	}
+
+	export class Options<T extends any> extends Base {
+		public readonly myCategory = 'options';
+		public selectOptionConf!: Old.xX_MyFormItem_SelectOptionConf<T>;
+
+		constructor(require: Require & {
+									// 下拉框的候选项，一般写在common.ts里面
+									selectOptionConf: {
+										// 候选项
+										option: T;
+										// 是否进行parseInt转换
+										needParseInt: boolean;
+									},
+								},
+								optional?: Optional) {
+			super(require, optional);
+			if (require) {
+				const { selectOptionConf } = require;
+				this.selectOptionConf      = new Old.xX_MyFormItem_SelectOptionConf(selectOptionConf.option).setParseInt(selectOptionConf.needParseInt);
+			}
+		}
+	}
+
+	export class SingleTime extends Base {
+		public readonly myCategory = 'time';
+		public format: string      = 'HH:mm:ss';         // 默认值
+
+		constructor(require: Require, optional?: Optional & {
+			// 时间格式
+			format?: 'HH:mm:ss' | 'HH:mm',
+		}) {
+			super(require, optional);
+			if (optional != undefined) {
+				const { format } = optional;
+				if (format != undefined) {
+					this.format = format;
+				}
+			}
+		}
+	}
+
+	export class SingleDate extends Base {
+		public readonly myCategory = 'single_date';
+		public format: string      = 'yyyy-MM-dd';         // 默认值
+
+		constructor(require: Require, optional?: Optional & {
+			// 时间格式
+			format?: 'yyyy-MM-dd' | 'yyyy-MM-dd HH:mm:ss',
+		}) {
+			super(require, optional);
+			if (optional != undefined) {
+				const { format } = optional;
+				if (format != undefined) {
+					this.format = format;
+				}
+			}
+		}
+	}
+
+	export class TimeRange extends Base {
+		public readonly myCategory = 'time_range';
+		public format: string      = 'HH:mm:ss';         // 默认值
+
+		constructor(require: Require, optional?: Optional & {
+			// 时间格式
+			format?: 'HH:mm:ss' | 'HH:mm',
+		}) {
+			super(require, optional);
+			if (optional != undefined) {
+				const { format } = optional;
+				if (format != undefined) {
+					this.format = format;
+				}
+			}
+		}
+	}
+
+	export class DateRange extends Base {
+		public readonly myCategory = 'date_time';   // FIXME 此处，应该是【 date_range 】最为贴切；date_time这个带误导性的名称 是为了兼容以前的书写错误
+		public format: string      = 'yyyy-MM-dd';         // 默认值
+
+		constructor(require: Require & {
+			// 此处，将常见的几种拆分字段，列举出供选
+			name: Date_or_Time_Range_Types,
+		}, optional?: Optional & {
+			// 时间格式
+			format?: 'yyyy-MM-dd',
+		}) {
+			super(require, optional);
+			if (optional != undefined) {
+				const { format } = optional;
+				if (format != undefined) {
+					this.format = format;
+				}
+			}
+		}
+	}
+
+	export class DateTimeRange extends Base {
+		public readonly myCategory = 'date_time_range';
+
+		constructor(require: Require, optional?: Optional) {
+			super(require, optional);
+		}
+	}
+
+	export class DateTimeRangeBtn extends Base {
+		public readonly myCategory = 'date_time_range_btn';
+
+		constructor(require: Require, optional?: Optional) {
+			super(require, optional);
+		}
+	}
 
 }
