@@ -229,9 +229,7 @@ export namespace xX_Father_ElFItem {
 	export class Single_RichText_Tinymce extends Base__Translate {
 		public readonly myCategory = 'lang_single_tinymce';  // 该属性，不能使用static。否则Vue将不会取到。
 
-		constructor(require: Require & {
-			name: TranslateKey,
-		}, optional?: Optional) {
+		constructor(require: Require, optional?: Optional) {
 			super(require, optional);
 		}
 	}
