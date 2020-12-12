@@ -3,7 +3,7 @@ interface MyMceOptions {
 	height: number;     // 高度
 	body_class: string; // class样式
 	object_resizing: boolean;   // TODO ???
-	language:string;
+	language: string;
 	toolbar: string[];          // 用来配置，工具栏按钮的显示。（一个字符串里，包含多个按钮；多个字符串，对应多行的多个按钮）
 	fontsize_formats: string;   // 字符串，包含提供给用户选择的多种字体大小
 	menubar: string;    // 下拉编辑菜单项
@@ -30,15 +30,19 @@ interface Window {
 		// TODO 因此，使用【js】+【.d.ts】的方式，而不采用  npm 的方式。
 		get: (id: string) => MyMceEditor;
 		init: (option: MyMceOptions) => any;
+
+
+		remove(): void;								// 删除所有
+		remove(selectorId): void;			// 删除单个
 	};
 }
 
 interface MyMceEditor {
-	destroy (): void;   // 销毁
-	setContent (value: string): void;   // 设置编辑器内容
-	getContent (): string;              // 获取编辑器内容
-	insertContent (str: string): void;    // 在编辑器已有内容基础上，新添加内容
-	on (name: string, callback: Function): void;    // 注册一些事件回调之类的
+	destroy(): void;   // 销毁
+	setContent(value: string): void;   // 设置编辑器内容
+	getContent(): string;              // 获取编辑器内容
+	insertContent(str: string): void;    // 在编辑器已有内容基础上，新添加内容
+	on(name: string, callback: (e: Event) => void): void;    // 注册一些事件回调之类的
 }
 
 // }

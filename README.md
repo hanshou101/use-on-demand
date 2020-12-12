@@ -34,14 +34,16 @@
 
 1.报错【Error: ENOTEMPTY: directory not empty, rmdir 】
 
-        1.需要升级到【 Node.js 12.10.0】，或以上。
+         1.需要升级到【 Node.js 12.10.0】，或以上。
 
 
 2.报错【Cannot find module 'duplicate-package-checker-webpack-plugin'】
         
-        1.需要检查，【npm link】和【npm link use-on-demand】设置是否正确。
+         1.需要检查，【npm link】和【npm link use-on-demand】设置是否正确。
 
-3.
+3.在【/example】里面的测试组件，都不应该使用【@lib-cp】的external方式。
+
+         1.原因是，这样更方便于开发；减少更新时间。
 
 # 2.1 本地开发调试方式
 

@@ -291,7 +291,7 @@
       >
         <tinymce class="textarea_auto_size"
                  v-model="ruleForm[item.prop_AND_bindValue]"
-                 :cols="80" :rows="16"
+                 :cols="80" :rows="16" :preupload-api_-promise="preuploadApi_Promise"
         ></tinymce>
       </el-form-item>
 

@@ -19,7 +19,14 @@
             data-change="handleChange">
         </el-cascader>
       </el-form-item>
-      <MyFormEasy :form-items="formItems" :ruleForm="MixinsData_2.ruleForm"></MyFormEasy>
+      <MyFormEasy :form-items="formItems" :ruleForm="MixinsData_2.ruleForm"
+                  :preupload-api_-promise="testPromise"></MyFormEasy>
+
+      <!--
+      <tinymce v-model="MixinsData_2.ruleForm.content345" ref="input_color_content"
+               cols=80 rows=16 class="textarea_auto_size"></tinymce>
+      -->
+
       <!--{{ MixinsData_2.ruleForm}}-->
 
       <!--
@@ -122,6 +129,16 @@
     // TIP————————————————————————————————————Data，在类中的实现（@Model相关的除外）——————————————————————
     categories   = []; // 文章分类
     articleAlias = {}; // 文章别名
+
+    testPromise = Promise.resolve(() => {
+      console.log('结果1');
+      return Promise.resolve(() => {
+        console.log('结果2');
+        return {
+          test: '测试内容Promise',
+        };
+      });
+    });
 
     // 表单检验规则配置
     get rules(): xX_MyEl_FormItem_Rule_Config {
