@@ -63,7 +63,7 @@
 		data() {
 			return {
 				id          : 'video_' + Math.random().toString(32).substr(2),
-				player      : null as any as VideoJsPlayer,
+				player      : null as unknown as VideoJsPlayer,
 				playerInited: false,
 				currentVideo: this.video,
 			};

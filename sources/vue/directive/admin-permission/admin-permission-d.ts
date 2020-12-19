@@ -41,13 +41,13 @@ export function xX_getAdminPermissionD(
 			binding: AdminPermissionD_Binding,
 		) {
 			checkPermission(el, binding, roles);
-		} as any as DirectiveFunction_Type,
+		} as unknown as DirectiveFunction_Type,
 		update  : function(
 			el: AdminPermissionD_El,
 			binding: AdminPermissionD_Binding,
 		) {
 			checkPermission(el, binding, roles);
-		} as any as DirectiveFunction_Type,
+		} as unknown as DirectiveFunction_Type,
 	};
 	return adminPermissionD;
 }

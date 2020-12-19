@@ -664,7 +664,7 @@ const __MyTrackballControls = function (this: MyTrackballControlsInterface,
   // force an update at start
   this.update();
 
-} as any as new(object: THREE.PerspectiveCamera, domElement?: HTMLElement) => MyTrackballControlsInterface;
+} as unknown as new(object: THREE.PerspectiveCamera, domElement?: HTMLElement) => MyTrackballControlsInterface;
 
 // TODO 以下这两句，虽然不起眼，但是一定要加上！！！
 // TODO 以下这两句，虽然不起眼，但是一定要加上！！！

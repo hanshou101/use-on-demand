@@ -23,7 +23,7 @@ export function xX_getClickWaveD() {
 		//
 		bind  : function(el: ClickWaveD_El, binding: ClickWaveD_Binding) {
 			el.addEventListener('click', handleClick(el, binding), false);
-		} as any as DirectiveFunction_Type,
+		} as unknown as DirectiveFunction_Type,
 		//
 		update: function(el: ClickWaveD_El, binding: ClickWaveD_Binding) {
 			// 为空判断
@@ -34,7 +34,7 @@ export function xX_getClickWaveD() {
 			//
 			el.removeEventListener('click', ctxEvts.removeHandle, false);
 			el.addEventListener('click', handleClick(el, binding), false);
-		} as any as DirectiveFunction_Type,
+		} as unknown as DirectiveFunction_Type,
 		//
 		unbind: function(el: ClickWaveD_El, binding: ClickWaveD_Binding) {
 			// 为空判断
@@ -47,7 +47,7 @@ export function xX_getClickWaveD() {
 			el[context] = null;
 			// @ts-ignore
 			delete el[context];
-		} as any as DirectiveFunction_Type,
+		} as unknown as DirectiveFunction_Type,
 	};
 
 	return ClickWaveD;

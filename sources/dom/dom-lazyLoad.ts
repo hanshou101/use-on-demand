@@ -95,7 +95,7 @@ namespace EchoNS {
 
 		public render(context?: Document) {
 			// 查找，所有的相关节点。
-			const nodes: Array<HTMLImageElement> = (context || document).querySelectorAll(EchoLazy._selector.join(' , ')) as any as Array<HTMLImageElement>;
+			const nodes: Array<HTMLImageElement> = (context || document).querySelectorAll(EchoLazy._selector.join(' , ')) as unknown as Array<HTMLImageElement>;
 
 			const length = nodes.length;
 			let lazySrc: NullableType<string>;

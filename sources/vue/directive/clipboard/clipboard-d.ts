@@ -48,7 +48,7 @@ export const xX_ClipboardD: VueDirective_Type = {
 			});
 			el._v_clipboard = clipboard;
 		}
-	} as any as DirectiveFunction_Type,
+	} as unknown as DirectiveFunction_Type,
 	//
 	update: function(el: ClipboardD_El, binding: ClipboardD_Binding) {
 		if (binding.arg === 'success') {
@@ -63,7 +63,7 @@ export const xX_ClipboardD: VueDirective_Type = {
 				return binding.arg === 'cut' ? 'cut' : 'copy';
 			};
 		}
-	} as any as DirectiveFunction_Type,
+	} as unknown as DirectiveFunction_Type,
 	//
 	unbind: function(el: ClipboardD_El, binding: ClipboardD_Binding) {
 		if (binding.arg === 'success') {
@@ -77,5 +77,5 @@ export const xX_ClipboardD: VueDirective_Type = {
 			// @ts-ignore
 			delete el._v_clipboard;
 		}
-	} as any as DirectiveFunction_Type,
+	} as unknown as DirectiveFunction_Type,
 };
