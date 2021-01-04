@@ -1,4 +1,4 @@
-import e from "express";
+import { Router, Request, Response, NextFunction } from 'express';
 
 declare global {
 	interface MyExpress_Error extends Error {
@@ -11,6 +11,6 @@ declare global {
 	}
 
 	// 所有路由handler，都采用此快捷类型
-	type My_RouterHandler = (req: e.Request, res: e.Response, next: e.NextFunction) => void;
+	type My_RouterHandler = (req: Request, res: Response, next: NextFunction) => void;
 }
 

@@ -1,3 +1,6 @@
+/**
+ * 辅助工具
+ */
 export declare class xX_ProxyServer_Helper {
     /**
      * 开始代理

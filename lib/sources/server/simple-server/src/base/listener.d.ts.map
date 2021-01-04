@@ -1,0 +1,1 @@
+{"version":3,"file":"listener.d.ts","sourceRoot":"","sources":["../../../../../../sources/server/simple-server/src/base/listener.ts"],"names":[],"mappings":";AAAA,OAAO,IAAI,MAAO,MAAM,CAAC;AACzB,OAAO,KAAK,MAAM,OAAO,CAAC;AAI1B,qBAAa,eAAe;IAE1B;;OAEG;WACW,WAAW,CAAC,IAAI,EAAG,MAAM,GAAC,MAAM,WAElC,aAAa;IA0BzB;;OAEG;WACW,eAAe,CAAC,MAAM,EAAG,IAAI,CAAC,MAAM,GAAC,KAAK,CAAC,MAAM;CAYhE"}

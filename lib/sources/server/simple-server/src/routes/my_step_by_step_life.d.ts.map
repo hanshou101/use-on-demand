@@ -1,1 +1,1 @@
-{"version":3,"file":"my_step_by_step_life.d.ts","sourceRoot":"","sources":["../../../../../../sources/server/simple-server/src/routes/my_step_by_step_life.ts"],"names":[],"mappings":"AAEA,QAAA,MAAM,MAAM,4CAAa,CAAC;AAQ1B,OAAO,EACL,MAAM,IAAI,uBAAuB,GAClC,CAAC"}
+{"version":3,"file":"my_step_by_step_life.d.ts","sourceRoot":"","sources":["../../../../../../sources/server/simple-server/src/routes/my_step_by_step_life.ts"],"names":[],"mappings":"AAEA,QAAA,MAAM,kBAAkB,4CAAW,CAAC;AAKpC,OAAO,EACL,kBAAkB,GACnB,CAAC"}

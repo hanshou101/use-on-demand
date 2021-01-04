@@ -1,0 +1,36 @@
+{
+  "uploaded": {
+    "a": "aaa",
+    "b": "bbb",
+    "ccc": "cccccccc111"
+  },
+  "picBed": {
+    "current": "weibo"
+  },
+  "shortKey": {
+    "upload": "CommandOrControl+Shift+P"
+  },
+  "posts": [
+    {
+      "__id": 1,
+      "value": 111
+    },
+    {
+      "__id": 2,
+      "value": 222
+    },
+    {
+      "__id": 3,
+      "value": 333
+    },
+    {
+      "__id": 4,
+      "value": 444
+    },
+    {
+      "__id": 5,
+      "value": 555
+    }
+  ],
+  "visit": null
+}

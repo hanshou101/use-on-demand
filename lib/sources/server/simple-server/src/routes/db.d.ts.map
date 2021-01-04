@@ -1,1 +1,1 @@
-{"version":3,"file":"db.d.ts","sourceRoot":"","sources":["../../../../../../sources/server/simple-server/src/routes/db.ts"],"names":[],"mappings":"AAKA,QAAA,MAAM,MAAM,4CAAa,CAAC;AAoC1B,OAAO,EACL,MAAM,IAAI,QAAQ,GACnB,CAAC"}
+{"version":3,"file":"db.d.ts","sourceRoot":"","sources":["../../../../../../sources/server/simple-server/src/routes/db.ts"],"names":[],"mappings":"AAGA,QAAA,MAAM,IAAI,4CAAW,CAAC;AAkCtB,OAAO,EACL,IAAI,GACL,CAAC"}
