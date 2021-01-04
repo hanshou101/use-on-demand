@@ -100,7 +100,7 @@ module.exports = {
 				// 'build': 'vue-cli-service build',
 				'build': 'cross-env NODE_ENV=production webpack --progress --hide-modules',
 				// 检查
-				'lint' : 'vue-cli-service lint',
+				'lint': 'vue-cli-service lint',
 			},
 
 			'cli-4': {
@@ -165,14 +165,14 @@ module.exports = {
 		 * Sentry相关
 		 */
 		sentry: {
-			'tsc'                 : npsUtils.series(
+			'tsc'   : npsUtils.series(
 				// `tsc.cmd --target es3 --module umd ${LostErrorSentry_Cfg.tsPath()}`,       // FIXME 注意，这里如果指定module，则无法直接执行。
 				`tsc.cmd --target es3 --module none ${LostErrorSentry_Cfg.tsPath()}`,   // FIXME 如果想直接执行，则需要指定module。
 				// `tsc.cmd --target es3 --module umd --types ${LostErrorSentry_TsPath}`,
 				// `tsc.cmd ${LostErrorSentry_TsPath} --target es3 --module umd`,
 				// `tsc.cmd ${LostErrorSentry_TsPath}`,
 			),
-			'uglify'              : npsUtils.series(
+			'uglify': npsUtils.series(
 				`uglifyjs  ${LostErrorSentry_Cfg.jsPath()}  -m  -o  ${LostErrorSentry_Cfg.minJsPath()}`,
 				`shx cp -f ${LostErrorSentry_Cfg.minJsPath()} ${LostErrorSentry_Cfg.staticMinJsPath()}`,
 			),
@@ -272,6 +272,7 @@ module.exports = {
 		 */
 		server: {
 			corsProxy_demo1: `${tsNode_cmdHead}  ./sources/server/api-proxy/demo/proxy-demo-1.ts  `,
+			'common-demo'  : `${tsNode_cmdHead}  ./sources/server/simple-server/src/app.ts  `,
 		},
 
 		/**

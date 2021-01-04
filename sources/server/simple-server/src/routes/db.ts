@@ -1,11 +1,8 @@
-import e                                                                               from 'express';
-import {baseDb, create, init, read, read_byId, update_obj_baseOn, update_obj_override} from '../base/LowDB_Helper';
-// import low from 'lowdb';
-// const low = require('lowdb');
+import {Router, Request, Response, NextFunction} from 'express';
+import {LowDB_Helper}                            from '../base/lowdb/LowDB_Helper';
 
-const router = e.Router();
-
-router.get('/', function (req: e.Request, res: e.Response, next: e.NextFunction) {
+const r_db = Router();
+r_db.get('/', function(req : Request, res : Response, next : NextFunction){
 
   // 读取表，然后插入数据
   // baseDb.get('users')
@@ -21,18 +18,17 @@ router.get('/', function (req: e.Request, res: e.Response, next: e.NextFunction)
   // baseDb.update('visit', n => n + 1)
   //     .write();
 
-
-  create();
-  update_obj_override();
-  update_obj_baseOn();
+  LowDB_Helper.create();
+  LowDB_Helper.update_obj_override();
+  LowDB_Helper.update_obj_baseOn();
 
   res.send({
-    meta:     `正在调试lowdb框架`,
-    date:     `${new Date()}`,
-    readVal:  read(),
-    readById: read_byId(),
-    uploaded: baseDb.get('uploaded'),
-    visit:    baseDb.get('visit'),
+    meta    : `正在调试lowdb框架`,
+    date    : `${new Date()}`,
+    readVal : LowDB_Helper.read(),
+    readById: LowDB_Helper.read_byId(),
+    uploaded: LowDB_Helper.baseDb.get('uploaded'),
+    visit   : LowDB_Helper.baseDb.get('visit'),
   });
 
   // res.send(`${baseDb.get('users').find({id: 1}).value()}`);
@@ -40,5 +36,5 @@ router.get('/', function (req: e.Request, res: e.Response, next: e.NextFunction)
 });
 
 export {
-  router as dbRouter,
+  r_db,
 };

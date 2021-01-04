@@ -29,47 +29,61 @@ interface CommonAdminSystem_Interface {
 	// vuexStoreConfig: MyManifest_ReturnType_requireVuexStore<MyVuexStore_Config<MyBase_StateTypes>>;//
 }
 
-// 配置项：服务器后台
-interface NodejsServer_Interface {
-	// TIP————————————————————————————————————————服务器端口————————————————————————————————————
-	readonly _HTTP_PORT: number;
-	readonly _HTTPS_PORT: number;
-	// TIP————————————————————————————————————————HTTPS证书————————————————————————————————————
-	readonly privateKey: string;
-	readonly certificate: string;
-	// TIP————————————————————————————————————————页面模板&静态资源————————————————————————————————————
-	readonly viewsPath: string;
-	readonly viewsEngine: 'jade';
-	readonly staticPaths: string[];
-	// TIP————————————————————————————————————————路由表————————————————————————————————————
-	readonly routesMap: Array<{ baseUrl: string, router: Router }>;
-	// TIP————————————————————————————————————————全局错误回调——————————————————————————————————
-
-}
-
 
 // TIP—————————————————————————————————————————————配置清单基类——————————————————————————————————
 declare global {
-	abstract class MyBaseManifest implements NodejsServer_Interface {
-		//
-		public abstract readonly _HTTP_PORT: number;
-		public abstract readonly _HTTPS_PORT: number;
-		//
-		public abstract readonly privateKey: string;
-		public abstract readonly certificate: string;
-		//
-		public abstract readonly viewsPath: string;
-		public abstract readonly viewsEngine: 'jade';
-		public abstract readonly staticPaths: string[];
-		//
-		public abstract readonly routesMap: Array<{ baseUrl: string, router: Router }>;
-		//
+	namespace ServerApp {
+		// 配置项：服务器后台
+		interface ExpressServer_Cfg {
+			// TIP————————————————————————————————————————服务器端口————————————————————————————————————
+			readonly  port: {
+				readonly http: number | string;
+				readonly https: number | string;
+			};
+			// TIP————————————————————————————————————————HTTPS证书————————————————————————————————————
+			readonly  cert: {
+				readonly privateKey: string;
+				readonly certificate: string;
+			};
+
+			// TIP————————————————————————————————————————页面模板&静态资源————————————————————————————————————
+			readonly  view: {
+				readonly viewsPath: string;
+				readonly viewsEngine: 'jade';
+				readonly staticPaths: string[];
+			};
+
+			// TIP————————————————————————————————————————路由表————————————————————————————————————
+			readonly  route: {
+				readonly map: Array<{ baseUrl: string, router: Router }>;
+			};
+			// TIP————————————————————————————————————————全局错误回调——————————————————————————————————
+		}
+
+		/*
+		export abstract class Cfg implements ExpressServer_Cfg{
+			//
+			public abstract readonly _HTTP_PORT : number|string;
+			public abstract readonly _HTTPS_PORT : number|string;
+			//
+			public abstract readonly privateKey : string;
+			public abstract readonly certificate : string;
+			//
+			public abstract readonly viewsPath : string;
+			public abstract readonly viewsEngine : 'jade';
+			public abstract readonly staticPaths : string[];
+			//
+			public abstract readonly routesMap : Array<{baseUrl : string, router : Router}>;
+			//
+		}
+		*/
+
+		/*
+		declare global {
+			interface Window {
+				$$MyManifest: MyManifest;
+			}
+		}
+		*/
 	}
-
-
-// declare global {
-//   interface Window {
-//     $$MyManifest: MyManifest;
-//   }
-// }
 }

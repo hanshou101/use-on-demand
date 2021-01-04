@@ -81,6 +81,9 @@ function coreCorsHandle(req: ExRequest, res: ExResponse) {
 	}
 }
 
+/**
+ * 辅助工具
+ */
 export class xX_ProxyServer_Helper {
 	// TIP——————————————————————————————————————————公共方法——————————————————————————————————————————
 
@@ -106,7 +109,7 @@ export class xX_ProxyServer_Helper {
 		app.use('/', (req, res) => {
 			console.warn('\n——————————————————————————————【正式请求】——————————————————————————————\n');
 
-			let url = Cfg.serverUrl + req.url;
+			const url = Cfg.serverUrl + req.url;
 			console.log('请求的URL：', req.url, '请求的Content-Type：', req.headers);
 
 			this.__cors_otherReqs(req, res);							// 处理跨域

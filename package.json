@@ -40,6 +40,7 @@
     "test____jest": "nps test.jest",
     "                        server注释": "",
     "server____corsProxy": "nps server.corsProxy_demo1",
+    "server____common-demo": "nps server.common-demo",
     "                        md注释": "",
     "md____drawFlow": "nps md.drawFlow"
   },
