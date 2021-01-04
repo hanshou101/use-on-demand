@@ -1,163 +1,197 @@
 // TIP————————————————————————————————————————————系统依赖——————————————————————————————————
 import Datastore from 'lowdb';                                // 基本库
+import lodash    from 'lowdb/node_modules/@types/lodash';
 import FileSync  from 'lowdb/adapters/FileSync';         // 文件读取库
 const LodashId: any = require('lodash-id');             // 唯一标识的id字段
 import path      from 'path';
 
 // TIP————————————————————————————————————————————业务逻辑——————————————————————————————————
-const adapter = new FileSync(path.join(__dirname, '../../assets/data/db.json'));        // 同步读取db.json文件
-const db      = Datastore(adapter);
-db._.mixin(LodashId);                                   // 将id字段设置，混入生效
+const adapter  = new FileSync(path.join(__dirname, '../../assets/data/db.json'));        // 同步读取db.json文件
+const __baseDB = Datastore(adapter);
+__baseDB._.mixin(LodashId);                                   // 将id字段设置，混入生效
 
+namespace LowDB_Helper {
 
-class LowDB_Helper {
-
-	static baseDb = db;
-
-	/**
-	 * 针对空JSON文件，进行初始化
-	 * FIXME 此方法，似乎无论如何也会无效？原因，可能是，adapter创建了非空但有一个空白对象的JSON文件？？？
-	 */
-	static init() {
-		// 官网例子
-		db.defaults({
-			users: [],              // 用户列表
-			posts: [],              // 帖子列表
-
-			global: {},
-			visit : 0,
-		});
-	}
-
+	export const db = __baseDB;
 
 	/**
-	 * 新增数据
+	 * 写
 	 */
-	static create() {
-		// 有效
-		if (!db.has('uploaded').value()) {
-			db.set('uploaded', []).write();
+	const __setValue = (dotKey: string, value: any, type: 'create' | 'update' | 'createUpdate') => {
+		const hasKey = db.has(dotKey).value();
+
+		switch (type) {
+			case 'create': {
+				if (hasKey) {										// 如果不存在该key
+					throw new Error('已存在该key');
+				}
+				break;
+			}
+			case 'update': {
+				if (!hasKey) {									// 如果存在key
+					throw new Error('key并不存在！');
+				}
+				break;
+			}
+			case 'createUpdate': {
+				// 不作判断，都可以
+				break;
+			}
 		}
+		db.set(dotKey, value).write();		// 进行写入
+	};
 
-		// 有效
-		if (!db.has('picBed').value()) {
-			db.set('picBed', {
-				current: 'weibo',
-			}).write();
-		}
+	export const write = {
+		db    : {
+			/**
+			 * 针对空JSON文件，进行初始化
+			 * 				1.FIXME 此方法，似乎无论如何也会无效？原因，可能是，adapter创建了非空但有一个空白对象的JSON文件？？？
+			 */
+			init_whenEmpty(initial: IndexedObj | any[]) {
+				// 官网例子
+				db.defaults(initial);
+			},
+			/**
+			 * 更换整个数据库的数据
+			 */
+			replaceAll(allData: IndexedObj | any[]) {
+				db.setState(allData);
+			},
+		},
+		any   : {
+			/**
+			 * 写（新增）
+			 */
+			create(dotKey: string, value: any) {
+				__setValue(dotKey, value, 'create');
+			},
+			/**
+			 * 写（新增 或 更新）
+			 */
+			createUpdate(dotKey: string, value: any) {
+				__setValue(dotKey, value, 'createUpdate');
+			},
+			/**
+			 * 写（更新）
+			 */
+			update(dotKey: string, value: any) {
+				__setValue(dotKey, value, 'update');
+			},
+			/**
+			 * 写（更新，根据之前的值 而产生变化）
+			 */
+			update_dependPre(dotKey: string, changeFn: <T>(pre: T) => T) {
+				db.update(dotKey, changeFn).write();
+			},
+		},
+		array : {
+			/**
+			 * 写（在数组中插入新值）
+			 */
+			insertItem(dotKey: string, value: any) {
+				(db.get(dotKey) as any).push(value).write();
+			},
+			/**
+			 * 写（在数组中插入新值，并自动添加 Lodash的ID ）
+			 */
+			insertItem_withLodashId<T>(
+				dotKey: string,
+				value: T,
+			): (T & { id: string; })		// 返回值，Lodash已添加了ID。
+			{
+				return (db.get(dotKey) as any).insert(value).write();
+			},
+			/**
+			 * 写（在数组中删除某值，根据条件对象）
+			 */
+			removeItem_byQuery(dotKey: string, queryObj: IndexedObj) {
+				(db.get(dotKey) as any).remove(queryObj).write();
+			},
+			/**
+			 * 写（修改部分数据，根据条件对象）
+			 */
+			updateSomeItem(dotKey: string, queryObj: IndexedObj, value: any) {
+				(db.get(dotKey) as any).find(queryObj).assign(value).write();
+			},
+		},
+		object: {
+			/**
+			 * 写（在对象中，清除某个属性）
+			 */
+			removeField(dotKey: string) {
+				db.unset(dotKey).write();
+			},
+		},
+	};
 
-		// 有效
-		if (!db.has('shortKey').value()) {
-			db.set('shortKey', {
-				upload: 'CommandOrControl+Shift+P',
-			}).write();
-		}
-
-		if (!db.has('visit')) {
-			db.set('visit', 0);
-		}
-
-		if (!db.has('posts').value()) {
-			db.set('posts', [
-				{
-					__id : 1,
-					value: 111,
-				},
-				{
-					__id : 2,
-					value: 222,
-				},
-				{
-					__id : 3,
-					value: 333,
-				},
-				{
-					__id : 4,
-					value: 444,
-				},
-				{
-					__id : 5,
-					value: 555,
-				},
-			]).write();
-		}
-
-	}
-
-	/**
-	 * 读取数据
-	 */
-	static read() {
-		const shortKey =
-						db
-							.get('shortKey')
-							.value();
-		return shortKey;
-	}
-
-	static read_byId() {
-		const item =
-						// FIXME 这里，Lodash官方的文档，存在问题。
-						// @ts-ignore
-						db.get('posts').find({
-							id: 1,
-						})
-							.value();
-		return item;
-	}
-
-	/**
-	 * 更新数据
-	 */
-	static update_obj_override() {
-		db.set('uploaded', {
-			a: 'aaa',
-			b: 'bbb',
-		}).write();
-
-		db.set('uploaded.ccc', 'cccccccc111')
-			.write();
-	}
-
-	static update_obj_baseOn() {
-		db.update('visit', (n) => n + 1)
-			.write();
-	}
-
-	static update_array() {
-		db.get('posts')
-			// FIXME 这里，Lodash官方的文档，存在问题。
-			// @ts-ignore
-			.insert({
-				title  : 'xxx',
-				content: 'xxxx',
-			})
-			.write();
-	}
-
-	/**
-	 * 删除数据
-	 */
-	static del_item() {
-		db.get('posts')
-			// FIXME 这里，Lodash官方的文档，存在问题。
-			// @ts-ignore
-			.remove({ value: 555 })
-			.write();
-	}
-
-	static del_unsetValue() {
-		db.unset('picBed.current').write();
-	}
-
-	static del_byLodashId() {
-		db.get('posts')
-			// FIXME 这里，Lodash官方的文档，存在问题。
-			// @ts-ignore
-			.removeById('test----id')
-			.write();
-	}
-
+	export const read = {
+		db   : {
+			/**
+			 * 整个数据库的数据
+			 */
+			getAll() {
+				return db.getState();
+			},
+		},
+		any  : {
+			/**
+			 * 读
+			 */
+			getValue(dotKey: string) {
+				return db.get(dotKey).value();
+			},
+			/**
+			 * 读，根据对象条件
+			 */
+			getValue_byQuery(dotKey: string, queryObj: IndexedObj) {
+				return (db.get(dotKey) as any).find(queryObj).value();
+			},
+			/**
+			 * 判断 key 是否存在
+			 */
+			exist(dotKey: string) {
+				return db.has(dotKey).value();
+			},
+		},
+		array: {
+			/**
+			 * 读（根据 Lodash的ID ）
+			 */
+			getValue_withLodashId(dotKey: string, lodashId: string) {
+				return (db.get(dotKey) as any).getById(lodashId).value();
+			},
+			/**
+			 * 读（根据 条件对象）
+			 */
+			getValue_byQuery(dotKey: string, option: {
+				queryObj?: IndexedObj;
+				sortKey?: string;
+				takeNum?: number;
+			}) {
+				const { queryObj, sortKey, takeNum } = option;
+				let data: any                        = db.get(dotKey);
+				// 搜索条件
+				if (queryObj) {
+					data = data.filter(queryObj);
+				}
+				// 排序
+				if (sortKey) {
+					data = data.sortBy(sortKey);
+				}
+				// 取的数量
+				if (takeNum) {
+					data = data.take(takeNum);
+				}
+				return data.value();
+			},
+			/**
+			 * 读（数据数量）
+			 */
+			getSize(dotKey: string) {
+				return db.get(dotKey).size();
+			},
+		},
+	};
 
 }
 
