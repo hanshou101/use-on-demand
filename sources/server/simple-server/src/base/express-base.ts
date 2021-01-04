@@ -4,6 +4,7 @@ import createError                                          from 'http-errors';
 import path                                                 from 'path';
 import cookieParser                                         from 'cookie-parser';
 import logger                                               from 'morgan';
+import cors                                                 from 'cors';
 
 import { cfg } from '../config/config';
 
@@ -18,8 +19,9 @@ class ExpressBase_Helper {
 		this.$2_redirectHttps();						// WARN 放在【Public】的前面，才能将【public/index.html】重定向到【https】。
 		this.$0_initView();
 		this.$1_initAssets_andPublic();
-		this.$3_bindRoutes();
+		this.$6_handleCORS();								// 跨域，尽量靠前。
 		this.$4_initPlugin();
+		this.$3_bindRoutes();								// 路由，尽量放在靠后的位置。
 		this.$5_bindErrorPage();						// WARN 应该放在最后，会拦截其它页面
 	}
 
@@ -105,6 +107,17 @@ class ExpressBase_Helper {
 			res.render('error');
 		});
 
+	}
+
+	/**
+	 * 处理CORS跨域问题
+	 */
+	$6_handleCORS() {
+		const c = () => {
+			return cors({ credentials: true, origin: true });
+		};							// 解决跨域问题
+		this.expressBase.use(c());
+		this.expressBase.options('*', c());
 	}
 
 }

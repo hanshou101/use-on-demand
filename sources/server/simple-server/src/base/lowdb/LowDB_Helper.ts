@@ -47,14 +47,14 @@ namespace LowDB_Helper {
 			 * 针对空JSON文件，进行初始化
 			 * 				1.FIXME 此方法，似乎无论如何也会无效？原因，可能是，adapter创建了非空但有一个空白对象的JSON文件？？？
 			 */
-			init_whenEmpty(initial: IndexedObj | any[]) {
+			init_whenEmpty(initial: LowDB.DB) {
 				// 官网例子
-				db.defaults(initial);
+				db.defaults(initial).write();
 			},
 			/**
 			 * 更换整个数据库的数据
 			 */
-			replaceAll(allData: IndexedObj | any[]) {
+			replaceAll(allData: LowDB.DB) {
 				db.setState(allData);
 			},
 		},
@@ -188,7 +188,7 @@ namespace LowDB_Helper {
 			 * 读（数据数量）
 			 */
 			getSize(dotKey: string) {
-				return db.get(dotKey).size();
+				return db.get(dotKey).size().value();
 			},
 		},
 	};
