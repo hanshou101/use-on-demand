@@ -5,15 +5,20 @@ const {write, read} = LowDB_Helper;
 const r_db          = Router();
 
 write.db.init_whenEmpty({
-  projects : [{
+  projects    : [{
     id      : 'fc433541-6eb0-4e12-9faa-8b362a48aa74',
     content : '测试内容',
     descTags: '1,2,3,4,5',
     icon    : 'https://gw.alipayobjects.com/zos/rmsportal/sBxjgqiuHMGRkIjqlQCd.png',
     name    : '董娜娜',
   }],
-  servers  : [],
-  siteMains: [],
+  servers     : [],
+  siteMains   : [],
+  owners      : [],
+  siteRelateds: [],
+  googles     : [],
+  dirFiles    : [],
+  holeSources : [],
 });
 
 // 测试
@@ -83,6 +88,16 @@ crudRoute<LowDB.Project>(r_db, '/project', 'projects');
 crudRoute<LowDB.Server>(r_db, '/server', 'servers');
 
 crudRoute<LowDB.Server>(r_db, '/siteMain', 'siteMains');
+
+crudRoute<LowDB.Server>(r_db, '/owner', 'owners');
+
+crudRoute<LowDB.Server>(r_db, '/siteRelated', 'siteRelateds');
+
+crudRoute<LowDB.Server>(r_db, '/google', 'googles');
+
+crudRoute<LowDB.Server>(r_db, '/dirFile', 'dirFiles');
+
+crudRoute<LowDB.Server>(r_db, '/holeSource', 'holeSources');
 
 
 export {

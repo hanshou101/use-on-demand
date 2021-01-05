@@ -13,25 +13,88 @@
     {
       "projectId": "fc433541-6eb0-4e12-9faa-8b362a48aa74",
       "trueIP": "1.1.1.1",
-      "systemType": "Linux",
-      "systemVersion": "127.8",
-      "openPort": "3389",
-      "webAppFirewall": "存在网页防火墙",
+      "systemType": "Linux\n1\n123",
+      "systemVersion": "127.8\n334",
+      "openPort": "33892323\n2\n3\n4",
+      "webAppFirewall": "存在网页防火墙1",
       "createdAt": "2021-01-05 19:24:07",
-      "updatedAt": "2021-01-05 19:24:15",
+      "updatedAt": "2021-01-05 22:47:40",
       "id": "f65a16d9-797e-4a7b-a2bb-2674b0dc06bb"
     }
   ],
   "siteMains": [
     {
       "projectId": "fc433541-6eb0-4e12-9faa-8b362a48aa74",
-      "cmsSystemInfo": "PHPAdmin",
-      "cdnDetail": "曾使用过CDN",
-      "certDetail": "HTTPS证书实名",
-      "dnsRecords": "DNS多为台湾当地小运营商",
+      "cmsSystemInfo": "PHPAdmin\n1",
+      "cdnDetail": "曾使用过CDN\n1",
+      "certDetail": "HTTPS证书实名\n1",
+      "dnsRecords": "DNS多为台湾当地小运营商\n1",
       "createdAt": "2021-01-05 20:03:07",
-      "updatedAt": "2021-01-05 20:03:15",
+      "updatedAt": "2021-01-05 22:56:40",
       "id": "c5dd08f8-44a2-4e02-af33-4e9d7dd64cdd"
+    }
+  ],
+  "owners": [
+    {
+      "projectId": "fc433541-6eb0-4e12-9faa-8b362a48aa74",
+      "whoisDetail": "一些持有人线索",
+      "ownerName": "真实姓名",
+      "siteRegisterRecord": "网站的一些备案，历次备案",
+      "frequentlyUsedAccount": "持有人\n一些账号",
+      "emailDetail": "@qq.com\n@163.com",
+      "phoneTrackDetail": "一些线索",
+      "socialRepoRecord": "社工库，\n查询",
+      "createdAt": "2021-01-05 23:12:24",
+      "updatedAt": "2021-01-05 23:18:26",
+      "id": "805d68fe-a95b-4f70-a24e-8cd0d55220dc"
+    }
+  ],
+  "siteRelateds": [
+    {
+      "projectId": "fc433541-6eb0-4e12-9faa-8b362a48aa74",
+      "childDomains": "a.b\na.b.c\na.b.c.d",
+      "sameServerSites": "a.com\nbb.com\ncc.com",
+      "cClassMachines": "121\n122\n123\n124\n125\n126\n127",
+      "createdAt": "2021-01-05 23:38:34",
+      "updatedAt": "2021-01-05 23:38:45",
+      "id": "5b474db7-b4d2-47b7-8bd3-857db6e5bbc2"
+    }
+  ],
+  "googles": [
+    {
+      "projectId": "fc433541-6eb0-4e12-9faa-8b362a48aa74",
+      "targetSearch": "针对化搜素",
+      "pdfSearch": "pdf文件",
+      "middlewareSearch": "一些带特征的中间件",
+      "weakPasswordSearch": "很弱口令",
+      "createdAt": "2021-01-05 23:59:39",
+      "updatedAt": "2021-01-06 00:00:44",
+      "id": "9cb3de67-b23e-4021-a923-79b0b06d54cf"
+    }
+  ],
+  "dirFiles": [
+    {
+      "projectId": "fc433541-6eb0-4e12-9faa-8b362a48aa74",
+      "siteDirs": "a/b/c",
+      "adminSitePage": "a/admin.php",
+      "bannerFiles": "a/b/banner.jpg",
+      "siteTestFiles": "test",
+      "siteBakFiles": "test.bak",
+      "createdAt": "2021-01-06 00:12:09",
+      "updatedAt": "2021-01-06 00:12:09",
+      "id": "01f31e6e-2ea1-4fd7-a05a-abc5867b6062"
+    }
+  ],
+  "holeSources": [
+    {
+      "projectId": "fc433541-6eb0-4e12-9faa-8b362a48aa74",
+      "transferProtocolHole": "常规漏洞",
+      "commonHole": "通用漏洞",
+      "exploitDemo": "$phpinfo()",
+      "githubSourceLeakage": "xxx.config",
+      "createdAt": "2021-01-06 00:26:14",
+      "updatedAt": "2021-01-06 00:26:14",
+      "id": "021dcadc-dc40-44a7-bd28-6e0188799101"
     }
   ]
 }
