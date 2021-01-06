@@ -6,11 +6,13 @@ const r_db          = Router();
 
 write.db.init_whenEmpty({
   projects    : [{
-    id      : 'fc433541-6eb0-4e12-9faa-8b362a48aa74',
-    content : '测试内容',
-    descTags: '1,2,3,4,5',
-    icon    : 'https://gw.alipayobjects.com/zos/rmsportal/sBxjgqiuHMGRkIjqlQCd.png',
-    name    : '董娜娜',
+    id  : 'fc433541-6eb0-4e12-9faa-8b362a48aa74',
+    name: '董娜娜',
+    icon: 'https://gw.alipayobjects.com/zos/rmsportal/sBxjgqiuHMGRkIjqlQCd.png',
+    //
+    relatedUrls: 'www.baidu.com',
+    content    : '测试内容',
+    descTags   : '1,2,3,4,5',
   }],
   servers     : [],
   siteMains   : [],

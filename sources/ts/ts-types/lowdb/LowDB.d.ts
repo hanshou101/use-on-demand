@@ -11,7 +11,8 @@ declare namespace LowDB{
     name : string;          // 项目名
     icon : string;          // 图标（用默认值）
     //
-    descTags : string;    // 描述标签
+    relatedUrls : string;   // 相关url网址
+    descTags : string;      // 描述标签
     content : string;       // 介绍内容
   }
 

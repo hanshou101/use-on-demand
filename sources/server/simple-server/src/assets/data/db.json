@@ -2,35 +2,36 @@
   "projects": [
     {
       "id": "fc433541-6eb0-4e12-9faa-8b362a48aa74",
-      "content": "https://www.boe.ttct.edu.tw/indexw.php\n不翻墙也能进\nPHP结构",
+      "content": "不翻墙也能进\nPHP结构",
       "descTags": "台湾,教育,网站,tw,PHP",
       "icon": "https://www.boe.ttct.edu.tw/favicon.ico",
       "name": "台东县政府教育处",
-      "updatedAt": "1609817524948"
+      "updatedAt": "2021-01-06 11:04:59",
+      "relatedUrls": "https://www.boe.ttct.edu.tw\nhttps://www.boe.ttct.edu.tw/indexw.php\nhttps://www.boe.ttct.edu.tw/index.php"
     }
   ],
   "servers": [
     {
       "projectId": "fc433541-6eb0-4e12-9faa-8b362a48aa74",
       "trueIP": "1.1.1.1",
-      "systemType": "Linux\n1\n123",
+      "systemType": "【从google搜到信息页】(http://sfsmaster.boe.ttct.edu.tw/include/sfsinfo/program_info.php)\nLinux(FreeBSD) + Apache + php4.x ，WINNT(WIN2K) + IIS(Apache) + php4.x\n从指令来看，应该是【Linux】那一套。\n\n",
       "systemVersion": "127.8\n334",
       "openPort": "33892323\n2\n3\n4",
       "webAppFirewall": "存在网页防火墙1",
       "createdAt": "2021-01-05 19:24:07",
-      "updatedAt": "2021-01-05 22:47:40",
+      "updatedAt": "2021-01-06 11:30:08",
       "id": "f65a16d9-797e-4a7b-a2bb-2674b0dc06bb"
     }
   ],
   "siteMains": [
     {
       "projectId": "fc433541-6eb0-4e12-9faa-8b362a48aa74",
-      "cmsSystemInfo": "PHPAdmin\n1",
+      "cmsSystemInfo": "【SFS学务系统】\n[部署使用、常见配置](http://webcache.googleusercontent.com/search?q=cache:NkFd3Z0KO2AJ:elesson.tc.edu.tw/md221/mod/resource/view.php%3Fid%3D1257+&cd=15&hl=zh-CN&ct=clnk&gl=us)",
       "cdnDetail": "曾使用过CDN\n1",
       "certDetail": "HTTPS证书实名\n1",
       "dnsRecords": "DNS多为台湾当地小运营商\n1",
       "createdAt": "2021-01-05 20:03:07",
-      "updatedAt": "2021-01-05 22:56:40",
+      "updatedAt": "2021-01-06 12:04:30",
       "id": "c5dd08f8-44a2-4e02-af33-4e9d7dd64cdd"
     }
   ],
@@ -52,11 +53,11 @@
   "siteRelateds": [
     {
       "projectId": "fc433541-6eb0-4e12-9faa-8b362a48aa74",
-      "childDomains": "a.b\na.b.c\na.b.c.d",
+      "childDomains": "[疑似子域名或旁站 ——臺東縣技藝教育中心 學校管理系統]\n(http://tte.boe.ttct.edu.tw/school/index.php?html=login)",
       "sameServerSites": "a.com\nbb.com\ncc.com",
       "cClassMachines": "121\n122\n123\n124\n125\n126\n127",
       "createdAt": "2021-01-05 23:38:34",
-      "updatedAt": "2021-01-05 23:38:45",
+      "updatedAt": "2021-01-06 12:11:47",
       "id": "5b474db7-b4d2-47b7-8bd3-857db6e5bbc2"
     }
   ],
@@ -76,12 +77,12 @@
     {
       "projectId": "fc433541-6eb0-4e12-9faa-8b362a48aa74",
       "siteDirs": "a/b/c",
-      "adminSitePage": "a/admin.php",
+      "adminSitePage": "【搜索】site:boe.ttct.edu.tw intitle:管理\n[學務管理系統 -- 首頁]\n(http://sfsmaster.boe.ttct.edu.tw/)\n[學生出入校園管理系統](http://ecard.boe.ttct.edu.tw/schooltaitung/login.php)\n[學務管理系統 -- 密碼檢查]\n(http://sfsmaster.boe.ttct.edu.tw/login.php)\n[臺東縣政府教育處 管理員登入]\n(http://stu-ecard.boe.ttct.edu.tw/std/admin.php)\n[详细配置表 —— 學務管理系統 -- 模組程式說明]\n(http://sfsmaster.boe.ttct.edu.tw/include/sfsinfo/program_info.php)\n[疑似子域名或旁站 ——臺東縣技藝教育中心 學校管理系統]\n(http://tte.boe.ttct.edu.tw/school/index.php?html=login)\n——————————",
       "bannerFiles": "a/b/banner.jpg",
       "siteTestFiles": "test",
       "siteBakFiles": "test.bak",
       "createdAt": "2021-01-06 00:12:09",
-      "updatedAt": "2021-01-06 00:12:09",
+      "updatedAt": "2021-01-06 12:11:37",
       "id": "01f31e6e-2ea1-4fd7-a05a-abc5867b6062"
     }
   ],
@@ -89,11 +90,11 @@
     {
       "projectId": "fc433541-6eb0-4e12-9faa-8b362a48aa74",
       "transferProtocolHole": "常规漏洞",
-      "commonHole": "通用漏洞",
+      "commonHole": "[SFS学务管理系统存在Sql注射漏洞（臺灣地區）](https://www.onebug.org/wooyundata/67913.html)\n",
       "exploitDemo": "$phpinfo()",
-      "githubSourceLeakage": "xxx.config",
+      "githubSourceLeakage": "(http://sfsmaster.boe.ttct.edu.tw/include/sfsinfo/program_info.php)\n部署脚本，已经暴露",
       "createdAt": "2021-01-06 00:26:14",
-      "updatedAt": "2021-01-06 00:26:14",
+      "updatedAt": "2021-01-06 11:36:35",
       "id": "021dcadc-dc40-44a7-bd28-6e0188799101"
     }
   ]
