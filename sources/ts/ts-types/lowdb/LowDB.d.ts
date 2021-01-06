@@ -56,7 +56,7 @@ declare namespace LowDB{
     //
     childDomains : string;    // 子域名
     sameServerSites : string; // 同机旁站 同一服务器的 其它另外网站
-    cClassMachines : string;  // C段网络，其它机器
+    cClassMachines : string;  // C段，内网、Wifi，其他机器
   }
 
   interface Google implements _Base{
@@ -66,7 +66,7 @@ declare namespace LowDB{
     targetSearch : string;        // 针对化搜索，特定关键字
     pdfSearch : string;           // PDF文件搜索
     middlewareSearch : string;    // 中间件版本，搜索
-    weakPasswordSearch : string;  // 弱口令搜索
+    weakPasswordSearch : string;  // 弱口令，默认口令，搜索
   }
 
   interface DirFile implements _Base{
