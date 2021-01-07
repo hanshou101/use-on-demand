@@ -6,11 +6,13 @@
                         1. 经过实验，这种方式，应该是绝对有效的。
                 2. 我们可以通过【WebStrom - Libraries】去安装。
         3.现有依赖清单：
-                【lodash-id】、【@types/lodash-id】、
+                【lodash-id】、
                 【lowdb】、【@types/lowdb】、
                 【jade/或pug】、
                 【http-errors】、【@types/http-errors】
-                【cookie-parser】、
+                【cookie-parser】、【@types/cookie-parser】
                 【request】、【@types/request】
-                【morgan】、
+                【morgan】、【@types/morgan】
                 【cors】、【@types/cors】
+                $ npm link lodash-id lowdb @types/lowdb jade http-errors @types/http-errors cookie-parser @types/cookie-parser request @types/request morgan @types/morgan cors @types/cors
+
