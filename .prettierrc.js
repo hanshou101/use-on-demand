@@ -1,5 +1,5 @@
 const cfg = {
-	printWidth                : 80, 					// 超过这个长度，将自动换行
+	printWidth                : 80, 					// 超过这个长度，将自动换行（小于这个长度，则强制不换行）
 	tabWidth                  : 2, 						// Tab宽度
 	useTabs                   : true,        	// 使用Tab，而不是空格
 	semi                      : true, 				// 分号
