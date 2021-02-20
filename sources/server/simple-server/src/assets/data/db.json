@@ -18,6 +18,26 @@
       "updatedAt": "2021-02-02 14:55:09",
       "id": "1e97f681-36de-46a7-9ee6-8f0138babc06",
       "icon": "https://www.boe.ttct.edu.tw/favicon.ico"
+    },
+    {
+      "name": "【HTB靶机】Archetype",
+      "createdAt": "2021-02-19 15:59:14",
+      "updatedAt": "2021-02-19 16:01:48",
+      "id": "6099fa36-849e-4772-a88e-36f2755863d5",
+      "icon": "https://www.boe.ttct.edu.tw/favicon.ico",
+      "relatedUrls": "10.10.10.27",
+      "descTags": "靶机,windows",
+      "content": "Windows靶机测验"
+    },
+    {
+      "name": "【HTB靶机】Oopsie",
+      "icon": "https://www.boe.ttct.edu.tw/favicon.ico",
+      "relatedUrls": "10.10.10.28",
+      "descTags": "靶机,linux",
+      "content": "Linux靶机测验",
+      "createdAt": "2021-02-19 20:03:08",
+      "updatedAt": "2021-02-19 20:03:08",
+      "id": "9f0764ba-ea91-4a30-91eb-dc8b66bf409c"
     }
   ],
   "servers": [
@@ -40,6 +60,28 @@
       "id": "b2144770-0a79-495a-86c8-fcaa944b59c2",
       "systemType": "PHP,Linux,Apache,MYSQL",
       "systemVersion": "Linux 3.2 - 4.9\nApache/2.4.18 (Ubuntu)"
+    },
+    {
+      "projectId": "6099fa36-849e-4772-a88e-36f2755863d5",
+      "trueIP": "10.10.10.27",
+      "createdAt": "2021-02-19 16:02:14",
+      "updatedAt": "2021-02-19 16:05:02",
+      "id": "af35c4a3-7d31-4e60-abb6-7cf49e61173c",
+      "systemType": "Windows",
+      "systemVersion": "123",
+      "openPort": "135,139,445,1433",
+      "webAppFirewall": "暂未发现"
+    },
+    {
+      "projectId": "9f0764ba-ea91-4a30-91eb-dc8b66bf409c",
+      "trueIP": "10.10.10.28",
+      "systemType": "Linux,Apache,Ubuntu",
+      "systemVersion": "Apache httpd 2.4.29 ((Ubuntu))",
+      "openPort": "22,80",
+      "webAppFirewall": "经过【wafw00f 】检测，没有WAF。",
+      "createdAt": "2021-02-19 20:04:02",
+      "updatedAt": "2021-02-20 10:25:54",
+      "id": "36b27d9f-062e-4cef-b871-57aad9433d6b"
     }
   ],
   "siteMains": [
@@ -110,6 +152,17 @@
       "createdAt": "2021-02-02 18:39:46",
       "updatedAt": "2021-02-02 21:59:09",
       "id": "a63a8d7d-2a48-492b-83c8-7ccc586f99e3"
+    },
+    {
+      "projectId": "9f0764ba-ea91-4a30-91eb-dc8b66bf409c",
+      "siteDirs": "/css/\n/fonts/\n/images/\n/index.php\n/js/\n/server-status\n/themes/\n/uploads/\n/uploads/1\n/uploads/2\n/uploads/3",
+      "adminSitePage": "1",
+      "bannerFiles": "1",
+      "siteTestFiles": "1",
+      "siteBakFiles": "1",
+      "createdAt": "2021-02-20 10:44:43",
+      "updatedAt": "2021-02-20 12:47:02",
+      "id": "5d13a170-a197-4d7f-882a-fd3ccd2e088a"
     }
   ],
   "holeSources": [
@@ -122,6 +175,16 @@
       "createdAt": "2021-01-06 00:26:14",
       "updatedAt": "2021-01-06 11:36:35",
       "id": "021dcadc-dc40-44a7-bd28-6e0188799101"
+    },
+    {
+      "projectId": "9f0764ba-ea91-4a30-91eb-dc8b66bf409c",
+      "transferProtocolHole": "1",
+      "commonHole": "1",
+      "exploitDemo": "1",
+      "githubSourceLeakage": "1",
+      "createdAt": "2021-02-20 10:44:51",
+      "updatedAt": "2021-02-20 10:44:51",
+      "id": "7a010990-3359-4472-8cb2-f291912055ad"
     }
   ]
 }
