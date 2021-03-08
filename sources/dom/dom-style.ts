@@ -1,34 +1,57 @@
-interface MyAbsolutePosition {
-  top: number;
-  left: number;
+interface MyAbsolutePosition{
+  top : number;
+  left : number;
 }
 
-export class xX_DomStyle_Helper {
+export class xX_DomStyle_Helper{
+
+
+  public static loadCss_Async(
+    cssUrl : string,
+  ){
+    return new Promise((resolve, reject)=>{
+      // 创建
+      const link   = document.createElement('link');
+      link.type    = 'text/css';
+      link.rel     = 'stylesheet';
+      link.href    = cssUrl;
+      // 监听
+      link.onload  = function(){
+        resolve('加载成功');
+      };
+      link.onerror = function(){
+        resolve('加载失败');
+      };
+      // 添加
+      const head   = document.getElementsByTagName('head')[0];
+      head.appendChild(link);
+    });
+  }
 
   /**
    * 获取元素的css属性值
    */
   public static getDomStyle(
-    ele: HTMLElement,           // 元素
-    cssAttribute: string,       // 实时属性名
-  ) {
-    if (!ele || !ele.nodeName) {
+    ele : HTMLElement,           // 元素
+    cssAttribute : string,       // 实时属性名
+  ){
+    if( ! ele || ! ele.nodeName){
       console.error('ele 必须是一个dom元素');
       return;
     }
-    if (!cssAttribute) {
+    if( ! cssAttribute){
       console.error('cssAttribute 必须是一个字符串');
       return;
     }
     let val = '';
-    if (window.getComputedStyle) {
+    if(window.getComputedStyle){
       val = (window.getComputedStyle(ele, null) as any)[cssAttribute];
-    } else if ((ele as any).currentStyle) {
+    }else if((ele as any).currentStyle){
       val = (ele as any).currentStyle[cssAttribute];
     }
-    if (!isNaN(parseFloat(val))) {
+    if( ! isNaN(parseFloat(val))){
       return parseFloat(val);
-    } else {
+    }else{
       return val;
     }
   }
@@ -36,13 +59,13 @@ export class xX_DomStyle_Helper {
   /**
    * 【浏览器窗口】，内部内容区域，宽高
    */
-  public static getDocumentWidthHeight() {
-    if (window.innerHeight != null) {
+  public static getDocumentWidthHeight(){
+    if(window.innerHeight != null){
       return {
         width : window.innerWidth,
         height: window.innerHeight,
       };
-    } else if (document.compatMode === 'CSS1Compat') {
+    }else if(document.compatMode === 'CSS1Compat'){
       // 怪异模式浏览器
       return {
         width : document.documentElement.scrollWidth,
@@ -59,9 +82,9 @@ export class xX_DomStyle_Helper {
    * 获取元素距【浏览器文档最顶部、最左边】的距离
    */
   public static get_AbsoluteOffset_Position(
-    ele: HTMLElement,
-  ): MyAbsolutePosition {
-    const position: MyAbsolutePosition = {
+    ele : HTMLElement,
+  ) : MyAbsolutePosition{
+    const position : MyAbsolutePosition = {
       top : 0,
       left: 0,
     };
@@ -69,7 +92,7 @@ export class xX_DomStyle_Helper {
     let offsetParent = ele.offsetParent as HTMLElement;   // TODO offsetParent，为距离最近的【定位元素】。  （若不存在距离最近的【定位元素】，则直接获取  根元素（比如  <html>））
     position.top     = ele.offsetTop;
     position.left    = ele.offsetLeft;
-    while (offsetParent != null) {
+    while(offsetParent != null){
       position.top += offsetParent.offsetTop;
       position.left += offsetParent.offsetLeft;
       offsetParent = offsetParent.offsetParent as HTMLElement;
@@ -82,7 +105,7 @@ export class xX_DomStyle_Helper {
    *        1.【元素底部】，到【Window可见区域  底部】的距离
    *        2.【元素右侧】，到【Window可见区域  右侧】的距离。
    */
-  public static get_eB2wB_eR2wR(e: HTMLElement) {
+  public static get_eB2wB_eR2wR(e : HTMLElement){
     // alert('尺寸改变，开始检测');
     const domAttr = {
       posit  : xX_DomStyle_Helper.get_AbsoluteOffset_Position(e),
@@ -108,7 +131,7 @@ export class xX_DomStyle_Helper {
   /**
    * 兼容性：获取浏览器滚动条距离顶部的位置
    */
-  public static getScrollTop(): number {
+  public static getScrollTop() : number{
     return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || -1;
   }
 
@@ -117,18 +140,18 @@ export class xX_DomStyle_Helper {
    * 获取兄弟节点
    */
   public static getSiblingsDoms(
-    ele: HTMLElement,               // 目标元素
-  ): Array<HTMLElement> {
-    if (ele.parentNode) {
+    ele : HTMLElement,               // 目标元素
+  ) : Array<HTMLElement>{
+    if(ele.parentNode){
       const a = [];
       const p = ele.parentNode.children;
-      for (let i = 0, pl = p.length; i < pl; i++) {
-        if (p[i] !== ele) {
+      for(let i = 0, pl = p.length ; i < pl ; i++){
+        if(p[i] !== ele){
           a.push(p[i]);
         }
       }
       return a as Array<HTMLElement>;
-    } else {
+    }else{
       return [];
     }
   }
@@ -138,25 +161,25 @@ export class xX_DomStyle_Helper {
    *        1.无限个层级，都有效，
    */
   public static isContains_otherEle(
-    ele: HTMLElement,           // 父级元素
-    _childEle: Node,            // 子孙级元素
-  ): boolean {
+    ele : HTMLElement,           // 父级元素
+    _childEle : Node,            // 子孙级元素
+  ) : boolean{
     let childEle = _childEle;
-    if (ele == childEle) {
+    if(ele == childEle){
       return false;
     }
 
-    if (typeof ele.contains == 'function') {
+    if(typeof ele.contains == 'function'){
       return ele.contains(childEle);
-    } else {
-      while (true) {
-        if (!childEle) {
+    }else{
+      while(true){
+        if( ! childEle){
           return false;
         }
-        if (childEle == ele) {
+        if(childEle == ele){
           return true;
-        } else {
-          if (childEle.parentNode) {
+        }else{
+          if(childEle.parentNode){
             childEle = childEle.parentNode;
           }
         }
@@ -169,10 +192,10 @@ export class xX_DomStyle_Helper {
    * 修复，Android下【软键盘】弹出时，导致的【VH不准确】的问题。
    */
   public static fix_AndroidKeyboard_errorVH(
-    timeout: number = 300,
-  ) {
+    timeout : number = 300,
+  ){
     // 避免【小键盘】弹起，导致的【vh失效】。
-    setTimeout(function () {
+    setTimeout(function(){
       const viewHeight = window.innerHeight;
       const viewWidth  = window.innerWidth;
       const viewport   = document.querySelector('meta[name=viewport]');
@@ -185,9 +208,9 @@ export class xX_DomStyle_Helper {
    * 浏览器，是否支持【某个CSS属性】
    */
 
-  public isSupport_CssProperty(key: string): string | undefined {
+  public isSupport_CssProperty(key : string) : string|undefined{
     const jsKey = toCamelCase(key); // 有些css属性是连字符号形成
-    if (jsKey in document.documentElement.style) {
+    if(jsKey in document.documentElement.style){
       return key;
     }
     let validKey;
@@ -200,10 +223,10 @@ export class xX_DomStyle_Helper {
       O     : '-o-',
     };
     type prefixMap_KeyType = keyof typeof prefixMap;
-    for (const jsPrefix in prefixMap) {
-      if (prefixMap.hasOwnProperty(jsPrefix)) {
+    for(const jsPrefix in prefixMap){
+      if(prefixMap.hasOwnProperty(jsPrefix)){
         const styleKey = toCamelCase(`${jsPrefix}-${jsKey}`);
-        if (styleKey in document.documentElement.style) {
+        if(styleKey in document.documentElement.style){
           validKey = prefixMap[(jsPrefix as prefixMap_KeyType)] + key;
           break;
         }
@@ -217,8 +240,8 @@ export class xX_DomStyle_Helper {
 /**
  * 把有连字符号的字符串转化为驼峰命名法的字符串
  */
-function toCamelCase(str: string) {
-  return str.replace(/-(\w)/g, (matched, letter) => {
+function toCamelCase(str : string){
+  return str.replace(/-(\w)/g, (matched, letter)=>{
     return letter.toUpperCase();
   });
 }
