@@ -11,21 +11,21 @@
     },
     {
       "name": "JIS-CTF-VulnUpload-CTF01",
-      "relatedUrls": "192.168.219.130",
+      "relatedUrls": "http://192.168.219.130",
       "descTags": "靶机",
       "content": "1.已经做过的题目。\n2.再熟悉一遍。\n3.",
       "createdAt": "2021-02-02 14:55:00",
-      "updatedAt": "2021-02-02 14:55:09",
+      "updatedAt": "2021-02-21 11:05:37",
       "id": "1e97f681-36de-46a7-9ee6-8f0138babc06",
       "icon": "https://www.boe.ttct.edu.tw/favicon.ico"
     },
     {
       "name": "【HTB靶机】Archetype",
       "createdAt": "2021-02-19 15:59:14",
-      "updatedAt": "2021-02-19 16:01:48",
+      "updatedAt": "2021-02-21 11:05:43",
       "id": "6099fa36-849e-4772-a88e-36f2755863d5",
       "icon": "https://www.boe.ttct.edu.tw/favicon.ico",
-      "relatedUrls": "10.10.10.27",
+      "relatedUrls": "http://10.10.10.27",
       "descTags": "靶机,windows",
       "content": "Windows靶机测验"
     },
@@ -38,6 +38,66 @@
       "createdAt": "2021-02-19 20:03:08",
       "updatedAt": "2021-02-19 20:03:08",
       "id": "9f0764ba-ea91-4a30-91eb-dc8b66bf409c"
+    },
+    {
+      "name": "【HTB靶机】Vaccine",
+      "icon": "https://www.boe.ttct.edu.tw/favicon.ico",
+      "relatedUrls": "10.10.10.46",
+      "descTags": "Linux",
+      "content": "Linux靶机测验",
+      "createdAt": "2021-02-27 09:17:59",
+      "updatedAt": "2021-02-27 09:17:59",
+      "id": "789adc55-b611-41f3-befd-a4c55db2c564"
+    },
+    {
+      "name": "【HTB靶机】Shield",
+      "icon": "https://www.boe.ttct.edu.tw/favicon.ico",
+      "relatedUrls": "10.10.10.29",
+      "descTags": "Wndows",
+      "content": "Windows靶机测验",
+      "createdAt": "2021-03-01 00:03:10",
+      "updatedAt": "2021-03-01 00:03:41",
+      "id": "613a838b-c314-4416-a437-9e9cdf02a7d6"
+    },
+    {
+      "name": "【HTB靶机】Pathfinder",
+      "icon": "https://www.boe.ttct.edu.tw/favicon.ico",
+      "relatedUrls": "10.10.10.30",
+      "descTags": "Linux",
+      "content": "Linux靶机测验",
+      "createdAt": "2021-03-03 17:57:29",
+      "updatedAt": "2021-03-03 17:57:29",
+      "id": "63b4d248-8ecc-4771-9e17-cdf9228990cb"
+    },
+    {
+      "name": "【HTB靶机】Included",
+      "icon": "https://www.boe.ttct.edu.tw/favicon.ico",
+      "relatedUrls": "10.10.10.55",
+      "descTags": "Linux",
+      "content": "Linux靶机测验",
+      "createdAt": "2021-03-04 21:42:12",
+      "updatedAt": "2021-03-04 21:42:12",
+      "id": "d1e36a8c-309c-41ac-9bed-08d9ee3911f0"
+    },
+    {
+      "name": "【HTB靶机】Markup",
+      "icon": "https://www.boe.ttct.edu.tw/favicon.ico",
+      "relatedUrls": "10.10.10.49",
+      "descTags": "Windows",
+      "content": "Windows靶机测验",
+      "createdAt": "2021-03-06 15:46:18",
+      "updatedAt": "2021-03-06 15:47:05",
+      "id": "e9bf74a4-83ff-48fc-aba3-18eb874cf30d"
+    },
+    {
+      "name": "【HTB靶机】Guard",
+      "icon": "https://www.boe.ttct.edu.tw/favicon.ico",
+      "relatedUrls": "10.10.10.50",
+      "descTags": "Linux",
+      "content": "Linux靶机测验",
+      "createdAt": "2021-03-06 22:39:35",
+      "updatedAt": "2021-03-06 22:40:37",
+      "id": "d898b6de-1536-483d-a731-6791bce7f1f5"
     }
   ],
   "servers": [
@@ -82,6 +142,56 @@
       "createdAt": "2021-02-19 20:04:02",
       "updatedAt": "2021-02-20 10:25:54",
       "id": "36b27d9f-062e-4cef-b871-57aad9433d6b"
+    },
+    {
+      "projectId": "789adc55-b611-41f3-befd-a4c55db2c564",
+      "trueIP": "10.10.10.46",
+      "systemType": "Linux",
+      "openPort": "21,22,80",
+      "webAppFirewall": "暂未发现",
+      "createdAt": "2021-02-27 09:19:08",
+      "updatedAt": "2021-02-27 09:19:08",
+      "id": "65e8219f-7ae3-42dd-b043-1a6a1fa10188"
+    },
+    {
+      "projectId": "613a838b-c314-4416-a437-9e9cdf02a7d6",
+      "trueIP": "10.10.10.29",
+      "systemType": "Windows",
+      "openPort": "80,3306",
+      "webAppFirewall": "暂未发现",
+      "createdAt": "2021-03-01 00:04:14",
+      "updatedAt": "2021-03-01 00:04:14",
+      "id": "c4c66dec-7360-4496-89ca-afa4b9ff757c"
+    },
+    {
+      "projectId": "63b4d248-8ecc-4771-9e17-cdf9228990cb",
+      "trueIP": "10.10.10.30",
+      "systemType": "Linux",
+      "openPort": "464,445,593,49676,49664,47001,88,135,3269,49698,9389,636,53,49667,49671,139,49718,49666,49683,3268,389,49677,49665,5985",
+      "webAppFirewall": "暂未发现",
+      "createdAt": "2021-03-03 17:59:14",
+      "updatedAt": "2021-03-04 21:21:13",
+      "id": "b14592f6-dc5a-4bb5-ad51-9aca18f70aa4"
+    },
+    {
+      "projectId": "d1e36a8c-309c-41ac-9bed-08d9ee3911f0",
+      "trueIP": "10.10.10.55",
+      "systemType": "Linux",
+      "openPort": "80,69",
+      "webAppFirewall": "暂未发现",
+      "createdAt": "2021-03-04 21:43:16",
+      "updatedAt": "2021-03-06 15:47:21",
+      "id": "91b1b24b-155c-400d-9d42-d2339960da14"
+    },
+    {
+      "projectId": "e9bf74a4-83ff-48fc-aba3-18eb874cf30d",
+      "trueIP": "10.10.10.49",
+      "systemType": "Linux",
+      "openPort": "22,80,443",
+      "webAppFirewall": "暂未发现",
+      "createdAt": "2021-03-06 22:41:28",
+      "updatedAt": "2021-03-06 22:41:28",
+      "id": "2190fb87-a676-4ea2-aa39-9090d6555cc1"
     }
   ],
   "siteMains": [
