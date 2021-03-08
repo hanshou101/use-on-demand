@@ -23,6 +23,10 @@ declare class ExpressBase_Helper {
      * 设置错误页面
      */
     $5_bindErrorPage(): void;
+    /**
+     * 处理CORS跨域问题
+     */
+    $6_handleCORS(): void;
 }
 export { ExpressBase_Helper, };
 //# sourceMappingURL=express-base.d.ts.map

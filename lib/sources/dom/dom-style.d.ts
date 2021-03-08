@@ -3,6 +3,7 @@ interface MyAbsolutePosition {
     left: number;
 }
 export declare class xX_DomStyle_Helper {
+    static loadCss_Async(cssUrl: string): Promise<unknown>;
     /**
      * 获取元素的css属性值
      */
